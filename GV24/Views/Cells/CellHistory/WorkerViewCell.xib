@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFUIText-Light.ttf">
+            <string>SFUIText-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkerCell" rowHeight="169" id="KGk-i7-Jjw" customClass="WorkerViewCell" customModule="GV24" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="168.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baby" translatesAutoresizingMaskIntoConstraints="NO" id="Q6q-fu-6ZL">
+                        <rect key="frame" x="15" y="8" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="5SS-NK-ASz"/>
+                            <constraint firstAttribute="width" constant="40" id="dlx-3p-iJN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyễn Văn A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piy-bP-BF0">
+                        <rect key="frame" x="63" y="10" width="98.5" height="18"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 đường 1, Quận 1, Thành phố Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvl-xl-DyO">
+                        <rect key="frame" x="63" y="33" width="242" height="13"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Công việc đã hoàn thành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vl-MG-faU">
+                        <rect key="frame" x="15" y="73" width="175" height="18"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6k-Zp-mdu">
+                        <rect key="frame" x="0.0" y="58" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Ytt-8Q-bug"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ppb-M5-8mg">
+                        <rect key="frame" x="15" y="107" width="290" height="36"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kaV-GZ-FGm">
+                        <rect key="frame" x="290" y="15" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="VYp-tV-Cnq"/>
+                            <constraint firstAttribute="width" constant="15" id="jXG-Ot-uNI"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Mvl-xl-DyO" firstAttribute="top" secondItem="piy-bP-BF0" secondAttribute="bottom" constant="5" id="2UF-nG-ftb"/>
+                    <constraint firstItem="Ppb-M5-8mg" firstAttribute="leading" secondItem="1Vl-MG-faU" secondAttribute="leading" id="47t-QU-uMY"/>
+                    <constraint firstItem="Mvl-xl-DyO" firstAttribute="leading" secondItem="piy-bP-BF0" secondAttribute="leading" id="7QM-Qf-ncR"/>
+                    <constraint firstItem="T6k-Zp-mdu" firstAttribute="top" secondItem="Q6q-fu-6ZL" secondAttribute="bottom" constant="10" id="BKt-7v-P0A"/>
+                    <constraint firstItem="T6k-Zp-mdu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DcM-kx-lPc"/>
+                    <constraint firstAttribute="trailing" secondItem="Mvl-xl-DyO" secondAttribute="trailing" constant="15" id="L0A-pn-XtA"/>
+                    <constraint firstItem="Ppb-M5-8mg" firstAttribute="top" secondItem="1Vl-MG-faU" secondAttribute="bottom" constant="16" id="Mez-5a-TLq"/>
+                    <constraint firstItem="1Vl-MG-faU" firstAttribute="top" secondItem="T6k-Zp-mdu" secondAttribute="bottom" constant="14" id="OqZ-bc-Tkv"/>
+                    <constraint firstAttribute="trailing" secondItem="kaV-GZ-FGm" secondAttribute="trailing" constant="15" id="Pod-XX-NRX"/>
+                    <constraint firstAttribute="topMargin" secondItem="piy-bP-BF0" secondAttribute="top" constant="-2" id="RhG-mj-Jxo"/>
+                    <constraint firstAttribute="trailing" secondItem="T6k-Zp-mdu" secondAttribute="trailing" id="Rmq-Aq-3LT"/>
+                    <constraint firstItem="piy-bP-BF0" firstAttribute="leading" secondItem="Q6q-fu-6ZL" secondAttribute="trailing" constant="8" id="WhQ-Sr-nCF"/>
+                    <constraint firstAttribute="topMargin" secondItem="Q6q-fu-6ZL" secondAttribute="top" id="XQV-Oc-CrV"/>
+                    <constraint firstAttribute="trailing" secondItem="Ppb-M5-8mg" secondAttribute="trailing" constant="15" id="iWG-qb-auY"/>
+                    <constraint firstItem="1Vl-MG-faU" firstAttribute="leading" secondItem="Q6q-fu-6ZL" secondAttribute="leading" id="jgF-WK-sRj"/>
+                    <constraint firstItem="Q6q-fu-6ZL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="lu5-ct-6El"/>
+                    <constraint firstItem="kaV-GZ-FGm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="oDZ-cK-jZT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addressLabel" destination="Mvl-xl-DyO" id="uLS-hA-bZF"/>
+                <outlet property="arrowForward" destination="kaV-GZ-FGm" id="INU-uR-Hsc"/>
+                <outlet property="commentLabel" destination="Ppb-M5-8mg" id="OjH-vS-D4Q"/>
+                <outlet property="imageUser" destination="Q6q-fu-6ZL" id="7YR-UI-1xJ"/>
+                <outlet property="nameLabel" destination="piy-bP-BF0" id="Oc6-fR-ROc"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="84.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="baby" width="16" height="16"/>
+    </resources>
+</document>

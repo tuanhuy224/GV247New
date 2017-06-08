@@ -1,0 +1,77 @@
+
+// Localizable.strings
+//  GV24
+//
+//  Created by HuyNguyen on 5/31/17.
+//  Copyright © 2017 admin. All rights reserved.
+//
+domainGV24 = "https://yukotest123.herokuapp.com/en/";
+English = "English";
+VietNam = "VietNamese";
+SignIn = "Sign in";
+Back = "Back";
+Home = "Home";
+More = "More";
+Information = "Thông tin";
+Language = "Language";
+Around = "Maid around here";
+SwitchLanguage = "Switch Language";
+SignIn = "Sign In";
+Password = "Password";
+Nearbyjobs = "Nearby jobs";
+Taskmanagement = "Task management";
+Taskhistory = "Task history";
+TrustQuality  = "Trust - Quality ";
+Aboutus = "About us";
+Termsofuse = "Terms of use";
+More = "More";
+Contact = "Contact";
+Login = "Login";
+Username = "Username";
+Forgotpassword = "Forgot password?";
+Signupnow = "Sign up now";
+Loginwith = "Login with";
+Username = "Username";
+Confirmpassword = "Confirm password";
+Next = "Next";
+Emailaddress = "Email address";
+Fullname = "Full name";
+Sex = "Sex";
+Phonenumber = "Phone number";
+Complete = "Complete";
+PostedTasks = "Posted Tasks";
+Inprocess = "In-process";
+Runningtasks = "Running tasks";
+Posted = "Posted";
+Jobsforapplications = "Jobs for applications";
+Description = "Description";
+Inprocess = "In-process";
+Applicantlist = "Applicant list";
+Selectyourapplicants = "Select your applicants";
+Runningtasks = "Running tasks";
+Completethetask = "Complete the task";
+Postyourjobs = "Post your jobs";
+Typeofjobs = "Type of jobs";
+Jobdescription = "Job description";
+Address = "Address";
+Enterthesalary = "Enter the salary";
+Typesofpay = "Types of pay";
+Daysofworking = "Days of working";
+Timeofworking = "Time of working";
+Complete = "Complete";
+Evaluate = "Evaluate";
+Applicantprofile = "Applicant profile";
+Addcomments = "Add comments";
+Comment = "Comment";
+Payment = "Payment";
+Gv24account = "Gv24 account";
+Onlinepayment = "Online payment";
+Accountbalance = "Account balance";
+Selectyourpaymentmethods = "Select your payment methods";
+Deletethetask = "Delete the task";
+Areyousureyouwanttodeletethistask = "Are you sure you want to delete this task?";
+Cancel = "Cancel";
+Delete  = "Delete";
+Edittasks = "Edit tasks";
+ClickOktoconfirmalltaskscompleted = "Click Ok to confirm all tasks completed";
+

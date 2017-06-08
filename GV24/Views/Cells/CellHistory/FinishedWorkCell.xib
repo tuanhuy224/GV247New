@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFUIText-Light.ttf">
+            <string>SFUIText-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FinishedWorkCell" rowHeight="221" id="KGk-i7-Jjw" customClass="FinishedWorkCell" customModule="GV24" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="220.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6JX-1Q-xbz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="AfL-qQ-EC1"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="don dep nha" translatesAutoresizingMaskIntoConstraints="NO" id="jBP-uT-YKh">
+                        <rect key="frame" x="15" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="ROb-Dn-Zp4"/>
+                            <constraint firstAttribute="width" constant="40" id="tkO-cs-odO"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dọn dẹp nhà cửa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4f-Yg-jJf">
+                        <rect key="frame" x="71" y="34" width="96.5" height="14"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTp-yg-o1g">
+                        <rect key="frame" x="15" y="58" width="285" height="39.5"/>
+                        <string key="text">Cần một bạn nữ siêng năng dọn phòng ngày sáng thứ tư, sau 9 giờ. Cần một bạn nữ siêng năng dọn phòng ngày sáng thứ tư, sau 9 giờ.</string>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7V-25-yhS">
+                        <rect key="frame" x="0.0" y="102.5" width="328" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="IPE-Qy-RD7"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="olJ-UK-exx">
+                        <rect key="frame" x="15" y="118.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="46y-l3-UuT"/>
+                            <constraint firstAttribute="height" constant="15" id="ogW-v3-fgb"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JiD-AK-gny">
+                        <rect key="frame" x="15" y="153.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="jMv-62-eSc"/>
+                            <constraint firstAttribute="height" constant="15" id="nqT-zZ-Kic"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w6W-Ac-chQ">
+                        <rect key="frame" x="15" y="188.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="HUR-jR-9uP"/>
+                            <constraint firstAttribute="width" constant="15" id="TfX-vK-QnR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.000 VND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-OF-8jx">
+                        <rect key="frame" x="40" y="119" width="76" height="14"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/10/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oj-Fy-raL">
+                        <rect key="frame" x="40" y="154" width="61" height="14"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 đường 2, Phường Bình Thọ, Quận 3, Thành phố Hồ Chí Minh." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCH-JF-qhT">
+                        <rect key="frame" x="40" y="184.5" width="265" height="14.5"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeV-W9-ghJ">
+                        <rect key="frame" x="40" y="178.5" width="280" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="82d-QN-iN2"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9h00 am - 12h00 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We0-ti-Eyc">
+                        <rect key="frame" x="187" y="154" width="118" height="14"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lau dọn phòng khách" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-qc-JJK">
+                        <rect key="frame" x="71" y="15" width="152" height="18"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="olJ-UK-exx" firstAttribute="top" secondItem="L7V-25-yhS" secondAttribute="bottom" constant="15" id="1cb-WF-3Cf"/>
+                    <constraint firstAttribute="trailing" secondItem="6JX-1Q-xbz" secondAttribute="trailing" id="2W0-B9-Ra7"/>
+                    <constraint firstAttribute="trailing" secondItem="L7V-25-yhS" secondAttribute="trailing" constant="-8" id="3dj-ck-t7X"/>
+                    <constraint firstItem="K4f-Yg-jJf" firstAttribute="leading" secondItem="4g8-qc-JJK" secondAttribute="leading" id="4ni-sJ-QOT"/>
+                    <constraint firstItem="4g8-qc-JJK" firstAttribute="leading" secondItem="jBP-uT-YKh" secondAttribute="trailing" constant="16" id="64V-0s-eqe"/>
+                    <constraint firstItem="K4f-Yg-jJf" firstAttribute="top" secondItem="4g8-qc-JJK" secondAttribute="bottom" constant="1" id="6Jz-bZ-NnF"/>
+                    <constraint firstItem="4g8-qc-JJK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="7fq-I8-N8o"/>
+                    <constraint firstItem="We0-ti-Eyc" firstAttribute="trailing" secondItem="aCH-JF-qhT" secondAttribute="trailing" id="CoS-H1-h4B"/>
+                    <constraint firstItem="jBP-uT-YKh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="FJm-ro-ObV"/>
+                    <constraint firstAttribute="trailing" secondItem="BTp-yg-o1g" secondAttribute="trailing" constant="20" id="HNY-cL-d3F"/>
+                    <constraint firstItem="L7V-25-yhS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IbU-Ri-jlI"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aCH-JF-qhT" secondAttribute="bottom" constant="3" id="Idd-zZ-3SB"/>
+                    <constraint firstItem="6JX-1Q-xbz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kfh-sm-zzU"/>
+                    <constraint firstItem="QeV-W9-ghJ" firstAttribute="leading" secondItem="5oj-Fy-raL" secondAttribute="leading" id="Kw8-yJ-gla"/>
+                    <constraint firstItem="5oj-Fy-raL" firstAttribute="leading" secondItem="JiD-AK-gny" secondAttribute="trailing" constant="10" id="L5C-Mv-Rl2"/>
+                    <constraint firstItem="6JX-1Q-xbz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="PLw-Sw-M34"/>
+                    <constraint firstItem="jBP-uT-YKh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="RnP-XH-c3m"/>
+                    <constraint firstItem="olJ-UK-exx" firstAttribute="leading" secondItem="BTp-yg-o1g" secondAttribute="leading" id="UIu-P9-zOl"/>
+                    <constraint firstItem="We0-ti-Eyc" firstAttribute="centerY" secondItem="5oj-Fy-raL" secondAttribute="centerY" id="UsG-dR-T1K"/>
+                    <constraint firstAttribute="trailing" secondItem="QeV-W9-ghJ" secondAttribute="trailing" id="WGB-Aq-H07"/>
+                    <constraint firstItem="L7V-25-yhS" firstAttribute="top" secondItem="BTp-yg-o1g" secondAttribute="bottom" constant="5" id="YxM-Ru-d7m"/>
+                    <constraint firstItem="BTp-yg-o1g" firstAttribute="top" secondItem="jBP-uT-YKh" secondAttribute="bottom" constant="8" id="Z8w-UO-cp3"/>
+                    <constraint firstAttribute="trailing" secondItem="aCH-JF-qhT" secondAttribute="trailing" constant="15" id="ZcI-rz-ajK"/>
+                    <constraint firstItem="QeV-W9-ghJ" firstAttribute="top" secondItem="JiD-AK-gny" secondAttribute="bottom" constant="10" id="aE9-bT-uDW"/>
+                    <constraint firstItem="JiD-AK-gny" firstAttribute="top" secondItem="olJ-UK-exx" secondAttribute="bottom" constant="20" id="dWx-bq-HMc"/>
+                    <constraint firstItem="lK4-OF-8jx" firstAttribute="centerY" secondItem="olJ-UK-exx" secondAttribute="centerY" id="dnl-zb-tOG"/>
+                    <constraint firstItem="w6W-Ac-chQ" firstAttribute="top" secondItem="JiD-AK-gny" secondAttribute="bottom" constant="20" id="eWI-fG-KYr"/>
+                    <constraint firstItem="lK4-OF-8jx" firstAttribute="leading" secondItem="olJ-UK-exx" secondAttribute="trailing" constant="10" id="f41-QR-ypo"/>
+                    <constraint firstItem="aCH-JF-qhT" firstAttribute="leading" secondItem="w6W-Ac-chQ" secondAttribute="trailing" constant="10" id="kF9-dP-ztG"/>
+                    <constraint firstItem="JiD-AK-gny" firstAttribute="leading" secondItem="olJ-UK-exx" secondAttribute="leading" id="prq-it-Adz"/>
+                    <constraint firstItem="aCH-JF-qhT" firstAttribute="top" secondItem="QeV-W9-ghJ" secondAttribute="bottom" constant="5" id="vKx-1m-rDO"/>
+                    <constraint firstItem="5oj-Fy-raL" firstAttribute="centerY" secondItem="JiD-AK-gny" secondAttribute="centerY" id="wBQ-RJ-Ofo"/>
+                    <constraint firstItem="w6W-Ac-chQ" firstAttribute="leading" secondItem="JiD-AK-gny" secondAttribute="leading" id="wQ8-LN-vC7"/>
+                    <constraint firstItem="BTp-yg-o1g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="xcE-S9-UEP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="addressImage" destination="w6W-Ac-chQ" id="7QE-x3-vqG"/>
+                <outlet property="dateImage" destination="JiD-AK-gny" id="Ctr-xj-qR5"/>
+                <outlet property="salaryImage" destination="olJ-UK-exx" id="xhu-xG-Fyv"/>
+                <outlet property="workAddressLabel" destination="aCH-JF-qhT" id="iPm-Q5-doW"/>
+                <outlet property="workContentLabel" destination="BTp-yg-o1g" id="gwt-hh-Ygf"/>
+                <outlet property="workCreateAtLabel" destination="5oj-Fy-raL" id="hSq-oB-Ogh"/>
+                <outlet property="workImage" destination="jBP-uT-YKh" id="DSv-Ik-9IM"/>
+                <outlet property="workNameLabel" destination="4g8-qc-JJK" id="H22-RQ-75c"/>
+                <outlet property="workSalaryLabel" destination="lK4-OF-8jx" id="2kx-ed-i6S"/>
+                <outlet property="workTimeLabel" destination="We0-ti-Eyc" id="dOs-gB-0Kx"/>
+                <outlet property="workTypeLabel" destination="K4f-Yg-jJf" id="V7p-lM-ygB"/>
+            </connections>
+            <point key="canvasLocation" x="-164" y="82.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="don dep nha" width="16" height="16"/>
+    </resources>
+</document>

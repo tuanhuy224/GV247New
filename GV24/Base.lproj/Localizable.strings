@@ -1,0 +1,79 @@
+
+ // Localizable.strings
+ //  GV24
+ //
+ //  Created by HuyNguyen on 5/31/17.
+ //  Copyright © 2017 admin. All rights reserved.
+ //
+
+
+domainGV24 = "https://yukotest123.herokuapp.com/vi/";
+English = "English";
+VietNam = "Tiếng Việt";
+SignIn = "Đăng nhập";
+Language = "Ngôn ngữ";
+SwitchLanguage = "Đổi ngôn ngữ";
+Back = "Trở lại";
+Home = "Trang chủ";
+Information = "Thông tin";
+More = "Thêm";
+Around = "Tìm quanh đây";
+SignIn = "Đăng nhập";
+Password = "Mật khẩu";
+Nearbyjobs = "Nearby jobs";
+Taskmanagement = "Quản lí công việc";
+Taskhistory = "Lịch sử công việc";
+TrustQuality  = "Niềm tin - Chất lượng";
+Aboutus = "Về chúng tôi";
+Termsofuse = "Điều khoản sử dụng";
+More = "Thêm";
+Contact = "Liên hệ";
+Login = "Đăng nhập";
+Username = "Tên đăng nhập";
+Forgotpassword = "Quên mật khẩu?";
+Signupnow = "Đăng kí ngay";
+Loginwith = "Đăng nhập bằng";
+Username = "Tên đăng nhập";
+Confirmpassword = "Xác nhận mật khẩu";
+Next = "Tiếp theo";
+Emailaddress = "Địa chỉ Email";
+Fullname = "Tên đầy đủ";
+Sex = "Giới tính";
+Phonenumber = "Số điện thoại";
+Complete = "Hoàn tất";
+PostedTasks = "Đã đăng";
+Inprocess = "Chờ duyệt";
+Runningtasks = "Đang làm";
+Posted = "Đã đăng";
+Jobsforapplications = "Đang chờ ứng tuyển";
+Description = "Mô tả";
+Inprocess = "Chờ duyệt";
+Applicantlist = "Danh sách ứng tuyển";
+Selectyourapplicants = "Chọn người giúp việc";
+Runningtasks = "Đang làm";
+Completethetask = "Hoàn tất công việc";
+Postyourjobs = "Đăng công việc";
+Typeofjobs = "Loại công việc";
+Jobdescription = "Mô tả công việc";
+Address = "Địa chỉ";
+Enterthesalary = "Nhập số tiền công";
+Typesofpay = "Khoán tiền công theo thời gian";
+Daysofworking = "Ngày làm việc";
+Timeofworking = "Thời gian làm việc";
+Complete = "Hoàn tất";
+Evaluate = "Đánh giá";
+Applicantprofile = "Thông tin";
+Addcomments = "Nhận xét của bạn";
+Comment = "Bình luận";
+Payment = "Thanh toán";
+Gv24account = "Tài khoản Gv24";
+Onlinepayment = "Thanh toán online";
+Accountbalance = "Số dư tài khoản";
+Selectyourpaymentmethods = "Chọn hình thức thanh toán của bạn";
+Deletethetask = "Xóa công việc";
+Areyousureyouwanttodeletethistask = "Bạn có chắc muốn xóa công việc này hay không?";
+Cancel = "Hủy";
+Delete  = "Xóa";
+Edittasks = "Chỉnh sửa công việc";
+ClickOktoconfirmalltaskscompleted = "Vui lòng xác nhận công việc đã hoàn thành bằng cách nhấn OK";
+

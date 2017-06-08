@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkAround" customModule="GV24" customModuleProvider="target">
+            <connections>
+                <outlet property="maxDictance" destination="cH0-Rg-ZDG" id="m8f-P6-U8u"/>
+                <outlet property="minDictance" destination="qly-S7-ycc" id="MEg-ql-iZe"/>
+                <outlet property="slider" destination="J8n-H4-ZRk" id="e9a-de-bcX"/>
+                <outlet property="sliderMax" destination="E1I-hI-5lz" id="bNg-aP-XTF"/>
+                <outlet property="space" destination="8uP-8a-hBI" id="Jpb-mD-SBX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2000" minValue="0.0" maxValue="2000" translatesAutoresizingMaskIntoConstraints="NO" id="J8n-H4-ZRk">
+                    <rect key="frame" x="6" y="12" width="363" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="POq-W6-jqC"/>
+                    </constraints>
+                    <color key="minimumTrackTintColor" red="1" green="0.52711206040000003" blue="0.32308799269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="maximumTrackTintColor" red="0.18039215689999999" green="0.72941176470000002" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="thumbTintColor" red="0.29290099330000002" green="0.6020064128" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="changeAction:" destination="-1" eventType="valueChanged" id="aw4-JM-ojC"/>
+                    </connections>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khoang cach" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uP-8a-hBI">
+                    <rect key="frame" x="8" y="2" width="71" height="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cH0-Rg-ZDG">
+                    <rect key="frame" x="340" y="31" width="27.5" height="13"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qly-S7-ycc">
+                    <rect key="frame" x="8" y="29" width="21.5" height="13"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1I-hI-5lz">
+                    <rect key="frame" x="284" y="3" width="80" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="oqY-4X-lUO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="J8n-H4-ZRk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="1TV-Gy-dQy"/>
+                <constraint firstItem="cH0-Rg-ZDG" firstAttribute="top" secondItem="J8n-H4-ZRk" secondAttribute="bottom" constant="-1" id="GH0-OK-20c"/>
+                <constraint firstAttribute="trailing" secondItem="E1I-hI-5lz" secondAttribute="trailing" constant="11" id="JhR-82-CmS"/>
+                <constraint firstItem="J8n-H4-ZRk" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="SD0-GC-j9q"/>
+                <constraint firstItem="qly-S7-ycc" firstAttribute="leading" secondItem="J8n-H4-ZRk" secondAttribute="leading" id="Ze0-1L-TcQ"/>
+                <constraint firstItem="8uP-8a-hBI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="aLR-5M-nUf"/>
+                <constraint firstItem="cH0-Rg-ZDG" firstAttribute="trailing" secondItem="J8n-H4-ZRk" secondAttribute="trailing" id="cjO-0P-0kI"/>
+                <constraint firstItem="8uP-8a-hBI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="2" id="hLz-gU-qqr"/>
+                <constraint firstAttribute="trailing" secondItem="J8n-H4-ZRk" secondAttribute="trailing" constant="8" id="lQ7-Yu-qJA"/>
+                <constraint firstItem="qly-S7-ycc" firstAttribute="top" secondItem="J8n-H4-ZRk" secondAttribute="bottom" constant="-3" id="o5S-oZ-T7Q"/>
+                <constraint firstItem="J8n-H4-ZRk" firstAttribute="top" secondItem="E1I-hI-5lz" secondAttribute="bottom" constant="-4" id="tWy-r4-Na8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-73.5" y="-476"/>
+        </view>
+    </objects>
+</document>

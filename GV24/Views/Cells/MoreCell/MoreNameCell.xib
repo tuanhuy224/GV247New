@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFUIText-Light.ttf">
+            <string>SFUIText-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreNameCell" id="eZE-sj-RKW" customClass="MoreNameCell" customModule="GV24" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZE-sj-RKW" id="hKl-LD-03r">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7k3-yj-dhy">
+                        <rect key="frame" x="8" y="6" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="htc-Pj-k4U"/>
+                            <constraint firstAttribute="height" constant="30" id="pDW-lR-UXT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen van A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO3-Pn-Mpl">
+                        <rect key="frame" x="46" y="2" width="97" height="18"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Ham Nghi, Q 1, Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tx-6Q-QzR">
+                        <rect key="frame" x="46" y="27" width="148" height="12"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0b-eo-y3X">
+                        <rect key="frame" x="337" y="6" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="BB8-zp-THn"/>
+                            <constraint firstAttribute="height" constant="30" id="GpG-PR-eNx"/>
+                        </constraints>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7k3-yj-dhy" firstAttribute="centerY" secondItem="hKl-LD-03r" secondAttribute="centerY" id="HZy-Ks-adi"/>
+                    <constraint firstItem="4Tx-6Q-QzR" firstAttribute="top" secondItem="mO3-Pn-Mpl" secondAttribute="bottom" constant="7" id="STp-9G-RnL"/>
+                    <constraint firstItem="mO3-Pn-Mpl" firstAttribute="top" secondItem="7k3-yj-dhy" secondAttribute="top" constant="-4" id="d0B-X0-f0s"/>
+                    <constraint firstItem="R0b-eo-y3X" firstAttribute="centerY" secondItem="hKl-LD-03r" secondAttribute="centerY" id="hrS-yD-SYK"/>
+                    <constraint firstItem="7k3-yj-dhy" firstAttribute="leading" secondItem="hKl-LD-03r" secondAttribute="leading" constant="8" id="ofu-oy-3x8"/>
+                    <constraint firstAttribute="trailing" secondItem="R0b-eo-y3X" secondAttribute="trailing" constant="8" id="omR-Qa-27e"/>
+                    <constraint firstItem="4Tx-6Q-QzR" firstAttribute="leading" secondItem="mO3-Pn-Mpl" secondAttribute="leading" id="uMs-Vq-ztU"/>
+                    <constraint firstItem="mO3-Pn-Mpl" firstAttribute="leading" secondItem="7k3-yj-dhy" secondAttribute="trailing" constant="8" id="ucb-mQ-ucO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="address" destination="4Tx-6Q-QzR" id="vKz-qD-OdC"/>
+                <outlet property="avatar" destination="7k3-yj-dhy" id="Kba-Iu-Hdo"/>
+                <outlet property="iconLeft" destination="R0b-eo-y3X" id="8TS-1p-zG0"/>
+                <outlet property="userName" destination="mO3-Pn-Mpl" id="gez-hl-vST"/>
+            </connections>
+            <point key="canvasLocation" x="-71.5" y="2"/>
+        </tableViewCell>
+    </objects>
+</document>
