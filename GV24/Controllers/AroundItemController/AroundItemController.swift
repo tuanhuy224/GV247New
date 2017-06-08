@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AroundItemController: BaseViewController {
     @IBOutlet weak var tbAround: UITableView!
@@ -43,14 +44,18 @@ extension AroundItemController:UITableViewDataSource{
         cell.lbDist.text = "\(Int(works[indexPath.row].dist!.calculated!)) m"
         cell.createdDate.text = Date(isoDateString: (works[indexPath.row].history!.createAt!)).dayMonthYear
         cell.lbTimePost.text = Date(isoDateString: (works[indexPath.row].history!.createAt!)).hourMinuteSecond
-        //cell.timeWork.text = Date(isoDateString: (works[indexPath.row]))
-        //cell.lbTimePost.text = timeString(time: TimeInterval(Date(isoDateString: (works[indexPath.row].history!.createAt!)).minute)!)
-        
+        DispatchQueue.main.async {
+            cell.imageWork.kf.setImage(with: URL(string: self.works[indexPath.row].info!.workName!.image!))
+        }
         return cell
     }
 }
 extension AroundItemController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detail = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        detail.works = works
+        detail.titleString = works[indexPath.row].info?.title
+        navigationController?.pushViewController(detail, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95

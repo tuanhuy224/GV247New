@@ -8,10 +8,13 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 class DetailViewController: BaseViewController {
     @IBOutlet weak var tbDetail: UITableView!
     var id:String?
+    var titleString:String?
+    var works = [Work]()
     let aroundView:WorkAroundController = WorkAroundController(nibName: "WorkAroundController", bundle: nil)
     let url = "https://yukotest123.herokuapp.com/en/task/getById"
     override func viewDidLoad() {
@@ -19,9 +22,6 @@ class DetailViewController: BaseViewController {
         tbDetail.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
         tbDetail.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
         tbDetail.allowsSelection = false
-        DispatchQueue.main.async {
-            self.loadData()
-        }
     }
     func loadData() {
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
@@ -29,6 +29,9 @@ class DetailViewController: BaseViewController {
         APIService.shared.getUrl(url: url, param: parameter, header: headers) { (json, error) in
             print(json as Any)
         }
+    }
+    override func setupViewBase() {
+        self.title = titleString
     }
 
 }
@@ -43,9 +46,21 @@ extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
+            cell.nameUser.text = works[indexPath.row].stakeholders?.owner?.username
+            cell.addressName.text = works[indexPath.row].stakeholders?.owner?.address?.name
+            DispatchQueue.main.async {
+                cell.imageName.kf.setImage(with:URL(string: self.works[indexPath.row].stakeholders!.owner!.image!))
+            }
             return cell
         }else{
             let cell:InfoDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath) as! InfoDetailCell
+            cell.lbTitle.text = works[indexPath.row].info?.title
+            cell.lbSubTitle.text = works[indexPath.row].info?.content
+            cell.lbMoney.text = "\(works[indexPath.row].info!.salary!)\(" Dollar".localize)"
+            cell.lbComment.text = works[indexPath.row].info?.content
+            cell.lbAddress.text = works[indexPath.row].info?.address?.name
+            cell.lbDate.text = Date(isoDateString: (works[indexPath.row].workTime!.endAt)!).dayMonthYear
+            cell.lbTime.text = "\(Date(isoDateString: (works[indexPath.row].workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (works[indexPath.row].workTime!.endAt)!).hourMinute)"
             return cell
         }
         
