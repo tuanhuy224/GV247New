@@ -20,8 +20,12 @@ class FinishedWorkViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tableView.estimatedRowHeight = 44
+        tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+//        tableView.setNeedsLayout()
+//        tableView.layoutIfNeeded()
+        
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName: "FinishedWorkCell", bundle: nil), forCellReuseIdentifier: "FinishedWorkCell")
         tableView.register(UINib(nibName: "WorkerViewCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
@@ -29,7 +33,11 @@ class FinishedWorkViewController: UIViewController {
         if work != nil {
             tableView.reloadData()
         }
-        
+        print("TASK ID = \(work?.id)")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +53,7 @@ class FinishedWorkViewController: UIViewController {
         
         cell.workNameLabel.text = work?.info?.title
         cell.workTypeLabel.text = work?.info?.workName?.name
-        cell.workContentLabel.text = "asdlkjaldjqilweijoquweouqioue1o2u309u10293u109euqwjdlajsdlkank"
+        cell.workContentLabel.text = work?.info?.content
         
         let salary = work?.info?.salary
         let salaryText = String(describing: salary!)
@@ -54,7 +62,11 @@ class FinishedWorkViewController: UIViewController {
         let startAt = work?.workTime?.startAt
         let startAtStr = String(describing: startAt!)
         cell.workCreateAtLabel.text = String.convertISODateToString(isoDateStr: startAtStr, format: "dd/MM/yyyy")
-        cell.workAddressLabel.text = "asdlkjaldjqilweijoquweouqioue1o2u309u10293u109euqwjdlajsdlkank,nasdnalksn"
+        cell.workAddressLabel.text = work?.info?.address?.name
+        
+        let endAt = work?.workTime?.endAt
+        let endAtStr = String(describing: endAt!)
+        cell.workTimeLabel.text = String.convertISODateToString(isoDateStr: startAtStr, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtStr, format: "HH:mm a")!
     }
     
     fileprivate func configureOwnerCommentsCell(cell: WorkerViewCell) {
@@ -62,6 +74,8 @@ class FinishedWorkViewController: UIViewController {
 //            let url = URL(string: imageString)
 //            cell.workImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
 //        }
+        
+        cell.commentLabel.text = "Bạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờBạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờBạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờBạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờ"
     }
 
 }
@@ -92,12 +106,12 @@ extension FinishedWorkViewController: UITableViewDataSource {
 }
 
 extension FinishedWorkViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 240
-        }
-        return 170
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if indexPath.section == 0 {
+//            return 221
+//        }
+//        return 170
+//    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
