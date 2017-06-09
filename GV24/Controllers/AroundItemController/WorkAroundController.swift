@@ -30,6 +30,14 @@ class WorkAroundController: BaseViewController {
         arWork.setupView()
         setup()
         self.loadData()
+        
+        let date = NSDate()
+        let calendar = NSCalendar.current
+        let hour = calendar.component(.hour, from: date as Date)
+        let minutes = calendar.component(.minute, from: date as Date)
+        print("+++\(date)")
+        print(hour)
+        print("===\(minutes)")
     }
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {

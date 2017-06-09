@@ -9,12 +9,15 @@
 import UIKit
 import IoniconsSwift
 
+protocol chooseWorkDelegate:class {
+    func chooseAction()
+}
 class WorkDetailCell: UITableViewCell {
     @IBOutlet weak var imageName: UIImageView!
     @IBOutlet weak var nameUser: UILabel!
     @IBOutlet weak var addressName: UILabel!
     @IBOutlet weak var btChoose: UIButton!
-
+    weak var delegate:chooseWorkDelegate?
     @IBOutlet weak var aroundRight: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +28,9 @@ class WorkDetailCell: UITableViewCell {
         aroundRight.tintColor = UIColor.colorWithRedValue(redValue: 187, greenValue: 187, blueValue: 193, alpha: 1)
     }
     @IBAction func btChooseAction(_ sender: Any) {
+        if delegate != nil {
+            delegate?.chooseAction()
+        }
     }
     @IBAction func aroundRightAction(_ sender: Any) {
     }

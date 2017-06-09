@@ -13,6 +13,8 @@ import Kingfisher
 class DetailViewController: BaseViewController {
     @IBOutlet weak var tbDetail: UITableView!
     var id:String?
+    var isStatus:Bool = false
+    var idWork:String?
     var titleString:String?
     var works = [Work]()
     let aroundView:WorkAroundController = WorkAroundController(nibName: "WorkAroundController", bundle: nil)
@@ -22,6 +24,7 @@ class DetailViewController: BaseViewController {
         tbDetail.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
         tbDetail.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
         tbDetail.allowsSelection = false
+        postRerves()
     }
     func loadData() {
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
@@ -33,9 +36,17 @@ class DetailViewController: BaseViewController {
     override func setupViewBase() {
         self.title = titleString
     }
-
+    func postRerves(){
+        let apiService = APIService.shared
+        let parameter:Parameters = ["id":idWork!]
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        apiService.postReserve(url: urlReserve, method: .post, parameters: parameter, header: header) { (json, error) in
+            if json == "SUCCESS"{
+                self.isStatus = true
+            }
+        }
+    }
 }
-
 extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -46,6 +57,7 @@ extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
+            cell.delegate = self
             cell.nameUser.text = works[indexPath.row].stakeholders?.owner?.username
             cell.addressName.text = works[indexPath.row].stakeholders?.owner?.address?.name
             DispatchQueue.main.async {
@@ -63,7 +75,6 @@ extension DetailViewController:UITableViewDataSource{
             cell.lbTime.text = "\(Date(isoDateString: (works[indexPath.row].workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (works[indexPath.row].workTime!.endAt)!).hourMinute)"
             return cell
         }
-        
     }
 }
 extension DetailViewController:UITableViewDelegate{
@@ -77,5 +88,14 @@ extension DetailViewController:UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+}
+extension DetailViewController:chooseWorkDelegate{
+    func chooseAction() {
+        if isStatus == true {
+            navigationController?.pushViewController(ManageViewController(), animated: true)
+        }else{
+        print("111")
+        }
     }
 }
