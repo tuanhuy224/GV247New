@@ -21,6 +21,7 @@ class Owner: AppModel {
     var address:Address?
     var latOwner:Double?
     var lngOwner:Double?
+    var workTime: [String] = []
     
     override init(){
         super.init()
@@ -35,6 +36,7 @@ class Owner: AppModel {
         self.email = json?["info"]["email"].string
         self.info = Info(json: (json?["info"])!)
         self.address = Address(json:(json?["info"]["address"])!)
-
+        self.name = json?["info"]["name"].string
+    
     }
 }

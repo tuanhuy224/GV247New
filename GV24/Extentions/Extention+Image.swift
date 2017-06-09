@@ -190,6 +190,14 @@ extension String {
         let newDateStr = dateFormatter.string(from: date)
         return newDateStr
     }
+    
+    static func convertDateToISODateType(date: Date) -> String?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone.current
+        let newISODateStr = dateFormatter.string(from: date)
+        return newISODateStr
+    }
 }
 
 

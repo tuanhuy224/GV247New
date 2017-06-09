@@ -17,6 +17,8 @@ class WorkerViewCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     
+    @IBOutlet weak var btnComment: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

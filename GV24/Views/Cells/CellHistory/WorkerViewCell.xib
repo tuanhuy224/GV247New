@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="161"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="161.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baby" translatesAutoresizingMaskIntoConstraints="NO" id="Q6q-fu-6ZL">
@@ -37,20 +37,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Công việc đã hoàn thành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vl-MG-faU">
-                        <rect key="frame" x="15" y="83" width="175" height="18"/>
+                        <rect key="frame" x="15" y="78" width="175" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6k-Zp-mdu">
-                        <rect key="frame" x="0.0" y="70" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="65" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="sBv-58-7jk"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Bạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ppb-M5-8mg">
-                        <rect key="frame" x="15" y="111" width="290" height="45.5"/>
+                        <rect key="frame" x="15" y="106" width="290" height="50.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -68,24 +68,30 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01r-rJ-X2g" userLabel="Button Nhan Xet ">
+                        <rect key="frame" x="15" y="113" width="120" height="30"/>
+                        <state key="normal" title="Nhận xét của bạn"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ppb-M5-8mg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="30a-zs-ywR"/>
                     <constraint firstItem="1Vl-MG-faU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="59j-3k-LC5"/>
                     <constraint firstItem="piy-bP-BF0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="5SY-QJ-lm0"/>
                     <constraint firstAttribute="trailing" secondItem="Ppb-M5-8mg" secondAttribute="trailing" constant="15" id="8zI-fW-ovx"/>
+                    <constraint firstItem="01r-rJ-X2g" firstAttribute="top" secondItem="1Vl-MG-faU" secondAttribute="bottom" constant="17" id="98b-bZ-LjQ"/>
                     <constraint firstAttribute="bottom" secondItem="Ppb-M5-8mg" secondAttribute="bottom" constant="5" id="AW9-Zw-aJu"/>
                     <constraint firstItem="Q6q-fu-6ZL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="ER6-Mq-O3h"/>
                     <constraint firstItem="Q6q-fu-6ZL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="JIU-0w-Wfy"/>
                     <constraint firstItem="Mvl-xl-DyO" firstAttribute="leading" secondItem="piy-bP-BF0" secondAttribute="leading" id="MB8-Gp-Gcc"/>
                     <constraint firstAttribute="trailing" secondItem="Mvl-xl-DyO" secondAttribute="trailing" constant="15" id="Szo-af-9QJ"/>
+                    <constraint firstItem="01r-rJ-X2g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ZcT-co-f23"/>
                     <constraint firstItem="piy-bP-BF0" firstAttribute="leading" secondItem="Q6q-fu-6ZL" secondAttribute="trailing" constant="15" id="a0T-YW-GeI"/>
                     <constraint firstItem="Mvl-xl-DyO" firstAttribute="top" secondItem="piy-bP-BF0" secondAttribute="bottom" constant="4" id="bO5-1f-iva"/>
                     <constraint firstAttribute="trailing" secondItem="T6k-Zp-mdu" secondAttribute="trailing" id="fkP-9y-IYc"/>
                     <constraint firstAttribute="trailing" secondItem="kaV-GZ-FGm" secondAttribute="trailing" constant="15" id="hCp-OO-Dac"/>
                     <constraint firstItem="Ppb-M5-8mg" firstAttribute="top" secondItem="1Vl-MG-faU" secondAttribute="bottom" constant="10" id="m6w-E5-5nG"/>
                     <constraint firstItem="T6k-Zp-mdu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rpa-fF-IWb"/>
-                    <constraint firstItem="T6k-Zp-mdu" firstAttribute="top" secondItem="Mvl-xl-DyO" secondAttribute="bottom" constant="15" id="wFb-d5-anQ"/>
+                    <constraint firstItem="T6k-Zp-mdu" firstAttribute="top" secondItem="Mvl-xl-DyO" secondAttribute="bottom" constant="10" id="wFb-d5-anQ"/>
                     <constraint firstItem="1Vl-MG-faU" firstAttribute="top" secondItem="T6k-Zp-mdu" secondAttribute="bottom" constant="12" id="wN1-df-FdP"/>
                     <constraint firstItem="Mvl-xl-DyO" firstAttribute="top" secondItem="kaV-GZ-FGm" secondAttribute="bottom" constant="12" id="yV3-Xx-nC4"/>
                 </constraints>
@@ -93,6 +99,7 @@
             <connections>
                 <outlet property="addressLabel" destination="Mvl-xl-DyO" id="uLS-hA-bZF"/>
                 <outlet property="arrowForward" destination="kaV-GZ-FGm" id="INU-uR-Hsc"/>
+                <outlet property="btnComment" destination="01r-rJ-X2g" id="vWK-He-nMr"/>
                 <outlet property="commentLabel" destination="Ppb-M5-8mg" id="OjH-vS-D4Q"/>
                 <outlet property="imageUser" destination="Q6q-fu-6ZL" id="7YR-UI-1xJ"/>
                 <outlet property="nameLabel" destination="piy-bP-BF0" id="Oc6-fR-ROc"/>

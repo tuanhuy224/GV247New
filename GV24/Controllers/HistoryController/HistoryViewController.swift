@@ -27,15 +27,14 @@ class HistoryViewController: BaseViewController {
         
         // Do any additional setup after loading the view.
         
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        
         self.automaticallyAdjustsScrollViewInsets = false
         customControl()
         print("token = \(UserDefaultHelper.getToken()!)")
     }
     
     override func decorate() {
-        getWorkList()
+        getWorkList(startAt: nil, endAt: Date())
         
     }
     
@@ -43,9 +42,17 @@ class HistoryViewController: BaseViewController {
         
     }
     
-    func getWorkList() {
+    /* /maid/getHistoryTasks
+     Params: startAt (opt), endAt (opt): ISO Date, page, limit: Number
+     */
+    func getWorkList(startAt: Date?, endAt: Date) {
         user = UserDefaultHelper.currentUser
-        let params = ["process_ID":000000000000000000000005]
+        var params:[String:Any] = [:]
+        if startAt != nil {
+            params["startAt"] = String.convertDateToISODateType(date: startAt!)
+        }
+        params["endAt"] = String.convertDateToISODateType(date: endAt)
+        
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getWorkListWith(status: WorkStatus.Done, url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
             if err == nil {
@@ -57,7 +64,7 @@ class HistoryViewController: BaseViewController {
                 }
             }
             else {
-                print("Error occurred while geting work list with Work status is Done.")
+                print("Error occurred while geting work list with Work status is Done in HistoryViewController")
             }
         }
     }
@@ -86,14 +93,14 @@ class HistoryViewController: BaseViewController {
     }
     
     fileprivate func customControl() {
-        let topBorder = UIView(frame: CGRect(x: 0, y: 0, width: fromDateContainer.frame.size.width, height: 1.0))
-        topBorder.backgroundColor = UIColor.lightGray
-        topBorder.alpha = 0.3
-        let bottomBorder = UIView(frame: CGRect(x: 0, y: segmentContainer.frame.size.height - 1, width: segmentContainer.frame.size.width, height: 1.0))
-        bottomBorder.backgroundColor = UIColor.lightGray
-        bottomBorder.alpha = 0.3
-        fromDateContainer.addSubview(topBorder)
-        fromDateContainer.addSubview(bottomBorder)
+//        let topBorder = UIView(frame: CGRect(x: 0, y: 0, width: fromDateContainer.frame.size.width, height: 1.0))
+//        topBorder.backgroundColor = UIColor.lightGray
+//        topBorder.alpha = 0.3
+//        let bottomBorder = UIView(frame: CGRect(x: 0, y: segmentContainer.frame.size.height - 1, width: segmentContainer.frame.size.width, height: 1.0))
+//        bottomBorder.backgroundColor = UIColor.lightGray
+//        bottomBorder.alpha = 0.3
+//        fromDateContainer.addSubview(topBorder)
+//        fromDateContainer.addSubview(bottomBorder)
     }
 
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
@@ -151,6 +158,9 @@ extension HistoryViewController:UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
         _ = navigationController?.pushViewController(vc, animated: true)
         
     }

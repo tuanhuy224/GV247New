@@ -8,13 +8,15 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
+import SwiftyJSON
 
-class FinishedWorkViewController: UIViewController {
+class FinishedWorkViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     var work: Work?
-//    var ownerCommentList:[]
+    var taskComment:Comment?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,9 @@ class FinishedWorkViewController: UIViewController {
             tableView.reloadData()
         }
         print("TASK ID = \(work?.id)")
+        let v = UIView()
+        v.backgroundColor = UIColor.red
+        self.tableView.tableFooterView = v
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,9 +48,45 @@ class FinishedWorkViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Công việc hoàn thành"
+        
+    }
+    
+    override func setupViewBase() {
+        
+    }
+    
+    override func decorate() {
+        work != nil ? getTaskComment() : print("Work model is nil now.")
+    }
+    
+    /*  /en/maid/getTaskComment
+     params: task: is task id String
+     */
+    fileprivate func getTaskComment() {
+        print("\(work?.id)")
+        let taskID = work?.id
+        let params:[String:Any] = ["task":"\(String(describing: taskID!))"]
+        let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
+        HistoryServices.sharedInstance.getTaskCommentHistory(url: APIPaths().urlGetTaskCommentWithTaskID(), param: params, header: headers) { (data, err) in
+            if err == nil {
+                if data != nil {
+                    self.taskComment = data!
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+                else {
+                    print("Data not exists nhes")
+                }
+            }
+            else {
+                print("Error occurred while getting task comment in FinishedWorkViewController")
+            }
+        }
     }
     
     fileprivate func configureWorkDetailsCell(cell: FinishedWorkCell) {
+        cell.selectionStyle = .none
         if let imageString = work?.info?.workName?.image {
             let url = URL(string: imageString)
             cell.workImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
@@ -70,18 +111,25 @@ class FinishedWorkViewController: UIViewController {
     }
     
     fileprivate func configureOwnerCommentsCell(cell: WorkerViewCell) {
-//        if let imageString = work?.info?.workName?.image {
-//            let url = URL(string: imageString)
-//            cell.workImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
-//        }
-        
-        cell.commentLabel.text = "Bạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờBạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờBạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờBạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờ"
+        if let imageString = work?.stakeholders?.owner?.image {
+            let url = URL(string: imageString)
+            cell.imageUser.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+        }
+        cell.imageUser.layer.cornerRadius = cell.imageUser.frame.width / 2
+        cell.imageUser.clipsToBounds = true
+        cell.nameLabel.text = work?.stakeholders?.owner?.name!
+        cell.addressLabel.text = work?.stakeholders?.owner?.address?.name!
+        cell.commentLabel.text = self.taskComment?.content!
+
     }
 
 }
 
 extension FinishedWorkViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        if self.taskComment == nil {
+            return 1
+        }
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,6 +150,10 @@ extension FinishedWorkViewController: UITableViewDataSource {
             
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

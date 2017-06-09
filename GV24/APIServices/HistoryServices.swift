@@ -29,15 +29,14 @@ class HistoryServices: APIService {
                 let json = JSON(value).dictionary
                 print("JSON = \(json)")
                 var workList:[Work] = []
-                if let list = json?["data"] {
-                    for item in list {
-                        let work = Work(json: item.1)
-                        workList.append(work)
+                if let status = json?["status"], status == true {
+                    if let list = json?["data"]?["docs"] {
+                        for item in list {
+                            let work = Work(json: item.1)
+                            workList.append(work)
+                        }
+                        completion(workList, nil)
                     }
-                    let result = workList.filter({ (work) -> Bool in
-                        return work.process?.id == status.rawValue
-                    })
-                    completion(result, nil)
                 }
                 else {
                     completion(nil, nil)
@@ -46,6 +45,28 @@ class HistoryServices: APIService {
             case .failure(let err):
                 completion(nil, (err as! Error))
                 break
+            }
+        }
+    }
+    
+    func getTaskCommentHistory(url: String, param: Parameters, header: HTTPHeaders, completion:@escaping((Comment?, Error?) -> ())) {
+        Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                print(url)
+                print("params: \(param)")
+                let json = JSON(value).dictionary
+                print("JSON OWNER HISTORY COMMENT: \(json)")
+                if let status = json?["status"], status == true {
+                    completion(Comment(json: (json?["data"])!), nil)
+                }
+                else {
+                    completion(nil, nil)
+                }
+                break;
+            case .failure(let err):
+                completion(nil, (err as! Error))
+                break;
             }
         }
     }

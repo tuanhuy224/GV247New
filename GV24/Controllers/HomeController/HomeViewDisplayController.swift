@@ -90,7 +90,7 @@ class HomeViewDisplayController: BaseViewController {
         navigationController?.pushViewController(ManageViewController(), animated: true)
     }
     @IBAction func HistoryButton(_ sender: Any) {
-        navigationController?.pushViewController(HistoryViewController(), animated: true)
+        navigationController?.pushViewController(ManagerHistoryViewController(), animated: true)
 
     }
     
