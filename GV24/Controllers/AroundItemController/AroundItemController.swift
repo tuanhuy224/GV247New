@@ -18,6 +18,7 @@ class AroundItemController: BaseViewController {
         super.viewDidLoad()
         tbAround.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
         loadAroundItem()
+        tbAround.reloadData()
     }
     func loadAroundItem(){
         let url = "https://yukotest123.herokuapp.com/en/more/getTaskByWork"
@@ -32,6 +33,7 @@ class AroundItemController: BaseViewController {
     }
     override func setupViewBase() {
         self.title = name?.localize
+        tbAround.reloadData()
     }
 }
 extension AroundItemController:UITableViewDataSource{
@@ -44,7 +46,7 @@ extension AroundItemController:UITableViewDataSource{
         cell.lbDist.text = "\(Int(works[indexPath.row].dist!.calculated!)) m"
         cell.createdDate.text = Date(isoDateString: (works[indexPath.row].history!.createAt!)).dayMonthYear
         cell.lbTimePost.text = Date(isoDateString: (works[indexPath.row].history!.createAt!)).hourMinuteSecond
-        cell.timeWork.text = "\(Date(isoDateString: (works[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (works[indexPath.row].workTime?.startAt)!).hourMinute)"
+        cell.timeWork.text = "\(Date(isoDateString: (works[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (works[indexPath.row].workTime?.endAt)!).hourMinute)"
         DispatchQueue.main.async {
             cell.imageWork.kf.setImage(with: URL(string: self.works[indexPath.row].info!.workName!.image!))
         }
@@ -54,7 +56,7 @@ extension AroundItemController:UITableViewDataSource{
 extension AroundItemController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController(nibName: "DetailViewController", bundle: nil)
-        detail.works = works
+        detail.works = works[indexPath.row]
         detail.idWork = works[indexPath.row].id
         detail.titleString = works[indexPath.row].info?.title
         navigationController?.pushViewController(detail, animated: true)

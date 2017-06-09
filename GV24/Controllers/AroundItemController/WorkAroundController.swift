@@ -29,7 +29,7 @@ class WorkAroundController: BaseViewController {
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
         setup()
-        self.loadData()
+        //self.loadData()
         
         let date = NSDate()
         let calendar = NSCalendar.current
@@ -55,7 +55,7 @@ class WorkAroundController: BaseViewController {
     }()
     
     func handleRef() {
-        loadData()
+        //loadData()
     }
     func setup(){
         
@@ -76,21 +76,7 @@ class WorkAroundController: BaseViewController {
         
     }
     func selectButton() {
-        navigationController?.pushViewController(DetailViewController(), animated: true)
-    }
-    func loadData() {
-        let url = "https://yukotest123.herokuapp.com/en/more/getTaskAround"
-        let apiService = APIService.shared
-        let param:[String:Double] = ["lng": 106.6882557,"lat": 10.7677238]
-        handleRefresh.endRefreshing()
-        apiService.getAllAround(url: url, method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
-            if let jsonArray = json?.array{
-                for data in jsonArray{
-                self.arrays.append(Around(json: data))
-                }
-                self.aroundTableView.reloadData()
-            }
-        }
+        //navigationController?.pushViewController(DetailViewController(), animated: true)
     }
 }
 extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{

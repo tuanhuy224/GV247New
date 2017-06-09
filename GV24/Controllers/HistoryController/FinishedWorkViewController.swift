@@ -33,7 +33,7 @@ class FinishedWorkViewController: UIViewController {
         if work != nil {
             tableView.reloadData()
         }
-        print("TASK ID = \(work?.id)")
+        //print("TASK ID = \(work!.id!)")
     }
     
     override func viewDidAppear(_ animated: Bool) {

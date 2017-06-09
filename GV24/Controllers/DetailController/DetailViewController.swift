@@ -16,7 +16,7 @@ class DetailViewController: BaseViewController {
     var isStatus:Bool = false
     var idWork:String?
     var titleString:String?
-    var works = [Work]()
+    var works = Work()
     let aroundView:WorkAroundController = WorkAroundController(nibName: "WorkAroundController", bundle: nil)
     let url = "https://yukotest123.herokuapp.com/en/task/getById"
     override func viewDidLoad() {
@@ -25,16 +25,19 @@ class DetailViewController: BaseViewController {
         tbDetail.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
         tbDetail.allowsSelection = false
         postRerves()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.tbDetail.reloadData()
+        }
     }
     func loadData() {
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         let parameter:Parameters = ["id":"\(UserDefaultHelper.getString()!)"]
         APIService.shared.getUrl(url: url, param: parameter, header: headers) { (json, error) in
-            print(json as Any)
         }
     }
     override func setupViewBase() {
         self.title = titleString
+        tbDetail.reloadData()
     }
     func postRerves(){
         let apiService = APIService.shared
@@ -49,7 +52,8 @@ class DetailViewController: BaseViewController {
 }
 extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+            return 1
+    
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -58,21 +62,23 @@ extension DetailViewController:UITableViewDataSource{
         if indexPath.section == 0{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
             cell.delegate = self
-            cell.nameUser.text = works[indexPath.row].stakeholders?.owner?.username
-            cell.addressName.text = works[indexPath.row].stakeholders?.owner?.address?.name
+            cell.nameUser.text = works.stakeholders?.owner?.username
+            cell.addressName.text = works.stakeholders?.owner?.address?.name
             DispatchQueue.main.async {
-                cell.imageName.kf.setImage(with:URL(string: self.works[indexPath.row].stakeholders!.owner!.image!))
+                cell.imageName.kf.setImage(with:URL(string: self.works.stakeholders!.owner!.image!))
             }
             return cell
         }else{
             let cell:InfoDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath) as! InfoDetailCell
-            cell.lbTitle.text = works[indexPath.row].info?.title
-            cell.lbSubTitle.text = works[indexPath.row].info?.content
-            cell.lbMoney.text = "\(works[indexPath.row].info!.salary!)\(" Dollar".localize)"
-            cell.lbComment.text = works[indexPath.row].info?.content
-            cell.lbAddress.text = works[indexPath.row].info?.address?.name
-            cell.lbDate.text = Date(isoDateString: (works[indexPath.row].workTime!.endAt)!).dayMonthYear
-            cell.lbTime.text = "\(Date(isoDateString: (works[indexPath.row].workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (works[indexPath.row].workTime!.endAt)!).hourMinute)"
+            DispatchQueue.main.async {
+                cell.lbTitle.text = self.works.info?.title
+                cell.lbSubTitle.text = self.works.info?.content
+                cell.lbMoney.text = "\(self.works.info!.salary!)\(" Dollar".localize)"
+                cell.lbComment.text = self.works.info?.content
+                cell.lbAddress.text = self.works.info?.address?.name
+                cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
+                cell.lbTime.text = "\(Date(isoDateString: (self.works.workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (self.works.workTime!.endAt)!).hourMinute)"
+            }
             return cell
         }
     }
@@ -95,7 +101,6 @@ extension DetailViewController:chooseWorkDelegate{
         if isStatus == true {
             navigationController?.pushViewController(ManageViewController(), animated: true)
         }else{
-        print("111")
         }
     }
 }

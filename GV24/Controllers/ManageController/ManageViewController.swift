@@ -10,10 +10,19 @@ import UIKit
 
 class ManageViewController: BaseViewController {
     @IBOutlet weak var tbManage: UITableView!
+    var idProcess:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
     }
+}
+
+func getProcess() {
+//    let url = ""
+//    let parameter = ["process":"\()"]
+//    let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+//    let apiService = APIService.shared
+//    apiService.getUrl(url: <#T##String#>, param: <#T##Parameters#>, header: <#T##HTTPHeaders#>, completion: <#T##(ResponseCompletion)##(ResponseCompletion)##(JSON?, String?) -> ()#>)
 }
 
 extension ManageViewController:UITableViewDataSource{
@@ -31,7 +40,6 @@ extension ManageViewController:UITableViewDelegate{
         return 94
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        navigationController?.pushViewController(WaittingController(), animated: true)
     }
 }
 
