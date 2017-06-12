@@ -10,13 +10,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-enum WorkStatus: String {
-    case OnCreate = "000000000000000000000001"
-    case Pending = "000000000000000000000002"
-    case Reserved = "000000000000000000000003"
-    case OnDoing = "000000000000000000000004"
-    case Done = "000000000000000000000005"
-}
+
 
 class HistoryServices: APIService {
     
@@ -27,7 +21,7 @@ class HistoryServices: APIService {
             switch response.result{
             case .success(let value):
                 let json = JSON(value).dictionary
-                print("JSON = \(json)")
+                print("JSON = \(String(describing: json))")
                 var workList:[Work] = []
                 if let status = json?["status"], status == true {
                     if let list = json?["data"]?["docs"] {
@@ -56,7 +50,7 @@ class HistoryServices: APIService {
                 print(url)
                 print("params: \(param)")
                 let json = JSON(value).dictionary
-                print("JSON OWNER HISTORY COMMENT: \(json)")
+                print("JSON OWNER HISTORY COMMENT: \(String(describing: json))")
                 if let status = json?["status"], status == true {
                     completion(Comment(json: (json?["data"])!), nil)
                 }

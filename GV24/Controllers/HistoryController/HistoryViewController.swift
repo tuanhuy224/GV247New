@@ -72,8 +72,10 @@ class HistoryViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Lịch sự công việc"
-    }
 
+        
+    }
+    
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
         let work = workList[indexPath.item]
         

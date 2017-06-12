@@ -71,7 +71,6 @@
 		003BC68A1ED9D94F00FF6D14 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC6881ED9D94F00FF6D14 /* AppModel.swift */; };
 		003BC68B1ED9D94F00FF6D14 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC6891ED9D94F00FF6D14 /* User.swift */; };
 		003BC68F1ED9D98100FF6D14 /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC68D1ED9D98100FF6D14 /* UserDefaultHelper.swift */; };
-		003BC6941ED9DA0600FF6D14 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC6901ED9DA0600FF6D14 /* APIServices.swift */; };
 		003BC6951ED9DA0600FF6D14 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC6911ED9DA0600FF6D14 /* Constant.swift */; };
 		003BC6961ED9DA0600FF6D14 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC6921ED9DA0600FF6D14 /* Error.swift */; };
 		003BC6991ED9E16300FF6D14 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC6981ED9E16300FF6D14 /* Work.swift */; };
@@ -81,7 +80,19 @@
 		003C9A0E1EDFEA99003F1189 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A101EDFEA99003F1189 /* Localizable.strings */; };
 		003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A151EDFEC02003F1189 /* LaunchScreen.storyboard */; };
 		003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A171EDFEC02003F1189 /* Main.storyboard */; };
+		009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76D31EEE8B250021BFB0 /* Enum.swift */; };
+		009A76DC1EEE8EF90021BFB0 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */; };
+		009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DF1EEE8F480021BFB0 /* APIServices.swift */; };
+		009A76E31EEE92360021BFB0 /* OwnerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76E11EEE92360021BFB0 /* OwnerHistoryViewController.swift */; };
+		009A76E41EEE92360021BFB0 /* OwnerHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76E21EEE92360021BFB0 /* OwnerHistoryViewController.xib */; };
 		00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C5057F1EE068C9003101F4 /* CustomLocale.swift */; };
+		00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */; };
+		00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */; };
+		00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D3F1EEE3F72002D24D4 /* ManagerHistoryViewController.xib */; };
+		00CC0D451EEE3F7B002D24D4 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D431EEE3F7B002D24D4 /* PopupViewController.swift */; };
+		00CC0D461EEE3F7B002D24D4 /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D441EEE3F7B002D24D4 /* PopupViewController.xib */; };
+		00CC0D4B1EEE3FCE002D24D4 /* WorkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D491EEE3FCE002D24D4 /* WorkListViewController.swift */; };
+		00CC0D4C1EEE3FCE002D24D4 /* WorkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */; };
 		00EB193D1EE93E61003B2C5D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB193B1EE93E61003B2C5D /* LoginView.swift */; };
 		00EB193E1EE93E61003B2C5D /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EB193C1EE93E61003B2C5D /* LoginView.xib */; };
 		00EB19411EE93E81003B2C5D /* WorkAroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */; };
@@ -90,8 +101,6 @@
 		00EB194B1EE93EB4003B2C5D /* FinishedWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EB19451EE93EB4003B2C5D /* FinishedWorkViewController.xib */; };
 		00EB194C1EE93EB4003B2C5D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB19461EE93EB4003B2C5D /* HistoryViewController.swift */; };
 		00EB194D1EE93EB4003B2C5D /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EB19471EE93EB4003B2C5D /* HistoryViewController.xib */; };
-		00EB194E1EE93EB4003B2C5D /* OwnerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB19481EE93EB4003B2C5D /* OwnerHistoryViewController.swift */; };
-		00EB194F1EE93EB4003B2C5D /* OwnerHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EB19491EE93EB4003B2C5D /* OwnerHistoryViewController.xib */; };
 		00EB19571EE93EF5003B2C5D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB19501EE93EF5003B2C5D /* Address.swift */; };
 		00EB19581EE93EF5003B2C5D /* Dist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB19511EE93EF5003B2C5D /* Dist.swift */; };
 		00EB19591EE93EF5003B2C5D /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB19521EE93EF5003B2C5D /* History.swift */; };
@@ -105,14 +114,6 @@
 		842FEC7F1ED40C6900000606 /* GV24Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC7E1ED40C6900000606 /* GV24Tests.swift */; };
 		842FEC8A1ED40C6900000606 /* GV24UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC891ED40C6900000606 /* GV24UITests.swift */; };
 		842FECA01ED40DA800000606 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC9E1ED40DA800000606 /* CustomView.swift */; };
-		8435318E1EEE30C300739AE6 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435318C1EEE30C300739AE6 /* PopupViewController.swift */; };
-		8435318F1EEE30C300739AE6 /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435318D1EEE30C300739AE6 /* PopupViewController.xib */; };
-		846EC72F1EEA3BA400B174F4 /* WorkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846EC72D1EEA3BA400B174F4 /* WorkListViewController.swift */; };
-		846EC7301EEA3BA400B174F4 /* WorkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846EC72E1EEA3BA400B174F4 /* WorkListViewController.xib */; };
-		849AE9F11EEA524A008249A6 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849AE9F01EEA524A008249A6 /* Comment.swift */; };
-		849AE9F51EEA8AFE008249A6 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849AE9F41EEA8AFE008249A6 /* OwnerServices.swift */; };
-		84E3ECB01EEAA6D70014B18C /* ManagerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3ECAE1EEAA6D70014B18C /* ManagerHistoryViewController.swift */; };
-		84E3ECB11EEAA6D70014B18C /* ManagerHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3ECAF1EEAA6D70014B18C /* ManagerHistoryViewController.xib */; };
 		ABAE29C8F643A96F193D8606 /* Pods_GV24UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C1EF8086B8317A0B2D32AD /* Pods_GV24UITests.framework */; };
 		F35FF04DD2AB137EB250C042 /* Pods_GV24Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E244E08C7632332E4031F1 /* Pods_GV24Tests.framework */; };
 /* End PBXBuildFile section */
@@ -205,7 +206,6 @@
 		003BC6881ED9D94F00FF6D14 /* AppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		003BC6891ED9D94F00FF6D14 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		003BC68D1ED9D98100FF6D14 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
-		003BC6901ED9DA0600FF6D14 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		003BC6911ED9DA0600FF6D14 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		003BC6921ED9DA0600FF6D14 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		003BC6981ED9E16300FF6D14 /* Work.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
@@ -215,7 +215,19 @@
 		003C9A121EDFEAD7003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		003C9A161EDFEC02003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		003C9A181EDFEC02003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		009A76D31EEE8B250021BFB0 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
+		009A76DF1EEE8F480021BFB0 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		009A76E11EEE92360021BFB0 /* OwnerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerHistoryViewController.swift; sourceTree = "<group>"; };
+		009A76E21EEE92360021BFB0 /* OwnerHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OwnerHistoryViewController.xib; sourceTree = "<group>"; };
 		00C5057F1EE068C9003101F4 /* CustomLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocale.swift; sourceTree = "<group>"; };
+		00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerHistoryViewController.swift; sourceTree = "<group>"; };
+		00CC0D3F1EEE3F72002D24D4 /* ManagerHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerHistoryViewController.xib; sourceTree = "<group>"; };
+		00CC0D431EEE3F7B002D24D4 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		00CC0D441EEE3F7B002D24D4 /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
+		00CC0D491EEE3FCE002D24D4 /* WorkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkListViewController.swift; sourceTree = "<group>"; };
+		00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkListViewController.xib; sourceTree = "<group>"; };
 		00EB193B1EE93E61003B2C5D /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		00EB193C1EE93E61003B2C5D /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkAroundController.swift; sourceTree = "<group>"; };
@@ -224,8 +236,6 @@
 		00EB19451EE93EB4003B2C5D /* FinishedWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishedWorkViewController.xib; sourceTree = "<group>"; };
 		00EB19461EE93EB4003B2C5D /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		00EB19471EE93EB4003B2C5D /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
-		00EB19481EE93EB4003B2C5D /* OwnerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerHistoryViewController.swift; sourceTree = "<group>"; };
-		00EB19491EE93EB4003B2C5D /* OwnerHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OwnerHistoryViewController.xib; sourceTree = "<group>"; };
 		00EB19501EE93EF5003B2C5D /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		00EB19511EE93EF5003B2C5D /* Dist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dist.swift; sourceTree = "<group>"; };
 		00EB19521EE93EF5003B2C5D /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -237,7 +247,6 @@
 		419D89D2D83ABB2676E6EA1F /* Pods-GV24Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GV24Tests/Pods-GV24Tests.release.xcconfig"; sourceTree = "<group>"; };
 		46E244E08C7632332E4031F1 /* Pods_GV24Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GV24Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		472E4661C584478893F9A0A4 /* Pods_GV24.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GV24.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		841D80F11ED5452B00C916EC /* GV24-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GV24-Bridging-Header.h"; sourceTree = "<group>"; };
 		841D81151ED57F5900C916EC /* SFUIText-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Light.ttf"; sourceTree = "<group>"; };
 		842FEC661ED40C6900000606 /* GV24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GV24.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842FEC691ED40C6900000606 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -250,14 +259,6 @@
 		842FEC891ED40C6900000606 /* GV24UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GV24UITests.swift; sourceTree = "<group>"; };
 		842FEC8B1ED40C6900000606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842FEC9E1ED40DA800000606 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
-		8435318C1EEE30C300739AE6 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
-		8435318D1EEE30C300739AE6 /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
-		846EC72D1EEA3BA400B174F4 /* WorkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkListViewController.swift; sourceTree = "<group>"; };
-		846EC72E1EEA3BA400B174F4 /* WorkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkListViewController.xib; sourceTree = "<group>"; };
-		849AE9F01EEA524A008249A6 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		849AE9F41EEA8AFE008249A6 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
-		84E3ECAE1EEAA6D70014B18C /* ManagerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerHistoryViewController.swift; sourceTree = "<group>"; };
-		84E3ECAF1EEAA6D70014B18C /* ManagerHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerHistoryViewController.xib; sourceTree = "<group>"; };
 		8513B9D4BB0A660F2D36EBFD /* Pods-GV24.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24/Pods-GV24.debug.xcconfig"; sourceTree = "<group>"; };
 		8A3EE7917FC70815F49ADF31 /* Pods-GV24UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GV24UITests/Pods-GV24UITests.release.xcconfig"; sourceTree = "<group>"; };
 		B272992280A1A82D10F39E52 /* Pods-GV24Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24Tests/Pods-GV24Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -523,6 +524,15 @@
 			path = ManageController;
 			sourceTree = "<group>";
 		};
+		00CC0D421EEE3F7B002D24D4 /* PopupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00CC0D431EEE3F7B002D24D4 /* PopupViewController.swift */,
+				00CC0D441EEE3F7B002D24D4 /* PopupViewController.xib */,
+			);
+			path = PopupViewController;
+			sourceTree = "<group>";
+		};
 		00EB193A1EE93E61003B2C5D /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,17 +545,17 @@
 		00EB19431EE93EB4003B2C5D /* HistoryController */ = {
 			isa = PBXGroup;
 			children = (
+				009A76E11EEE92360021BFB0 /* OwnerHistoryViewController.swift */,
+				009A76E21EEE92360021BFB0 /* OwnerHistoryViewController.xib */,
+				00CC0D491EEE3FCE002D24D4 /* WorkListViewController.swift */,
+				00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */,
+				00CC0D421EEE3F7B002D24D4 /* PopupViewController */,
+				00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */,
+				00CC0D3F1EEE3F72002D24D4 /* ManagerHistoryViewController.xib */,
 				00EB19441EE93EB4003B2C5D /* FinishedWorkViewController.swift */,
 				00EB19451EE93EB4003B2C5D /* FinishedWorkViewController.xib */,
 				00EB19461EE93EB4003B2C5D /* HistoryViewController.swift */,
 				00EB19471EE93EB4003B2C5D /* HistoryViewController.xib */,
-				8435318B1EEE30C300739AE6 /* PopupViewController */,
-				00EB19481EE93EB4003B2C5D /* OwnerHistoryViewController.swift */,
-				00EB19491EE93EB4003B2C5D /* OwnerHistoryViewController.xib */,
-				846EC72D1EEA3BA400B174F4 /* WorkListViewController.swift */,
-				846EC72E1EEA3BA400B174F4 /* WorkListViewController.xib */,
-				84E3ECAE1EEAA6D70014B18C /* ManagerHistoryViewController.swift */,
-				84E3ECAF1EEAA6D70014B18C /* ManagerHistoryViewController.xib */,
 			);
 			path = HistoryController;
 			sourceTree = "<group>";
@@ -594,10 +604,11 @@
 		841D81161ED5927F00C916EC /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
-				849AE9F41EEA8AFE008249A6 /* OwnerServices.swift */,
+				009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */,
+				009A76D31EEE8B250021BFB0 /* Enum.swift */,
+				009A76DF1EEE8F480021BFB0 /* APIServices.swift */,
 				002AFD651EE8058A00D3B88A /* HistoryServices.swift */,
 				002BA1171EDD62730099352D /* UserService.swift */,
-				003BC6901ED9DA0600FF6D14 /* APIServices.swift */,
 				003BC6911ED9DA0600FF6D14 /* Constant.swift */,
 				003BC6921ED9DA0600FF6D14 /* Error.swift */,
 				003175EC1EE6A6B000F3F9B4 /* AroundTask.swift */,
@@ -685,6 +696,7 @@
 		842FEC981ED40CC300000606 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */,
 				00EB19501EE93EF5003B2C5D /* Address.swift */,
 				00EB19511EE93EF5003B2C5D /* Dist.swift */,
 				00EB19521EE93EF5003B2C5D /* History.swift */,
@@ -698,7 +710,6 @@
 				003BC69A1ED9EAF300FF6D14 /* Info.swift */,
 				003175EA1EE69A0000F3F9B4 /* Maid.swift */,
 				002715281EE799B7006E6671 /* Around.swift */,
-				849AE9F01EEA524A008249A6 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -710,15 +721,6 @@
 				842FEC9E1ED40DA800000606 /* CustomView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		8435318B1EEE30C300739AE6 /* PopupViewController */ = {
-			isa = PBXGroup;
-			children = (
-				8435318C1EEE30C300739AE6 /* PopupViewController.swift */,
-				8435318D1EEE30C300739AE6 /* PopupViewController.xib */,
-			);
-			path = PopupViewController;
 			sourceTree = "<group>";
 		};
 		84D84F301ED5257900C33128 /* Singleton */ = {
@@ -734,7 +736,6 @@
 			isa = PBXGroup;
 			children = (
 				841D81141ED57F3C00C916EC /* Fonts */,
-				841D80F11ED5452B00C916EC /* GV24-Bridging-Header.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -879,8 +880,8 @@
 				002BA1041EDD26090099352D /* MoreCell.xib in Resources */,
 				003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */,
 				002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */,
-				846EC7301EEA3BA400B174F4 /* WorkListViewController.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
+				00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
 				002BA0FB1EDD25400099352D /* MoreViewController.xib in Resources */,
 				842FEC711ED40C6900000606 /* Assets.xcassets in Resources */,
@@ -889,10 +890,11 @@
 				0025723D1EDE633500AACC52 /* RuleViewController.xib in Resources */,
 				002572511EDE9E1600AACC52 /* InforCell.xib in Resources */,
 				00EB194D1EE93EB4003B2C5D /* HistoryViewController.xib in Resources */,
-				00EB194F1EE93EB4003B2C5D /* OwnerHistoryViewController.xib in Resources */,
 				002C570A1EDBDD420039BBCE /* HistoryViewCell.xib in Resources */,
 				002A04601EE15084001876E5 /* DetailViewController.xib in Resources */,
+				009A76E41EEE92360021BFB0 /* OwnerHistoryViewController.xib in Resources */,
 				003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */,
+				00CC0D4C1EEE3FCE002D24D4 /* WorkListViewController.xib in Resources */,
 				00EB193E1EE93E61003B2C5D /* LoginView.xib in Resources */,
 				00EB194B1EE93EB4003B2C5D /* FinishedWorkViewController.xib in Resources */,
 				002BA1001EDD25AF0099352D /* MoreNameCell.xib in Resources */,
@@ -901,9 +903,8 @@
 				003C9A0E1EDFEA99003F1189 /* Localizable.strings in Resources */,
 				00EB19421EE93E81003B2C5D /* WorkAroundController.xib in Resources */,
 				003BC6861ED9D92E00FF6D14 /* HomeViewDisplayController.xib in Resources */,
-				84E3ECB11EEAA6D70014B18C /* ManagerHistoryViewController.xib in Resources */,
+				00CC0D461EEE3F7B002D24D4 /* PopupViewController.xib in Resources */,
 				003C9A0B1EDFC874003F1189 /* ManageViewController.xib in Resources */,
-				8435318F1EEE30C300739AE6 /* PopupViewController.xib in Resources */,
 				002572331EDE568700AACC52 /* ConstactViewController.xib in Resources */,
 				002572421EDE648800AACC52 /* LanguageViewController.xib in Resources */,
 				002572551EDEAD4000AACC52 /* CommentCell.xib in Resources */,
@@ -1082,8 +1083,7 @@
 				002572321EDE568700AACC52 /* ConstactViewController.swift in Sources */,
 				00EB194A1EE93EB4003B2C5D /* FinishedWorkViewController.swift in Sources */,
 				003175E81EE68AC400F3F9B4 /* WaittingCell.swift in Sources */,
-				849AE9F51EEA8AFE008249A6 /* OwnerServices.swift in Sources */,
-				84E3ECB01EEAA6D70014B18C /* ManagerHistoryViewController.swift in Sources */,
+				009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */,
 				00EB195B1EE93EF5003B2C5D /* Process.swift in Sources */,
 				003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */,
 				002A04451EE11C97001876E5 /* xibView.swift in Sources */,
@@ -1092,47 +1092,49 @@
 				00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */,
 				0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */,
 				002A04501EE13B51001876E5 /* AlertManager.swift in Sources */,
-				00EB194E1EE93EB4003B2C5D /* OwnerHistoryViewController.swift in Sources */,
+				00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */,
 				00EB195A1EE93EF5003B2C5D /* Owner.swift in Sources */,
 				0025723C1EDE633500AACC52 /* RuleViewController.swift in Sources */,
-				8435318E1EEE30C300739AE6 /* PopupViewController.swift in Sources */,
 				002A045F1EE15084001876E5 /* DetailViewController.swift in Sources */,
 				0027152D1EE7AFAB006E6671 /* AroundItemController.swift in Sources */,
-				849AE9F11EEA524A008249A6 /* Comment.swift in Sources */,
 				003BC6841ED9D92E00FF6D14 /* BaseViewController.swift in Sources */,
 				003BC67B1ED9D8ED00FF6D14 /* WorkTableViewCell.swift in Sources */,
 				003BC6961ED9DA0600FF6D14 /* Error.swift in Sources */,
-				846EC72F1EEA3BA400B174F4 /* WorkListViewController.swift in Sources */,
 				002BA0FF1EDD25AF0099352D /* MoreNameCell.swift in Sources */,
 				002572501EDE9E1600AACC52 /* InforCell.swift in Sources */,
 				002A043D1EE116AB001876E5 /* WorkAround.swift in Sources */,
 				002C57081EDBDD330039BBCE /* HistoryViewCell.swift in Sources */,
+				009A76DC1EEE8EF90021BFB0 /* OwnerServices.swift in Sources */,
 				00EB193D1EE93E61003B2C5D /* LoginView.swift in Sources */,
 				003BC6991ED9E16300FF6D14 /* Work.swift in Sources */,
 				003175E41EE68A8900F3F9B4 /* WaittingController.swift in Sources */,
 				003BC68A1ED9D94F00FF6D14 /* AppModel.swift in Sources */,
 				002572371EDE5FB800AACC52 /* AboutViewController.swift in Sources */,
 				00EB194C1EE93EB4003B2C5D /* HistoryViewController.swift in Sources */,
+				00CC0D4B1EEE3FCE002D24D4 /* WorkListViewController.swift in Sources */,
 				003BC68B1ED9D94F00FF6D14 /* User.swift in Sources */,
 				002315581EDF07DC00B29F36 /* Extention+Image.swift in Sources */,
+				00CC0D451EEE3F7B002D24D4 /* PopupViewController.swift in Sources */,
 				002572541EDEAD4000AACC52 /* CommentCell.swift in Sources */,
 				0022C4FF1EE84D1700027665 /* OwnerHistoryViewCell.swift in Sources */,
 				003BC69B1ED9EAF300FF6D14 /* Info.swift in Sources */,
 				00EB19411EE93E81003B2C5D /* WorkAroundController.swift in Sources */,
 				002A04561EE14667001876E5 /* WorkDetailCell.swift in Sources */,
 				003070561EE26CB800774700 /* DGLocalization.swift in Sources */,
+				009A76E31EEE92360021BFB0 /* OwnerHistoryViewController.swift in Sources */,
 				002BA0F91EDD25320099352D /* MoreViewController.swift in Sources */,
 				002AFD661EE8058A00D3B88A /* HistoryServices.swift in Sources */,
 				002715291EE799B7006E6671 /* Around.swift in Sources */,
 				842FEC6A1ED40C6900000606 /* AppDelegate.swift in Sources */,
 				00EB19581EE93EF5003B2C5D /* Dist.swift in Sources */,
 				002BA1031EDD26090099352D /* MoreCell.swift in Sources */,
+				009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */,
 				002572411EDE648800AACC52 /* LanguageViewController.swift in Sources */,
 				002BA1071EDD52F60099352D /* NotifiCell.swift in Sources */,
 				00EB19591EE93EF5003B2C5D /* History.swift in Sources */,
 				842FECA01ED40DA800000606 /* CustomView.swift in Sources */,
+				00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */,
 				0022C5011EE84D1700027665 /* WorkerViewCell.swift in Sources */,
-				003BC6941ED9DA0600FF6D14 /* APIServices.swift in Sources */,
 				00EB195C1EE93EF5003B2C5D /* Request.swift in Sources */,
 				0025724B1EDE9D9100AACC52 /* InformationViewController.swift in Sources */,
 			);
@@ -1309,7 +1311,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = demo.GV24;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GV24/Helpers/GV24-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1326,7 +1327,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = demo.GV24;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GV24/Helpers/GV24-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

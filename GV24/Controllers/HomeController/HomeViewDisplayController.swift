@@ -25,7 +25,7 @@ class HomeViewDisplayController: BaseViewController {
     var arrays = [Around]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(UserDefaultHelper.getToken()!)
         self.customBarRightButton()
     }
     override func decorate() {
