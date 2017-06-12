@@ -105,7 +105,7 @@ class HomeViewDisplayController: BaseViewController {
     }
     @IBAction func ManageButton(_ sender: Any) {
         let manage = ManageViewController(nibName: "ManageViewController", bundle: nil)
-        navigationController?.pushViewController(ManageViewController(), animated: true)
+        navigationController?.pushViewController(manage, animated: true)
     }
     @IBAction func HistoryButton(_ sender: Any) {
         navigationController?.pushViewController(HistoryViewController(), animated: true)

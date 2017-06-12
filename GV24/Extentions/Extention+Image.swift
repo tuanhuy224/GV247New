@@ -93,7 +93,6 @@ extension UIColor {
 extension URLSession{
 }
 
-
 extension Date{
     
     init(isoDateString: String) {
@@ -161,10 +160,6 @@ extension Date{
         return "\(hour)h\(minute)p\(second)"
     }
 }
-
-
-
-
 extension String {
     static func convertISODateToString(isoDateStr: String, format: String) -> String? {
         let dateFormatter = DateFormatter()
@@ -191,11 +186,3 @@ extension String {
         return newDateStr
     }
 }
-
-
-
-
-
-
-
-

@@ -9,11 +9,18 @@
 import UIKit
 
 class ManageViewController: BaseViewController {
+    @IBOutlet weak var segmentCtr: UISegmentedControl!
     @IBOutlet weak var tbManage: UITableView!
     var idProcess:String?
+    var returnValue:Int = 0
+    var case1Sting = ["1","2","3"]
+    var case2String = ["a","b","c","s","d"]
     override func viewDidLoad() {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
+    }
+    @IBAction func segmentControlAction(_ sender: Any) {
+        tbManage.reloadData()
     }
 }
 
@@ -28,10 +35,28 @@ func getProcess() {
 extension ManageViewController:UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        switch segmentCtr.selectedSegmentIndex {
+        case 0:
+            returnValue = case1Sting.count
+            break
+        case 1:
+            returnValue = case2String.count
+            break
+        default:
+            break
+        }
+        return returnValue
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tbManage.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryViewCell
+        switch segmentCtr.selectedSegmentIndex {
+        case 0:
+            cell?.workNameLabel.text = case1Sting[indexPath.row]
+        case 1:
+            cell?.workNameLabel.text = case2String[indexPath.row]
+        default:
+            break
+        }
         return cell!
     }
 }
