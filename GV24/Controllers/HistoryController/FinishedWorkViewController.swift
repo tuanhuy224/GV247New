@@ -35,10 +35,8 @@ class FinishedWorkViewController: BaseViewController {
         if work != nil {
             tableView.reloadData()
         }
-        print("TASK ID = \(work?.id)")
-        let v = UIView()
-        v.backgroundColor = UIColor.red
-        self.tableView.tableFooterView = v
+        //print("TASK ID = \(work?.id)")
+        tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {

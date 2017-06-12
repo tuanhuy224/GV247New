@@ -14,6 +14,7 @@ import Kingfisher
 class OwnerHistoryViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var ownerList:[Owner] = []
+    var myParent: ManagerHistoryViewController?
     
     @IBOutlet weak var segment: UISegmentedControl!
     override func viewDidLoad() {
@@ -21,6 +22,7 @@ class OwnerHistoryViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         tableView.allowsSelection = false
+        tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName:"OwnerHistoryViewCell",bundle:nil), forCellReuseIdentifier: "OwnerHistoryCell")
     }
@@ -42,7 +44,7 @@ class OwnerHistoryViewController: BaseViewController {
     /* /maid/getAllWorkedOwner
      params: startAt, endAt
      */
-    fileprivate func getOwnerList(startAt: Date?, endAt: Date) {
+    func getOwnerList(startAt: Date?, endAt: Date) {
         var params: [String: Any] = [:]
         if startAt != nil {
             params["startAt"] = String.convertDateToISODateType(date: startAt!)
@@ -90,7 +92,7 @@ class OwnerHistoryViewController: BaseViewController {
         let backItem = UIBarButtonItem()
         backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem
-        navigationController?.pushViewController(vc, animated: true)
+        myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

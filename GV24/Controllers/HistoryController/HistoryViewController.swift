@@ -15,6 +15,7 @@ class HistoryViewController: BaseViewController {
     
     var user:User?
     var workList: [Work] = []
+    var myParent: ManagerHistoryViewController?
     
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var segmentContainer: UIView!
@@ -29,6 +30,7 @@ class HistoryViewController: BaseViewController {
         
         
         self.automaticallyAdjustsScrollViewInsets = false
+        historyTableView.tableFooterView = UIView()
         customControl()
         print("token = \(UserDefaultHelper.getToken()!)")
     }
@@ -161,7 +163,7 @@ extension HistoryViewController:UITableViewDataSource{
         let backItem = UIBarButtonItem()
         backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem
-        _ = navigationController?.pushViewController(vc, animated: true)
+        _ = myParent?.navigationController?.pushViewController(vc, animated: true)
         
     }
 }

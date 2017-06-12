@@ -10,11 +10,14 @@ import UIKit
 
 class ManagerHistoryViewController: UIViewController {
 
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var toDateButton: UIButton!
     @IBOutlet weak var fromDateButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     var workListVC: HistoryViewController?
     var ownerListVC: OwnerHistoryViewController?
+    var fromDate: Date? = nil
+    var toDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,10 @@ class ManagerHistoryViewController: UIViewController {
         ownerListVC?.view.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: 0).isActive = true
         
         ownerListVC?.view.isHidden = true
+        workListVC?.myParent = self
+        ownerListVC?.myParent = self
+        
+        toDateButton.setTitle(String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,11 +72,45 @@ class ManagerHistoryViewController: UIViewController {
     }
 
     @IBAction func fromDateButtonClicked(_ sender: Any) {
-        
+       showPopup(isFromDate: true, isToDate: false, fromDate: fromDate, toDate: toDate)
     }
 
     @IBAction func toDateButtonClicked(_ sender: Any) {
-        
+        showPopup(isFromDate: false, isToDate: true, fromDate: fromDate, toDate: toDate)
     }
     
+    fileprivate func showPopup(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date) {
+        let popup = PopupViewController()
+        popup.modalPresentationStyle = .overCurrentContext
+        popup.delegate = self
+        popup.isFromDate = isFromDate
+        popup.isToDate = isToDate
+        popup.fromDate = fromDate
+        popup.toDate = toDate
+        present(popup, animated: true) {
+            popup.effectView.alpha = 0.5
+        }
+    }
+}
+
+extension ManagerHistoryViewController: PopupViewControllerDelegate {
+    func selectedDate(date: Date, isFromDate: Bool, isToDate: Bool) {
+        print("Date: \(date)")
+        if isFromDate == true {
+            fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
+            fromDate = date
+        }
+        else {
+            toDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
+            toDate = date
+        }
+        if segmentControl.selectedSegmentIndex == 0 {
+            workListVC?.workList.removeAll()
+            workListVC?.getWorkList(startAt: fromDate, endAt: toDate)
+        }
+        else {
+            ownerListVC?.ownerList.removeAll()
+            ownerListVC?.getOwnerList(startAt: fromDate, endAt: toDate)
+        }
+    }
 }
