@@ -35,8 +35,12 @@ class FinishedWorkViewController: BaseViewController {
         if work != nil {
             tableView.reloadData()
         }
+<<<<<<< HEAD
         //print("TASK ID = \(work?.id)")
         tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
+=======
+        //print("TASK ID = \(work!.id!)")
+>>>>>>> origin/master
     }
     
     override func viewDidAppear(_ animated: Bool) {

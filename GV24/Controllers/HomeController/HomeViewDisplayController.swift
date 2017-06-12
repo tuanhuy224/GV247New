@@ -22,18 +22,20 @@ class HomeViewDisplayController: BaseViewController {
     @IBOutlet weak var viewBottom: UIView!
     @IBOutlet weak var lbLogo: UILabel!
     var titleAround:String?
+    var arrays = [Around]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.customBarRightButton()
     }
-    
     override func decorate() {
             buttonTest(button: workAround, imageName: "quanhday", titleImage: "SignIn".localize)
             buttonTest(button: manageButton, imageName: "quanlyconviec", titleImage: "SignIn".localize)
             buttonTest(button: historyButton, imageName: "lichsu", titleImage: "Back".localize)
         lbLogo.text = "Forgotpassword".localize
         lbLogo.textColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-
+        loadData()
+        
     }
     override func setupViewBase() {
         self.title = "Home".localize
@@ -42,6 +44,19 @@ class HomeViewDisplayController: BaseViewController {
             lbLogo.text = "Forgotpassword".localize
         }else{
             lbLogo.text = "Forgotpassword".localize
+        }
+    }
+    func loadData() {
+        let url = "https://yukotest123.herokuapp.com/en/more/getTaskAround"
+        let apiService = APIService.shared
+        let param:[String:Double] = ["lng": 106.6882557,"lat": 10.7677238]
+        //handleRefresh.endRefreshing()
+        apiService.getAllAround(url: url, method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
+            if let jsonArray = json?.array{
+                for data in jsonArray{
+                    self.arrays.append(Around(json: data))
+                }
+            }
         }
     }
     func customBarRightButton(){
@@ -84,10 +99,13 @@ class HomeViewDisplayController: BaseViewController {
     }
     
     @IBAction func AroundButton(_ sender: Any) {
-        navigationController?.pushViewController(WorkAroundController(), animated: true)
+        let around = WorkAroundController(nibName: "WorkAroundController", bundle: nil)
+            around.arrays = arrays
+        navigationController?.pushViewController(around, animated: true)
     }
     @IBAction func ManageButton(_ sender: Any) {
-        navigationController?.pushViewController(ManageViewController(), animated: true)
+        let manage = ManageViewController(nibName: "ManageViewController", bundle: nil)
+        navigationController?.pushViewController(manage, animated: true)
     }
     @IBAction func HistoryButton(_ sender: Any) {
         navigationController?.pushViewController(ManagerHistoryViewController(), animated: true)
