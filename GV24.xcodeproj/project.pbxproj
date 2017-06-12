@@ -82,6 +82,14 @@
 		003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A151EDFEC02003F1189 /* LaunchScreen.storyboard */; };
 		003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A171EDFEC02003F1189 /* Main.storyboard */; };
 		00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C5057F1EE068C9003101F4 /* CustomLocale.swift */; };
+		00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */; };
+		00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */; };
+		00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D3F1EEE3F72002D24D4 /* ManagerHistoryViewController.xib */; };
+		00CC0D451EEE3F7B002D24D4 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D431EEE3F7B002D24D4 /* PopupViewController.swift */; };
+		00CC0D461EEE3F7B002D24D4 /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D441EEE3F7B002D24D4 /* PopupViewController.xib */; };
+		00CC0D481EEE3FA4002D24D4 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D471EEE3FA4002D24D4 /* OwnerServices.swift */; };
+		00CC0D4B1EEE3FCE002D24D4 /* WorkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D491EEE3FCE002D24D4 /* WorkListViewController.swift */; };
+		00CC0D4C1EEE3FCE002D24D4 /* WorkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */; };
 		00EB193D1EE93E61003B2C5D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB193B1EE93E61003B2C5D /* LoginView.swift */; };
 		00EB193E1EE93E61003B2C5D /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EB193C1EE93E61003B2C5D /* LoginView.xib */; };
 		00EB19411EE93E81003B2C5D /* WorkAroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */; };
@@ -208,6 +216,14 @@
 		003C9A161EDFEC02003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		003C9A181EDFEC02003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00C5057F1EE068C9003101F4 /* CustomLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocale.swift; sourceTree = "<group>"; };
+		00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerHistoryViewController.swift; sourceTree = "<group>"; };
+		00CC0D3F1EEE3F72002D24D4 /* ManagerHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerHistoryViewController.xib; sourceTree = "<group>"; };
+		00CC0D431EEE3F7B002D24D4 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		00CC0D441EEE3F7B002D24D4 /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
+		00CC0D471EEE3FA4002D24D4 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
+		00CC0D491EEE3FCE002D24D4 /* WorkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkListViewController.swift; sourceTree = "<group>"; };
+		00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkListViewController.xib; sourceTree = "<group>"; };
 		00EB193B1EE93E61003B2C5D /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		00EB193C1EE93E61003B2C5D /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkAroundController.swift; sourceTree = "<group>"; };
@@ -507,6 +523,15 @@
 			path = ManageController;
 			sourceTree = "<group>";
 		};
+		00CC0D421EEE3F7B002D24D4 /* PopupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00CC0D431EEE3F7B002D24D4 /* PopupViewController.swift */,
+				00CC0D441EEE3F7B002D24D4 /* PopupViewController.xib */,
+			);
+			path = PopupViewController;
+			sourceTree = "<group>";
+		};
 		00EB193A1EE93E61003B2C5D /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +544,11 @@
 		00EB19431EE93EB4003B2C5D /* HistoryController */ = {
 			isa = PBXGroup;
 			children = (
+				00CC0D491EEE3FCE002D24D4 /* WorkListViewController.swift */,
+				00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */,
+				00CC0D421EEE3F7B002D24D4 /* PopupViewController */,
+				00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */,
+				00CC0D3F1EEE3F72002D24D4 /* ManagerHistoryViewController.xib */,
 				00EB19441EE93EB4003B2C5D /* FinishedWorkViewController.swift */,
 				00EB19451EE93EB4003B2C5D /* FinishedWorkViewController.xib */,
 				00EB19461EE93EB4003B2C5D /* HistoryViewController.swift */,
@@ -573,6 +603,7 @@
 		841D81161ED5927F00C916EC /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
+				00CC0D471EEE3FA4002D24D4 /* OwnerServices.swift */,
 				002AFD651EE8058A00D3B88A /* HistoryServices.swift */,
 				002BA1171EDD62730099352D /* UserService.swift */,
 				003BC6901ED9DA0600FF6D14 /* APIServices.swift */,
@@ -663,6 +694,7 @@
 		842FEC981ED40CC300000606 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */,
 				00EB19501EE93EF5003B2C5D /* Address.swift */,
 				00EB19511EE93EF5003B2C5D /* Dist.swift */,
 				00EB19521EE93EF5003B2C5D /* History.swift */,
@@ -848,6 +880,7 @@
 				003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */,
 				002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
+				00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
 				002BA0FB1EDD25400099352D /* MoreViewController.xib in Resources */,
 				842FEC711ED40C6900000606 /* Assets.xcassets in Resources */,
@@ -860,6 +893,7 @@
 				002C570A1EDBDD420039BBCE /* HistoryViewCell.xib in Resources */,
 				002A04601EE15084001876E5 /* DetailViewController.xib in Resources */,
 				003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */,
+				00CC0D4C1EEE3FCE002D24D4 /* WorkListViewController.xib in Resources */,
 				00EB193E1EE93E61003B2C5D /* LoginView.xib in Resources */,
 				00EB194B1EE93EB4003B2C5D /* FinishedWorkViewController.xib in Resources */,
 				002BA1001EDD25AF0099352D /* MoreNameCell.xib in Resources */,
@@ -868,6 +902,7 @@
 				003C9A0E1EDFEA99003F1189 /* Localizable.strings in Resources */,
 				00EB19421EE93E81003B2C5D /* WorkAroundController.xib in Resources */,
 				003BC6861ED9D92E00FF6D14 /* HomeViewDisplayController.xib in Resources */,
+				00CC0D461EEE3F7B002D24D4 /* PopupViewController.xib in Resources */,
 				003C9A0B1EDFC874003F1189 /* ManageViewController.xib in Resources */,
 				002572331EDE568700AACC52 /* ConstactViewController.xib in Resources */,
 				002572421EDE648800AACC52 /* LanguageViewController.xib in Resources */,
@@ -1056,6 +1091,7 @@
 				0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */,
 				002A04501EE13B51001876E5 /* AlertManager.swift in Sources */,
 				00EB194E1EE93EB4003B2C5D /* OwnerHistoryViewController.swift in Sources */,
+				00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */,
 				00EB195A1EE93EF5003B2C5D /* Owner.swift in Sources */,
 				0025723C1EDE633500AACC52 /* RuleViewController.swift in Sources */,
 				002A045F1EE15084001876E5 /* DetailViewController.swift in Sources */,
@@ -1073,8 +1109,10 @@
 				003BC68A1ED9D94F00FF6D14 /* AppModel.swift in Sources */,
 				002572371EDE5FB800AACC52 /* AboutViewController.swift in Sources */,
 				00EB194C1EE93EB4003B2C5D /* HistoryViewController.swift in Sources */,
+				00CC0D4B1EEE3FCE002D24D4 /* WorkListViewController.swift in Sources */,
 				003BC68B1ED9D94F00FF6D14 /* User.swift in Sources */,
 				002315581EDF07DC00B29F36 /* Extention+Image.swift in Sources */,
+				00CC0D451EEE3F7B002D24D4 /* PopupViewController.swift in Sources */,
 				002572541EDEAD4000AACC52 /* CommentCell.swift in Sources */,
 				0022C4FF1EE84D1700027665 /* OwnerHistoryViewCell.swift in Sources */,
 				003BC69B1ED9EAF300FF6D14 /* Info.swift in Sources */,
@@ -1091,8 +1129,10 @@
 				002BA1071EDD52F60099352D /* NotifiCell.swift in Sources */,
 				00EB19591EE93EF5003B2C5D /* History.swift in Sources */,
 				842FECA01ED40DA800000606 /* CustomView.swift in Sources */,
+				00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */,
 				0022C5011EE84D1700027665 /* WorkerViewCell.swift in Sources */,
 				003BC6941ED9DA0600FF6D14 /* APIServices.swift in Sources */,
+				00CC0D481EEE3FA4002D24D4 /* OwnerServices.swift in Sources */,
 				00EB195C1EE93EF5003B2C5D /* Request.swift in Sources */,
 				0025724B1EDE9D9100AACC52 /* InformationViewController.swift in Sources */,
 			);
