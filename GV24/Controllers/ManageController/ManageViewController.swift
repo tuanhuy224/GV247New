@@ -12,35 +12,68 @@ class ManageViewController: BaseViewController {
     @IBOutlet weak var segmentCtr: UISegmentedControl!
     @IBOutlet weak var tbManage: UITableView!
     var idProcess:String?
+    var processOnCreate = [Work]()
+    var processPending = [Work]()
+    var processDone = [Work]()
+    var processOnDoing = [Work]()
+    var processRecieved = [Work]()
     var returnValue:Int = 0
-    var case1Sting = ["1","2","3"]
-    var case2String = ["a","b","c","s","d"]
     override func viewDidLoad() {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
+        getProcess()
+    }
+    override func setupViewBase() {
+        super.setupViewBase()
+        self.title = "Taskmanagement".localize
     }
     @IBAction func segmentControlAction(_ sender: Any) {
         tbManage.reloadData()
     }
+    func getProcess() {
+        let parameterCreate = ["process":"\(WorkStatus.OnCreate.rawValue)"]
+        let parmaterPending = ["process":"\(WorkStatus.Pending.rawValue)"]
+        //let parmaterDone = ["process":"\(WorkStatus.Done.rawValue)"]
+        let parmaterOnDoing = ["process":"\(WorkStatus.OnDoing.rawValue)"]
+        let parmaterRecieve = ["process":"\(WorkStatus.Recieved.rawValue)"]
+        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let apiService = AroundTask.sharedInstall
+        apiService.getProcessID(url: urlPocess, parameter: parameterCreate, header: header) { (json, error) in
+            if json != nil{
+                self.processOnCreate = json!
+            }
+            self.tbManage.reloadData()
+            }
+        apiService.getProcessID(url: urlPocess, parameter: parmaterPending, header: header) { (json, error) in
+            if json != nil{
+                self.processPending = json!
+            }
+            self.tbManage.reloadData()
+        }
+        apiService.getProcessID(url: urlPocess, parameter: parmaterRecieve, header: header) { (json, error) in
+            if json != nil{
+                self.processRecieved = json!
+            }
+            self.tbManage.reloadData()
+            }
+        apiService.getProcessID(url: urlPocess, parameter: parmaterOnDoing, header: header) { (json, error) in
+            if json != nil{
+                self.processOnDoing = json!
+            }
+            self.tbManage.reloadData()
+            }
+        }
 }
-
-func getProcess() {
-//    let url = ""
-//    let parameter = ["process":"\()"]
-//    let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-//    let apiService = APIService.shared
-//    apiService.getUrl(url: <#T##String#>, param: <#T##Parameters#>, header: <#T##HTTPHeaders#>, completion: <#T##(ResponseCompletion)##(ResponseCompletion)##(JSON?, String?) -> ()#>)
-}
-
 extension ManageViewController:UITableViewDataSource{
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            returnValue = case1Sting.count
-            break
+            returnValue = processOnCreate.count
         case 1:
-            returnValue = case2String.count
+            returnValue = processRecieved.count
+        case 2:
+            returnValue = processOnDoing.count
             break
         default:
             break
@@ -51,9 +84,20 @@ extension ManageViewController:UITableViewDataSource{
         let cell = tbManage.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryViewCell
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            cell?.workNameLabel.text = case1Sting[indexPath.row]
+            cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
+            cell?.createdDate.text = processOnCreate[indexPath.row].info?.address?.name
+            cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
+            cell?.lbDist.text = processOnCreate[indexPath.row].process?.name
         case 1:
-            cell?.workNameLabel.text = case2String[indexPath.row]
+            cell?.workNameLabel.text = processRecieved[indexPath.row].info?.title
+            cell?.createdDate.text = processRecieved[indexPath.row].info?.address?.name
+            cell?.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
+            cell?.lbDist.text = processRecieved[indexPath.row].process?.name
+        case 2:
+            cell?.workNameLabel.text = processOnDoing[indexPath.row].info?.title
+            cell?.createdDate.text = processOnDoing[indexPath.row].info?.address?.name
+            cell?.timeWork.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.endAt)!).hourMinute)"
+            cell?.lbDist.text = processOnDoing[indexPath.row].process?.name
         default:
             break
         }

@@ -9,16 +9,13 @@
 import Foundation
 
 let urlReserve = "https://yukotest123.herokuapp.com/en/task/reserve"
+let urlPocess = "https://yukotest123.herokuapp.com/en/maid/getAllTasks"
 enum urlPath:String {
     case getListAround = "/en/more/getTaskAround"
     case getListHome = "/vi/auth/maid/login"
     case getURLWorkListHistory = "/en/maid/getHistoryTasks"
     case getTaskCommentWithTaskID = "/en/maid/getTaskComment"
     case getOwnerList = "/en/maid/getAllWorkedOwner"
-//    case addManage = "/en/more/getTaskAround"
-//    case listWaitting = "/en/more/getTaskAround"
-//    case listInformation = "/en/more/getTaskAround"
-//    case listHistory = "/en/more/getTaskAround"
 }
 
 struct APIPaths {

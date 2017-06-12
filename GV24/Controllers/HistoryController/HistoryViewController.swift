@@ -74,7 +74,7 @@ class HistoryViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Lịch sự công việc"
-        segmentControl.selectedSegmentIndex = 0
+        
     }
     
     @IBAction func segmentValueChanged(_ segment: UISegmentedControl) {

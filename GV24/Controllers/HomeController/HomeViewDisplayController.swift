@@ -25,7 +25,7 @@ class HomeViewDisplayController: BaseViewController {
     var arrays = [Around]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(UserDefaultHelper.getToken()!)
         self.customBarRightButton()
     }
     override func decorate() {
@@ -108,7 +108,7 @@ class HomeViewDisplayController: BaseViewController {
         navigationController?.pushViewController(manage, animated: true)
     }
     @IBAction func HistoryButton(_ sender: Any) {
-        navigationController?.pushViewController(HistoryViewController(), animated: true)
+        navigationController?.pushViewController(ManagerHistoryViewController(), animated: true)
 
     }
     

@@ -77,7 +77,7 @@ class OwnerHistoryViewController: BaseViewController {
             let url = URL(string: imageString)
             cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
         }
-        print("owner name cell: \(owner.name)")
+        print("owner name cell: \(owner.name ?? "")")
         cell.userName.text = owner.name
         cell.dateLabel.text = String.convertISODateToString(isoDateStr: (owner.workTime.first)!, format: "dd/MM/yyyy")
         

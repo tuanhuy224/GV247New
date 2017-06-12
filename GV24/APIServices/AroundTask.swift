@@ -22,7 +22,15 @@ class AroundTask: APIService {
             }
         }
     }
-
+    func getProcessID(url:String,parameter:Parameters,header:HTTPHeaders,completion:@escaping(dataCompletion)) {
+        getProcess(url: url, param: parameter, header: header) { (json, error) in
+            if error != nil{
+            completion(nil, error)
+            }else{
+            completion(self.ArrayWork(json: (json?["data"])!), nil)
+            }
+        }
+    }
    private func ArrayWork(json:JSON) -> [Work]? {
         var jsonArray:[Work] = [Work]()
         if let datas = json.array {

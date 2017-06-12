@@ -62,7 +62,6 @@ class FinishedWorkViewController: BaseViewController {
      params: task: is task id String
      */
     fileprivate func getTaskComment() {
-        print("\(work?.id)")
         let taskID = work?.id
         let params:[String:Any] = ["task":"\(String(describing: taskID!))"]
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
