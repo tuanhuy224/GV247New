@@ -105,6 +105,14 @@
 		842FEC7F1ED40C6900000606 /* GV24Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC7E1ED40C6900000606 /* GV24Tests.swift */; };
 		842FEC8A1ED40C6900000606 /* GV24UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC891ED40C6900000606 /* GV24UITests.swift */; };
 		842FECA01ED40DA800000606 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC9E1ED40DA800000606 /* CustomView.swift */; };
+		8435318E1EEE30C300739AE6 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435318C1EEE30C300739AE6 /* PopupViewController.swift */; };
+		8435318F1EEE30C300739AE6 /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435318D1EEE30C300739AE6 /* PopupViewController.xib */; };
+		846EC72F1EEA3BA400B174F4 /* WorkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846EC72D1EEA3BA400B174F4 /* WorkListViewController.swift */; };
+		846EC7301EEA3BA400B174F4 /* WorkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846EC72E1EEA3BA400B174F4 /* WorkListViewController.xib */; };
+		849AE9F11EEA524A008249A6 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849AE9F01EEA524A008249A6 /* Comment.swift */; };
+		849AE9F51EEA8AFE008249A6 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849AE9F41EEA8AFE008249A6 /* OwnerServices.swift */; };
+		84E3ECB01EEAA6D70014B18C /* ManagerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3ECAE1EEAA6D70014B18C /* ManagerHistoryViewController.swift */; };
+		84E3ECB11EEAA6D70014B18C /* ManagerHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3ECAF1EEAA6D70014B18C /* ManagerHistoryViewController.xib */; };
 		ABAE29C8F643A96F193D8606 /* Pods_GV24UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C1EF8086B8317A0B2D32AD /* Pods_GV24UITests.framework */; };
 		F35FF04DD2AB137EB250C042 /* Pods_GV24Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E244E08C7632332E4031F1 /* Pods_GV24Tests.framework */; };
 /* End PBXBuildFile section */
@@ -242,6 +250,14 @@
 		842FEC891ED40C6900000606 /* GV24UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GV24UITests.swift; sourceTree = "<group>"; };
 		842FEC8B1ED40C6900000606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842FEC9E1ED40DA800000606 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		8435318C1EEE30C300739AE6 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		8435318D1EEE30C300739AE6 /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
+		846EC72D1EEA3BA400B174F4 /* WorkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkListViewController.swift; sourceTree = "<group>"; };
+		846EC72E1EEA3BA400B174F4 /* WorkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkListViewController.xib; sourceTree = "<group>"; };
+		849AE9F01EEA524A008249A6 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		849AE9F41EEA8AFE008249A6 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
+		84E3ECAE1EEAA6D70014B18C /* ManagerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerHistoryViewController.swift; sourceTree = "<group>"; };
+		84E3ECAF1EEAA6D70014B18C /* ManagerHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerHistoryViewController.xib; sourceTree = "<group>"; };
 		8513B9D4BB0A660F2D36EBFD /* Pods-GV24.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24/Pods-GV24.debug.xcconfig"; sourceTree = "<group>"; };
 		8A3EE7917FC70815F49ADF31 /* Pods-GV24UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GV24UITests/Pods-GV24UITests.release.xcconfig"; sourceTree = "<group>"; };
 		B272992280A1A82D10F39E52 /* Pods-GV24Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24Tests/Pods-GV24Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -523,8 +539,13 @@
 				00EB19451EE93EB4003B2C5D /* FinishedWorkViewController.xib */,
 				00EB19461EE93EB4003B2C5D /* HistoryViewController.swift */,
 				00EB19471EE93EB4003B2C5D /* HistoryViewController.xib */,
+				8435318B1EEE30C300739AE6 /* PopupViewController */,
 				00EB19481EE93EB4003B2C5D /* OwnerHistoryViewController.swift */,
 				00EB19491EE93EB4003B2C5D /* OwnerHistoryViewController.xib */,
+				846EC72D1EEA3BA400B174F4 /* WorkListViewController.swift */,
+				846EC72E1EEA3BA400B174F4 /* WorkListViewController.xib */,
+				84E3ECAE1EEAA6D70014B18C /* ManagerHistoryViewController.swift */,
+				84E3ECAF1EEAA6D70014B18C /* ManagerHistoryViewController.xib */,
 			);
 			path = HistoryController;
 			sourceTree = "<group>";
@@ -573,6 +594,7 @@
 		841D81161ED5927F00C916EC /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
+				849AE9F41EEA8AFE008249A6 /* OwnerServices.swift */,
 				002AFD651EE8058A00D3B88A /* HistoryServices.swift */,
 				002BA1171EDD62730099352D /* UserService.swift */,
 				003BC6901ED9DA0600FF6D14 /* APIServices.swift */,
@@ -676,6 +698,7 @@
 				003BC69A1ED9EAF300FF6D14 /* Info.swift */,
 				003175EA1EE69A0000F3F9B4 /* Maid.swift */,
 				002715281EE799B7006E6671 /* Around.swift */,
+				849AE9F01EEA524A008249A6 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -687,6 +710,15 @@
 				842FEC9E1ED40DA800000606 /* CustomView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8435318B1EEE30C300739AE6 /* PopupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8435318C1EEE30C300739AE6 /* PopupViewController.swift */,
+				8435318D1EEE30C300739AE6 /* PopupViewController.xib */,
+			);
+			path = PopupViewController;
 			sourceTree = "<group>";
 		};
 		84D84F301ED5257900C33128 /* Singleton */ = {
@@ -847,6 +879,7 @@
 				002BA1041EDD26090099352D /* MoreCell.xib in Resources */,
 				003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */,
 				002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */,
+				846EC7301EEA3BA400B174F4 /* WorkListViewController.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
 				002BA0FB1EDD25400099352D /* MoreViewController.xib in Resources */,
@@ -868,7 +901,9 @@
 				003C9A0E1EDFEA99003F1189 /* Localizable.strings in Resources */,
 				00EB19421EE93E81003B2C5D /* WorkAroundController.xib in Resources */,
 				003BC6861ED9D92E00FF6D14 /* HomeViewDisplayController.xib in Resources */,
+				84E3ECB11EEAA6D70014B18C /* ManagerHistoryViewController.xib in Resources */,
 				003C9A0B1EDFC874003F1189 /* ManageViewController.xib in Resources */,
+				8435318F1EEE30C300739AE6 /* PopupViewController.xib in Resources */,
 				002572331EDE568700AACC52 /* ConstactViewController.xib in Resources */,
 				002572421EDE648800AACC52 /* LanguageViewController.xib in Resources */,
 				002572551EDEAD4000AACC52 /* CommentCell.xib in Resources */,
@@ -935,7 +970,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		64A0DD5D4D776A1C572D415A /* [CP] Check Pods Manifest.lock */ = {
@@ -950,7 +985,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ABFFCFD45244EDBAA672BCF1 /* [CP] Embed Pods Frameworks */ = {
@@ -1010,7 +1045,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FA7048E69461592FC8B4C458 /* [CP] Copy Pods Resources */ = {
@@ -1047,6 +1082,8 @@
 				002572321EDE568700AACC52 /* ConstactViewController.swift in Sources */,
 				00EB194A1EE93EB4003B2C5D /* FinishedWorkViewController.swift in Sources */,
 				003175E81EE68AC400F3F9B4 /* WaittingCell.swift in Sources */,
+				849AE9F51EEA8AFE008249A6 /* OwnerServices.swift in Sources */,
+				84E3ECB01EEAA6D70014B18C /* ManagerHistoryViewController.swift in Sources */,
 				00EB195B1EE93EF5003B2C5D /* Process.swift in Sources */,
 				003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */,
 				002A04451EE11C97001876E5 /* xibView.swift in Sources */,
@@ -1058,11 +1095,14 @@
 				00EB194E1EE93EB4003B2C5D /* OwnerHistoryViewController.swift in Sources */,
 				00EB195A1EE93EF5003B2C5D /* Owner.swift in Sources */,
 				0025723C1EDE633500AACC52 /* RuleViewController.swift in Sources */,
+				8435318E1EEE30C300739AE6 /* PopupViewController.swift in Sources */,
 				002A045F1EE15084001876E5 /* DetailViewController.swift in Sources */,
 				0027152D1EE7AFAB006E6671 /* AroundItemController.swift in Sources */,
+				849AE9F11EEA524A008249A6 /* Comment.swift in Sources */,
 				003BC6841ED9D92E00FF6D14 /* BaseViewController.swift in Sources */,
 				003BC67B1ED9D8ED00FF6D14 /* WorkTableViewCell.swift in Sources */,
 				003BC6961ED9DA0600FF6D14 /* Error.swift in Sources */,
+				846EC72F1EEA3BA400B174F4 /* WorkListViewController.swift in Sources */,
 				002BA0FF1EDD25AF0099352D /* MoreNameCell.swift in Sources */,
 				002572501EDE9E1600AACC52 /* InforCell.swift in Sources */,
 				002A043D1EE116AB001876E5 /* WorkAround.swift in Sources */,
