@@ -105,10 +105,10 @@ class HistoryViewController: BaseViewController {
         let minutesBetweenDates = Int(executionTime/60)
         
         if minutesBetweenDates > 60 {
-            cell.estimateWorkTime.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
+            cell.lbTimePost.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
         }
         else {
-            cell.estimateWorkTime.text = "\(minutesBetweenDates) phút trước"
+            cell.lbTimePost.text = "\(minutesBetweenDates) phút trước"
         }
         
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!

@@ -114,6 +114,12 @@
 		842FEC7F1ED40C6900000606 /* GV24Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC7E1ED40C6900000606 /* GV24Tests.swift */; };
 		842FEC8A1ED40C6900000606 /* GV24UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC891ED40C6900000606 /* GV24UITests.swift */; };
 		842FECA01ED40DA800000606 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC9E1ED40DA800000606 /* CustomView.swift */; };
+		84606A581EEEA684000E4092 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84606A541EEEA684000E4092 /* LocationTableViewController.swift */; };
+		84606A591EEEA684000E4092 /* LocationTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606A551EEEA684000E4092 /* LocationTableViewController.xib */; };
+		84606A5A1EEEA684000E4092 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84606A561EEEA684000E4092 /* MapViewController.swift */; };
+		84606A5B1EEEA684000E4092 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606A571EEEA684000E4092 /* MapViewController.xib */; };
+		84606A5E1EEEA6A4000E4092 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84606A5C1EEEA6A4000E4092 /* MapViewCell.swift */; };
+		84606A5F1EEEA6A4000E4092 /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606A5D1EEEA6A4000E4092 /* MapViewCell.xib */; };
 		ABAE29C8F643A96F193D8606 /* Pods_GV24UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C1EF8086B8317A0B2D32AD /* Pods_GV24UITests.framework */; };
 		F35FF04DD2AB137EB250C042 /* Pods_GV24Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E244E08C7632332E4031F1 /* Pods_GV24Tests.framework */; };
 /* End PBXBuildFile section */
@@ -259,6 +265,12 @@
 		842FEC891ED40C6900000606 /* GV24UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GV24UITests.swift; sourceTree = "<group>"; };
 		842FEC8B1ED40C6900000606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842FEC9E1ED40DA800000606 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		84606A541EEEA684000E4092 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		84606A551EEEA684000E4092 /* LocationTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationTableViewController.xib; sourceTree = "<group>"; };
+		84606A561EEEA684000E4092 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		84606A571EEEA684000E4092 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		84606A5C1EEEA6A4000E4092 /* MapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCell.swift; sourceTree = "<group>"; };
+		84606A5D1EEEA6A4000E4092 /* MapViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewCell.xib; sourceTree = "<group>"; };
 		8513B9D4BB0A660F2D36EBFD /* Pods-GV24.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24/Pods-GV24.debug.xcconfig"; sourceTree = "<group>"; };
 		8A3EE7917FC70815F49ADF31 /* Pods-GV24UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GV24UITests/Pods-GV24UITests.release.xcconfig"; sourceTree = "<group>"; };
 		B272992280A1A82D10F39E52 /* Pods-GV24Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24Tests/Pods-GV24Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -370,6 +382,10 @@
 		0027152A1EE7AF42006E6671 /* AroundItemController */ = {
 			isa = PBXGroup;
 			children = (
+				84606A541EEEA684000E4092 /* LocationTableViewController.swift */,
+				84606A551EEEA684000E4092 /* LocationTableViewController.xib */,
+				84606A561EEEA684000E4092 /* MapViewController.swift */,
+				84606A571EEEA684000E4092 /* MapViewController.xib */,
 				00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */,
 				00EB19401EE93E81003B2C5D /* WorkAroundController.xib */,
 				0027152B1EE7AFAB006E6671 /* AroundItemController.swift */,
@@ -480,6 +496,8 @@
 		003BC6741ED9D8ED00FF6D14 /* AroundCell */ = {
 			isa = PBXGroup;
 			children = (
+				84606A5C1EEEA6A4000E4092 /* MapViewCell.swift */,
+				84606A5D1EEEA6A4000E4092 /* MapViewCell.xib */,
 				003BC6771ED9D8ED00FF6D14 /* WorkTableViewCell.swift */,
 				003BC6781ED9D8ED00FF6D14 /* WorkTableViewCell.xib */,
 				002A043B1EE116AB001876E5 /* WorkAround.swift */,
@@ -874,12 +892,15 @@
 				0022C5021EE84D1700027665 /* WorkerViewCell.xib in Resources */,
 				002A045B1EE14A82001876E5 /* InfoDetailCell.xib in Resources */,
 				002A043E1EE116AB001876E5 /* WorkAround.xib in Resources */,
+				84606A5B1EEEA684000E4092 /* MapViewController.xib in Resources */,
 				003175E91EE68AC400F3F9B4 /* WaittingCell.xib in Resources */,
 				002BA1081EDD52F60099352D /* NotifiCell.xib in Resources */,
 				002572471EDE698200AACC52 /* ForgotPasswordViewController.xib in Resources */,
 				002BA1041EDD26090099352D /* MoreCell.xib in Resources */,
 				003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */,
+				84606A591EEEA684000E4092 /* LocationTableViewController.xib in Resources */,
 				002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */,
+				84606A5F1EEEA6A4000E4092 /* MapViewCell.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
 				00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
@@ -1071,6 +1092,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84606A5E1EEEA6A4000E4092 /* MapViewCell.swift in Sources */,
 				002A045A1EE14A82001876E5 /* InfoDetailCell.swift in Sources */,
 				003175ED1EE6A6B000F3F9B4 /* AroundTask.swift in Sources */,
 				00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */,
@@ -1136,7 +1158,9 @@
 				00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */,
 				0022C5011EE84D1700027665 /* WorkerViewCell.swift in Sources */,
 				00EB195C1EE93EF5003B2C5D /* Request.swift in Sources */,
+				84606A581EEEA684000E4092 /* LocationTableViewController.swift in Sources */,
 				0025724B1EDE9D9100AACC52 /* InformationViewController.swift in Sources */,
+				84606A5A1EEEA684000E4092 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
