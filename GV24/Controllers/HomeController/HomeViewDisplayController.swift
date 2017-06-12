@@ -109,9 +109,11 @@ class HomeViewDisplayController: BaseViewController {
     }
     @IBAction func HistoryButton(_ sender: Any) {
         navigationController?.pushViewController(ManagerHistoryViewController(), animated: true)
-
     }
     
+    @IBAction func showMap(_ sender: Any) {
+        navigationController?.pushViewController(MapViewController(), animated: true)
+    }
 }
 
 

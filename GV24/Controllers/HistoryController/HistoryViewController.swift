@@ -59,12 +59,14 @@ class HistoryViewController: BaseViewController {
                     self.workList.append(contentsOf: data!)
                     DispatchQueue.main.async {
                         self.activityIndicatorView.stopAnimating()
+                        self.historyTableView.backgroundView = nil
                         self.historyTableView.reloadData()
                     }
                 }
             }
             else {
                 print("Error occurred while geting work list with Work status is Done in HistoryViewController")
+                self.activityIndicatorView.stopAnimating()
             }
         }
     }

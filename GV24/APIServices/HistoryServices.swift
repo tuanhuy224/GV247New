@@ -43,7 +43,9 @@ class HistoryServices: APIService {
                 }
                 break
             case .failure(let err):
-                completion(nil, (err as! Error))
+                var error = Error()
+                error.errorContent = err.localizedDescription
+                completion(nil, error)
                 break
             }
         }

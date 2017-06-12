@@ -68,6 +68,7 @@ class OwnerHistoryViewController: BaseViewController {
             }
             else {
                 print("Error occurred while getting owner list in OwnerHistoryViewController.")
+                self.activityIndicatorView.stopAnimating()
             }
         }
     }
