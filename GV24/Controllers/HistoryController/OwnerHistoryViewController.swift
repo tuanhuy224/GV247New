@@ -15,6 +15,7 @@ class OwnerHistoryViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var ownerList:[Owner] = []
     var myParent: ManagerHistoryViewController?
+    var activityIndicatorView:UIActivityIndicatorView!
     
     @IBOutlet weak var segment: UISegmentedControl!
     override func viewDidLoad() {
@@ -25,6 +26,9 @@ class OwnerHistoryViewController: BaseViewController {
         tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName:"OwnerHistoryViewCell",bundle:nil), forCellReuseIdentifier: "OwnerHistoryCell")
+        self.activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        self.tableView.backgroundView = self.activityIndicatorView
+        getOwnerList(startAt: nil, endAt: Date())
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,13 +42,14 @@ class OwnerHistoryViewController: BaseViewController {
     }
     
     override func decorate() {
-        getOwnerList(startAt: nil, endAt: Date())
+        
     }
     
     /* /maid/getAllWorkedOwner
      params: startAt, endAt
      */
     func getOwnerList(startAt: Date?, endAt: Date) {
+        self.activityIndicatorView.startAnimating()
         var params: [String: Any] = [:]
         if startAt != nil {
             params["startAt"] = String.convertDateToISODateType(date: startAt!)
@@ -56,6 +61,7 @@ class OwnerHistoryViewController: BaseViewController {
                 if data != nil {
                     self.ownerList.append(contentsOf: data!)
                     DispatchQueue.main.async {
+                        self.activityIndicatorView.stopAnimating()
                         self.tableView.reloadData()
                     }
                 }
@@ -64,11 +70,6 @@ class OwnerHistoryViewController: BaseViewController {
                 print("Error occurred while getting owner list in OwnerHistoryViewController.")
             }
         }
-        
-    }
-    
-    @IBAction func valueChanged(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
     }
     
     fileprivate func configureOwnerCell(cell: OwnerHistoryViewCell, indexPath: IndexPath) {
@@ -77,16 +78,13 @@ class OwnerHistoryViewController: BaseViewController {
             let url = URL(string: imageString)
             cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
         }
-        print("owner name cell: \(owner.name)")
         cell.userName.text = owner.name
         cell.dateLabel.text = String.convertISODateToString(isoDateStr: (owner.workTime.first)!, format: "dd/MM/yyyy")
-        
         cell.workListButton.tag = indexPath.item
         cell.workListButton.addTarget(self, action: #selector(OwnerHistoryViewController.btnClicked(sender:)), for: UIControlEvents.touchUpInside)
     }
     
     @objc fileprivate func btnClicked(sender: UIButton) {
-        print(sender.tag)
         let vc = WorkListViewController()
         vc.owner = ownerList[sender.tag]
         let backItem = UIBarButtonItem()
@@ -94,7 +92,6 @@ class OwnerHistoryViewController: BaseViewController {
         navigationItem.backBarButtonItem = backItem
         myParent?.navigationController?.pushViewController(vc, animated: true)
     }
-
 }
 
 extension OwnerHistoryViewController: UITableViewDataSource {

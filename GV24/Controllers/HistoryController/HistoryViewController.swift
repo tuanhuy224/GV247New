@@ -22,32 +22,29 @@ class HistoryViewController: BaseViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var fromDateContainer: UIView!
     
+    var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         historyTableView.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
         
         // Do any additional setup after loading the view.
-        
-        
         self.automaticallyAdjustsScrollViewInsets = false
         historyTableView.tableFooterView = UIView()
-        customControl()
-        print("token = \(UserDefaultHelper.getToken()!)")
-    }
-    
-    override func decorate() {
+        self.activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        historyTableView.backgroundView = self.activityIndicatorView
         getWorkList(startAt: nil, endAt: Date())
-        
     }
     
-    override func setupViewBase() {
-        
-    }
+    override func decorate() {}
+    
+    override func setupViewBase() {}
     
     /* /maid/getHistoryTasks
      Params: startAt (opt), endAt (opt): ISO Date, page, limit: Number
      */
     func getWorkList(startAt: Date?, endAt: Date) {
+        self.activityIndicatorView.startAnimating()
         user = UserDefaultHelper.currentUser
         var params:[String:Any] = [:]
         if startAt != nil {
@@ -61,6 +58,7 @@ class HistoryViewController: BaseViewController {
                 if data != nil {
                     self.workList.append(contentsOf: data!)
                     DispatchQueue.main.async {
+                        self.activityIndicatorView.stopAnimating()
                         self.historyTableView.reloadData()
                     }
                 }
@@ -74,35 +72,6 @@ class HistoryViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Lịch sự công việc"
-        segmentControl.selectedSegmentIndex = 0
-    }
-    
-    @IBAction func segmentValueChanged(_ segment: UISegmentedControl) {
-        switch segment.selectedSegmentIndex {
-        case 0:
-            print("Do nothing.")
-            break;
-        case 1:
-            let vc = OwnerHistoryViewController()
-            let backItem = UIBarButtonItem()
-            backItem.title = "Back"
-            navigationItem.backBarButtonItem = backItem
-            navigationController?.pushViewController(vc, animated: true)
-            break;
-        default:
-            print("")
-        }
-    }
-    
-    fileprivate func customControl() {
-//        let topBorder = UIView(frame: CGRect(x: 0, y: 0, width: fromDateContainer.frame.size.width, height: 1.0))
-//        topBorder.backgroundColor = UIColor.lightGray
-//        topBorder.alpha = 0.3
-//        let bottomBorder = UIView(frame: CGRect(x: 0, y: segmentContainer.frame.size.height - 1, width: segmentContainer.frame.size.width, height: 1.0))
-//        bottomBorder.backgroundColor = UIColor.lightGray
-//        bottomBorder.alpha = 0.3
-//        fromDateContainer.addSubview(topBorder)
-//        fromDateContainer.addSubview(bottomBorder)
     }
 
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
@@ -139,15 +108,13 @@ class HistoryViewController: BaseViewController {
         }
         
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
-
     }
-
 }
 extension HistoryViewController:UITableViewDataSource{
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workList.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
         
@@ -164,7 +131,6 @@ extension HistoryViewController:UITableViewDataSource{
         backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
-        
     }
 }
 extension HistoryViewController:UITableViewDelegate{

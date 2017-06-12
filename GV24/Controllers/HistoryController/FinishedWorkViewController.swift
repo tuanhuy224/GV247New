@@ -24,10 +24,6 @@ class FinishedWorkViewController: BaseViewController {
         // Do any additional setup after loading the view.
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-//        tableView.setNeedsLayout()
-//        tableView.layoutIfNeeded()
-        
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName: "FinishedWorkCell", bundle: nil), forCellReuseIdentifier: "FinishedWorkCell")
         tableView.register(UINib(nibName: "WorkerViewCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
@@ -35,7 +31,6 @@ class FinishedWorkViewController: BaseViewController {
         if work != nil {
             tableView.reloadData()
         }
-        //print("TASK ID = \(work?.id)")
         tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
     }
     
@@ -46,12 +41,9 @@ class FinishedWorkViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Công việc hoàn thành"
-        
     }
     
-    override func setupViewBase() {
-        
-    }
+    override func setupViewBase() {}
     
     override func decorate() {
         work != nil ? getTaskComment() : print("Work model is nil now.")
@@ -61,7 +53,6 @@ class FinishedWorkViewController: BaseViewController {
      params: task: is task id String
      */
     fileprivate func getTaskComment() {
-        print("\(work?.id)")
         let taskID = work?.id
         let params:[String:Any] = ["task":"\(String(describing: taskID!))"]
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
@@ -74,7 +65,7 @@ class FinishedWorkViewController: BaseViewController {
                     }
                 }
                 else {
-                    print("Data not exists nhes")
+                    print("Data not exists in FinishedWorkViewController.")
                 }
             }
             else {
@@ -156,13 +147,6 @@ extension FinishedWorkViewController: UITableViewDataSource {
 }
 
 extension FinishedWorkViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.section == 0 {
-//            return 221
-//        }
-//        return 170
-//    }
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
             return "NGƯỜI THỰC HIỆN"

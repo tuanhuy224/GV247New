@@ -34,8 +34,7 @@ class PopupViewController: UIViewController {
         if isFromDate == true {
             if datePicker.date.compare(toDate) == ComparisonResult.orderedAscending {
                 print("aaa: ascending")
-                dismiss()
-                delegate?.selectedDate(date: datePicker.date, isFromDate: true, isToDate: false)
+                doDismiss(date: datePicker.date, isFromDate: true, isToDate: false)
             }
             else {
                 print("aaa: descending")
@@ -44,14 +43,12 @@ class PopupViewController: UIViewController {
         }
         else {
             if fromDate == nil {
-                dismiss()
-                delegate?.selectedDate(date: datePicker.date, isFromDate: false, isToDate: true)
+                doDismiss(date: datePicker.date, isFromDate: false, isToDate: true)
             }
             else {
                 if datePicker.date.compare(fromDate!) == ComparisonResult.orderedDescending {
                     print("bbb: descending")
-                    dismiss()
-                    delegate?.selectedDate(date: datePicker.date, isFromDate:  false, isToDate: true)
+                    doDismiss(date: datePicker.date, isFromDate: false, isToDate: true)
                 }
                 else {
                     print("bbb: ascending")
@@ -59,7 +56,6 @@ class PopupViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     fileprivate func showAlert(title: String, message: String) {
@@ -70,12 +66,14 @@ class PopupViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        dismiss()
-    }
-    
-    fileprivate func dismiss() {
         effectView.alpha = 0
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func doDismiss(date: Date, isFromDate: Bool, isToDate: Bool) {
+        effectView.alpha = 0
+        self.dismiss(animated: true, completion: nil)
+        delegate?.selectedDate(date: date, isFromDate: isFromDate, isToDate: isToDate)
     }
 
 }

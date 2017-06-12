@@ -42,8 +42,6 @@ class OwnerServices: APIService {
                     completion(nil, (err as! Error))
                     break;
             }
-            
         }
     }
-    
 }

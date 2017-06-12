@@ -95,7 +95,6 @@ class ManagerHistoryViewController: UIViewController {
 
 extension ManagerHistoryViewController: PopupViewControllerDelegate {
     func selectedDate(date: Date, isFromDate: Bool, isToDate: Bool) {
-        print("Date: \(date)")
         if isFromDate == true {
             fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
             fromDate = date
@@ -106,10 +105,12 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
         }
         if segmentControl.selectedSegmentIndex == 0 {
             workListVC?.workList.removeAll()
+            workListVC?.historyTableView.reloadData()
             workListVC?.getWorkList(startAt: fromDate, endAt: toDate)
         }
         else {
             ownerListVC?.ownerList.removeAll()
+            ownerListVC?.tableView.reloadData()
             ownerListVC?.getOwnerList(startAt: fromDate, endAt: toDate)
         }
     }
