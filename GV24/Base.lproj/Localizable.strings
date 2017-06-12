@@ -11,6 +11,7 @@ domainGV24 = "https://yukotest123.herokuapp.com/vi/";
 English = "English";
 VietNam = "Tiếng Việt";
 SignIn = "Đăng nhập";
+Dollar = "VND";
 Language = "Ngôn ngữ";
 SwitchLanguage = "Đổi ngôn ngữ";
 Back = "Trở lại";

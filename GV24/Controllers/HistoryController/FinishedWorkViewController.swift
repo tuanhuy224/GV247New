@@ -14,10 +14,10 @@ import SwiftyJSON
 class FinishedWorkViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
+
     var work: Work?
     var taskComment:Comment?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,13 +27,13 @@ class FinishedWorkViewController: BaseViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName: "FinishedWorkCell", bundle: nil), forCellReuseIdentifier: "FinishedWorkCell")
         tableView.register(UINib(nibName: "WorkerViewCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
-        
+
         if work != nil {
             tableView.reloadData()
         }
         tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -42,13 +42,13 @@ class FinishedWorkViewController: BaseViewController {
         super.viewWillAppear(animated)
         title = "Công việc hoàn thành"
     }
-    
+
     override func setupViewBase() {}
-    
+
     override func decorate() {
         work != nil ? getTaskComment() : print("Work model is nil now.")
     }
-    
+
     /*  /en/maid/getTaskComment
      params: task: is task id String
      */
@@ -73,32 +73,32 @@ class FinishedWorkViewController: BaseViewController {
             }
         }
     }
-    
+
     fileprivate func configureWorkDetailsCell(cell: FinishedWorkCell) {
         cell.selectionStyle = .none
         if let imageString = work?.info?.workName?.image {
             let url = URL(string: imageString)
             cell.workImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
         }
-        
+
         cell.workNameLabel.text = work?.info?.title
         cell.workTypeLabel.text = work?.info?.workName?.name
         cell.workContentLabel.text = work?.info?.content
-        
+
         let salary = work?.info?.salary
         let salaryText = String(describing: salary!)
         cell.workSalaryLabel.text = salaryText + " VND"
-        
+
         let startAt = work?.workTime?.startAt
         let startAtStr = String(describing: startAt!)
         cell.workCreateAtLabel.text = String.convertISODateToString(isoDateStr: startAtStr, format: "dd/MM/yyyy")
         cell.workAddressLabel.text = work?.info?.address?.name
-        
+
         let endAt = work?.workTime?.endAt
         let endAtStr = String(describing: endAt!)
         cell.workTimeLabel.text = String.convertISODateToString(isoDateStr: startAtStr, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtStr, format: "HH:mm a")!
     }
-    
+
     fileprivate func configureOwnerCommentsCell(cell: WorkerViewCell) {
         if let imageString = work?.stakeholders?.owner?.image {
             let url = URL(string: imageString)
@@ -124,23 +124,23 @@ extension FinishedWorkViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FinishedWorkCell", for: indexPath) as! FinishedWorkCell
-            
+
             self.configureWorkDetailsCell(cell: cell)
-            
+
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath) as! WorkerViewCell
-            
+
             self.configureOwnerCommentsCell(cell: cell)
-            
+
             return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -153,13 +153,13 @@ extension FinishedWorkViewController: UITableViewDelegate {
         }
         return ""
     }
-    
+
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.lightGray
         header.textLabel?.font = UIFont(name: "SF UI Text Light", size: 16)
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 20
     }

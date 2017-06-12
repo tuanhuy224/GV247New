@@ -18,6 +18,9 @@ class Work: AppModel {
     var workTime: WorkTime?
     var dist:Dist?
 
+    override init() {
+        super.init()
+    }
     override init(json:JSON) {
         super.init()
         self.id = json["_id"].string

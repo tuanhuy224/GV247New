@@ -7,6 +7,8 @@
 //
 //https://yukotest123.herokuapp.com/en/more/getTaskAround
 import Foundation
+
+let urlReserve = "https://yukotest123.herokuapp.com/en/task/reserve"
 enum urlPath:String {
     case getListAround = "/en/more/getTaskAround"
     case getListHome = "/vi/auth/maid/login"
