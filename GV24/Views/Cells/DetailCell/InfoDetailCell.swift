@@ -8,7 +8,7 @@
 
 import UIKit
 import IoniconsSwift
-class InfoDetailCell: UITableViewCell {
+class InfoDetailCell: CustomTableViewCell {
     @IBOutlet weak var lbDescription: UILabel!
     @IBOutlet weak var imageAvatar: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
@@ -28,10 +28,9 @@ class InfoDetailCell: UITableViewCell {
         imageAvatar.clipsToBounds = true
         imageMoney.backgroundColor = UIColor.clear
         imageDate.backgroundColor = UIColor.clear
-        imageMoney.image = Ionicons.socialUsd.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
-        imageDate.image = Ionicons.iosAlarm.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
-        imageAddress.image = Ionicons.home.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
-        // Initialization code
+        imageMoney.image = Ionicons.socialUsd.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
+        imageDate.image = Ionicons.iosAlarm.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
+        imageAddress.image = Ionicons.home.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

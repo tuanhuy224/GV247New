@@ -17,6 +17,9 @@ class WorkAroundController: BaseViewController {
     var cellHeight: CGFloat?
     var  user:User?
     var id:String?
+    var isLoading:Bool = false
+    var currentPage:Int = 1
+    var lastPage:Int = 1
     var logtitude:Double?
     var lattitude:Double?
     var arrays = [Around]()
@@ -29,15 +32,13 @@ class WorkAroundController: BaseViewController {
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
         setup()
-        //self.loadData()
-        
-        let date = NSDate()
-        let calendar = NSCalendar.current
-        let hour = calendar.component(.hour, from: date as Date)
-        let minutes = calendar.component(.minute, from: date as Date)
-        print("+++\(date)")
-        print(hour)
-        print("===\(minutes)")
+//        let date = NSDate()
+//        let calendar = NSCalendar.current
+//        let hour = calendar.component(.hour, from: date as Date)
+//        let minutes = calendar.component(.minute, from: date as Date)
+//        print("+++\(date)")
+//        print(hour)
+//        print("===\(minutes)")
     }
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {
@@ -55,7 +56,14 @@ class WorkAroundController: BaseViewController {
     }()
     
     func handleRef() {
-        //loadData()
+        self.handleRefresh.endRefreshing()
+        guard !isLoading else {return}
+            isLoading = true
+    }
+    fileprivate func loadMore(){
+        guard !isLoading else {return}
+        guard currentPage < lastPage else{return}
+            isLoading = true
     }
     func setup(){
         

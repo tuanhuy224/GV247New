@@ -10,6 +10,7 @@ import Foundation
 
 let urlReserve = "https://yukotest123.herokuapp.com/en/task/reserve"
 let urlPocess = "https://yukotest123.herokuapp.com/en/maid/getAllTasks"
+let urlOwner = "https://yukotest123.herokuapp.com/en/owner/getById"
 enum urlPath:String {
     case getListAround = "/en/more/getTaskAround"
     case getListHome = "/vi/auth/maid/login"

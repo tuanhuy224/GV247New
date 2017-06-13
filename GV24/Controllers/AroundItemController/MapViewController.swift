@@ -13,27 +13,31 @@ protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 
-class MapViewController: UIViewController {
-
+class MapViewController: BaseViewController {
+    let locationSearchTable = LocationTableViewController()
     @IBOutlet weak var mapView: MKMapView!
     var resultSearchController: UISearchController? = nil
     var locationManager: CLLocationManager?
+    var searchBar:UISearchBar?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let locationSearchTable = LocationTableViewController()
+        self.decorate()
+    }
+    
+    override func decorate() {
+        super.decorate()
         locationSearchTable.mapView = mapView
         resultSearchController =  UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
         
-        let searchBar = resultSearchController!.searchBar
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Search for places"
+        searchBar = resultSearchController!.searchBar
+        searchBar?.sizeToFit()
+        searchBar?.placeholder = "Search for places"
+        searchBar?.barTintColor = UIColor.lightGray
         navigationItem.titleView = resultSearchController?.searchBar
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
-        
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
@@ -41,6 +45,11 @@ class MapViewController: UIViewController {
         if CLLocationManager.locationServicesEnabled() {
             locationManager?.startUpdatingLocation()
         }
+
+    }
+    override func setupViewBase() {
+        super.setupViewBase()
+        self.navigationItem.hidesBackButton = true
     }
 }
 

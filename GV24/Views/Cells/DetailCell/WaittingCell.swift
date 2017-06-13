@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class WaittingCell: UITableViewCell {
+class WaittingCell: CustomTableViewCell {
 
     @IBOutlet weak var btCancel: UIButton!
     @IBOutlet weak var lbCancel: UILabel!

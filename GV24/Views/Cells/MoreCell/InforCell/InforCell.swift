@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class InforCell: UITableViewCell {
+class InforCell: CustomTableViewCell {
     var buttons:[UIButton]?
     var imageFirst:UIImage?
     

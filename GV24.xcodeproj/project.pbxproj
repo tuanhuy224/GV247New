@@ -80,11 +80,24 @@
 		003C9A0E1EDFEA99003F1189 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A101EDFEA99003F1189 /* Localizable.strings */; };
 		003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A151EDFEC02003F1189 /* LaunchScreen.storyboard */; };
 		003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A171EDFEC02003F1189 /* Main.storyboard */; };
+		004467AE1EEF82D900DDD0ED /* PendingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004467AC1EEF82D900DDD0ED /* PendingController.swift */; };
+		004467AF1EEF82D900DDD0ED /* PendingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004467AD1EEF82D900DDD0ED /* PendingController.xib */; };
+		004467B31EEF92BC00DDD0ED /* RecievedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004467B11EEF92BC00DDD0ED /* RecievedController.swift */; };
+		004467B41EEF92BC00DDD0ED /* RecievedController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004467B21EEF92BC00DDD0ED /* RecievedController.xib */; };
+		004467B81EEF97FB00DDD0ED /* DoingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004467B61EEF97FB00DDD0ED /* DoingController.swift */; };
+		004467B91EEF97FB00DDD0ED /* DoingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004467B71EEF97FB00DDD0ED /* DoingController.xib */; };
+		004467BB1EEF9B8900DDD0ED /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */; };
 		009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76D31EEE8B250021BFB0 /* Enum.swift */; };
 		009A76DC1EEE8EF90021BFB0 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */; };
 		009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DF1EEE8F480021BFB0 /* APIServices.swift */; };
 		009A76E31EEE92360021BFB0 /* OwnerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76E11EEE92360021BFB0 /* OwnerHistoryViewController.swift */; };
 		009A76E41EEE92360021BFB0 /* OwnerHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76E21EEE92360021BFB0 /* OwnerHistoryViewController.xib */; };
+		009A76E91EEE94270021BFB0 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76E51EEE94270021BFB0 /* LocationTableViewController.swift */; };
+		009A76EA1EEE94270021BFB0 /* LocationTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76E61EEE94270021BFB0 /* LocationTableViewController.xib */; };
+		009A76EB1EEE94270021BFB0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76E71EEE94270021BFB0 /* MapViewController.swift */; };
+		009A76EC1EEE94270021BFB0 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76E81EEE94270021BFB0 /* MapViewController.xib */; };
+		009A76EF1EEE94490021BFB0 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76ED1EEE94490021BFB0 /* MapViewCell.swift */; };
+		009A76F01EEE94490021BFB0 /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76EE1EEE94490021BFB0 /* MapViewCell.xib */; };
 		00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C5057F1EE068C9003101F4 /* CustomLocale.swift */; };
 		00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */; };
 		00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */; };
@@ -215,11 +228,24 @@
 		003C9A121EDFEAD7003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		003C9A161EDFEC02003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		003C9A181EDFEC02003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		004467AC1EEF82D900DDD0ED /* PendingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingController.swift; sourceTree = "<group>"; };
+		004467AD1EEF82D900DDD0ED /* PendingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PendingController.xib; sourceTree = "<group>"; };
+		004467B11EEF92BC00DDD0ED /* RecievedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecievedController.swift; sourceTree = "<group>"; };
+		004467B21EEF92BC00DDD0ED /* RecievedController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecievedController.xib; sourceTree = "<group>"; };
+		004467B61EEF97FB00DDD0ED /* DoingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoingController.swift; sourceTree = "<group>"; };
+		004467B71EEF97FB00DDD0ED /* DoingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoingController.xib; sourceTree = "<group>"; };
+		004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		009A76D31EEE8B250021BFB0 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
 		009A76DF1EEE8F480021BFB0 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		009A76E11EEE92360021BFB0 /* OwnerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerHistoryViewController.swift; sourceTree = "<group>"; };
 		009A76E21EEE92360021BFB0 /* OwnerHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OwnerHistoryViewController.xib; sourceTree = "<group>"; };
+		009A76E51EEE94270021BFB0 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		009A76E61EEE94270021BFB0 /* LocationTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationTableViewController.xib; sourceTree = "<group>"; };
+		009A76E71EEE94270021BFB0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		009A76E81EEE94270021BFB0 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		009A76ED1EEE94490021BFB0 /* MapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCell.swift; sourceTree = "<group>"; };
+		009A76EE1EEE94490021BFB0 /* MapViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewCell.xib; sourceTree = "<group>"; };
 		00C5057F1EE068C9003101F4 /* CustomLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocale.swift; sourceTree = "<group>"; };
 		00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerHistoryViewController.swift; sourceTree = "<group>"; };
@@ -370,6 +396,10 @@
 		0027152A1EE7AF42006E6671 /* AroundItemController */ = {
 			isa = PBXGroup;
 			children = (
+				009A76E51EEE94270021BFB0 /* LocationTableViewController.swift */,
+				009A76E61EEE94270021BFB0 /* LocationTableViewController.xib */,
+				009A76E71EEE94270021BFB0 /* MapViewController.swift */,
+				009A76E81EEE94270021BFB0 /* MapViewController.xib */,
 				00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */,
 				00EB19401EE93E81003B2C5D /* WorkAroundController.xib */,
 				0027152B1EE7AFAB006E6671 /* AroundItemController.swift */,
@@ -421,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				002A04441EE11C97001876E5 /* xibView.swift */,
+				004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -480,6 +511,8 @@
 		003BC6741ED9D8ED00FF6D14 /* AroundCell */ = {
 			isa = PBXGroup;
 			children = (
+				009A76ED1EEE94490021BFB0 /* MapViewCell.swift */,
+				009A76EE1EEE94490021BFB0 /* MapViewCell.xib */,
 				003BC6771ED9D8ED00FF6D14 /* WorkTableViewCell.swift */,
 				003BC6781ED9D8ED00FF6D14 /* WorkTableViewCell.xib */,
 				002A043B1EE116AB001876E5 /* WorkAround.swift */,
@@ -517,11 +550,41 @@
 		003C9A071EDFC813003F1189 /* ManageController */ = {
 			isa = PBXGroup;
 			children = (
+				004467B51EEF97EA00DDD0ED /* DoingController */,
+				004467B01EEF92A600DDD0ED /* RecievedController */,
+				004467AB1EEF82A900DDD0ED /* ProcessController */,
 				003175E11EE68A8900F3F9B4 /* WaittingController */,
 				003C9A081EDFC85F003F1189 /* ManageViewController.swift */,
 				003C9A0A1EDFC874003F1189 /* ManageViewController.xib */,
 			);
 			path = ManageController;
+			sourceTree = "<group>";
+		};
+		004467AB1EEF82A900DDD0ED /* ProcessController */ = {
+			isa = PBXGroup;
+			children = (
+				004467AC1EEF82D900DDD0ED /* PendingController.swift */,
+				004467AD1EEF82D900DDD0ED /* PendingController.xib */,
+			);
+			path = ProcessController;
+			sourceTree = "<group>";
+		};
+		004467B01EEF92A600DDD0ED /* RecievedController */ = {
+			isa = PBXGroup;
+			children = (
+				004467B11EEF92BC00DDD0ED /* RecievedController.swift */,
+				004467B21EEF92BC00DDD0ED /* RecievedController.xib */,
+			);
+			path = RecievedController;
+			sourceTree = "<group>";
+		};
+		004467B51EEF97EA00DDD0ED /* DoingController */ = {
+			isa = PBXGroup;
+			children = (
+				004467B61EEF97FB00DDD0ED /* DoingController.swift */,
+				004467B71EEF97FB00DDD0ED /* DoingController.xib */,
+			);
+			path = DoingController;
 			sourceTree = "<group>";
 		};
 		00CC0D421EEE3F7B002D24D4 /* PopupViewController */ = {
@@ -873,14 +936,19 @@
 			files = (
 				0022C5021EE84D1700027665 /* WorkerViewCell.xib in Resources */,
 				002A045B1EE14A82001876E5 /* InfoDetailCell.xib in Resources */,
+				004467B41EEF92BC00DDD0ED /* RecievedController.xib in Resources */,
 				002A043E1EE116AB001876E5 /* WorkAround.xib in Resources */,
+				009A76EC1EEE94270021BFB0 /* MapViewController.xib in Resources */,
 				003175E91EE68AC400F3F9B4 /* WaittingCell.xib in Resources */,
 				002BA1081EDD52F60099352D /* NotifiCell.xib in Resources */,
 				002572471EDE698200AACC52 /* ForgotPasswordViewController.xib in Resources */,
 				002BA1041EDD26090099352D /* MoreCell.xib in Resources */,
 				003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */,
+				009A76EA1EEE94270021BFB0 /* LocationTableViewController.xib in Resources */,
 				002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */,
+				009A76F01EEE94490021BFB0 /* MapViewCell.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
+				004467AF1EEF82D900DDD0ED /* PendingController.xib in Resources */,
 				00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
 				002BA0FB1EDD25400099352D /* MoreViewController.xib in Resources */,
@@ -891,6 +959,7 @@
 				002572511EDE9E1600AACC52 /* InforCell.xib in Resources */,
 				00EB194D1EE93EB4003B2C5D /* HistoryViewController.xib in Resources */,
 				002C570A1EDBDD420039BBCE /* HistoryViewCell.xib in Resources */,
+				004467B91EEF97FB00DDD0ED /* DoingController.xib in Resources */,
 				002A04601EE15084001876E5 /* DetailViewController.xib in Resources */,
 				009A76E41EEE92360021BFB0 /* OwnerHistoryViewController.xib in Resources */,
 				003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */,
@@ -1071,6 +1140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009A76EF1EEE94490021BFB0 /* MapViewCell.swift in Sources */,
 				002A045A1EE14A82001876E5 /* InfoDetailCell.swift in Sources */,
 				003175ED1EE6A6B000F3F9B4 /* AroundTask.swift in Sources */,
 				00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */,
@@ -1083,6 +1153,7 @@
 				002572321EDE568700AACC52 /* ConstactViewController.swift in Sources */,
 				00EB194A1EE93EB4003B2C5D /* FinishedWorkViewController.swift in Sources */,
 				003175E81EE68AC400F3F9B4 /* WaittingCell.swift in Sources */,
+				004467B81EEF97FB00DDD0ED /* DoingController.swift in Sources */,
 				009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */,
 				00EB195B1EE93EF5003B2C5D /* Process.swift in Sources */,
 				003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */,
@@ -1093,6 +1164,7 @@
 				0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */,
 				002A04501EE13B51001876E5 /* AlertManager.swift in Sources */,
 				00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */,
+				004467BB1EEF9B8900DDD0ED /* CustomTableViewCell.swift in Sources */,
 				00EB195A1EE93EF5003B2C5D /* Owner.swift in Sources */,
 				0025723C1EDE633500AACC52 /* RuleViewController.swift in Sources */,
 				002A045F1EE15084001876E5 /* DetailViewController.swift in Sources */,
@@ -1106,7 +1178,9 @@
 				002C57081EDBDD330039BBCE /* HistoryViewCell.swift in Sources */,
 				009A76DC1EEE8EF90021BFB0 /* OwnerServices.swift in Sources */,
 				00EB193D1EE93E61003B2C5D /* LoginView.swift in Sources */,
+				004467B31EEF92BC00DDD0ED /* RecievedController.swift in Sources */,
 				003BC6991ED9E16300FF6D14 /* Work.swift in Sources */,
+				004467AE1EEF82D900DDD0ED /* PendingController.swift in Sources */,
 				003175E41EE68A8900F3F9B4 /* WaittingController.swift in Sources */,
 				003BC68A1ED9D94F00FF6D14 /* AppModel.swift in Sources */,
 				002572371EDE5FB800AACC52 /* AboutViewController.swift in Sources */,
@@ -1136,7 +1210,9 @@
 				00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */,
 				0022C5011EE84D1700027665 /* WorkerViewCell.swift in Sources */,
 				00EB195C1EE93EF5003B2C5D /* Request.swift in Sources */,
+				009A76E91EEE94270021BFB0 /* LocationTableViewController.swift in Sources */,
 				0025724B1EDE9D9100AACC52 /* InformationViewController.swift in Sources */,
+				009A76EB1EEE94270021BFB0 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

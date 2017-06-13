@@ -27,13 +27,13 @@ class ManageViewController: BaseViewController {
         super.setupViewBase()
         self.title = "Taskmanagement".localize
     }
+    
     @IBAction func segmentControlAction(_ sender: Any) {
         tbManage.reloadData()
     }
     func getProcess() {
         let parameterCreate = ["process":"\(WorkStatus.OnCreate.rawValue)"]
         let parmaterPending = ["process":"\(WorkStatus.Pending.rawValue)"]
-        //let parmaterDone = ["process":"\(WorkStatus.Done.rawValue)"]
         let parmaterOnDoing = ["process":"\(WorkStatus.OnDoing.rawValue)"]
         let parmaterRecieve = ["process":"\(WorkStatus.Recieved.rawValue)"]
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
@@ -88,6 +88,7 @@ extension ManageViewController:UITableViewDataSource{
             cell?.createdDate.text = processOnCreate[indexPath.row].info?.address?.name
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processOnCreate[indexPath.row].process?.name
+            UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
         case 1:
             cell?.workNameLabel.text = processRecieved[indexPath.row].info?.title
             cell?.createdDate.text = processRecieved[indexPath.row].info?.address?.name
@@ -109,6 +110,25 @@ extension ManageViewController:UITableViewDelegate{
         return 94
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch segmentCtr.selectedSegmentIndex {
+        case 0:
+            let navi = PendingController(nibName: "PendingController", bundle: nil)
+                navi.processPending = processOnCreate[indexPath.row]
+                navigationController?.pushViewController(navi, animated: true)
+            break
+        case 1:
+            let navi = RecievedController(nibName: "RecievedController", bundle: nil)
+            navi.processRecieved = processRecieved[indexPath.row]
+            navigationController?.pushViewController(navi, animated: true)
+            break
+        case 2:
+            let navi = DoingController(nibName: "DoingController", bundle: nil)
+            navi.ProcessDoing = processOnDoing[indexPath.row]
+            navigationController?.pushViewController(navi, animated: true)
+            break
+        default:
+            break
+        }
     }
 }
 

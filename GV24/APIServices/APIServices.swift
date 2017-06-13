@@ -160,8 +160,6 @@ class APIService: NSObject {
                     completion(nil, message)
                     }
                 }
-                guard let data = json["data"].array else{return}
-                print(data)
                 completion(json, nil)
             case .failure(let error):
                 completion(nil, error.localizedDescription)

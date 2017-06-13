@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommentCell: UITableViewCell {
+class CommentCell: CustomTableViewCell {
 
     @IBOutlet weak var imageAvatar: UIImageView!
     override func awakeFromNib() {
@@ -16,12 +16,6 @@ class CommentCell: UITableViewCell {
         // Initialization code
         imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
         imageAvatar.clipsToBounds = true
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

@@ -33,7 +33,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen van A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKq-Mx-div">
-                        <rect key="frame" x="46" y="0.5" width="97" height="18"/>
+                        <rect key="frame" x="46" y="4.5" width="97" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                         <rect key="frame" x="0.0" y="42" width="375" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="lkN-ax-xgP"/>
+                            <constraint firstAttribute="height" constant="1" id="3eP-wM-zI5"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxt-4V-QaK">
@@ -67,22 +67,24 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oRf-WL-mHp" firstAttribute="top" secondItem="TKq-Mx-div" secondAttribute="bottom" constant="7" id="2Xp-9T-zIZ"/>
+                    <constraint firstItem="TKq-Mx-div" firstAttribute="leading" secondItem="RAp-YY-Ygx" secondAttribute="trailing" constant="8" id="1PG-G1-AWY"/>
+                    <constraint firstItem="oRf-WL-mHp" firstAttribute="top" secondItem="TKq-Mx-div" secondAttribute="bottom" constant="3" id="C0p-i4-Xso"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-0.5" id="D1E-1P-Sh5"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="K7N-lE-vdx"/>
-                    <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" constant="3" id="MCE-KO-NWC"/>
-                    <constraint firstItem="TKq-Mx-div" firstAttribute="leading" secondItem="RAp-YY-Ygx" secondAttribute="trailing" constant="8" id="MaD-z9-3Wd"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Oh9-6N-Gkd"/>
-                    <constraint firstItem="oRf-WL-mHp" firstAttribute="leading" secondItem="TKq-Mx-div" secondAttribute="leading" id="Tqy-Wa-g5F"/>
-                    <constraint firstItem="jOn-Cv-dAZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="UHz-A1-aQG"/>
-                    <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="oRf-WL-mHp" secondAttribute="bottom" constant="4" id="ZcF-nY-Nau"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Jn0-47-poD" secondAttribute="trailing" id="eP8-Wx-3QH"/>
-                    <constraint firstItem="TKq-Mx-div" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-7.5" id="i0a-Z7-QnE"/>
-                    <constraint firstAttribute="trailing" secondItem="jOn-Cv-dAZ" secondAttribute="trailing" id="jjF-4p-TAg"/>
+                    <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="RAp-YY-Ygx" secondAttribute="bottom" constant="7.5" id="q48-eb-jyl"/>
+                    <constraint firstItem="oRf-WL-mHp" firstAttribute="leading" secondItem="TKq-Mx-div" secondAttribute="leading" id="vNi-TG-reI"/>
+                    <constraint firstItem="TKq-Mx-div" firstAttribute="top" secondItem="RAp-YY-Ygx" secondAttribute="top" id="wa5-Ks-Jqm"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-16.75" id="xH3-eh-n75"/>
+                    <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" constant="3" id="yYr-fz-V9n"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4.5" id="zSr-6s-dOx"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jOn-Cv-dAZ" secondAttribute="trailing" id="ep4-JL-1Bz"/>
+                <constraint firstItem="jOn-Cv-dAZ" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" id="tui-Qg-1BC"/>
+            </constraints>
             <connections>
                 <outlet property="addressName" destination="oRf-WL-mHp" id="kC6-Kj-5ix"/>
                 <outlet property="aroundRight" destination="Jn0-47-poD" id="06W-Jd-yMb"/>

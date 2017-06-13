@@ -12,7 +12,7 @@ import IoniconsSwift
 protocol chooseWorkDelegate:class {
     func chooseAction()
 }
-class WorkDetailCell: UITableViewCell {
+class WorkDetailCell: CustomTableViewCell {
     @IBOutlet weak var imageName: UIImageView!
     @IBOutlet weak var nameUser: UILabel!
     @IBOutlet weak var addressName: UILabel!

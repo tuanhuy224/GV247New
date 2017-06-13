@@ -14,7 +14,6 @@ import SwiftyJSON
 
 class HomeViewDisplayController: BaseViewController {
     var user:User?
-    let url = "https://yukotest123.herokuapp.com/en/owner/getById"
     @IBOutlet weak var workAround: UIButton!
     @IBOutlet weak var manageButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
@@ -97,7 +96,6 @@ class HomeViewDisplayController: BaseViewController {
         button.setTitleColor(UIColor.white, for: UIControlState.highlighted)
         button.titleEdgeInsets = UIEdgeInsets(top: textTop, left: -myImage!.size.width, bottom: textBottom, right: 0.0)
     }
-    
     @IBAction func AroundButton(_ sender: Any) {
         let around = WorkAroundController(nibName: "WorkAroundController", bundle: nil)
             around.arrays = arrays

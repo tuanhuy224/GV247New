@@ -43,19 +43,4 @@ class UserService: APIService {
         }
     }
     
-    
-//    private func getMaidProfileFrom(json : JSON) -> [MaidProfile]?{
-//        if let data = json.array{
-//            var listMaidProfile : [MaidProfile] = [MaidProfile]()
-//            for maidData in data {
-//                listMaidProfile.append(MaidProfile(jsonData: maidData))
-//            }
-//            return listMaidProfile
-//        }
-//        
-//        return nil
-//    }
-    
-    
-    
 }
