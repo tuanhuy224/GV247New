@@ -40,10 +40,10 @@ class UserDefaultHelper {
                    "email":user!.email!,
                    "phone":user!.phone!,
                    "avatarUrl": user!.image!,
-                   "addressName":(user?.address?.name)!,
+                   "addressName":user!.nameAddress ?? "",
                    "gender":user!.gender!,
-                    "lat":(user?.address?.location?.latitude)!,
-                    "lng":(user?.address?.location?.longitude)!
+                    "lat":user!.address!.location!.latitude,
+                    "lng":user!.address!.location!.longitude
                    ] as Dictionary<String, Any>
         UserDefaults.standard.set(dic, forKey: "user")
         UserDefaults.standard.set(token, forKey: "token")
@@ -61,8 +61,7 @@ class UserDefaultHelper {
                 user.email = userDic["email"] as? String
                 user.phone = userDic["phone"] as? String
                 user.image = userDic["avatarUrl"] as? String
-                let address = Address()
-                address.name = userDic["addressName"] as? String
+                user.nameAddress = userDic["addressName"] as? String
                 user.lat = (userDic["lat"] as? Double)!
                 user.lng = (userDic["lng"] as? Double)!
                 user.gender = userDic["gender"] as? Int

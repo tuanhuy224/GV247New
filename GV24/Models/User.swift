@@ -21,25 +21,25 @@ class User: AppModel {
     var owner:Owner?
     var lat:Double?
     var lng:Double?
-    
+    var nameAddress:String?
     override init(){
     super.init()
     }
     override init(json:JSON?) {
         super.init()
-        self.id = json?["_id"].string
-        self.gender = json?["info"]["gender"].int
-        self.name = json?["info"]["name"].string
-        self.phone = json?["info"]["phone"].string
-        self.username = json?["info"]["username"].string
-        self.email = json?["info"]["email"].string
-        self.image = json?["info"]["image"].string
+        self.id = json?["_id"].string ?? ""
+        self.gender = json?["info"]["gender"].int ?? 0
+        self.name = json?["info"]["name"].string ?? ""
+        self.phone = json?["info"]["phone"].string ?? ""
+        self.username = json?["info"]["username"].string ?? ""
+        self.email = json?["info"]["email"].string ?? ""
+        self.image = json?["info"]["image"].string ?? ""
         self.address = Address(json:(json?["info"]["address"])!)
         self.owner = Owner(json: (json?["stakeholders"]["owner"])!)
+        self.nameAddress = json?["info"]["address"]["name"].string
         
     }
 }
-
 class DataUser: User {
     var data:[User]?
     init?(json data:JSON) {

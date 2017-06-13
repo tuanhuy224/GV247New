@@ -22,6 +22,7 @@ class ManageViewController: BaseViewController {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
         getProcess()
+        segmentCtr.backgroundColor = UIColor.white
     }
     override func setupViewBase() {
         super.setupViewBase()

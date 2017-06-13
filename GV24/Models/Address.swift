@@ -15,14 +15,14 @@ class Address: AppModel {
     override init() {
         super.init()
     }
-    init(name : String, location : CLLocationCoordinate2D){
-        super.init()
-        self.name = name
-        self.location = location
-    }
+//    init(name : String, location : CLLocationCoordinate2D){
+//        super.init()
+//        self.name = name
+//        self.location = location
+//    }
     override init(json : JSON){
         super.init(json: json)
-        self.name = json["name"].string
+        self.name = json["name"].string ?? ""
         self.location = CLLocationCoordinate2D()
         guard let addressLocation = json["coordinates"].dictionary  else {return}
         self.location?.latitude = (addressLocation["lat"]?.double)!

@@ -20,7 +20,6 @@ class InformationViewController: BaseViewController {
         tbInformation.allowsSelection = false
         self.user = UserDefaultHelper.currentUser
         customBarLeftButton()
-        self.user = UserDefaultHelper.currentUser
         NotificationCenter.default.addObserver(self, selector: #selector(InformationViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(InformationViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -107,9 +106,10 @@ extension InformationViewController:UITableViewDataSource{
                 DispatchQueue.main.async {
                     cell.avatar?.kf.setImage(with: url)
             }
-            cell.lbName.text = user?.name
+            cell.imageProfile.kf.setImage(with: url)
+            cell.lbName.text = user?.username
             cell.lbPhone.text = user?.phone
-            cell.lbAddress.text = user?.address?.name
+            cell.lbAddress.text = user?.nameAddress
             return cell
         }else{
             let cell:CommentCell = tbInformation.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentCell
