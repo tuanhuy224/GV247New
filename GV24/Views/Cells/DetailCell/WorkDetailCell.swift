@@ -9,8 +9,9 @@
 import UIKit
 import IoniconsSwift
 
-protocol chooseWorkDelegate:class {
-    func chooseAction()
+@objc protocol chooseWorkDelegate:class {
+    @objc optional func chooseAction()
+    @objc optional func detailManagementDelegate()
 }
 class WorkDetailCell: CustomTableViewCell {
     @IBOutlet weak var imageName: UIImageView!
@@ -29,10 +30,13 @@ class WorkDetailCell: CustomTableViewCell {
     }
     @IBAction func btChooseAction(_ sender: Any) {
         if delegate != nil {
-            delegate?.chooseAction()
+            delegate?.chooseAction!()
         }
     }
     @IBAction func aroundRightAction(_ sender: Any) {
+        if delegate != nil {
+            delegate?.detailManagementDelegate!()
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

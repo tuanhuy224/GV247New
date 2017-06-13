@@ -37,6 +37,7 @@ extension PendingController:UITableViewDataSource{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
             cell.nameUser.text = processPending?.stakeholders?.owner?.name
+            cell.delegate = self
             cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
             let url = URL(string: (processPending?.stakeholders?.owner?.image)!)
             cell.imageName.kf.setImage(with: url)
@@ -63,5 +64,12 @@ extension PendingController:UITableViewDelegate{
         default:
             return 284
         }
+    }
+}
+extension PendingController:chooseWorkDelegate{
+    func detailManagementDelegate() {
+        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+        navi.workPending = processPending
+        navigationController?.pushViewController(navi, animated: true)
     }
 }

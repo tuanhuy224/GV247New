@@ -39,25 +39,25 @@ class ManageViewController: BaseViewController {
         let parmaterRecieve = ["process":"\(WorkStatus.Recieved.rawValue)"]
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiService = AroundTask.sharedInstall
-        apiService.getProcessID(url: urlPocess, parameter: parameterCreate, header: header) { (json, error) in
+        apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parameterCreate, header: header) { (json, error) in
             if json != nil{
                 self.processOnCreate = json!
             }
             self.tbManage.reloadData()
             }
-        apiService.getProcessID(url: urlPocess, parameter: parmaterPending, header: header) { (json, error) in
+        apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
             if json != nil{
                 self.processPending = json!
             }
             self.tbManage.reloadData()
             }
-        apiService.getProcessID(url: urlPocess, parameter: parmaterRecieve, header: header) { (json, error) in
+        apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterRecieve, header: header) { (json, error) in
             if json != nil{
                 self.processRecieved = json!
             }
             self.tbManage.reloadData()
             }
-        apiService.getProcessID(url: urlPocess, parameter: parmaterOnDoing, header: header) { (json, error) in
+        apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterOnDoing, header: header) { (json, error) in
             if json != nil{
                 self.processOnDoing = json!
             }

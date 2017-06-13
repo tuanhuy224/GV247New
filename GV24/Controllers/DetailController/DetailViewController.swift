@@ -43,7 +43,7 @@ class DetailViewController: BaseViewController {
         let apiService = APIService.shared
         let parameter:Parameters = ["id":idWork!]
         let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-        apiService.postReserve(url: urlReserve, method: .post, parameters: parameter, header: header) { (json, error) in
+        apiService.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, error) in
             if json == "SUCCESS"{
                 self.isStatus = true
             }

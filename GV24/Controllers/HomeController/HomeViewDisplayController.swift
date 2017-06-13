@@ -46,11 +46,9 @@ class HomeViewDisplayController: BaseViewController {
         }
     }
     func loadData() {
-        let url = "https://yukotest123.herokuapp.com/en/more/getTaskAround"
         let apiService = APIService.shared
         let param:[String:Double] = ["lng": 106.6882557,"lat": 10.7677238]
-        //handleRefresh.endRefreshing()
-        apiService.getAllAround(url: url, method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
+        apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
             if let jsonArray = json?.array{
                 for data in jsonArray{
                     self.arrays.append(Around(json: data))
