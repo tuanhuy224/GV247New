@@ -49,7 +49,7 @@ class ManageViewController: BaseViewController {
                 self.processPending = json!
             }
             self.tbManage.reloadData()
-        }
+            }
         apiService.getProcessID(url: urlPocess, parameter: parmaterRecieve, header: header) { (json, error) in
             if json != nil{
                 self.processRecieved = json!

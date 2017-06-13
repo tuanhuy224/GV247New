@@ -21,7 +21,7 @@ class HistoryViewCell: UITableViewCell {
     
     @IBOutlet weak var iconAlarm: UIImageView!{
         didSet{
-            let icon = Ionicons.iosAlarm.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
+            let icon = Ionicons.androidAlarmClock.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
             btImage.setImage(icon, for: .normal)
 
         }

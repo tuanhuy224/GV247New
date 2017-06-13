@@ -29,7 +29,7 @@ class InfoDetailCell: CustomTableViewCell {
         imageMoney.backgroundColor = UIColor.clear
         imageDate.backgroundColor = UIColor.clear
         imageMoney.image = Ionicons.socialUsd.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
-        imageDate.image = Ionicons.iosAlarm.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
+        imageDate.image = Ionicons.androidAlarmClock.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
         imageAddress.image = Ionicons.home.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
     }
 
