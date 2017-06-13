@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManagerHistoryViewController: UIViewController {
+class ManagerHistoryViewController: BaseViewController {
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var toDateButton: UIButton!
@@ -22,9 +22,9 @@ class ManagerHistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        self.automaticallyAdjustsScrollViewInsets = false
         
         workListVC = HistoryViewController()
         ownerListVC = OwnerHistoryViewController()
@@ -64,10 +64,12 @@ class ManagerHistoryViewController: UIViewController {
         if sender.selectedSegmentIndex == 1 {
             workListVC?.view.isHidden = true
             ownerListVC?.view.isHidden = false
+            self.reloadOwnerListViewController()
         }
         else {
             workListVC?.view.isHidden = false
             ownerListVC?.view.isHidden = true
+            self.reloadWorkListViewController()
         }
     }
 
@@ -91,6 +93,24 @@ class ManagerHistoryViewController: UIViewController {
             popup.effectView.alpha = 0.5
         }
     }
+    
+    func reloadWorkListViewController() {
+        workListVC?.workList.removeAll()
+        workListVC?.historyTableView.reloadData()
+        workListVC?.startAtDate = fromDate
+        workListVC?.endAtDate = toDate
+        workListVC?.getWorkList(startAt: fromDate, endAt: toDate)
+    }
+    
+    func reloadOwnerListViewController() {
+        ownerListVC?.ownerList.removeAll()
+        ownerListVC?.tableView.reloadData()
+        ownerListVC?.getOwnerList(startAt: fromDate, endAt: toDate)
+    }
+    
+    override func setupViewBase() {}
+    
+    override func decorate() {}
 }
 
 extension ManagerHistoryViewController: PopupViewControllerDelegate {
@@ -104,14 +124,10 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
             toDate = date
         }
         if segmentControl.selectedSegmentIndex == 0 {
-            workListVC?.workList.removeAll()
-            workListVC?.historyTableView.reloadData()
-            workListVC?.getWorkList(startAt: fromDate, endAt: toDate)
+            self.reloadWorkListViewController()
         }
         else {
-            ownerListVC?.ownerList.removeAll()
-            ownerListVC?.tableView.reloadData()
-            ownerListVC?.getOwnerList(startAt: fromDate, endAt: toDate)
+            self.reloadOwnerListViewController()
         }
     }
 }

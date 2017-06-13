@@ -114,6 +114,7 @@
 		842FEC7F1ED40C6900000606 /* GV24Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC7E1ED40C6900000606 /* GV24Tests.swift */; };
 		842FEC8A1ED40C6900000606 /* GV24UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC891ED40C6900000606 /* GV24UITests.swift */; };
 		842FECA01ED40DA800000606 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC9E1ED40DA800000606 /* CustomView.swift */; };
+		844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E7E421EEFA8D50059B5AD /* AlertHelper.swift */; };
 		84606A581EEEA684000E4092 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84606A541EEEA684000E4092 /* LocationTableViewController.swift */; };
 		84606A591EEEA684000E4092 /* LocationTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84606A551EEEA684000E4092 /* LocationTableViewController.xib */; };
 		84606A5A1EEEA684000E4092 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84606A561EEEA684000E4092 /* MapViewController.swift */; };
@@ -265,6 +266,7 @@
 		842FEC891ED40C6900000606 /* GV24UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GV24UITests.swift; sourceTree = "<group>"; };
 		842FEC8B1ED40C6900000606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842FEC9E1ED40DA800000606 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		844E7E421EEFA8D50059B5AD /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		84606A541EEEA684000E4092 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		84606A551EEEA684000E4092 /* LocationTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationTableViewController.xib; sourceTree = "<group>"; };
 		84606A561EEEA684000E4092 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 			isa = PBXGroup;
 			children = (
 				841D81141ED57F3C00C916EC /* Fonts */,
+				844E7E421EEFA8D50059B5AD /* AlertHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1110,6 +1113,7 @@
 				003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */,
 				002A04451EE11C97001876E5 /* xibView.swift in Sources */,
 				002AFD641EE7FD8800D3B88A /* APIPath.swift in Sources */,
+				844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */,
 				003BC6951ED9DA0600FF6D14 /* Constant.swift in Sources */,
 				00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */,
 				0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */,

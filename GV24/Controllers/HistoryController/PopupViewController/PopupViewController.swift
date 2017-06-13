@@ -12,7 +12,7 @@ protocol PopupViewControllerDelegate: class {
     func selectedDate(date: Date, isFromDate: Bool, isToDate: Bool)
 }
 
-class PopupViewController: UIViewController {
+class PopupViewController: BaseViewController {
 
     var delegate: PopupViewControllerDelegate?
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -27,18 +27,18 @@ class PopupViewController: UIViewController {
 
         datePicker.backgroundColor = UIColor.white
         effectView.alpha = 0
-        
     }
     
     @IBAction func selectDate(_ sender: Any) {
         if isFromDate == true {
-            if datePicker.date.compare(toDate) == ComparisonResult.orderedAscending {
+            if datePicker.date.compare(toDate) == ComparisonResult.orderedAscending || String.convertDateToString(date: datePicker.date, withFormat: "dd/MM/yyyy") == String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy") {
                 print("aaa: ascending")
                 doDismiss(date: datePicker.date, isFromDate: true, isToDate: false)
             }
             else {
                 print("aaa: descending")
-                showAlert(title: "Message", message: "The selected date must be less than the to date.")
+                let alertController = AlertHelper.sharedInstance.showAlertError(title: "Message", message: "Please select begin date lesser than\nor equal to end date.")
+                present(alertController, animated: true, completion: nil)
             }
         }
         else {
@@ -46,23 +46,17 @@ class PopupViewController: UIViewController {
                 doDismiss(date: datePicker.date, isFromDate: false, isToDate: true)
             }
             else {
-                if datePicker.date.compare(fromDate!) == ComparisonResult.orderedDescending {
+                if datePicker.date.compare(fromDate!) == ComparisonResult.orderedDescending || String.convertDateToString(date: datePicker.date, withFormat: "dd/MM/yyyy") == String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy") {
                     print("bbb: descending")
                     doDismiss(date: datePicker.date, isFromDate: false, isToDate: true)
                 }
                 else {
                     print("bbb: ascending")
-                    showAlert(title: "Message", message: "The selected date must be greater than the from date.")
+                    let alertController = AlertHelper.sharedInstance.showAlertError(title: "Message", message: "Please select end date greater than\nor equal to begin date.")
+                    present(alertController, animated: true, completion: nil)
                 }
             }
         }
-    }
-    
-    fileprivate func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -75,5 +69,9 @@ class PopupViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         delegate?.selectedDate(date: date, isFromDate: isFromDate, isToDate: isToDate)
     }
+    
+    override func setupViewBase() {}
+    
+    override func decorate() {}
 
 }
