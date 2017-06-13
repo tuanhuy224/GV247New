@@ -19,6 +19,7 @@ enum urlPath:String {
     case urlReserve = "/task/reserve"
     case urlPocess = "/maid/getAllTasks"
     case urlOwner = "/owner/getById"
+    case taskGetById = "/task/getById"
 }
 
 struct APIPaths {
@@ -43,6 +44,9 @@ struct APIPaths {
         return "rootDomain".localize + urlPath.urlPocess.rawValue
     }
     func urlOwner() -> String {
+        return "rootDomain".localize + urlPath.urlOwner.rawValue
+    }
+    func taskGetById() -> String {
         return "rootDomain".localize + urlPath.urlOwner.rawValue
     }
     

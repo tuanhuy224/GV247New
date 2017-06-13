@@ -18,7 +18,7 @@ class DetailViewController: BaseViewController {
     var titleString:String?
     var works = Work()
     let aroundView:WorkAroundController = WorkAroundController(nibName: "WorkAroundController", bundle: nil)
-    let url = "https://yukotest123.herokuapp.com/en/task/getById"
+    //let url = "https://yukotest123.herokuapp.com/en/task/getById"
     override func viewDidLoad() {
         super.viewDidLoad()
         tbDetail.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
@@ -32,7 +32,7 @@ class DetailViewController: BaseViewController {
     func loadData() {
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         let parameter:Parameters = ["id":"\(UserDefaultHelper.getString()!)"]
-        APIService.shared.getUrl(url: url, param: parameter, header: headers) { (json, error) in
+        APIService.shared.getUrl(url: APIPaths().taskGetById(), param: parameter, header: headers) { (json, error) in
         }
     }
     override func setupViewBase() {
