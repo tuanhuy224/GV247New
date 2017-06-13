@@ -18,32 +18,39 @@ class OwnerHistoryViewController: BaseViewController {
     var activityIndicatorView:UIActivityIndicatorView!
     
     @IBOutlet weak var segment: UISegmentedControl!
+    var refreshControl: UIRefreshControl!
+    var startAtDate: Date? = nil
+    var endAtDate: Date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         tableView.allowsSelection = false
-        tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0.01))
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(OwnerHistoryViewController.updateOwnerList), for: UIControlEvents.valueChanged)
+        self.tableView.addSubview(self.refreshControl)
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName:"OwnerHistoryViewCell",bundle:nil), forCellReuseIdentifier: "OwnerHistoryCell")
         self.activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.tableView.backgroundView = self.activityIndicatorView
-        getOwnerList(startAt: nil, endAt: Date())
+        getOwnerList(startAt: startAtDate, endAt: endAtDate)
     }
-
+    
+    @objc fileprivate func updateOwnerList(){
+        self.refreshControl.endRefreshing()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Chủ nhà đã làm"
-        segment.selectedSegmentIndex = 1
     }
     
     override func setupViewBase() {
         super.setupViewBase()
     }
     
-    override func decorate() {
-        
-    }
+    override func decorate() {}
     
     /* /maid/getAllWorkedOwner
      params: startAt, endAt
@@ -52,16 +59,17 @@ class OwnerHistoryViewController: BaseViewController {
         self.activityIndicatorView.startAnimating()
         var params: [String: Any] = [:]
         if startAt != nil {
-            params["startAt"] = String.convertDateToISODateType(date: startAt!)
+            params["startAt"] = "\(String.convertDateToISODateType(date: startAt!)!)"
         }
-        params["endAt"] = String.convertDateToISODateType(date: endAt)
+        params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         let headers: HTTPHeaders = ["hbbgvauth": UserDefaultHelper.getToken()!]
-        OwnerServices.sharedInstance.getOwnerList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, err) in
+        OwnerServices.sharedInstance.getOwnersList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, err) in
             if err == nil {
                 if data != nil {
                     self.ownerList.append(contentsOf: data!)
                     DispatchQueue.main.async {
                         self.activityIndicatorView.stopAnimating()
+                        self.tableView.backgroundView = nil
                         self.tableView.reloadData()
                     }
                 }
@@ -74,15 +82,17 @@ class OwnerHistoryViewController: BaseViewController {
     }
     
     fileprivate func configureOwnerCell(cell: OwnerHistoryViewCell, indexPath: IndexPath) {
-        let owner = ownerList[indexPath.item]
-        if let imageString = owner.image {
-            let url = URL(string: imageString)
-            cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+        if ownerList.count != 0 {
+            let owner = ownerList[indexPath.item]
+            if let imageString = owner.image {
+                let url = URL(string: imageString)
+                cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+            }
+            cell.userName.text = owner.name
+            cell.dateLabel.text = String.convertISODateToString(isoDateStr: (owner.workTime.last)!, format: "dd/MM/yyyy")
+            cell.workListButton.tag = indexPath.item
+            cell.workListButton.addTarget(self, action: #selector(OwnerHistoryViewController.btnClicked(sender:)), for: UIControlEvents.touchUpInside)
         }
-        cell.userName.text = owner.name
-        cell.dateLabel.text = String.convertISODateToString(isoDateStr: (owner.workTime.first)!, format: "dd/MM/yyyy")
-        cell.workListButton.tag = indexPath.item
-        cell.workListButton.addTarget(self, action: #selector(OwnerHistoryViewController.btnClicked(sender:)), for: UIControlEvents.touchUpInside)
     }
     
     @objc fileprivate func btnClicked(sender: UIButton) {
@@ -118,15 +128,5 @@ extension OwnerHistoryViewController: UITableViewDataSource {
 extension OwnerHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        footerView.backgroundColor = UIColor.colorWithRedValue(redValue: 237, greenValue: 236, blueValue: 243, alpha: 1)
-        return footerView
     }
 }

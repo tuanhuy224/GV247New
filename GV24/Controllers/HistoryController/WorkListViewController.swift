@@ -16,14 +16,21 @@ class WorkListViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var list:[Work] = []
     var owner: Owner?
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         self.automaticallyAdjustsScrollViewInsets = false
         let nib = UINib(nibName: "HistoryViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "historyCell")
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(WorkListViewController.updateOwnerList), for: UIControlEvents.valueChanged)
+        self.tableView.addSubview(self.refreshControl)
+    }
+    
+    @objc fileprivate func updateOwnerList(){
+        self.refreshControl.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,9 +38,7 @@ class WorkListViewController: BaseViewController {
         title = "Danh sách công việc"
     }
 
-    override func setupViewBase() {
-        
-    }
+    override func setupViewBase() {}
     
     override func decorate() {
         getWorkListWith()
@@ -42,46 +47,45 @@ class WorkListViewController: BaseViewController {
     fileprivate func getWorkListWith() {
         //let params:[String:AnyObject] = [:]
         //let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
-        
     }
     
     func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
-      /*  let work = list[indexPath.item]
-        
-        if let imageString = work.info?.workName?.image {
-            let url = URL(string: imageString)
-            cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+        if list.count != 0 {
+            let work = list[indexPath.item]
+            
+            if let imageString = work.info?.workName?.image {
+                let url = URL(string: imageString)
+                cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+            }
+            
+            cell.workNameLabel.text = work.info?.title
+            
+            let startAt = work.workTime?.startAt
+            let startAtString = String(describing: startAt!)
+            let endAt = work.workTime?.endAt
+            let endAtString = String(describing: endAt!)
+            
+            cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")
+            
+            let now = Date()
+            let startAtDate = String.convertISODateToDate(isoDateStr: startAtString)
+            
+            let executionTime = now.timeIntervalSince(startAtDate!)
+            let secondsInHour: Double = 3600
+            let hoursBetweenDates = Int(executionTime/secondsInHour)
+            let daysBetweenDates = Int(executionTime/86400)
+            let minutesBetweenDates = Int(executionTime/60)
+            
+            if minutesBetweenDates > 60 {
+                cell.estimateWorkTime.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
+            }
+            else {
+                cell.estimateWorkTime.text = "\(minutesBetweenDates) phút trước"
+            }
+            
+            cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
         }
-        
-        cell.workNameLabel.text = work.info?.title
-        
-        let startAt = work.workTime?.startAt
-        let startAtString = String(describing: startAt!)
-        let endAt = work.workTime?.endAt
-        let endAtString = String(describing: endAt!)
-        
-        cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")
-        
-        let now = Date()
-        let startAtDate = String.convertISODateToDate(isoDateStr: startAtString)
-        
-        let executionTime = now.timeIntervalSince(startAtDate!)
-        let secondsInHour: Double = 3600
-        let hoursBetweenDates = Int(executionTime/secondsInHour)
-        let daysBetweenDates = Int(executionTime/86400)
-        let minutesBetweenDates = Int(executionTime/60)
-        
-        if minutesBetweenDates > 60 {
-            cell.estimateWorkTime.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
-        }
-        else {
-            cell.estimateWorkTime.text = "\(minutesBetweenDates) phút trước"
-        }
-        
-        cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
-        */
     }
-    
 }
 
 extension WorkListViewController: UITableViewDataSource {
@@ -101,7 +105,7 @@ extension WorkListViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = FinishedWorkViewController()
 //        vc.work = list[indexPath.item]
-        //check if no comment or there is an comment
+        vc.isWorkListComing = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }

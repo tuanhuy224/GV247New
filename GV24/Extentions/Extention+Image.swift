@@ -173,7 +173,7 @@ extension Date{
 extension String {
     static func convertISODateToString(isoDateStr: String, format: String) -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         dateFormatter.timeZone = TimeZone.current
         let newDate = dateFormatter.date(from: isoDateStr)
         dateFormatter.dateFormat = format
@@ -182,7 +182,7 @@ extension String {
     
     static func convertISODateToDate(isoDateStr: String) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         dateFormatter.timeZone = TimeZone.current
         let newDate = dateFormatter.date(from: isoDateStr)
         return newDate
@@ -198,7 +198,7 @@ extension String {
     
     static func convertDateToISODateType(date: Date) -> String?{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         dateFormatter.timeZone = TimeZone.current
         let newISODateStr = dateFormatter.string(from: date)
         return newISODateStr

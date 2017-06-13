@@ -14,11 +14,12 @@ class OwnerServices: APIService {
     
     static let sharedInstance = OwnerServices()
     
-    func getOwnerList(url: String, param: Parameters, header: HTTPHeaders, completion: @escaping(([Owner]?, Error?) -> ())) {
+    func getOwnersList(url: String, param: Parameters, header: HTTPHeaders, completion: @escaping(([Owner]?, Error?) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
             switch response.result {
                 case .success(let value):
-                    let json = JSON(value).dictionary    
+                    let json = JSON(value).dictionary
+                    print("json : \(json)")
                     var list: [Owner] = []
                     if let status = json?["status"], status == true {
                         if let results = json?["data"]?.array {

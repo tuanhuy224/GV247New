@@ -16,6 +16,9 @@ class HistoryViewController: BaseViewController {
     var user:User?
     var workList: [Work] = []
     var myParent: ManagerHistoryViewController?
+    var page: Int = 1
+    var startAtDate: Date? = nil
+    var endAtDate: Date = Date()
     
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var segmentContainer: UIView!
@@ -23,6 +26,7 @@ class HistoryViewController: BaseViewController {
     @IBOutlet weak var fromDateContainer: UIView!
     
     var activityIndicatorView: UIActivityIndicatorView!
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +37,14 @@ class HistoryViewController: BaseViewController {
         historyTableView.tableFooterView = UIView()
         self.activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         historyTableView.backgroundView = self.activityIndicatorView
-        getWorkList(startAt: nil, endAt: Date())
+        getWorkList(startAt: startAtDate, endAt: endAtDate)
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(HistoryViewController.updateOwnerList), for: UIControlEvents.valueChanged)
+        self.historyTableView.addSubview(self.refreshControl)
+    }
+    
+    func updateOwnerList() {
+        self.refreshControl.endRefreshing()
     }
     
     override func decorate() {}
@@ -48,10 +59,10 @@ class HistoryViewController: BaseViewController {
         user = UserDefaultHelper.currentUser
         var params:[String:Any] = [:]
         if startAt != nil {
-            params["startAt"] = String.convertDateToISODateType(date: startAt!)
+            params["startAt"] = "\(String.convertDateToISODateType(date: startAt!)!)"
         }
-        params["endAt"] = String.convertDateToISODateType(date: endAt)
-        
+        params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
+        params["page"] = self.page
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getWorkListWith(status: WorkStatus.Done, url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
             if err == nil {
@@ -80,7 +91,6 @@ class HistoryViewController: BaseViewController {
     
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
         let work = workList[indexPath.item]
-        
         if let imageString = work.info?.workName?.image {
             let url = URL(string: imageString)
             cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
@@ -105,15 +115,22 @@ class HistoryViewController: BaseViewController {
         let minutesBetweenDates = Int(executionTime/60)
         
         if minutesBetweenDates > 60 {
-            cell.estimateWorkTime.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
+            cell.lbTimePost.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
         }
         else {
-            cell.estimateWorkTime.text = "\(minutesBetweenDates) phút trước"
+            cell.lbTimePost.text = "\(minutesBetweenDates) phút trước"
         }
         
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+        
+//        if indexPath.row == workList.count - 1 {
+//            self.activityIndicatorView.startAnimating()
+//            page = page + 1
+//            self.getWorkList(startAt: self.startAtDate, endAt: endAtDate)
+//        }
     }
 }
+
 extension HistoryViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workList.count
