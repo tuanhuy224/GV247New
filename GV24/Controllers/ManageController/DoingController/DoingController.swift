@@ -19,6 +19,7 @@ class DoingController: BaseViewController {
         tbDoing.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
         tbDoing.register(UINib(nibName:"WaittingCell",bundle:nil), forCellReuseIdentifier: "waittingCell")
         tbDoing.allowsSelection = false
+        tbDoing.separatorStyle = .none
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -61,7 +62,7 @@ extension DoingController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 80
+            return 94
         default:
             return 284
         }

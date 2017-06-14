@@ -17,6 +17,7 @@ class RecievedController: BaseViewController {
         tbRecieved.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
         tbRecieved.register(UINib(nibName:"WaittingCell",bundle:nil), forCellReuseIdentifier: "waittingCell")
         tbRecieved.allowsSelection = false
+        tbRecieved.separatorStyle = .none
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -60,7 +61,7 @@ extension RecievedController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 80
+            return 94
         default:
             return 284
         }

@@ -70,7 +70,7 @@ extension WaittingController:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 80
+            return 94
         }else if indexPath.section == 1{
             return 276
         }else{

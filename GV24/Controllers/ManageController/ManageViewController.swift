@@ -86,18 +86,21 @@ extension ManageViewController:UITableViewDataSource{
         switch segmentCtr.selectedSegmentIndex {
         case 0:
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
-            cell?.createdDate.text = processOnCreate[indexPath.row].info?.address?.name
+            cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processOnCreate[indexPath.row].process?.name
+            cell?.lbTimePost.text = Date().dateFormat(datePost: (processOnCreate[indexPath.row].history?.createAt)!)
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
         case 1:
             cell?.workNameLabel.text = processRecieved[indexPath.row].info?.title
-            cell?.createdDate.text = processRecieved[indexPath.row].info?.address?.name
+            cell?.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].history?.createAt)!).dayMonthYear)"
+            cell?.lbTimePost.text = Date().dateFormat(datePost: (processRecieved[indexPath.row].history?.createAt)!)
             cell?.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processRecieved[indexPath.row].process?.name
         case 2:
             cell?.workNameLabel.text = processOnDoing[indexPath.row].info?.title
-            cell?.createdDate.text = processOnDoing[indexPath.row].info?.address?.name
+            cell?.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].history?.createAt)!).dayMonthYear)"
+            cell?.lbTimePost.text = Date().dateFormat(datePost: (processOnDoing[indexPath.row].history?.createAt)!)
             cell?.timeWork.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processOnDoing[indexPath.row].process?.name
         default:

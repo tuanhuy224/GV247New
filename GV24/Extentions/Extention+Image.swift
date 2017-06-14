@@ -169,6 +169,21 @@ extension Date{
         let second = calendar.component(.second, from: self)
         return "\(hour)h\(minute)p\(second)"
     }
+    func dateFormat(datePost:String) -> String {
+        let dateInsert = Date(isoDateString: datePost)
+        let dateCurrent = Date()
+        let calendar = NSCalendar.current
+        let dateComponent = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateInsert, to: dateCurrent)
+        if dateComponent.month! > 0 {
+            return "\(dateComponent.month!) month \(dateComponent.day!) day \(dateComponent.hour!) hour \(dateComponent.minute!) minute"
+        }else if dateComponent.day! > 0{
+            return "\(dateComponent.day!) day \(dateComponent.hour!) hour \(dateComponent.minute!) minute"
+        }else if dateComponent.hour! > 0{
+            return "\(dateComponent.hour!) hour \(dateComponent.minute!) minute"
+        }else{
+            return "\(dateComponent.minute!) minute"
+        }
+    }
 }
 extension String {
     static func convertISODateToString(isoDateStr: String, format: String) -> String? {

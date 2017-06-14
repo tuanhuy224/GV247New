@@ -87,6 +87,8 @@
 		004467B91EEF97FB00DDD0ED /* DoingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004467B71EEF97FB00DDD0ED /* DoingController.xib */; };
 		004467BB1EEF9B8900DDD0ED /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */; };
 		004467BC1EEFF20900DDD0ED /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002572491EDE9D9100AACC52 /* InformationViewController.swift */; };
+		005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */; };
+		005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */; };
 		009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76D31EEE8B250021BFB0 /* Enum.swift */; };
 		009A76DC1EEE8EF90021BFB0 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */; };
 		009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DF1EEE8F480021BFB0 /* APIServices.swift */; };
@@ -238,6 +240,8 @@
 		004467B61EEF97FB00DDD0ED /* DoingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoingController.swift; sourceTree = "<group>"; };
 		004467B71EEF97FB00DDD0ED /* DoingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoingController.xib; sourceTree = "<group>"; };
 		004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforOwnerCell.swift; sourceTree = "<group>"; };
+		005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforOwnerCell.xib; sourceTree = "<group>"; };
 		009A76D31EEE8B250021BFB0 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
 		009A76DF1EEE8F480021BFB0 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
@@ -431,6 +435,8 @@
 				002A04551EE14667001876E5 /* WorkDetailCell.xib */,
 				002A04581EE14A82001876E5 /* InfoDetailCell.swift */,
 				002A04591EE14A82001876E5 /* InfoDetailCell.xib */,
+				005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */,
+				005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */,
 			);
 			path = DetailCell;
 			sourceTree = "<group>";
@@ -994,6 +1000,7 @@
 				00CC0D461EEE3F7B002D24D4 /* PopupViewController.xib in Resources */,
 				003C9A0B1EDFC874003F1189 /* ManageViewController.xib in Resources */,
 				002572331EDE568700AACC52 /* ConstactViewController.xib in Resources */,
+				005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */,
 				002572421EDE648800AACC52 /* LanguageViewController.xib in Resources */,
 				002572551EDEAD4000AACC52 /* CommentCell.xib in Resources */,
 				003BC67C1ED9D8ED00FF6D14 /* WorkTableViewCell.xib in Resources */,
@@ -1175,6 +1182,7 @@
 				003175E81EE68AC400F3F9B4 /* WaittingCell.swift in Sources */,
 				004467B81EEF97FB00DDD0ED /* DoingController.swift in Sources */,
 				00EDD49B1EF02D660098F505 /* DetailManagementController.swift in Sources */,
+				005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */,
 				009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */,
 				00EB195B1EE93EF5003B2C5D /* Process.swift in Sources */,
 				003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */,
