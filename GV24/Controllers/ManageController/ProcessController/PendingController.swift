@@ -15,7 +15,7 @@ class PendingController: BaseViewController {
         super.viewDidLoad()
         tbPending.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
         tbPending.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
-        tbPending.register(UINib(nibName:"WaittingCell",bundle:nil), forCellReuseIdentifier: "waittingCell")
+        tbPending.register(UINib(nibName:"CancelCell",bundle:nil), forCellReuseIdentifier: "cancelCell")
         tbPending.allowsSelection = false
         tbPending.separatorStyle = .none
     }
@@ -31,7 +31,7 @@ extension PendingController:UITableViewDataSource{
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section{
@@ -51,6 +51,10 @@ extension PendingController:UITableViewDataSource{
             cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processPending?.info?.salary ?? 0) $"
             return cell
+        case 2:
+            let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: "cancelCell", for: indexPath) as! CancelCell
+            cell.lbCancelDetail.isHidden = true
+            return cell
         default:
             break
         }
@@ -62,8 +66,10 @@ extension PendingController:UITableViewDelegate{
         switch indexPath.section {
         case 0:
             return 94
-        default:
+        case 1:
             return 284
+        default:
+            return 172
         }
     }
 }

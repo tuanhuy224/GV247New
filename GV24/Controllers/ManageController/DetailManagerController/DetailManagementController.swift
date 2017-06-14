@@ -57,9 +57,9 @@ extension DetailManagementController:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return self.view.frame.height/2 + 64
+            return 268
         }else{
-            return self.view.frame.height/2 - 64
+            return 246
         }
     }
 }

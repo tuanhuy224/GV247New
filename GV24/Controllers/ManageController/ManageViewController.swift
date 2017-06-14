@@ -22,7 +22,12 @@ class ManageViewController: BaseViewController {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
         getProcess()
+        
+    }
+    override func decorate() {
+        super.decorate()
         segmentCtr.backgroundColor = UIColor.white
+        segmentCtr.tintColor = UIColor.colorWithRedValue(redValue: 61, greenValue: 197, blueValue: 204, alpha: 1)
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -30,6 +35,14 @@ class ManageViewController: BaseViewController {
     }
     
     @IBAction func segmentControlAction(_ sender: Any) {
+        let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
+        for (index, view) in sortedViews.enumerated() {
+            if index == (sender as AnyObject).selectedSegmentIndex {
+                view.tintColor = UIColor.colorWithRedValue(redValue: 61, greenValue: 197, blueValue: 204, alpha: 1)
+            } else {
+                view.tintColor = UIColor.colorWithRedValue(redValue: 61, greenValue: 197, blueValue: 204, alpha: 1)
+            }
+        }
         tbManage.reloadData()
     }
     func getProcess() {

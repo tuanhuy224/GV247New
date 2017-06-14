@@ -17,7 +17,7 @@ class DoingController: BaseViewController {
 
         tbDoing.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
         tbDoing.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
-        tbDoing.register(UINib(nibName:"WaittingCell",bundle:nil), forCellReuseIdentifier: "waittingCell")
+        tbDoing.register(UINib(nibName:"CancelCell",bundle:nil), forCellReuseIdentifier: "cancelCell")
         tbDoing.allowsSelection = false
         tbDoing.separatorStyle = .none
     }
@@ -52,6 +52,9 @@ extension DoingController:UITableViewDataSource{
             cell.lbDate.text = "\(Date(isoDateString: (ProcessDoing?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (ProcessDoing?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(ProcessDoing?.info?.salary ?? 0) $"
             return cell
+        case 2:
+            let cell:CancelCell = tbDoing.dequeueReusableCell(withIdentifier: "cancelCell", for: indexPath) as! CancelCell
+            return cell
         default:
             break
         }
@@ -63,9 +66,10 @@ extension DoingController:UITableViewDelegate{
         switch indexPath.section {
         case 0:
             return 94
-        default:
+        case 1:
             return 284
+        default:
+            return 172
         }
     }
-    
 }

@@ -89,6 +89,8 @@
 		004467BC1EEFF20900DDD0ED /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002572491EDE9D9100AACC52 /* InformationViewController.swift */; };
 		005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */; };
 		005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */; };
+		005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DDE1EF136AF00FA76FB /* CancelCell.swift */; };
+		005A4DE11EF136AF00FA76FB /* CancelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDF1EF136AF00FA76FB /* CancelCell.xib */; };
 		009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76D31EEE8B250021BFB0 /* Enum.swift */; };
 		009A76DC1EEE8EF90021BFB0 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */; };
 		009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DF1EEE8F480021BFB0 /* APIServices.swift */; };
@@ -242,6 +244,8 @@
 		004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforOwnerCell.swift; sourceTree = "<group>"; };
 		005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforOwnerCell.xib; sourceTree = "<group>"; };
+		005A4DDE1EF136AF00FA76FB /* CancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelCell.swift; sourceTree = "<group>"; };
+		005A4DDF1EF136AF00FA76FB /* CancelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelCell.xib; sourceTree = "<group>"; };
 		009A76D31EEE8B250021BFB0 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
 		009A76DF1EEE8F480021BFB0 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
@@ -600,6 +604,15 @@
 			path = DoingController;
 			sourceTree = "<group>";
 		};
+		005A4DDD1EF1369E00FA76FB /* CancelCell */ = {
+			isa = PBXGroup;
+			children = (
+				005A4DDE1EF136AF00FA76FB /* CancelCell.swift */,
+				005A4DDF1EF136AF00FA76FB /* CancelCell.xib */,
+			);
+			path = CancelCell;
+			sourceTree = "<group>";
+		};
 		00CC0D421EEE3F7B002D24D4 /* PopupViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +674,7 @@
 		841D80F41ED5466B00C916EC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				005A4DDD1EF1369E00FA76FB /* CancelCell */,
 				002A04511EE14604001876E5 /* DetailCell */,
 				002BA0FC1EDD25610099352D /* MoreCell */,
 				002C57061EDBDCF80039BBCE /* CellHistory */,
@@ -978,6 +992,7 @@
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
 				002BA0FB1EDD25400099352D /* MoreViewController.xib in Resources */,
 				842FEC711ED40C6900000606 /* Assets.xcassets in Resources */,
+				005A4DE11EF136AF00FA76FB /* CancelCell.xib in Resources */,
 				003175E51EE68A8900F3F9B4 /* WaittingController.xib in Resources */,
 				0022C5001EE84D1700027665 /* OwnerHistoryViewCell.xib in Resources */,
 				0025723D1EDE633500AACC52 /* RuleViewController.xib in Resources */,
@@ -1191,6 +1206,7 @@
 				844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */,
 				003BC6951ED9DA0600FF6D14 /* Constant.swift in Sources */,
 				00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */,
+				005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */,
 				0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */,
 				002A04501EE13B51001876E5 /* AlertManager.swift in Sources */,
 				00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */,

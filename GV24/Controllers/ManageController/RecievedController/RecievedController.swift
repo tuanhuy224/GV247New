@@ -15,7 +15,7 @@ class RecievedController: BaseViewController {
         super.viewDidLoad()
         tbRecieved.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
         tbRecieved.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
-        tbRecieved.register(UINib(nibName:"WaittingCell",bundle:nil), forCellReuseIdentifier: "waittingCell")
+        tbRecieved.register(UINib(nibName:"CancelCell",bundle:nil), forCellReuseIdentifier: "cancelCell")
         tbRecieved.allowsSelection = false
         tbRecieved.separatorStyle = .none
     }
@@ -51,6 +51,9 @@ extension RecievedController:UITableViewDataSource{
             cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (processRecieved?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) $"
             return cell
+        case 2:
+            let cell:CancelCell = tbRecieved.dequeueReusableCell(withIdentifier: "cancelCell", for: indexPath) as! CancelCell
+            return cell
         default:
             break
         }
@@ -62,9 +65,11 @@ extension RecievedController:UITableViewDelegate{
         switch indexPath.section {
         case 0:
             return 94
-        default:
+        case 1:
             return 284
+        default:
+            return 172
         }
     }
-    
 }
+
