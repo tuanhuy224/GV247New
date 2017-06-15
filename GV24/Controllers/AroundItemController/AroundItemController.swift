@@ -16,15 +16,14 @@ class AroundItemController: BaseViewController {
     var works = [Work]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbAround.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
+        tbAround.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
         loadAroundItem()
         tbAround.reloadData()
     }
     func loadAroundItem(){
-        let url = "https://yukotest123.herokuapp.com/en/more/getTaskByWork"
         let parameter:[String:Any] = ["work":id!,"lng": 106.6882557,"lat": 10.7677238,"maxDistance":300]
         let apiClient = AroundTask.sharedInstall
-        apiClient.getWorkFromURL(url: url, parameter: parameter) { (works, string) in
+        apiClient.getWorkFromURL(url: APIPaths().getTaskByAround(), parameter: parameter) { (works, string) in
             if string == nil{
                 self.works = works!
                 self.tbAround.reloadData()
@@ -41,7 +40,7 @@ extension AroundItemController:UITableViewDataSource{
         return works.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:HistoryViewCell = tbAround.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
+        let cell:HistoryViewCell = tbAround.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as! HistoryViewCell
         cell.workNameLabel.text = works[indexPath.row].info?.title
         cell.lbDist.text = "\(Int(works[indexPath.row].dist!.calculated!)) m"
         cell.createdDate.text = Date(isoDateString: (works[indexPath.row].history!.createAt!)).dayMonthYear
@@ -55,7 +54,7 @@ extension AroundItemController:UITableViewDataSource{
 }
 extension AroundItemController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detail = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        let detail = DetailViewController(nibName: NibDetailViewController, bundle: nil)
         detail.works = works[indexPath.row]
         detail.idWork = works[indexPath.row].id
         detail.titleString = works[indexPath.row].info?.title

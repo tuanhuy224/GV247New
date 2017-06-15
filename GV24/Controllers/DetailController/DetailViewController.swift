@@ -21,8 +21,8 @@ class DetailViewController: BaseViewController {
     //let url = "https://yukotest123.herokuapp.com/en/task/getById"
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbDetail.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
-        tbDetail.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
+        tbDetail.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
+        tbDetail.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tbDetail.allowsSelection = false
         postRerves()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -102,6 +102,7 @@ extension DetailViewController:UITableViewDelegate{
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
         let parameter = ["id":idWork!]
+        print(idWork!)
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
         apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in

@@ -13,9 +13,9 @@ class PendingController: BaseViewController {
     var processPending:Work?
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbPending.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
-        tbPending.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
-        tbPending.register(UINib(nibName:"CancelCell",bundle:nil), forCellReuseIdentifier: "cancelCell")
+        tbPending.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
+        tbPending.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
+        tbPending.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
         tbPending.allowsSelection = false
         tbPending.separatorStyle = .none
     }
@@ -36,7 +36,7 @@ extension PendingController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section{
         case 0:
-            let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
+            let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
             cell.nameUser.text = processPending?.stakeholders?.owner?.name
             cell.delegate = self
             cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
@@ -44,7 +44,7 @@ extension PendingController:UITableViewDataSource{
             cell.imageName.kf.setImage(with: url)
             return cell
         case 1:
-            let cell:InfoDetailCell = tbPending.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath) as! InfoDetailCell
+            let cell:InfoDetailCell = tbPending.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
             cell.lbTitle.text = processPending?.info?.title
             cell.lbSubTitle.text = processPending?.info?.address?.name
             cell.lbComment.text = processPending?.info?.content
@@ -52,7 +52,7 @@ extension PendingController:UITableViewDataSource{
             cell.lbMoney.text = "\(processPending?.info?.salary ?? 0) $"
             return cell
         case 2:
-            let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: "cancelCell", for: indexPath) as! CancelCell
+            let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
             cell.lbCancelDetail.isHidden = true
             return cell
         default:
@@ -65,7 +65,7 @@ extension PendingController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 65
+            return CGFloat(heightConstantWorkDetailCell)
         case 1:
             return 284
         default:

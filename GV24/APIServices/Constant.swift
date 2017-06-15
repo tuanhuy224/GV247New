@@ -9,6 +9,40 @@
 import UIKit
 
 
+ //MARK - constant ID cell
+let workDetailCellID = "workDetailCell"
+let infoDetailCellID = "infoDetailCell"
+let cancelCellID = "cancelCell"
+let inforCellID = "inforCell"
+let InforOwnerCellID = "inforOwnerCell"
+let HistoryViewCellID = "historyCell"
+let workCellID = "workCell"
+let commentCellID = "commentCell"
+let DefaultCellID = "DefaultCell"
+let MoreCellID = "moreCell"
+let moreNameCellID = "MoreNameCell"
+let notifCellID = "notifCell"
+
+//MARk - constant NIb cell
+let NibHistoryViewCell = "HistoryViewCell"
+let NibWorkDetailCell = "WorkDetailCell"
+let NibInfoDetailCell = "InfoDetailCell"
+let NibCancelCell = "CancelCell"
+let NibInforCell = "InforCell"
+let NibInforOwnerCell = "InforOwnerCell"
+let CTPendingController = "PendingController"
+let CTRecievedController = "RecievedController"
+let CTDoingController = "DoingController"
+let CTAroundItemController = "AroundItemController"
+let NibWorkTableViewCell = "WorkTableViewCell"
+let NibDetailViewController = "DetailViewController"
+let NibWorkAroundController = "WorkAroundController"
+let NibManageViewController = "ManageViewController"
+let NibCommentCell = "CommentCell"
+let NibMoreNameCell = "MoreNameCell"
+let NibMoreCell = "MoreCell"
+let NibNotifiCell = "NotifiCell"
+let heightConstantWorkDetailCell:Float = 65
 let urlDisplayHome = "https://yukotest123.herokuapp.com/vi/task/getAll"
 let urlHistory = "https://yukotest123.herokuapp.com/en/maid/getAllTasks"
 

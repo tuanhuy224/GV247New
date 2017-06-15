@@ -17,6 +17,7 @@ enum urlPath:String {
     case urlPocess = "/maid/getAllTasks"
     case urlOwner = "/owner/getById"
     case taskGetById = "/task/getById"
+    case getTaskByAround = "/more/getTaskByWork"
 }
 struct APIPaths {
     let baseURL = "https://yukotest123.herokuapp.com"
@@ -44,6 +45,9 @@ struct APIPaths {
     }
     func taskGetById() -> String {
         return "rootDomain".localize + urlPath.urlOwner.rawValue
+    }
+    func getTaskByAround() -> String {
+        return "rootDomain".localize + urlPath.getTaskByAround.rawValue
     }
     
  }

@@ -15,8 +15,8 @@ class InformationViewController: BaseViewController {
     var user:User?
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbInformation.register(UINib(nibName:"InforCell",bundle:nil), forCellReuseIdentifier: "inforCell")
-        tbInformation.register(UINib(nibName:"CommentCell",bundle:nil), forCellReuseIdentifier: "commentCell")
+        tbInformation.register(UINib(nibName:NibInforCell,bundle:nil), forCellReuseIdentifier: inforCellID)
+        tbInformation.register(UINib(nibName:NibCommentCell,bundle:nil), forCellReuseIdentifier: commentCellID)
         tbInformation.allowsSelection = false
         self.user = UserDefaultHelper.currentUser
         customBarLeftButton()
@@ -96,7 +96,7 @@ extension InformationViewController:UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell:InforCell = (tbInformation.dequeueReusableCell(withIdentifier: "inforCell", for: indexPath) as? InforCell)!
+            let cell:InforCell = (tbInformation.dequeueReusableCell(withIdentifier: inforCellID, for: indexPath) as? InforCell)!
             if user?.gender == 0 {
                 cell.lbGender.text = gender.girl
             }else{
@@ -112,7 +112,7 @@ extension InformationViewController:UITableViewDataSource{
             cell.lbAddress.text = user?.nameAddress
             return cell
         }else{
-            let cell:CommentCell = tbInformation.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentCell
+            let cell:CommentCell = tbInformation.dequeueReusableCell(withIdentifier: commentCellID, for: indexPath) as! CommentCell
             let url = URL(string: (user?.image)!)
             let data = try? Data(contentsOf: url!)
             if let imageData = data {
@@ -123,9 +123,7 @@ extension InformationViewController:UITableViewDataSource{
             }
             return cell
         }
-        
     }
-    
 }
 extension InformationViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

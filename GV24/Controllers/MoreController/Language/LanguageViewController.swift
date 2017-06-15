@@ -13,7 +13,7 @@ class LanguageViewController: BaseViewController {
     @IBOutlet weak var tbLanguage: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbLanguage.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        tbLanguage.register(UITableViewCell.self, forCellReuseIdentifier: DefaultCellID)
     }
     override func setupViewBase() {
         self.title = "Language".localize
@@ -24,7 +24,7 @@ extension LanguageViewController:UITableViewDataSource{
         return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = (tbLanguage.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath))
+        let cell:UITableViewCell = (tbLanguage.dequeueReusableCell(withIdentifier: DefaultCellID, for: indexPath))
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
         if lang.languageCode == "en" {
             cell.textLabel?.text  = languages[indexPath.row].localize

@@ -15,9 +15,9 @@ class MoreViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tbMore.register(UINib(nibName:"MoreNameCell",bundle:nil), forCellReuseIdentifier: "moreNameCell")
-        tbMore.register(UINib(nibName:"MoreCell",bundle:nil), forCellReuseIdentifier: "moreCell")
-        tbMore.register(UINib(nibName:"NotifiCell",bundle:nil), forCellReuseIdentifier: "notifCell")
+        tbMore.register(UINib(nibName:NibMoreNameCell,bundle:nil), forCellReuseIdentifier: moreNameCellID)
+        tbMore.register(UINib(nibName:NibMoreCell,bundle:nil), forCellReuseIdentifier: MoreCellID)
+        tbMore.register(UINib(nibName:NibNotifiCell,bundle:nil), forCellReuseIdentifier: notifCellID)
         self.userLogin = UserDefaultHelper.currentUser
     }
     override func setupViewBase() {
@@ -40,7 +40,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell:MoreNameCell = (tbMore.dequeueReusableCell(withIdentifier: "moreNameCell", for: indexPath) as? MoreNameCell)!
+            let cell:MoreNameCell = (tbMore.dequeueReusableCell(withIdentifier: moreNameCellID, for: indexPath) as? MoreNameCell)!
             let url = URL(string: (userLogin?.image)!)
             let data = try? Data(contentsOf: url!)
             if let imageData = data {
@@ -51,10 +51,10 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             }
             return cell
         }else if indexPath.section == 1{
-            let cell:NotifiCell = (tbMore.dequeueReusableCell(withIdentifier: "notifCell", for: indexPath) as? NotifiCell)!
+            let cell:NotifiCell = (tbMore.dequeueReusableCell(withIdentifier: notifCellID, for: indexPath) as? NotifiCell)!
             return cell
         }else{
-            let cell:MoreCell = (tbMore.dequeueReusableCell(withIdentifier: "moreCell", for: indexPath) as? MoreCell)!
+            let cell:MoreCell = (tbMore.dequeueReusableCell(withIdentifier: MoreCellID, for: indexPath) as? MoreCell)!
             let lang = DGLocalization.sharedInstance.getCurrentLanguage()
             if lang.languageCode == "en" {
                 cell.lbMore.text = arryMore[indexPath.row].localize

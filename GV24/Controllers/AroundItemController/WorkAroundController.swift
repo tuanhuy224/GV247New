@@ -28,7 +28,7 @@ class WorkAroundController: BaseViewController {
     @IBOutlet weak var aroundTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        aroundTableView.register(UINib(nibName:"WorkTableViewCell",bundle: nil), forCellReuseIdentifier: "workCell")
+        aroundTableView.register(UINib(nibName:NibWorkTableViewCell,bundle: nil), forCellReuseIdentifier: workCellID)
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
         setup()
@@ -95,7 +95,7 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell: WorkTableViewCell = (aroundTableView.dequeueReusableCell(withIdentifier: "workCell", for: indexPath) as? WorkTableViewCell)!
+            let cell: WorkTableViewCell = (aroundTableView.dequeueReusableCell(withIdentifier: workCellID, for: indexPath) as? WorkTableViewCell)!
         cell.lbWork.text = "\(arrays[indexPath.row].id!.name!)"
         cell.amountWork.text = "\(arrays[indexPath.row].count!)"
         let image = URL(string: arrays[indexPath.row].id!.image!)
@@ -109,7 +109,7 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
         return 44
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let vc = AroundItemController(nibName: "AroundItemController", bundle: nil)
+         let vc = AroundItemController(nibName: CTAroundItemController, bundle: nil)
             vc.id = "\(arrays[indexPath.row].id!.id!)"
             vc.name = "\(arrays[indexPath.row].id!.name!)"
             navigationController?.pushViewController(vc, animated: true)

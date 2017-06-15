@@ -14,10 +14,9 @@ class DoingController: BaseViewController {
     var ProcessDoing:Work?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tbDoing.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
-        tbDoing.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
-        tbDoing.register(UINib(nibName:"CancelCell",bundle:nil), forCellReuseIdentifier: "cancelCell")
+        tbDoing.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
+        tbDoing.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
+        tbDoing.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
         tbDoing.allowsSelection = false
         tbDoing.separatorStyle = .none
     }
@@ -38,14 +37,14 @@ extension DoingController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section{
         case 0:
-            let cell:WorkDetailCell = tbDoing.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
+            let cell:WorkDetailCell = tbDoing.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
             cell.nameUser.text = ProcessDoing?.stakeholders?.owner?.name
             cell.addressName.text = ProcessDoing?.stakeholders?.owner?.address?.name
             let url = URL(string: (ProcessDoing?.stakeholders?.owner?.image)!)
             cell.imageName.kf.setImage(with: url)
             return cell
         case 1:
-            let cell:InfoDetailCell = tbDoing.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath) as! InfoDetailCell
+            let cell:InfoDetailCell = tbDoing.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
             cell.lbTitle.text = ProcessDoing?.info?.title
             cell.lbSubTitle.text = ProcessDoing?.info?.address?.name
             cell.lbComment.text = ProcessDoing?.info?.content
@@ -53,7 +52,7 @@ extension DoingController:UITableViewDataSource{
             cell.lbMoney.text = "\(ProcessDoing?.info?.salary ?? 0) $"
             return cell
         case 2:
-            let cell:CancelCell = tbDoing.dequeueReusableCell(withIdentifier: "cancelCell", for: indexPath) as! CancelCell
+            let cell:CancelCell = tbDoing.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
             return cell
         default:
             break
@@ -65,7 +64,7 @@ extension DoingController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 94
+            return CGFloat(heightConstantWorkDetailCell)
         case 1:
             return 284
         default:

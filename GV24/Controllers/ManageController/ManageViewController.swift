@@ -20,7 +20,7 @@ class ManageViewController: BaseViewController {
     var returnValue:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbManage.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
+        tbManage.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
         getProcess()
         
     }
@@ -95,7 +95,7 @@ extension ManageViewController:UITableViewDataSource{
         return returnValue
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tbManage.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as? HistoryViewCell
+        let cell = tbManage.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as? HistoryViewCell
         switch segmentCtr.selectedSegmentIndex {
         case 0:
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
@@ -129,17 +129,17 @@ extension ManageViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            let navi = PendingController(nibName: "PendingController", bundle: nil)
+            let navi = PendingController(nibName: CTPendingController, bundle: nil)
                 navi.processPending = processOnCreate[indexPath.row]
                 navigationController?.pushViewController(navi, animated: true)
             break
         case 1:
-            let navi = RecievedController(nibName: "RecievedController", bundle: nil)
+            let navi = RecievedController(nibName: CTRecievedController, bundle: nil)
             navi.processRecieved = processRecieved[indexPath.row]
             navigationController?.pushViewController(navi, animated: true)
             break
         case 2:
-            let navi = DoingController(nibName: "DoingController", bundle: nil)
+            let navi = DoingController(nibName: CTDoingController, bundle: nil)
             navi.ProcessDoing = processOnDoing[indexPath.row]
             navigationController?.pushViewController(navi, animated: true)
             break

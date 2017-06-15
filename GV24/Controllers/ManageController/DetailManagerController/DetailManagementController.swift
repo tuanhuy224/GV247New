@@ -13,8 +13,8 @@ class DetailManagementController: BaseViewController {
     @IBOutlet weak var detailManager: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailManager.register(UINib(nibName:"InforCell",bundle:nil), forCellReuseIdentifier: "inforCell")
-        detailManager.register(UINib(nibName:"InforOwnerCell",bundle:nil), forCellReuseIdentifier: "inforOwnerCell")
+        detailManager.register(UINib(nibName:NibInforCell,bundle:nil), forCellReuseIdentifier: inforCellID)
+        detailManager.register(UINib(nibName:NibInforOwnerCell,bundle:nil), forCellReuseIdentifier: InforOwnerCellID)
         detailManager.allowsSelection = false
         detailManager.separatorStyle = .none
     }
@@ -23,9 +23,9 @@ class DetailManagementController: BaseViewController {
         cell.lbGender.text = workPending?.stakeholders?.owner?.gender?.description
         cell.lbAddress.text = workPending?.stakeholders?.owner?.address?.name
         if workPending?.stakeholders?.owner?.gender == 1 {
-            cell.lbGender.text = "Nam"
+            cell.lbGender.text = enumGender.Boy.rawValue
         }
-        cell.lbGender.text = "Nữ"
+        cell.lbGender.text = enumGender.Girl.rawValue
         cell.lbPhone.text = workPending?.stakeholders?.owner?.phone
         let url = URL(string: (workPending?.stakeholders?.owner?.image)!)
         cell.imageProfile.kf.setImage(with: url)
@@ -42,11 +42,11 @@ extension DetailManagementController:UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
-            let cell:InforCell = detailManager.dequeueReusableCell(withIdentifier: "inforCell", for: indexPath) as! InforCell
+            let cell:InforCell = detailManager.dequeueReusableCell(withIdentifier: inforCellID, for: indexPath) as! InforCell
             self.InforCellConfigure(cell: cell)
             return cell
         }else{
-            let cell:InforOwnerCell = detailManager.dequeueReusableCell(withIdentifier: "inforOwnerCell", for: indexPath) as! InforOwnerCell
+            let cell:InforOwnerCell = detailManager.dequeueReusableCell(withIdentifier: InforOwnerCellID, for: indexPath) as! InforOwnerCell
             
             return cell
         }
