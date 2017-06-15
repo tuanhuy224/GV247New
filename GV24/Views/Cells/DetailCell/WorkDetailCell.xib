@@ -45,7 +45,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jn0-47-poD">
-                        <rect key="frame" x="337" y="8" width="30" height="44"/>
+                        <rect key="frame" x="337" y="21" width="30" height="30"/>
                         <connections>
                             <action selector="aroundRightAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4I6-DP-VId"/>
                         </connections>
@@ -59,6 +59,9 @@
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxt-4V-QaK">
                         <rect key="frame" x="8" y="62" width="120" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="KMX-5n-lTc"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                         <state key="normal" title="Chọn công việc này"/>
                         <connections>
@@ -78,16 +81,15 @@
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3WX-st-gMw"/>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="top" secondItem="TKq-Mx-div" secondAttribute="bottom" constant="3" id="C0p-i4-Xso"/>
                     <constraint firstAttribute="trailing" secondItem="qKj-A0-kyS" secondAttribute="trailing" id="CSH-RI-jM9"/>
-                    <constraint firstItem="Jn0-47-poD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-0.5" id="D1E-1P-Sh5"/>
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FMu-DV-fzb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Jn0-47-poD" secondAttribute="trailing" id="IEd-Kb-at8"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="K7N-lE-vdx"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Oh9-6N-Gkd"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Jn0-47-poD" secondAttribute="trailing" id="eP8-Wx-3QH"/>
+                    <constraint firstItem="Jn0-47-poD" firstAttribute="centerY" secondItem="RAp-YY-Ygx" secondAttribute="centerY" id="R5n-7f-8BA"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="2.5" id="mP7-mZ-No3"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="RAp-YY-Ygx" secondAttribute="bottom" constant="7.5" id="q48-eb-jyl"/>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="leading" secondItem="TKq-Mx-div" secondAttribute="leading" id="vNi-TG-reI"/>
                     <constraint firstItem="TKq-Mx-div" firstAttribute="top" secondItem="RAp-YY-Ygx" secondAttribute="top" id="wa5-Ks-Jqm"/>
-                    <constraint firstItem="Jn0-47-poD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-16.75" id="xH3-eh-n75"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" constant="3" id="yYr-fz-V9n"/>
                 </constraints>
             </tableViewCellContentView>
@@ -99,8 +101,10 @@
                 <outlet property="addressName" destination="oRf-WL-mHp" id="kC6-Kj-5ix"/>
                 <outlet property="aroundRight" destination="Jn0-47-poD" id="06W-Jd-yMb"/>
                 <outlet property="btChoose" destination="uxt-4V-QaK" id="fiF-Nv-KBw"/>
+                <outlet property="constraintHeightButtonChoose" destination="KMX-5n-lTc" id="JHy-Qm-jNo"/>
                 <outlet property="imageName" destination="RAp-YY-Ygx" id="IYF-AP-QRX"/>
                 <outlet property="nameUser" destination="TKq-Mx-div" id="wZE-Kg-Nj4"/>
+                <outlet property="vSegment" destination="jOn-Cv-dAZ" id="H3O-te-Xuf"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="36"/>
         </tableViewCell>

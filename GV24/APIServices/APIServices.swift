@@ -30,7 +30,7 @@ class APIService: NSObject {
             }
         }
     }
-    
+
     func postReserve(url : String,method:HTTPMethod, parameters: Parameters,header:HTTPHeaders, completion: @escaping (ResponseCompletion)){
         Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
             switch response.result {
@@ -40,8 +40,9 @@ class APIService: NSObject {
                 if !status!{
                     guard let message = json["message"].string else{return}
                     completion(nil,message)
+                }else{
+                    completion(nil, String(describing: json["message"]))
                 }
-                completion(json["message"],nil)
             case .failure(let error):
                 completion(nil, error.localizedDescription)
             }

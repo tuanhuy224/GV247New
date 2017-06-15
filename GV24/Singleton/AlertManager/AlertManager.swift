@@ -11,31 +11,39 @@ import UIKit
 
 class AlertStandard {
     
-//   static var sharedInstance = AlertStandard()
-//    func showAlert(controller: UIViewController, title: String, message: String, buttonTitle:String = "OK") {
-//        
-//        if #available(iOS 8.0, *) {
-//            let alertController = UIAlertController(title: helper.getLocalizedStringForKey(title), message: helper.getLocalizedStringForKey(message), preferredStyle: .Alert)
-//            let defaultAction = UIAlertAction(title: helper.getLocalizedStringForKey(buttonTitle),
-//                                              style: .Default, handler: nil)
-//            
-//            alertController.addAction(defaultAction)
-//            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                controller.presentViewController(alertController, animated: true, completion: nil)
-//            })
-//            
-//        } else {
-//            // Fallback on earlier versions
-//            let alert = UIAlertView()
-//            alert.title = helper.getLocalizedStringForKey(title)
-//            alert.message = helper.getLocalizedStringForKey(message)
-//            alert.addButtonWithTitle(helper.getLocalizedStringForKey(buttonTitle))
-//            alert.show()
-//            
-//        }
-//    }
-//    
+   static var sharedInstance = AlertStandard()
+    func showAlert(controller: UIViewController, title: String, message: String, buttonTitle:String = "OK") {
+        if #available(iOS 8.0, *) {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK",
+                                              style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            DispatchQueue.main.async(execute: { () -> Void in
+                controller.present(alertController, animated: true, completion: nil)
+            })
+        } else {
+            // Fallback on earlier versions
+            let alert = UIAlertView()
+            alert.title = "No"
+            alert.message = "Yes"
+            alert.addButton(withTitle: "123")
+            alert.show()
+        }
+    }
+    func showAlertCt(controller: UIViewController,pushVC:UIViewController, title: String, message: String, buttonTitle:String = "OK") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+            UIView.animate(withDuration: 1, animations: { 
+                controller.navigationController?.pushViewController(pushVC, animated: true)
+            })
+        }
+        let noAction = UIAlertAction(title: "No", style: .default) { (action) -> Void in
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        controller.present(alertController, animated: true, completion: nil)
+    }
+
 //    func showAlertWithIcon(controller: UIViewController, title: String, message: String, buttonTitle:String) {
 //        
 //        if #available(iOS 8.0, *) {

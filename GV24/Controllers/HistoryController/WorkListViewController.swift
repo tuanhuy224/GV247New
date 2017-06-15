@@ -82,7 +82,6 @@ class WorkListViewController: BaseViewController {
             else {
                 cell.estimateWorkTime.text = "\(minutesBetweenDates) phút trước"
             }
-            
             cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
         }
     }

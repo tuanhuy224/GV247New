@@ -61,7 +61,10 @@ extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
-            cell.delegate = self
+            cell.delegateWork = self
+            cell.constraintHeightButtonChoose.constant = 28
+            cell.btChoose.isHidden = false
+            cell.vSegment.isHidden = false
             cell.nameUser.text = works.stakeholders?.owner?.username
             cell.addressName.text = works.stakeholders?.owner?.address?.name
             DispatchQueue.main.async {
@@ -96,11 +99,15 @@ extension DetailViewController:UITableViewDelegate{
         
     }
 }
-extension DetailViewController:chooseWorkDelegate{
+extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
-        if isStatus == true {
-            navigationController?.pushViewController(ManageViewController(), animated: true)
-        }else{
+        let parameter = ["id":idWork!]
+        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let apiClient = APIService.shared
+        apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
+            let alertC = AlertStandard.sharedInstance
+            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "OK", message: "Bạn chọn")
         }
     }
 }
+
