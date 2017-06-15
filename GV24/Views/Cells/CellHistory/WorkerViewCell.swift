@@ -21,8 +21,10 @@ class WorkerViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
+        setupCell()
+    }
+    
+    func setupCell() {
         arrowForward.image = Ionicons.iosArrowForward.image(18, color: UIColor.lightGray)
     }
 

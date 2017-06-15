@@ -16,21 +16,23 @@ class FinishedWorkViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var work: Work?
-    var taskComment:Comment?
+    var taskComment:Comment? = nil
     var isWorkListComing: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupTableView()
+        if work != nil {
+            tableView.reloadData()
+        }
+    }
+    
+    func setupTableView() {
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName: "FinishedWorkCell", bundle: nil), forCellReuseIdentifier: "FinishedWorkCell")
         tableView.register(UINib(nibName: "WorkerViewCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
-
-        if work != nil {
-            tableView.reloadData()
-        }
         tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
     }
 
@@ -114,11 +116,11 @@ class FinishedWorkViewController: BaseViewController {
         }
     
         if isWorkListComing == true {
-            cell.btnComment.isHidden = false
+            //cell.btnComment.isHidden = false
             cell.commentLabel.isHidden = true
         }
         else {
-            cell.btnComment.isHidden =  true
+            //cell.btnComment.isHidden =  true
             cell.commentLabel.isHidden = false
             cell.commentLabel.text = self.taskComment?.content!
         }
@@ -158,12 +160,21 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = InformationViewController()
+        let owner = work?.stakeholders?.owner
+        vc.user = owner?.convertToUser()
+        if indexPath.section == 1 {
+            _ = navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
 extension FinishedWorkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
+            if isWorkListComing == true {
+                return "NGƯỜI CHỦ NHÀ"
+            }
             return "NGƯỜI THỰC HIỆN"
         }
         return ""

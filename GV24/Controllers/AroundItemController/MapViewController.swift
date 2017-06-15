@@ -18,9 +18,13 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     var resultSearchController: UISearchController? = nil
     var locationManager: CLLocationManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupSearchController()
+    }
+    
+    func setupSearchController() {
         let locationSearchTable = LocationTableViewController()
         locationSearchTable.mapView = mapView
         resultSearchController =  UISearchController(searchResultsController: locationSearchTable)

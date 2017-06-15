@@ -16,6 +16,7 @@ enum urlPath:String {
     case getURLWorkListHistory = "/en/maid/getHistoryTasks"
     case getTaskCommentWithTaskID = "/en/maid/getTaskComment"
     case getOwnerList = "/en/maid/getAllWorkedOwner"
+    case getTaskOfOwner = "/en/maid/getTaskOfOwner"
 }
 
 struct APIPaths {
@@ -35,6 +36,10 @@ struct APIPaths {
     
     func urlGetOwnerList() -> String {
         return baseURL + urlPath.getOwnerList.rawValue
+    }
+    
+    func urlGetTaskOfOwner() -> String {
+        return baseURL + urlPath.getTaskOfOwner.rawValue
     }
     
 //    func urlAddProductToCart() -> String {

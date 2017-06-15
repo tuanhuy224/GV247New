@@ -17,6 +17,7 @@ class PopupViewController: BaseViewController {
     var delegate: PopupViewControllerDelegate?
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var effectView: UIView!
+    @IBOutlet weak var containerView: UIView!
     var isFromDate: Bool = false
     var isToDate: Bool = false
     var fromDate: Date?
@@ -24,9 +25,16 @@ class PopupViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupPopup()
+    }
+    
+    func setupPopup()  {
         datePicker.backgroundColor = UIColor.white
         effectView.alpha = 0
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        containerView.layer.shadowRadius = 5
+        containerView.layer.shadowOpacity = 0.7
     }
     
     @IBAction func selectDate(_ sender: Any) {
@@ -67,7 +75,7 @@ class PopupViewController: BaseViewController {
     fileprivate func doDismiss(date: Date, isFromDate: Bool, isToDate: Bool) {
         effectView.alpha = 0
         self.dismiss(animated: true, completion: nil)
-        delegate?.selectedDate(date: date, isFromDate: isFromDate, isToDate: isToDate)
+        self.delegate?.selectedDate(date: date, isFromDate: isFromDate, isToDate: isToDate)
     }
     
     override func setupViewBase() {}

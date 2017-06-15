@@ -15,30 +15,40 @@ class OwnerHistoryViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var ownerList:[Owner] = []
     var myParent: ManagerHistoryViewController?
-    var activityIndicatorView:UIActivityIndicatorView!
     
     @IBOutlet weak var segment: UISegmentedControl!
-    var refreshControl: UIRefreshControl!
     var startAtDate: Date? = nil
     var endAtDate: Date = Date()
     
+    var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(OwnerHistoryViewController.updateOwnerList), for: UIControlEvents.valueChanged)
+        return refresh
+    }()
+    
+    var activityIndicatorView = {
+        return UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.allowsSelection = false
+        setupTableView()
+        getOwnerList(startAt: startAtDate, endAt: endAtDate)
+    }
+    
+    func setupTableView() {
+        tableView.register(UINib(nibName:"OwnerHistoryViewCell",bundle:nil), forCellReuseIdentifier: "OwnerHistoryCell")
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0.01))
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl.addTarget(self, action: #selector(OwnerHistoryViewController.updateOwnerList), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(self.refreshControl)
         self.automaticallyAdjustsScrollViewInsets = false
-        tableView.register(UINib(nibName:"OwnerHistoryViewCell",bundle:nil), forCellReuseIdentifier: "OwnerHistoryCell")
-        self.activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.tableView.backgroundView = self.activityIndicatorView
-        getOwnerList(startAt: startAtDate, endAt: endAtDate)
     }
     
     @objc fileprivate func updateOwnerList(){
         self.refreshControl.endRefreshing()
+        self.ownerList.removeAll()
+        self.tableView.reloadData()
+        self.getOwnerList(startAt: startAtDate, endAt: endAtDate)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +66,7 @@ class OwnerHistoryViewController: BaseViewController {
      params: startAt, endAt
      */
     func getOwnerList(startAt: Date?, endAt: Date) {
+        self.tableView.backgroundView = self.activityIndicatorView
         self.activityIndicatorView.startAnimating()
         var params: [String: Any] = [:]
         if startAt != nil {
@@ -67,16 +78,14 @@ class OwnerHistoryViewController: BaseViewController {
             if err == nil {
                 if data != nil {
                     self.ownerList.append(contentsOf: data!)
-                    DispatchQueue.main.async {
-                        self.activityIndicatorView.stopAnimating()
-                        self.tableView.backgroundView = nil
-                        self.tableView.reloadData()
-                    }
+                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: nil, tableView: self.tableView, isReload: true)
+                }
+                else {
+                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "You don't have any data.", tableView: self.tableView, isReload: false)
                 }
             }
             else {
-                print("Error occurred while getting owner list in OwnerHistoryViewController.")
-                self.activityIndicatorView.stopAnimating()
+                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "Error occurred while fetching data from server.", tableView: self.tableView, isReload: false)
             }
         }
     }
@@ -115,14 +124,16 @@ extension OwnerHistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerHistoryCell", for: indexPath) as! OwnerHistoryViewCell
-        
         self.configureOwnerCell(cell: cell, indexPath: indexPath)
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = InformationViewController()
+        let owner = ownerList[indexPath.item]
+        vc.user = owner.convertToUser()
+        _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension OwnerHistoryViewController: UITableViewDelegate {
