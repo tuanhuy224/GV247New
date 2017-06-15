@@ -16,8 +16,8 @@ class RecievedController: BaseViewController {
         tbRecieved.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
         tbRecieved.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tbRecieved.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
-        tbRecieved.allowsSelection = false
         tbRecieved.separatorStyle = .none
+        tbRecieved.reloadData()
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -32,7 +32,7 @@ extension RecievedController:UITableViewDataSource{
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section{
@@ -54,6 +54,7 @@ extension RecievedController:UITableViewDataSource{
             return cell
         case 2:
             let cell:CancelCell = tbRecieved.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
+            cell.delegate = self
             return cell
         default:
             break
@@ -70,6 +71,21 @@ extension RecievedController:UITableViewDelegate{
             return 284
         default:
             return 172
+        }
+    }
+
+}
+extension RecievedController:CancelWorkDelegate{
+    func CancelButton() {
+        let parameter = ["id":processRecieved!.id!]
+        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let apiClient = APIService.shared
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        apiClient.postReserve(url: APIPaths().urlReserve(), method: .delete, parameters: parameter, header: header) { (json, string) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            print(string!)
+            let alertC = AlertStandard.sharedInstance
+            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "OK", message: "Bạn chọn")
         }
     }
 }

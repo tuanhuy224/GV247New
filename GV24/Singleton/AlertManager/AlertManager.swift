@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class AlertStandard {
-    
    static var sharedInstance = AlertStandard()
     func showAlert(controller: UIViewController, title: String, message: String, buttonTitle:String = "OK") {
         if #available(iOS 8.0, *) {

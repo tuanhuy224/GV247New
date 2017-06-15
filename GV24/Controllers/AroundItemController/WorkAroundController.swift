@@ -32,13 +32,6 @@ class WorkAroundController: BaseViewController {
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
         setup()
-//        let date = NSDate()
-//        let calendar = NSCalendar.current
-//        let hour = calendar.component(.hour, from: date as Date)
-//        let minutes = calendar.component(.minute, from: date as Date)
-//        print("+++\(date)")
-//        print(hour)
-//        print("===\(minutes)")
     }
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {
@@ -120,9 +113,11 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
 }
 extension WorkAroundController:changeSliderDelegate{
     func change(slider: UISlider) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         if slider.isContinuous == true {
             arWork.sliderMax.text = String(stringInterpolation: "\(slider.value)")
             UserDefaultHelper.setSlider(slider: "\(slider.value)")
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }

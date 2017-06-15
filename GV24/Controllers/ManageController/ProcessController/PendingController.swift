@@ -16,7 +16,6 @@ class PendingController: BaseViewController {
         tbPending.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
         tbPending.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tbPending.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
-        tbPending.allowsSelection = false
         tbPending.separatorStyle = .none
     }
     override func setupViewBase() {
@@ -72,6 +71,7 @@ extension PendingController:UITableViewDelegate{
             return 172
         }
     }
+
 }
 extension PendingController:chooseWorkDelegate{
     func detailManagementDelegate() {

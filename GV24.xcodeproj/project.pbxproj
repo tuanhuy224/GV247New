@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 000E1E7A1EF288690058838B /* MBProgressHUD.m */; };
 		0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022C4F71EE84D1700027665 /* FinishedWorkCell.swift */; };
 		0022C4FE1EE84D1700027665 /* FinishedWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0022C4F81EE84D1700027665 /* FinishedWorkCell.xib */; };
 		0022C4FF1EE84D1700027665 /* OwnerHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022C4F91EE84D1700027665 /* OwnerHistoryViewCell.swift */; };
@@ -156,6 +157,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000E1E781EF288680058838B /* GV24-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GV24-Bridging-Header.h"; sourceTree = "<group>"; };
+		000E1E791EF288690058838B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		000E1E7A1EF288690058838B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		0022C4F71EE84D1700027665 /* FinishedWorkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedWorkCell.swift; sourceTree = "<group>"; };
 		0022C4F81EE84D1700027665 /* FinishedWorkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishedWorkCell.xib; sourceTree = "<group>"; };
 		0022C4F91EE84D1700027665 /* OwnerHistoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerHistoryViewCell.swift; sourceTree = "<group>"; };
@@ -334,6 +338,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000E1E771EF2885B0058838B /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				000E1E791EF288690058838B /* MBProgressHUD.h */,
+				000E1E7A1EF288690058838B /* MBProgressHUD.m */,
+				000E1E781EF288680058838B /* GV24-Bridging-Header.h */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		002315561EDF07A200B29F36 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +471,7 @@
 		002BA0C41EDD206D0099352D /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				000E1E771EF2885B0058838B /* MBProgressHUD */,
 				002BA0CE1EDD20B10099352D /* View */,
 				00C5057F1EE068C9003101F4 /* CustomLocale.swift */,
 			);
@@ -928,7 +943,7 @@
 					842FEC651ED40C6900000606 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = U3SD73FYYX;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					842FEC791ED40C6900000606 = {
@@ -1242,6 +1257,7 @@
 				002A04561EE14667001876E5 /* WorkDetailCell.swift in Sources */,
 				003070561EE26CB800774700 /* DGLocalization.swift in Sources */,
 				009A76E31EEE92360021BFB0 /* OwnerHistoryViewController.swift in Sources */,
+				000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */,
 				002BA0F91EDD25320099352D /* MoreViewController.swift in Sources */,
 				002AFD661EE8058A00D3B88A /* HistoryServices.swift in Sources */,
 				002715291EE799B7006E6671 /* Around.swift in Sources */,
@@ -1432,6 +1448,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = demo.GV24;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GV24/Customs/MBProgressHUD/GV24-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1448,6 +1465,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = demo.GV24;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GV24/Customs/MBProgressHUD/GV24-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

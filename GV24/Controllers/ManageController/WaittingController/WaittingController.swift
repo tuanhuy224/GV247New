@@ -17,7 +17,6 @@ class WaittingController: BaseViewController {
         tbWaitting.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
         tbWaitting.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
         tbWaitting.register(UINib(nibName:"WaittingCell",bundle:nil), forCellReuseIdentifier: "waittingCell")
-        tbWaitting.allowsSelection = false
         test()
     }
     
@@ -80,6 +79,7 @@ extension WaittingController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+
     
     
 }

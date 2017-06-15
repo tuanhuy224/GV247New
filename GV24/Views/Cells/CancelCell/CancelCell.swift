@@ -9,13 +9,16 @@
 import UIKit
 import IoniconsSwift
 
+@objc protocol CancelWorkDelegate:class{
+ @objc optional func CancelButton()
+}
 class CancelCell: CustomTableViewCell {
-
     @IBOutlet weak var lbCancelDetail: UILabel!
     @IBOutlet weak var viewCancelBottom: UIView!
     @IBOutlet weak var btCancel: UIButton!
     @IBOutlet weak var lbCancel: UILabel!
     @IBOutlet weak var viewSpace: UIView!
+    weak var delegate:CancelWorkDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         viewSpace.backgroundColor = UIColor.colorWithRedValue(redValue: 239, greenValue: 239, blueValue: 244, alpha: 1)
@@ -23,8 +26,10 @@ class CancelCell: CustomTableViewCell {
         btCancel.setImage(Ionicons.iosTrashOutline.image(32), for: .normal)
         btCancel.tintColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
         lbCancel.textColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
-    }
-    
+    } 
     @IBAction func btCancelAction(_ sender: Any) {
+        if delegate != nil {
+            delegate?.CancelButton!()
+        }
     }
 }

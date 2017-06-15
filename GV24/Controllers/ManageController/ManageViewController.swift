@@ -52,9 +52,11 @@ class ManageViewController: BaseViewController {
         let parmaterRecieve = ["process":"\(WorkStatus.Recieved.rawValue)"]
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiService = AroundTask.sharedInstall
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parameterCreate, header: header) { (json, error) in
             if json != nil{
                 self.processOnCreate = json!
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
             self.tbManage.reloadData()
             }

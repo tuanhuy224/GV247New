@@ -23,9 +23,11 @@ class AroundItemController: BaseViewController {
     func loadAroundItem(){
         let parameter:[String:Any] = ["work":id!,"lng": 106.6882557,"lat": 10.7677238,"maxDistance":300]
         let apiClient = AroundTask.sharedInstall
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         apiClient.getWorkFromURL(url: APIPaths().getTaskByAround(), parameter: parameter) { (works, string) in
             if string == nil{
                 self.works = works!
+                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tbAround.reloadData()
             }
         }
