@@ -19,25 +19,19 @@ class MapViewController: BaseViewController {
     var resultSearchController: UISearchController? = nil
     var locationManager: CLLocationManager?
     var searchBar:UISearchBar?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.decorate()
-    }
-    
-    override func decorate() {
-        super.decorate()
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchController()
     }
-    
+    override func decorate() {
+        super.decorate()
+    }
     func setupSearchController() {
         let locationSearchTable = LocationTableViewController()
         locationSearchTable.mapView = mapView
         resultSearchController =  UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
-        
         searchBar = resultSearchController!.searchBar
         searchBar?.sizeToFit()
         searchBar?.placeholder = "Search for places"
@@ -53,14 +47,8 @@ class MapViewController: BaseViewController {
         if CLLocationManager.locationServicesEnabled() {
             locationManager?.startUpdatingLocation()
         }
-
-    }
-    override func setupViewBase() {
-        super.setupViewBase()
-        self.navigationItem.hidesBackButton = true
     }
 }
-
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation: CLLocation = locations[0] as CLLocation
