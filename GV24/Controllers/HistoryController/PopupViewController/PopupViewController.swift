@@ -18,6 +18,8 @@ class PopupViewController: BaseViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var effectView: UIView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var selectButton: UIButton!
     var isFromDate: Bool = false
     var isToDate: Bool = false
     var fromDate: Date?
@@ -35,6 +37,9 @@ class PopupViewController: BaseViewController {
         containerView.layer.shadowOffset = CGSize(width: 1, height: 1)
         containerView.layer.shadowRadius = 5
         containerView.layer.shadowOpacity = 0.7
+        cancelButton.setTitle("Cancel".localize, for: .normal)
+        selectButton.setTitle("Select".localize, for: .normal)
+        //datePicker.locale = Locale().initWithLanguageCode(languageCode: <#T##NSString#>, countryCode: <#T##NSString#>, name: <#T##NSString#>)
     }
     
     @IBAction func selectDate(_ sender: Any) {
@@ -45,7 +50,7 @@ class PopupViewController: BaseViewController {
             }
             else {
                 print("aaa: descending")
-                let alertController = AlertHelper.sharedInstance.showAlertError(title: "Message", message: "Please select begin date lesser than\nor equal to end date.")
+                let alertController = AlertHelper.sharedInstance.showAlertError(title: "Message".localize, message: "AlertDateValidErrorBeginDateLesserThanOrEqualToEndDate".localize)
                 present(alertController, animated: true, completion: nil)
             }
         }
@@ -60,7 +65,7 @@ class PopupViewController: BaseViewController {
                 }
                 else {
                     print("bbb: ascending")
-                    let alertController = AlertHelper.sharedInstance.showAlertError(title: "Message", message: "Please select end date greater than\nor equal to begin date.")
+                    let alertController = AlertHelper.sharedInstance.showAlertError(title: "Message".localize, message: "AlertDateValidErrorEndDateGreaterThanOrEqualToBeginDate".localize)
                     present(alertController, animated: true, completion: nil)
                 }
             }

@@ -85,19 +85,19 @@ class HistoryViewController: BaseViewController {
                         TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: nil, tableView: self.historyTableView, isReload: true)
                     }
                     else {
-                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "You don't have any data.", tableView: self.historyTableView, isReload: false)
+                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.historyTableView, isReload: false)
                     }
                 }
             }
             else {
-                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "Error occurred while fetching data from server.", tableView: self.historyTableView, isReload: false)
+                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "ErrorFetchingDataFromServer".localize, tableView: self.historyTableView, isReload: false)
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Lịch sự công việc"
+        self.title = "WorkHistory".localize//"Lịch sự công việc"
     }
     
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
@@ -126,13 +126,15 @@ class HistoryViewController: BaseViewController {
         let minutesBetweenDates = Int(executionTime/60)
         
         if minutesBetweenDates > 60 {
-            cell.lbTimePost.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
+            cell.lbTimePost.text = "\(daysBetweenDates) \("Date".localize) \(Int(hoursBetweenDates/24)) \("Hour".localize)"
         }
         else {
-            cell.lbTimePost.text = "\(minutesBetweenDates) phút trước"
+            cell.lbTimePost.text = "\(minutesBetweenDates) \("MinutesAgo".localize)"
         }
         
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+        
+        cell.lbDist.text = "Completed".localize
         
 //        if indexPath.row == workList.count - 1 {
 //            self.activityIndicatorView.startAnimating()
@@ -158,7 +160,7 @@ extension HistoryViewController:UITableViewDataSource{
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
         let backItem = UIBarButtonItem()
-        backItem.title = "Back"
+        backItem.title = "Back".localize
         navigationItem.backBarButtonItem = backItem
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }

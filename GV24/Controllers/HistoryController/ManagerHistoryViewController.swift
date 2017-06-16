@@ -10,6 +10,7 @@ import UIKit
 
 class ManagerHistoryViewController: BaseViewController {
 
+    @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var toDateButton: UIButton!
     @IBOutlet weak var fromDateButton: UIButton!
@@ -24,6 +25,13 @@ class ManagerHistoryViewController: BaseViewController {
         customNavigationController()
         setupContainerView()
         setupConstrains()
+        setupSegmentTitle()
+    }
+    
+    func setupSegmentTitle() {
+        self.segmentControl.setTitle("WorkCompleted".localize, forSegmentAt: 0)
+        self.segmentControl.setTitle("Thelandlorddid".localize, forSegmentAt: 1)
+        self.toLabel.text = "To".localize
     }
     
     func customNavigationController() {
@@ -64,7 +72,7 @@ class ManagerHistoryViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Lịch sử công việc"
+        title = "WorkHistory".localize//"Lịch sử công việc"
     }
     
     @IBAction func doValueChanged(_ sender: UISegmentedControl) {

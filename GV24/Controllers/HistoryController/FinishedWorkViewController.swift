@@ -42,7 +42,7 @@ class FinishedWorkViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Công việc hoàn thành"
+        title = "WorkCompleted".localize//"Công việc hoàn thành"
     }
 
     override func setupViewBase() {}
@@ -113,6 +113,7 @@ class FinishedWorkViewController: BaseViewController {
             cell.imageUser.clipsToBounds = true
             cell.nameLabel.text = work?.stakeholders?.owner?.name!
             cell.addressLabel.text = work?.stakeholders?.owner?.address?.name!
+            cell.workCompletedLabel.text = "WorkIsFinished".localize
         }
     
         if isWorkListComing == true {
@@ -173,9 +174,9 @@ extension FinishedWorkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
             if isWorkListComing == true {
-                return "NGƯỜI CHỦ NHÀ"
+                return "Landlord".localize
             }
-            return "NGƯỜI THỰC HIỆN"
+            return "ThePerformer".localize
         }
         return ""
     }

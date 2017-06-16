@@ -52,7 +52,7 @@ class WorkListViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Danh sách công việc"
+        title = "WorkList".localize//"Danh sách công việc"
     }
 
     override func setupViewBase() {}
@@ -80,15 +80,15 @@ class WorkListViewController: BaseViewController {
                         TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: nil, tableView: self.tableView, isReload: true)
                     }
                     else {
-                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "You don't have any data.", tableView: self.tableView, isReload: false)
+                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.tableView, isReload: false)
                     }
                 }
                 else {
-                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "You don't have any data.", tableView: self.tableView, isReload: false)
+                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.tableView, isReload: false)
                 }
             }
             else {
-                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "Error occurred while fetching data from server.", tableView: self.tableView, isReload: false)
+                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "ErrorFetchingDataFromServer".localize, tableView: self.tableView, isReload: false)
             }
         }
     }
@@ -121,13 +121,14 @@ class WorkListViewController: BaseViewController {
             let minutesBetweenDates = Int(executionTime/60)
             
             if minutesBetweenDates > 60 {
-                cell.lbTimePost.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
+                cell.lbTimePost.text = "\(daysBetweenDates) \("Date".localize) \(Int(hoursBetweenDates/24)) \("Hour".localize)"
             }
             else {
-                cell.lbTimePost.text = "\(minutesBetweenDates) phút trước"
+                cell.lbTimePost.text = "\(minutesBetweenDates) \("MinutesAgo".localize)"
             }
             
             cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+            cell.lbDist.text = "Completed".localize
         }
     }
 }

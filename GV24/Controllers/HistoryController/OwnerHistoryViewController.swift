@@ -53,7 +53,7 @@ class OwnerHistoryViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Chủ nhà đã làm"
+        title = "Thelandlorddid".localize//"Chủ nhà đã làm"
     }
     
     override func setupViewBase() {
@@ -81,11 +81,11 @@ class OwnerHistoryViewController: BaseViewController {
                     TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: nil, tableView: self.tableView, isReload: true)
                 }
                 else {
-                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "You don't have any data.", tableView: self.tableView, isReload: false)
+                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.tableView, isReload: false)
                 }
             }
             else {
-                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "Error occurred while fetching data from server.", tableView: self.tableView, isReload: false)
+                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "ErrorFetchingDataFromServer".localize, tableView: self.tableView, isReload: false)
             }
         }
     }
@@ -101,6 +101,7 @@ class OwnerHistoryViewController: BaseViewController {
             cell.dateLabel.text = String.convertISODateToString(isoDateStr: (owner.workTime.last)!, format: "dd/MM/yyyy")
             cell.workListButton.tag = indexPath.item
             cell.workListButton.addTarget(self, action: #selector(OwnerHistoryViewController.btnClicked(sender:)), for: UIControlEvents.touchUpInside)
+            cell.workListButton.setTitle("WorkList".localize, for: .normal)
         }
     }
     
@@ -108,7 +109,7 @@ class OwnerHistoryViewController: BaseViewController {
         let vc = WorkListViewController()
         vc.owner = ownerList[sender.tag]
         let backItem = UIBarButtonItem()
-        backItem.title = "Back"
+        backItem.title = "Back".localize
         navigationItem.backBarButtonItem = backItem
         myParent?.navigationController?.pushViewController(vc, animated: true)
     }

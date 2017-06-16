@@ -103,6 +103,7 @@
                 <outlet property="commentLabel" destination="Ppb-M5-8mg" id="OjH-vS-D4Q"/>
                 <outlet property="imageUser" destination="Q6q-fu-6ZL" id="7YR-UI-1xJ"/>
                 <outlet property="nameLabel" destination="piy-bP-BF0" id="Oc6-fR-ROc"/>
+                <outlet property="workCompletedLabel" destination="1Vl-MG-faU" id="Pot-Aw-mVH"/>
             </connections>
             <point key="canvasLocation" x="34" y="81"/>
         </tableViewCell>
