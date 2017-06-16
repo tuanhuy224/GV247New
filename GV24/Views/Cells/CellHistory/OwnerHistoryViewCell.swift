@@ -21,31 +21,38 @@ class OwnerHistoryViewCell: UITableViewCell {
     @IBOutlet weak var workListButton: UIButton!
     @IBOutlet weak var ratingButton: UIButton!
     
-    var imageFirst: UIImage?
+    var unstar: UIImage = {
+        let img = Ionicons.iosStarOutline.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 249, greenValue: 187, blueValue: 67, alpha: 1))
+        return img!
+    }()
+    var star: UIImage = {
+        let img = Ionicons.star.image(18).maskWithColor(color: UIColor.colorWithRedValue(redValue: 252, greenValue: 178, blueValue: 51, alpha: 1))
+        return img!
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupCell()
+    }
+    
+    func setupCell() {
         userImage.layer.cornerRadius = userImage.frame.size.width/2
         userImage.clipsToBounds = true
         let arrowForwardImage = Ionicons.iosArrowForward.image(12)
         arrowForward.image = arrowForwardImage
-        
-        imageFirst = Ionicons.iosStarOutline.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 249, greenValue: 187, blueValue: 67, alpha: 1))
         for i in btnRating {
-            i.setImage(imageFirst, for: .normal)
+            i.setImage(self.star, for: .normal)
         }
     }
     
     @IBAction func btnRatingAction(_ sender: UIButton) {
-        let image = Ionicons.star.image(18).maskWithColor(color: UIColor.colorWithRedValue(redValue: 252, greenValue: 178, blueValue: 51, alpha: 1))
         let tag = sender.tag
         for i in btnRating {
             if i.tag <= tag {
-                i.setImage(image, for: .normal)
+                i.setImage(star, for: .normal)
             }
             else {
-                i.setImage(imageFirst, for: .normal)
+                i.setImage(unstar, for: .normal)
             }
         }
     }

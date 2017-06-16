@@ -16,7 +16,7 @@ class HistoryServices: APIService {
     
     static let sharedInstance = HistoryServices()
     
-    func getWorkListWith(status: WorkStatus , url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(([Work]?, Error?) -> ())) {
+    func getWorkListWith(status: WorkStatus? , url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(([Work]?, Error?) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default,headers:header).responseJSON { (response) in
             switch response.result{
             case .success(let value):
@@ -49,8 +49,6 @@ class HistoryServices: APIService {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
-                print(url)
-                print("params: \(param)")
                 let json = JSON(value).dictionary
                 print("JSON OWNER HISTORY COMMENT: \(String(describing: json))")
                 if let status = json?["status"], status == true {
@@ -61,7 +59,9 @@ class HistoryServices: APIService {
                 }
                 break;
             case .failure(let err):
-                completion(nil, (err as! Error))
+                var error = Error()
+                error.errorContent = err.localizedDescription
+                completion(nil, error)
                 break;
             }
         }

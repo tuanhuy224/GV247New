@@ -39,4 +39,19 @@ class Owner: AppModel {
         self.name = json?["info"]["name"].string
     
     }
+    
+    func convertToUser() -> User? {
+        let user: User = User()
+        user.id = self.id
+        user.gender = self.gender
+        user.name = self.name
+        user.phone = self.phone
+        user.email = self.email
+        user.username = self.username
+        user.image = self.image
+        user.address = self.address
+        user.lat = self.latOwner
+        user.lng = self.lngOwner
+        return user
+    }
 }

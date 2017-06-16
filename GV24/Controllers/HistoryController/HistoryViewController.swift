@@ -17,6 +17,7 @@ class HistoryViewController: BaseViewController {
     var workList: [Work] = []
     var myParent: ManagerHistoryViewController?
     var page: Int = 1
+    var limit: Int = 10
     var startAtDate: Date? = nil
     var endAtDate: Date = Date()
     
@@ -25,26 +26,36 @@ class HistoryViewController: BaseViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var fromDateContainer: UIView!
     
-    var activityIndicatorView: UIActivityIndicatorView!
-    var refreshControl: UIRefreshControl!
+    lazy var activityIndicatorView: UIActivityIndicatorView = {
+       return UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    }()
+    lazy var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(HistoryViewController.updateOwnerList), for: UIControlEvents.valueChanged)
+        return refresh
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        getWorkList(startAt: startAtDate, endAt: endAtDate)
+    }
+    
+    func setupTableView() {
         historyTableView.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
-        
-        // Do any additional setup after loading the view.
         self.automaticallyAdjustsScrollViewInsets = false
         historyTableView.tableFooterView = UIView()
-        self.activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        historyTableView.backgroundView = self.activityIndicatorView
-        getWorkList(startAt: startAtDate, endAt: endAtDate)
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl.addTarget(self, action: #selector(HistoryViewController.updateOwnerList), for: UIControlEvents.valueChanged)
         self.historyTableView.addSubview(self.refreshControl)
+        historyTableView.backgroundView = self.activityIndicatorView
+        self.historyTableView.separatorStyle = .singleLine
     }
     
     func updateOwnerList() {
         self.refreshControl.endRefreshing()
+        self.page = 1
+        self.workList.removeAll()
+        self.historyTableView.reloadData()
+        self.getWorkList(startAt: startAtDate, endAt: endAtDate)
     }
     
     override func decorate() {}
@@ -55,6 +66,7 @@ class HistoryViewController: BaseViewController {
      Params: startAt (opt), endAt (opt): ISO Date, page, limit: Number
      */
     func getWorkList(startAt: Date?, endAt: Date) {
+        self.historyTableView.backgroundView = self.activityIndicatorView
         self.activityIndicatorView.startAnimating()
         user = UserDefaultHelper.currentUser
         var params:[String:Any] = [:]
@@ -63,30 +75,29 @@ class HistoryViewController: BaseViewController {
         }
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         params["page"] = self.page
+        params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getWorkListWith(status: WorkStatus.Done, url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
             if err == nil {
                 if data != nil {
-                    self.workList.append(contentsOf: data!)
-                    DispatchQueue.main.async {
-                        self.activityIndicatorView.stopAnimating()
-                        self.historyTableView.backgroundView = nil
-                        self.historyTableView.reloadData()
+                    if (data?.count)! > 0 {
+                        self.workList.append(contentsOf: data!)
+                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: nil, tableView: self.historyTableView, isReload: true)
+                    }
+                    else {
+                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.historyTableView, isReload: false)
                     }
                 }
             }
             else {
-                print("Error occurred while geting work list with Work status is Done in HistoryViewController")
-                self.activityIndicatorView.stopAnimating()
+                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "ErrorFetchingDataFromServer".localize, tableView: self.historyTableView, isReload: false)
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Lịch sự công việc"
-
-        
+        self.title = "WorkHistory".localize//"Lịch sự công việc"
     }
     
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
@@ -115,13 +126,15 @@ class HistoryViewController: BaseViewController {
         let minutesBetweenDates = Int(executionTime/60)
         
         if minutesBetweenDates > 60 {
-            cell.lbTimePost.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
+            cell.lbTimePost.text = "\(daysBetweenDates) \("Date".localize) \(Int(hoursBetweenDates/24)) \("Hour".localize)"
         }
         else {
-            cell.lbTimePost.text = "\(minutesBetweenDates) phút trước"
+            cell.lbTimePost.text = "\(minutesBetweenDates) \("MinutesAgo".localize)"
         }
         
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+        
+        cell.lbDist.text = "Completed".localize
         
 //        if indexPath.row == workList.count - 1 {
 //            self.activityIndicatorView.startAnimating()
@@ -138,9 +151,7 @@ extension HistoryViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
-        
         self.configureCell(cell: cell, indexPath: indexPath)
-        
         return cell
     }
     
@@ -149,13 +160,13 @@ extension HistoryViewController:UITableViewDataSource{
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
         let backItem = UIBarButtonItem()
-        backItem.title = "Back"
+        backItem.title = "Back".localize
         navigationItem.backBarButtonItem = backItem
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension HistoryViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
 }

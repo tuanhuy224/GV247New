@@ -26,6 +26,14 @@ class MapViewController: BaseViewController {
     
     override func decorate() {
         super.decorate()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupSearchController()
+    }
+    
+    func setupSearchController() {
+        let locationSearchTable = LocationTableViewController()
         locationSearchTable.mapView = mapView
         resultSearchController =  UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable

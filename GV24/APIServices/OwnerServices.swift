@@ -19,7 +19,6 @@ class OwnerServices: APIService {
             switch response.result {
                 case .success(let value):
                     let json = JSON(value).dictionary
-                    print("json : \(json)")
                     var list: [Owner] = []
                     if let status = json?["status"], status == true {
                         if let results = json?["data"]?.array {
@@ -32,11 +31,9 @@ class OwnerServices: APIService {
                             }
                             completion(list, nil)
                         }
-                        else {
-                            var err = Error()
-                            err.errorContent = "Error occurred while getting _id in OwnerServices"
-                            completion(nil, err)
-                        }
+                    }
+                    else {
+                        completion(nil,nil)
                     }
                     break;
                 case .failure(let err):
@@ -44,6 +41,34 @@ class OwnerServices: APIService {
                     error.errorContent = err.localizedDescription
                     completion(nil, error)
                     break;
+            }
+        }
+    }
+    
+    func getTaskOfOwner(url: String, param:Parameters, header: HTTPHeaders, completion: @escaping(([Work]?, Error?) -> ())) {
+        Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value).dictionary
+                var workList:[Work] = []
+                if let status = json?["status"], status == true {
+                    if let list = json?["data"]?["docs"] {
+                        for item in list {
+                            let work = Work(json: item.1)
+                            workList.append(work)
+                        }
+                        completion(workList,nil)
+                    }
+                }
+                else {
+                    completion(nil, nil)
+                }
+                break;
+            case .failure(let err):
+                var error = Error()
+                error.errorContent = err.localizedDescription
+                completion(nil, error)
+                break;
             }
         }
     }

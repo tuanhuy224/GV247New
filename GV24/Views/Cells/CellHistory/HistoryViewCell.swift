@@ -27,8 +27,13 @@ class HistoryViewCell: UITableViewCell {
         }
     }
     @IBOutlet weak var imageWork: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupCell()
+    }
+    
+    func setupCell() {
         imageWork.layer.cornerRadius = imageWork.frame.width/2
         imageWork.clipsToBounds = true
     }

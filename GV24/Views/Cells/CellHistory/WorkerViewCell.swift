@@ -16,13 +16,15 @@ class WorkerViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    
+    @IBOutlet weak var workCompletedLabel: UILabel!
     @IBOutlet weak var btnComment: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
+        setupCell()
+    }
+    
+    func setupCell() {
         arrowForward.image = Ionicons.iosArrowForward.image(18, color: UIColor.lightGray)
     }
 

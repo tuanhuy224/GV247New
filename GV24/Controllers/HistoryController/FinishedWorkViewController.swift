@@ -16,21 +16,23 @@ class FinishedWorkViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var work: Work?
-    var taskComment:Comment?
+    var taskComment:Comment? = nil
     var isWorkListComing: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupTableView()
+        if work != nil {
+            tableView.reloadData()
+        }
+    }
+    
+    func setupTableView() {
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName: "FinishedWorkCell", bundle: nil), forCellReuseIdentifier: "FinishedWorkCell")
         tableView.register(UINib(nibName: "WorkerViewCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
-
-        if work != nil {
-            tableView.reloadData()
-        }
         tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
     }
 
@@ -40,7 +42,7 @@ class FinishedWorkViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Công việc hoàn thành"
+        title = "WorkCompleted".localize//"Công việc hoàn thành"
     }
 
     override func setupViewBase() {}
@@ -111,14 +113,15 @@ class FinishedWorkViewController: BaseViewController {
             cell.imageUser.clipsToBounds = true
             cell.nameLabel.text = work?.stakeholders?.owner?.name!
             cell.addressLabel.text = work?.stakeholders?.owner?.address?.name!
+            cell.workCompletedLabel.text = "WorkIsFinished".localize
         }
     
         if isWorkListComing == true {
-            cell.btnComment.isHidden = false
+            //cell.btnComment.isHidden = false
             cell.commentLabel.isHidden = true
         }
         else {
-            cell.btnComment.isHidden =  true
+            //cell.btnComment.isHidden =  true
             cell.commentLabel.isHidden = false
             cell.commentLabel.text = self.taskComment?.content!
         }
@@ -158,13 +161,22 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = InformationViewController()
+        let owner = work?.stakeholders?.owner
+        vc.user = owner?.convertToUser()
+        if indexPath.section == 1 {
+            _ = navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
 extension FinishedWorkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
-            return "NGƯỜI THỰC HIỆN"
+            if isWorkListComing == true {
+                return "Landlord".localize
+            }
+            return "ThePerformer".localize
         }
         return ""
     }
