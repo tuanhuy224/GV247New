@@ -20,9 +20,9 @@ class InformationViewController: BaseViewController {
         tbInformation.allowsSelection = false
         self.user = UserDefaultHelper.currentUser
         customBarLeftButton()
-        NotificationCenter.default.addObserver(self, selector: #selector(InformationViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(InformationViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(InformationViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(InformationViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InformationViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -37,26 +37,26 @@ class InformationViewController: BaseViewController {
         print("delloc")
     }
     
-    func keyboardWillShow(notification : Notification){
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.view.frame.origin.y -= keyboardSize.height
-                })
-                
-            }
-        }
-    }
-    
-    func keyboardWillHide(notification : Notification){
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.view.frame.origin.y += keyboardSize.height
-                })
-            }
-        }
-    }
+//    func keyboardWillShow(notification : Notification){
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0{
+//                UIView.animate(withDuration: 0.5, animations: {
+//                    self.view.frame.origin.y -= keyboardSize.height
+//                })
+//                
+//            }
+//        }
+//    }
+//    
+//    func keyboardWillHide(notification : Notification){
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                UIView.animate(withDuration: 0.5, animations: {
+//                    self.view.frame.origin.y += keyboardSize.height
+//                })
+//            }
+//        }
+//    }
     override func setupViewBase() {
         self.title = "Information".localize
     }

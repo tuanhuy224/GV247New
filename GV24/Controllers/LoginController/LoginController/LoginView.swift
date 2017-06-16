@@ -16,96 +16,71 @@ import IoniconsSwift
 }
 
 class LoginView: BaseViewController {
-    
+    @IBOutlet weak var Sview: UIView!
     @IBOutlet weak var scrollLogin: UIScrollView!
-
     @IBOutlet weak var imagePassword: UIImageView!
-    @IBOutlet weak var imageProfile: UIImageView!{
-        didSet{
-        }
-    }
+    @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var forgotPassword: UIButton!
     @IBOutlet weak var imgeLogo: UIImageView!
     @IBOutlet weak var userLogin: UITextField!
     @IBOutlet weak var passwordLogin: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var scrollBt: NSLayoutConstraint!
+    
     weak var delegate:customButtonLoginDelegate?
     var user:User?
     override func viewDidLoad() {
         super.viewDidLoad()
         userLogin.delegate = self
         passwordLogin.delegate = self
+        scrollLogin.isScrollEnabled = true
+        scrollLogin.delegate = self
         self.setupView()
+        scrollLogin.addSubview(self.Sview)
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerAutoKeyboard()
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unRegisterAutoKeyboard()
+        
+    }
     @IBAction func loginButtonAction(_ sender: Any) {
         btnLogin.setBackgroundImage(nil, for: .normal)
         btnLogin.setBackgroundImage(nil, for: .highlighted)
-            let apiClient = UserService.sharedInstance
-            apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, completion: { (user, string, error) in
-                if let user = user{
-                    UserDefaultHelper.setUserDefault(token: string!, user: user)
-                    
-                    guard let window = UIApplication.shared.keyWindow else{return}
-                    let navi = UINavigationController(rootViewController: HomeViewDisplayController())
-                    window.rootViewController = navi
-                }else{
+        let apiClient = UserService.sharedInstance
+        apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, completion: { (user, string, error) in
+            if let user = user{
+                UserDefaultHelper.setUserDefault(token: string!, user: user)
+                guard let window = UIApplication.shared.keyWindow else{return}
+                let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+                window.rootViewController = navi
+            }else{
                 
-                }
-            })
+            }
+        })
     }
     @IBAction func forgotPasswordAction(_ sender: Any) {
         
     }
-   func setupView()  {
+    func setupView()  {
         let imageprofile = Ionicons.iosPerson.image(18)
         imageProfile.image = imageprofile.maskWithColor(color: UIColor.gray)
         imageProfile.image = imageprofile
-    
         let imagepassword = Ionicons.iosLocked.image(18)
         imagePassword.image = imagepassword.maskWithColor(color: UIColor.gray)
         imagePassword.image = imagepassword
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(LoginView.keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(LoginView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    
-    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))
-    view.addGestureRecognizer(tap)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
-        view.endEditing(true)
+        userLogin.resignFirstResponder()
+        passwordLogin.resignFirstResponder()
     }
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        print("delloc")
-    }
-    
-    func keyboardWillShow(notification : Notification){
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.view.frame.origin.y -= keyboardSize.height
-                })
-                
-            }
-        }
-    }
-    
-    func keyboardWillHide(notification : Notification){
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.view.frame.origin.y += keyboardSize.height
-                })
-            }
-        }
-    }
-
-
-    
 }
 extension LoginView:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -114,10 +89,8 @@ extension LoginView:UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        passwordLogin = textField
-    }
+}
 
+extension LoginView:UIScrollViewDelegate{
 }
 

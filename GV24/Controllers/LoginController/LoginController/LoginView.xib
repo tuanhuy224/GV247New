@@ -17,12 +17,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginView" customModule="GV24" customModuleProvider="target">
             <connections>
+                <outlet property="Sview" destination="tLj-6N-x88" id="N3v-bZ-yAx"/>
                 <outlet property="btnLogin" destination="dCQ-nH-rFS" id="03V-fL-Eao"/>
                 <outlet property="forgotPassword" destination="grg-Ad-yYh" id="Dbm-g1-aCl"/>
                 <outlet property="imagePassword" destination="DYE-tj-cgt" id="9s3-md-ZAX"/>
                 <outlet property="imageProfile" destination="Wr1-a1-7LV" id="qSr-NE-LQc"/>
                 <outlet property="imgeLogo" destination="44P-rF-dgj" id="Zds-ba-zuM"/>
                 <outlet property="passwordLogin" destination="h4j-Lx-Rib" id="4fh-4f-jAz"/>
+                <outlet property="scrollBt" destination="Ums-S6-nOb" id="AWH-rY-392"/>
                 <outlet property="scrollLogin" destination="5Fa-cN-kOO" id="eZM-3T-L5X"/>
                 <outlet property="userLogin" destination="6um-cF-cmu" id="1Mi-Hd-Ixm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="ExA-I2-77U"/>
@@ -33,7 +35,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fa-cN-kOO">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5Fa-cN-kOO">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLj-6N-x88">
@@ -130,6 +132,7 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="dxc-wH-YAW" firstAttribute="height" relation="greaterThanOrEqual" secondItem="tLj-6N-x88" secondAttribute="height" multiplier="1:3" id="AwM-U0-GZu"/>
                                 <constraint firstItem="44P-rF-dgj" firstAttribute="leading" secondItem="tLj-6N-x88" secondAttribute="leading" id="FHg-mV-qZB"/>
                                 <constraint firstAttribute="trailing" secondItem="dxc-wH-YAW" secondAttribute="trailing" id="IuP-XN-g5E"/>
                                 <constraint firstAttribute="bottom" secondItem="dxc-wH-YAW" secondAttribute="bottom" id="Ums-S6-nOb"/>
@@ -144,23 +147,25 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="tLj-6N-x88" secondAttribute="trailing" id="7vu-ry-yx6"/>
-                        <constraint firstItem="tLj-6N-x88" firstAttribute="leading" secondItem="5Fa-cN-kOO" secondAttribute="leading" id="Mjy-7r-rNE"/>
-                        <constraint firstItem="tLj-6N-x88" firstAttribute="top" secondItem="5Fa-cN-kOO" secondAttribute="top" id="WpH-PN-quQ"/>
-                        <constraint firstAttribute="bottom" secondItem="tLj-6N-x88" secondAttribute="bottom" id="XpX-H2-Ug2"/>
+                        <constraint firstItem="tLj-6N-x88" firstAttribute="top" secondItem="5Fa-cN-kOO" secondAttribute="top" id="9qy-kE-wlc"/>
+                        <constraint firstItem="tLj-6N-x88" firstAttribute="leading" secondItem="5Fa-cN-kOO" secondAttribute="leading" id="EKK-eo-vhf"/>
+                        <constraint firstAttribute="bottom" secondItem="tLj-6N-x88" secondAttribute="bottom" id="VbW-te-dYT"/>
+                        <constraint firstAttribute="trailing" secondItem="tLj-6N-x88" secondAttribute="trailing" id="bVK-VX-SEz"/>
                     </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="tLj-6N-x88" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2MP-TH-MO7"/>
-                <constraint firstAttribute="bottom" secondItem="5Fa-cN-kOO" secondAttribute="bottom" id="7E7-j7-ygf"/>
                 <constraint firstAttribute="trailing" secondItem="tLj-6N-x88" secondAttribute="trailing" id="B0g-sH-ar4"/>
                 <constraint firstAttribute="bottom" secondItem="tLj-6N-x88" secondAttribute="bottom" id="KvP-PB-1Sc"/>
-                <constraint firstItem="5Fa-cN-kOO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VPg-AU-X8Z"/>
-                <constraint firstAttribute="trailing" secondItem="5Fa-cN-kOO" secondAttribute="trailing" id="XYG-1M-D7M"/>
-                <constraint firstItem="5Fa-cN-kOO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gKc-oM-Olc"/>
+                <constraint firstAttribute="trailing" secondItem="5Fa-cN-kOO" secondAttribute="trailing" id="Occ-3q-3ac"/>
+                <constraint firstItem="5Fa-cN-kOO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fJr-BV-eLf"/>
                 <constraint firstItem="tLj-6N-x88" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gZx-T7-xK1"/>
+                <constraint firstItem="tLj-6N-x88" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hz3-VS-kBP"/>
+                <constraint firstAttribute="bottom" secondItem="5Fa-cN-kOO" secondAttribute="bottom" id="iKo-AB-zHX"/>
+                <constraint firstItem="5Fa-cN-kOO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sYL-LE-hU8"/>
+                <constraint firstItem="tLj-6N-x88" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="yQr-Od-F7N"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="25.5" y="52.5"/>

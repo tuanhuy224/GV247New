@@ -80,6 +80,8 @@
 		003C9A0E1EDFEA99003F1189 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A101EDFEA99003F1189 /* Localizable.strings */; };
 		003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A151EDFEC02003F1189 /* LaunchScreen.storyboard */; };
 		003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003C9A171EDFEC02003F1189 /* Main.storyboard */; };
+		004103601EF37090004BF446 /* KeyboardNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041035F1EF37090004BF446 /* KeyboardNotifications.swift */; };
+		004103621EF37858004BF446 /* AutoKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004103611EF37858004BF446 /* AutoKeyboard.swift */; };
 		004467AE1EEF82D900DDD0ED /* PendingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004467AC1EEF82D900DDD0ED /* PendingController.swift */; };
 		004467AF1EEF82D900DDD0ED /* PendingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004467AD1EEF82D900DDD0ED /* PendingController.xib */; };
 		004467B31EEF92BC00DDD0ED /* RecievedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004467B11EEF92BC00DDD0ED /* RecievedController.swift */; };
@@ -239,6 +241,9 @@
 		003C9A121EDFEAD7003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		003C9A161EDFEC02003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		003C9A181EDFEC02003F1189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0041035F1EF37090004BF446 /* KeyboardNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotifications.swift; sourceTree = "<group>"; };
+		004103611EF37858004BF446 /* AutoKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoKeyboard.swift; sourceTree = "<group>"; };
+		004103631EF37866004BF446 /* AutoKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoKeyboard.h; sourceTree = "<group>"; };
 		004467AC1EEF82D900DDD0ED /* PendingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingController.swift; sourceTree = "<group>"; };
 		004467AD1EEF82D900DDD0ED /* PendingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PendingController.xib; sourceTree = "<group>"; };
 		004467B11EEF92BC00DDD0ED /* RecievedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecievedController.swift; sourceTree = "<group>"; };
@@ -351,6 +356,7 @@
 		002315561EDF07A200B29F36 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				0041035C1EF37058004BF446 /* Notifications */,
 				002315571EDF07DC00B29F36 /* Extention+Image.swift */,
 			);
 			path = Extentions;
@@ -590,6 +596,16 @@
 				003C9A0A1EDFC874003F1189 /* ManageViewController.xib */,
 			);
 			path = ManageController;
+			sourceTree = "<group>";
+		};
+		0041035C1EF37058004BF446 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				004103631EF37866004BF446 /* AutoKeyboard.h */,
+				004103611EF37858004BF446 /* AutoKeyboard.swift */,
+				0041035F1EF37090004BF446 /* KeyboardNotifications.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		004467AB1EEF82A900DDD0ED /* ProcessController */ = {
@@ -1219,6 +1235,7 @@
 				002A04451EE11C97001876E5 /* xibView.swift in Sources */,
 				002AFD641EE7FD8800D3B88A /* APIPath.swift in Sources */,
 				844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */,
+				004103621EF37858004BF446 /* AutoKeyboard.swift in Sources */,
 				003BC6951ED9DA0600FF6D14 /* Constant.swift in Sources */,
 				00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */,
 				005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */,
@@ -1252,6 +1269,7 @@
 				00CC0D451EEE3F7B002D24D4 /* PopupViewController.swift in Sources */,
 				002572541EDEAD4000AACC52 /* CommentCell.swift in Sources */,
 				0022C4FF1EE84D1700027665 /* OwnerHistoryViewCell.swift in Sources */,
+				004103601EF37090004BF446 /* KeyboardNotifications.swift in Sources */,
 				003BC69B1ED9EAF300FF6D14 /* Info.swift in Sources */,
 				00EB19411EE93E81003B2C5D /* WorkAroundController.swift in Sources */,
 				002A04561EE14667001876E5 /* WorkDetailCell.swift in Sources */,

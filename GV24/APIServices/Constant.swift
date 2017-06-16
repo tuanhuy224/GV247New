@@ -20,7 +20,7 @@ let workCellID = "workCell"
 let commentCellID = "commentCell"
 let DefaultCellID = "DefaultCell"
 let MoreCellID = "moreCell"
-let moreNameCellID = "MoreNameCell"
+let moreNameCellID = "moreNameCell"
 let notifCellID = "notifCell"
 
 //MARk - constant NIb cell
@@ -45,8 +45,6 @@ let NibNotifiCell = "NotifiCell"
 let heightConstantWorkDetailCell:Float = 65
 let urlDisplayHome = "https://yukotest123.herokuapp.com/vi/task/getAll"
 let urlHistory = "https://yukotest123.herokuapp.com/en/maid/getAllTasks"
-
-
 let urlLogin = "https://yukotest123.herokuapp.com/vi/auth/maid/login"
 struct Constants {
     static let kUserToken = "kUserToken"
