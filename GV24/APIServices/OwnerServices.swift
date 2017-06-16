@@ -64,8 +64,10 @@ class OwnerServices: APIService {
                     completion(nil, nil)
                 }
                 break;
-            case .failure(let error):
-                completion(nil, (error as! Error))
+            case .failure(let err):
+                var error = Error()
+                error.errorContent = err.localizedDescription
+                completion(nil, error)
                 break;
             }
         }
