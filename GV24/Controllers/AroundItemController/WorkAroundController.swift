@@ -32,6 +32,7 @@ class WorkAroundController: BaseViewController {
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
         setup()
+        aroundTableView.reloadData()
     }
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {

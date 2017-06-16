@@ -8,6 +8,7 @@
 
 import UIKit
 import IoniconsSwift
+import Alamofire
 
 @objc protocol customButtonLoginDelegate:class {
     func buttonLogin(username:String,password:String)
@@ -16,6 +17,7 @@ import IoniconsSwift
 }
 
 class LoginView: BaseViewController {
+    @IBOutlet weak var blurImage: UIVisualEffectView!
     @IBOutlet weak var Sview: UIView!
     @IBOutlet weak var scrollLogin: UIScrollView!
     @IBOutlet weak var imagePassword: UIImageView!
@@ -26,9 +28,12 @@ class LoginView: BaseViewController {
     @IBOutlet weak var passwordLogin: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var scrollBt: NSLayoutConstraint!
+    @IBOutlet weak var btAround: UIButton!
+    @IBOutlet weak var logoImage: UIImageView!
     
     weak var delegate:customButtonLoginDelegate?
     var user:User?
+    var arrays = [Around]()
     override func viewDidLoad() {
         super.viewDidLoad()
         userLogin.delegate = self
@@ -36,7 +41,8 @@ class LoginView: BaseViewController {
         scrollLogin.isScrollEnabled = true
         scrollLogin.delegate = self
         self.setupView()
-        scrollLogin.addSubview(self.Sview)
+        loadData()
+        //scrollLogin.addSubview(self.Sview)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,16 +69,37 @@ class LoginView: BaseViewController {
             }
         })
     }
+    
+    func loadData() {
+        let apiService = APIService.shared
+        let param:[String:Double] = ["lng": 106.6882557,"lat": 10.7677238]
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
+            if let jsonArray = json?.array{
+                for data in jsonArray{
+                    self.arrays.append(Around(json: data))
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            }
+        }
+    }
+    @IBAction func btAround(_ sender: Any) {
+        let navi = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
+        navi.arrays = arrays
+        navigationController?.pushViewController(navi, animated: true)
+    }
     @IBAction func forgotPasswordAction(_ sender: Any) {
         
     }
     func setupView()  {
-        let imageprofile = Ionicons.iosPerson.image(18)
-        imageProfile.image = imageprofile.maskWithColor(color: UIColor.gray)
+        let imageprofile = Ionicons.iosPerson.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
         imageProfile.image = imageprofile
-        let imagepassword = Ionicons.iosLocked.image(18)
-        imagePassword.image = imagepassword.maskWithColor(color: UIColor.gray)
+        let imagepassword = Ionicons.locked.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
         imagePassword.image = imagepassword
+        btAround.setTitle("Around".localize, for: .normal)
+        btAround.backgroundColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
+        logoImage.backgroundColor = UIColor.clear
+        blurImage.alpha = 0.8
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
