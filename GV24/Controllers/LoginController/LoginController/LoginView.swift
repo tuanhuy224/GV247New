@@ -89,6 +89,7 @@ class LoginView: BaseViewController {
         navigationController?.pushViewController(navi, animated: true)
     }
     @IBAction func forgotPasswordAction(_ sender: Any) {
+        self.navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
         
     }
     func setupView()  {

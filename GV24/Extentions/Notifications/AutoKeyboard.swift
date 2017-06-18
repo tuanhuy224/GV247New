@@ -28,6 +28,7 @@ extension UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         savedConstant.removeValue(forKey: self)
+        
     }
     
     func keyboardWillShow(notification: NSNotification) {

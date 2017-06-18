@@ -18,11 +18,11 @@ class ManageViewController: BaseViewController {
     var processOnDoing = [Work]()
     var processRecieved = [Work]()
     var returnValue:Int = 0
+    var longGesture = UILongPressGestureRecognizer()
     override func viewDidLoad() {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
         getProcess()
-        
     }
     override func decorate() {
         super.decorate()
@@ -33,7 +33,6 @@ class ManageViewController: BaseViewController {
         super.setupViewBase()
         self.title = "Taskmanagement".localize
     }
-    
     @IBAction func segmentControlAction(_ sender: Any) {
         let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
         for (index, view) in sortedViews.enumerated() {
@@ -57,28 +56,38 @@ class ManageViewController: BaseViewController {
             if json != nil{
                 self.processOnCreate = json!
                 MBProgressHUD.hide(for: self.view, animated: true)
+                self.tbManage.reloadData()
             }
-            self.tbManage.reloadData()
-            }
+        }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
             if json != nil{
                 self.processPending = json!
             }
-            self.tbManage.reloadData()
-            }
+        }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterRecieve, header: header) { (json, error) in
             if json != nil{
                 self.processRecieved = json!
             }
-            self.tbManage.reloadData()
-            }
+        }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterOnDoing, header: header) { (json, error) in
             if json != nil{
                 self.processOnDoing = json!
             }
-            self.tbManage.reloadData()
-            }
         }
+        self.tbManage.reloadData()
+    }
+    // MARK: - longGesture
+    func longTap(ges:UILongPressGestureRecognizer) {
+        let longPress = ges as UILongPressGestureRecognizer
+        _ = longPress.state
+        let locationInView = longPress.location(in: tbManage)
+        let indexPath = tbManage.indexPathForRow(at: locationInView)
+        tbManage.beginUpdates()
+        tbManage.deleteRows(at: [IndexPath(row: (indexPath?.row)!, section: 0)], with: .fade)
+        processPending.remove(at: (indexPath?.row)!)
+        tbManage.endUpdates()
+        tbManage.reloadData()
+    }
 }
 extension ManageViewController:UITableViewDataSource{
     
@@ -100,6 +109,8 @@ extension ManageViewController:UITableViewDataSource{
         let cell = tbManage.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as? HistoryViewCell
         switch segmentCtr.selectedSegmentIndex {
         case 0:
+            longGesture = UILongPressGestureRecognizer(target: self, action: #selector(ManageViewController.longTap))
+            cell?.addGestureRecognizer(longGesture)
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
@@ -123,6 +134,17 @@ extension ManageViewController:UITableViewDataSource{
         }
         return cell!
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch segmentCtr.selectedSegmentIndex {
+        case 0:
+            if editingStyle == .delete {
+                tbManage.deleteRows(at: [indexPath], with: .fade)
+                processPending.remove(at: indexPath.row)
+            }
+        default:
+            break
+        }
+    }
 }
 extension ManageViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -132,8 +154,8 @@ extension ManageViewController:UITableViewDelegate{
         switch segmentCtr.selectedSegmentIndex {
         case 0:
             let navi = PendingController(nibName: CTPendingController, bundle: nil)
-                navi.processPending = processOnCreate[indexPath.row]
-                navigationController?.pushViewController(navi, animated: true)
+            navi.processPending = processOnCreate[indexPath.row]
+            navigationController?.pushViewController(navi, animated: true)
             break
         case 1:
             let navi = RecievedController(nibName: CTRecievedController, bundle: nil)

@@ -32,7 +32,6 @@ class KeyboardNotifications {
         }
     }
 }
-
 // MARK: - enums
 
 extension KeyboardNotifications {
@@ -57,7 +56,6 @@ extension KeyboardNotifications {
                 
             }
         }
-        
         var notificationName: NSNotification.Name {
             switch self {
                 
@@ -96,7 +94,7 @@ extension KeyboardNotifications {
             } else {
                 NotificationCenter.default.removeObserver(self)
                 print("Keyboard notifications deinited")
-            }
+            } 
             _isEnabled = newValue
         }
         

@@ -9,7 +9,7 @@ target 'GV24' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'Kingfisher', '~> 3.0'
-
+	
   # Pods for GV24
 
   target 'GV24Tests' do

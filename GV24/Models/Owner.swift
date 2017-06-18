@@ -37,9 +37,7 @@ class Owner: AppModel {
         self.info = Info(json: (json?["info"])!)
         self.address = Address(json:(json?["info"]["address"])!)
         self.name = json?["info"]["name"].string
-    
     }
-    
     func convertToUser() -> User? {
         let user: User = User()
         user.id = self.id
