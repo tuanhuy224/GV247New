@@ -22,7 +22,7 @@ class ManageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
-        getProcess()
+        
     }
     override func decorate() {
         super.decorate()
@@ -32,6 +32,7 @@ class ManageViewController: BaseViewController {
     override func setupViewBase() {
         super.setupViewBase()
         self.title = "Taskmanagement".localize
+        getProcess()
     }
     @IBAction func segmentControlAction(_ sender: Any) {
         let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
@@ -67,6 +68,7 @@ class ManageViewController: BaseViewController {
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterRecieve, header: header) { (json, error) in
             if json != nil{
                 self.processRecieved = json!
+                self.tbManage.reloadData()
             }
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterOnDoing, header: header) { (json, error) in
@@ -86,7 +88,6 @@ class ManageViewController: BaseViewController {
         tbManage.deleteRows(at: [IndexPath(row: (indexPath?.row)!, section: 0)], with: .fade)
         processPending.remove(at: (indexPath?.row)!)
         tbManage.endUpdates()
-        tbManage.reloadData()
     }
 }
 extension ManageViewController:UITableViewDataSource{

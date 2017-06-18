@@ -47,7 +47,6 @@ extension DetailManagementController:UITableViewDataSource{
             return cell
         }else{
             let cell:InforOwnerCell = detailManager.dequeueReusableCell(withIdentifier: InforOwnerCellID, for: indexPath) as! InforOwnerCell
-            
             return cell
         }
     }

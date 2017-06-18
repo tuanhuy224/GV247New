@@ -48,6 +48,23 @@ class APIService: NSObject {
             }
         }
     }
+    func deleteReserve(url : String,method:HTTPMethod, parameters: Parameters,header:HTTPHeaders, completion: @escaping (ResponseCompletion)){
+        Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let status = json["status"].bool
+                if !status!{
+                    guard let message = json["message"].string else{return}
+                    completion(nil,message)
+                }else{
+                    completion(nil, String(describing: json["message"]))
+                }
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
+            }
+        }
+    }
     func postMultipart(url : String, image: UIImage?, name: String?, parameters: Dictionary<String, String>, completion: @escaping (ResponseCompletion)){
         Alamofire.upload(
             multipartFormData: { multipartFormData in

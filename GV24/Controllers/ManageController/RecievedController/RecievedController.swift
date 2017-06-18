@@ -73,7 +73,6 @@ extension RecievedController:UITableViewDelegate{
             return 172
         }
     }
-
 }
 extension RecievedController:CancelWorkDelegate{
     func CancelButton() {
@@ -81,7 +80,7 @@ extension RecievedController:CancelWorkDelegate{
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        apiClient.postReserve(url: APIPaths().urlReserve(), method: .delete, parameters: parameter, header: header) { (json, string) in
+        apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
             MBProgressHUD.hide(for: self.view, animated: true)
             print(string!)
             let alertC = AlertStandard.sharedInstance
