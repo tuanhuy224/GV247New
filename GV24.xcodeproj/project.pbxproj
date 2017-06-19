@@ -135,6 +135,10 @@
 		00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB19561EE93EF5003B2C5D /* Stakeholders.swift */; };
 		00EDD49B1EF02D660098F505 /* DetailManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDD4991EF02D660098F505 /* DetailManagementController.swift */; };
 		00EDD49C1EF02D660098F505 /* DetailManagementController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EDD49A1EF02D660098F505 /* DetailManagementController.xib */; };
+		037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */; };
+		037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */; };
+		037EA8AA1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */; };
+		037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */; };
 		03F81FBA1EF238AD0052B440 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F81FB91EF238AD0052B440 /* TableViewHelper.swift */; };
 		4AA17A8891826EB16074A9C2 /* Pods_GV24.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 472E4661C584478893F9A0A4 /* Pods_GV24.framework */; };
 		842FEC6A1ED40C6900000606 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC691ED40C6900000606 /* AppDelegate.swift */; };
@@ -302,6 +306,10 @@
 		00EB19561EE93EF5003B2C5D /* Stakeholders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stakeholders.swift; sourceTree = "<group>"; };
 		00EDD4991EF02D660098F505 /* DetailManagementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailManagementController.swift; sourceTree = "<group>"; };
 		00EDD49A1EF02D660098F505 /* DetailManagementController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailManagementController.xib; sourceTree = "<group>"; };
+		037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCell.swift; sourceTree = "<group>"; };
+		037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCell.xib; sourceTree = "<group>"; };
+		037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		03F81FB91EF238AD0052B440 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		10C1EF8086B8317A0B2D32AD /* Pods_GV24UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GV24UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		419D89D2D83ABB2676E6EA1F /* Pods-GV24Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GV24Tests/Pods-GV24Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -435,6 +443,10 @@
 				0025724F1EDE9E1600AACC52 /* InforCell.xib */,
 				002572521EDEAD4000AACC52 /* CommentCell.swift */,
 				002572531EDEAD4000AACC52 /* CommentCell.xib */,
+				037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */,
+				037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */,
+				037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */,
+				037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */,
 			);
 			path = InforCell;
 			sourceTree = "<group>";
@@ -1026,6 +1038,7 @@
 				002A043E1EE116AB001876E5 /* WorkAround.xib in Resources */,
 				009A76EC1EEE94270021BFB0 /* MapViewController.xib in Resources */,
 				003175E91EE68AC400F3F9B4 /* WaittingCell.xib in Resources */,
+				037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */,
 				002BA1081EDD52F60099352D /* NotifiCell.xib in Resources */,
 				002572471EDE698200AACC52 /* ForgotPasswordViewController.xib in Resources */,
 				002BA1041EDD26090099352D /* MoreCell.xib in Resources */,
@@ -1045,6 +1058,7 @@
 				003175E51EE68A8900F3F9B4 /* WaittingController.xib in Resources */,
 				0022C5001EE84D1700027665 /* OwnerHistoryViewCell.xib in Resources */,
 				0025723D1EDE633500AACC52 /* RuleViewController.xib in Resources */,
+				037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */,
 				002572511EDE9E1600AACC52 /* InforCell.xib in Resources */,
 				00EB194D1EE93EB4003B2C5D /* HistoryViewController.xib in Resources */,
 				002C570A1EDBDD420039BBCE /* HistoryViewCell.xib in Resources */,
@@ -1131,7 +1145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		64A0DD5D4D776A1C572D415A /* [CP] Check Pods Manifest.lock */ = {
@@ -1146,7 +1160,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ABFFCFD45244EDBAA672BCF1 /* [CP] Embed Pods Frameworks */ = {
@@ -1206,7 +1220,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FA7048E69461592FC8B4C458 /* [CP] Copy Pods Resources */ = {
@@ -1241,11 +1255,13 @@
 				002572461EDE698200AACC52 /* ForgotPasswordViewController.swift in Sources */,
 				002BA1181EDD62730099352D /* UserService.swift in Sources */,
 				00EB19571EE93EF5003B2C5D /* Address.swift in Sources */,
+				037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */,
 				003C9A091EDFC85F003F1189 /* ManageViewController.swift in Sources */,
 				002572321EDE568700AACC52 /* ConstactViewController.swift in Sources */,
 				00EB194A1EE93EB4003B2C5D /* FinishedWorkViewController.swift in Sources */,
 				003175E81EE68AC400F3F9B4 /* WaittingCell.swift in Sources */,
 				004467B81EEF97FB00DDD0ED /* DoingController.swift in Sources */,
+				037EA8AA1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift in Sources */,
 				00EDD49B1EF02D660098F505 /* DetailManagementController.swift in Sources */,
 				005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */,
 				009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */,

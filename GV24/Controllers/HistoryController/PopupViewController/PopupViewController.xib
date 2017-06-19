@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="cancelButton" destination="wWv-7Q-vGA" id="yad-aX-Z9H"/>
                 <outlet property="containerView" destination="WW7-hD-aao" id="j7V-ZG-Pzi"/>
-                <outlet property="datePicker" destination="fRc-OP-IuX" id="7MK-ES-dBl"/>
+                <outlet property="datePicker" destination="fRc-OP-IuX" id="JWf-c9-3hJ"/>
                 <outlet property="effectView" destination="rAO-QU-yTy" id="omR-e2-IKH"/>
                 <outlet property="selectButton" destination="s3H-lF-nNB" id="s3y-Kc-Xkx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

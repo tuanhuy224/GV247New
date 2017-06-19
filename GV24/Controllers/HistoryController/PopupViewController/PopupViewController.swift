@@ -39,7 +39,6 @@ class PopupViewController: BaseViewController {
         containerView.layer.shadowOpacity = 0.7
         cancelButton.setTitle("Cancel".localize, for: .normal)
         selectButton.setTitle("Select".localize, for: .normal)
-        //datePicker.locale = Locale().initWithLanguageCode(languageCode: <#T##NSString#>, countryCode: <#T##NSString#>, name: <#T##NSString#>)
     }
     
     @IBAction func selectDate(_ sender: Any) {
