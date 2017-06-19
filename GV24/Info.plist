@@ -44,9 +44,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Will you allow this app to always know your location?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Do you allow this app to know your location?</string>
+	<string>By accessing your location, this app can find you a good place to eat.</string>
 </dict>
 </plist>

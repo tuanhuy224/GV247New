@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000E1CA01EF6D54600E26FD4 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */; };
+		000E1CA21EF6D56400E26FD4 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1CA11EF6D56400E26FD4 /* GooglePlace.swift */; };
+		000E1CA51EF6D6C000E26FD4 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1CA31EF6D6C000E26FD4 /* MarkerInfoView.swift */; };
+		000E1CA61EF6D6C000E26FD4 /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000E1CA41EF6D6C000E26FD4 /* MarkerInfoView.xib */; };
+		000E1CA81EF6D6E500E26FD4 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1CA71EF6D6E500E26FD4 /* GoogleDataProvider.swift */; };
 		000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 000E1E7A1EF288690058838B /* MBProgressHUD.m */; };
 		0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022C4F71EE84D1700027665 /* FinishedWorkCell.swift */; };
 		0022C4FE1EE84D1700027665 /* FinishedWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0022C4F81EE84D1700027665 /* FinishedWorkCell.xib */; };
@@ -160,6 +165,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
+		000E1CA11EF6D56400E26FD4 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		000E1CA31EF6D6C000E26FD4 /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
+		000E1CA41EF6D6C000E26FD4 /* MarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoView.xib; sourceTree = "<group>"; };
+		000E1CA71EF6D6E500E26FD4 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		000E1E781EF288680058838B /* GV24-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GV24-Bridging-Header.h"; sourceTree = "<group>"; };
 		000E1E791EF288690058838B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		000E1E7A1EF288690058838B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -828,6 +838,9 @@
 		842FEC981ED40CC300000606 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				000E1CA71EF6D6E500E26FD4 /* GoogleDataProvider.swift */,
+				000E1CA11EF6D56400E26FD4 /* GooglePlace.swift */,
+				000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */,
 				00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */,
 				00EB19501EE93EF5003B2C5D /* Address.swift */,
 				00EB19511EE93EF5003B2C5D /* Dist.swift */,
@@ -849,6 +862,8 @@
 		842FEC991ED40CD400000606 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				000E1CA31EF6D6C000E26FD4 /* MarkerInfoView.swift */,
+				000E1CA41EF6D6C000E26FD4 /* MarkerInfoView.xib */,
 				841D80F41ED5466B00C916EC /* Cells */,
 				842FEC9E1ED40DA800000606 /* CustomView.swift */,
 			);
@@ -1045,6 +1060,7 @@
 				0025724C1EDE9D9100AACC52 /* InformationViewController.xib in Resources */,
 				003C9A0E1EDFEA99003F1189 /* Localizable.strings in Resources */,
 				00EB19421EE93E81003B2C5D /* WorkAroundController.xib in Resources */,
+				000E1CA61EF6D6C000E26FD4 /* MarkerInfoView.xib in Resources */,
 				003BC6861ED9D92E00FF6D14 /* HomeViewDisplayController.xib in Resources */,
 				00CC0D461EEE3F7B002D24D4 /* PopupViewController.xib in Resources */,
 				003C9A0B1EDFC874003F1189 /* ManageViewController.xib in Resources */,
@@ -1239,11 +1255,14 @@
 				002AFD641EE7FD8800D3B88A /* APIPath.swift in Sources */,
 				844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */,
 				004103621EF37858004BF446 /* AutoKeyboard.swift in Sources */,
+				000E1CA21EF6D56400E26FD4 /* GooglePlace.swift in Sources */,
 				003BC6951ED9DA0600FF6D14 /* Constant.swift in Sources */,
 				00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */,
 				005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */,
+				000E1CA51EF6D6C000E26FD4 /* MarkerInfoView.swift in Sources */,
 				0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */,
 				002A04501EE13B51001876E5 /* AlertManager.swift in Sources */,
+				000E1CA01EF6D54600E26FD4 /* PlaceMarker.swift in Sources */,
 				00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */,
 				004467BB1EEF9B8900DDD0ED /* CustomTableViewCell.swift in Sources */,
 				00EB195A1EE93EF5003B2C5D /* Owner.swift in Sources */,
@@ -1282,6 +1301,7 @@
 				000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */,
 				002BA0F91EDD25320099352D /* MoreViewController.swift in Sources */,
 				002AFD661EE8058A00D3B88A /* HistoryServices.swift in Sources */,
+				000E1CA81EF6D6E500E26FD4 /* GoogleDataProvider.swift in Sources */,
 				002715291EE799B7006E6671 /* Around.swift in Sources */,
 				842FEC6A1ED40C6900000606 /* AppDelegate.swift in Sources */,
 				00EB19581EE93EF5003B2C5D /* Dist.swift in Sources */,

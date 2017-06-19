@@ -9,6 +9,9 @@ target 'GV24' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'Kingfisher', '~> 3.0'
+	pod 'GoogleMaps'
+	pod 'GooglePlaces'
+  	pod 'GooglePlacePicker'
 	
   # Pods for GV24
 

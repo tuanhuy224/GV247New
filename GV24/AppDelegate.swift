@@ -11,12 +11,13 @@ import UIKit
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     var isLogged = false
+    let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
     var navi:UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DGLocalization.sharedInstance.startLocalization()
+        GMSServices.provideAPIKey(googleMapsApiKey)
         if UserDefaultHelper.isLogin {
             navi = UINavigationController(rootViewController: HomeViewDisplayController())
         }else{

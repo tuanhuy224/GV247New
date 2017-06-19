@@ -10,7 +10,8 @@ import UIKit
 import IoniconsSwift
 
 @objc protocol CancelWorkDelegate:class{
- @objc optional func CancelButton()
+    @objc optional func CancelButton()
+    @objc optional func CancelButtonForPending()
 }
 class CancelCell: CustomTableViewCell {
     @IBOutlet weak var lbCancelDetail: UILabel!

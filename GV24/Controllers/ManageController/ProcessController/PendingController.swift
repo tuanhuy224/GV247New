@@ -53,13 +53,13 @@ extension PendingController:UITableViewDataSource{
         case 2:
             let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
             cell.lbCancelDetail.isHidden = true
+            cell.delegate = self
             return cell
         default:
             break
         }
         return UITableViewCell()
     }
-    
 }
 extension PendingController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,3 +81,18 @@ extension PendingController:chooseWorkDelegate{
         navigationController?.pushViewController(navi, animated: true)
     }
 }
+extension PendingController:CancelWorkDelegate{
+    func CancelButton() {
+        let parameter = ["id":processPending!.id!]
+        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let apiClient = APIService.shared
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            print(string!)
+            let alertC = AlertStandard.sharedInstance
+            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "OK", message: "Bạn chọn")
+        }
+    }
+}
+

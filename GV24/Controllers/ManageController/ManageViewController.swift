@@ -85,8 +85,8 @@ class ManageViewController: BaseViewController {
         let locationInView = longPress.location(in: tbManage)
         let indexPath = tbManage.indexPathForRow(at: locationInView)
         tbManage.beginUpdates()
-        tbManage.deleteRows(at: [IndexPath(row: (indexPath?.row)!, section: 0)], with: .fade)
-        processPending.remove(at: (indexPath?.row)!)
+        tbManage.deleteRows(at: [indexPath!], with: .fade)
+        processOnCreate.remove(at: (indexPath?.row)!)
         tbManage.endUpdates()
     }
 }
@@ -139,12 +139,16 @@ extension ManageViewController:UITableViewDataSource{
         switch segmentCtr.selectedSegmentIndex {
         case 0:
             if editingStyle == .delete {
+                processOnCreate.remove(at: indexPath.row)
                 tbManage.deleteRows(at: [indexPath], with: .fade)
-                processPending.remove(at: indexPath.row)
+                
             }
         default:
             break
         }
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }
 extension ManageViewController:UITableViewDelegate{

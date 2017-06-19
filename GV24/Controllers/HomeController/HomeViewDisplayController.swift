@@ -28,21 +28,17 @@ class HomeViewDisplayController: BaseViewController {
         self.customBarRightButton()
     }
     override func decorate() {
-            buttonTest(button: workAround, imageName: "quanhday", titleImage: "SignIn".localize)
-            buttonTest(button: manageButton, imageName: "quanlyconviec", titleImage: "SignIn".localize)
-            buttonTest(button: historyButton, imageName: "lichsu", titleImage: "Back".localize)
-        lbLogo.text = "Forgotpassword".localize
+            buttonTest(button: workAround, imageName: "quanhday", titleImage: "Around".localize)
+            buttonTest(button: manageButton, imageName: "quanlyconviec", titleImage: "Taskmanagement".localize)
+            buttonTest(button: historyButton, imageName: "lichsu", titleImage: "Taskhistory".localize)
         lbLogo.textColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         loadData()
-        
     }
     override func setupViewBase() {
         self.title = "Home".localize
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
         if lang.languageCode == "en" {
-            lbLogo.text = "Forgotpassword".localize
-        }else{
-            lbLogo.text = "Forgotpassword".localize
+            lbLogo.text = "TrustQuality".localize
         }
     }
     func loadData() {
@@ -57,15 +53,12 @@ class HomeViewDisplayController: BaseViewController {
         }
     }
     func customBarRightButton(){
-        let image = Ionicons.iosMore.image(24).maskWithColor(color: UIColor.colorWithRedValue(redValue: 24, greenValue: 179, blueValue: 110, alpha: 1))
         let button = UIButton(type: .custom)
-        button.setImage(image, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
+        button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 24, greenValue: 179, blueValue: 110, alpha: 1)), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        button.setTitleColor(UIColor.brown, for: .highlighted)
+        button.setTitleColor(UIColor.blue, for: .highlighted)
         button.addTarget(self, action: #selector(HomeViewDisplayController.selectButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        
     }
     func selectButton()  {
         navigationController?.pushViewController(MoreViewController(), animated: true)
@@ -91,7 +84,6 @@ class HomeViewDisplayController: BaseViewController {
         button.titleLabel?.numberOfLines = 2
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.white, for: UIControlState.normal)
-        button.setTitleColor(UIColor.white, for: UIControlState.highlighted)
         button.titleEdgeInsets = UIEdgeInsets(top: textTop, left: -myImage!.size.width, bottom: textBottom, right: 0.0)
     }
     @IBAction func AroundButton(_ sender: Any) {

@@ -20,10 +20,6 @@ class InformationViewController: BaseViewController {
         tbInformation.allowsSelection = false
         self.user = UserDefaultHelper.currentUser
         customBarLeftButton()
-//        NotificationCenter.default.addObserver(self, selector: #selector(InformationViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-//        
-//        NotificationCenter.default.addObserver(self, selector: #selector(InformationViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InformationViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -31,32 +27,6 @@ class InformationViewController: BaseViewController {
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        print("delloc")
-    }
-    
-//    func keyboardWillShow(notification : Notification){
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0{
-//                UIView.animate(withDuration: 0.5, animations: {
-//                    self.view.frame.origin.y -= keyboardSize.height
-//                })
-//                
-//            }
-//        }
-//    }
-//    
-//    func keyboardWillHide(notification : Notification){
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                UIView.animate(withDuration: 0.5, animations: {
-//                    self.view.frame.origin.y += keyboardSize.height
-//                })
-//            }
-//        }
-//    }
     override func setupViewBase() {
         self.title = "Information".localize
     }
@@ -72,7 +42,7 @@ class InformationViewController: BaseViewController {
     }
     
     func selectButton() {
-        
+        navigationController?.pushViewController(DetailViewController(), animated: true)
     }
     func setImageAvatar(cell:UITableViewCell,imgView:UIImage) {
         let url = URL(string: (user?.image)!)
