@@ -60,7 +60,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxt-4V-QaK">
                         <rect key="frame" x="8" y="62" width="120" height="28"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="28" id="KMX-5n-lTc"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="KMX-5n-lTc"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                         <state key="normal" title="Chọn công việc này"/>
@@ -86,6 +86,7 @@
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="K7N-lE-vdx"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Oh9-6N-Gkd"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="centerY" secondItem="RAp-YY-Ygx" secondAttribute="centerY" id="R5n-7f-8BA"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uxt-4V-QaK" secondAttribute="bottom" constant="3.5" id="kTm-Cz-uMg"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="2.5" id="mP7-mZ-No3"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="RAp-YY-Ygx" secondAttribute="bottom" constant="7.5" id="q48-eb-jyl"/>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="leading" secondItem="TKq-Mx-div" secondAttribute="leading" id="vNi-TG-reI"/>
@@ -101,6 +102,7 @@
                 <outlet property="addressName" destination="oRf-WL-mHp" id="kC6-Kj-5ix"/>
                 <outlet property="aroundRight" destination="Jn0-47-poD" id="06W-Jd-yMb"/>
                 <outlet property="btChoose" destination="uxt-4V-QaK" id="fiF-Nv-KBw"/>
+                <outlet property="constraintChoose" destination="yYr-fz-V9n" id="Fdg-ix-Bm1"/>
                 <outlet property="constraintHeightButtonChoose" destination="KMX-5n-lTc" id="JHy-Qm-jNo"/>
                 <outlet property="imageName" destination="RAp-YY-Ygx" id="IYF-AP-QRX"/>
                 <outlet property="nameUser" destination="TKq-Mx-div" id="wZE-Kg-Nj4"/>

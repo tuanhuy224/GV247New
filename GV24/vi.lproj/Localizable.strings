@@ -34,6 +34,7 @@ Loginwith = "Đăng nhập bằng";
 Username = "Tên đăng nhập";
 Confirmpassword = "Xác nhận mật khẩu";
 Next = "Tiếp theo";
+Announcement = "Thông báo";
 Emailaddress = "Địa chỉ Email";
 Fullname = "Tên đầy đủ";
 Sex = "Giới tính";
@@ -75,7 +76,7 @@ Cancel = "Hủy";
 Delete  = "Xóa";
 Edittasks = "Chỉnh sửa công việc";
 ClickOktoconfirmalltaskscompleted = "Vui lòng xác nhận công việc đã hoàn thành bằng cách nhấn OK";
-
+Generalstatistic = "Thống kê công việc";
 WorkHistory = "Lịch sử công việc";
 WorkCompleted = "Công việc hoàn thành";
 Thelandlorddid = "Chủ nhà đã làm";

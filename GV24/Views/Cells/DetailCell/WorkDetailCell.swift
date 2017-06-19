@@ -16,6 +16,7 @@ import IoniconsSwift
     @objc optional func detailManagementDelegate()
 }
 class WorkDetailCell: CustomTableViewCell {
+    @IBOutlet weak var constraintChoose: NSLayoutConstraint!
     @IBOutlet weak var vSegment: UIView!
     @IBOutlet weak var constraintHeightButtonChoose: NSLayoutConstraint!
     @IBOutlet weak var imageName: UIImageView!
@@ -46,7 +47,6 @@ class WorkDetailCell: CustomTableViewCell {
             delegate?.detailManagementDelegate!()
         }
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -84,6 +84,7 @@ class UserDefaultHelper {
         UserDefaults.standard.set(dicOwner, forKey: "userOwner")
         UserDefaults.standard.synchronize()
     }
+    
     static var ownerUser : Owner? {
             let userOwner = UserDefaults.standard.value(forKey: "userOwner") as? [String:Any]
             let user = Owner()
@@ -100,7 +101,12 @@ class UserDefaultHelper {
             user.gender = userOwner?["gender"] as? Int
             return user
     }
-    
+    func removeUserDefault() -> Bool {
+        UserDefaults.standard.removeObject(forKey: "user")
+        UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.synchronize()
+        return true
+    }
     static func setString(string:String?){
         UserDefaults.standard.set(string, forKey: "string")
         UserDefaults.standard.synchronize()

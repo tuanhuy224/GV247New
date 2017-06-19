@@ -110,6 +110,8 @@
 		009A76EC1EEE94270021BFB0 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76E81EEE94270021BFB0 /* MapViewController.xib */; };
 		009A76EF1EEE94490021BFB0 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76ED1EEE94490021BFB0 /* MapViewCell.swift */; };
 		009A76F01EEE94490021BFB0 /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76EE1EEE94490021BFB0 /* MapViewCell.xib */; };
+		00AEBA401EF7C329009FFA69 /* FollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AEBA3E1EF7C329009FFA69 /* FollowCell.swift */; };
+		00AEBA411EF7C329009FFA69 /* FollowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00AEBA3F1EF7C329009FFA69 /* FollowCell.xib */; };
 		00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C5057F1EE068C9003101F4 /* CustomLocale.swift */; };
 		00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */; };
 		00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */; };
@@ -211,7 +213,7 @@
 		002A045E1EE15084001876E5 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		002AFD631EE7FD8800D3B88A /* APIPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIPath.swift; sourceTree = "<group>"; };
 		002AFD651EE8058A00D3B88A /* HistoryServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryServices.swift; sourceTree = "<group>"; };
-		002BA0F81EDD25320099352D /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		002BA0F81EDD25320099352D /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		002BA0FA1EDD25400099352D /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
 		002BA0FD1EDD25AF0099352D /* MoreNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreNameCell.swift; sourceTree = "<group>"; };
 		002BA0FE1EDD25AF0099352D /* MoreNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreNameCell.xib; sourceTree = "<group>"; };
@@ -277,6 +279,8 @@
 		009A76E81EEE94270021BFB0 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		009A76ED1EEE94490021BFB0 /* MapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCell.swift; sourceTree = "<group>"; };
 		009A76EE1EEE94490021BFB0 /* MapViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewCell.xib; sourceTree = "<group>"; };
+		00AEBA3E1EF7C329009FFA69 /* FollowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowCell.swift; sourceTree = "<group>"; };
+		00AEBA3F1EF7C329009FFA69 /* FollowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowCell.xib; sourceTree = "<group>"; };
 		00C5057F1EE068C9003101F4 /* CustomLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLocale.swift; sourceTree = "<group>"; };
 		00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		00CC0D3E1EEE3F72002D24D4 /* ManagerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerHistoryViewController.swift; sourceTree = "<group>"; };
@@ -521,6 +525,7 @@
 		002BA0FC1EDD25610099352D /* MoreCell */ = {
 			isa = PBXGroup;
 			children = (
+				00AEBA3D1EF7C313009FFA69 /* FollowCell */,
 				0025724D1EDE9DDF00AACC52 /* InforCell */,
 				0025722F1EDE564200AACC52 /* Constact */,
 				002BA0FD1EDD25AF0099352D /* MoreNameCell.swift */,
@@ -654,6 +659,15 @@
 				005A4DDF1EF136AF00FA76FB /* CancelCell.xib */,
 			);
 			path = CancelCell;
+			sourceTree = "<group>";
+		};
+		00AEBA3D1EF7C313009FFA69 /* FollowCell */ = {
+			isa = PBXGroup;
+			children = (
+				00AEBA3E1EF7C329009FFA69 /* FollowCell.swift */,
+				00AEBA3F1EF7C329009FFA69 /* FollowCell.xib */,
+			);
+			path = FollowCell;
 			sourceTree = "<group>";
 		};
 		00CC0D421EEE3F7B002D24D4 /* PopupViewController */ = {
@@ -1036,6 +1050,7 @@
 				009A76F01EEE94490021BFB0 /* MapViewCell.xib in Resources */,
 				002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
+				00AEBA411EF7C329009FFA69 /* FollowCell.xib in Resources */,
 				004467AF1EEF82D900DDD0ED /* PendingController.xib in Resources */,
 				00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
@@ -1285,6 +1300,7 @@
 				003175E41EE68A8900F3F9B4 /* WaittingController.swift in Sources */,
 				003BC68A1ED9D94F00FF6D14 /* AppModel.swift in Sources */,
 				002572371EDE5FB800AACC52 /* AboutViewController.swift in Sources */,
+				00AEBA401EF7C329009FFA69 /* FollowCell.swift in Sources */,
 				00EB194C1EE93EB4003B2C5D /* HistoryViewController.swift in Sources */,
 				00CC0D4B1EEE3FCE002D24D4 /* WorkListViewController.swift in Sources */,
 				003BC68B1ED9D94F00FF6D14 /* User.swift in Sources */,

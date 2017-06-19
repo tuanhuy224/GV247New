@@ -7,53 +7,61 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MoreViewController: BaseViewController {
-    var arryMore:[String] = ["Thống kê công việc","Aboutus".localize,"Termsofuse".localize,"Language".localize, "Contact".localize]
+    var arryMore:[String] = ["Aboutus","Termsofuse", "Contact"]
     @IBOutlet weak var tbMore: UITableView!
     var userLogin:User?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tbMore.register(UINib(nibName:NibMoreNameCell,bundle:nil), forCellReuseIdentifier: moreNameCellID)
+        tbMore.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
         tbMore.register(UINib(nibName:NibMoreCell,bundle:nil), forCellReuseIdentifier: MoreCellID)
         tbMore.register(UINib(nibName:NibNotifiCell,bundle:nil), forCellReuseIdentifier: notifCellID)
+        tbMore.register(UINib(nibName:NibFollowCell,bundle:nil), forCellReuseIdentifier: followCell)
         self.userLogin = UserDefaultHelper.currentUser
+        tbMore.separatorStyle = .none
     }
     override func setupViewBase() {
         self.title = "More".localize
         tbMore.reloadData()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tbMore.reloadData()
+    }
 }
 extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        }else if section == 1{
-        return 1
+        if section == 2 {
+            return arryMore.count
         }else{
-        return arryMore.count
+            return 1
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell:MoreNameCell = (tbMore.dequeueReusableCell(withIdentifier: moreNameCellID, for: indexPath) as? MoreNameCell)!
-            let url = URL(string: (userLogin?.image)!)
-            let data = try? Data(contentsOf: url!)
-            if let imageData = data {
-                let image = UIImage(data: imageData)
-                DispatchQueue.main.async {
-                    cell.avatar.image = image
-                }
+            let cell:WorkDetailCell = tbMore.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
+                cell.nameUser.text = userLogin?.username
+                cell.addressName.text = userLogin?.nameAddress
+            if let url = URL(string: userLogin!.image!){
+                cell.imageName.kf.setImage(with: url)
             }
+                cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)
+                cell.constraintHeightButtonChoose.constant = 4
+                cell.vSegment.isHidden = false
+                cell.btChoose.isHidden = false
             return cell
         }else if indexPath.section == 1{
             let cell:NotifiCell = (tbMore.dequeueReusableCell(withIdentifier: notifCellID, for: indexPath) as? NotifiCell)!
+                cell.btChooseLanguage.setTitle("Language".localize, for: .normal)
+                cell.lbNotif.text = "Announcement".localize
+                cell.delegate = self
             return cell
-        }else{
+        }else if indexPath.section == 2{
             let cell:MoreCell = (tbMore.dequeueReusableCell(withIdentifier: MoreCellID, for: indexPath) as? MoreCell)!
             let lang = DGLocalization.sharedInstance.getCurrentLanguage()
             if lang.languageCode == "en" {
@@ -62,28 +70,40 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             cell.lbMore.text = arryMore[indexPath.row].localize
             cell.textLabel?.font = UIFont(name: "SFUIText-Light", size: 13)
             return cell
-        }
-       
+        }else if indexPath.section == 3{
+            let cell:FollowCell = (tbMore.dequeueReusableCell(withIdentifier: followCell, for: indexPath) as? FollowCell)!
+            cell.delegate = self
+            return cell
+        }else{}
+        return UITableViewCell()
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+            return 20
+    }
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section{
+        case 0:
+            return 94
+        case 1:
+            return 83
+        case 2:
+            return 35
+        case 3:
+            return 128
+        default:
+            return 20
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if indexPath.section == 2 {
             switch indexPath.row {
             case 0:
-                navigationController?.pushViewController(ConstactViewController(), animated: true)
-                break
-            case 1:
                 navigationController?.pushViewController(AboutViewController(), animated: true)
                 break
-            case 2:
+            case 1:
                 navigationController?.pushViewController(RuleViewController(), animated: true)
                 break
-            case 3:
-                navigationController?.pushViewController(LanguageViewController(), animated: true)
-                break
-            case 4:
+            case 2:
                 navigationController?.pushViewController(ConstactViewController(), animated: true)
                 break
             default:
@@ -94,6 +114,17 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         
         }
     }
-    
-    
+}
+extension MoreViewController:changeLanguageDelegate{
+    func changeLanguage() {
+        navigationController?.pushViewController(LanguageViewController(), animated: true)
+    }
+}
+
+extension MoreViewController:LogOutDelegate{
+    func logOut() {
+        if UserDefaultHelper().removeUserDefault() == true{
+            navigationController?.pushViewController(LoginView(), animated: true)
+        }
+    }
 }
