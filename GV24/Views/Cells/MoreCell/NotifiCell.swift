@@ -11,7 +11,7 @@ import IoniconsSwift
 @objc protocol changeLanguageDelegate:class {
    @objc optional func changeLanguage()
 }
-class NotifiCell: UITableViewCell {
+class NotifiCell: CustomTableViewCell {
     @IBOutlet weak var btChoose: UIButton!
     @IBOutlet weak var btChooseLanguage: UIButton!
     @IBOutlet weak var lbNotif: UILabel!

@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class HistoryViewCell: UITableViewCell {
+class HistoryViewCell: CustomTableViewCell {
 
     @IBOutlet weak var lbTimePost: UILabel!
     @IBOutlet weak var lbDist: UILabel!

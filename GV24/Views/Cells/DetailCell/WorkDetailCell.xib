@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -75,17 +74,27 @@
                             <constraint firstAttribute="height" constant="18" id="wLP-Qb-Bet"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbP-f8-m9q">
+                        <rect key="frame" x="0.0" y="15" width="375" height="44"/>
+                        <connections>
+                            <action selector="aroundRightAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="R0E-vN-Som"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="TKq-Mx-div" firstAttribute="leading" secondItem="RAp-YY-Ygx" secondAttribute="trailing" constant="8" id="1PG-G1-AWY"/>
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3WX-st-gMw"/>
+                    <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="vbP-f8-m9q" secondAttribute="bottom" constant="3" id="4Mm-Tl-s0N"/>
+                    <constraint firstItem="vbP-f8-m9q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="5Vj-UC-nVJ"/>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="top" secondItem="TKq-Mx-div" secondAttribute="bottom" constant="3" id="C0p-i4-Xso"/>
                     <constraint firstAttribute="trailing" secondItem="qKj-A0-kyS" secondAttribute="trailing" id="CSH-RI-jM9"/>
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FMu-DV-fzb"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Jn0-47-poD" secondAttribute="trailing" id="IEd-Kb-at8"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="K7N-lE-vdx"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Oh9-6N-Gkd"/>
+                    <constraint firstAttribute="trailing" secondItem="vbP-f8-m9q" secondAttribute="trailing" id="Pxa-ur-aCR"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="centerY" secondItem="RAp-YY-Ygx" secondAttribute="centerY" id="R5n-7f-8BA"/>
+                    <constraint firstItem="vbP-f8-m9q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="UTq-QG-YIp"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uxt-4V-QaK" secondAttribute="bottom" constant="3.5" id="kTm-Cz-uMg"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="2.5" id="mP7-mZ-No3"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="RAp-YY-Ygx" secondAttribute="bottom" constant="7.5" id="q48-eb-jyl"/>

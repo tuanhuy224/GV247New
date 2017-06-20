@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MapViewCell: UITableViewCell {
+class MapViewCell: CustomTableViewCell {
 
     @IBOutlet weak var longLabel: UILabel!
     @IBOutlet weak var latLabel: UILabel!

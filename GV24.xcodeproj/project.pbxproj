@@ -14,8 +14,15 @@
 		000E1CA81EF6D6E500E26FD4 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1CA71EF6D6E500E26FD4 /* GoogleDataProvider.swift */; };
 		000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 000E1E7A1EF288690058838B /* MBProgressHUD.m */; };
 		000E2EB01EF8FAF900E531C5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */; };
-		000E2EB61EF905EB00E531C5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E2EB51EF905EB00E531C5 /* MapKit.framework */; };
 		000E2EB81EF907F300E531C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 000E2EB71EF907F300E531C5 /* GoogleService-Info.plist */; };
+		00198EAA1EF96B2A004843C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EA91EF96B2A004843C3 /* AVFoundation.framework */; };
+		00198EAC1EF96B36004843C3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EAB1EF96B36004843C3 /* CoreData.framework */; };
+		00198EAE1EF96B3F004843C3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EAD1EF96B3F004843C3 /* CoreLocation.framework */; };
+		00198EB01EF96B49004843C3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EAF1EF96B49004843C3 /* CoreText.framework */; };
+		00198EB21EF96B57004843C3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EB11EF96B57004843C3 /* GLKit.framework */; };
+		00198EB41EF96B5E004843C3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EB31EF96B5E004843C3 /* ImageIO.framework */; };
+		00198EB61EF96BAC004843C3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EB51EF96BAC004843C3 /* OpenGLES.framework */; };
+		00198EB81EF96BB8004843C3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EB71EF96BB8004843C3 /* SystemConfiguration.framework */; };
 		0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022C4F71EE84D1700027665 /* FinishedWorkCell.swift */; };
 		0022C4FE1EE84D1700027665 /* FinishedWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0022C4F81EE84D1700027665 /* FinishedWorkCell.xib */; };
 		0022C4FF1EE84D1700027665 /* OwnerHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022C4F91EE84D1700027665 /* OwnerHistoryViewCell.swift */; };
@@ -182,6 +189,14 @@
 		000E2EB51EF905EB00E531C5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		000E2EB71EF907F300E531C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0018BA501EF81F8200D4B35E /* GV24.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GV24.entitlements; sourceTree = "<group>"; };
+		00198EA91EF96B2A004843C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		00198EAB1EF96B36004843C3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		00198EAD1EF96B3F004843C3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		00198EAF1EF96B49004843C3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		00198EB11EF96B57004843C3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		00198EB31EF96B5E004843C3 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		00198EB51EF96BAC004843C3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		00198EB71EF96BB8004843C3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0022C4F71EE84D1700027665 /* FinishedWorkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedWorkCell.swift; sourceTree = "<group>"; };
 		0022C4F81EE84D1700027665 /* FinishedWorkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishedWorkCell.xib; sourceTree = "<group>"; };
 		0022C4F91EE84D1700027665 /* OwnerHistoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerHistoryViewCell.swift; sourceTree = "<group>"; };
@@ -343,8 +358,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00198EB81EF96BB8004843C3 /* SystemConfiguration.framework in Frameworks */,
+				00198EB61EF96BAC004843C3 /* OpenGLES.framework in Frameworks */,
+				00198EB41EF96B5E004843C3 /* ImageIO.framework in Frameworks */,
+				00198EB21EF96B57004843C3 /* GLKit.framework in Frameworks */,
+				00198EB01EF96B49004843C3 /* CoreText.framework in Frameworks */,
+				00198EAE1EF96B3F004843C3 /* CoreLocation.framework in Frameworks */,
+				00198EAC1EF96B36004843C3 /* CoreData.framework in Frameworks */,
+				00198EAA1EF96B2A004843C3 /* AVFoundation.framework in Frameworks */,
 				000E2EB01EF8FAF900E531C5 /* UserNotifications.framework in Frameworks */,
-				000E2EB61EF905EB00E531C5 /* MapKit.framework in Frameworks */,
 				4AA17A8891826EB16074A9C2 /* Pods_GV24.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -917,6 +939,14 @@
 		F439583FE5F356F7C1DA847F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00198EB71EF96BB8004843C3 /* SystemConfiguration.framework */,
+				00198EB51EF96BAC004843C3 /* OpenGLES.framework */,
+				00198EB31EF96B5E004843C3 /* ImageIO.framework */,
+				00198EB11EF96B57004843C3 /* GLKit.framework */,
+				00198EAF1EF96B49004843C3 /* CoreText.framework */,
+				00198EAD1EF96B3F004843C3 /* CoreLocation.framework */,
+				00198EAB1EF96B36004843C3 /* CoreData.framework */,
+				00198EA91EF96B2A004843C3 /* AVFoundation.framework */,
 				000E2EB51EF905EB00E531C5 /* MapKit.framework */,
 				000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */,
 				472E4661C584478893F9A0A4 /* Pods_GV24.framework */,

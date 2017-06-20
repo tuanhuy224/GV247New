@@ -20,4 +20,8 @@ class CustomTableViewCell: UITableViewCell {
         customLabel.textAlignment = .center
         contentView.addSubview(customLabel)
     }
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        selectionStyle = .none
+    }
 }

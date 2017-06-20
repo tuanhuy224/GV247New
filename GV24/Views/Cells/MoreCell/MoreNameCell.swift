@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class MoreNameCell: UITableViewCell {
+class MoreNameCell: CustomTableViewCell {
    var user:User?
     @IBOutlet weak var iconLeft: UIButton!
     @IBOutlet weak var avatar: UIImageView!

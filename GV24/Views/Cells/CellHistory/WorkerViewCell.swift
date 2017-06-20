@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class WorkerViewCell: UITableViewCell {
+class WorkerViewCell: CustomTableViewCell {
 
     @IBOutlet weak var arrowForward: UIImageView!
     @IBOutlet weak var imageUser: UIImageView!

@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class OwnerHistoryViewCell: UITableViewCell {
+class OwnerHistoryViewCell: CustomTableViewCell {
 
     var buttons:[UIButton]?
     @IBOutlet var btnRating: [UIButton]!

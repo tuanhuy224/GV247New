@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class FinishedWorkCell: UITableViewCell {
+class FinishedWorkCell: CustomTableViewCell {
 
     @IBOutlet weak var salaryImage: UIImageView!
     @IBOutlet weak var dateImage: UIImageView!

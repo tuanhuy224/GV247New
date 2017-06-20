@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class MoreCell: UITableViewCell {
+class MoreCell: CustomTableViewCell {
 
     @IBOutlet weak var lbMore: UILabel!
     @IBOutlet weak var iconRight: UIButton!
