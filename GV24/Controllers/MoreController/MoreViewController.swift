@@ -51,6 +51,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
                 cell.imageName.kf.setImage(with: url)
             }
                 cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)
+                cell.btChoose.setTitleColor(.black, for: .normal)
                 cell.constraintHeightButtonChoose.constant = 4
                 cell.vSegment.isHidden = false
                 cell.btChoose.isHidden = false
@@ -111,7 +112,6 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             }
         }else if indexPath.section == 0{
             navigationController?.pushViewController(InformationViewController(), animated: true)
-        
         }
     }
 }

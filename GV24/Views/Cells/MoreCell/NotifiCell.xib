@@ -43,7 +43,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek0-Th-tau">
                         <rect key="frame" x="8" y="44" width="70" height="30"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
-                        <state key="normal" title="Ngôn ngữ"/>
+                        <state key="normal" title="Ngôn ngữ">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
                         <connections>
                             <action selector="btChooseLanguageAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g89-4h-L1T"/>
                         </connections>

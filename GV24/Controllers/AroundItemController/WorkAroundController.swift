@@ -31,6 +31,7 @@ class WorkAroundController: BaseViewController {
         aroundTableView.register(UINib(nibName:NibWorkTableViewCell,bundle: nil), forCellReuseIdentifier: workCellID)
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
+        aroundTableView.separatorStyle = .none
         setup()
         aroundTableView.reloadData()
     }

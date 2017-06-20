@@ -22,7 +22,7 @@ class ManageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
-        
+        tbManage.separatorStyle = .none
     }
     override func decorate() {
         super.decorate()
@@ -63,6 +63,7 @@ class ManageViewController: BaseViewController {
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
             if json != nil{
                 self.processPending = json!
+                self.tbManage.reloadData()
             }
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterRecieve, header: header) { (json, error) in
@@ -110,8 +111,8 @@ extension ManageViewController:UITableViewDataSource{
         let cell = tbManage.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as? HistoryViewCell
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            longGesture = UILongPressGestureRecognizer(target: self, action: #selector(ManageViewController.longTap))
-            cell?.addGestureRecognizer(longGesture)
+//            longGesture = UILongPressGestureRecognizer(target: self, action: #selector(ManageViewController.longTap))
+//            cell?.addGestureRecognizer(longGesture)
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
