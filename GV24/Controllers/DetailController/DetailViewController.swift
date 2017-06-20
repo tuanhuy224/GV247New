@@ -106,7 +106,7 @@ extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
         let apiClient = APIService.shared
         apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
             let alertC = AlertStandard.sharedInstance
-            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Bạn chọn")
+            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
         }
     }
 }

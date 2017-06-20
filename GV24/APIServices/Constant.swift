@@ -22,11 +22,13 @@ let DefaultCellID = "DefaultCell"
 let MoreCellID = "moreCell"
 let moreNameCellID = "moreNameCell"
 let notifCellID = "notifCell"
+let followCell = "followCell"
 let workInfoCellID = "workInfoCell"
 let workInfoCollectionCellID = "workInfoCollectionViewCell"
 let infoCommentCellID = "InfoCommentCell"
 
 //MARk - constant NIb cell
+let NibFollowCell = "FollowCell"
 let NibHistoryViewCell = "HistoryViewCell"
 let NibWorkDetailCell = "WorkDetailCell"
 let NibInfoDetailCell = "InfoDetailCell"

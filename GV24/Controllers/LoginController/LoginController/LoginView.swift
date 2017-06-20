@@ -65,7 +65,7 @@ class LoginView: BaseViewController {
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                 window.rootViewController = navi
             }else{
-                
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "loginFail".localize)
             }
         })
     }

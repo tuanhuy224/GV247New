@@ -4,15 +4,15 @@
 target 'GV24' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
-   	pod 'IoniconsSwift', :git => 'http://github.com/tidwall/IoniconsSwift.git', :branch => 'master'
+	pod 'IoniconsSwift'
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'Kingfisher', '~> 3.0'
 	pod 'GoogleMaps'
 	pod 'GooglePlaces'
   	pod 'GooglePlacePicker'
-	
+	pod 'Firebase/Core'
+	pod 'Firebase/Messaging'
   # Pods for GV24
 
   target 'GV24Tests' do

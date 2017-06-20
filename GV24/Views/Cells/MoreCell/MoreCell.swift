@@ -17,7 +17,7 @@ class MoreCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let icon = Ionicons.chevronRight.image(12)
+        let icon = Ionicons.chevronRight.image(32)
         iconRight.setImage(icon, for: .normal)
         iconRight.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
     }

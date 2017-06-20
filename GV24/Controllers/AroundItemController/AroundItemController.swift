@@ -18,6 +18,7 @@ class AroundItemController: BaseViewController {
         super.viewDidLoad()
         tbAround.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
         loadAroundItem()
+        tbAround.separatorStyle = .none
         tbAround.reloadData()
     }
     func loadAroundItem(){
