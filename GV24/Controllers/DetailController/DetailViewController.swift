@@ -13,6 +13,7 @@ import Kingfisher
 class DetailViewController: BaseViewController {
     @IBOutlet weak var tbDetail: UITableView!
     var id:String?
+    var header:HTTPHeaders?
     var isStatus:Bool = false
     var idWork:String?
     var titleString:String?
@@ -41,11 +42,11 @@ class DetailViewController: BaseViewController {
     func postRerves(){
         let apiService = APIService.shared
         let parameter:Parameters = ["id":idWork!]
-        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-        apiService.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, error) in
-            if json == "SUCCESS"{
-                self.isStatus = true
-            }
+            header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+            apiService.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header!) { (json, error) in
+                if json == "SUCCESS"{
+                    self.isStatus = true
+                }
         }
     }
 }

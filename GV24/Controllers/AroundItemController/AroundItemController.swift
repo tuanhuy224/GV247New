@@ -61,6 +61,9 @@ extension AroundItemController:UITableViewDelegate{
         detail.works = works[indexPath.row]
         detail.idWork = works[indexPath.row].id
         detail.titleString = works[indexPath.row].info?.title
+        if UserDefaultHelper.getToken() == nil {
+            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
+        }
         navigationController?.pushViewController(detail, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

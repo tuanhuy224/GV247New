@@ -88,7 +88,7 @@ extension PendingController:CancelWorkDelegate{
             MBProgressHUD.hide(for: self.view, animated: true)
             print(string!)
             let alertC = AlertStandard.sharedInstance
-            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "OK", message: "Bạn chọn")
+            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "cancelWork".localize)
         }
     }
 }
