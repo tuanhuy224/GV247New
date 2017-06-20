@@ -5,9 +5,7 @@
 //  Created by HuyNguyen on 6/13/17.
 //  Copyright © 2017 admin. All rights reserved.
 //
-
 import UIKit
-
 class PendingController: BaseViewController {
     @IBOutlet weak var tbPending: UITableView!
     var processPending:Work?
@@ -72,7 +70,6 @@ extension PendingController:UITableViewDelegate{
             return 172
         }
     }
-
 }
 extension PendingController:chooseWorkDelegate{
     func detailManagementDelegate() {
@@ -95,4 +92,3 @@ extension PendingController:CancelWorkDelegate{
         }
     }
 }
-

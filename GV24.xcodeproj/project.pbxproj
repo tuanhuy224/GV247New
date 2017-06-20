@@ -13,7 +13,9 @@
 		000E1CA61EF6D6C000E26FD4 /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000E1CA41EF6D6C000E26FD4 /* MarkerInfoView.xib */; };
 		000E1CA81EF6D6E500E26FD4 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1CA71EF6D6E500E26FD4 /* GoogleDataProvider.swift */; };
 		000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 000E1E7A1EF288690058838B /* MBProgressHUD.m */; };
-		0018BA4F1EF81EE100D4B35E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0018BA4E1EF81EE100D4B35E /* GoogleService-Info.plist */; };
+		000E2EB01EF8FAF900E531C5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */; };
+		000E2EB61EF905EB00E531C5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E2EB51EF905EB00E531C5 /* MapKit.framework */; };
+		000E2EB81EF907F300E531C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 000E2EB71EF907F300E531C5 /* GoogleService-Info.plist */; };
 		0022C4FD1EE84D1700027665 /* FinishedWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022C4F71EE84D1700027665 /* FinishedWorkCell.swift */; };
 		0022C4FE1EE84D1700027665 /* FinishedWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0022C4F81EE84D1700027665 /* FinishedWorkCell.xib */; };
 		0022C4FF1EE84D1700027665 /* OwnerHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022C4F91EE84D1700027665 /* OwnerHistoryViewCell.swift */; };
@@ -176,7 +178,9 @@
 		000E1E781EF288680058838B /* GV24-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GV24-Bridging-Header.h"; sourceTree = "<group>"; };
 		000E1E791EF288690058838B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		000E1E7A1EF288690058838B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		0018BA4E1EF81EE100D4B35E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		000E2EB51EF905EB00E531C5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		000E2EB71EF907F300E531C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0018BA501EF81F8200D4B35E /* GV24.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GV24.entitlements; sourceTree = "<group>"; };
 		0022C4F71EE84D1700027665 /* FinishedWorkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedWorkCell.swift; sourceTree = "<group>"; };
 		0022C4F81EE84D1700027665 /* FinishedWorkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishedWorkCell.xib; sourceTree = "<group>"; };
@@ -339,6 +343,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000E2EB01EF8FAF900E531C5 /* UserNotifications.framework in Frameworks */,
+				000E2EB61EF905EB00E531C5 /* MapKit.framework in Frameworks */,
 				4AA17A8891826EB16074A9C2 /* Pods_GV24.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,8 +821,8 @@
 				003C9A171EDFEC02003F1189 /* Main.storyboard */,
 				842FEC701ED40C6900000606 /* Assets.xcassets */,
 				003C9A101EDFEA99003F1189 /* Localizable.strings */,
-				0018BA4E1EF81EE100D4B35E /* GoogleService-Info.plist */,
 				842FEC751ED40C6900000606 /* Info.plist */,
+				000E2EB71EF907F300E531C5 /* GoogleService-Info.plist */,
 			);
 			path = GV24;
 			sourceTree = "<group>";
@@ -911,6 +917,8 @@
 		F439583FE5F356F7C1DA847F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				000E2EB51EF905EB00E531C5 /* MapKit.framework */,
+				000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */,
 				472E4661C584478893F9A0A4 /* Pods_GV24.framework */,
 				46E244E08C7632332E4031F1 /* Pods_GV24Tests.framework */,
 				10C1EF8086B8317A0B2D32AD /* Pods_GV24UITests.framework */,
@@ -999,6 +1007,12 @@
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -1073,7 +1087,7 @@
 				002572511EDE9E1600AACC52 /* InforCell.xib in Resources */,
 				00EB194D1EE93EB4003B2C5D /* HistoryViewController.xib in Resources */,
 				002C570A1EDBDD420039BBCE /* HistoryViewCell.xib in Resources */,
-				0018BA4F1EF81EE100D4B35E /* GoogleService-Info.plist in Resources */,
+				000E2EB81EF907F300E531C5 /* GoogleService-Info.plist in Resources */,
 				004467B91EEF97FB00DDD0ED /* DoingController.xib in Resources */,
 				002A04601EE15084001876E5 /* DetailViewController.xib in Resources */,
 				009A76E41EEE92360021BFB0 /* OwnerHistoryViewController.xib in Resources */,
