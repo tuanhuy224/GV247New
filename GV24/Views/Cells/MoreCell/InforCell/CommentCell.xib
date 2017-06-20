@@ -19,32 +19,32 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" id="KGk-i7-Jjw" customClass="CommentCell" customModule="GV24" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="163" id="KGk-i7-Jjw" customClass="CommentCell" customModule="GV24" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="162.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXj-8N-BSR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="162.5"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="AlF-Pv-CtM">
-                                <rect key="frame" x="8" y="75" width="304" height="88"/>
+                                <rect key="frame" x="8" y="75" width="304" height="82.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhận xét" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywc-m8-NR2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NHẬN XÉT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywc-m8-NR2">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93710488079999998" green="0.94102549550000003" blue="0.96255999800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="8B8-8a-wZG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <color key="highlightedColor" red="0.72149640321731567" green="0.72161918878555298" blue="0.72148019075393677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" red="0.93710488080978394" green="0.9410254955291748" blue="0.96255999803543091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Iron_man_the_game_1" translatesAutoresizingMaskIntoConstraints="NO" id="L4j-vW-kXX">
                                 <rect key="frame" x="8" y="45" width="30" height="30"/>
@@ -60,9 +60,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/10/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6U-Wc-RtO">
-                                <rect key="frame" x="46" y="62" width="52" height="12"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="46" y="62" width="56.5" height="13"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -70,7 +70,6 @@
                         <constraints>
                             <constraint firstItem="e6U-Wc-RtO" firstAttribute="top" secondItem="wxr-hb-6Ut" secondAttribute="bottom" constant="3" id="1ZV-n1-gv9"/>
                             <constraint firstItem="Ywc-m8-NR2" firstAttribute="top" secondItem="dXj-8N-BSR" secondAttribute="top" id="1i9-aC-36D"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AlF-Pv-CtM" secondAttribute="bottom" id="57B-RY-7KC"/>
                             <constraint firstItem="Ywc-m8-NR2" firstAttribute="leading" secondItem="dXj-8N-BSR" secondAttribute="leading" id="9R0-4F-Qm6"/>
                             <constraint firstItem="AlF-Pv-CtM" firstAttribute="leading" secondItem="dXj-8N-BSR" secondAttribute="leading" constant="8" id="9vM-S5-WRs"/>
                             <constraint firstItem="e6U-Wc-RtO" firstAttribute="leading" secondItem="wxr-hb-6Ut" secondAttribute="leading" id="I18-Z1-v35"/>
@@ -80,6 +79,7 @@
                             <constraint firstItem="wxr-hb-6Ut" firstAttribute="top" secondItem="L4j-vW-kXX" secondAttribute="top" constant="-4" id="gqj-gz-BAH"/>
                             <constraint firstItem="L4j-vW-kXX" firstAttribute="top" secondItem="Ywc-m8-NR2" secondAttribute="bottom" constant="5" id="kGX-ZS-Lhz"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AlF-Pv-CtM" secondAttribute="trailing" constant="8" id="lAq-SP-yoA"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AlF-Pv-CtM" secondAttribute="bottom" constant="5" id="pf4-Ej-wjF"/>
                             <constraint firstItem="wxr-hb-6Ut" firstAttribute="leading" secondItem="L4j-vW-kXX" secondAttribute="trailing" constant="8" id="yIc-bO-W2E"/>
                         </constraints>
                     </view>
@@ -92,8 +92,14 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="content" destination="AlF-Pv-CtM" id="yDk-Ln-nLs"/>
+                <outlet property="createAtLabel" destination="e6U-Wc-RtO" id="OSd-qX-0KA"/>
                 <outlet property="imageAvatar" destination="L4j-vW-kXX" id="sMx-6o-dHL"/>
+                <outlet property="topLabel" destination="Ywc-m8-NR2" id="QI7-uG-DDK"/>
+                <outlet property="topLabelHeight" destination="8B8-8a-wZG" id="edB-Mq-df0"/>
+                <outlet property="userName" destination="wxr-hb-6Ut" id="1V1-zJ-k90"/>
             </connections>
+            <point key="canvasLocation" x="34" y="91.5"/>
         </tableViewCell>
     </objects>
     <resources>

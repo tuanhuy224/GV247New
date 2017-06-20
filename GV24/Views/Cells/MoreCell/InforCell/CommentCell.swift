@@ -10,7 +10,13 @@ import UIKit
 
 class CommentCell: CustomTableViewCell {
 
+    @IBOutlet weak var topLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var content: UITextView!
+    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var imageAvatar: UIImageView!
+    @IBOutlet weak var createAtLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

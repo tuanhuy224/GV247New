@@ -26,6 +26,7 @@ class HistoryServices: APIService {
                 if let status = json?["status"], status == true {
                     if let list = json?["data"]?["docs"] {
                         for item in list {
+                            print("item: \(item)\n")
                             let work = Work(json: item.1)
                             workList.append(work)
                         }

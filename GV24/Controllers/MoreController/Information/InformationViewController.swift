@@ -9,15 +9,19 @@
 import UIKit
 import Kingfisher
 import IoniconsSwift
+import Alamofire
 
 class InformationViewController: BaseViewController {
 
     @IBOutlet weak var tbInformation: UITableView!
     var user:User?
+    var page: Int = 1
+    var limit: Int = 10
+    var list: [Comment] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         tbInformation.register(UINib(nibName:NibInforCell,bundle:nil), forCellReuseIdentifier: inforCellID)
-        tbInformation.register(UINib(nibName:NibCommentCell,bundle:nil), forCellReuseIdentifier: commentCellID)
+        tbInformation.register(UINib(nibName:NibInfoCommentCell,bundle:nil), forCellReuseIdentifier: infoCommentCellID)
         tbInformation.register(UINib(nibName: NibWorkInfoCell, bundle: nil), forCellReuseIdentifier: workInfoCellID)
         tbInformation.allowsSelection = false
         self.user = UserDefaultHelper.currentUser
@@ -64,12 +68,32 @@ class InformationViewController: BaseViewController {
      params: - id: userId
     */
     func getOwnerComments() {
-        print("UserID = \(self.user?.id)")
+        var params:[String:Any] = [:]
+        params["id"] = "\((self.user?.id)!)"
+        params["page"] = self.page
+        params["limit"] = self.limit
+        let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
+        CommentServices.sharedInstance.getProfileCommentsWith(url: APIPaths().urlGetProfileComments(), param: params, header: headers) { (data, error) in
+            if error == nil {
+                if data != nil {
+                    self.list.append(contentsOf: data!)
+                    self.tbInformation.reloadData()
+                }
+                else {
+                    TableViewHelper().emptyMessage(message: "Data is nil", tableView: self.tbInformation)
+                }
+            }else {
+                TableViewHelper().emptyMessage(message: "Error occurred", tableView: self.tbInformation)
+            }
+        }
     }
 }
 extension InformationViewController:UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 2 {
+            return list.count
+        }
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -94,18 +118,29 @@ extension InformationViewController:UITableViewDataSource{
             return cell
         }else if indexPath.section == 1{
             let cell: WorkInfoCell = tbInformation.dequeueReusableCell(withIdentifier: workInfoCellID, for: indexPath) as! WorkInfoCell
-            cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-            cell.collectionView.delegate = self
-            cell.collectionView.dataSource = self
+            cell.data = ["Trông trẻ","Nấu ăn","Thú cưng","a","b","c","a","b","c","a","b","c"]
             return cell
         }else{
-            let cell:CommentCell = tbInformation.dequeueReusableCell(withIdentifier: commentCellID, for: indexPath) as! CommentCell
-            let url = URL(string: (user?.image)!)
+            let cell:InfoCommentCell = tbInformation.dequeueReusableCell(withIdentifier: infoCommentCellID, for: indexPath) as! InfoCommentCell
+            let comment = list[indexPath.row]
+            let url = URL(string: (comment.fromId?.image)!)
             DispatchQueue.main.async {
                 cell.imageAvatar.kf.setImage(with: url)
             }
+            cell.userName.text = comment.fromId?.name
+            let creatAt = String.convertISODateToString(isoDateStr: comment.createAt!, format: "dd/MM/yyyy")
+            cell.createAtLabel.text = creatAt
+            cell.content.text = comment.content
+            cell.workTitle.text = comment.task?.title
+            if indexPath.row != 0 {
+                cell.topLabelHeight.constant = 0
+            }
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tableview selected: \(indexPath.row)")
     }
 }
 extension InformationViewController:UITableViewDelegate{
@@ -113,29 +148,10 @@ extension InformationViewController:UITableViewDelegate{
         if indexPath.section == 0 {
             return 265
         }
-        return 200
-    }
-}
-
-extension InformationViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "workInfoCollectionViewCell", for: indexPath) as! WorkInfoCollectionViewCell
-        
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("collection view selected: \(indexPath.row)")
-    }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let tableViewCell = cell as? WorkInfoCell else { return }
-        
-        tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+        else if indexPath.section == 1 {
+            return 170
+        }
+        return 170
     }
 }
 

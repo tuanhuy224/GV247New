@@ -23,6 +23,8 @@ let MoreCellID = "moreCell"
 let moreNameCellID = "moreNameCell"
 let notifCellID = "notifCell"
 let workInfoCellID = "workInfoCell"
+let workInfoCollectionCellID = "workInfoCollectionViewCell"
+let infoCommentCellID = "InfoCommentCell"
 
 //MARk - constant NIb cell
 let NibHistoryViewCell = "HistoryViewCell"
@@ -44,6 +46,7 @@ let NibMoreNameCell = "MoreNameCell"
 let NibMoreCell = "MoreCell"
 let NibNotifiCell = "NotifiCell"
 let NibWorkInfoCell = "WorkInfoCell"
+let NibInfoCommentCell = "InfoCommentCell"
 let heightConstantWorkDetailCell:Float = 65
 let urlDisplayHome = "https://yukotest123.herokuapp.com/vi/task/getAll"
 let urlHistory = "https://yukotest123.herokuapp.com/en/maid/getAllTasks"

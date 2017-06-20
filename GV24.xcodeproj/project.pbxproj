@@ -139,6 +139,10 @@
 		037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */; };
 		037EA8AA1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */; };
 		037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */; };
+		03AD9B671EF8D25A0038AEE9 /* CommentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */; };
+		03AD9B691EF8D6DA0038AEE9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B681EF8D6DA0038AEE9 /* Task.swift */; };
+		03D50F401EF8FDA10056F6AE /* InfoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */; };
+		03D50F411EF8FDA10056F6AE /* InfoCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */; };
 		03F81FBA1EF238AD0052B440 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F81FB91EF238AD0052B440 /* TableViewHelper.swift */; };
 		4AA17A8891826EB16074A9C2 /* Pods_GV24.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 472E4661C584478893F9A0A4 /* Pods_GV24.framework */; };
 		842FEC6A1ED40C6900000606 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC691ED40C6900000606 /* AppDelegate.swift */; };
@@ -310,6 +314,10 @@
 		037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCell.xib; sourceTree = "<group>"; };
 		037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCollectionViewCell.xib; sourceTree = "<group>"; };
+		03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentServices.swift; sourceTree = "<group>"; };
+		03AD9B681EF8D6DA0038AEE9 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCommentCell.swift; sourceTree = "<group>"; };
+		03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoCommentCell.xib; sourceTree = "<group>"; };
 		03F81FB91EF238AD0052B440 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		10C1EF8086B8317A0B2D32AD /* Pods_GV24UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GV24UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		419D89D2D83ABB2676E6EA1F /* Pods-GV24Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GV24Tests/Pods-GV24Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -447,6 +455,8 @@
 				037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */,
 				037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */,
 				037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */,
+				03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */,
+				03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */,
 			);
 			path = InforCell;
 			sourceTree = "<group>";
@@ -767,6 +777,7 @@
 				003BC6921ED9DA0600FF6D14 /* Error.swift */,
 				003175EC1EE6A6B000F3F9B4 /* AroundTask.swift */,
 				002AFD631EE7FD8800D3B88A /* APIPath.swift */,
+				03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -852,8 +863,8 @@
 			children = (
 				000E1CA71EF6D6E500E26FD4 /* GoogleDataProvider.swift */,
 				000E1CA11EF6D56400E26FD4 /* GooglePlace.swift */,
-				000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */,
 				00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */,
+				000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */,
 				00EB19501EE93EF5003B2C5D /* Address.swift */,
 				00EB19511EE93EF5003B2C5D /* Dist.swift */,
 				00EB19521EE93EF5003B2C5D /* History.swift */,
@@ -867,6 +878,7 @@
 				003BC69A1ED9EAF300FF6D14 /* Info.swift */,
 				003175EA1EE69A0000F3F9B4 /* Maid.swift */,
 				002715281EE799B7006E6671 /* Around.swift */,
+				03AD9B681EF8D6DA0038AEE9 /* Task.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1083,6 +1095,7 @@
 				002572421EDE648800AACC52 /* LanguageViewController.xib in Resources */,
 				002572551EDEAD4000AACC52 /* CommentCell.xib in Resources */,
 				003BC67C1ED9D8ED00FF6D14 /* WorkTableViewCell.xib in Resources */,
+				03D50F411EF8FDA10056F6AE /* InfoCommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1268,6 +1281,7 @@
 				00EB195B1EE93EF5003B2C5D /* Process.swift in Sources */,
 				003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */,
 				002A04451EE11C97001876E5 /* xibView.swift in Sources */,
+				03AD9B671EF8D25A0038AEE9 /* CommentServices.swift in Sources */,
 				002AFD641EE7FD8800D3B88A /* APIPath.swift in Sources */,
 				844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */,
 				004103621EF37858004BF446 /* AutoKeyboard.swift in Sources */,
@@ -1281,11 +1295,13 @@
 				000E1CA01EF6D54600E26FD4 /* PlaceMarker.swift in Sources */,
 				00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */,
 				004467BB1EEF9B8900DDD0ED /* CustomTableViewCell.swift in Sources */,
+				03D50F401EF8FDA10056F6AE /* InfoCommentCell.swift in Sources */,
 				00EB195A1EE93EF5003B2C5D /* Owner.swift in Sources */,
 				0025723C1EDE633500AACC52 /* RuleViewController.swift in Sources */,
 				002A045F1EE15084001876E5 /* DetailViewController.swift in Sources */,
 				0027152D1EE7AFAB006E6671 /* AroundItemController.swift in Sources */,
 				003BC6841ED9D92E00FF6D14 /* BaseViewController.swift in Sources */,
+				03AD9B691EF8D6DA0038AEE9 /* Task.swift in Sources */,
 				003BC67B1ED9D8ED00FF6D14 /* WorkTableViewCell.swift in Sources */,
 				003BC6961ED9DA0600FF6D14 /* Error.swift in Sources */,
 				03F81FBA1EF238AD0052B440 /* TableViewHelper.swift in Sources */,
