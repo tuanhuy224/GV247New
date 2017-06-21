@@ -25,13 +25,12 @@ class InforCell: CustomTableViewCell {
     @IBOutlet weak var lbAge: UILabel!
     @IBOutlet weak var lbGender: UILabel!
     @IBOutlet weak var imageProfile: UIImageView!
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         avatar.layer.cornerRadius = avatar.frame.size.width/2
         avatar.clipsToBounds = true
+        avatar.layer.borderWidth = 1
+        avatar.layer.borderColor = UIColor.white.cgColor
         lbName.textColor = UIColor.white
         imageFirst = Ionicons.star.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 255, greenValue: 255, blueValue: 255, alpha: 1))
         let imagegender = Ionicons.transgender.image(32)

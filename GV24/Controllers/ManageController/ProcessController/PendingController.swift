@@ -47,6 +47,7 @@ extension PendingController:UITableViewDataSource{
             cell.lbComment.text = processPending?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processPending?.info?.salary ?? 0) $"
+            cell.lbTime.text = "\(Date(isoDateString: (self.processPending?.workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (self.processPending?.workTime!.endAt)!).hourMinute)"
             return cell
         case 2:
             let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell

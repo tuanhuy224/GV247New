@@ -52,6 +52,7 @@ extension RecievedController:UITableViewDataSource{
             cell.lbComment.text = processRecieved?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (processRecieved?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) $"
+            cell.lbTime.text = "\(Date(isoDateString: (self.processRecieved?.workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (self.processRecieved?.workTime!.endAt)!).hourMinute)"
             return cell
         case 2:
             let cell:CancelCell = tbRecieved.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
@@ -91,6 +92,8 @@ extension RecievedController:CancelWorkDelegate{
 }
 extension RecievedController:chooseWorkDelegate{
     func detailManagementDelegate() {
-        
+        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+        navi.workPending = processRecieved
+        navigationController?.pushViewController(navi, animated: true)
     }
 }

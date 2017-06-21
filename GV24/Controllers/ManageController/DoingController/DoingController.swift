@@ -42,6 +42,7 @@ extension DoingController:UITableViewDataSource{
             cell.addressName.text = ProcessDoing?.stakeholders?.owner?.address?.name
             let url = URL(string: (ProcessDoing?.stakeholders?.owner?.image)!)
             cell.imageName.kf.setImage(with: url)
+            cell.delegate = self
             return cell
         case 1:
             let cell:InfoDetailCell = tbDoing.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
@@ -50,6 +51,7 @@ extension DoingController:UITableViewDataSource{
             cell.lbComment.text = ProcessDoing?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (ProcessDoing?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (ProcessDoing?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(ProcessDoing?.info?.salary ?? 0) $"
+            cell.lbTime.text = "\(Date(isoDateString: (self.ProcessDoing?.workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (self.ProcessDoing?.workTime!.endAt)!).hourMinute)"
             return cell
         case 2:
             let cell:CancelCell = tbDoing.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
@@ -71,5 +73,11 @@ extension DoingController:UITableViewDelegate{
             return 172
         }
     }
-
+}
+extension DoingController:chooseWorkDelegate{
+    func detailManagementDelegate() {
+        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+        navi.workPending = ProcessDoing
+        navigationController?.pushViewController(navi, animated: true)
+    }
 }
