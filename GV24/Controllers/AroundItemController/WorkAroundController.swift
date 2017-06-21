@@ -70,10 +70,10 @@ class WorkAroundController: BaseViewController {
         self.customBarLeftButton()
     }
     func customBarLeftButton(){
-        let image = Ionicons.checkmark.image(12).maskWithColor(color: UIColor.colorWithRedValue(redValue: 24, greenValue: 179, blueValue: 110, alpha: 1))
+        let image = Ionicons.checkmark.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1))
         let button = UIButton(type: .custom)
         button.setImage(image, for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
         button.addTarget(self, action: #selector(WorkAroundController.selectButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
@@ -97,8 +97,8 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
         DispatchQueue.main.async {
              cell.imageWork.kf.setImage(with: image)
         }
-        cell.delegate = self as? sendIdForViewDetailDelegate
-            return cell
+        cell.delegate = self
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
@@ -121,6 +121,10 @@ extension WorkAroundController:changeSliderDelegate{
             UserDefaultHelper.setSlider(slider: "\(slider.value)")
             MBProgressHUD.hide(for: self.view, animated: true)
         }
+    }
+}
+extension WorkAroundController:sendIdForViewDetailDelegate{
+    func sendId(id: String) {
     }
 }
 

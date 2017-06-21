@@ -1,4 +1,4 @@
-# Uncomment the next line to define a global platform for your project
+source 'https://github.com/CocoaPods/Specs.git'
 # platform :ios, '9.0'
 
 target 'GV24' do
@@ -8,11 +8,11 @@ target 'GV24' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'Kingfisher', '~> 3.0'
-	pod 'GoogleMaps'
-	pod 'GooglePlaces'
-  	pod 'GooglePlacePicker'
 	pod 'Firebase/Core'
 	pod 'Firebase/Messaging'
+	pod 'GooglePlaces'
+  	pod 'GooglePlacePicker'
+  	pod 'GoogleMaps'
   # Pods for GV24
 
   target 'GV24Tests' do

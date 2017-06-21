@@ -43,6 +43,7 @@ extension RecievedController:UITableViewDataSource{
             cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
             let url = URL(string: (processRecieved?.stakeholders?.owner?.image)!)
             cell.imageName.kf.setImage(with: url)
+            cell.delegate = self
             return cell
         case 1:
             let cell:InfoDetailCell = tbRecieved.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
@@ -88,4 +89,8 @@ extension RecievedController:CancelWorkDelegate{
         }
     }
 }
-
+extension RecievedController:chooseWorkDelegate{
+    func detailManagementDelegate() {
+        
+    }
+}

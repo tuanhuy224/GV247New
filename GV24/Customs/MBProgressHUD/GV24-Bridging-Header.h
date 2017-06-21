@@ -3,3 +3,4 @@
 //
 #import "MBProgressHUD.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <GooglePlaces/GooglePlaces.h>

@@ -87,9 +87,10 @@ class HomeViewDisplayController: BaseViewController {
         button.titleEdgeInsets = UIEdgeInsets(top: textTop, left: -myImage!.size.width, bottom: textBottom, right: 0.0)
     }
     @IBAction func AroundButton(_ sender: Any) {
-        let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
-            around.arrays = arrays
-        navigationController?.pushViewController(around, animated: true)
+        let map = MapViewController(nibName: "MapViewController", bundle: nil)
+        //let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
+            map.arrays = arrays
+        navigationController?.pushViewController(map, animated: true)
     }
     @IBAction func ManageButton(_ sender: Any) {
         let manage = ManageViewController(nibName: NibManageViewController, bundle: nil)
@@ -97,10 +98,6 @@ class HomeViewDisplayController: BaseViewController {
     }
     @IBAction func HistoryButton(_ sender: Any) {
         navigationController?.pushViewController(ManagerHistoryViewController(), animated: true)
-    }
-    
-    @IBAction func showMap(_ sender: Any) {
-        navigationController?.pushViewController(MapViewController(), animated: true)
     }
 }
 

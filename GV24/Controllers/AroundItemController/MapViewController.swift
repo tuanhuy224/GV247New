@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import GooglePlaces
 import GoogleMaps
+import GooglePlaces
+import IoniconsSwift
 
 class MapViewController: BaseViewController,UISearchDisplayDelegate {
- 
-
     @IBOutlet weak var findMe: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var lbAddress: UILabel!
@@ -26,6 +25,7 @@ class MapViewController: BaseViewController,UISearchDisplayDelegate {
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
+    var arrays = [Around]()
     @IBAction func findMeAction(_ sender: Any) {
        
     }
@@ -48,36 +48,36 @@ class MapViewController: BaseViewController,UISearchDisplayDelegate {
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        mapView.delegate = self
         placesClient = GMSPlacesClient.shared()
     }
-    
     func configurationSearchBar() {
         resultsViewController = GMSAutocompleteResultsViewController()
-        resultsViewController?.delegate = self as? GMSAutocompleteResultsViewControllerDelegate
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
-        let subView = UIView(frame: CGRect(x: 0, y: 65.0, width:UIScreen.main.bounds.width, height: 45.0))
+        let subView = UIView(frame: CGRect(x: 0, y: 64.0, width:UIScreen.main.bounds.width, height: 45.0))
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
-        // When UISearchController presents the results view, present it in
-        // this view controller, not one further up the chain.
         definesPresentationContext = true
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = .top
+        let setting = Ionicons.iosSettings.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
+        let button = UIButton(type: .custom)
+        button.setImage(setting, for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.addTarget(self, action: #selector(MapViewController.addTapped), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     // Populate the array with the list of likely places.
     func listLikelyPlaces() {
-        // Clean up from previous sessions.
         likelyPlaces.removeAll()
         placesClient.currentPlace(callback: { (placeLikelihoods, error) -> Void in
             if let error = error {
-                // TODO: Handle the error.
                 print("Current Place error: \(error.localizedDescription)")
                 return
             }
-            // Get likely places and add to the list.
             if let likelihoodList = placeLikelihoods {
                 for likelihood in likelihoodList.likelihoods {
                     let place = likelihood.place
@@ -86,31 +86,15 @@ class MapViewController: BaseViewController,UISearchDisplayDelegate {
             }
         })
     }
-    
-    
-    
-    
-    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                           didAutocompleteWith place: GMSPlace) {
-        searchController?.isActive = false
-        // Do something with the selected place.
-        print("Place name: \(place.name)")
-        print("Place address: \(String(describing: place.formattedAddress))")
-        print("Place attributions: \(String(describing: place.attributions))")
-    }
-    
-    
-    // Turn the network activity indicator on and off again.
-    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    
-    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    // MARK: button filter longtitude and latitude
+    func addTapped() {
+        let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
+        around.arrays = arrays
+        navigationController?.pushViewController(around, animated: true)
     }
 }
 extension MapViewController: CLLocationManagerDelegate {
-    // Handle incoming location events.
+    // MARK: - Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         print("Location: \(location)")
@@ -123,14 +107,13 @@ extension MapViewController: CLLocationManagerDelegate {
         }
         listLikelyPlaces()
     }
-    // Handle authorization for the location manager.
+    // MARK: - Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .restricted:
             print("Location access was restricted.")
         case .denied:
             print("User denied access to location.")
-            // Display the map using the default location.
             mapView.isHidden = false
         case .notDetermined:
             print("Location status not determined.")
@@ -139,10 +122,15 @@ extension MapViewController: CLLocationManagerDelegate {
             print("Location status is OK.")
         }
     }
-    // Handle location manager errors.
     private func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
+    }
+}
+
+extension MapViewController:GMSMapViewDelegate{
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
     }
 }
 
