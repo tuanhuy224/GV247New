@@ -52,7 +52,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             }
                 cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)
                 cell.btChoose.setTitleColor(.black, for: .normal)
-                cell.constraintHeightButtonChoose.constant = 4
+                cell.constraintHeightButtonChoose.constant = 25
                 cell.vSegment.isHidden = false
                 cell.btChoose.isHidden = false
             return cell
@@ -84,7 +84,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section{
         case 0:
-            return 94
+            return 120
         case 1:
             return 83
         case 2:
@@ -124,7 +124,7 @@ extension MoreViewController:changeLanguageDelegate{
 extension MoreViewController:LogOutDelegate{
     func logOut() {
         if UserDefaultHelper().removeUserDefault() == true{
-            navigationController?.pushViewController(LoginView(), animated: true)
+            AlertStandard.sharedInstance.showAlertSetRoot(controller: self, pushVC: LoginView(), title: "", message: "")
         }
     }
 }

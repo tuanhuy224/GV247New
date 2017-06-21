@@ -10,12 +10,10 @@ import UIKit
 import GooglePlaces
 import GoogleMaps
 
+class MapViewController: BaseViewController,UISearchDisplayDelegate {
+ 
 
-class MapViewController: BaseViewController {
     @IBOutlet weak var findMe: UIButton!
-    let dataProvider = GoogleDataProvider()
-    let searchRadius: Double = 1000
-    var searchedTypes = ["bakery", "bar", "cafe", "grocery_or_supermarket", "restaurant"]
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var lbAddress: UILabel!
     var locationManager = CLLocationManager()
@@ -25,12 +23,20 @@ class MapViewController: BaseViewController {
     var didFindMyLocation = false
     var likelyPlaces: [GMSPlace] = []
     var selectedPlace: GMSPlace?
+    var resultsViewController: GMSAutocompleteResultsViewController?
+    var searchController: UISearchController?
+    var resultView: UITextView?
     @IBAction func findMeAction(_ sender: Any) {
        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTheLocationManager()
+        configurationSearchBar()
+    }
+    override func setupViewBase() {
+        super.setupViewBase()
+        self.title = "Around".localize
     }
     func initializeTheLocationManager(){
         mapView.isMyLocationEnabled = true
@@ -44,20 +50,27 @@ class MapViewController: BaseViewController {
         locationManager.delegate = self
         placesClient = GMSPlacesClient.shared()
     }
-    // Prepare the segue.
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "segueToSelect" {
-//            if let nextViewController = segue.destination as? PlacesViewController {
-//                nextViewController.likelyPlaces = likelyPlaces
-//            }
-//        }
-//    }
-
+    
+    func configurationSearchBar() {
+        resultsViewController = GMSAutocompleteResultsViewController()
+        resultsViewController?.delegate = self as? GMSAutocompleteResultsViewControllerDelegate
+        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController?.searchResultsUpdater = resultsViewController
+        let subView = UIView(frame: CGRect(x: 0, y: 65.0, width:UIScreen.main.bounds.width, height: 45.0))
+        subView.addSubview((searchController?.searchBar)!)
+        view.addSubview(subView)
+        searchController?.searchBar.sizeToFit()
+        searchController?.hidesNavigationBarDuringPresentation = false
+        // When UISearchController presents the results view, present it in
+        // this view controller, not one further up the chain.
+        definesPresentationContext = true
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.edgesForExtendedLayout = .top
+    }
     // Populate the array with the list of likely places.
     func listLikelyPlaces() {
         // Clean up from previous sessions.
         likelyPlaces.removeAll()
-        
         placesClient.currentPlace(callback: { (placeLikelihoods, error) -> Void in
             if let error = error {
                 // TODO: Handle the error.
@@ -73,16 +86,35 @@ class MapViewController: BaseViewController {
             }
         })
     }
+    
+    
+    
+    
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didAutocompleteWith place: GMSPlace) {
+        searchController?.isActive = false
+        // Do something with the selected place.
+        print("Place name: \(place.name)")
+        print("Place address: \(String(describing: place.formattedAddress))")
+        print("Place attributions: \(String(describing: place.attributions))")
+    }
+    
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }
 extension MapViewController: CLLocationManagerDelegate {
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         print("Location: \(location)")
-        
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,longitude: location.coordinate.longitude,zoom: zoomLevel)
         if mapView.isHidden {
             mapView.isHidden = false
             mapView.camera = camera
@@ -113,3 +145,4 @@ extension MapViewController: CLLocationManagerDelegate {
         print("Error: \(error)")
     }
 }
+
