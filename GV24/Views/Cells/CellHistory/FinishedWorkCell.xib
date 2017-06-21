@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="220.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6JX-1Q-xbz">
@@ -38,41 +38,41 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dọn dẹp nhà cửa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4f-Yg-jJf">
-                        <rect key="frame" x="71" y="34" width="96.5" height="14"/>
+                        <rect key="frame" x="71" y="34" width="94" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTp-yg-o1g">
-                        <rect key="frame" x="15" y="56" width="290" height="39.5"/>
+                        <rect key="frame" x="15" y="56" width="290" height="38.5"/>
                         <string key="text">Cần một bạn nữ siêng năng dọn phòng ngày sáng thứ tư, sau 9 giờ. Cần một bạn nữ siêng năng dọn phòng ngày sáng thứ tư, sau 9 giờ.</string>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7V-25-yhS">
-                        <rect key="frame" x="0.0" y="100.5" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="99.5" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="C7k-wR-1vv"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="olJ-UK-exx">
-                        <rect key="frame" x="15" y="116.5" width="15" height="15"/>
+                        <rect key="frame" x="15" y="115.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="6Hi-zb-HOy"/>
                             <constraint firstAttribute="width" constant="15" id="Dvi-ft-2xL"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JiD-AK-gny">
-                        <rect key="frame" x="15" y="151.5" width="15" height="15"/>
+                        <rect key="frame" x="15" y="150.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="ZC4-I6-Rgq"/>
                             <constraint firstAttribute="width" constant="15" id="cGJ-dc-G5h"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w6W-Ac-chQ">
-                        <rect key="frame" x="15" y="186.5" width="15" height="14.5"/>
+                        <rect key="frame" x="15" y="185.5" width="15" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="D4B-4I-bbW"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="Jwy-IV-zJG"/>
@@ -80,44 +80,44 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.000 VND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-OF-8jx">
-                        <rect key="frame" x="40" y="117" width="76" height="14"/>
+                        <rect key="frame" x="40" y="116" width="71.5" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/10/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oj-Fy-raL">
-                        <rect key="frame" x="40" y="152" width="61" height="14"/>
+                        <rect key="frame" x="40" y="151" width="61" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 đường 2, Phường Bình Thọ, Quận 3, Thành phố Hồ Chí Minh." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCH-JF-qhT">
-                        <rect key="frame" x="40" y="186.5" width="265" height="29"/>
+                        <rect key="frame" x="40" y="185.5" width="265" height="30"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeV-W9-ghJ">
-                        <rect key="frame" x="40" y="176.5" width="280" height="1"/>
+                        <rect key="frame" x="40" y="175.5" width="280" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="WHg-Zr-Gme"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9h00 am - 12h00 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We0-ti-Eyc">
-                        <rect key="frame" x="187" y="152" width="118" height="14"/>
+                        <rect key="frame" x="192.5" y="151" width="112.5" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lau dọn phòng khách" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-qc-JJK">
-                        <rect key="frame" x="71" y="15" width="152" height="18"/>
+                        <rect key="frame" x="71" y="15" width="146.5" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gld-MG-Jhg">
-                        <rect key="frame" x="40" y="141.5" width="280" height="1"/>
+                        <rect key="frame" x="40" y="140.5" width="280" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="Zcn-8a-ihy"/>

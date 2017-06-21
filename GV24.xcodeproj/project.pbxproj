@@ -53,7 +53,6 @@
 		002A04451EE11C97001876E5 /* xibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002A04441EE11C97001876E5 /* xibView.swift */; };
 		002A04501EE13B51001876E5 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002A044F1EE13B51001876E5 /* AlertManager.swift */; };
 		002A04561EE14667001876E5 /* WorkDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002A04541EE14667001876E5 /* WorkDetailCell.swift */; };
-		002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002A04551EE14667001876E5 /* WorkDetailCell.xib */; };
 		002A045A1EE14A82001876E5 /* InfoDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002A04581EE14A82001876E5 /* InfoDetailCell.swift */; };
 		002A045B1EE14A82001876E5 /* InfoDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002A04591EE14A82001876E5 /* InfoDetailCell.xib */; };
 		002A045F1EE15084001876E5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002A045D1EE15084001876E5 /* DetailViewController.swift */; };
@@ -147,6 +146,15 @@
 		00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB19561EE93EF5003B2C5D /* Stakeholders.swift */; };
 		00EDD49B1EF02D660098F505 /* DetailManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDD4991EF02D660098F505 /* DetailManagementController.swift */; };
 		00EDD49C1EF02D660098F505 /* DetailManagementController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EDD49A1EF02D660098F505 /* DetailManagementController.xib */; };
+		037E10E61EF90DF50072442F /* WorkDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002A04551EE14667001876E5 /* WorkDetailCell.xib */; };
+		037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */; };
+		037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */; };
+		037EA8AA1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */; };
+		037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */; };
+		03AD9B671EF8D25A0038AEE9 /* CommentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */; };
+		03AD9B691EF8D6DA0038AEE9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B681EF8D6DA0038AEE9 /* Task.swift */; };
+		03D50F401EF8FDA10056F6AE /* InfoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */; };
+		03D50F411EF8FDA10056F6AE /* InfoCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */; };
 		03F81FBA1EF238AD0052B440 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F81FB91EF238AD0052B440 /* TableViewHelper.swift */; };
 		6D1EF4537BA47A57983E6FEF /* Pods_GV24UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD75368AAFF08E6C5C3FA65F /* Pods_GV24UITests.framework */; };
 		842FEC6A1ED40C6900000606 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC691ED40C6900000606 /* AppDelegate.swift */; };
@@ -327,6 +335,14 @@
 		00EB19561EE93EF5003B2C5D /* Stakeholders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stakeholders.swift; sourceTree = "<group>"; };
 		00EDD4991EF02D660098F505 /* DetailManagementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailManagementController.swift; sourceTree = "<group>"; };
 		00EDD49A1EF02D660098F505 /* DetailManagementController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailManagementController.xib; sourceTree = "<group>"; };
+		037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCell.swift; sourceTree = "<group>"; };
+		037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCell.xib; sourceTree = "<group>"; };
+		037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCollectionViewCell.xib; sourceTree = "<group>"; };
+		03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentServices.swift; sourceTree = "<group>"; };
+		03AD9B681EF8D6DA0038AEE9 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCommentCell.swift; sourceTree = "<group>"; };
+		03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoCommentCell.xib; sourceTree = "<group>"; };
 		03F81FB91EF238AD0052B440 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		289F79C827120EDB6137B02E /* Pods-GV24Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24Tests/Pods-GV24Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2969276F5EE007E4625A02E9 /* Pods_GV24Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GV24Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -469,6 +485,12 @@
 				0025724F1EDE9E1600AACC52 /* InforCell.xib */,
 				002572521EDEAD4000AACC52 /* CommentCell.swift */,
 				002572531EDEAD4000AACC52 /* CommentCell.xib */,
+				037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */,
+				037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */,
+				037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */,
+				037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */,
+				03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */,
+				03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */,
 			);
 			path = InforCell;
 			sourceTree = "<group>";
@@ -799,6 +821,7 @@
 				003BC6921ED9DA0600FF6D14 /* Error.swift */,
 				003175EC1EE6A6B000F3F9B4 /* AroundTask.swift */,
 				002AFD631EE7FD8800D3B88A /* APIPath.swift */,
+				03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -886,8 +909,8 @@
 			children = (
 				000E1CA71EF6D6E500E26FD4 /* GoogleDataProvider.swift */,
 				000E1CA11EF6D56400E26FD4 /* GooglePlace.swift */,
-				000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */,
 				00CC0D3C1EEE3ED9002D24D4 /* Comment.swift */,
+				000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */,
 				00EB19501EE93EF5003B2C5D /* Address.swift */,
 				00EB19511EE93EF5003B2C5D /* Dist.swift */,
 				00EB19521EE93EF5003B2C5D /* History.swift */,
@@ -901,6 +924,7 @@
 				003BC69A1ED9EAF300FF6D14 /* Info.swift */,
 				003175EA1EE69A0000F3F9B4 /* Maid.swift */,
 				002715281EE799B7006E6671 /* Around.swift */,
+				03AD9B681EF8D6DA0038AEE9 /* Task.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1026,7 +1050,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = admin;
 				TargetAttributes = {
 					842FEC651ED40C6900000606 = {
@@ -1092,15 +1116,15 @@
 				002A043E1EE116AB001876E5 /* WorkAround.xib in Resources */,
 				009A76EC1EEE94270021BFB0 /* MapViewController.xib in Resources */,
 				003175E91EE68AC400F3F9B4 /* WaittingCell.xib in Resources */,
+				037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */,
 				002BA1081EDD52F60099352D /* NotifiCell.xib in Resources */,
 				002572471EDE698200AACC52 /* ForgotPasswordViewController.xib in Resources */,
 				002BA1041EDD26090099352D /* MoreCell.xib in Resources */,
 				003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */,
 				009A76EA1EEE94270021BFB0 /* LocationTableViewController.xib in Resources */,
 				00EDD49C1EF02D660098F505 /* DetailManagementController.xib in Resources */,
-				002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */,
+				037E10E61EF90DF50072442F /* WorkDetailCell.xib in Resources */,
 				009A76F01EEE94490021BFB0 /* MapViewCell.xib in Resources */,
-				002A04571EE14667001876E5 /* WorkDetailCell.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
 				00AEBA411EF7C329009FFA69 /* FollowCell.xib in Resources */,
 				004467AF1EEF82D900DDD0ED /* PendingController.xib in Resources */,
@@ -1112,6 +1136,7 @@
 				003175E51EE68A8900F3F9B4 /* WaittingController.xib in Resources */,
 				0022C5001EE84D1700027665 /* OwnerHistoryViewCell.xib in Resources */,
 				0025723D1EDE633500AACC52 /* RuleViewController.xib in Resources */,
+				037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */,
 				002572511EDE9E1600AACC52 /* InforCell.xib in Resources */,
 				00EB194D1EE93EB4003B2C5D /* HistoryViewController.xib in Resources */,
 				002C570A1EDBDD420039BBCE /* HistoryViewCell.xib in Resources */,
@@ -1137,6 +1162,7 @@
 				002572421EDE648800AACC52 /* LanguageViewController.xib in Resources */,
 				002572551EDEAD4000AACC52 /* CommentCell.xib in Resources */,
 				003BC67C1ED9D8ED00FF6D14 /* WorkTableViewCell.xib in Resources */,
+				03D50F411EF8FDA10056F6AE /* InfoCommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1184,7 +1210,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		59F8E59AC63E2252AFC763AF /* [CP] Embed Pods Frameworks */ = {
@@ -1244,7 +1270,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C8EACF62ACB9B7FD42491E9A /* [CP] Check Pods Manifest.lock */ = {
@@ -1259,7 +1285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CBA812814098A329D8A42CF3 /* [CP] Embed Pods Frameworks */ = {
@@ -1309,17 +1335,20 @@
 				002572461EDE698200AACC52 /* ForgotPasswordViewController.swift in Sources */,
 				002BA1181EDD62730099352D /* UserService.swift in Sources */,
 				00EB19571EE93EF5003B2C5D /* Address.swift in Sources */,
+				037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */,
 				003C9A091EDFC85F003F1189 /* ManageViewController.swift in Sources */,
 				002572321EDE568700AACC52 /* ConstactViewController.swift in Sources */,
 				00EB194A1EE93EB4003B2C5D /* FinishedWorkViewController.swift in Sources */,
 				003175E81EE68AC400F3F9B4 /* WaittingCell.swift in Sources */,
 				004467B81EEF97FB00DDD0ED /* DoingController.swift in Sources */,
+				037EA8AA1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift in Sources */,
 				00EDD49B1EF02D660098F505 /* DetailManagementController.swift in Sources */,
 				005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */,
 				009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */,
 				00EB195B1EE93EF5003B2C5D /* Process.swift in Sources */,
 				003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */,
 				002A04451EE11C97001876E5 /* xibView.swift in Sources */,
+				03AD9B671EF8D25A0038AEE9 /* CommentServices.swift in Sources */,
 				002AFD641EE7FD8800D3B88A /* APIPath.swift in Sources */,
 				844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */,
 				004103621EF37858004BF446 /* AutoKeyboard.swift in Sources */,
@@ -1333,11 +1362,13 @@
 				000E1CA01EF6D54600E26FD4 /* PlaceMarker.swift in Sources */,
 				00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */,
 				004467BB1EEF9B8900DDD0ED /* CustomTableViewCell.swift in Sources */,
+				03D50F401EF8FDA10056F6AE /* InfoCommentCell.swift in Sources */,
 				00EB195A1EE93EF5003B2C5D /* Owner.swift in Sources */,
 				0025723C1EDE633500AACC52 /* RuleViewController.swift in Sources */,
 				002A045F1EE15084001876E5 /* DetailViewController.swift in Sources */,
 				0027152D1EE7AFAB006E6671 /* AroundItemController.swift in Sources */,
 				003BC6841ED9D92E00FF6D14 /* BaseViewController.swift in Sources */,
+				03AD9B691EF8D6DA0038AEE9 /* Task.swift in Sources */,
 				003BC67B1ED9D8ED00FF6D14 /* WorkTableViewCell.swift in Sources */,
 				003BC6961ED9DA0600FF6D14 /* Error.swift in Sources */,
 				03F81FBA1EF238AD0052B440 /* TableViewHelper.swift in Sources */,
