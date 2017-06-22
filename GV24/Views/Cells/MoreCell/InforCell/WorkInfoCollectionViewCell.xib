@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,17 +35,28 @@
                             <constraint firstAttribute="height" constant="45" id="Iy1-Xb-Gxg"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlT-Z7-5Ua">
+                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                        <connections>
+                            <action selector="btAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="wDr-kO-iOn"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="dZ7-jT-efL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5pm-wt-TVN"/>
+                <constraint firstItem="NlT-Z7-5Ua" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6JY-he-9KO"/>
+                <constraint firstAttribute="trailing" secondItem="NlT-Z7-5Ua" secondAttribute="trailing" id="FMX-Uh-vQd"/>
                 <constraint firstItem="zos-92-Ugf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FgF-qc-uM5"/>
                 <constraint firstAttribute="trailing" secondItem="zos-92-Ugf" secondAttribute="trailing" id="V8q-KM-Bu8"/>
                 <constraint firstItem="dZ7-jT-efL" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="nUa-8b-zLb"/>
+                <constraint firstItem="NlT-Z7-5Ua" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nuq-6F-FWZ"/>
                 <constraint firstItem="zos-92-Ugf" firstAttribute="top" secondItem="dZ7-jT-efL" secondAttribute="bottom" constant="4" id="ojq-5p-7iH"/>
+                <constraint firstAttribute="bottom" secondItem="NlT-Z7-5Ua" secondAttribute="bottom" id="qIe-G1-EWM"/>
             </constraints>
             <size key="customSize" width="70" height="72"/>
             <connections>
+                <outlet property="btTap" destination="NlT-Z7-5Ua" id="dKT-67-cIn"/>
                 <outlet property="icon" destination="dZ7-jT-efL" id="wbp-6o-FZF"/>
                 <outlet property="titleLabel" destination="zos-92-Ugf" id="HHp-SU-Ci5"/>
             </connections>

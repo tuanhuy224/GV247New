@@ -23,7 +23,6 @@ class InformationViewController: BaseViewController {
         tbInformation.register(UINib(nibName:NibInforCell,bundle:nil), forCellReuseIdentifier: inforCellID)
         tbInformation.register(UINib(nibName:NibInfoCommentCell,bundle:nil), forCellReuseIdentifier: infoCommentCellID)
         tbInformation.register(UINib(nibName: NibWorkInfoCell, bundle: nil), forCellReuseIdentifier: workInfoCellID)
-        tbInformation.allowsSelection = false
         self.user = UserDefaultHelper.currentUser
         customBarLeftButton()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InformationViewController.dismissKeyboard))
@@ -49,7 +48,7 @@ class InformationViewController: BaseViewController {
     }
     
     func selectButton() {
-        navigationController?.pushViewController(DetailViewController(), animated: true)
+        //navigationController?.pushViewController(DetailViewController(), animated: true)
     }
     
     func setImageAvatar(cell:UITableViewCell,imgView:UIImage) {
@@ -109,7 +108,7 @@ extension InformationViewController:UITableViewDataSource{
             }
             let url = URL(string: user!.image!)
             DispatchQueue.main.async {
-                    cell.avatar?.kf.setImage(with: url)
+                cell.avatar?.kf.setImage(with: url)
             }
             cell.imageProfile.kf.setImage(with: url)
             cell.lbName.text = user?.username
@@ -154,7 +153,6 @@ extension InformationViewController:UITableViewDelegate{
         return 170
     }
 }
-
 
 
 

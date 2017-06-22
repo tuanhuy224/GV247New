@@ -4,20 +4,12 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SFUIText-Light.ttf">
-            <string>SFUIText-Light</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="GV24" customModuleProvider="target">
             <connections>
-                <outlet property="findMe" destination="f5o-PN-6ph" id="0mv-tq-ZJ1"/>
-                <outlet property="lbAddress" destination="ZJp-X0-HMI" id="KL3-5S-Xfd"/>
                 <outlet property="mapView" destination="EJ5-Xa-eBb" id="VqZ-dx-Exp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="Mgc-wj-7ly"/>
             </connections>
@@ -29,39 +21,14 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJ5-Xa-eBb" customClass="GMSMapView">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJp-X0-HMI">
-                            <rect key="frame" x="0.0" y="571" width="375" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="32" id="q3r-EX-dyh"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
-                            <color key="textColor" red="0.15836210441664056" green="1" blue="0.99759091278119216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="ZJp-X0-HMI" secondAttribute="trailing" id="Eex-j7-3ft"/>
-                        <constraint firstItem="ZJp-X0-HMI" firstAttribute="leading" secondItem="EJ5-Xa-eBb" secondAttribute="leading" id="YWK-7w-KXV"/>
-                        <constraint firstAttribute="bottom" secondItem="ZJp-X0-HMI" secondAttribute="bottom" id="pON-uS-dlM"/>
-                    </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5o-PN-6ph">
-                    <rect key="frame" x="313" y="26" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
-                    <connections>
-                        <action selector="findMeAction:" destination="-1" eventType="touchUpInside" id="GHf-RW-Rnp"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="EJ5-Xa-eBb" secondAttribute="bottom" id="Fxs-jt-iW7"/>
                 <constraint firstItem="EJ5-Xa-eBb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GkJ-SV-f6R"/>
                 <constraint firstAttribute="trailing" secondItem="EJ5-Xa-eBb" secondAttribute="trailing" id="PN8-Uo-th6"/>
-                <constraint firstAttribute="trailing" secondItem="f5o-PN-6ph" secondAttribute="trailing" constant="16" id="baB-T5-p14"/>
-                <constraint firstItem="f5o-PN-6ph" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="26" id="fXQ-aP-SCi"/>
                 <constraint firstItem="EJ5-Xa-eBb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="yGd-ke-g9C"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="54.5"/>

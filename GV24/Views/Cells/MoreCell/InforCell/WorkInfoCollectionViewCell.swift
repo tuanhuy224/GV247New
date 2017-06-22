@@ -7,13 +7,21 @@
 //
 
 import UIKit
-
+protocol disSelectIndexPathDelegate:class {
+    func didSelect(index:Any)
+}
 class WorkInfoCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var btTap: UIButton!
+    weak var delegate:disSelectIndexPathDelegate?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var icon: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+    }
+    @IBAction func btAction(_ sender: Any) {
+        if delegate != nil {
+            self.delegate?.didSelect(index: sender)
+        }
     }
 }

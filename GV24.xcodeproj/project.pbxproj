@@ -113,8 +113,6 @@
 		009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DF1EEE8F480021BFB0 /* APIServices.swift */; };
 		009A76E31EEE92360021BFB0 /* OwnerHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76E11EEE92360021BFB0 /* OwnerHistoryViewController.swift */; };
 		009A76E41EEE92360021BFB0 /* OwnerHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76E21EEE92360021BFB0 /* OwnerHistoryViewController.xib */; };
-		009A76E91EEE94270021BFB0 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76E51EEE94270021BFB0 /* LocationTableViewController.swift */; };
-		009A76EA1EEE94270021BFB0 /* LocationTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76E61EEE94270021BFB0 /* LocationTableViewController.xib */; };
 		009A76EB1EEE94270021BFB0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76E71EEE94270021BFB0 /* MapViewController.swift */; };
 		009A76EC1EEE94270021BFB0 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009A76E81EEE94270021BFB0 /* MapViewController.xib */; };
 		009A76EF1EEE94490021BFB0 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76ED1EEE94490021BFB0 /* MapViewCell.swift */; };
@@ -302,8 +300,6 @@
 		009A76DF1EEE8F480021BFB0 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		009A76E11EEE92360021BFB0 /* OwnerHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerHistoryViewController.swift; sourceTree = "<group>"; };
 		009A76E21EEE92360021BFB0 /* OwnerHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OwnerHistoryViewController.xib; sourceTree = "<group>"; };
-		009A76E51EEE94270021BFB0 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
-		009A76E61EEE94270021BFB0 /* LocationTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationTableViewController.xib; sourceTree = "<group>"; };
 		009A76E71EEE94270021BFB0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		009A76E81EEE94270021BFB0 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		009A76ED1EEE94490021BFB0 /* MapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCell.swift; sourceTree = "<group>"; };
@@ -498,8 +494,6 @@
 		0027152A1EE7AF42006E6671 /* AroundItemController */ = {
 			isa = PBXGroup;
 			children = (
-				009A76E51EEE94270021BFB0 /* LocationTableViewController.swift */,
-				009A76E61EEE94270021BFB0 /* LocationTableViewController.xib */,
 				009A76E71EEE94270021BFB0 /* MapViewController.swift */,
 				009A76E81EEE94270021BFB0 /* MapViewController.xib */,
 				00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */,
@@ -1121,7 +1115,6 @@
 				002572471EDE698200AACC52 /* ForgotPasswordViewController.xib in Resources */,
 				002BA1041EDD26090099352D /* MoreCell.xib in Resources */,
 				003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */,
-				009A76EA1EEE94270021BFB0 /* LocationTableViewController.xib in Resources */,
 				00EDD49C1EF02D660098F505 /* DetailManagementController.xib in Resources */,
 				037E10E61EF90DF50072442F /* WorkDetailCell.xib in Resources */,
 				009A76F01EEE94490021BFB0 /* MapViewCell.xib in Resources */,
@@ -1414,7 +1407,6 @@
 				00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */,
 				0022C5011EE84D1700027665 /* WorkerViewCell.swift in Sources */,
 				00EB195C1EE93EF5003B2C5D /* Request.swift in Sources */,
-				009A76E91EEE94270021BFB0 /* LocationTableViewController.swift in Sources */,
 				009A76EB1EEE94270021BFB0 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
