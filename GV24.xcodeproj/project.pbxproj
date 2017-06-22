@@ -30,8 +30,6 @@
 		0022C5011EE84D1700027665 /* WorkerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022C4FB1EE84D1700027665 /* WorkerViewCell.swift */; };
 		0022C5021EE84D1700027665 /* WorkerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0022C4FC1EE84D1700027665 /* WorkerViewCell.xib */; };
 		002315581EDF07DC00B29F36 /* Extention+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002315571EDF07DC00B29F36 /* Extention+Image.swift */; };
-		002572321EDE568700AACC52 /* ConstactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002572301EDE568700AACC52 /* ConstactViewController.swift */; };
-		002572331EDE568700AACC52 /* ConstactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002572311EDE568700AACC52 /* ConstactViewController.xib */; };
 		002572371EDE5FB800AACC52 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002572351EDE5FB800AACC52 /* AboutViewController.swift */; };
 		002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002572361EDE5FB800AACC52 /* AboutViewController.xib */; };
 		0025723C1EDE633500AACC52 /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025723A1EDE633500AACC52 /* RuleViewController.swift */; };
@@ -77,6 +75,12 @@
 		003175E91EE68AC400F3F9B4 /* WaittingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003175E71EE68AC400F3F9B4 /* WaittingCell.xib */; };
 		003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003175EA1EE69A0000F3F9B4 /* Maid.swift */; };
 		003175ED1EE6A6B000F3F9B4 /* AroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003175EC1EE6A6B000F3F9B4 /* AroundTask.swift */; };
+		003B34671EFB6EEB004FA591 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B34661EFB6EEB004FA591 /* Contact.swift */; };
+		003B346B1EFB7419004FA591 /* ConstactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B34691EFB7419004FA591 /* ConstactViewController.swift */; };
+		003B346C1EFB7419004FA591 /* ConstactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003B346A1EFB7419004FA591 /* ConstactViewController.xib */; };
+		003B34701EFB9A30004FA591 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B346E1EFB9A30004FA591 /* StatisticViewController.swift */; };
+		003B34711EFB9A30004FA591 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003B346F1EFB9A30004FA591 /* StatisticViewController.xib */; };
+		003B34731EFBA883004FA591 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B34721EFBA883004FA591 /* Statistic.swift */; };
 		003BC67B1ED9D8ED00FF6D14 /* WorkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC6771ED9D8ED00FF6D14 /* WorkTableViewCell.swift */; };
 		003BC67C1ED9D8ED00FF6D14 /* WorkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003BC6781ED9D8ED00FF6D14 /* WorkTableViewCell.xib */; };
 		003BC6841ED9D92E00FF6D14 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC67E1ED9D92E00FF6D14 /* BaseViewController.swift */; };
@@ -209,8 +213,6 @@
 		0022C4FB1EE84D1700027665 /* WorkerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerViewCell.swift; sourceTree = "<group>"; };
 		0022C4FC1EE84D1700027665 /* WorkerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkerViewCell.xib; sourceTree = "<group>"; };
 		002315571EDF07DC00B29F36 /* Extention+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extention+Image.swift"; sourceTree = "<group>"; };
-		002572301EDE568700AACC52 /* ConstactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstactViewController.swift; sourceTree = "<group>"; };
-		002572311EDE568700AACC52 /* ConstactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConstactViewController.xib; sourceTree = "<group>"; };
 		002572351EDE5FB800AACC52 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		002572361EDE5FB800AACC52 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		0025723A1EDE633500AACC52 /* RuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
@@ -264,6 +266,12 @@
 		003175E71EE68AC400F3F9B4 /* WaittingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaittingCell.xib; sourceTree = "<group>"; };
 		003175EA1EE69A0000F3F9B4 /* Maid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maid.swift; sourceTree = "<group>"; };
 		003175EC1EE6A6B000F3F9B4 /* AroundTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundTask.swift; sourceTree = "<group>"; };
+		003B34661EFB6EEB004FA591 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		003B34691EFB7419004FA591 /* ConstactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstactViewController.swift; sourceTree = "<group>"; };
+		003B346A1EFB7419004FA591 /* ConstactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConstactViewController.xib; sourceTree = "<group>"; };
+		003B346E1EFB9A30004FA591 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		003B346F1EFB9A30004FA591 /* StatisticViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
+		003B34721EFBA883004FA591 /* Statistic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		003BC6771ED9D8ED00FF6D14 /* WorkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkTableViewCell.swift; sourceTree = "<group>"; };
 		003BC6781ED9D8ED00FF6D14 /* WorkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkTableViewCell.xib; sourceTree = "<group>"; };
 		003BC67E1ED9D92E00FF6D14 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -420,15 +428,6 @@
 			path = Extentions;
 			sourceTree = "<group>";
 		};
-		0025722F1EDE564200AACC52 /* Constact */ = {
-			isa = PBXGroup;
-			children = (
-				002572301EDE568700AACC52 /* ConstactViewController.swift */,
-				002572311EDE568700AACC52 /* ConstactViewController.xib */,
-			);
-			path = Constact;
-			sourceTree = "<group>";
-		};
 		002572341EDE5F9900AACC52 /* About */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +557,8 @@
 		002BA0F71EDD25050099352D /* MoreController */ = {
 			isa = PBXGroup;
 			children = (
+				003B346D1EFB9A15004FA591 /* StatisticController */,
+				003B34681EFB7419004FA591 /* Constact */,
 				002572481EDE9D6300AACC52 /* Information */,
 				0025723E1EDE645100AACC52 /* Language */,
 				002572391EDE630800AACC52 /* Rule */,
@@ -573,7 +574,6 @@
 			children = (
 				00AEBA3D1EF7C313009FFA69 /* FollowCell */,
 				0025724D1EDE9DDF00AACC52 /* InforCell */,
-				0025722F1EDE564200AACC52 /* Constact */,
 				002BA0FD1EDD25AF0099352D /* MoreNameCell.swift */,
 				002BA0FE1EDD25AF0099352D /* MoreNameCell.xib */,
 				002BA1011EDD26090099352D /* MoreCell.swift */,
@@ -606,6 +606,24 @@
 				003175E31EE68A8900F3F9B4 /* WaittingController.xib */,
 			);
 			path = WaittingController;
+			sourceTree = "<group>";
+		};
+		003B34681EFB7419004FA591 /* Constact */ = {
+			isa = PBXGroup;
+			children = (
+				003B34691EFB7419004FA591 /* ConstactViewController.swift */,
+				003B346A1EFB7419004FA591 /* ConstactViewController.xib */,
+			);
+			path = Constact;
+			sourceTree = "<group>";
+		};
+		003B346D1EFB9A15004FA591 /* StatisticController */ = {
+			isa = PBXGroup;
+			children = (
+				003B346E1EFB9A30004FA591 /* StatisticViewController.swift */,
+				003B346F1EFB9A30004FA591 /* StatisticViewController.xib */,
+			);
+			path = StatisticController;
 			sourceTree = "<group>";
 		};
 		003BC6741ED9D8ED00FF6D14 /* AroundCell */ = {
@@ -919,6 +937,8 @@
 				003175EA1EE69A0000F3F9B4 /* Maid.swift */,
 				002715281EE799B7006E6671 /* Around.swift */,
 				03AD9B681EF8D6DA0038AEE9 /* Task.swift */,
+				003B34661EFB6EEB004FA591 /* Contact.swift */,
+				003B34721EFBA883004FA591 /* Statistic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1120,7 +1140,9 @@
 				009A76F01EEE94490021BFB0 /* MapViewCell.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
 				00AEBA411EF7C329009FFA69 /* FollowCell.xib in Resources */,
+				003B34711EFB9A30004FA591 /* StatisticViewController.xib in Resources */,
 				004467AF1EEF82D900DDD0ED /* PendingController.xib in Resources */,
+				003B346C1EFB7419004FA591 /* ConstactViewController.xib in Resources */,
 				00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
 				002BA0FB1EDD25400099352D /* MoreViewController.xib in Resources */,
@@ -1150,7 +1172,6 @@
 				003BC6861ED9D92E00FF6D14 /* HomeViewDisplayController.xib in Resources */,
 				00CC0D461EEE3F7B002D24D4 /* PopupViewController.xib in Resources */,
 				003C9A0B1EDFC874003F1189 /* ManageViewController.xib in Resources */,
-				002572331EDE568700AACC52 /* ConstactViewController.xib in Resources */,
 				005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */,
 				002572421EDE648800AACC52 /* LanguageViewController.xib in Resources */,
 				002572551EDEAD4000AACC52 /* CommentCell.xib in Resources */,
@@ -1321,6 +1342,7 @@
 				004467BC1EEFF20900DDD0ED /* InformationViewController.swift in Sources */,
 				009A76EF1EEE94490021BFB0 /* MapViewCell.swift in Sources */,
 				002A045A1EE14A82001876E5 /* InfoDetailCell.swift in Sources */,
+				003B34731EFBA883004FA591 /* Statistic.swift in Sources */,
 				003175ED1EE6A6B000F3F9B4 /* AroundTask.swift in Sources */,
 				00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */,
 				003BC6851ED9D92E00FF6D14 /* HomeViewDisplayController.swift in Sources */,
@@ -1330,7 +1352,7 @@
 				00EB19571EE93EF5003B2C5D /* Address.swift in Sources */,
 				037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */,
 				003C9A091EDFC85F003F1189 /* ManageViewController.swift in Sources */,
-				002572321EDE568700AACC52 /* ConstactViewController.swift in Sources */,
+				003B34671EFB6EEB004FA591 /* Contact.swift in Sources */,
 				00EB194A1EE93EB4003B2C5D /* FinishedWorkViewController.swift in Sources */,
 				003175E81EE68AC400F3F9B4 /* WaittingCell.swift in Sources */,
 				004467B81EEF97FB00DDD0ED /* DoingController.swift in Sources */,
@@ -1388,10 +1410,12 @@
 				004103601EF37090004BF446 /* KeyboardNotifications.swift in Sources */,
 				003BC69B1ED9EAF300FF6D14 /* Info.swift in Sources */,
 				00EB19411EE93E81003B2C5D /* WorkAroundController.swift in Sources */,
+				003B346B1EFB7419004FA591 /* ConstactViewController.swift in Sources */,
 				002A04561EE14667001876E5 /* WorkDetailCell.swift in Sources */,
 				003070561EE26CB800774700 /* DGLocalization.swift in Sources */,
 				009A76E31EEE92360021BFB0 /* OwnerHistoryViewController.swift in Sources */,
 				000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */,
+				003B34701EFB9A30004FA591 /* StatisticViewController.swift in Sources */,
 				002BA0F91EDD25320099352D /* MoreViewController.swift in Sources */,
 				002AFD661EE8058A00D3B88A /* HistoryServices.swift in Sources */,
 				000E1CA81EF6D6E500E26FD4 /* GoogleDataProvider.swift in Sources */,

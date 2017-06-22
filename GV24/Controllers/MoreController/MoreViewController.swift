@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
 
 class MoreViewController: BaseViewController {
     var arryMore:[String] = ["Aboutus","Termsofuse", "Contact"]
@@ -30,6 +31,7 @@ class MoreViewController: BaseViewController {
         super.viewDidAppear(animated)
         tbMore.reloadData()
     }
+
 }
 extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +57,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
                 cell.constraintHeightButtonChoose.constant = 25
                 cell.vSegment.isHidden = false
                 cell.btChoose.isHidden = false
+                cell.delegateWork = self
             return cell
         }else if indexPath.section == 1{
             let cell:NotifiCell = (tbMore.dequeueReusableCell(withIdentifier: notifCellID, for: indexPath) as? NotifiCell)!
@@ -126,5 +129,10 @@ extension MoreViewController:LogOutDelegate{
         if UserDefaultHelper().removeUserDefault() == true{
             AlertStandard.sharedInstance.showAlertSetRoot(controller: self, pushVC: LoginView(), title: "", message: "")
         }
+    }
+}
+extension MoreViewController:clickChooseWorkID{
+    func chooseAction() {
+        navigationController?.pushViewController(StatisticViewController(), animated: true)
     }
 }

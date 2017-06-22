@@ -13,6 +13,7 @@ Dollar = "VND";
 Back = "Back";
 Home = "Home";
 More = "More";
+Back = "Back";
 loginFail = "UserName or password not correct";
 Dollar = "$";
 Information = "Information";
