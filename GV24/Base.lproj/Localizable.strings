@@ -102,3 +102,6 @@ Message = "Thông báo";
 YouDontHaveAnyData = "Không có dữ liệu.";
 ErrorFetchingDataFromServer = "Lỗi chứng thực khi lấy dữ liệu từ máy chủ.";
 WorkIsFinished = "Công việc đã hoàn thành";
+Success = "Thành công";
+YouHaveNoData = "Dữ liệu không tồn tại";
+SessionIsTimeoutPleaseLoginAgain = "Đã mất chứng thực";

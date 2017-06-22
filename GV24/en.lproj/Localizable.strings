@@ -101,3 +101,6 @@ Message = "Message";
 YouDontHaveAnyData = "You don't have any data.";
 ErrorFetchingDataFromServer = "Error occurred while fetching data from server.";
 WorkIsFinished = "Work is finished.";
+Success = "Success";
+YouHaveNoData = "You have no data";
+SessionIsTimeoutPleaseLoginAgain = "Session is timeout\nPlease login again";

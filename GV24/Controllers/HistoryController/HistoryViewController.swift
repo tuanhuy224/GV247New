@@ -87,11 +87,11 @@ class HistoryViewController: BaseViewController {
                 self.workList.append(contentsOf: data!)
                 break
             case .EmptyData:
-                self.emptyLabel.text = ResultStatus.EmptyData.rawValue
+                self.emptyLabel.text = ResultStatus.EmptyData.rawValue.localize
                 self.historyTableView.backgroundView = self.emptyLabel
                 break
             default:
-                self.emptyLabel.text = ResultStatus.Unauthorize.rawValue
+                self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
                 self.historyTableView.backgroundView = self.emptyLabel
                 break
             }

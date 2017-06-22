@@ -19,8 +19,8 @@ enum WorkStatus: String {
 
 enum ResultStatus: String {
     case Success     = "Success"
-    case EmptyData   = "You have no data"
-    case Unauthorize = "Session is timeout\nPlease login again"
+    case EmptyData   = "YouHaveNoData"
+    case Unauthorize = "SessionIsTimeoutPleaseLoginAgain"
 }
 
 enum enumGender:String {
