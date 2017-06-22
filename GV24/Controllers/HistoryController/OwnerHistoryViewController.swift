@@ -30,6 +30,10 @@ class OwnerHistoryViewController: BaseViewController {
         return UIActivityIndicatorView(activityIndicatorStyle: .gray)
     }()
     
+    lazy var emptyLabel: UILabel = {
+       return TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -75,17 +79,22 @@ class OwnerHistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         let headers: HTTPHeaders = ["hbbgvauth": UserDefaultHelper.getToken()!]
         OwnerServices.sharedInstance.getOwnersList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, err) in
-            if err == nil {
-                if data != nil {
-                    self.ownerList.append(contentsOf: data!)
-                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: nil, tableView: self.tableView, isReload: true)
-                }
-                else {
-                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.tableView, isReload: false)
-                }
+            switch err {
+            case .Success:
+                self.ownerList.append(contentsOf: data!)
+                break
+            case .EmptyData:
+                self.emptyLabel.text = ResultStatus.EmptyData.rawValue.localize
+                self.tableView.backgroundView = self.emptyLabel
+                break
+            default:
+                self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
+                self.tableView.backgroundView = self.emptyLabel
+                break
             }
-            else {
-                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "ErrorFetchingDataFromServer".localize, tableView: self.tableView, isReload: false)
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                self.tableView.reloadData()
             }
         }
     }

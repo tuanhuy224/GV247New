@@ -17,6 +17,12 @@ enum WorkStatus: String {
     case Done = "000000000000000000000005"
 }
 
+enum ResultStatus: String {
+    case Success     = "Success"
+    case EmptyData   = "YouHaveNoData"
+    case Unauthorize = "SessionIsTimeoutPleaseLoginAgain"
+}
+
 enum enumGender:String {
     case Boy = "Boy"
     case Girl = "Girl"

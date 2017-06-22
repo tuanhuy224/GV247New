@@ -31,8 +31,8 @@ class FinishedWorkViewController: BaseViewController {
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
         self.automaticallyAdjustsScrollViewInsets = false
-        tableView.register(UINib(nibName: "FinishedWorkCell", bundle: nil), forCellReuseIdentifier: "FinishedWorkCell")
-        tableView.register(UINib(nibName: "WorkerViewCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
+        tableView.register(UINib(nibName: NibFinishedWorkCell, bundle: nil), forCellReuseIdentifier: finishedWorkCellID)
+        tableView.register(UINib(nibName: NibWorkerViewCell, bundle: nil), forCellReuseIdentifier: workerCellID)
         tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
     }
 
@@ -59,19 +59,15 @@ class FinishedWorkViewController: BaseViewController {
         let params:[String:Any] = ["task":"\(String(describing: taskID!))"]
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getTaskCommentHistory(url: APIPaths().urlGetTaskCommentWithTaskID(), param: params, header: headers) { (data, err) in
-            if err == nil {
-                if data != nil {
-                    self.taskComment = data!
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-                else {
-                    print("Data not exists in FinishedWorkViewController.")
-                }
+            switch err {
+            case .Success:
+                self.taskComment = data!
+                break
+            default:
+                break
             }
-            else {
-                print("Error occurred while getting task comment in FinishedWorkViewController")
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }

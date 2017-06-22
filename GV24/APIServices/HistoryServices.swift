@@ -10,13 +10,11 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-
-
 class HistoryServices: APIService {
     
     static let sharedInstance = HistoryServices()
     
-    func getWorkListWith(status: WorkStatus? , url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(([Work]?, Error?) -> ())) {
+    func getWorkListWith(status: WorkStatus? , url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(([Work]?, ResultStatus) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default,headers:header).responseJSON { (response) in
             switch response.result{
             case .success(let value):
@@ -30,39 +28,37 @@ class HistoryServices: APIService {
                             let work = Work(json: item.1)
                             workList.append(work)
                         }
-                        completion(workList, nil)
+                        (workList.count > 0) ? completion(workList, ResultStatus.Success) : completion(nil, ResultStatus.EmptyData)
+                    }else {
+                        completion(nil, ResultStatus.EmptyData)
                     }
                 }
                 else {
-                    completion(nil, nil)
+                    (json?["message"] == "Unauthorized") ? completion(nil, ResultStatus.Unauthorize) : completion(nil, ResultStatus.EmptyData)
                 }
                 break
-            case .failure(let err):
-                var error = Error()
-                error.errorContent = err.localizedDescription
-                completion(nil, error)
+            case .failure:
+                completion(nil, ResultStatus.Unauthorize)
                 break
             }
         }
     }
     
-    func getTaskCommentHistory(url: String, param: Parameters, header: HTTPHeaders, completion:@escaping((Comment?, Error?) -> ())) {
+    func getTaskCommentHistory(url: String, param: Parameters, header: HTTPHeaders, completion:@escaping((Comment?, ResultStatus) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 let json = JSON(value).dictionary
                 print("JSON OWNER HISTORY COMMENT: \(String(describing: json))")
                 if let status = json?["status"], status == true {
-                    completion(Comment(json: (json?["data"])!), nil)
+                    completion(Comment(json: (json?["data"])!), ResultStatus.Success)
                 }
                 else {
-                    completion(nil, nil)
+                    (json?["message"] == "Unauthorized") ? completion(nil, ResultStatus.Unauthorize) : completion(nil, ResultStatus.EmptyData)
                 }
                 break;
-            case .failure(let err):
-                var error = Error()
-                error.errorContent = err.localizedDescription
-                completion(nil, error)
+            case .failure:
+                completion(nil, ResultStatus.Unauthorize)
                 break;
             }
         }

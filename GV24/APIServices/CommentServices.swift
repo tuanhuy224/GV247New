@@ -10,13 +10,11 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-
-
 class CommentServices: APIService {
     
     static let sharedInstance = CommentServices()
     
-    func getProfileCommentsWith(url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(([Comment]?, Error?) -> ())) {
+    func getProfileCommentsWith(url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(([Comment]?, ResultStatus) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default,headers:header).responseJSON { (response) in
             switch response.result{
             case .success(let value):
@@ -30,17 +28,17 @@ class CommentServices: APIService {
                             let comment = Comment(json: item.1)
                             comments.append(comment)
                         }
-                        completion(comments, nil)
+                        (comments.count > 0) ? completion(comments, ResultStatus.Success) : completion(nil, ResultStatus.EmptyData)
+                    }else {
+                        completion(nil,ResultStatus.EmptyData)
                     }
                 }
                 else {
-                    completion(nil, nil)
+                    (json?["message"] == "Unauthorized") ? completion(nil, ResultStatus.Unauthorize) : completion(nil, ResultStatus.EmptyData)
                 }
                 break
-            case .failure(let err):
-                var error = Error()
-                error.errorContent = err.localizedDescription
-                completion(nil, error)
+            case .failure:
+                completion(nil, ResultStatus.Unauthorize)
                 break
             }
         }
