@@ -73,17 +73,14 @@ class InformationViewController: BaseViewController {
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         CommentServices.sharedInstance.getProfileCommentsWith(url: APIPaths().urlGetProfileComments(), param: params, header: headers) { (data, error) in
-            if error == nil {
-                if data != nil {
-                    self.list.append(contentsOf: data!)
-                    self.tbInformation.reloadData()
-                }
-                else {
-                    TableViewHelper().emptyMessage(message: "Data is nil", tableView: self.tbInformation)
-                }
-            }else {
-                TableViewHelper().emptyMessage(message: "Error occurred", tableView: self.tbInformation)
+            switch error {
+            case .Success:
+                self.list.append(contentsOf: data!)
+                break
+            default:
+                break
             }
+            self.tbInformation.reloadData()
         }
     }
 }
@@ -148,7 +145,7 @@ extension InformationViewController:UITableViewDelegate{
             return 280
         }
         else if indexPath.section == 1 {
-            return 170
+            return 154
         }
         return 170
     }

@@ -14,7 +14,7 @@ class OwnerServices: APIService {
     
     static let sharedInstance = OwnerServices()
     
-    func getOwnersList(url: String, param: Parameters, header: HTTPHeaders, completion: @escaping(([Owner]?, Error?) -> ())) {
+    func getOwnersList(url: String, param: Parameters, header: HTTPHeaders, completion: @escaping(([Owner]?, ResultStatus) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
             switch response.result {
                 case .success(let value):
@@ -29,23 +29,24 @@ class OwnerServices: APIService {
                                 }
                                 list.append(owner)
                             }
-                            completion(list, nil)
+        (list.count > 0) ? completion(list, ResultStatus.Success) :
+                            completion(list, ResultStatus.EmptyData)
+                        }else {
+                            completion(nil, ResultStatus.EmptyData)
                         }
                     }
                     else {
-                        completion(nil,nil)
+                        (json?["message"] == "Unauthorized") ? completion(nil, ResultStatus.Unauthorize) : completion(nil, ResultStatus.EmptyData)
                     }
                     break;
-                case .failure(let err):
-                    var error = Error()
-                    error.errorContent = err.localizedDescription
-                    completion(nil, error)
+                case .failure:
+                    completion(nil, ResultStatus.Unauthorize)
                     break;
             }
         }
     }
     
-    func getTaskOfOwner(url: String, param:Parameters, header: HTTPHeaders, completion: @escaping(([Work]?, Error?) -> ())) {
+    func getTaskOfOwner(url: String, param:Parameters, header: HTTPHeaders, completion: @escaping(([Work]?, ResultStatus) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -57,17 +58,17 @@ class OwnerServices: APIService {
                             let work = Work(json: item.1)
                             workList.append(work)
                         }
-                        completion(workList,nil)
+                        (list.count > 0) ? completion(workList, ResultStatus.Success) : completion(nil, ResultStatus.EmptyData)
+                    }else {
+                        completion(nil, ResultStatus.EmptyData)
                     }
                 }
                 else {
-                    completion(nil, nil)
+                    (json?["message"] == "Unauthorized") ? completion(nil, ResultStatus.Unauthorize) : completion(nil, ResultStatus.EmptyData)
                 }
                 break;
-            case .failure(let err):
-                var error = Error()
-                error.errorContent = err.localizedDescription
-                completion(nil, error)
+            case .failure:
+                completion(nil, ResultStatus.Unauthorize)
                 break;
             }
         }

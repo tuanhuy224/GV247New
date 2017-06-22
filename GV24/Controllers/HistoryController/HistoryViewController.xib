@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +36,7 @@
                 <constraint firstItem="O2D-hi-VYs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xNh-0R-KGB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="36" y="-97"/>
+            <point key="canvasLocation" x="35.5" y="-97.5"/>
         </view>
     </objects>
 </document>

@@ -115,6 +115,7 @@ class ManagerHistoryViewController: BaseViewController {
         workListVC?.historyTableView.reloadData()
         workListVC?.startAtDate = fromDate
         workListVC?.endAtDate = toDate
+        workListVC?.page = 1
         workListVC?.getWorkList(startAt: fromDate, endAt: toDate)
     }
     

@@ -35,6 +35,10 @@ class HistoryViewController: BaseViewController {
         return refresh
     }()
     
+    lazy var emptyLabel: UILabel = {
+        return TableViewHelper().emptyMessage(message: "", size: self.historyTableView.bounds.size)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -78,19 +82,22 @@ class HistoryViewController: BaseViewController {
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getWorkListWith(status: WorkStatus.Done, url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
-            if err == nil {
-                if data != nil {
-                    if (data?.count)! > 0 {
-                        self.workList.append(contentsOf: data!)
-                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: nil, tableView: self.historyTableView, isReload: true)
-                    }
-                    else {
-                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.historyTableView, isReload: false)
-                    }
-                }
+            switch err{
+            case .Success:
+                self.workList.append(contentsOf: data!)
+                break
+            case .EmptyData:
+                self.emptyLabel.text = ResultStatus.EmptyData.rawValue
+                self.historyTableView.backgroundView = self.emptyLabel
+                break
+            default:
+                self.emptyLabel.text = ResultStatus.Unauthorize.rawValue
+                self.historyTableView.backgroundView = self.emptyLabel
+                break
             }
-            else {
-                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "ErrorFetchingDataFromServer".localize, tableView: self.historyTableView, isReload: false)
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                self.historyTableView.reloadData()
             }
         }
     }
@@ -135,12 +142,13 @@ class HistoryViewController: BaseViewController {
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
         
         cell.lbDist.text = "Completed".localize
-        
-//        if indexPath.row == workList.count - 1 {
-//            self.activityIndicatorView.startAnimating()
-//            page = page + 1
-//            self.getWorkList(startAt: self.startAtDate, endAt: endAtDate)
-//        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == self.workList.count - 1 {
+            self.page = self.page + 1
+            self.getWorkList(startAt: self.startAtDate, endAt: self.endAtDate)
+        }
     }
 }
 
@@ -160,7 +168,7 @@ extension HistoryViewController:UITableViewDataSource{
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
         let backItem = UIBarButtonItem()
-        backItem.title = "Back".localize
+        backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }

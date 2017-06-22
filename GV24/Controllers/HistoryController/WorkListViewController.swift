@@ -27,6 +27,9 @@ class WorkListViewController: BaseViewController {
     var page: Int = 1
     var limit: Int = 10
     
+    lazy var emptyLabel: UILabel = {
+       return TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +63,12 @@ class WorkListViewController: BaseViewController {
     override func decorate() {
     }
     
+    fileprivate func setTableViewMessage(result:ResultStatus) {
+        self.emptyLabel.text = result.rawValue
+        self.tableView.backgroundView = self.emptyLabel
+        self.tableView.separatorStyle = .none
+    }
+    
     /*  GET: /maid/getTaskOfOwner owner: ownerId
      startAt, endAt (opt): ISODate
      page, limit (opt): number (int)
@@ -73,22 +82,21 @@ class WorkListViewController: BaseViewController {
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         OwnerServices.sharedInstance.getTaskOfOwner(url: APIPaths().urlGetTaskOfOwner(), param: params, header: headers) { (data, error) in
-            if error == nil {
-                if data != nil {
-                    if (data?.count)! > 0 {
-                        self.list.append(contentsOf: data!)
-                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: nil, tableView: self.tableView, isReload: true)
-                    }
-                    else {
-                        TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.tableView, isReload: false)
-                    }
-                }
-                else {
-                    TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "YouDontHaveAnyData".localize, tableView: self.tableView, isReload: false)
-                }
+            switch error {
+            case .Success:
+                self.list.append(contentsOf: data!)
+                self.tableView.separatorStyle = .singleLine
+                break
+            case .EmptyData:
+                self.setTableViewMessage(result: .EmptyData)
+                break
+            default:
+                self.setTableViewMessage(result: .Unauthorize)
+                break
             }
-            else {
-                TableViewHelper().stopActivityIndicatorView(activityIndicatorView: self.activityIndicatorView, message: "ErrorFetchingDataFromServer".localize, tableView: self.tableView, isReload: false)
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                self.tableView.reloadData()
             }
         }
     }
@@ -128,6 +136,13 @@ class WorkListViewController: BaseViewController {
             }
             cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
             cell.lbDist.text = "Completed".localize
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == list.count - 1 {
+            self.page = self.page + 1
+            self.getTaskOfOwner()
         }
     }
 }
