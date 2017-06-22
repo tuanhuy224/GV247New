@@ -31,6 +31,10 @@ class StatisticViewController: BaseViewController {
             }
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Thống kê"
+    }
     override func decorate() {
         super.decorate()
         lbTotalPrice.text = "Tong thu nhap"
