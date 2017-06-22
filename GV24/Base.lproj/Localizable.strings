@@ -17,6 +17,7 @@ Language = "Ngôn ngữ";
 SwitchLanguage = "Đổi ngôn ngữ";
 Back = "Trở lại";
 Home = "Trang chủ";
+Back = "Trở lại";
 Information = "Thông tin";
 More = "Thêm";
 Around = "Công việc quanh đây";

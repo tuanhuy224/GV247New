@@ -199,7 +199,7 @@ class APIService: NSObject {
                 }
                 guard let data = json["data"].dictionary else{return}
                 print(data)
-                completion(json, nil)
+                completion(json["data"], nil)
             case .failure(let error):
                 completion(nil, error as? Error)
                 print(error)

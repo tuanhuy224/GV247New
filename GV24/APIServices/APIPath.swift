@@ -21,10 +21,10 @@ enum urlPath:String {
     case getTaskOfOwner = "/maid/getTaskOfOwner"
     case cancelTask = "/task/cancel"
     case getProfileComments = "/maid/getComment"
+    case getContact = "/more/getContact"
+    case getstatistical = "/maid/statistical"
 }
 struct APIPaths {
-    let baseURL = "https://yukotest123.herokuapp.com"
-    
     func urlGetListAround() -> String {
         return "rootDomain".localize + urlPath.getListAround.rawValue
     }
@@ -58,9 +58,14 @@ struct APIPaths {
     func urlCancelTask() -> String {
         return "rootDomain".localize + urlPath.cancelTask.rawValue
     }
-    
     func urlGetProfileComments() -> String {
         return "rootDomain".localize + urlPath.getProfileComments.rawValue
+    }
+    func urlGetContact() -> String {
+        return "rootDomain".localize + urlPath.getContact.rawValue
+    }
+    func urlStatistic() -> String {
+        return "rootDomain".localize + urlPath.getstatistical.rawValue
     }
     
  }

@@ -20,6 +20,7 @@ class BaseViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = "Back".localize
         print("++++view display:\(self)+++++++")
         self.setupViewBase()
     }
