@@ -11,6 +11,7 @@ import IoniconsSwift
 
 class HistoryViewCell: CustomTableViewCell {
 
+    @IBOutlet weak var lbDeadline: UILabel!
     @IBOutlet weak var lbTimePost: UILabel!
     @IBOutlet weak var lbDist: UILabel!
     @IBOutlet weak var btImage: UIButton!
@@ -36,6 +37,8 @@ class HistoryViewCell: CustomTableViewCell {
     func setupCell() {
         imageWork.layer.cornerRadius = imageWork.frame.width/2
         imageWork.clipsToBounds = true
+        lbDeadline.layer.cornerRadius = 6
+        lbDeadline.clipsToBounds = true
     }
 
 }

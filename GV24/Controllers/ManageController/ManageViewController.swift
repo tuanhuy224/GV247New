@@ -33,6 +33,7 @@ class ManageViewController: BaseViewController {
         super.setupViewBase()
         self.title = "Taskmanagement".localize
         getProcess()
+        tbManage.reloadData()
     }
     @IBAction func segmentControlAction(_ sender: Any) {
         let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
@@ -111,26 +112,34 @@ extension ManageViewController:UITableViewDataSource{
         let cell = tbManage.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as? HistoryViewCell
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-//            longGesture = UILongPressGestureRecognizer(target: self, action: #selector(ManageViewController.longTap))
-//            cell?.addGestureRecognizer(longGesture)
+
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processOnCreate[indexPath.row].process?.name
-            cell?.lbTimePost.text = Date().dateFormat(datePost: (processOnCreate[indexPath.row].history?.createAt)!)
+            cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
+            if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).day! > 0 {
+                cell?.lbDeadline.text = "Qúa hạn"
+            }
         case 1:
             cell?.workNameLabel.text = processRecieved[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].history?.createAt)!).dayMonthYear)"
-            cell?.lbTimePost.text = Date().dateFormat(datePost: (processRecieved[indexPath.row].history?.createAt)!)
+            cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processRecieved[indexPath.row].history?.createAt)!))"
             cell?.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processRecieved[indexPath.row].process?.name
+            if Date().date(datePost: (processRecieved[indexPath.row].history?.createAt)!).day! > 0 {
+                cell?.lbDeadline.text = "Qúa hạn"
+            }
         case 2:
             cell?.workNameLabel.text = processOnDoing[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].history?.createAt)!).dayMonthYear)"
-            cell?.lbTimePost.text = Date().dateFormat(datePost: (processOnDoing[indexPath.row].history?.createAt)!)
+            cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnDoing[indexPath.row].history?.createAt)!))"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processOnDoing[indexPath.row].process?.name
+            if Date().date(datePost: (processOnDoing[indexPath.row].history?.createAt)!).day! > 0 {
+                cell?.lbDeadline.text = "Qúa hạn"
+            }
         default:
             break
         }
