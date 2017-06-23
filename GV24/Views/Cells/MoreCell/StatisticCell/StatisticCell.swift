@@ -1,24 +1,21 @@
 //
-//  OwnerTableViewCell.swift
+//  StatisticCell.swift
 //  GV24
 //
-//  Created by admin on 6/5/17.
+//  Created by Macbook Solution on 6/23/17.
 //  Copyright © 2017 admin. All rights reserved.
 //
 
 import UIKit
 import IoniconsSwift
 
-class OwnerHistoryViewCell: CustomTableViewCell {
+class StatisticCell: UITableViewCell {
 
     var buttons:[UIButton]?
     @IBOutlet var btnRating: [UIButton]!
-    
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var arrowForward: UIImageView!
-    @IBOutlet weak var workListButton: UIButton!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     var unstar: UIImage = {
         let img = Ionicons.iosStarOutline.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 249, greenValue: 187, blueValue: 67, alpha: 1))
@@ -38,7 +35,6 @@ class OwnerHistoryViewCell: CustomTableViewCell {
         userImage.layer.cornerRadius = userImage.frame.size.width/2
         userImage.clipsToBounds = true
         let arrowForwardImage = Ionicons.iosArrowForward.image(12)
-        arrowForward.image = arrowForwardImage
         for i in btnRating {
             i.setImage(self.star, for: .normal)
         }
