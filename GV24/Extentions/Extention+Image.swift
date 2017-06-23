@@ -168,20 +168,25 @@ extension Date{
         let second = calendar.component(.second, from: self)
         return "\(hour)h\(minute)p\(second)"
     }
-    func dateFormat(datePost:String) -> String {
+
+    func date(datePost:String) -> DateComponents {
         let dateInsert = Date(isoDateString: datePost)
         let dateCurrent = Date()
         let calendar = NSCalendar.current
         let dateComponent = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateInsert, to: dateCurrent)
-        if dateComponent.month! > 0 {
-            return "\(dateComponent.month!) month \(dateComponent.day!) day \(dateComponent.hour!) hour \(dateComponent.minute!) minute"
-        }else if dateComponent.day! > 0{
-            return "\(dateComponent.day!) day \(dateComponent.hour!) hour \(dateComponent.minute!) minute"
-        }else if dateComponent.hour! > 0{
-            return "\(dateComponent.hour!) hour \(dateComponent.minute!) minute"
-        }else{
-            return "\(dateComponent.minute!) minute"
+        return dateComponent
+    }
+    func dateComPonent(datePost:String) -> String {
+        if date(datePost: datePost).month! > 0 {
+            return "\(date(datePost: datePost).month! )" + " " + "TimeMonth".localize
+        }else if date(datePost: datePost).day! > 0{
+            return "\(date(datePost: datePost).day! )" + " " + "TimeDay".localize
+        }else if date(datePost: datePost).hour! > 0{
+            return "\(date(datePost: datePost).hour! )" + " " + "TimeHour".localize
+        }else if date(datePost: datePost).minute! > 0{
+            return "\(date(datePost: datePost).minute! )" + " " + "TimeMinute".localize
         }
+        return ""
     }
 }
 extension String {
