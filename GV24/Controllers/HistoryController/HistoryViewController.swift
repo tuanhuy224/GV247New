@@ -112,10 +112,7 @@ class HistoryViewController: BaseViewController {
             cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
             cell.lbDeadline.isHidden = true
         }
-<<<<<<< HEAD
-=======
         cell.lbDeadline.isHidden = true
->>>>>>> V1.0
         cell.workNameLabel.text = work.info?.title
         let startAt = work.workTime?.startAt
         let startAtString = String(describing: startAt!)
@@ -123,7 +120,7 @@ class HistoryViewController: BaseViewController {
         let endAtString = String(describing: endAt!)
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
          cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
-        cell.lbDist.text = "Completed".localize
+        cell.lbDist.text = "CompletedWork".localize
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -148,7 +145,7 @@ extension HistoryViewController:UITableViewDataSource{
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
         let backItem = UIBarButtonItem()
-        backItem.title = "Back"
+        backItem.title = "Back".localize
         navigationItem.backBarButtonItem = backItem
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
