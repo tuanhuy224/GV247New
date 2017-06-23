@@ -41,7 +41,7 @@ class OwnerHistoryViewController: BaseViewController {
     }
     
     func setupTableView() {
-        tableView.register(UINib(nibName:"OwnerHistoryViewCell",bundle:nil), forCellReuseIdentifier: "OwnerHistoryCell")
+        tableView.register(UINib(nibName:NibOwnerHistoryViewCell,bundle:nil), forCellReuseIdentifier: ownerHistoryCellID)
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0.01))
         self.tableView.addSubview(self.refreshControl)
         self.automaticallyAdjustsScrollViewInsets = false
@@ -57,7 +57,7 @@ class OwnerHistoryViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Thelandlorddid".localize//"Chủ nhà đã làm"
+        title = "Owner".localize//"Chủ nhà đã làm"
     }
     
     override func setupViewBase() {
@@ -133,7 +133,7 @@ extension OwnerHistoryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerHistoryCell", for: indexPath) as! OwnerHistoryViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ownerHistoryCellID, for: indexPath) as! OwnerHistoryViewCell
         self.configureOwnerCell(cell: cell, indexPath: indexPath)
         return cell
     }

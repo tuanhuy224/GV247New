@@ -29,9 +29,9 @@ class ManagerHistoryViewController: BaseViewController {
     }
     
     func setupSegmentTitle() {
-        self.segmentControl.setTitle("WorkCompleted".localize, forSegmentAt: 0)
-        self.segmentControl.setTitle("Thelandlorddid".localize, forSegmentAt: 1)
-        self.toLabel.text = "To".localize
+        self.segmentControl.setTitle("CompletedWork".localize, forSegmentAt: 0)
+        self.segmentControl.setTitle("Workplace".localize, forSegmentAt: 1)
+        self.toLabel.text = "Duration".localize
     }
     
     func customNavigationController() {

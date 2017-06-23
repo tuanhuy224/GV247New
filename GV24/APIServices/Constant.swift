@@ -29,7 +29,8 @@ let infoCommentCellID = "InfoCommentCell"
 let finishedWorkCellID = "FinishedWorkCell"
 let workerCellID = "WorkerCell"
 let statisticCellID = "StatisticCell"
-
+let ownerHistoryCellID = "OwnerHistoryCell"
+let historyCellID = "historyCell"
 //MARk - constant NIb cell
 let NibFollowCell = "FollowCell"
 let NibHistoryViewCell = "HistoryViewCell"
@@ -55,6 +56,8 @@ let NibInfoCommentCell = "InfoCommentCell"
 let NibFinishedWorkCell = "FinishedWorkCell"
 let NibWorkerViewCell = "WorkerViewCell"
 let NibStatisticCell = "StatisticCell"
+let NibOwnerHistoryViewCell = "OwnerHistoryViewCell"
+
 let heightConstantWorkDetailCell:Float = 75
 let urlDisplayHome = "https://yukotest123.herokuapp.com/vi/task/getAll"
 let urlHistory = "https://yukotest123.herokuapp.com/en/maid/getAllTasks"

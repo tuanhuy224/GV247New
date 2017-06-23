@@ -39,8 +39,8 @@ class WorkListViewController: BaseViewController {
     
     func setupTableView() {
         self.automaticallyAdjustsScrollViewInsets = false
-        let nib = UINib(nibName: "HistoryViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "historyCell")
+        let nib = UINib(nibName: NibHistoryViewCell, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: HistoryViewCellID)
         self.tableView.addSubview(self.refreshControl)
         self.tableView.backgroundView = self.activityIndicatorView
     }
@@ -133,10 +133,10 @@ class WorkListViewController: BaseViewController {
                 cell.lbTimePost.text = "\(daysBetweenDates) \("Date".localize) \(Int(hoursBetweenDates/24)) \("Hour".localize)"
             }
             else {
-                cell.lbTimePost.text = "\(minutesBetweenDates) \("MinutesAgo".localize)"
+                cell.lbTimePost.text = "\(minutesBetweenDates) \("TimeMinute".localize)"
             }
             cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
-            cell.lbDist.text = "Completed".localize
+            cell.lbDist.text = "CompletedWork".localize
         }
     }
     
@@ -154,7 +154,7 @@ extension WorkListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as! HistoryViewCell
         self.configureCell(cell: cell, indexPath: indexPath)
         return cell
     }

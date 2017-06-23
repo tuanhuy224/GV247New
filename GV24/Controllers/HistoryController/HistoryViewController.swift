@@ -46,7 +46,7 @@ class HistoryViewController: BaseViewController {
     }
     
     func setupTableView() {
-        historyTableView.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
+        historyTableView.register(UINib(nibName: NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: historyCellID)
         self.automaticallyAdjustsScrollViewInsets = false
         historyTableView.tableFooterView = UIView()
         self.historyTableView.addSubview(self.refreshControl)
@@ -135,7 +135,7 @@ extension HistoryViewController:UITableViewDataSource{
         return workList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = historyTableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
+        let cell = historyTableView.dequeueReusableCell(withIdentifier: historyCellID, for: indexPath) as! HistoryViewCell
         self.configureCell(cell: cell, indexPath: indexPath)
         return cell
     }

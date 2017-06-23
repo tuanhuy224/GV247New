@@ -42,7 +42,7 @@ class FinishedWorkViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "WorkCompleted".localize//"Công việc hoàn thành"
+        title = "WorkHistory".localize//"Công việc hoàn thành"
     }
 
     override func setupViewBase() {}
@@ -109,7 +109,7 @@ class FinishedWorkViewController: BaseViewController {
             cell.imageUser.clipsToBounds = true
             cell.nameLabel.text = work?.stakeholders?.owner?.name!
             cell.addressLabel.text = work?.stakeholders?.owner?.address?.name!
-            cell.workCompletedLabel.text = "WorkIsFinished".localize
+            cell.workCompletedLabel.text = "CompletedWork".localize
         }
     
         if isWorkListComing == true {
@@ -141,13 +141,13 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FinishedWorkCell", for: indexPath) as! FinishedWorkCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: finishedWorkCellID, for: indexPath) as! FinishedWorkCell
 
             self.configureWorkDetailsCell(cell: cell)
 
             return cell
         }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath) as! WorkerViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: workerCellID, for: indexPath) as! WorkerViewCell
 
             self.configureOwnerCommentsCell(cell: cell)
 
@@ -170,9 +170,9 @@ extension FinishedWorkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
             if isWorkListComing == true {
-                return "Landlord".localize
+                return "Owner".localize
             }
-            return "ThePerformer".localize
+            return "Doer".localize
         }
         return ""
     }
