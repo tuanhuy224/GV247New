@@ -61,8 +61,17 @@ class StatisticViewController: BaseViewController {
         let headers:HTTPHeaders = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
         apiClient.getOwner(url: APIPaths().urlStatistic(), param: [:], header: headers) { (json, error) in
-            self.task = [Statistic(json: json!)]
-            self.loadData()
+            if json != nil {
+                DispatchQueue.main.async {
+                    self.task = [Statistic(json: json!)]
+                    self.loadData()
+                }
+            }else {
+                DispatchQueue.main.async {
+                    let alertController = AlertHelper().showAlertError(title: "Error", message: "Du Lieu loi")
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
         }
     }
     @IBAction func btChooseDayClicked(_ sender: Any) {
@@ -105,7 +114,7 @@ extension StatisticViewController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = InformationViewController()
-        let _ = navigationController?.pushViewController(vc, animated: true)
+        _ = navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension StatisticViewController:PopupViewControllerDelegate{

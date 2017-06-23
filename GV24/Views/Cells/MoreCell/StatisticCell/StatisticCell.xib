@@ -20,14 +20,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aVb-5m-cZD" id="ICU-jV-ihT">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="72.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EJr-LA-fqv" userLabel="topBorder">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nau an" translatesAutoresizingMaskIntoConstraints="NO" id="IHc-cH-TeF">
                         <rect key="frame" x="12" y="11" width="40" height="40"/>
                         <constraints>
@@ -36,13 +31,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giúp việc A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-Aj-RlH">
-                        <rect key="frame" x="67" y="11" width="72.5" height="16.5"/>
+                        <rect key="frame" x="67" y="11" width="74" height="17"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 đường 1, Phường Phạm Ngũ Lão, Quận 1, Thành phố Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FED-nJ-CY3" userLabel="Address Label">
-                        <rect key="frame" x="67" y="33.5" width="242" height="29"/>
+                        <rect key="frame" x="67" y="34" width="242" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>

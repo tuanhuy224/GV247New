@@ -34,7 +34,6 @@ class StatisticCell: UITableViewCell {
     func setupCell() {
         userImage.layer.cornerRadius = userImage.frame.size.width/2
         userImage.clipsToBounds = true
-        let arrowForwardImage = Ionicons.iosArrowForward.image(12)
         for i in btnRating {
             i.setImage(self.star, for: .normal)
         }
