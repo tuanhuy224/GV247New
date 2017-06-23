@@ -79,7 +79,6 @@
 		003B346B1EFB7419004FA591 /* ConstactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B34691EFB7419004FA591 /* ConstactViewController.swift */; };
 		003B346C1EFB7419004FA591 /* ConstactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003B346A1EFB7419004FA591 /* ConstactViewController.xib */; };
 		003B34701EFB9A30004FA591 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B346E1EFB9A30004FA591 /* StatisticViewController.swift */; };
-		003B34711EFB9A30004FA591 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003B346F1EFB9A30004FA591 /* StatisticViewController.xib */; };
 		003B34731EFBA883004FA591 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B34721EFBA883004FA591 /* Statistic.swift */; };
 		003BC67B1ED9D8ED00FF6D14 /* WorkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BC6771ED9D8ED00FF6D14 /* WorkTableViewCell.swift */; };
 		003BC67C1ED9D8ED00FF6D14 /* WorkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003BC6781ED9D8ED00FF6D14 /* WorkTableViewCell.xib */; };
@@ -110,6 +109,7 @@
 		004467BC1EEFF20900DDD0ED /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002572491EDE9D9100AACC52 /* InformationViewController.swift */; };
 		004508151EFCA8CC00402986 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004508141EFCA8CC00402986 /* Reachability.swift */; };
 		004508171EFCBE2600402986 /* ChangeFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004508161EFCBE2600402986 /* ChangeFontSize.swift */; };
+		0045081B1EFCF02100402986 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0045081A1EFCF02100402986 /* StatisticViewController.xib */; };
 		005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */; };
 		005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */; };
 		005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DDE1EF136AF00FA76FB /* CancelCell.swift */; };
@@ -274,7 +274,6 @@
 		003B34691EFB7419004FA591 /* ConstactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstactViewController.swift; sourceTree = "<group>"; };
 		003B346A1EFB7419004FA591 /* ConstactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConstactViewController.xib; sourceTree = "<group>"; };
 		003B346E1EFB9A30004FA591 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
-		003B346F1EFB9A30004FA591 /* StatisticViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
 		003B34721EFBA883004FA591 /* Statistic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		003BC6771ED9D8ED00FF6D14 /* WorkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkTableViewCell.swift; sourceTree = "<group>"; };
 		003BC6781ED9D8ED00FF6D14 /* WorkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkTableViewCell.xib; sourceTree = "<group>"; };
@@ -305,6 +304,7 @@
 		004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		004508141EFCA8CC00402986 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		004508161EFCBE2600402986 /* ChangeFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeFontSize.swift; sourceTree = "<group>"; };
+		0045081A1EFCF02100402986 /* StatisticViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
 		005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforOwnerCell.swift; sourceTree = "<group>"; };
 		005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforOwnerCell.xib; sourceTree = "<group>"; };
 		005A4DDE1EF136AF00FA76FB /* CancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelCell.swift; sourceTree = "<group>"; };
@@ -630,8 +630,8 @@
 		003B346D1EFB9A15004FA591 /* StatisticController */ = {
 			isa = PBXGroup;
 			children = (
+				0045081A1EFCF02100402986 /* StatisticViewController.xib */,
 				003B346E1EFB9A30004FA591 /* StatisticViewController.swift */,
-				003B346F1EFB9A30004FA591 /* StatisticViewController.xib */,
 			);
 			path = StatisticController;
 			sourceTree = "<group>";
@@ -1168,10 +1168,10 @@
 				009A76F01EEE94490021BFB0 /* MapViewCell.xib in Resources */,
 				002572381EDE5FB800AACC52 /* AboutViewController.xib in Resources */,
 				00AEBA411EF7C329009FFA69 /* FollowCell.xib in Resources */,
-				003B34711EFB9A30004FA591 /* StatisticViewController.xib in Resources */,
 				004467AF1EEF82D900DDD0ED /* PendingController.xib in Resources */,
 				003B346C1EFB7419004FA591 /* ConstactViewController.xib in Resources */,
 				00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */,
+				0045081B1EFCF02100402986 /* StatisticViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
 				002BA0FB1EDD25400099352D /* MoreViewController.xib in Resources */,
 				842FEC711ED40C6900000606 /* Assets.xcassets in Resources */,

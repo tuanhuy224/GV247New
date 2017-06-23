@@ -80,7 +80,7 @@ extension DetailViewController:UITableViewDataSource{
                 cell.lbComment.text = self.works.info?.content
                 cell.lbAddress.text = self.works.info?.address?.name
                 cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
-                cell.lbTime.text = "\(Date(isoDateString: (self.works.workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (self.works.workTime!.endAt)!).hourMinute)"
+                cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
             }
             return cell
         }

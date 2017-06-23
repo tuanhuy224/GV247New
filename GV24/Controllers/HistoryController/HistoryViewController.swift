@@ -112,10 +112,6 @@ class HistoryViewController: BaseViewController {
             cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
             cell.lbDeadline.isHidden = true
         }
-<<<<<<< HEAD
-=======
-        cell.lbDeadline.isHidden = true
->>>>>>> V1.0
         cell.workNameLabel.text = work.info?.title
         let startAt = work.workTime?.startAt
         let startAtString = String(describing: startAt!)

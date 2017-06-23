@@ -127,7 +127,7 @@ extension MoreViewController:changeLanguageDelegate{
 extension MoreViewController:LogOutDelegate{
     func logOut() {
         if UserDefaultHelper().removeUserDefault() == true{
-            AlertStandard.sharedInstance.showAlertSetRoot(controller: self, pushVC: LoginView(), title: "", message: "")
+            AlertStandard.sharedInstance.showAlertSetRoot(controller: self, pushVC: LoginView(), title: "", message: "LogOutAlert".localize)
         }
     }
 }

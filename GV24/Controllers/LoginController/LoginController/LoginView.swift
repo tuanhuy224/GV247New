@@ -42,11 +42,11 @@ class LoginView: BaseViewController {
         scrollLogin.delegate = self
         self.setupView()
         loadData()
-        //scrollLogin.addSubview(self.Sview)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerAutoKeyboard()
+        self.title = "SignIn".localize
         
     }
     override func viewWillDisappear(_ animated: Bool) {

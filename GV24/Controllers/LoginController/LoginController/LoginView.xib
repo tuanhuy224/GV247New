@@ -42,8 +42,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLj-6N-x88">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_bg" translatesAutoresizingMaskIntoConstraints="NO" id="44P-rF-dgj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_dn" translatesAutoresizingMaskIntoConstraints="NO" id="44P-rF-dgj">
+                                    <rect key="frame" x="0.0" y="64" width="375" height="381"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxc-wH-YAW">
                                     <rect key="frame" x="0.0" y="444.5" width="375" height="222.5"/>
@@ -162,7 +162,7 @@
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="centerY" secondItem="tLj-6N-x88" secondAttribute="centerY" constant="32.5" id="bBp-PU-jYA"/>
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="centerX" secondItem="tLj-6N-x88" secondAttribute="centerX" id="dgc-wM-AfG"/>
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="leading" secondItem="Wr1-a1-7LV" secondAttribute="leading" id="hAa-CB-TDN"/>
-                                <constraint firstItem="44P-rF-dgj" firstAttribute="top" secondItem="tLj-6N-x88" secondAttribute="top" id="t4i-WW-3mR"/>
+                                <constraint firstItem="44P-rF-dgj" firstAttribute="top" secondItem="tLj-6N-x88" secondAttribute="top" constant="64" id="t4i-WW-3mR"/>
                                 <constraint firstAttribute="trailing" secondItem="44P-rF-dgj" secondAttribute="trailing" id="vWU-Ls-enD"/>
                             </constraints>
                         </view>
@@ -204,9 +204,9 @@
         </view>
     </objects>
     <resources>
+        <image name="bg_dn" width="750" height="682"/>
         <image name="ic_account_circle" width="24" height="24"/>
         <image name="ic_lock_outline" width="24" height="24"/>
         <image name="logo" width="186" height="197"/>
-        <image name="top_bg" width="751" height="512"/>
     </resources>
 </document>

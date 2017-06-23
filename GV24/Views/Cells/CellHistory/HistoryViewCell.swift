@@ -30,14 +30,13 @@ class HistoryViewCell: CustomTableViewCell {
         super.awakeFromNib()
         setupCell()
     }
-    
     func setupCell() {
         imageWork.layer.cornerRadius = imageWork.frame.width/2
         imageWork.clipsToBounds = true
         lbDeadline.layer.cornerRadius = 6
         lbDeadline.clipsToBounds = true
         workNameLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
-        lbDeadline.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.caption1.rawValue), size: 11)
+        lbDeadline.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.subheadline.rawValue), size: 13)
         lbDeadline.isHidden = true
     }
 

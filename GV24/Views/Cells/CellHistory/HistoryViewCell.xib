@@ -83,11 +83,11 @@
                         </constraints>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-uB-yJ1">
-                        <rect key="frame" x="320" y="7.5" width="47" height="18"/>
+                        <rect key="frame" x="312" y="9" width="55" height="15"/>
                         <color key="backgroundColor" red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="47" id="9aN-JQ-d4k"/>
-                            <constraint firstAttribute="height" constant="18" id="zn2-WE-LgS"/>
+                            <constraint firstAttribute="width" constant="55" id="9aN-JQ-d4k"/>
+                            <constraint firstAttribute="height" constant="15" id="zn2-WE-LgS"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
