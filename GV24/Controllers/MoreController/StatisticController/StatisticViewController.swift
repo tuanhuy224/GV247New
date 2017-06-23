@@ -16,13 +16,18 @@ class StatisticViewController: BaseViewController {
     @IBOutlet weak var btChooseDayTwo: UIButton!
     @IBOutlet weak var lbTotalPrice: UILabel!
     @IBOutlet weak var lbPriceChange: UILabel!
+    @IBOutlet weak var lbTotalWaiting: UILabel!
+    @IBOutlet weak var lbTotalProcessing: UILabel!
+    @IBOutlet weak var lbTotalDone: UILabel!
     var popUp = PopupViewController()
     var task = [Statistic]()
+    var startAtDate: Date? = nil
+    var endAtDate: Date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbStatistic.register(UINib(nibName:"OwnerHistoryViewCell",bundle:nil), forCellReuseIdentifier: "OwnerHistoryCell")
-        getStatistic()
-        loadData()
+        tbStatistic.register(UINib(nibName: NibStatisticCell,bundle:nil), forCellReuseIdentifier: statisticCellID)
+        getStatistic(startAt: startAtDate, endAt: endAtDate)
     }
     func loadData() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -31,53 +36,98 @@ class StatisticViewController: BaseViewController {
             }
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Thống kê"
+    }
     override func decorate() {
         super.decorate()
-        lbTotalPrice.text = "Tong thu nhap"
+        lbTotalPrice.text = "Tổng thu nhập"
         lbPriceChange.text = "VND"
     }
 
-    @IBAction func btChooseAction(_ sender: Any) {
-       
-        //showPopup(isFromDate: <#T##Bool#>, isToDate: <#T##Bool#>, fromDate: <#T##Date?#>, toDate: <#T##Date#>)
-    }
-    fileprivate func getStatistic(){
+    /* get Statistic /maid/statistical
+     params:
+     +startAt (opt): ISODate
+     +endAt (opt): ISODate"
+     */
+    fileprivate func getStatistic(startAt: Date?, endAt: Date){
+        var params: [String:Any] = [:]
+        if startAt != nil {
+            params["startAt"] = "\(String.convertDateToISODateType(date: startAt!)!)"
+        }
+        params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
+ 
         let headers:HTTPHeaders = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
         apiClient.getOwner(url: APIPaths().urlStatistic(), param: [:], header: headers) { (json, error) in
-            self.task = [Statistic(json: json!)]
-            
+            if json != nil {
+                DispatchQueue.main.async {
+                    self.task = [Statistic(json: json!)]
+                    self.loadData()
+                }
+            }else {
+                DispatchQueue.main.async {
+                    let alertController = AlertHelper().showAlertError(title: "Error", message: "Du Lieu loi")
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
         }
+    }
+    @IBAction func btChooseDayClicked(_ sender: Any) {
+        showPopup(isFromDate: true, isToDate: false, fromDate: startAtDate, toDate: endAtDate)
+    }
+    
+    @IBAction func btChooseDayTwoClicked(_ sender: Any) {
+        showPopup(isFromDate: false, isToDate: true, fromDate: startAtDate, toDate: endAtDate)
     }
     
     fileprivate func showPopup(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date) {
-        popUp.modalPresentationStyle = .overCurrentContext
-        popUp.delegate = self
-        popUp.isFromDate = isFromDate
-        popUp.isToDate = isToDate
-        popUp.fromDate = fromDate
-        popUp.toDate = toDate
-        present(popUp, animated: true) {
-            self.popUp.effectView.alpha = 0.5
+        let popup = PopupViewController()
+        popup.modalPresentationStyle = .overCurrentContext
+        popup.delegate = self
+        popup.isFromDate = isFromDate
+        popup.isToDate = isToDate
+        popup.fromDate = fromDate
+        popup.toDate = toDate
+        present(popup, animated: true) {
+            popup.effectView.alpha = 0.5
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
-extension StatisticViewController:UITableViewDataSource{
+extension StatisticViewController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return task.count
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tbStatistic.dequeueReusableCell(withIdentifier: "OwnerHistoryCell", for: indexPath)
+        let cell = tbStatistic.dequeueReusableCell(withIdentifier: statisticCellID, for: indexPath) as! StatisticCell
+        let user = UserDefaultHelper.currentUser!
+        if let imageString = user.image {
+            let url = URL(string: imageString)
+            cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+        }
+        cell.userNameLabel.text = user.username
+        cell.addressLabel.text = user.nameAddress
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = InformationViewController()
+        _ = navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension StatisticViewController:PopupViewControllerDelegate{
     func selectedDate(date: Date, isFromDate: Bool, isToDate: Bool) {
-        
+        if isFromDate == true {
+            btChooseDay.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
+            startAtDate = date
+        }
+        else {
+            btChooseDayTwo.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
+            endAtDate = date
+        }
+        self.getStatistic(startAt: startAtDate, endAt: endAtDate)
     }
 
 }

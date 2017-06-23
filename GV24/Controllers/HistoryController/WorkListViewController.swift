@@ -81,7 +81,7 @@ class WorkListViewController: BaseViewController {
         params["page"] = self.page
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
-        OwnerServices.sharedInstance.getTaskOfOwner(url: APIPaths().urlGetTaskOfOwner(), param: params, header: headers) { (data, error) in
+        HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetTaskOfOwner(), param: params, header: headers) { (data, error) in
             switch error {
             case .Success:
                 self.list.append(contentsOf: data!)
@@ -110,6 +110,7 @@ class WorkListViewController: BaseViewController {
                 cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
             }
             
+            cell.lbDeadline.isHidden = true
             cell.workNameLabel.text = work.info?.title
             
             let startAt = work.workTime?.startAt

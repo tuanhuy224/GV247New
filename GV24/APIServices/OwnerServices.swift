@@ -45,32 +45,4 @@ class OwnerServices: APIService {
             }
         }
     }
-    
-    func getTaskOfOwner(url: String, param:Parameters, header: HTTPHeaders, completion: @escaping(([Work]?, ResultStatus) -> ())) {
-        Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value).dictionary
-                var workList:[Work] = []
-                if let status = json?["status"], status == true {
-                    if let list = json?["data"]?["docs"] {
-                        for item in list {
-                            let work = Work(json: item.1)
-                            workList.append(work)
-                        }
-                        (list.count > 0) ? completion(workList, ResultStatus.Success) : completion(nil, ResultStatus.EmptyData)
-                    }else {
-                        completion(nil, ResultStatus.EmptyData)
-                    }
-                }
-                else {
-                    (json?["message"] == "Unauthorized") ? completion(nil, ResultStatus.Unauthorize) : completion(nil, ResultStatus.EmptyData)
-                }
-                break;
-            case .failure:
-                completion(nil, ResultStatus.Unauthorize)
-                break;
-            }
-        }
-    }
 }

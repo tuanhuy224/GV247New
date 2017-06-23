@@ -13,8 +13,11 @@ import Alamofire
 class HistoryServices: APIService {
     
     static let sharedInstance = HistoryServices()
-    
-    func getWorkListWith(status: WorkStatus? , url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(([Work]?, ResultStatus) -> ())) {
+    /* getListWith is use for getting:
+    +getTaskOfOwner on WorkListViewController page
+    +getList on HistoryViewController page
+     */
+    func getListWith(object: Any,url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(([Work]?, ResultStatus) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default,headers:header).responseJSON { (response) in
             switch response.result{
             case .success(let value):
@@ -63,4 +66,5 @@ class HistoryServices: APIService {
             }
         }
     }
+ 
 }

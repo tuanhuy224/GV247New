@@ -150,6 +150,8 @@
 		00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB19561EE93EF5003B2C5D /* Stakeholders.swift */; };
 		00EDD49B1EF02D660098F505 /* DetailManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EDD4991EF02D660098F505 /* DetailManagementController.swift */; };
 		00EDD49C1EF02D660098F505 /* DetailManagementController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EDD49A1EF02D660098F505 /* DetailManagementController.xib */; };
+		0318C9C61EFCBFA500FAFEE3 /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0318C9C41EFCBFA500FAFEE3 /* StatisticCell.swift */; };
+		0318C9C71EFCBFA500FAFEE3 /* StatisticCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0318C9C51EFCBFA500FAFEE3 /* StatisticCell.xib */; };
 		037E10E61EF90DF50072442F /* WorkDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002A04551EE14667001876E5 /* WorkDetailCell.xib */; };
 		037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */; };
 		037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */; };
@@ -343,6 +345,8 @@
 		00EB19561EE93EF5003B2C5D /* Stakeholders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stakeholders.swift; sourceTree = "<group>"; };
 		00EDD4991EF02D660098F505 /* DetailManagementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailManagementController.swift; sourceTree = "<group>"; };
 		00EDD49A1EF02D660098F505 /* DetailManagementController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailManagementController.xib; sourceTree = "<group>"; };
+		0318C9C41EFCBFA500FAFEE3 /* StatisticCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
+		0318C9C51EFCBFA500FAFEE3 /* StatisticCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticCell.xib; sourceTree = "<group>"; };
 		037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCell.swift; sourceTree = "<group>"; };
 		037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCell.xib; sourceTree = "<group>"; };
 		037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 		002BA0FC1EDD25610099352D /* MoreCell */ = {
 			isa = PBXGroup;
 			children = (
+				0318C9C31EFCBF8F00FAFEE3 /* StatisticCell */,
 				00AEBA3D1EF7C313009FFA69 /* FollowCell */,
 				0025724D1EDE9DDF00AACC52 /* InforCell */,
 				002BA0FD1EDD25AF0099352D /* MoreNameCell.swift */,
@@ -790,6 +795,15 @@
 				00EDD49A1EF02D660098F505 /* DetailManagementController.xib */,
 			);
 			path = DetailManagerController;
+			sourceTree = "<group>";
+		};
+		0318C9C31EFCBF8F00FAFEE3 /* StatisticCell */ = {
+			isa = PBXGroup;
+			children = (
+				0318C9C41EFCBFA500FAFEE3 /* StatisticCell.swift */,
+				0318C9C51EFCBFA500FAFEE3 /* StatisticCell.xib */,
+			);
+			path = StatisticCell;
 			sourceTree = "<group>";
 		};
 		03577CC06335F99CD83168A6 /* Pods */ = {
@@ -1172,6 +1186,7 @@
 				000E2EB81EF907F300E531C5 /* GoogleService-Info.plist in Resources */,
 				004467B91EEF97FB00DDD0ED /* DoingController.xib in Resources */,
 				002A04601EE15084001876E5 /* DetailViewController.xib in Resources */,
+				0318C9C71EFCBFA500FAFEE3 /* StatisticCell.xib in Resources */,
 				009A76E41EEE92360021BFB0 /* OwnerHistoryViewController.xib in Resources */,
 				003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */,
 				00CC0D4C1EEE3FCE002D24D4 /* WorkListViewController.xib in Resources */,
@@ -1383,6 +1398,7 @@
 				004103621EF37858004BF446 /* AutoKeyboard.swift in Sources */,
 				000E1CA21EF6D56400E26FD4 /* GooglePlace.swift in Sources */,
 				003BC6951ED9DA0600FF6D14 /* Constant.swift in Sources */,
+				0318C9C61EFCBFA500FAFEE3 /* StatisticCell.swift in Sources */,
 				00C505801EE068C9003101F4 /* CustomLocale.swift in Sources */,
 				005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */,
 				000E1CA51EF6D6C000E26FD4 /* MarkerInfoView.swift in Sources */,

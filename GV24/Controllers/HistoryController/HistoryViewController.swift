@@ -81,7 +81,7 @@ class HistoryViewController: BaseViewController {
         params["page"] = self.page
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
-        HistoryServices.sharedInstance.getWorkListWith(status: WorkStatus.Done, url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
+        HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
             switch err{
             case .Success:
                 self.workList.append(contentsOf: data!)
@@ -112,6 +112,10 @@ class HistoryViewController: BaseViewController {
             cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
             cell.lbDeadline.isHidden = true
         }
+<<<<<<< HEAD
+=======
+        cell.lbDeadline.isHidden = true
+>>>>>>> V1.0
         cell.workNameLabel.text = work.info?.title
         let startAt = work.workTime?.startAt
         let startAtString = String(describing: startAt!)

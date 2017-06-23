@@ -185,6 +185,7 @@ class APIService: NSObject {
             }
         }
     }
+    
     func getOwner(url:String,param:Parameters,header:HTTPHeaders,completion:@escaping((JSON?, Error?) -> ())) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default,headers:header).responseJSON { (response) in
             switch response.result{
@@ -198,7 +199,7 @@ class APIService: NSObject {
                     }
                 }
                 guard let data = json["data"].dictionary else{return}
-                print(data)
+                print("data: \(data)")
                 completion(json["data"], nil)
             case .failure(let error):
                 completion(nil, error as? Error)
