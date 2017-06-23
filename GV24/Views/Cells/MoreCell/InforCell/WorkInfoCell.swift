@@ -10,6 +10,7 @@ import UIKit
 import IoniconsSwift
 
 class WorkInfoCell: UITableViewCell {
+    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imgIcon: UIImageView!
     
@@ -20,6 +21,7 @@ class WorkInfoCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        topLabel.text = "WorkCapacity".localize.uppercased()
         imgIcon.image = Ionicons.socialUsd.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 48, greenValue: 199, blueValue: 209, alpha: 1))
         setupCollectionView()
     }

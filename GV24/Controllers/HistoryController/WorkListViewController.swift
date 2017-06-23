@@ -120,21 +120,7 @@ class WorkListViewController: BaseViewController {
             
             cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")
             
-            let now = Date()
-            let startAtDate = String.convertISODateToDate(isoDateStr: startAtString)
-            
-            let executionTime = now.timeIntervalSince(startAtDate!)
-            let secondsInHour: Double = 3600
-            let hoursBetweenDates = Int(executionTime/secondsInHour)
-            let daysBetweenDates = Int(executionTime/86400)
-            let minutesBetweenDates = Int(executionTime/60)
-            
-            if minutesBetweenDates > 60 {
-                cell.lbTimePost.text = "\(daysBetweenDates) \("Date".localize) \(Int(hoursBetweenDates/24)) \("Hour".localize)"
-            }
-            else {
-                cell.lbTimePost.text = "\(minutesBetweenDates) \("TimeMinute".localize)"
-            }
+            cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
             cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
             cell.lbDist.text = "CompletedWork".localize
         }

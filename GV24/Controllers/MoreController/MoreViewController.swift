@@ -21,7 +21,7 @@ class MoreViewController: BaseViewController {
         tbMore.register(UINib(nibName:NibNotifiCell,bundle:nil), forCellReuseIdentifier: notifCellID)
         tbMore.register(UINib(nibName:NibFollowCell,bundle:nil), forCellReuseIdentifier: followCell)
         self.userLogin = UserDefaultHelper.currentUser
-        tbMore.separatorStyle = .none
+        tbMore.separatorStyle = .singleLine
     }
     override func setupViewBase() {
         self.title = "More".localize
@@ -89,9 +89,9 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         case 0:
             return 120
         case 1:
-            return 83
+            return 70
         case 2:
-            return 35
+            return 33
         case 3:
             return 128
         default:

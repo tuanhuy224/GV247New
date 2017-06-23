@@ -26,6 +26,7 @@ class WorkerViewCell: CustomTableViewCell {
     
     func setupCell() {
         arrowForward.image = Ionicons.iosArrowForward.image(18, color: UIColor.lightGray)
+        nameLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

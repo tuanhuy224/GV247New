@@ -38,7 +38,7 @@ class InformationViewController: BaseViewController {
     }
     func customBarLeftButton(){
         let button = UIButton(type: .custom)
-        button.setTitle("Cập nhật", for: .normal)
+        button.setTitle("Update".localize, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
         button.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
         button.setTitleColor(UIColor(red: 46/255, green: 186/255, blue: 191/255, alpha: 1), for: .normal)
