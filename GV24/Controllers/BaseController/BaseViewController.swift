@@ -8,7 +8,11 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    let install = NetworkStatus.sharedInstance
     var islog = false
+    var viewNetwork:UIView?
+    var lbViewNetwork:UILabel?
+    let backItem = UIBarButtonItem()
     var actionSheet: UIAlertController!
     var dGlocale = DGLocalization()
     override func viewDidLoad() {
@@ -16,23 +20,38 @@ class BaseViewController: UIViewController {
         DGLocalization.sharedInstance.Delegate = self
         self.decorate()
         print("====Current self:\(self)====")
-        
+        displayNetwork()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let backItem = UIBarButtonItem()
+        print("++++view display:\(self)+++++++")
         backItem.title = "Back".localize
         navigationItem.backBarButtonItem = backItem
-        print("++++view display:\(self)+++++++")
         self.setupViewBase()
+        install.startNetworkReachabilityObserver()
+        if install.reachabilityManager?.startListening() == true{
+        
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+
     func setupViewBase() {
-    
+
     }
     func decorate(){}
+   
+    func displayNetwork(){
+        viewNetwork = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        lbViewNetwork = UILabel(frame: CGRect(x: self.view.center.x, y: 0, width: self.view.frame.size.width, height: 20))
+        lbViewNetwork?.backgroundColor = UIColor.red
+        viewNetwork?.addSubview(lbViewNetwork!)
+    }
     func timeString(time:TimeInterval) -> String {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60

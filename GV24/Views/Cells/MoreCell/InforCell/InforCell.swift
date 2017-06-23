@@ -48,6 +48,11 @@ class InforCell: CustomTableViewCell {
         for i in btRating {
             i.setImage(imageFirst, for: .normal)
         }
+        lbAge.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 16)
+        lbName.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 16)
+        lbPhone.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 16)
+        lbGender.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 16)
+        lbAddress.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 16)
     }
     @IBAction func btRatingAction(_ sender: UIButton) {
         let image = Ionicons.star.image(32).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))

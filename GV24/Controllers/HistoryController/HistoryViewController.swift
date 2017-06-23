@@ -101,46 +101,24 @@ class HistoryViewController: BaseViewController {
             }
         }
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "WorkHistory".localize//"Lịch sự công việc"
     }
-    
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
         let work = workList[indexPath.item]
         if let imageString = work.info?.workName?.image {
             let url = URL(string: imageString)
             cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+            cell.lbDeadline.isHidden = true
         }
-        
         cell.workNameLabel.text = work.info?.title
-        
         let startAt = work.workTime?.startAt
         let startAtString = String(describing: startAt!)
         let endAt = work.workTime?.endAt
         let endAtString = String(describing: endAt!)
-        
-        cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")
-        
-        let now = Date()
-        let startAtDate = String.convertISODateToDate(isoDateStr: startAtString)
-        
-        let executionTime = now.timeIntervalSince(startAtDate!)
-        let secondsInHour: Double = 3600
-        let hoursBetweenDates = Int(executionTime/secondsInHour)
-        let daysBetweenDates = Int(executionTime/86400)
-        let minutesBetweenDates = Int(executionTime/60)
-        
-        if minutesBetweenDates > 60 {
-            cell.lbTimePost.text = "\(daysBetweenDates) \("Date".localize) \(Int(hoursBetweenDates/24)) \("Hour".localize)"
-        }
-        else {
-            cell.lbTimePost.text = "\(minutesBetweenDates) \("MinutesAgo".localize)"
-        }
-        
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
-        
+         cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
         cell.lbDist.text = "Completed".localize
     }
     
@@ -151,12 +129,10 @@ class HistoryViewController: BaseViewController {
         }
     }
 }
-
 extension HistoryViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workList.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
         self.configureCell(cell: cell, indexPath: indexPath)

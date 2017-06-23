@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
     var navi:UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+
         DGLocalization.sharedInstance.startLocalization()
         GMSServices.provideAPIKey(googleMapsApiKey)
         GMSPlacesClient.provideAPIKey(googleMapsApiKey)
@@ -55,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
     }
-    
+      
     // [START receive_message]
     private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

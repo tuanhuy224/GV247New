@@ -91,6 +91,9 @@ class ManageViewController: BaseViewController {
         processOnCreate.remove(at: (indexPath?.row)!)
         tbManage.endUpdates()
     }
+    
+    fileprivate func configurationCell(cell:UITableViewCell){
+    }
 }
 extension ManageViewController:UITableViewDataSource{
     
@@ -110,9 +113,10 @@ extension ManageViewController:UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tbManage.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as? HistoryViewCell
+        cell?.lbDeadline.isHidden = false
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-
+            
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
@@ -122,6 +126,7 @@ extension ManageViewController:UITableViewDataSource{
             if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).day! > 0 {
                 cell?.lbDeadline.text = "Qúa hạn"
             }
+            cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
         case 1:
             cell?.workNameLabel.text = processRecieved[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].history?.createAt)!).dayMonthYear)"
@@ -130,7 +135,9 @@ extension ManageViewController:UITableViewDataSource{
             cell?.lbDist.text = processRecieved[indexPath.row].process?.name
             if Date().date(datePost: (processRecieved[indexPath.row].history?.createAt)!).day! > 0 {
                 cell?.lbDeadline.text = "Qúa hạn"
+                
             }
+            cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
         case 2:
             cell?.workNameLabel.text = processOnDoing[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].history?.createAt)!).dayMonthYear)"
@@ -140,6 +147,7 @@ extension ManageViewController:UITableViewDataSource{
             if Date().date(datePost: (processOnDoing[indexPath.row].history?.createAt)!).day! > 0 {
                 cell?.lbDeadline.text = "Qúa hạn"
             }
+            cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
         default:
             break
         }
