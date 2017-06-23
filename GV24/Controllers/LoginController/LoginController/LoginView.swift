@@ -65,7 +65,7 @@ class LoginView: BaseViewController {
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                 window.rootViewController = navi
             }else{
-                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "loginFail".localize)
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
             }
         })
     }
@@ -100,7 +100,6 @@ class LoginView: BaseViewController {
         btAround.setTitle("Around".localize, for: .normal)
         btAround.backgroundColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
         logoImage.backgroundColor = UIColor.clear
-        blurImage.alpha = 0.8
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }

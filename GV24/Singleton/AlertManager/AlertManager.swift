@@ -31,12 +31,12 @@ class AlertStandard {
     }
     func showAlertCt(controller: UIViewController,pushVC:UIViewController, title: String, message: String, buttonTitle:String = "OK") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+        let yesAction = UIAlertAction(title: "AnswerYes".localize, style: .default) { (action) -> Void in
             UIView.animate(withDuration: 1, animations: { 
                 controller.navigationController?.pushViewController(pushVC, animated: true)
             })
         }
-        let noAction = UIAlertAction(title: "No", style: .default) { (action) -> Void in
+        let noAction = UIAlertAction(title: "AnswerNo".localize, style: .default) { (action) -> Void in
         }
         alertController.addAction(yesAction)
         alertController.addAction(noAction)
@@ -45,14 +45,14 @@ class AlertStandard {
     // MARK: - show login view when logout button touch
     func showAlertSetRoot(controller: UIViewController,pushVC:UIViewController, title: String, message: String, buttonTitle:String = "OK") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+        let yesAction = UIAlertAction(title: "AnswerYes".localize, style: .default) { (action) -> Void in
             UIView.animate(withDuration: 1, animations: {
                 guard let window = UIApplication.shared.keyWindow else{return}
                 let navi = UINavigationController(rootViewController: pushVC)
                 window.rootViewController = navi
             })
         }
-        let noAction = UIAlertAction(title: "No", style: .default) { (action) -> Void in
+        let noAction = UIAlertAction(title: "AnswerNo".localize, style: .default) { (action) -> Void in
         }
         alertController.addAction(yesAction)
         alertController.addAction(noAction)

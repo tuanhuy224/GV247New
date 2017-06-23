@@ -26,6 +26,8 @@ class WorkTableViewCell: CustomTableViewCell {
         iconRight.setImage(icon, for: .normal)
         iconRight.tintColor = UIColor(red: 24/255, green: 179/255, blue: 110/255, alpha: 1)
         customImage()
+        lbWork.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
+        amountWork.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 13)
     }
     
     

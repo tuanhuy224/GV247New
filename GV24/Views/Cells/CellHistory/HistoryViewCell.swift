@@ -10,7 +10,6 @@ import UIKit
 import IoniconsSwift
 
 class HistoryViewCell: CustomTableViewCell {
-
     @IBOutlet weak var lbDeadline: UILabel!
     @IBOutlet weak var lbTimePost: UILabel!
     @IBOutlet weak var lbDist: UILabel!
@@ -19,12 +18,10 @@ class HistoryViewCell: CustomTableViewCell {
     @IBOutlet weak var createdDate: UILabel!
     @IBOutlet weak var workNameLabel: UILabel!
     @IBOutlet weak var estimateWorkTime: UILabel!
-    
     @IBOutlet weak var iconAlarm: UIImageView!{
         didSet{
             let icon = Ionicons.androidAlarmClock.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
             btImage.setImage(icon, for: .normal)
-
         }
     }
     @IBOutlet weak var imageWork: UIImageView!
@@ -39,6 +36,9 @@ class HistoryViewCell: CustomTableViewCell {
         imageWork.clipsToBounds = true
         lbDeadline.layer.cornerRadius = 6
         lbDeadline.clipsToBounds = true
+        workNameLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
+        lbDeadline.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.caption1.rawValue), size: 11)
+        lbDeadline.isHidden = true
     }
 
 }

@@ -108,6 +108,8 @@
 		004467B91EEF97FB00DDD0ED /* DoingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004467B71EEF97FB00DDD0ED /* DoingController.xib */; };
 		004467BB1EEF9B8900DDD0ED /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */; };
 		004467BC1EEFF20900DDD0ED /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002572491EDE9D9100AACC52 /* InformationViewController.swift */; };
+		004508151EFCA8CC00402986 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004508141EFCA8CC00402986 /* Reachability.swift */; };
+		004508171EFCBE2600402986 /* ChangeFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004508161EFCBE2600402986 /* ChangeFontSize.swift */; };
 		005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */; };
 		005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */; };
 		005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DDE1EF136AF00FA76FB /* CancelCell.swift */; };
@@ -301,6 +303,8 @@
 		004467B61EEF97FB00DDD0ED /* DoingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoingController.swift; sourceTree = "<group>"; };
 		004467B71EEF97FB00DDD0ED /* DoingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoingController.xib; sourceTree = "<group>"; };
 		004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		004508141EFCA8CC00402986 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		004508161EFCBE2600402986 /* ChangeFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeFontSize.swift; sourceTree = "<group>"; };
 		005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforOwnerCell.swift; sourceTree = "<group>"; };
 		005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforOwnerCell.xib; sourceTree = "<group>"; };
 		005A4DDE1EF136AF00FA76FB /* CancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelCell.swift; sourceTree = "<group>"; };
@@ -428,6 +432,7 @@
 			children = (
 				0041035C1EF37058004BF446 /* Notifications */,
 				002315571EDF07DC00B29F36 /* Extention+Image.swift */,
+				004508161EFCBE2600402986 /* ChangeFontSize.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -721,6 +726,14 @@
 			path = DoingController;
 			sourceTree = "<group>";
 		};
+		004508131EFCA8BF00402986 /* CheckNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				004508141EFCA8CC00402986 /* Reachability.swift */,
+			);
+			path = CheckNetwork;
+			sourceTree = "<group>";
+		};
 		005A4DDD1EF1369E00FA76FB /* CancelCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,6 +993,7 @@
 		84D84F3D1ED542C600C33128 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				004508131EFCA8BF00402986 /* CheckNetwork */,
 				841D81141ED57F3C00C916EC /* Fonts */,
 				844E7E421EEFA8D50059B5AD /* AlertHelper.swift */,
 				03F81FB91EF238AD0052B440 /* TableViewHelper.swift */,
@@ -1393,6 +1407,7 @@
 				000E1CA01EF6D54600E26FD4 /* PlaceMarker.swift in Sources */,
 				00CC0D3D1EEE3ED9002D24D4 /* Comment.swift in Sources */,
 				004467BB1EEF9B8900DDD0ED /* CustomTableViewCell.swift in Sources */,
+				004508151EFCA8CC00402986 /* Reachability.swift in Sources */,
 				03D50F401EF8FDA10056F6AE /* InfoCommentCell.swift in Sources */,
 				00EB195A1EE93EF5003B2C5D /* Owner.swift in Sources */,
 				0025723C1EDE633500AACC52 /* RuleViewController.swift in Sources */,
@@ -1433,6 +1448,7 @@
 				000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */,
 				003B34701EFB9A30004FA591 /* StatisticViewController.swift in Sources */,
 				002BA0F91EDD25320099352D /* MoreViewController.swift in Sources */,
+				004508171EFCBE2600402986 /* ChangeFontSize.swift in Sources */,
 				002AFD661EE8058A00D3B88A /* HistoryServices.swift in Sources */,
 				000E1CA81EF6D6E500E26FD4 /* GoogleDataProvider.swift in Sources */,
 				002715291EE799B7006E6671 /* Around.swift in Sources */,

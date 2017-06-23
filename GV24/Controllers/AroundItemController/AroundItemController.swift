@@ -52,6 +52,7 @@ extension AroundItemController:UITableViewDataSource{
         DispatchQueue.main.async {
             cell.imageWork.kf.setImage(with: URL(string: self.works[indexPath.row].info!.workName!.image!))
         }
+         cell.timeWork.text = String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.startAt)!, format: "HH:mm a")!
         cell.lbDeadline.isHidden = true
         return cell
     }

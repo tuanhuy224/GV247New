@@ -10,6 +10,7 @@
 rootDomain = "https://yukotest123.herokuapp.com/vi";
 English = "English";
 VietNam = "Tiếng Việt";
+Invalid = "Tên đăng nhập hoặc mật khẩu không đúng";
 SignIn = "Đăng nhập";
 loginFail = "Tên đăng nhập hoặc mật khẩu không đúng";
 Dollar = "VND";
@@ -22,6 +23,8 @@ TimeMonth = "tháng trước";
 TimeDay = "ngày trước";
 TimeHour = "giờ trước";
 TimeMinute = "phút trước";
+AnswerYes = "Có";
+AnswerNo = "Không";
 Information = "Thông tin";
 More = "Thêm";
 Around = "Công việc quanh đây";
