@@ -305,6 +305,18 @@
 		004508141EFCA8CC00402986 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		004508161EFCBE2600402986 /* ChangeFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeFontSize.swift; sourceTree = "<group>"; };
 		0045081A1EFCF02100402986 /* StatisticViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
+		0045081C1EFD1EE200402986 /* SFUIText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Bold.ttf"; sourceTree = "<group>"; };
+		0045081D1EFD1EE200402986 /* SFUIText-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-BoldItalic.ttf"; sourceTree = "<group>"; };
+		0045081E1EFD1EE200402986 /* SFUIText-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Heavy.ttf"; sourceTree = "<group>"; };
+		0045081F1EFD1EE200402986 /* SFUIText-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-HeavyItalic.ttf"; sourceTree = "<group>"; };
+		004508201EFD1EE200402986 /* SFUIText-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Light.ttf"; sourceTree = "<group>"; };
+		004508211EFD1EE200402986 /* SFUIText-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-LightItalic.ttf"; sourceTree = "<group>"; };
+		004508221EFD1EE200402986 /* SFUIText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Medium.ttf"; sourceTree = "<group>"; };
+		004508231EFD1EE200402986 /* SFUIText-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-MediumItalic.ttf"; sourceTree = "<group>"; };
+		004508241EFD1EE200402986 /* SFUIText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Regular.ttf"; sourceTree = "<group>"; };
+		004508251EFD1EE200402986 /* SFUIText-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularItalic.ttf"; sourceTree = "<group>"; };
+		004508261EFD1EE200402986 /* SFUIText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.ttf"; sourceTree = "<group>"; };
+		004508271EFD1EE200402986 /* SFUIText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforOwnerCell.swift; sourceTree = "<group>"; };
 		005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforOwnerCell.xib; sourceTree = "<group>"; };
 		005A4DDE1EF136AF00FA76FB /* CancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelCell.swift; sourceTree = "<group>"; };
@@ -360,7 +372,6 @@
 		2969276F5EE007E4625A02E9 /* Pods_GV24Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GV24Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45548C6DC59DD6A3A8BD9D4F /* Pods-GV24UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24UITests/Pods-GV24UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		701722CBAC3833A2B08B4D7C /* Pods-GV24Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GV24Tests/Pods-GV24Tests.release.xcconfig"; sourceTree = "<group>"; };
-		841D81151ED57F5900C916EC /* SFUIText-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Light.ttf"; sourceTree = "<group>"; };
 		842FEC661ED40C6900000606 /* GV24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GV24.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842FEC691ED40C6900000606 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842FEC701ED40C6900000606 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -842,8 +853,19 @@
 		841D81141ED57F3C00C916EC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				0045081C1EFD1EE200402986 /* SFUIText-Bold.ttf */,
+				0045081D1EFD1EE200402986 /* SFUIText-BoldItalic.ttf */,
+				0045081E1EFD1EE200402986 /* SFUIText-Heavy.ttf */,
+				0045081F1EFD1EE200402986 /* SFUIText-HeavyItalic.ttf */,
+				004508201EFD1EE200402986 /* SFUIText-Light.ttf */,
+				004508211EFD1EE200402986 /* SFUIText-LightItalic.ttf */,
+				004508221EFD1EE200402986 /* SFUIText-Medium.ttf */,
+				004508231EFD1EE200402986 /* SFUIText-MediumItalic.ttf */,
+				004508241EFD1EE200402986 /* SFUIText-Regular.ttf */,
+				004508251EFD1EE200402986 /* SFUIText-RegularItalic.ttf */,
+				004508261EFD1EE200402986 /* SFUIText-Semibold.ttf */,
+				004508271EFD1EE200402986 /* SFUIText-SemiboldItalic.ttf */,
 				003BC68D1ED9D98100FF6D14 /* UserDefaultHelper.swift */,
-				841D81151ED57F5900C916EC /* SFUIText-Light.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";

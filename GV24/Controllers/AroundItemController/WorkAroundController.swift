@@ -23,6 +23,7 @@ class WorkAroundController: BaseViewController {
     var logtitude:Double?
     var lattitude:Double?
     var arrays = [Around]()
+    var searchController = UISearchController(searchResultsController: nil)
     
     var work = [WorkName]()
     @IBOutlet weak var aroundTableView: UITableView!
@@ -34,6 +35,7 @@ class WorkAroundController: BaseViewController {
         aroundTableView.separatorStyle = .none
         setup()
         aroundTableView.reloadData()
+        configSearchBar()
     }
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {
@@ -44,12 +46,18 @@ class WorkAroundController: BaseViewController {
             arWork.slider.setValue(Float(UserDefaultHelper.getSlider()!)!, animated: true)
         }
     }
+    func configSearchBar() {
+        let subView = UIView(frame: CGRect(x: 0, y: 64.0, width:UIScreen.main.bounds.width, height: 45.0))
+        subView.addSubview((searchController.searchBar))
+        view.addSubview(subView)
+        searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = false
+    }
     lazy var handleRefresh:UIRefreshControl = {
     let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(WorkAroundController.handleRef), for: .valueChanged)
         return refresh
     }()
-    
     func handleRef() {
         self.handleRefresh.endRefreshing()
         guard !isLoading else {return}
@@ -117,8 +125,8 @@ extension WorkAroundController:changeSliderDelegate{
     func change(slider: UISlider) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         if slider.isContinuous == true {
-            arWork.sliderMax.text = String(stringInterpolation: "\(slider.value)")
-            UserDefaultHelper.setSlider(slider: "\(slider.value)")
+            arWork.sliderMax.text = String(stringInterpolation: "\(Int(slider.value))km")
+            UserDefaultHelper.setSlider(slider: "\(Int(slider.value))")
             MBProgressHUD.hide(for: self.view, animated: true)
         }
     }

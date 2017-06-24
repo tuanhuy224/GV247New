@@ -125,6 +125,8 @@ extension ManageViewController:UITableViewDataSource{
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
             if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).day! > 0 {
                 cell?.lbDeadline.text = "Expired".localize
+            }else{
+                cell?.lbDeadline.isHidden = true
             }
             cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
         case 1:
@@ -135,7 +137,8 @@ extension ManageViewController:UITableViewDataSource{
             cell?.lbDist.text = processRecieved[indexPath.row].process?.name
             if Date().date(datePost: (processRecieved[indexPath.row].history?.createAt)!).day! > 0 {
                 cell?.lbDeadline.text = "Expired".localize
-                
+            }else{
+                cell?.lbDeadline.isHidden = true
             }
             cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
         case 2:
@@ -144,9 +147,7 @@ extension ManageViewController:UITableViewDataSource{
             cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnDoing[indexPath.row].history?.createAt)!))"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processOnDoing[indexPath.row].process?.name
-            if Date().date(datePost: (processOnDoing[indexPath.row].history?.createAt)!).day! > 0 {
-                cell?.lbDeadline.text = "Expired".localize
-            }
+            cell?.lbDeadline.isHidden = true
             cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
         default:
             break
@@ -159,6 +160,7 @@ extension ManageViewController:UITableViewDataSource{
             if editingStyle == .delete {
                 processOnCreate.remove(at: indexPath.row)
                 tbManage.deleteRows(at: [indexPath], with: .fade)
+                
             }
         default:
             break

@@ -12,6 +12,9 @@ extension UIFontDescriptor {
     
     private struct SubStruct {
         static var preferredFontName: String = "SFUIText-Light"
+        static var MediumFontName: String = "SFUIText-Medium"
+        static var LightFontName: String = "SFUIText-Light"
+        static var RegularFontName: String = "SFUIText-Regular"
     }
     
     static let fontSizeTable : NSDictionary = [
@@ -106,6 +109,18 @@ extension UIFontDescriptor {
         let contentSize = UIApplication.shared.preferredContentSizeCategory
         let style = fontSizeTable[textStyle] as! NSDictionary
         return UIFontDescriptor(name: SubStruct.preferredFontName, size: CGFloat((style[contentSize] as! NSNumber).floatValue))
+    }
+    final class func MediumDescriptor(textStyle: String) -> UIFontDescriptor {
+        
+        let contentSize = UIApplication.shared.preferredContentSizeCategory
+        let style = fontSizeTable[textStyle] as! NSDictionary
+        return UIFontDescriptor(name: SubStruct.MediumFontName, size: CGFloat((style[contentSize] as! NSNumber).floatValue))
+    }
+    final class func RegularDescriptor(textStyle: String) -> UIFontDescriptor {
+        
+        let contentSize = UIApplication.shared.preferredContentSizeCategory
+        let style = fontSizeTable[textStyle] as! NSDictionary
+        return UIFontDescriptor(name: SubStruct.RegularFontName, size: CGFloat((style[contentSize] as! NSNumber).floatValue))
     }
     
 }

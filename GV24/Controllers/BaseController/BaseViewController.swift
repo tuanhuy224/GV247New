@@ -25,8 +25,8 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("++++view display:\(self)+++++++")
-        backItem.title = "Back".localize
-        navigationItem.backBarButtonItem = backItem
+//        backItem.title = "Back".localize
+        navigationItem.backBarButtonItem?.title = "Back".localize
         self.setupViewBase()
         install.startNetworkReachabilityObserver()
         if install.reachabilityManager?.startListening() == true{

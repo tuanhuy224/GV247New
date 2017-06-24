@@ -9,7 +9,7 @@
 import UIKit
 
 
- //MARK - constant ID cell
+ // MARK: - constant ID cell
 let workDetailCellID = "workDetailCell"
 let infoDetailCellID = "infoDetailCell"
 let cancelCellID = "cancelCell"
@@ -30,7 +30,7 @@ let finishedWorkCellID = "FinishedWorkCell"
 let workerCellID = "WorkerCell"
 let statisticCellID = "StatisticCell"
 
-//MARk - constant NIb cell
+// MARK: - constant NIb cell
 let NibFollowCell = "FollowCell"
 let NibHistoryViewCell = "HistoryViewCell"
 let NibWorkDetailCell = "WorkDetailCell"
@@ -66,3 +66,14 @@ struct Constants {
     static let kUserFullName = "kUserFullName"
     static let kUserEmail = "kUserEmail"
 }
+// MARK: - Constant size
+
+let sizeOne:CGFloat = 11
+let sizeTwo:CGFloat = 12
+let sizeThree:CGFloat = 13
+let sizeFour:CGFloat = 14
+let sizeFive:CGFloat = 15
+let sizeSix:CGFloat = 16
+let sizeSeven:CGFloat = 17
+let sizeEight:CGFloat = 18
+let sizeNine:CGFloat = 19
