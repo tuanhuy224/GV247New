@@ -143,9 +143,6 @@ extension HistoryViewController:UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back"
-        navigationItem.backBarButtonItem = backItem
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }

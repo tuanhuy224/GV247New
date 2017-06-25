@@ -15,7 +15,6 @@ class BaseViewController: UIViewController {
     let backItem = UIBarButtonItem()
     var actionSheet: UIAlertController!
     var dGlocale = DGLocalization()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         DGLocalization.sharedInstance.Delegate = self
@@ -25,7 +24,6 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        //navigationItem.backBarButtonItem?.title = "Back".localize
         self.setupViewBase()
         install.startNetworkReachabilityObserver()
         if install.reachabilityManager?.isReachable == false {
@@ -33,16 +31,8 @@ class BaseViewController: UIViewController {
         }
         print("++++view display:\(self)+++++++")
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-
-    func setupViewBase() {
-
-    }
+    func setupViewBase() {}
     func decorate(){}
-   
     func displayNetwork(){
         viewNetwork = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         lbViewNetwork = UILabel(frame: CGRect(x: self.view.center.x, y: 0, width: self.view.frame.size.width, height: 20))
@@ -56,7 +46,6 @@ class BaseViewController: UIViewController {
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
 }
-
 extension BaseViewController:DGLocalizationDelegate{
     func languageDidChanged(to: (String)) {
         print("language changed to \(to)")
