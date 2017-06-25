@@ -81,7 +81,7 @@ class WorkAroundController: BaseViewController {
         let button = UIButton(type: .custom)
         button.setTitle("search".localize, for: .normal)
         button.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
+        button.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
         button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
         button.addTarget(self, action: #selector(WorkAroundController.selectButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
