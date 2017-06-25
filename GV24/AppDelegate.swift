@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         window?.rootViewController = navi
         UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1),NSFontAttributeName: UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)]
         UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        UINavigationBar.appearance().backgroundColor = .white
+        UIApplication.shared.statusBarView?.backgroundColor = .white
         FirebaseApp.configure()
         registerForRemoteNotification()
         application.registerForRemoteNotifications()
@@ -129,4 +131,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         completionHandler()
     }
 }
-
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+}

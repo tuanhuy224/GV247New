@@ -58,7 +58,6 @@ class InformationViewController: BaseViewController {
             let image = UIImage(data: imageData)
             DispatchQueue.main.async {
                 cell.imageView?.image = image
-                
             }
         }
     }

@@ -67,7 +67,7 @@ extension DoingController:UITableViewDelegate{
         case 0:
             return CGFloat(heightConstantWorkDetailCell)
         case 1:
-            return 284
+            return 293
         default:
             return 172
         }

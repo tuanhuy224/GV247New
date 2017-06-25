@@ -34,7 +34,7 @@ class WorkAroundController: BaseViewController {
         arWork.setupView()
         aroundTableView.separatorStyle = .none
         setup()
-        aroundTableView.reloadData()
+        //aroundTableView.reloadData()
         configSearchBar()
     }
     override func setupViewBase() {
@@ -110,7 +110,7 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 62
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let vc = AroundItemController(nibName: CTAroundItemController, bundle: nil)

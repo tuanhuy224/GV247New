@@ -44,46 +44,46 @@
                                 <rect key="frame" x="0.0" y="128" width="320" height="178.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nữ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRJ-bX-Gsg">
-                                        <rect key="frame" x="31" y="26" width="18.5" height="16"/>
+                                        <rect key="frame" x="31" y="26.5" width="18.5" height="16"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="vqE-c7-eqT">
-                                        <rect key="frame" x="31" y="50" width="289" height="1"/>
+                                        <rect key="frame" x="31" y="50.5" width="289" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="vmB-eX-39p"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBG-Bt-44F">
-                                        <rect key="frame" x="31" y="62" width="16" height="16"/>
+                                        <rect key="frame" x="31" y="62.5" width="16" height="16"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGx-bU-HDh">
-                                        <rect key="frame" x="31" y="86" width="289" height="1"/>
+                                        <rect key="frame" x="31" y="86.5" width="289" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="bax-nB-4y5"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+84090909090909" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bo-zT-Sed">
-                                        <rect key="frame" x="31" y="98" width="123" height="16"/>
+                                        <rect key="frame" x="31" y="98.5" width="123" height="16"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAm-xO-d7M">
-                                        <rect key="frame" x="31" y="126" width="289" height="1"/>
+                                        <rect key="frame" x="31" y="126.5" width="289" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="qIf-vD-s4W"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Cống Quỳnh, P Phạm Ngũ Lão, Q1, Thành phố Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lo-rB-u1h">
-                                        <rect key="frame" x="31" y="135" width="278" height="29"/>
+                                        <rect key="frame" x="31" y="135.5" width="278" height="29"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -114,7 +114,7 @@
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJb-ra-yEA">
-                                        <rect key="frame" x="8" y="142" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="142.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="VbN-DT-eHj"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="lmZ-VM-xt5"/>
@@ -164,7 +164,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen van A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chM-NL-lYr">
-                                        <rect key="frame" x="118" y="72" width="84" height="16"/>
+                                        <rect key="frame" x="118.5" y="72" width="84" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="aar-ud-zVk"/>
                                         </constraints>

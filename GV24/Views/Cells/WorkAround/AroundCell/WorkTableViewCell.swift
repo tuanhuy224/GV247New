@@ -26,8 +26,8 @@ class WorkTableViewCell: CustomTableViewCell {
         iconRight.setImage(icon, for: .normal)
         iconRight.tintColor = UIColor(red: 24/255, green: 179/255, blue: 110/255, alpha: 1)
         customImage()
-        lbWork.font = UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSix)
-        amountWork.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: sizeTwo)
+        lbWork.font = UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)
+        amountWork.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: sizeFour)
     }
        func customImage() {
         imageWork.layer.cornerRadius = imageWork.frame.size.width/2
