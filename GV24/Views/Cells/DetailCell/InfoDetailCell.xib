@@ -124,7 +124,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cống Quỳnh, Quận 1, Thành phố Hồ Chí Minh" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13w-wN-SXO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cống Quỳnh, Quận 1, Thành phố Hồ Chí Minh" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13w-wN-SXO">
                                 <rect key="frame" x="31" y="188" width="253.5" height="30"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -146,10 +146,9 @@
                             <constraint firstItem="Sli-n1-c3B" firstAttribute="centerY" secondItem="1fm-AF-ACV" secondAttribute="centerY" id="48O-Ur-BNO"/>
                             <constraint firstItem="13w-wN-SXO" firstAttribute="centerY" secondItem="Oz2-pV-2nb" secondAttribute="centerY" id="4Jr-s5-pH7"/>
                             <constraint firstItem="1fm-AF-ACV" firstAttribute="leading" secondItem="naY-2R-kB4" secondAttribute="leading" id="7Az-dV-3NJ"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="13w-wN-SXO" secondAttribute="bottom" constant="2" id="9SR-4J-3IZ"/>
                             <constraint firstItem="naY-2R-kB4" firstAttribute="top" secondItem="fbP-lW-e6f" secondAttribute="bottom" constant="10" id="APZ-7s-G5q"/>
                             <constraint firstItem="eev-F8-DLK" firstAttribute="top" secondItem="fbP-lW-e6f" secondAttribute="bottom" constant="36" id="BFn-nE-JPy"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="13w-wN-SXO" secondAttribute="trailing" constant="8" id="BcW-aJ-ukJ"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="13w-wN-SXO" secondAttribute="bottom" constant="5" id="Cy2-a6-221"/>
                             <constraint firstItem="Mih-Hy-g7T" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" id="EHo-4b-x0b"/>
                             <constraint firstItem="tIU-xK-zfc" firstAttribute="leading" secondItem="SBw-tO-pxj" secondAttribute="leading" id="GPX-Tv-5lW"/>
                             <constraint firstItem="LyC-YP-vOT" firstAttribute="top" secondItem="CRJ-Ti-vzz" secondAttribute="bottom" constant="1" id="IwP-et-UfQ"/>
@@ -163,6 +162,7 @@
                             <constraint firstItem="tIU-xK-zfc" firstAttribute="top" secondItem="SBw-tO-pxj" secondAttribute="bottom" constant="8" id="UHU-Bu-jNQ"/>
                             <constraint firstAttribute="trailing" secondItem="eev-F8-DLK" secondAttribute="trailing" id="XhY-Tf-Uhj"/>
                             <constraint firstAttribute="trailing" secondItem="tHL-W1-aAy" secondAttribute="trailing" constant="8" id="ZDZ-ON-i3v"/>
+                            <constraint firstItem="13w-wN-SXO" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="hFV-g3-z2u" secondAttribute="trailing" constant="8" id="cko-1V-A1B"/>
                             <constraint firstItem="Sli-n1-c3B" firstAttribute="leading" secondItem="1fm-AF-ACV" secondAttribute="trailing" constant="8" id="dj0-GL-AvV"/>
                             <constraint firstItem="Mih-Hy-g7T" firstAttribute="top" secondItem="eev-F8-DLK" secondAttribute="bottom" constant="36" id="goa-km-3NZ"/>
                             <constraint firstItem="13w-wN-SXO" firstAttribute="top" secondItem="Mih-Hy-g7T" secondAttribute="bottom" constant="5" id="iOo-LM-LlR"/>

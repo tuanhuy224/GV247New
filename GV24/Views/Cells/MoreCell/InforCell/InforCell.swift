@@ -27,6 +27,7 @@ class InforCell: CustomTableViewCell {
     @IBOutlet weak var imageProfile: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         avatar.layer.cornerRadius = avatar.frame.size.width/2
         avatar.clipsToBounds = true
         avatar.layer.borderWidth = 1

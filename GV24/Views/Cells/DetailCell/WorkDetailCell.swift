@@ -8,6 +8,9 @@
 
 import UIKit
 import IoniconsSwift
+@objc protocol OwnerDelegate:class{
+    @objc optional func chooseActionOwner()
+}
 @objc protocol clickChooseWorkID:class{
     @objc optional func chooseAction()
 }
@@ -27,6 +30,7 @@ class WorkDetailCell: CustomTableViewCell {
     @IBOutlet weak var btChoose: UIButton!
     weak var delegate:chooseWorkDelegate?
     weak var delegateWork:clickChooseWorkID?
+    weak var ownerDelegate:OwnerDelegate?
     @IBOutlet weak var aroundRight: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,6 +55,9 @@ class WorkDetailCell: CustomTableViewCell {
     @IBAction func aroundRightAction(_ sender: Any) {
         if delegate != nil {
             delegate?.detailManagementDelegate!()
+        }
+        if ownerDelegate != nil {
+            ownerDelegate?.chooseActionOwner!()
         }
     }
     

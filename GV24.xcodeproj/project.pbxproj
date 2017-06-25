@@ -136,6 +136,8 @@
 		00CC0D461EEE3F7B002D24D4 /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D441EEE3F7B002D24D4 /* PopupViewController.xib */; };
 		00CC0D4B1EEE3FCE002D24D4 /* WorkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC0D491EEE3FCE002D24D4 /* WorkListViewController.swift */; };
 		00CC0D4C1EEE3FCE002D24D4 /* WorkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */; };
+		00D270041EFFE30700D772A3 /* DetailOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D270021EFFE30700D772A3 /* DetailOwnerViewController.swift */; };
+		00D270051EFFE30700D772A3 /* DetailOwnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D270031EFFE30700D772A3 /* DetailOwnerViewController.xib */; };
 		00EB193D1EE93E61003B2C5D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB193B1EE93E61003B2C5D /* LoginView.swift */; };
 		00EB193E1EE93E61003B2C5D /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EB193C1EE93E61003B2C5D /* LoginView.xib */; };
 		00EB19411EE93E81003B2C5D /* WorkAroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */; };
@@ -346,6 +348,8 @@
 		00CC0D441EEE3F7B002D24D4 /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
 		00CC0D491EEE3FCE002D24D4 /* WorkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkListViewController.swift; sourceTree = "<group>"; };
 		00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkListViewController.xib; sourceTree = "<group>"; };
+		00D270021EFFE30700D772A3 /* DetailOwnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOwnerViewController.swift; sourceTree = "<group>"; };
+		00D270031EFFE30700D772A3 /* DetailOwnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailOwnerViewController.xib; sourceTree = "<group>"; };
 		00EB193B1EE93E61003B2C5D /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		00EB193C1EE93E61003B2C5D /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkAroundController.swift; sourceTree = "<group>"; };
@@ -797,6 +801,15 @@
 			path = PopupViewController;
 			sourceTree = "<group>";
 		};
+		00D270011EFFE2EB00D772A3 /* DetailOwnerController */ = {
+			isa = PBXGroup;
+			children = (
+				00D270021EFFE30700D772A3 /* DetailOwnerViewController.swift */,
+				00D270031EFFE30700D772A3 /* DetailOwnerViewController.xib */,
+			);
+			path = DetailOwnerController;
+			sourceTree = "<group>";
+		};
 		00EB193A1EE93E61003B2C5D /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
@@ -978,6 +991,7 @@
 		842FEC971ED40CAE00000606 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				00D270011EFFE2EB00D772A3 /* DetailOwnerController */,
 				00EB19431EE93EB4003B2C5D /* HistoryController */,
 				0027152A1EE7AF42006E6671 /* AroundItemController */,
 				002A045C1EE1504F001876E5 /* DetailController */,
@@ -1226,6 +1240,7 @@
 				005A4DE11EF136AF00FA76FB /* CancelCell.xib in Resources */,
 				003175E51EE68A8900F3F9B4 /* WaittingController.xib in Resources */,
 				0022C5001EE84D1700027665 /* OwnerHistoryViewCell.xib in Resources */,
+				00D270051EFFE30700D772A3 /* DetailOwnerViewController.xib in Resources */,
 				0025723D1EDE633500AACC52 /* RuleViewController.xib in Resources */,
 				037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */,
 				002572511EDE9E1600AACC52 /* InforCell.xib in Resources */,
@@ -1420,6 +1435,7 @@
 				009A76EF1EEE94490021BFB0 /* MapViewCell.swift in Sources */,
 				002A045A1EE14A82001876E5 /* InfoDetailCell.swift in Sources */,
 				0014A57C1EFED32E00DBD0C4 /* CustomLable.swift in Sources */,
+				00D270041EFFE30700D772A3 /* DetailOwnerViewController.swift in Sources */,
 				003B34731EFBA883004FA591 /* Statistic.swift in Sources */,
 				003175ED1EE6A6B000F3F9B4 /* AroundTask.swift in Sources */,
 				00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */,

@@ -29,7 +29,6 @@ class LoginView: BaseViewController {
     @IBOutlet weak var scrollBt: NSLayoutConstraint!
     @IBOutlet weak var btAround: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
-    
     weak var delegate:customButtonLoginDelegate?
     var user:User?
     var arrays = [Around]()
