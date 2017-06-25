@@ -34,7 +34,6 @@ class AroundItemController: BaseViewController {
         }
     }
     override func setupViewBase() {
-        self.title = name?.localize
         tbAround.reloadData()
     }
 }

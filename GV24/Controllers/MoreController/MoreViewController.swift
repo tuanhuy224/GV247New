@@ -20,6 +20,7 @@ class MoreViewController: BaseViewController {
         tbMore.register(UINib(nibName:NibMoreCell,bundle:nil), forCellReuseIdentifier: MoreCellID)
         tbMore.register(UINib(nibName:NibNotifiCell,bundle:nil), forCellReuseIdentifier: notifCellID)
         tbMore.register(UINib(nibName:NibFollowCell,bundle:nil), forCellReuseIdentifier: followCell)
+        tbMore.register(UINib(nibName:NibHeaderCell,bundle:nil), forCellReuseIdentifier: headerCellID)
         self.userLogin = UserDefaultHelper.currentUser
         tbMore.separatorStyle = .none
     }
@@ -42,7 +43,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -58,6 +59,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
                 cell.vSegment.isHidden = false
                 cell.btChoose.isHidden = false
                 cell.delegateWork = self
+                cell.heightHeader.constant = 0
             return cell
         }else if indexPath.section == 1{
             let cell:NotifiCell = (tbMore.dequeueReusableCell(withIdentifier: notifCellID, for: indexPath) as? NotifiCell)!
@@ -78,8 +80,10 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             let cell:FollowCell = (tbMore.dequeueReusableCell(withIdentifier: followCell, for: indexPath) as? FollowCell)!
             cell.delegate = self
             return cell
-        }else{}
-        return UITableViewCell()
+        }else{
+            let cell:HeaderCell = (tbMore.dequeueReusableCell(withIdentifier: headerCellID, for: indexPath) as? HeaderCell)!
+            return cell
+        }
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
             return 20
@@ -87,7 +91,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section{
         case 0:
-            return 120
+            return 100
         case 1:
             return 83
         case 2:
@@ -95,7 +99,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         case 3:
             return 128
         default:
-            return 20
+            return 500
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){

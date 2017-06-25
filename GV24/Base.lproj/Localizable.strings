@@ -26,6 +26,7 @@ TimeDay = "ngày trước";
 TimeHour = "giờ trước";
 TimeMinute = "phút trước";
 AnswerYes = "Có";
+search = "Tìm kiếm";
 AnswerNo = "Không";
 Information = "Thông tin";
 More = "Thêm";

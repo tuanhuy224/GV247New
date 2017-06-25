@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000CCF401EFE191A00331D8E /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000CCF3E1EFE191A00331D8E /* HeaderCell.swift */; };
+		000CCF411EFE191A00331D8E /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000CCF3F1EFE191A00331D8E /* HeaderCell.xib */; };
 		000E1CA01EF6D54600E26FD4 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */; };
 		000E1CA21EF6D56400E26FD4 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1CA11EF6D56400E26FD4 /* GooglePlace.swift */; };
 		000E1CA51EF6D6C000E26FD4 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E1CA31EF6D6C000E26FD4 /* MarkerInfoView.swift */; };
@@ -15,6 +17,7 @@
 		000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 000E1E7A1EF288690058838B /* MBProgressHUD.m */; };
 		000E2EB01EF8FAF900E531C5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */; };
 		000E2EB81EF907F300E531C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 000E2EB71EF907F300E531C5 /* GoogleService-Info.plist */; };
+		0014A57C1EFED32E00DBD0C4 /* CustomLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0014A57B1EFED32E00DBD0C4 /* CustomLable.swift */; };
 		00198EAA1EF96B2A004843C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EA91EF96B2A004843C3 /* AVFoundation.framework */; };
 		00198EAC1EF96B36004843C3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EAB1EF96B36004843C3 /* CoreData.framework */; };
 		00198EAE1EF96B3F004843C3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EAD1EF96B3F004843C3 /* CoreLocation.framework */; };
@@ -191,6 +194,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000CCF3E1EFE191A00331D8E /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		000CCF3F1EFE191A00331D8E /* HeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		000E1C9F1EF6D54600E26FD4 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		000E1CA11EF6D56400E26FD4 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		000E1CA31EF6D6C000E26FD4 /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
@@ -201,6 +206,7 @@
 		000E1E7A1EF288690058838B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		000E2EB71EF907F300E531C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0014A57B1EFED32E00DBD0C4 /* CustomLable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLable.swift; sourceTree = "<group>"; };
 		0018BA501EF81F8200D4B35E /* GV24.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GV24.entitlements; sourceTree = "<group>"; };
 		00198EA91EF96B2A004843C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		00198EAB1EF96B36004843C3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -428,6 +434,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000CCF3D1EFE18FC00331D8E /* HeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				000CCF3E1EFE191A00331D8E /* HeaderCell.swift */,
+				000CCF3F1EFE191A00331D8E /* HeaderCell.xib */,
+			);
+			path = HeaderCell;
+			sourceTree = "<group>";
+		};
 		000E1E771EF2885B0058838B /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +451,14 @@
 				000E1E781EF288680058838B /* GV24-Bridging-Header.h */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		0014A57A1EFED31E00DBD0C4 /* Lable */ = {
+			isa = PBXGroup;
+			children = (
+				0014A57B1EFED32E00DBD0C4 /* CustomLable.swift */,
+			);
+			path = Lable;
 			sourceTree = "<group>";
 		};
 		002315561EDF07A200B29F36 /* Extentions */ = {
@@ -558,6 +581,7 @@
 		002BA0C41EDD206D0099352D /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				0014A57A1EFED31E00DBD0C4 /* Lable */,
 				000E1E771EF2885B0058838B /* MBProgressHUD */,
 				002BA0CE1EDD20B10099352D /* View */,
 				00C5057F1EE068C9003101F4 /* CustomLocale.swift */,
@@ -592,6 +616,7 @@
 		002BA0FC1EDD25610099352D /* MoreCell */ = {
 			isa = PBXGroup;
 			children = (
+				000CCF3D1EFE18FC00331D8E /* HeaderCell */,
 				0318C9C31EFCBF8F00FAFEE3 /* StatisticCell */,
 				00AEBA3D1EF7C313009FFA69 /* FollowCell */,
 				0025724D1EDE9DDF00AACC52 /* InforCell */,
@@ -1184,6 +1209,7 @@
 				002BA1081EDD52F60099352D /* NotifiCell.xib in Resources */,
 				002572471EDE698200AACC52 /* ForgotPasswordViewController.xib in Resources */,
 				002BA1041EDD26090099352D /* MoreCell.xib in Resources */,
+				000CCF411EFE191A00331D8E /* HeaderCell.xib in Resources */,
 				003C9A1A1EDFEC02003F1189 /* Main.storyboard in Resources */,
 				00EDD49C1EF02D660098F505 /* DetailManagementController.xib in Resources */,
 				037E10E61EF90DF50072442F /* WorkDetailCell.xib in Resources */,
@@ -1393,6 +1419,7 @@
 				004467BC1EEFF20900DDD0ED /* InformationViewController.swift in Sources */,
 				009A76EF1EEE94490021BFB0 /* MapViewCell.swift in Sources */,
 				002A045A1EE14A82001876E5 /* InfoDetailCell.swift in Sources */,
+				0014A57C1EFED32E00DBD0C4 /* CustomLable.swift in Sources */,
 				003B34731EFBA883004FA591 /* Statistic.swift in Sources */,
 				003175ED1EE6A6B000F3F9B4 /* AroundTask.swift in Sources */,
 				00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */,
@@ -1480,6 +1507,7 @@
 				009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */,
 				002572411EDE648800AACC52 /* LanguageViewController.swift in Sources */,
 				002BA1071EDD52F60099352D /* NotifiCell.swift in Sources */,
+				000CCF401EFE191A00331D8E /* HeaderCell.swift in Sources */,
 				00EB19591EE93EF5003B2C5D /* History.swift in Sources */,
 				842FECA01ED40DA800000606 /* CustomView.swift in Sources */,
 				00CC0D401EEE3F72002D24D4 /* ManagerHistoryViewController.swift in Sources */,

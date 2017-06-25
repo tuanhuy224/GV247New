@@ -23,6 +23,7 @@ class ManageViewController: BaseViewController {
         super.viewDidLoad()
         tbManage.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
         tbManage.separatorStyle = .none
+        self.title = "Taskmanagement".localize
     }
     override func decorate() {
         super.decorate()
@@ -31,7 +32,7 @@ class ManageViewController: BaseViewController {
     }
     override func setupViewBase() {
         super.setupViewBase()
-        self.title = "Taskmanagement".localize
+        
         getProcess()
         tbManage.reloadData()
     }

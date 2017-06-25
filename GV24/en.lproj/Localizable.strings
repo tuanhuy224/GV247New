@@ -24,6 +24,7 @@ TimeMonth = "month ago";
 TimeDay = "day ago";
 TimeHour = "hour ago";
 TimeMinute = "minute ago";
+search = "Search";
 LogOutAlert = "Are you sure you want to log out?";
 Around = " Work Nearby";
 SwitchLanguage = "Switch Language";

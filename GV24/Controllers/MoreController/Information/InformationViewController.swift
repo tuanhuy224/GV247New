@@ -142,7 +142,7 @@ extension InformationViewController:UITableViewDataSource{
 extension InformationViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 280
+            return 307
         }
         else if indexPath.section == 1 {
             return 154

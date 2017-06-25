@@ -18,7 +18,7 @@ class RuleViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Điều khoản sử dụng"
+        self.title = "Termsofuse".localize
     }
 
     override func didReceiveMemoryWarning() {

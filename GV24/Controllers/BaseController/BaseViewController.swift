@@ -15,28 +15,25 @@ class BaseViewController: UIViewController {
     let backItem = UIBarButtonItem()
     var actionSheet: UIAlertController!
     var dGlocale = DGLocalization()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DGLocalization.sharedInstance.Delegate = self
         self.decorate()
         print("====Current self:\(self)====")
-        displayNetwork()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("++++view display:\(self)+++++++")
-//        backItem.title = "Back".localize
-        navigationItem.backBarButtonItem?.title = "Back".localize
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        //navigationItem.backBarButtonItem?.title = "Back".localize
         self.setupViewBase()
         install.startNetworkReachabilityObserver()
-        if install.reachabilityManager?.startListening() == true{
-        
+        if install.reachabilityManager?.isReachable == false {
+            self.displayNetwork()
         }
-        
+        print("++++view display:\(self)+++++++")
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }

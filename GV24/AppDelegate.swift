@@ -21,19 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
     var navi:UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-
         DGLocalization.sharedInstance.startLocalization()
         GMSServices.provideAPIKey(googleMapsApiKey)
         GMSPlacesClient.provideAPIKey(googleMapsApiKey)
+        window = UIWindow(frame: UIScreen.main.bounds)
         if UserDefaultHelper.isLogin {
             navi = UINavigationController(rootViewController: HomeViewDisplayController())
         }else{
             navi = UINavigationController(rootViewController: LoginView())
         }
         window?.rootViewController = navi
+        UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1),NSFontAttributeName: UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)]
         UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)]
         FirebaseApp.configure()
         registerForRemoteNotification()
         application.registerForRemoteNotifications()

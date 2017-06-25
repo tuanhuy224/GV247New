@@ -16,6 +16,8 @@ import IoniconsSwift
     @objc optional func detailManagementDelegate()
 }
 class WorkDetailCell: CustomTableViewCell {
+    @IBOutlet weak var topBtChoose: NSLayoutConstraint!
+    @IBOutlet weak var heightHeader: NSLayoutConstraint!
     @IBOutlet weak var constraintChoose: NSLayoutConstraint!
     @IBOutlet weak var vSegment: UIView!
     @IBOutlet weak var constraintHeightButtonChoose: NSLayoutConstraint!

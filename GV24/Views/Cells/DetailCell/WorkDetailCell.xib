@@ -106,8 +106,10 @@
                 <outlet property="btChoose" destination="uxt-4V-QaK" id="fiF-Nv-KBw"/>
                 <outlet property="constraintChoose" destination="z4U-jk-t7W" id="RWr-Bb-eKn"/>
                 <outlet property="constraintHeightButtonChoose" destination="z4U-jk-t7W" id="per-Sp-goN"/>
+                <outlet property="heightHeader" destination="wLP-Qb-Bet" id="fqe-Fv-aPh"/>
                 <outlet property="imageName" destination="RAp-YY-Ygx" id="IYF-AP-QRX"/>
                 <outlet property="nameUser" destination="TKq-Mx-div" id="wZE-Kg-Nj4"/>
+                <outlet property="topBtChoose" destination="VHz-q7-p5W" id="WXM-ZY-2x5"/>
                 <outlet property="vSegment" destination="jOn-Cv-dAZ" id="H3O-te-Xuf"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="49"/>

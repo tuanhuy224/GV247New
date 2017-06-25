@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 
-class WorkInfoCell: UITableViewCell {
+class WorkInfoCell: CustomTableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imgIcon: UIImageView!
     

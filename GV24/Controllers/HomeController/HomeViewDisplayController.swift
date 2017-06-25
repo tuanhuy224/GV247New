@@ -29,6 +29,7 @@ class HomeViewDisplayController: BaseViewController {
         super.viewDidLoad()
         print(UserDefaultHelper.getToken()!)
         self.customBarRightButton()
+        self.title = "Home".localize
     }
     override func decorate() {
             buttonTest(button: workAround, imageName: "quanhday")
@@ -38,7 +39,6 @@ class HomeViewDisplayController: BaseViewController {
         loadData()
     }
     override func setupViewBase() {
-        self.title = "Home".localize
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
         if lang.languageCode == "en" {
             lbLogo.text = "TrustQuality".localize
@@ -46,9 +46,9 @@ class HomeViewDisplayController: BaseViewController {
         lbAround.text = "Around".localize
         lbManage.text = "Taskmanagement".localize
         lbHistory.text = "Taskhistory".localize
-        lbHistory.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeFour)
-        lbManage.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeFour)
-        lbAround.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeFour)
+        lbHistory.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbManage.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbAround.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
     }
     func loadData() {
         let apiService = APIService.shared

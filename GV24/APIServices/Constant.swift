@@ -29,8 +29,10 @@ let infoCommentCellID = "InfoCommentCell"
 let finishedWorkCellID = "FinishedWorkCell"
 let workerCellID = "WorkerCell"
 let statisticCellID = "StatisticCell"
+let headerCellID = "headerCell"
 
 // MARK: - constant NIb cell
+let NibHeaderCell = "HeaderCell"
 let NibFollowCell = "FollowCell"
 let NibHistoryViewCell = "HistoryViewCell"
 let NibWorkDetailCell = "WorkDetailCell"

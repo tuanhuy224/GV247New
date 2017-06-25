@@ -15,6 +15,7 @@ extension UIFontDescriptor {
         static var MediumFontName: String = "SFUIText-Medium"
         static var LightFontName: String = "SFUIText-Light"
         static var RegularFontName: String = "SFUIText-Regular"
+        static var SimiBoldFontName:String = "SFUIText-Semibold"
     }
     
     static let fontSizeTable : NSDictionary = [
@@ -117,10 +118,14 @@ extension UIFontDescriptor {
         return UIFontDescriptor(name: SubStruct.MediumFontName, size: CGFloat((style[contentSize] as! NSNumber).floatValue))
     }
     final class func RegularDescriptor(textStyle: String) -> UIFontDescriptor {
-        
         let contentSize = UIApplication.shared.preferredContentSizeCategory
         let style = fontSizeTable[textStyle] as! NSDictionary
         return UIFontDescriptor(name: SubStruct.RegularFontName, size: CGFloat((style[contentSize] as! NSNumber).floatValue))
+    }
+    final class func SemiBoldDescriptor(textStyle: String) -> UIFontDescriptor {
+        let contentSize = UIApplication.shared.preferredContentSizeCategory
+        let style = fontSizeTable[textStyle] as! NSDictionary
+        return UIFontDescriptor(name: SubStruct.SimiBoldFontName, size: CGFloat((style[contentSize] as! NSNumber).floatValue))
     }
     
 }
