@@ -22,7 +22,6 @@ class RecievedController: BaseViewController {
     override func setupViewBase() {
         super.setupViewBase()
         self.title = "\(processRecieved?.info?.title ?? "")".localize
-        self.navigationController?.navigationBar.topItem?.title = ""
     }
 
 }
@@ -52,7 +51,8 @@ extension RecievedController:UITableViewDataSource{
             cell.lbComment.text = processRecieved?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (processRecieved?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) $"
-            cell.lbTime.text = "\(Date(isoDateString: (self.processRecieved?.workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (self.processRecieved?.workTime!.endAt)!).hourMinute)"
+            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processRecieved?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processRecieved?.workTime!.endAt)!, format: "HH:mm a")!
+            
             return cell
         case 2:
             let cell:CancelCell = tbRecieved.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
@@ -70,7 +70,7 @@ extension RecievedController:UITableViewDelegate{
         case 0:
             return CGFloat(heightConstantWorkDetailCell)
         case 1:
-            return 284
+            return 293
         default:
             return 172
         }

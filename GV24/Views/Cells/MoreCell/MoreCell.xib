@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,12 +36,22 @@
                             <constraint firstAttribute="width" constant="15" id="JUR-qE-eCt"/>
                         </constraints>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-Tw-xMe">
+                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="lYs-fs-TeA"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5gS-LX-Vuk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="39V-8m-Q40"/>
                     <constraint firstAttribute="trailing" secondItem="ZsE-wz-SMA" secondAttribute="trailing" constant="8" id="3ig-r4-Wz6"/>
+                    <constraint firstItem="8fB-Tw-xMe" firstAttribute="top" secondItem="5gS-LX-Vuk" secondAttribute="bottom" constant="12.5" id="DlH-HH-ptm"/>
                     <constraint firstAttribute="leadingMargin" secondItem="5gS-LX-Vuk" secondAttribute="leading" id="GoR-xI-XaJ"/>
+                    <constraint firstAttribute="trailing" secondItem="8fB-Tw-xMe" secondAttribute="trailing" id="MId-AG-zlS"/>
                     <constraint firstItem="ZsE-wz-SMA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="TBk-KN-elC"/>
+                    <constraint firstItem="8fB-Tw-xMe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="W4T-y4-7UL"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

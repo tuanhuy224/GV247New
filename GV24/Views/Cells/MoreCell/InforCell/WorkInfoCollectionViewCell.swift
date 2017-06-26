@@ -18,10 +18,16 @@ class WorkInfoCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
     }
     @IBAction func btAction(_ sender: Any) {
         if delegate != nil {
             self.delegate?.didSelect(index: sender)
         }
     }
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        
+    }
+
 }

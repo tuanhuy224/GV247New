@@ -61,7 +61,7 @@ extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
-            cell.delegateWork = self
+            cell.ownerDelegate = self
             cell.constraintHeightButtonChoose.constant = 28
             cell.btChoose.isHidden = false
             cell.vSegment.isHidden = false
@@ -80,7 +80,7 @@ extension DetailViewController:UITableViewDataSource{
                 cell.lbComment.text = self.works.info?.content
                 cell.lbAddress.text = self.works.info?.address?.name
                 cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
-                cell.lbTime.text = "\(Date(isoDateString: (self.works.workTime!.startAt)!).hourMinute) \("-") \(Date(isoDateString: (self.works.workTime!.endAt)!).hourMinute)"
+                cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
             }
             return cell
         }
@@ -96,7 +96,6 @@ extension DetailViewController:UITableViewDelegate{
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
@@ -109,6 +108,18 @@ extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
             let alertC = AlertStandard.sharedInstance
             alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
         }
+    }
+}
+extension DetailViewController:chooseWorkDelegate{
+    func detailManagementDelegate(){
+    
+    }
+}
+extension DetailViewController:OwnerDelegate{
+    func chooseActionOwner() {
+        let navi = DetailOwnerViewController(nibName: "DetailOwnerViewController", bundle: nil)
+        navi.owner = works
+        navigationController?.pushViewController(navi, animated: true)
     }
 }
 

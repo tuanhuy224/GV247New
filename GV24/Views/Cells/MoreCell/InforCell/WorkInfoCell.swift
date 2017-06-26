@@ -9,8 +9,12 @@
 import UIKit
 import IoniconsSwift
 
+<<<<<<< HEAD
 class WorkInfoCell: UITableViewCell {
     @IBOutlet weak var topLabel: UILabel!
+=======
+class WorkInfoCell: CustomTableViewCell {
+>>>>>>> origin/bridge
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imgIcon: UIImageView!
     

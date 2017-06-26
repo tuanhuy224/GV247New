@@ -87,20 +87,16 @@ class DGLocalization:NSObject {
         if let delegate = Delegate {
             delegate.languageDidChanged!(to: langCode.languageCode! as (String))
         }
-        
         self.currentLocale = langCode
     }
     
     // DIP Return a translated string for the given string key.
     func getTranslationForKey(key: NSString)->NSString {
-        
         // Get the language code.
         let languageCode =  UserDefaults.standard.string(forKey: DEFAULTS_KEY_LANGUAGE_CODE)
-        
         // Get language bundle that is relevant.
         let bundlePath = Bundle.main.path(forResource: languageCode as String?, ofType: "lproj")
         let Languagebundle = Bundle(path: bundlePath!)
-        
         // Get the translated string using the language bundle.
         let translatedString = Languagebundle?.localizedString(forKey: key as String, value:"", table: nil)
         return translatedString! as NSString;
@@ -108,11 +104,9 @@ class DGLocalization:NSObject {
 }
 //MARK:- Locale
 class Locale: NSObject {
-    
     var name:NSString?
     var languageCode:NSString?
     var countryCode:NSString?
-    
     func initWithLanguageCode(languageCode: NSString,countryCode:NSString,name: NSString)->AnyObject{
         self.name = name
         self.languageCode = languageCode

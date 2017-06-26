@@ -21,19 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
     var navi:UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-
         DGLocalization.sharedInstance.startLocalization()
         GMSServices.provideAPIKey(googleMapsApiKey)
         GMSPlacesClient.provideAPIKey(googleMapsApiKey)
+        window = UIWindow(frame: UIScreen.main.bounds)
         if UserDefaultHelper.isLogin {
             navi = UINavigationController(rootViewController: HomeViewDisplayController())
         }else{
             navi = UINavigationController(rootViewController: LoginView())
         }
         window?.rootViewController = navi
+        UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1),NSFontAttributeName: UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)]
         UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)]
+        UINavigationBar.appearance().backgroundColor = .white
+        UIApplication.shared.statusBarView?.backgroundColor = .white
         FirebaseApp.configure()
         registerForRemoteNotification()
         application.registerForRemoteNotifications()
@@ -95,23 +96,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        // Convert token to string
-        print("\(deviceToken)")
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        
-        // Print it to console
         print("APNs device token: \(deviceTokenString)")
-        
-        // Persist it in your backend in case it's new
-
-        InstanceID.instanceID().setAPNSToken(deviceToken, type: .sandbox)
-        InstanceID.instanceID().setAPNSToken(deviceToken, type: .prod)
+//        InstanceID.instanceID().setAPNSToken(deviceToken, type: .sandbox)
+//        InstanceID.instanceID().setAPNSToken(deviceToken, type: .prod)
         print("\(String(describing: InstanceID.instanceID().token()))")
     }
     
     // Called when APNs failed to register the device for push notifications
     private func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        // Print the error to console (you should alert the user that registration failed)
         print("APNs registration failed: \(error)")
     }
 }
@@ -130,4 +123,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         completionHandler()
     }
 }
-
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+}

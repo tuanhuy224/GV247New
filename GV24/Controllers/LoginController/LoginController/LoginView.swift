@@ -15,7 +15,6 @@ import Alamofire
     @objc optional func sendTextfield(login:UITextField,password:UITextField)
     @objc optional func buttonForgot()
 }
-
 class LoginView: BaseViewController {
     @IBOutlet weak var blurImage: UIVisualEffectView!
     @IBOutlet weak var Sview: UIView!
@@ -30,7 +29,6 @@ class LoginView: BaseViewController {
     @IBOutlet weak var scrollBt: NSLayoutConstraint!
     @IBOutlet weak var btAround: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
-    
     weak var delegate:customButtonLoginDelegate?
     var user:User?
     var arrays = [Around]()
@@ -42,17 +40,15 @@ class LoginView: BaseViewController {
         scrollLogin.delegate = self
         self.setupView()
         loadData()
-        //scrollLogin.addSubview(self.Sview)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerAutoKeyboard()
-        
+        self.title = "SignIn".localize
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unRegisterAutoKeyboard()
-        
     }
     @IBAction func loginButtonAction(_ sender: Any) {
         btnLogin.setBackgroundImage(nil, for: .normal)
@@ -69,7 +65,6 @@ class LoginView: BaseViewController {
             }
         })
     }
-    
     func loadData() {
         let apiService = APIService.shared
         let param:[String:Double] = ["lng": 106.6882557,"lat": 10.7677238]
@@ -117,7 +112,6 @@ extension LoginView:UITextFieldDelegate {
         return true
     }
 }
-
 extension LoginView:UIScrollViewDelegate{
 }
 

@@ -23,6 +23,7 @@ class WorkAroundController: BaseViewController {
     var logtitude:Double?
     var lattitude:Double?
     var arrays = [Around]()
+    var searchController = UISearchController(searchResultsController: nil)
     
     var work = [WorkName]()
     @IBOutlet weak var aroundTableView: UITableView!
@@ -33,7 +34,8 @@ class WorkAroundController: BaseViewController {
         arWork.setupView()
         aroundTableView.separatorStyle = .none
         setup()
-        aroundTableView.reloadData()
+        //aroundTableView.reloadData()
+        configSearchBar()
     }
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {
@@ -44,12 +46,18 @@ class WorkAroundController: BaseViewController {
             arWork.slider.setValue(Float(UserDefaultHelper.getSlider()!)!, animated: true)
         }
     }
+    func configSearchBar() {
+        let subView = UIView(frame: CGRect(x: 0, y: 64.0, width:UIScreen.main.bounds.width, height: 45.0))
+        subView.addSubview((searchController.searchBar))
+        view.addSubview(subView)
+        searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = false
+    }
     lazy var handleRefresh:UIRefreshControl = {
     let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(WorkAroundController.handleRef), for: .valueChanged)
         return refresh
     }()
-    
     func handleRef() {
         self.handleRefresh.endRefreshing()
         guard !isLoading else {return}
@@ -70,10 +78,11 @@ class WorkAroundController: BaseViewController {
         self.customBarLeftButton()
     }
     func customBarLeftButton(){
-        let image = Ionicons.checkmark.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1))
         let button = UIButton(type: .custom)
-        button.setImage(image, for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        button.setTitle("search".localize, for: .normal)
+        button.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
+        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
         button.addTarget(self, action: #selector(WorkAroundController.selectButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
@@ -101,7 +110,7 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 62
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let vc = AroundItemController(nibName: CTAroundItemController, bundle: nil)
@@ -117,8 +126,8 @@ extension WorkAroundController:changeSliderDelegate{
     func change(slider: UISlider) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         if slider.isContinuous == true {
-            arWork.sliderMax.text = String(stringInterpolation: "\(slider.value)")
-            UserDefaultHelper.setSlider(slider: "\(slider.value)")
+            arWork.sliderMax.text = String(stringInterpolation: "\(Int(slider.value))km")
+            UserDefaultHelper.setSlider(slider: "\(Int(slider.value))")
             MBProgressHUD.hide(for: self.view, animated: true)
         }
     }

@@ -20,32 +20,19 @@ class BaseViewController: UIViewController {
         DGLocalization.sharedInstance.Delegate = self
         self.decorate()
         print("====Current self:\(self)====")
-        displayNetwork()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("++++view display:\(self)+++++++")
-        backItem.title = "Back".localize
-        navigationItem.backBarButtonItem = backItem
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.setupViewBase()
         install.startNetworkReachabilityObserver()
-        if install.reachabilityManager?.startListening() == true{
-        
+        if install.reachabilityManager?.isReachable == false {
+            self.displayNetwork()
         }
-        
+        print("++++view display:\(self)+++++++")
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-
-    func setupViewBase() {
-
-    }
+    func setupViewBase() {}
     func decorate(){}
-   
     func displayNetwork(){
         viewNetwork = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         lbViewNetwork = UILabel(frame: CGRect(x: self.view.center.x, y: 0, width: self.view.frame.size.width, height: 20))
@@ -59,7 +46,6 @@ class BaseViewController: UIViewController {
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
 }
-
 extension BaseViewController:DGLocalizationDelegate{
     func languageDidChanged(to: (String)) {
         print("language changed to \(to)")

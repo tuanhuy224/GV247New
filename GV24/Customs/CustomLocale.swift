@@ -20,6 +20,5 @@ class CustomLocale: NSObject {
         self.countryCode = countryCode
         
     }
-    
 }
 

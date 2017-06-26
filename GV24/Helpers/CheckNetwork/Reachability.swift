@@ -14,7 +14,7 @@ import Alamofire
 class NetworkStatus {
     static let sharedInstance = NetworkStatus()
     private init() {}
-    let reachabilityManager = Alamofire.NetworkReachabilityManager(host: "www.apple.com")
+    let reachabilityManager = Alamofire.NetworkReachabilityManager(host: "https://www.google.com")
     func startNetworkReachabilityObserver() {
         reachabilityManager?.listener = { status in
             switch status {

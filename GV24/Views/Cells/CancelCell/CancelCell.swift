@@ -27,6 +27,7 @@ class CancelCell: CustomTableViewCell {
         btCancel.setImage(Ionicons.iosTrashOutline.image(32), for: .normal)
         btCancel.tintColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
         lbCancel.textColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
+        lbCancel.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
     } 
     @IBAction func btCancelAction(_ sender: Any) {
         if delegate != nil {

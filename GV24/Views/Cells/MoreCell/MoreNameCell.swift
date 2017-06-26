@@ -22,7 +22,7 @@ class MoreNameCell: CustomTableViewCell {
         user = UserDefaultHelper.currentUser
         userName.text = user?.username
         address.text = user?.address?.name
-        let icon = Ionicons.chevronRight.image(12)
+        let icon = Ionicons.chevronRight.image(32)
         iconLeft.setImage(icon, for: .normal)
         iconLeft.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         avatar.layer.cornerRadius = avatar.frame.size.width/2

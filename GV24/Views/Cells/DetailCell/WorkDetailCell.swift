@@ -8,6 +8,9 @@
 
 import UIKit
 import IoniconsSwift
+@objc protocol OwnerDelegate:class{
+    @objc optional func chooseActionOwner()
+}
 @objc protocol clickChooseWorkID:class{
     @objc optional func chooseAction()
 }
@@ -16,6 +19,8 @@ import IoniconsSwift
     @objc optional func detailManagementDelegate()
 }
 class WorkDetailCell: CustomTableViewCell {
+    @IBOutlet weak var topBtChoose: NSLayoutConstraint!
+    @IBOutlet weak var heightHeader: NSLayoutConstraint!
     @IBOutlet weak var constraintChoose: NSLayoutConstraint!
     @IBOutlet weak var vSegment: UIView!
     @IBOutlet weak var constraintHeightButtonChoose: NSLayoutConstraint!
@@ -25,6 +30,7 @@ class WorkDetailCell: CustomTableViewCell {
     @IBOutlet weak var btChoose: UIButton!
     weak var delegate:chooseWorkDelegate?
     weak var delegateWork:clickChooseWorkID?
+    weak var ownerDelegate:OwnerDelegate?
     @IBOutlet weak var aroundRight: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,9 +42,10 @@ class WorkDetailCell: CustomTableViewCell {
         constraintHeightButtonChoose.constant = 0
         btChoose.isHidden = true
         vSegment.isHidden = true
-        nameUser.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
-        addressName.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
-        btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
+        nameUser.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
+        addressName.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
+        btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
+        btChoose.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
     }
     @IBAction func btChooseAction(_ sender: Any) {
         if delegateWork != nil {
@@ -48,6 +55,9 @@ class WorkDetailCell: CustomTableViewCell {
     @IBAction func aroundRightAction(_ sender: Any) {
         if delegate != nil {
             delegate?.detailManagementDelegate!()
+        }
+        if ownerDelegate != nil {
+            ownerDelegate?.chooseActionOwner!()
         }
     }
     

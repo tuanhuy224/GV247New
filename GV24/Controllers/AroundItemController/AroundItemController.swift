@@ -34,7 +34,7 @@ class AroundItemController: BaseViewController {
         }
     }
     override func setupViewBase() {
-        self.title = name?.localize
+        self.title = "\(name!)".localize
         tbAround.reloadData()
     }
 }
@@ -48,11 +48,10 @@ extension AroundItemController:UITableViewDataSource{
         cell.lbDist.text = "\(Int(works[indexPath.row].dist!.calculated!)) m"
         cell.createdDate.text = Date(isoDateString: (works[indexPath.row].history!.createAt!)).dayMonthYear
         cell.lbTimePost.text = Date().dateComPonent(datePost: (works[indexPath.row].history!.createAt!))
-        cell.timeWork.text = "\(Date(isoDateString: (works[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (works[indexPath.row].workTime?.endAt)!).hourMinute)"
         DispatchQueue.main.async {
             cell.imageWork.kf.setImage(with: URL(string: self.works[indexPath.row].info!.workName!.image!))
         }
-         cell.timeWork.text = String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.startAt)!, format: "HH:mm a")!
+         cell.timeWork.text = String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
         cell.lbDeadline.isHidden = true
         return cell
     }

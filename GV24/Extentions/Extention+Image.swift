@@ -223,3 +223,8 @@ extension String {
         return newISODateStr
     }
 }
+extension UILabel{
+    static func customLable(title:String, frame:CGRect) -> UILabel{
+        return UILabel(frame: frame)
+    }
+}

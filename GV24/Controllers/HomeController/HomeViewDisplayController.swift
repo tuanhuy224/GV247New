@@ -14,6 +14,8 @@ import SwiftyJSON
 
 class HomeViewDisplayController: BaseViewController {
     var user:User?
+    @IBOutlet weak var lbHistory: UILabel!
+    @IBOutlet weak var lbManage: UILabel!
     @IBOutlet weak var workAround: UIButton!
     @IBOutlet weak var manageButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
@@ -22,24 +24,31 @@ class HomeViewDisplayController: BaseViewController {
     @IBOutlet weak var lbLogo: UILabel!
     var titleAround:String?
     var arrays = [Around]()
+    @IBOutlet weak var lbAround: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         print(UserDefaultHelper.getToken()!)
         self.customBarRightButton()
+        self.title = "Home".localize
     }
     override func decorate() {
-            buttonTest(button: workAround, imageName: "quanhday", titleImage: "Around".localize)
-            buttonTest(button: manageButton, imageName: "quanlyconviec", titleImage: "Taskmanagement".localize)
-            buttonTest(button: historyButton, imageName: "lichsu", titleImage: "Taskhistory".localize)
+            buttonTest(button: workAround, imageName: "quanhday")
+            buttonTest(button: manageButton, imageName: "quanlyconviec")
+            buttonTest(button: historyButton, imageName: "lichsu")
         lbLogo.textColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         loadData()
     }
     override func setupViewBase() {
-        self.title = "Home".localize
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
         if lang.languageCode == "en" {
             lbLogo.text = "TrustQuality".localize
         }
+        lbAround.text = "Around".localize
+        lbManage.text = "Taskmanagement".localize
+        lbHistory.text = "Taskhistory".localize
+        lbHistory.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbManage.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbAround.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
     }
     func loadData() {
         let apiService = APIService.shared
@@ -64,31 +73,16 @@ class HomeViewDisplayController: BaseViewController {
         navigationController?.pushViewController(MoreViewController(), animated: true)
     }
     
-    func buttonTest(button:UIButton,imageName:String, titleImage:String)  {
-        let imageSize : CGFloat = 30
-        let gap : CGFloat = 10
-        let borderSize : CGFloat = 10
-        let textHeight : CGFloat = 20
-        let imageOrigin : CGFloat = borderSize + gap
-        let textTop : CGFloat = imageOrigin + imageSize + gap
-        let textBottom : CGFloat = borderSize + gap
-        let imageBottom : CGFloat = textBottom + textHeight + gap
-        button.frame = CGRect(x: 0, y: 0, width: button.frame.size.width, height: button.frame.size.height)
+    func buttonTest(button:UIButton,imageName:String)  {
+        let buttonWidth = button.bounds.size.width
         button.center = view.center
         let myImage = UIImage(named: imageName)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         button.setImage(myImage, for: UIControlState.normal)
         button.tintColor = UIColor.white
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: imageOrigin + gap, bottom: imageBottom, right: imageOrigin + gap)
-        button.titleLabel?.font = UIFont(name: "SFUIText-Light", size: 10)
-        button.setTitle(titleImage.localize, for: UIControlState.normal)
-        button.titleLabel?.numberOfLines = 2
-        button.titleLabel?.textAlignment = .center
-        button.setTitleColor(UIColor.white, for: UIControlState.normal)
-        button.titleEdgeInsets = UIEdgeInsets(top: textTop, left: -myImage!.size.width, bottom: textBottom, right: 0.0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: buttonWidth/2, right: 0)
     }
     @IBAction func AroundButton(_ sender: Any) {
         let map = MapViewController(nibName: "MapViewController", bundle: nil)
-        //let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
             map.arrays = arrays
         navigationController?.pushViewController(map, animated: true)
     }
