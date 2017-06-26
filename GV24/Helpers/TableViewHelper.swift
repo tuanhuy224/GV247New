@@ -21,4 +21,13 @@ class TableViewHelper: NSObject {
         label.sizeToFit()
         return label
     }
+    
+    func noData(frame: CGRect) -> UIView {
+        let image = UIImage(named: "icon_nodata")
+        let imgView = UIImageView(image: image)
+        imgView.frame = CGRect(x: frame.origin.x - 35, y: frame.origin.y - 60, width: 70, height: 100)
+        let view = UIView(frame: frame)
+        view.addSubview(imgView)
+        return view
+    }
 }

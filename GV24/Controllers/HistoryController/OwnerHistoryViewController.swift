@@ -82,13 +82,16 @@ class OwnerHistoryViewController: BaseViewController {
             switch err {
             case .Success:
                 self.ownerList.append(contentsOf: data!)
+                self.tableView.backgroundView?.isHidden = true
                 break
             case .EmptyData:
-                self.emptyLabel.text = ResultStatus.EmptyData.rawValue.localize
-                self.tableView.backgroundView = self.emptyLabel
+                let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
+                self.tableView.backgroundView = emptyView
+                self.tableView.backgroundView?.isHidden = false
                 break
             default:
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unauthorized"), object: nil)
+                self.tableView.backgroundView?.isHidden = true
                 break
             }
             DispatchQueue.main.async {

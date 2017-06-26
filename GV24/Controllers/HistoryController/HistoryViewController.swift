@@ -81,19 +81,21 @@ class HistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         params["page"] = self.page
         params["limit"] = self.limit
-        self.historyTableView.backgroundView?.isHidden = true
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
             switch err{
             case .Success:
                 self.workList.append(contentsOf: data!)
+                self.historyTableView.backgroundView?.isHidden = true
                 break
             case .EmptyData:
-                self.emptyLabel.text = ResultStatus.EmptyData.rawValue.localize
-                self.historyTableView.backgroundView = self.emptyLabel
+                let emptyView = TableViewHelper().noData(frame: CGRect(x: self.historyTableView.center.x, y: self.historyTableView.center.y, width: self.historyTableView.frame.size.width, height: self.historyTableView.frame.size.height))
+                self.historyTableView.backgroundView = emptyView
+                self.historyTableView.backgroundView?.isHidden = false
                 break
             default:
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unauthorized"), object: nil)
+                self.historyTableView.backgroundView?.isHidden = true
                 break
             }
             DispatchQueue.main.async {
