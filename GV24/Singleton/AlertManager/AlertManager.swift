@@ -59,6 +59,17 @@ class AlertStandard {
         controller.present(alertController, animated: true, completion: nil)
     }
     
+    func showAlertPopToView(controller: UIViewController, title: String, message: String, buttonTitle:String = "OK") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "AnswerYes".localize, style: .default) { (action) -> Void in
+            UIView.animate(withDuration: 1, animations: {
+                controller.navigationController?.popViewController(animated: true)
+            })
+        }
+        alertController.addAction(yesAction)
+        controller.present(alertController, animated: true, completion: nil)
+    }
+    
 
 }
 

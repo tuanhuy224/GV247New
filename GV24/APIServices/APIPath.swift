@@ -23,7 +23,7 @@ enum urlPath:String {
     case getProfileComments = "/maid/getComment"
     case getContact = "/more/getContact"
     case getstatistical = "/maid/statistical"
-    case sendReport = "/maid/report"
+    case urlMaidReport = "/maid/report"
 }
 struct APIPaths {
     func urlGetListAround() -> String {
@@ -68,7 +68,7 @@ struct APIPaths {
     func urlStatistic() -> String {
         return "rootDomain".localize + urlPath.getstatistical.rawValue
     }
-    func urlSendReport() -> String{
-        return "rootDomain".localize + urlPath.sendReport.rawValue
+    func maidReport() -> String{
+        return "rootDomain".localize + urlPath.urlMaidReport.rawValue
     }
  }

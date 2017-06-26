@@ -38,45 +38,17 @@ class ReportController: BaseViewController {
         addressProfile.text = work.stakeholders?.owner?.address?.name
         let imag = URL(string: (work.stakeholders?.owner?.image)!)
         imageProfile.kf.setImage(with: imag)
-        let button = UIButton(type: .custom)
-        button.setTitle("send".localize, for: .normal)
-        button.setTitleColor(UIColor.colorWithRedValue(redValue: 90, greenValue: 186, blueValue: 189, alpha: 1), for: UIControlState.normal)
-        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        button.addTarget(self, action: #selector(ReportController.addTapped), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send".localize, style: .plain, target: self, action: #selector(ReportController.addTapped))
     }
     func addTapped() {
-        sendReport()
-    }
-    
-    func sendReport(){
-        var params:[String:Any] = [:]
-        if let content = tfReport.text, !content.isEmpty {
-            if let toID = work.stakeholders?.owner?.id {
-                params["toId"] = "\(toID)"
-                params["content"] = content
-                let header: HTTPHeaders = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)", "Content-Type":"application/x-www-form-urlencoded"]
-                APIService.shared.postReserve(url: APIPaths().urlSendReport(), method: HTTPMethod.post, parameters: params, header: header, completion: { (data, message) in
-                    if message! == "SUCCESS" {
-                        self.showAlert(isSuccess: true)
-                    }else {
-                        self.showAlert(isSuccess: false)
-                    }
-                })
-            }
-        }else {
-            AlertStandard.sharedInstance.showAlert(controller: self, title: "Announcement".localize, message: "Please enter your feedback", buttonTitle: "OK")
+        let headers:HTTPHeaders = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let param:Parameters = ["toId":"\(work.stakeholders!.owner!.id!)","content":tfReport.text]
+        let apiClient = APIService.shared
+            apiClient.postReserve(url: APIPaths().maidReport(), method: .post, parameters: param, header: headers) { (json, message) in
+                if message == "SUCCESS"{
+                    AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "ok", message: "da gui")
+                }
         }
-    }
-
-    func showAlert(isSuccess: Bool) {
-        let message = (isSuccess == true) ? "SendReportSuccess".localize : "SendReportFailure".localize
-        let alertController = UIAlertController(title: "Announcement".localize, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alertAction) in
-            if isSuccess == true {self.navigationController?.popViewController(animated: true)}
-        })
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
     }
 
 }

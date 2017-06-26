@@ -63,9 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     // [START receive_message]
     private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
+        
         if ( application.applicationState == .inactive || application.applicationState == .background){
             guard let window = UIApplication.shared.keyWindow else{return}
-            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            let navi = UINavigationController(rootViewController: ManageViewController())
             window.rootViewController = navi
         }
     }
