@@ -135,3 +135,7 @@ Update = "Update";
 TimeoutExpiredPleaseLoginAgain = "Timeout expired, please login again";
 SendReportSuccess = "Sent report successfully";
 SendReportFailure = "Sent report fail";
+report = "Report";
+comment = "Comment";
+nocomment = "There are no comments";
+

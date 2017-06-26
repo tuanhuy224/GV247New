@@ -23,8 +23,8 @@ class BaseViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.setupViewBase()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.done, target: nil, action: nil)
         install.startNetworkReachabilityObserver()
         if install.reachabilityManager?.isReachable == false {
             self.displayNetwork()

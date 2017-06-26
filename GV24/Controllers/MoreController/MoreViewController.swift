@@ -22,7 +22,7 @@ class MoreViewController: BaseViewController {
         tbMore.register(UINib(nibName:NibFollowCell,bundle:nil), forCellReuseIdentifier: followCell)
         tbMore.register(UINib(nibName:NibHeaderCell,bundle:nil), forCellReuseIdentifier: headerCellID)
         self.userLogin = UserDefaultHelper.currentUser
-        tbMore.separatorStyle = .singleLine
+        tbMore.separatorStyle = .none
     }
     override func setupViewBase() {
         self.title = "More".localize
