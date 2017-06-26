@@ -157,10 +157,13 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = InformationViewController()
-        let owner = work?.stakeholders?.owner
-        vc.user = owner?.convertToUser()
+        //let vc = InformationViewController()
+        //let owner = work?.stakeholders?.owner
+        //vc.user = owner?.convertToUser()
+        
         if indexPath.section == 1 {
+            let vc = DetailManagementController()
+            vc.workPending = self.work
             _ = navigationController?.pushViewController(vc, animated: true)
         }
     }
