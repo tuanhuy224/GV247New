@@ -93,8 +93,7 @@ class HistoryViewController: BaseViewController {
                 self.historyTableView.backgroundView = self.emptyLabel
                 break
             default:
-                self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
-                AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unauthorized"), object: nil)
                 break
             }
             DispatchQueue.main.async {

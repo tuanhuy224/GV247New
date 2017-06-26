@@ -88,8 +88,7 @@ class OwnerHistoryViewController: BaseViewController {
                 self.tableView.backgroundView = self.emptyLabel
                 break
             default:
-                self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
-                AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unauthorized"), object: nil)
                 break
             }
             DispatchQueue.main.async {
@@ -148,6 +147,6 @@ extension OwnerHistoryViewController: UITableViewDataSource {
 }
 extension OwnerHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
     }
 }
