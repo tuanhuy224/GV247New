@@ -97,6 +97,7 @@
             <connections>
                 <outlet property="collectionView" destination="ZwP-dK-VXF" id="nhj-wG-NkT"/>
                 <outlet property="imgIcon" destination="jWV-Tp-dWw" id="dXB-l6-nJs"/>
+                <outlet property="topLabel" destination="X1i-GH-KuG" id="xDq-ad-fpj"/>
             </connections>
             <point key="canvasLocation" x="35" y="46"/>
         </tableViewCell>

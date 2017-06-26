@@ -28,7 +28,10 @@
                     <rect key="frame" x="0.0" y="65" width="375" height="35"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Tt-w4-wKs">
-                            <rect key="frame" x="16" y="0.0" width="343" height="29"/>
+                            <rect key="frame" x="16" y="0.0" width="343" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="QDP-km-4S2"/>
+                            </constraints>
                             <segments>
                                 <segment title="Công việc hoàn thành"/>
                                 <segment title="Chủ nhà đã làm"/>
@@ -62,7 +65,9 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="Lbe-ze-H0v"/>
                             </constraints>
-                            <state key="normal" title="11/6/2017"/>
+                            <state key="normal" title="11/6/2017">
+                                <color key="titleColor" red="0.14996629950000001" green="0.62201207879999998" blue="0.64306968450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="toDateButtonClicked:" destination="-1" eventType="touchUpInside" id="KDf-co-dCc"/>
                             </connections>
@@ -72,7 +77,9 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="eAj-81-Bxh"/>
                             </constraints>
-                            <state key="normal" title="__/__/__"/>
+                            <state key="normal" title="__/__/__">
+                                <color key="titleColor" red="0.14996629953384399" green="0.62201207876205444" blue="0.64306968450546265" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="fromDateButtonClicked:" destination="-1" eventType="touchUpInside" id="GuR-mX-mMD"/>
                             </connections>
@@ -91,7 +98,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-57-egJ">
                     <rect key="frame" x="0.0" y="135" width="375" height="20"/>
-                    <color key="backgroundColor" red="0.92941176469999998" green="0.92549019610000005" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.94453328847885132" green="0.94106453657150269" blue="0.96249121427536011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="yRi-0d-NVr"/>
                     </constraints>

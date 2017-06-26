@@ -22,12 +22,10 @@ class HistoryServices: APIService {
             switch response.result{
             case .success(let value):
                 let json = JSON(value).dictionary
-                print("JSON = \(String(describing: json))")
                 var workList:[Work] = []
                 if let status = json?["status"], status == true {
                     if let list = json?["data"]?["docs"] {
                         for item in list {
-                            print("item: \(item)\n")
                             let work = Work(json: item.1)
                             workList.append(work)
                         }
@@ -52,7 +50,6 @@ class HistoryServices: APIService {
             switch response.result {
             case .success(let value):
                 let json = JSON(value).dictionary
-                print("JSON OWNER HISTORY COMMENT: \(String(describing: json))")
                 if let status = json?["status"], status == true {
                     completion(Comment(json: (json?["data"])!), ResultStatus.Success)
                 }

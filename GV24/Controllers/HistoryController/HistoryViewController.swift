@@ -46,11 +46,12 @@ class HistoryViewController: BaseViewController {
     }
     
     func setupTableView() {
-        historyTableView.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
+        historyTableView.register(UINib(nibName: NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: historyCellID)
         self.automaticallyAdjustsScrollViewInsets = false
         historyTableView.tableFooterView = UIView()
         self.historyTableView.addSubview(self.refreshControl)
         historyTableView.backgroundView = self.activityIndicatorView
+        historyTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: historyTableView.bounds.size.width, height: 0.01))
         self.historyTableView.separatorStyle = .singleLine
     }
     
@@ -80,6 +81,7 @@ class HistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         params["page"] = self.page
         params["limit"] = self.limit
+        self.historyTableView.backgroundView?.isHidden = true
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
             switch err{
@@ -92,7 +94,7 @@ class HistoryViewController: BaseViewController {
                 break
             default:
                 self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
-                self.historyTableView.backgroundView = self.emptyLabel
+                AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize)
                 break
             }
             DispatchQueue.main.async {
@@ -112,6 +114,9 @@ class HistoryViewController: BaseViewController {
             cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
             cell.lbDeadline.isHidden = true
         }
+
+        cell.lbDeadline.isHidden = true
+
         cell.workNameLabel.text = work.info?.title
         let startAt = work.workTime?.startAt
         let startAtString = String(describing: startAt!)
@@ -119,7 +124,7 @@ class HistoryViewController: BaseViewController {
         let endAtString = String(describing: endAt!)
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
          cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
-        cell.lbDist.text = "Completed".localize
+        cell.lbDist.text = "CompletedWork".localize
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -134,7 +139,7 @@ extension HistoryViewController:UITableViewDataSource{
         return workList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = historyTableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
+        let cell = historyTableView.dequeueReusableCell(withIdentifier: historyCellID, for: indexPath) as! HistoryViewCell
         self.configureCell(cell: cell, indexPath: indexPath)
         return cell
     }
@@ -143,6 +148,9 @@ extension HistoryViewController:UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back".localize
+        navigationItem.backBarButtonItem = backItem
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }

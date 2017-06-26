@@ -166,6 +166,8 @@
 		037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */; };
 		03AD9B671EF8D25A0038AEE9 /* CommentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */; };
 		03AD9B691EF8D6DA0038AEE9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B681EF8D6DA0038AEE9 /* Task.swift */; };
+		03BBF0211F00ACAD0059C907 /* ReportHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBF01F1F00ACAD0059C907 /* ReportHelperViewController.swift */; };
+		03BBF0221F00ACAD0059C907 /* ReportHelperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BBF0201F00ACAD0059C907 /* ReportHelperViewController.xib */; };
 		03D50F401EF8FDA10056F6AE /* InfoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */; };
 		03D50F411EF8FDA10056F6AE /* InfoCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */; };
 		03F81FBA1EF238AD0052B440 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F81FB91EF238AD0052B440 /* TableViewHelper.swift */; };
@@ -379,6 +381,8 @@
 		037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentServices.swift; sourceTree = "<group>"; };
 		03AD9B681EF8D6DA0038AEE9 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		03BBF01F1F00ACAD0059C907 /* ReportHelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportHelperViewController.swift; sourceTree = "<group>"; };
+		03BBF0201F00ACAD0059C907 /* ReportHelperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportHelperViewController.xib; sourceTree = "<group>"; };
 		03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCommentCell.swift; sourceTree = "<group>"; };
 		03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoCommentCell.xib; sourceTree = "<group>"; };
 		03F81FB91EF238AD0052B440 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
@@ -837,6 +841,8 @@
 				00EB19451EE93EB4003B2C5D /* FinishedWorkViewController.xib */,
 				00EB19461EE93EB4003B2C5D /* HistoryViewController.swift */,
 				00EB19471EE93EB4003B2C5D /* HistoryViewController.xib */,
+				03BBF01F1F00ACAD0059C907 /* ReportHelperViewController.swift */,
+				03BBF0201F00ACAD0059C907 /* ReportHelperViewController.xib */,
 			);
 			path = HistoryController;
 			sourceTree = "<group>";
@@ -1221,6 +1227,7 @@
 			files = (
 				0022C5021EE84D1700027665 /* WorkerViewCell.xib in Resources */,
 				002A045B1EE14A82001876E5 /* InfoDetailCell.xib in Resources */,
+				03BBF0221F00ACAD0059C907 /* ReportHelperViewController.xib in Resources */,
 				004467B41EEF92BC00DDD0ED /* RecievedController.xib in Resources */,
 				002A043E1EE116AB001876E5 /* WorkAround.xib in Resources */,
 				009A76EC1EEE94270021BFB0 /* MapViewController.xib in Resources */,
@@ -1452,6 +1459,7 @@
 				002BA1181EDD62730099352D /* UserService.swift in Sources */,
 				00EB19571EE93EF5003B2C5D /* Address.swift in Sources */,
 				037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */,
+				03BBF0211F00ACAD0059C907 /* ReportHelperViewController.swift in Sources */,
 				003C9A091EDFC85F003F1189 /* ManageViewController.swift in Sources */,
 				003B34671EFB6EEB004FA591 /* Contact.swift in Sources */,
 				00EB194A1EE93EB4003B2C5D /* FinishedWorkViewController.swift in Sources */,
@@ -1708,16 +1716,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GV24/GV24.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FE5FXN233L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GV24/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBB.GV24Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GV24/Customs/MBProgressHUD/GV24-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1731,16 +1741,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GV24/GV24.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FE5FXN233L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GV24/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBB.GV24Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GV24/Customs/MBProgressHUD/GV24-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

@@ -24,6 +24,10 @@ class StatisticViewController: BaseViewController {
     var startAtDate: Date? = nil
     var endAtDate: Date = Date()
     
+    @IBOutlet weak var lbDuration: UILabel!
+    @IBOutlet weak var lbCompletedWork: UILabel!
+    @IBOutlet weak var lbInProcess: UILabel!
+    @IBOutlet weak var lbPendingConfirmation: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         tbStatistic.register(UINib(nibName: NibStatisticCell,bundle:nil), forCellReuseIdentifier: statisticCellID)
@@ -38,12 +42,17 @@ class StatisticViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Thống kê"
+        title = "Statistic".localize
     }
     override func decorate() {
         super.decorate()
-        lbTotalPrice.text = "Tổng thu nhập"
+        lbTotalPrice.text = "TotalEarnings".localize
         lbPriceChange.text = "VND"
+        
+        lbDuration.text = "Duration".localize
+        lbInProcess.text = "InProcess".localize
+        lbPendingConfirmation.text = "PendingConfirmation".localize
+        lbCompletedWork.text = "CompletedWork".localize
     }
 
     /* get Statistic /maid/statistical

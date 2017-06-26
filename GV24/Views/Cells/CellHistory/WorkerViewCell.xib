@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,33 +24,33 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baby" translatesAutoresizingMaskIntoConstraints="NO" id="Q6q-fu-6ZL">
-                        <rect key="frame" x="15" y="15" width="40" height="40"/>
+                        <rect key="frame" x="15" y="15" width="45" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="Uqe-rs-3kk"/>
-                            <constraint firstAttribute="height" constant="40" id="eIa-ao-vHc"/>
+                            <constraint firstAttribute="width" constant="45" id="Uqe-rs-3kk"/>
+                            <constraint firstAttribute="height" constant="45" id="eIa-ao-vHc"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyễn Văn A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piy-bP-BF0">
-                        <rect key="frame" x="70" y="20" width="98.5" height="18"/>
+                        <rect key="frame" x="75" y="20" width="98.5" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Công việc đã hoàn thành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vl-MG-faU">
-                        <rect key="frame" x="15" y="78" width="175" height="18"/>
+                        <rect key="frame" x="15" y="83" width="175" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6k-Zp-mdu">
-                        <rect key="frame" x="0.0" y="65" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="70" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="sBv-58-7jk"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Bạn siêng năng, dọn phòng đúng sạch sẽ gọn gàng, đi làm đúng giờ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ppb-M5-8mg">
-                        <rect key="frame" x="15" y="106" width="290" height="50.5"/>
+                        <rect key="frame" x="15" y="111" width="290" height="45.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -62,13 +63,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 đường 1, Quận 1, Thành phố Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvl-xl-DyO">
-                        <rect key="frame" x="70" y="42" width="235" height="13"/>
+                        <rect key="frame" x="75" y="42" width="230" height="13"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01r-rJ-X2g" userLabel="Button Nhan Xet ">
-                        <rect key="frame" x="15" y="113" width="120" height="30"/>
+                        <rect key="frame" x="15" y="118" width="120" height="30"/>
                         <state key="normal" title="Nhận xét của bạn"/>
                     </button>
                 </subviews>
@@ -90,7 +91,7 @@
                     <constraint firstAttribute="trailing" secondItem="kaV-GZ-FGm" secondAttribute="trailing" constant="15" id="hCp-OO-Dac"/>
                     <constraint firstItem="Ppb-M5-8mg" firstAttribute="top" secondItem="1Vl-MG-faU" secondAttribute="bottom" constant="10" id="m6w-E5-5nG"/>
                     <constraint firstItem="T6k-Zp-mdu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rpa-fF-IWb"/>
-                    <constraint firstItem="T6k-Zp-mdu" firstAttribute="top" secondItem="Mvl-xl-DyO" secondAttribute="bottom" constant="10" id="wFb-d5-anQ"/>
+                    <constraint firstItem="T6k-Zp-mdu" firstAttribute="top" secondItem="Mvl-xl-DyO" secondAttribute="bottom" constant="15" id="wFb-d5-anQ"/>
                     <constraint firstItem="1Vl-MG-faU" firstAttribute="top" secondItem="T6k-Zp-mdu" secondAttribute="bottom" constant="12" id="wN1-df-FdP"/>
                     <constraint firstItem="Mvl-xl-DyO" firstAttribute="top" secondItem="kaV-GZ-FGm" secondAttribute="bottom" constant="12" id="yV3-Xx-nC4"/>
                 </constraints>

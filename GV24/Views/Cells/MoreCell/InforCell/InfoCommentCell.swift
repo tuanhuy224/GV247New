@@ -24,7 +24,7 @@ class InfoCommentCell: CustomTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        topLabel.text = "Assessment".localize.uppercased()
         imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
         imageAvatar.clipsToBounds = true
         unstar = Ionicons.iosStarOutline.image(16).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))

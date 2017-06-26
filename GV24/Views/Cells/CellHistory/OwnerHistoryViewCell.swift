@@ -42,6 +42,8 @@ class OwnerHistoryViewCell: CustomTableViewCell {
         for i in btnRating {
             i.setImage(self.star, for: .normal)
         }
+        userName.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: sizeSeven)
+        dateLabel.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
     }
     
     @IBAction func btnRatingAction(_ sender: UIButton) {

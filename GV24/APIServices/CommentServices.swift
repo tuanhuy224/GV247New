@@ -19,12 +19,10 @@ class CommentServices: APIService {
             switch response.result{
             case .success(let value):
                 let json = JSON(value).dictionary
-                print("JSON = \(String(describing: json))")
                 var comments:[Comment] = []
                 if let status = json?["status"], status == true {
                     if let list = json?["data"]?["docs"] {
                         for item in list {
-                            print("item: \(item)\n")
                             let comment = Comment(json: item.1)
                             comments.append(comment)
                         }

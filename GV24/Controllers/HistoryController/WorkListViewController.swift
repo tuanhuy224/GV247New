@@ -39,9 +39,10 @@ class WorkListViewController: BaseViewController {
     
     func setupTableView() {
         self.automaticallyAdjustsScrollViewInsets = false
-        let nib = UINib(nibName: "HistoryViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "historyCell")
-        self.tableView.addSubview(self.refreshControl)
+        let nib = UINib(nibName: NibHistoryViewCell, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: HistoryViewCellID)
+        tableView.addSubview(self.refreshControl)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0.01))
         self.tableView.backgroundView = self.activityIndicatorView
     }
     
@@ -120,23 +121,9 @@ class WorkListViewController: BaseViewController {
             
             cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")
             
-            let now = Date()
-            let startAtDate = String.convertISODateToDate(isoDateStr: startAtString)
-            
-            let executionTime = now.timeIntervalSince(startAtDate!)
-            let secondsInHour: Double = 3600
-            let hoursBetweenDates = Int(executionTime/secondsInHour)
-            let daysBetweenDates = Int(executionTime/86400)
-            let minutesBetweenDates = Int(executionTime/60)
-            
-            if minutesBetweenDates > 60 {
-                cell.lbTimePost.text = "\(daysBetweenDates) \("Date".localize) \(Int(hoursBetweenDates/24)) \("Hour".localize)"
-            }
-            else {
-                cell.lbTimePost.text = "\(minutesBetweenDates) \("MinutesAgo".localize)"
-            }
+            cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
             cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
-            cell.lbDist.text = "Completed".localize
+            cell.lbDist.text = "CompletedWork".localize
         }
     }
     
@@ -154,7 +141,7 @@ extension WorkListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as! HistoryViewCell
         self.configureCell(cell: cell, indexPath: indexPath)
         return cell
     }

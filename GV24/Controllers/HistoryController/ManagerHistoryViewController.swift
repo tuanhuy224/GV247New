@@ -19,6 +19,7 @@ class ManagerHistoryViewController: BaseViewController {
     var ownerListVC: OwnerHistoryViewController?
     var fromDate: Date? = nil
     var toDate: Date = Date()
+    var currentSelectedIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +27,36 @@ class ManagerHistoryViewController: BaseViewController {
         setupContainerView()
         setupConstrains()
         setupSegmentTitle()
+        addSwipeGesture()
+    }
+    
+    func addSwipeGesture() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(doSwipeTab(gesture:)))
+        swipeLeft.direction = .left
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(doSwipeTab(gesture:)))
+        swipeRight.direction = .right
+        self.containerView.addGestureRecognizer(swipeLeft)
+        self.containerView.addGestureRecognizer(swipeRight)
+    }
+    
+    func doSwipeTab(gesture: UISwipeGestureRecognizer) {
+        switch gesture.direction {
+        case UISwipeGestureRecognizerDirection.right:
+            self.segmentControl.selectedSegmentIndex = 0
+            break
+        default:
+            self.segmentControl.selectedSegmentIndex = 1
+            break
+        }
+        if currentSelectedIndex != self.segmentControl.selectedSegmentIndex {
+            self.doValueChanged(self.segmentControl)
+        }
     }
     
     func setupSegmentTitle() {
-        self.segmentControl.setTitle("WorkCompleted".localize, forSegmentAt: 0)
-        self.segmentControl.setTitle("Thelandlorddid".localize, forSegmentAt: 1)
-        self.toLabel.text = "To".localize
+        self.segmentControl.setTitle("CompletedWork".localize, forSegmentAt: 0)
+        self.segmentControl.setTitle("Workplace".localize, forSegmentAt: 1)
+        self.toLabel.text = "Duration".localize
     }
     
     func customNavigationController() {
@@ -49,6 +74,9 @@ class ManagerHistoryViewController: BaseViewController {
         
         containerView.addSubview((workListVC?.view)!)
         containerView.addSubview((ownerListVC?.view)!)
+        
+        workListVC?.view.tag = 0
+        ownerListVC?.view.tag = 1
     }
     
     func setupConstrains() {
@@ -80,11 +108,13 @@ class ManagerHistoryViewController: BaseViewController {
         if sender.selectedSegmentIndex == 1 {
             workListVC?.view.isHidden = true
             ownerListVC?.view.isHidden = false
+            currentSelectedIndex = 1
             self.reloadOwnerListViewController()
         }
         else {
             workListVC?.view.isHidden = false
             ownerListVC?.view.isHidden = true
+            currentSelectedIndex = 0
             self.reloadWorkListViewController()
         }
     }
