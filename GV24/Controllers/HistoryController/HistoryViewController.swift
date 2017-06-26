@@ -51,6 +51,7 @@ class HistoryViewController: BaseViewController {
         historyTableView.tableFooterView = UIView()
         self.historyTableView.addSubview(self.refreshControl)
         historyTableView.backgroundView = self.activityIndicatorView
+        historyTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: historyTableView.bounds.size.width, height: 0.01))
         self.historyTableView.separatorStyle = .singleLine
     }
     
@@ -80,7 +81,7 @@ class HistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         params["page"] = self.page
         params["limit"] = self.limit
-        
+        self.historyTableView.backgroundView?.isHidden = true
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
             switch err{
@@ -93,7 +94,7 @@ class HistoryViewController: BaseViewController {
                 break
             default:
                 self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
-                self.historyTableView.backgroundView = self.emptyLabel
+                AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize)
                 break
             }
             DispatchQueue.main.async {

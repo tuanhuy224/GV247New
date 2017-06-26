@@ -98,7 +98,7 @@ Edittasks = "Chỉnh sửa công việc";
 ClickOktoconfirmalltaskscompleted = "Vui lòng xác nhận công việc đã hoàn thành bằng cách nhấn OK";
 
 WorkHistory = "Lịch sử công việc";
-CompletedWork = "Công việc đã hoàn thành";
+CompletedWork = "Đã hoàn thành";
 Workplace = "Chủ nhà đã làm";
 Date = "ngày";
 Hour = "giờ";

@@ -15,5 +15,6 @@ class InforOwnerCell: CustomTableViewCell {
         super.awakeFromNib()
         btReport.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
         lbComment.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        
     }
 }

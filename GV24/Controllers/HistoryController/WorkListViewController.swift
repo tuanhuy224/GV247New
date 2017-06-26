@@ -41,7 +41,8 @@ class WorkListViewController: BaseViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         let nib = UINib(nibName: NibHistoryViewCell, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: HistoryViewCellID)
-        self.tableView.addSubview(self.refreshControl)
+        tableView.addSubview(self.refreshControl)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0.01))
         self.tableView.backgroundView = self.activityIndicatorView
     }
     

@@ -89,7 +89,7 @@ class OwnerHistoryViewController: BaseViewController {
                 break
             default:
                 self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
-                self.tableView.backgroundView = self.emptyLabel
+                AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize)
                 break
             }
             DispatchQueue.main.async {

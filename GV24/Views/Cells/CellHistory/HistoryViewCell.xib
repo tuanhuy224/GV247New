@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -25,20 +26,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nau an" translatesAutoresizingMaskIntoConstraints="NO" id="8EU-8A-QEv">
-                        <rect key="frame" x="15" y="8" width="40" height="40"/>
+                        <rect key="frame" x="15" y="8" width="45" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="flz-8W-t47"/>
-                            <constraint firstAttribute="height" constant="40" id="xyD-Wb-sAI"/>
+                            <constraint firstAttribute="width" constant="45" id="flz-8W-t47"/>
+                            <constraint firstAttribute="height" constant="45" id="xyD-Wb-sAI"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lau don nha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fze-be-NCT">
-                        <rect key="frame" x="70" y="8" width="81" height="17"/>
+                        <rect key="frame" x="75" y="8" width="81" height="17"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đã hoàn thành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRE-zI-Q2n">
-                        <rect key="frame" x="70" y="28" width="68.5" height="12"/>
+                        <rect key="frame" x="75" y="28" width="68.5" height="12"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -58,29 +59,29 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/05/2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qj8-fR-18O">
-                        <rect key="frame" x="70" y="62.5" width="63" height="14"/>
+                        <rect key="frame" x="75" y="72.5" width="63" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ADu-3e-VgC">
-                        <rect key="frame" x="29" y="62" width="15" height="15"/>
+                        <rect key="frame" x="31.5" y="72" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="JVV-2F-cFH"/>
                             <constraint firstAttribute="height" constant="15" id="rgv-zc-hVa"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9h00am - 12h00am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9a-BP-wxD">
-                        <rect key="frame" x="207" y="62.5" width="92.5" height="13.5"/>
+                        <rect key="frame" x="207" y="72.5" width="92.5" height="13.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qy-7n-pTy">
-                        <rect key="frame" x="28" y="62" width="15" height="15"/>
+                        <rect key="frame" x="25.5" y="67" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="15" id="X65-gI-jbR"/>
-                            <constraint firstAttribute="height" constant="15" id="qE8-pZ-EYa"/>
+                            <constraint firstAttribute="width" constant="25" id="X65-gI-jbR"/>
+                            <constraint firstAttribute="height" constant="25" id="qE8-pZ-EYa"/>
                         </constraints>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-uB-yJ1">
