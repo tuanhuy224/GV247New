@@ -32,7 +32,9 @@ class ManageViewController: BaseViewController {
     }
     override func setupViewBase() {
         super.setupViewBase()
-        
+        segmentCtr.setTitle("waiting".localize, forSegmentAt: 0)
+        segmentCtr.setTitle("assigned".localize, forSegmentAt: 1)
+        segmentCtr.setTitle("runnning".localize, forSegmentAt: 2)
         getProcess()
         tbManage.reloadData()
     }
@@ -48,6 +50,7 @@ class ManageViewController: BaseViewController {
         tbManage.reloadData()
     }
     func getProcess() {
+        
         let parameterCreate = ["process":"\(WorkStatus.OnCreate.rawValue)"]
         let parmaterPending = ["process":"\(WorkStatus.Pending.rawValue)"]
         let parmaterOnDoing = ["process":"\(WorkStatus.OnDoing.rawValue)"]

@@ -98,9 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         print("APNs device token: \(deviceTokenString)")
-//        InstanceID.instanceID().setAPNSToken(deviceToken, type: .sandbox)
-//        InstanceID.instanceID().setAPNSToken(deviceToken, type: .prod)
-        print("\(String(describing: InstanceID.instanceID().token()))")
+        print("firebase token string: \(String(describing: InstanceID.instanceID().token()))")
+        guard let firebaseToken = InstanceID.instanceID().token() else {return}
+        UserDefaultHelper.setString(string: firebaseToken)
     }
     
     // Called when APNs failed to register the device for push notifications

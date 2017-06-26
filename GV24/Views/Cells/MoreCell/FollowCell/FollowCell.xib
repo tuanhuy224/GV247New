@@ -23,12 +23,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="127.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chia sẽ ứng dụng G24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97g-AJ-CN0">
-                        <rect key="frame" x="31" y="13" width="147" height="17"/>
-                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
-                        <color key="textColor" red="0.18431372549019609" green="0.72941176470588232" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emd-uu-un2">
                         <rect key="frame" x="0.0" y="37" width="320" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -36,13 +30,6 @@
                             <constraint firstAttribute="height" constant="1" id="cCm-0F-1QP"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDe-8w-IQP">
-                        <rect key="frame" x="31" y="38" width="173" height="28"/>
-                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
-                        <state key="normal" title="Theo dõi G24 trên Facebook">
-                            <color key="titleColor" red="0.18431372549019609" green="0.72941176470588232" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sh-ra-pAm">
                         <rect key="frame" x="293" y="44.5" width="15" height="15"/>
                         <constraints>
@@ -71,14 +58,14 @@
                             <constraint firstAttribute="height" constant="15" id="sjr-Vd-5Df"/>
                         </constraints>
                     </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1W-je-GGi">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1W-je-GGi">
                         <rect key="frame" x="0.0" y="72" width="320" height="20"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="F0M-BR-8OP"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNG-4w-hDp">
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNG-4w-hDp">
                         <rect key="frame" x="8" y="96" width="304" height="26"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                         <state key="normal" title="Logout">
@@ -88,42 +75,47 @@
                             <action selector="btLogOutAction:" destination="aUC-Vs-Lau" eventType="touchUpInside" id="n9q-6i-uWG"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJI-BJ-kuv">
+                        <rect key="frame" x="31" y="6.5" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFf-Gw-avz">
+                        <rect key="frame" x="31" y="37.5" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="emd-uu-un2" firstAttribute="top" secondItem="97g-AJ-CN0" secondAttribute="bottom" constant="7" id="2IV-Sm-Er6"/>
-                    <constraint firstItem="97g-AJ-CN0" firstAttribute="leading" secondItem="xKJ-Cq-c8q" secondAttribute="trailing" constant="8" id="69z-Ky-DHK"/>
+                    <constraint firstItem="HFf-Gw-avz" firstAttribute="leading" secondItem="7nH-cR-jDt" secondAttribute="trailing" constant="8" id="276-9T-bPX"/>
+                    <constraint firstItem="emd-uu-un2" firstAttribute="top" secondItem="xKJ-Cq-c8q" secondAttribute="bottom" constant="8" id="6DR-QR-YKI"/>
                     <constraint firstItem="sNG-4w-hDp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="T1W-je-GGi" secondAttribute="bottom" constant="4" id="7g3-1L-q7E"/>
+                    <constraint firstItem="HFf-Gw-avz" firstAttribute="centerY" secondItem="7nH-cR-jDt" secondAttribute="centerY" id="9nj-rp-7Oe"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sNG-4w-hDp" secondAttribute="bottom" constant="5.5" id="AbT-JA-VcJ"/>
                     <constraint firstItem="7nH-cR-jDt" firstAttribute="leading" secondItem="xKJ-Cq-c8q" secondAttribute="leading" id="CRa-ku-WwC"/>
-                    <constraint firstItem="nrN-Nl-HVS" firstAttribute="centerY" secondItem="97g-AJ-CN0" secondAttribute="centerY" id="D3u-IY-nRp"/>
                     <constraint firstAttribute="trailing" secondItem="T1W-je-GGi" secondAttribute="trailing" id="DB1-0A-3Ow"/>
+                    <constraint firstItem="WJI-BJ-kuv" firstAttribute="centerY" secondItem="xKJ-Cq-c8q" secondAttribute="centerY" id="GCZ-BX-XYw"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2Sh-ra-pAm" secondAttribute="trailing" constant="4" id="GIa-dD-Dpt"/>
                     <constraint firstItem="xKJ-Cq-c8q" firstAttribute="top" secondItem="XL0-vm-Mli" secondAttribute="topMargin" constant="6" id="K25-gp-NHh"/>
-                    <constraint firstItem="2Sh-ra-pAm" firstAttribute="centerY" secondItem="LDe-8w-IQP" secondAttribute="centerY" id="LhP-S3-j0Y"/>
+                    <constraint firstItem="WJI-BJ-kuv" firstAttribute="leading" secondItem="xKJ-Cq-c8q" secondAttribute="trailing" constant="8" id="L8L-OX-tm0"/>
                     <constraint firstItem="7nH-cR-jDt" firstAttribute="top" secondItem="emd-uu-un2" secondAttribute="bottom" constant="7" id="SDL-Ks-Yvw"/>
                     <constraint firstItem="xKJ-Cq-c8q" firstAttribute="leading" secondItem="XL0-vm-Mli" secondAttribute="leadingMargin" id="UuO-Ru-fmT"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nrN-Nl-HVS" secondAttribute="trailing" constant="4" id="Uy3-XA-Cj0"/>
-                    <constraint firstItem="LDe-8w-IQP" firstAttribute="leading" secondItem="7nH-cR-jDt" secondAttribute="trailing" constant="8" id="Vtr-HY-KW4"/>
                     <constraint firstAttribute="trailing" secondItem="emd-uu-un2" secondAttribute="trailing" id="Y8F-Pk-fmF"/>
-                    <constraint firstItem="LDe-8w-IQP" firstAttribute="top" secondItem="emd-uu-un2" secondAttribute="bottom" id="d0f-DH-Jks"/>
                     <constraint firstItem="sNG-4w-hDp" firstAttribute="trailing" secondItem="XL0-vm-Mli" secondAttribute="trailingMargin" id="dlZ-xY-kx6"/>
                     <constraint firstItem="T1W-je-GGi" firstAttribute="leading" secondItem="XL0-vm-Mli" secondAttribute="leading" id="fb6-6V-AKM"/>
-                    <constraint firstItem="T1W-je-GGi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LDe-8w-IQP" secondAttribute="bottom" constant="6" id="gEp-vY-Jli"/>
                     <constraint firstItem="sNG-4w-hDp" firstAttribute="leading" secondItem="7nH-cR-jDt" secondAttribute="leading" id="gsw-Oz-oUX"/>
                     <constraint firstItem="emd-uu-un2" firstAttribute="leading" secondItem="XL0-vm-Mli" secondAttribute="leading" id="iXc-LC-wsW"/>
-                    <constraint firstItem="LDe-8w-IQP" firstAttribute="centerY" secondItem="7nH-cR-jDt" secondAttribute="centerY" id="qxo-Hk-znw"/>
-                    <constraint firstItem="97g-AJ-CN0" firstAttribute="top" secondItem="XL0-vm-Mli" secondAttribute="topMargin" constant="5" id="seF-sE-z33"/>
-                    <constraint firstItem="97g-AJ-CN0" firstAttribute="centerY" secondItem="xKJ-Cq-c8q" secondAttribute="centerY" id="vSB-MC-Xmx"/>
+                    <constraint firstItem="emd-uu-un2" firstAttribute="top" secondItem="nrN-Nl-HVS" secondAttribute="bottom" constant="8" id="sUI-hY-pY2"/>
+                    <constraint firstItem="2Sh-ra-pAm" firstAttribute="top" secondItem="emd-uu-un2" secondAttribute="bottom" constant="6.5" id="yMF-qC-uIv"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btFacebook" destination="xKJ-Cq-c8q" id="pTy-RN-5Je"/>
+                <outlet property="btFacebookAc" destination="HFf-Gw-avz" id="Yf6-Eh-ggo"/>
                 <outlet property="btFollow" destination="7nH-cR-jDt" id="sFu-pU-0Sb"/>
+                <outlet property="btFollowAc" destination="WJI-BJ-kuv" id="QrR-38-ATX"/>
                 <outlet property="btIconRight" destination="nrN-Nl-HVS" id="tDr-Hu-cjR"/>
                 <outlet property="btIconRight2" destination="2Sh-ra-pAm" id="N5H-et-dVe"/>
                 <outlet property="btLogOut" destination="sNG-4w-hDp" id="8kB-7Q-wPX"/>
-                <outlet property="lbFacebook" destination="97g-AJ-CN0" id="Y6q-Q5-ivF"/>
-                <outlet property="lbFollow" destination="LDe-8w-IQP" id="ahl-xy-7PF"/>
             </connections>
             <point key="canvasLocation" x="-18" y="-26"/>
         </tableViewCell>

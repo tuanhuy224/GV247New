@@ -67,7 +67,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgn-hl-2K6">
                                         <rect key="frame" x="8" y="8" width="304" height="62"/>
                                         <string key="text">Ban co the huy cong viec truoc 24hBan co the huy cong viec truoc 24hBan co the huy cong viec truoc 24hBan co the huy cong viec truoc 24hBan co the huy cong viec truoc 24h</string>
-                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
+                                        <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -76,7 +76,7 @@
                                 <constraints>
                                     <constraint firstItem="vgn-hl-2K6" firstAttribute="top" secondItem="Gts-eP-20N" secondAttribute="top" constant="8" id="Jsc-Dd-diR"/>
                                     <constraint firstItem="vgn-hl-2K6" firstAttribute="leading" secondItem="Gts-eP-20N" secondAttribute="leading" constant="8" id="Ogq-Gw-lrk"/>
-                                    <constraint firstAttribute="bottom" secondItem="vgn-hl-2K6" secondAttribute="bottom" constant="8" id="sP9-jT-cR3"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vgn-hl-2K6" secondAttribute="bottom" constant="8" id="sP9-jT-cR3"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vgn-hl-2K6" secondAttribute="trailing" constant="8" id="sb7-ze-S1B"/>
                                 </constraints>
                             </view>

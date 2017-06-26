@@ -29,6 +29,9 @@
                                 <rect key="frame" x="8" y="8" width="400" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Báo cáo chủ nhà"/>
+                                <connections>
+                                    <action selector="reportAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="10p-be-k3r"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không có nhận xét" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktN-pm-YgX">
                                 <rect key="frame" x="8" y="129" width="113.5" height="16"/>

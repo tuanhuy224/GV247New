@@ -39,12 +39,16 @@ class LoginView: BaseViewController {
         scrollLogin.isScrollEnabled = true
         scrollLogin.delegate = self
         self.setupView()
-        loadData()
+        //loadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerAutoKeyboard()
-        self.title = "SignIn".localize
+        self.title = "login".localize
+        btnLogin.setTitle("login".localize, for: .normal)
+        forgotPassword.setTitle("forgotPassword".localize, for: .normal)
+        userLogin.placeholder = "Username".localize
+        passwordLogin.placeholder = "Password".localize
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -54,7 +58,7 @@ class LoginView: BaseViewController {
         btnLogin.setBackgroundImage(nil, for: .normal)
         btnLogin.setBackgroundImage(nil, for: .highlighted)
         let apiClient = UserService.sharedInstance
-        apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, completion: { (user, string, error) in
+        apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: UserDefaultHelper.getString()!, completion: { (user, string, error) in
             if let user = user{
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
                 guard let window = UIApplication.shared.keyWindow else{return}
