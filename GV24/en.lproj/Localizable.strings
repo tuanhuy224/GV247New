@@ -133,3 +133,6 @@ Statistic = "Statistic";
 TotalEarnings = "Total earnings";
 Update = "Update";
 TimeoutExpiredPleaseLoginAgain = "Timeout expired, please login again";
+report = "Report";
+comment = "Comment";
+nocomment = "There are no comments";

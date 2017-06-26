@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -89,7 +90,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btReport" destination="oIa-rv-pUb" id="zAW-Kw-MDV"/>
-                <outlet property="lbComment" destination="ktN-pm-YgX" id="TPk-cL-fc8"/>
+                <outlet property="lbComment" destination="aJT-oY-W1S" id="0iB-ps-coz"/>
+                <outlet property="lbCommentText" destination="ktN-pm-YgX" id="EOF-uL-x3U"/>
             </connections>
             <point key="canvasLocation" x="-42" y="17"/>
         </tableViewCell>

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     var window: UIWindow?
     var isLogged = false
     let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
+    //AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w
     var navi:UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DGLocalization.sharedInstance.startLocalization()
@@ -98,6 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         print("APNs device token: \(deviceTokenString)")
+        InstanceID.instanceID().setAPNSToken(deviceToken, type: InstanceIDAPNSTokenType.sandbox)
+        InstanceID.instanceID().setAPNSToken(deviceToken, type: InstanceIDAPNSTokenType.prod)
         print("firebase token string: \(String(describing: InstanceID.instanceID().token()))")
         guard let firebaseToken = InstanceID.instanceID().token() else {return}
         UserDefaultHelper.setString(string: firebaseToken)

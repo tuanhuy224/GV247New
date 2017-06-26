@@ -134,3 +134,6 @@ Statistic = "Thống kê";
 TotalEarnings = "Tổng thu nhập";
 Update = "Cập nhật";
 TimeoutExpiredPleaseLoginAgain = "Phiên làm việc đã hết, vui lòng đăng nhập lại";
+report = "Báo cáo chủ nhà";
+comment = "Nhận xét";
+nocomment = "Không có nhận xét";

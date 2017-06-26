@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,14 +59,14 @@
                             <constraint firstAttribute="height" constant="15" id="sjr-Vd-5Df"/>
                         </constraints>
                     </button>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1W-je-GGi">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1W-je-GGi">
                         <rect key="frame" x="0.0" y="72" width="320" height="20"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="F0M-BR-8OP"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNG-4w-hDp">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNG-4w-hDp">
                         <rect key="frame" x="8" y="96" width="304" height="26"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                         <state key="normal" title="Logout">
@@ -104,6 +105,7 @@
                     <constraint firstItem="T1W-je-GGi" firstAttribute="leading" secondItem="XL0-vm-Mli" secondAttribute="leading" id="fb6-6V-AKM"/>
                     <constraint firstItem="sNG-4w-hDp" firstAttribute="leading" secondItem="7nH-cR-jDt" secondAttribute="leading" id="gsw-Oz-oUX"/>
                     <constraint firstItem="emd-uu-un2" firstAttribute="leading" secondItem="XL0-vm-Mli" secondAttribute="leading" id="iXc-LC-wsW"/>
+                    <constraint firstItem="T1W-je-GGi" firstAttribute="top" secondItem="7nH-cR-jDt" secondAttribute="bottom" constant="12" id="kto-T7-Zqt"/>
                     <constraint firstItem="emd-uu-un2" firstAttribute="top" secondItem="nrN-Nl-HVS" secondAttribute="bottom" constant="8" id="sUI-hY-pY2"/>
                     <constraint firstItem="2Sh-ra-pAm" firstAttribute="top" secondItem="emd-uu-un2" secondAttribute="bottom" constant="6.5" id="yMF-qC-uIv"/>
                 </constraints>
