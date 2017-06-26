@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import IoniconsSwift
+import Alamofire
 
 class ReportController: BaseViewController {
     @IBOutlet weak var imageProfile: UIImageView!
@@ -39,17 +40,43 @@ class ReportController: BaseViewController {
         imageProfile.kf.setImage(with: imag)
         let button = UIButton(type: .custom)
         button.setTitle("send".localize, for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.setTitleColor(UIColor.colorWithRedValue(redValue: 90, greenValue: 186, blueValue: 189, alpha: 1), for: UIControlState.normal)
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         button.addTarget(self, action: #selector(ReportController.addTapped), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     func addTapped() {
-        
+        sendReport()
+    }
+    
+    func sendReport(){
+        var params:[String:Any] = [:]
+        if let content = tfReport.text, !content.isEmpty {
+            if let toID = work.stakeholders?.owner?.id {
+                params["toId"] = "\(toID)"
+                params["content"] = content
+                let header: HTTPHeaders = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)", "Content-Type":"application/x-www-form-urlencoded"]
+                APIService.shared.postReserve(url: APIPaths().urlSendReport(), method: HTTPMethod.post, parameters: params, header: header, completion: { (data, message) in
+                    if message! == "SUCCESS" {
+                        self.showAlert(isSuccess: true)
+                    }else {
+                        self.showAlert(isSuccess: false)
+                    }
+                })
+            }
+        }else {
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "Announcement".localize, message: "Please enter your feedback", buttonTitle: "OK")
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func showAlert(isSuccess: Bool) {
+        let message = (isSuccess == true) ? "SendReportSuccess".localize : "SendReportFailure".localize
+        let alertController = UIAlertController(title: "Announcement".localize, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alertAction) in
+            if isSuccess == true {self.navigationController?.popViewController(animated: true)}
+        })
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }

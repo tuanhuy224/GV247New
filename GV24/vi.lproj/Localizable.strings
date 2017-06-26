@@ -134,3 +134,5 @@ Statistic = "Thống kê";
 TotalEarnings = "Tổng thu nhập";
 Update = "Cập nhật";
 TimeoutExpiredPleaseLoginAgain = "Phiên làm việc đã hết, vui lòng đăng nhập lại";
+SendReportSuccess = "Gửi phản hồi thành công";
+SendReportFailure = "Gửi phản hồi thất bại";

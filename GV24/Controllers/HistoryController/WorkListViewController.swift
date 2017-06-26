@@ -124,6 +124,7 @@ class WorkListViewController: BaseViewController {
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
             cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
             cell.lbDist.text = "CompletedWork".localize
+            
         }
     }
     
