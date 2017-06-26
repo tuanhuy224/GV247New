@@ -113,10 +113,9 @@ class HistoryViewController: BaseViewController {
             cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
             cell.lbDeadline.isHidden = true
         }
-<<<<<<< HEAD
+
         cell.lbDeadline.isHidden = true
-=======
->>>>>>> origin/bridge
+
         cell.workNameLabel.text = work.info?.title
         let startAt = work.workTime?.startAt
         let startAtString = String(describing: startAt!)
@@ -148,12 +147,9 @@ extension HistoryViewController:UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
-<<<<<<< HEAD
         let backItem = UIBarButtonItem()
         backItem.title = "Back".localize
         navigationItem.backBarButtonItem = backItem
-=======
->>>>>>> origin/bridge
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
