@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import IoniconsSwift
+import Alamofire
 
 class ReportController: BaseViewController {
     @IBOutlet weak var imageProfile: UIImageView!
@@ -37,19 +38,17 @@ class ReportController: BaseViewController {
         addressProfile.text = work.stakeholders?.owner?.address?.name
         let imag = URL(string: (work.stakeholders?.owner?.image)!)
         imageProfile.kf.setImage(with: imag)
-        let button = UIButton(type: .custom)
-        button.setTitle("send".localize, for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        button.addTarget(self, action: #selector(ReportController.addTapped), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send".localize, style: .plain, target: self, action: #selector(ReportController.addTapped))
     }
     func addTapped() {
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let headers:HTTPHeaders = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let param:Parameters = ["toId":"\(work.stakeholders!.owner!.id!)","content":tfReport.text]
+        let apiClient = APIService.shared
+            apiClient.postReserve(url: APIPaths().maidReport(), method: .post, parameters: param, header: headers) { (json, message) in
+                if message == "SUCCESS"{
+                    AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "ok", message: "da gui")
+                }
+        }
     }
 
 }
