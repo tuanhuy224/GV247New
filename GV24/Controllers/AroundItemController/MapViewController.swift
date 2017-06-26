@@ -10,22 +10,25 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import IoniconsSwift
+import Alamofire
 
-class MapViewController: BaseViewController,UISearchDisplayDelegate {
+class MapViewController: BaseViewController {
     @IBOutlet weak var findMe: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var lbAddress: UILabel!
+    var resultsArray = [String]()
     var locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
+    var currentLocation: CLLocationCoordinate2D?
     var zoomLevel: Float = 15.0
     var placesClient: GMSPlacesClient!
     var didFindMyLocation = false
     var likelyPlaces: [GMSPlace] = []
     var selectedPlace: GMSPlace?
-    var resultsViewController: GMSAutocompleteResultsViewController?
+    lazy var geocoder = CLGeocoder()
     var searchController: UISearchController?
     var resultView: UITextView?
     var arrays = [Around]()
+    var arrayMap = [Around]()
     @IBAction func findMeAction(_ sender: Any) {
        
     }
@@ -52,9 +55,9 @@ class MapViewController: BaseViewController,UISearchDisplayDelegate {
         placesClient = GMSPlacesClient.shared()
     }
     func configurationSearchBar() {
-        resultsViewController = GMSAutocompleteResultsViewController()
-        searchController = UISearchController(searchResultsController: resultsViewController)
-        searchController?.searchResultsUpdater = resultsViewController
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.searchBar.delegate = self
+        searchController?.searchBar.placeholder = "search".localize
         let subView = UIView(frame: CGRect(x: 0, y: 64.0, width:UIScreen.main.bounds.width, height: 45.0))
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
@@ -69,35 +72,39 @@ class MapViewController: BaseViewController,UISearchDisplayDelegate {
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.addTarget(self, action: #selector(MapViewController.addTapped), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        
     }
-    // Populate the array with the list of likely places.
-    func listLikelyPlaces() {
-        likelyPlaces.removeAll()
-        placesClient.currentPlace(callback: { (placeLikelihoods, error) -> Void in
-            if let error = error {
-                print("Current Place error: \(error.localizedDescription)")
-                return
-            }
-            if let likelihoodList = placeLikelihoods {
-                for likelihood in likelihoodList.likelihoods {
-                    let place = likelihood.place
-                    self.likelyPlaces.append(place)
+    func loadData(lng:Double,lat:Double) {
+        let apiService = APIService.shared
+        let param:[String:Double] = ["lng": lng,"lat": lat]
+        apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
+            if let jsonArray = json?.array{
+                for data in jsonArray{
+                    self.arrayMap.append(Around(json: data))
                 }
             }
-        })
+        }
+    }
+    func handle(location : CLLocationCoordinate2D){
+        self.hideKeyboard()
+        self.mapView.animate(toLocation: location)
+        self.currentLocation = location
+        loadData(lng: location.longitude, lat: location.latitude)
     }
     // MARK: button filter longtitude and latitude
     func addTapped() {
         let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
-        around.arrays = arrays
+        around.arrays = arrayMap
         navigationController?.pushViewController(around, animated: true)
+    }
+    func hideKeyboard(){
+        self.view.endEditing(true)
     }
 }
 extension MapViewController: CLLocationManagerDelegate {
     // MARK: - Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
-        print("Location: \(location)")
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,longitude: location.coordinate.longitude,zoom: zoomLevel)
         if mapView.isHidden {
             mapView.isHidden = false
@@ -105,7 +112,6 @@ extension MapViewController: CLLocationManagerDelegate {
         }else{
             mapView.animate(to: camera)
         }
-        listLikelyPlaces()
     }
     // MARK: - Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -129,8 +135,34 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController:GMSMapViewDelegate{
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+    //MARK: GMSMapViewDelegate Implimentation.
+    internal func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D){
+        plotMarker(AtCoordinate: CLLocationCoordinate2D.init(latitude: coordinate.latitude, longitude: coordinate.longitude),onMapView: mapView)
+    }
+    //MARK: Plot Marker Helper
+    private func plotMarker(AtCoordinate coordinate : CLLocationCoordinate2D, onMapView vwMap : GMSMapView) -> Void{
+        mapView.clear()
+        let marker = GMSMarker(position: coordinate)
+        marker.map = vwMap
+    }
+}
+extension MapViewController:UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        hideKeyboard()
+        let text = searchBar.text!
+        geocoder.geocodeAddressString(text) { (placeMarks, error) in
+            if error == nil{
+                if (placeMarks?.count)! > 0{
+                    let firstLocation = placeMarks?.first?.location
+                    self.handle(location: (firstLocation?.coordinate)!)
+                }
+                else{
+                    print("không tìm thấy địa điểm")
+                }
+            }else{
+                print(error?.localizedDescription as Any)
+            }
+        }
     }
 }
 

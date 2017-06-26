@@ -20,6 +20,7 @@ class WorkAround: xibView {
     @IBOutlet weak var sliderMax: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        space.text = "distance".localize
         minDictance.text = "\(0)km"
         maxDictance.text = "\(10)km"
         sliderMax.text = "\(2)km"

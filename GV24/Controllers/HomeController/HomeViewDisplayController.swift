@@ -36,7 +36,7 @@ class HomeViewDisplayController: BaseViewController {
             buttonTest(button: manageButton, imageName: "quanlyconviec")
             buttonTest(button: historyButton, imageName: "lichsu")
         lbLogo.textColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        loadData()
+        //loadData()
     }
     override func setupViewBase() {
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
@@ -46,9 +46,9 @@ class HomeViewDisplayController: BaseViewController {
         lbAround.text = "Around".localize
         lbManage.text = "Taskmanagement".localize
         lbHistory.text = "Taskhistory".localize
-        lbHistory.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbManage.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbAround.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbHistory.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbManage.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbAround.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
     }
     func loadData() {
         let apiService = APIService.shared

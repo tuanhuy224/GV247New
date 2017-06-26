@@ -117,6 +117,8 @@
 		005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */; };
 		005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DDE1EF136AF00FA76FB /* CancelCell.swift */; };
 		005A4DE11EF136AF00FA76FB /* CancelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDF1EF136AF00FA76FB /* CancelCell.xib */; };
+		006BD3A61F00A0C8002867EC /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006BD3A41F00A0C8002867EC /* ReportController.swift */; };
+		006BD3A71F00A0C8002867EC /* ReportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006BD3A51F00A0C8002867EC /* ReportController.xib */; };
 		009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76D31EEE8B250021BFB0 /* Enum.swift */; };
 		009A76DC1EEE8EF90021BFB0 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */; };
 		009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DF1EEE8F480021BFB0 /* APIServices.swift */; };
@@ -331,6 +333,8 @@
 		005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforOwnerCell.xib; sourceTree = "<group>"; };
 		005A4DDE1EF136AF00FA76FB /* CancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelCell.swift; sourceTree = "<group>"; };
 		005A4DDF1EF136AF00FA76FB /* CancelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelCell.xib; sourceTree = "<group>"; };
+		006BD3A41F00A0C8002867EC /* ReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
+		006BD3A51F00A0C8002867EC /* ReportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportController.xib; sourceTree = "<group>"; };
 		009A76D31EEE8B250021BFB0 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
 		009A76DF1EEE8F480021BFB0 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
@@ -848,6 +852,8 @@
 			children = (
 				00EDD4991EF02D660098F505 /* DetailManagementController.swift */,
 				00EDD49A1EF02D660098F505 /* DetailManagementController.xib */,
+				006BD3A41F00A0C8002867EC /* ReportController.swift */,
+				006BD3A51F00A0C8002867EC /* ReportController.xib */,
 			);
 			path = DetailManagerController;
 			sourceTree = "<group>";
@@ -1240,6 +1246,7 @@
 				004467AF1EEF82D900DDD0ED /* PendingController.xib in Resources */,
 				003B346C1EFB7419004FA591 /* ConstactViewController.xib in Resources */,
 				00CC0D411EEE3F72002D24D4 /* ManagerHistoryViewController.xib in Resources */,
+				006BD3A71F00A0C8002867EC /* ReportController.xib in Resources */,
 				0045081B1EFCF02100402986 /* StatisticViewController.xib in Resources */,
 				0027152E1EE7AFAB006E6671 /* AroundItemController.xib in Resources */,
 				002BA0FB1EDD25400099352D /* MoreViewController.xib in Resources */,
@@ -1528,6 +1535,7 @@
 				842FEC6A1ED40C6900000606 /* AppDelegate.swift in Sources */,
 				00EB19581EE93EF5003B2C5D /* Dist.swift in Sources */,
 				002BA1031EDD26090099352D /* MoreCell.swift in Sources */,
+				006BD3A61F00A0C8002867EC /* ReportController.swift in Sources */,
 				009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */,
 				002572411EDE648800AACC52 /* LanguageViewController.swift in Sources */,
 				002BA1071EDD52F60099352D /* NotifiCell.swift in Sources */,

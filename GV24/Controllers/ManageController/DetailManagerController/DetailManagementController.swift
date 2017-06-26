@@ -11,12 +11,16 @@ import UIKit
 class DetailManagementController: BaseViewController {
     var workPending:Work?
     @IBOutlet weak var detailManager: UITableView!
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
         detailManager.register(UINib(nibName:NibInforCell,bundle:nil), forCellReuseIdentifier: inforCellID)
         detailManager.register(UINib(nibName:NibInforOwnerCell,bundle:nil), forCellReuseIdentifier: InforOwnerCellID)
         detailManager.allowsSelection = false
         detailManager.separatorStyle = .none
+    }
+    override func setupViewBase() {
+        super.setupViewBase()
+        self.navigationItem.title = "Information".localize
     }
     // Mark: - custom cell for detail management
     func InforCellConfigure(cell:InforCell){
@@ -47,6 +51,7 @@ extension DetailManagementController:UITableViewDataSource{
             return cell
         }else{
             let cell:InforOwnerCell = detailManager.dequeueReusableCell(withIdentifier: InforOwnerCellID, for: indexPath) as! InforOwnerCell
+            cell.delegate = self
             return cell
         }
     }
@@ -59,5 +64,12 @@ extension DetailManagementController:UITableViewDelegate{
         }else{
             return 246
         }
+    }
+}
+extension DetailManagementController:ReportDelegate{
+    func report() {
+        let navi = ReportController(nibName: "ReportController", bundle: nil)
+        navi.work = workPending!
+        navigationController?.pushViewController(navi, animated: true)
     }
 }
