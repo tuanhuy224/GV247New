@@ -50,6 +50,7 @@ search = "Tìm kiếm";
 Information = "Thông tin";
 Feedback = "Báo cáo người giúp việc";
 Login = "Đăng nhập";
+distance = "Khoảng cách";
 Username = "Tên đăng nhập";
 Forgotpassword = "Quên mật khẩu?";
 Signupnow = "Đăng kí ngay";
