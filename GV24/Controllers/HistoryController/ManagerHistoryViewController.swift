@@ -20,6 +20,7 @@ class ManagerHistoryViewController: BaseViewController {
     var fromDate: Date? = nil
     var toDate: Date = Date()
     var currentSelectedIndex: Int = 0
+    var isFirstTime: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,10 @@ class ManagerHistoryViewController: BaseViewController {
     }
     
     func doSwipeTab(gesture: UISwipeGestureRecognizer) {
+        if isFirstTime == true {
+            setupOwnerHistory()
+            isFirstTime = false
+        }
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.right:
             self.segmentControl.selectedSegmentIndex = 0
@@ -77,34 +82,32 @@ class ManagerHistoryViewController: BaseViewController {
     
     func setupContainerView() {
         workListVC = HistoryViewController()
-        ownerListVC = OwnerHistoryViewController()
-        
         workListVC?.view.frame = containerView.frame
-        ownerListVC?.view.frame = containerView.frame
-        
         containerView.addSubview((workListVC?.view)!)
-        containerView.addSubview((ownerListVC?.view)!)
-        
         workListVC?.view.tag = 0
+    }
+    func setupOwnerHistory() {
+        ownerListVC = OwnerHistoryViewController()
+        ownerListVC?.view.frame = containerView.frame
+        containerView.addSubview((ownerListVC?.view)!)
         ownerListVC?.view.tag = 1
+        setupConstraint(vc: ownerListVC!)
+        ownerListVC?.view.isHidden = true
+        
+        ownerListVC?.myParent = self
+    }
+    func setupConstraint(vc: BaseViewController) {
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        vc.view.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 0).isActive = true
+        vc.view.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 0).isActive = true
+        vc.view.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: 0).isActive = true
+        vc.view.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: 0).isActive = true
     }
     
     func setupConstrains() {
-        workListVC?.view.translatesAutoresizingMaskIntoConstraints = false
-        workListVC?.view.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 0).isActive = true
-        workListVC?.view.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 0).isActive = true
-        workListVC?.view.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: 0).isActive = true
-        workListVC?.view.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: 0).isActive = true
-        
-        ownerListVC?.view.translatesAutoresizingMaskIntoConstraints = false
-        ownerListVC?.view.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 0).isActive = true
-        ownerListVC?.view.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 0).isActive = true
-        ownerListVC?.view.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: 0).isActive = true
-        ownerListVC?.view.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: 0).isActive = true
-        
-        ownerListVC?.view.isHidden = true
+        setupConstraint(vc: workListVC!)
         workListVC?.myParent = self
-        ownerListVC?.myParent = self
+        
         toDateButton.setTitle(String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
     }
     
@@ -115,6 +118,10 @@ class ManagerHistoryViewController: BaseViewController {
     
     @IBAction func doValueChanged(_ sender: UISegmentedControl) {
         print("selected : \(sender.selectedSegmentIndex)")
+        if isFirstTime == true {
+            setupOwnerHistory()
+            isFirstTime = false
+        }
         if sender.selectedSegmentIndex == 1 {
             workListVC?.view.isHidden = true
             ownerListVC?.view.isHidden = false

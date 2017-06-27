@@ -71,6 +71,8 @@ class OwnerHistoryViewController: BaseViewController {
      params: startAt, endAt
      */
     func getOwnerList(startAt: Date?, endAt: Date) {
+        self.ownerList.removeAll()
+        self.tableView.reloadData()
         self.tableView.backgroundView = self.activityIndicatorView
         self.activityIndicatorView.startAnimating()
         var params: [String: Any] = [:]
@@ -80,10 +82,10 @@ class OwnerHistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         let headers: HTTPHeaders = ["hbbgvauth": UserDefaultHelper.getToken()!]
         OwnerServices.sharedInstance.getOwnersList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, err) in
-            if (NetworkStatus.sharedInstance.reachabilityManager?.isReachableOnEthernetOrWiFi)! {
+            if (self.net?.isReachable)! {
                 switch err {
                 case .Success:
-                    self.ownerList.append(contentsOf: data!)
+                    self.ownerList = data!
                     self.tableView.backgroundView?.isHidden = true
                     break
                 case .EmptyData:

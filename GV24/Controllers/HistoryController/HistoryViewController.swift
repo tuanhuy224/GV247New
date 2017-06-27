@@ -84,10 +84,14 @@ class HistoryViewController: BaseViewController {
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
-            if (NetworkStatus.sharedInstance.reachabilityManager?.isReachableOnEthernetOrWiFi)! {
+            if (self.net?.isReachable)! {
                 switch err{
                 case .Success:
-                    self.workList.append(contentsOf: data!)
+                    if self.page != 1{
+                        self.workList.append(contentsOf: data!)
+                    }else {
+                        self.workList = data!
+                    }
                     self.historyTableView.backgroundView?.isHidden = true
                     break
                 case .EmptyData:

@@ -70,7 +70,7 @@ class StatisticViewController: BaseViewController {
         let headers:HTTPHeaders = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
         apiClient.getOwner(url: APIPaths().urlStatistic(), param: [:], header: headers) { (json, error) in
-            if (NetworkStatus.sharedInstance.reachabilityManager?.isReachableOnEthernetOrWiFi)! {
+            if (self.net?.isReachable)! {
                 if json != nil {
                     DispatchQueue.main.async {
                         self.task = [Statistic(json: json!)]
@@ -134,7 +134,7 @@ extension StatisticViewController:UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = InformationViewController()
+        //let vc = InformationViewController()
         //_ = navigationController?.pushViewController(vc, animated: true)
     }
 }

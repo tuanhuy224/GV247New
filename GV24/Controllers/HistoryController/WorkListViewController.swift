@@ -90,7 +90,7 @@ class WorkListViewController: BaseViewController {
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetTaskOfOwner(), param: params, header: headers) { (data, error) in
-            if (NetworkStatus.sharedInstance.reachabilityManager?.isReachableOnEthernetOrWiFi)! {
+            if (self.net?.isReachable)! {
                 switch error {
                 case .Success:
                     self.list.append(contentsOf: data!)
