@@ -223,10 +223,6 @@ class APIService: NSObject {
             switch response.result{
             case .success(let value):
                 let json = JSON(value)
-//                guard let results = json["results"].array else{return}
-//                guard let geometry = results[0]["geometry"].dictionary else{return}
-//                guard let location = geometry["location"]?.dictionary else{return}
-//                guard let lat = location["lat"], let lng = location["lng"] else{return}
                 completion(json["results"], nil)
                 
             case .failure(let error):

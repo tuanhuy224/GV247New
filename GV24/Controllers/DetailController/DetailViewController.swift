@@ -61,6 +61,7 @@ extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
+            cell.topBtChoose.constant = 10
             cell.ownerDelegate = self
             cell.delegateWork = self
             cell.constraintHeightButtonChoose.constant = 28
