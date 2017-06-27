@@ -65,7 +65,7 @@ class WorkListViewController: BaseViewController {
     }
     
     fileprivate func setTableViewMessage(result:ResultStatus) {
-        self.emptyLabel.text = result.rawValue
+        self.emptyLabel.text = result.rawValue.localize
         self.tableView.backgroundView = self.emptyLabel
         self.tableView.separatorStyle = .none
     }
@@ -100,6 +100,8 @@ class WorkListViewController: BaseViewController {
                     self.activityIndicatorView.stopAnimating()
                     self.tableView.reloadData()
                 }
+            }else {
+                self.setTableViewMessage(result: ResultStatus.LostInternet)
             }
         }
     }
