@@ -89,12 +89,12 @@ class MapViewController: BaseViewController {
         self.hideKeyboard()
         self.mapView.animate(toLocation: location)
         self.currentLocation = location
-        loadData(lng: location.longitude, lat: location.latitude)
+        
     }
     // MARK: button filter longtitude and latitude
     func addTapped() {
         let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
-        around.arrays = arrayMap
+        around.currentLocation = currentLocation
         navigationController?.pushViewController(around, animated: true)
     }
     func hideKeyboard(){
@@ -153,10 +153,12 @@ extension MapViewController:UISearchBarDelegate{
         geocoder.geocodeAddressString(text) { (placeMarks, error) in
             if error == nil{
                 if (placeMarks?.count)! > 0{
-                    let firstLocation = placeMarks?.first?.location
-                    self.handle(location: (firstLocation?.coordinate)!)
-                }
-                else{
+                    guard let firstLocation = placeMarks?.first?.location else{return}
+                    self.handle(location: firstLocation.coordinate)
+                    let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
+                    around.currentLocation = firstLocation.coordinate
+                    self.navigationController?.pushViewController(around, animated: true)
+                }else{
                     print("không tìm thấy địa điểm")
                 }
             }else{
@@ -164,5 +166,6 @@ extension MapViewController:UISearchBarDelegate{
             }
         }
     }
+
 }
 

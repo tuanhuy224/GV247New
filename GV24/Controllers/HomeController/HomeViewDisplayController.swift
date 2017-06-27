@@ -29,7 +29,7 @@ class HomeViewDisplayController: BaseViewController {
         super.viewDidLoad()
         print(UserDefaultHelper.getToken()!)
         self.customBarRightButton()
-        self.title = "Home".localize
+        
     }
     override func decorate() {
             buttonTest(button: workAround, imageName: "quanhday")
@@ -39,6 +39,8 @@ class HomeViewDisplayController: BaseViewController {
         //loadData()
     }
     override func setupViewBase() {
+        super.setupViewBase()
+        self.title = "Home".localize
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
         if lang.languageCode == "en" {
             lbLogo.text = "TrustQuality".localize
