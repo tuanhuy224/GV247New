@@ -13,6 +13,9 @@
         <array key="SFUIText-Light.ttf">
             <string>SFUIText-Light</string>
         </array>
+        <array key="SFUIText-Medium.ttf">
+            <string>SFUIText-Medium</string>
+        </array>
         <array key="SFUIText-Regular.ttf">
             <string>SFUIText-Regular</string>
         </array>
@@ -126,14 +129,14 @@
                             <color key="textColor" red="0.8038416505" green="0.80397754909999997" blue="0.80382376909999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_ _ _ _" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYd-B2-d2Y">
-                            <rect key="frame" x="143" y="116" width="89.5" height="44.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 triệu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYd-B2-d2Y">
+                            <rect key="frame" x="112" y="114" width="151.5" height="48"/>
+                            <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="40"/>
                             <color key="textColor" red="0.19911524653434753" green="0.774649977684021" blue="0.79656499624252319" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09j-YP-eBy">
-                            <rect key="frame" x="170.5" y="185.5" width="35.5" height="21"/>
+                            <rect key="frame" x="170.5" y="187" width="35.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.80384165048599243" green="0.80397754907608032" blue="0.80382376909255981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -142,25 +145,25 @@
                             <rect key="frame" x="0.0" y="252" width="375" height="100"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsG-la-JJw">
-                                    <rect key="frame" x="1" y="10" width="125" height="30"/>
-                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="25"/>
+                                    <rect key="frame" x="1" y="10" width="125" height="42"/>
+                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="35"/>
                                     <color key="textColor" red="0.99215686274509807" green="0.74509803921568629" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bv-pH-8Rs">
-                                    <rect key="frame" x="125" y="10" width="125" height="30"/>
-                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="25"/>
+                                    <rect key="frame" x="125" y="10" width="125" height="42"/>
+                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="35"/>
                                     <color key="textColor" red="0.3411764705882353" green="0.72941176470588232" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntt-fm-VhR">
-                                    <rect key="frame" x="250" y="10" width="125" height="30"/>
-                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="25"/>
+                                    <rect key="frame" x="250" y="10" width="125" height="42"/>
+                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="35"/>
                                     <color key="textColor" red="0.20392156862745098" green="0.63137254901960782" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHv-hA-6Bz">
-                                    <rect key="frame" x="125" y="41" width="1" height="62"/>
+                                    <rect key="frame" x="125" y="53" width="1" height="62"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="62" id="LEQ-h7-99s"/>
@@ -168,7 +171,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgC-zo-dpv">
-                                    <rect key="frame" x="249" y="40" width="1" height="63"/>
+                                    <rect key="frame" x="249" y="52" width="1" height="63"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="63" id="QeH-j4-hLU"/>
@@ -176,7 +179,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Công việc đang chờ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MwZ-FQ-FRi">
-                                    <rect key="frame" x="13.5" y="54.5" width="100" height="38.5"/>
+                                    <rect key="frame" x="13.5" y="66.5" width="100" height="38.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="Syy-nW-ta2"/>
                                     </constraints>
@@ -185,7 +188,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Công việc đang chờ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIc-xl-PQb">
-                                    <rect key="frame" x="137" y="54.5" width="100" height="38.5"/>
+                                    <rect key="frame" x="137" y="66.5" width="100" height="38.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="KAb-up-TtK"/>
                                     </constraints>
@@ -194,7 +197,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Công việc hoàn thành" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uny-2s-EvG">
-                                    <rect key="frame" x="262" y="54.5" width="100" height="38.5"/>
+                                    <rect key="frame" x="262" y="66.5" width="100" height="38.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="RrO-6m-rzy"/>
                                     </constraints>
