@@ -103,7 +103,7 @@ class OwnerHistoryViewController: BaseViewController {
     }
     
     func doEmptyData() {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y - 100, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
         self.tableView.backgroundView = emptyView
         self.tableView.backgroundView?.isHidden = false
     }

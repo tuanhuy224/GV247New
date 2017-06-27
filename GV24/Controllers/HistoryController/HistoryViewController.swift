@@ -107,7 +107,7 @@ class HistoryViewController: BaseViewController {
     }
     
     func doEmptyData() {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.historyTableView.center.x, y: self.historyTableView.center.y, width: self.historyTableView.frame.size.width, height: self.historyTableView.frame.size.height))
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.historyTableView.center.x, y: self.historyTableView.center.y - 100, width: self.historyTableView.frame.size.width, height: self.historyTableView.frame.size.height))
         self.historyTableView.backgroundView = emptyView
         self.historyTableView.backgroundView?.isHidden = false
     }

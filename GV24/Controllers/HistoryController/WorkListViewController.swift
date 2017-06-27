@@ -65,9 +65,14 @@ class WorkListViewController: BaseViewController {
     }
     
     fileprivate func setTableViewMessage(result:ResultStatus) {
-        self.emptyLabel.text = result.rawValue.localize
-        self.tableView.backgroundView = self.emptyLabel
-        self.tableView.separatorStyle = .none
+        if result == .EmptyData {
+            let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y - 100, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
+            self.tableView.backgroundView = emptyView
+        }else {
+            self.emptyLabel.text = result.rawValue.localize
+            self.tableView.backgroundView = self.emptyLabel
+            self.tableView.separatorStyle = .none
+        }
     }
     
     /*  GET: /maid/getTaskOfOwner owner: ownerId

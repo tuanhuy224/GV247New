@@ -139,3 +139,4 @@ report = "Report";
 comment = "Comment";
 nocomment = "There are no comments";
 NetworkIsLost = "No internet connection!";
+SoonUpdate = "Soon update!";

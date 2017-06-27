@@ -28,6 +28,12 @@ class TableViewHelper: NSObject {
         imgView.frame = CGRect(x: frame.origin.x - 35, y: frame.origin.y - 60, width: 70, height: 100)
         let view = UIView(frame: frame)
         view.addSubview(imgView)
+        let text = UILabel()
+        text.text = "SoonUpdate".localize
+        text.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        text.frame = CGRect(x: frame.origin.x - 35 - 15, y: frame.origin.y - 60 + 100, width: 70, height: 100)
+        view.addSubview(text)
+        text.sizeToFit()
         return view
     }
 }

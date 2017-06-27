@@ -140,3 +140,4 @@ report = "Báo cáo chủ nhà";
 comment = "Nhận xét";
 nocomment = "Không có nhận xét";
 NetworkIsLost = "Không có kết nối internet!";
+SoonUpdate = "Đang cập nhật!";
