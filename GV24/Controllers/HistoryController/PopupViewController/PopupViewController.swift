@@ -39,6 +39,8 @@ class PopupViewController: BaseViewController {
         containerView.layer.shadowOpacity = 0.7
         cancelButton.setTitle("Cancel".localize, for: .normal)
         selectButton.setTitle("Select".localize, for: .normal)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancel(_:)))
+        effectView.addGestureRecognizer(tapGesture)
     }
     
     @IBAction func selectDate(_ sender: Any) {

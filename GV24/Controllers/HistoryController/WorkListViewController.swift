@@ -83,22 +83,50 @@ class WorkListViewController: BaseViewController {
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetTaskOfOwner(), param: params, header: headers) { (data, error) in
-            switch error {
-            case .Success:
-                self.list.append(contentsOf: data!)
-                self.tableView.separatorStyle = .singleLine
-                break
-            case .EmptyData:
-                self.setTableViewMessage(result: .EmptyData)
-                break
-            default:
-                self.setTableViewMessage(result: .Unauthorize)
-                break
+            if (NetworkStatus.sharedInstance.reachabilityManager?.isReachableOnEthernetOrWiFi)! {
+                switch error {
+                case .Success:
+                    self.list.append(contentsOf: data!)
+                    self.tableView.separatorStyle = .singleLine
+                    break
+                case .EmptyData:
+                    //self.setTableViewMessage(result: .EmptyData)
+                    self.doEmptyData()
+                    break
+                default:
+                    //self.setTableViewMessage(result: .Unauthorize)
+                    self.doTimeoutExpired()
+                    break
+                }
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                    self.tableView.reloadData()
+                }
+            }else {
+                self.doNetworkIsDisconnected()
             }
-            DispatchQueue.main.async {
-                self.activityIndicatorView.stopAnimating()
-                self.tableView.reloadData()
-            }
+        }
+    }
+    
+    func doEmptyData() {
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
+        self.tableView.backgroundView = emptyView
+        self.tableView.backgroundView?.isHidden = false
+    }
+    
+    func doTimeoutExpired() {
+        self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
+        self.tableView.backgroundView = self.emptyLabel
+        self.tableView.backgroundView?.isHidden = false
+    }
+    
+    func doNetworkIsDisconnected() {
+        self.emptyLabel.text = "NetworkIsLost".localize
+        self.tableView.backgroundView = self.emptyLabel
+        self.tableView.backgroundView?.isHidden = false
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.tableView.reloadData()
         }
     }
     

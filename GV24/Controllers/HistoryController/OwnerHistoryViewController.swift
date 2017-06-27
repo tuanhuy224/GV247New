@@ -79,25 +79,48 @@ class OwnerHistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         let headers: HTTPHeaders = ["hbbgvauth": UserDefaultHelper.getToken()!]
         OwnerServices.sharedInstance.getOwnersList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, err) in
-            switch err {
-            case .Success:
-                self.ownerList.append(contentsOf: data!)
-                self.tableView.backgroundView?.isHidden = true
-                break
-            case .EmptyData:
-                let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
-                self.tableView.backgroundView = emptyView
-                self.tableView.backgroundView?.isHidden = false
-                break
-            default:
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "unauthorized"), object: nil)
-                self.tableView.backgroundView?.isHidden = true
-                break
+            if (NetworkStatus.sharedInstance.reachabilityManager?.isReachableOnEthernetOrWiFi)! {
+                switch err {
+                case .Success:
+                    self.ownerList.append(contentsOf: data!)
+                    self.tableView.backgroundView?.isHidden = true
+                    break
+                case .EmptyData:
+                    self.doEmptyData()
+                    break
+                default:
+                    self.doTimeoutExpired()
+                    break
+                }
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                    self.tableView.reloadData()
+                }
+            }else {
+                self.doNetworkIsDisconnected()
             }
-            DispatchQueue.main.async {
-                self.activityIndicatorView.stopAnimating()
-                self.tableView.reloadData()
-            }
+        }
+    }
+    
+    func doEmptyData() {
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
+        self.tableView.backgroundView = emptyView
+        self.tableView.backgroundView?.isHidden = false
+    }
+    
+    func doTimeoutExpired() {
+        self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
+        self.tableView.backgroundView = self.emptyLabel
+        self.tableView.backgroundView?.isHidden = false
+    }
+    
+    func doNetworkIsDisconnected() {
+        self.emptyLabel.text = "NetworkIsLost".localize
+        self.tableView.backgroundView = self.emptyLabel
+        self.tableView.backgroundView?.isHidden = false
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.tableView.reloadData()
         }
     }
     
@@ -119,9 +142,6 @@ class OwnerHistoryViewController: BaseViewController {
     @objc fileprivate func btnClicked(sender: UIButton) {
         let vc = WorkListViewController()
         vc.owner = ownerList[sender.tag]
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back".localize
-        navigationItem.backBarButtonItem = backItem
         myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -142,9 +162,9 @@ extension OwnerHistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = InformationViewController()
+        let vc = DetailManagementController()
         let owner = ownerList[indexPath.item]
-        vc.user = owner.convertToUser()
+        vc.workPending = owner.convertToWork(owner: owner)
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }

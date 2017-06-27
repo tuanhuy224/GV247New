@@ -28,10 +28,10 @@ class ManagerHistoryViewController: BaseViewController {
         setupConstrains()
         setupSegmentTitle()
         addSwipeGesture()
-        NotificationCenter.default.addObserver(self, selector: #selector(showAlert(notification:)), name: NSNotification.Name.init("unauthorized"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showAlertTimeoutExpiredPleaseLoginAgain(notification:)), name: NSNotification.Name.init("unauthorized"), object: nil)
     }
     
-    func showAlert(notification: Notification) {
+    func showAlertTimeoutExpiredPleaseLoginAgain(notification: Notification) {
         let alertController = UIAlertController(title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize, preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (alertAction) in
             

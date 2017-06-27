@@ -52,4 +52,22 @@ class Owner: AppModel {
         user.lng = self.lngOwner
         return user
     }
+    func convertToWork(owner: Owner) -> Work?{
+        let work = Work()
+        work.id = "teste"
+        let newOwner = Owner()
+        newOwner.id = (owner.id)!
+        newOwner.gender = (owner.gender)!
+        let newAddress = Address()
+        newAddress.name = (owner.address?.name)!
+        newOwner.address = newAddress
+        newOwner.phone = (owner.phone)!
+        newOwner.image = (owner.image)!
+        newOwner.name = (owner.name)!
+        newOwner.username = (owner.username)!
+        let newStakeholder = Stakeholders()
+        work.stakeholders = newStakeholder
+        newStakeholder.owner = newOwner
+        return work
+    }
 }
