@@ -23,7 +23,6 @@ class ReportController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.setupView()
         }
-        // Do any additional setup after loading the view.
     }
     override func setupViewBase() {
         super.setupViewBase()

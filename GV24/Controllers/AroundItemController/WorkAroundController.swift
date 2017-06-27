@@ -25,6 +25,8 @@ class WorkAroundController: BaseViewController {
     var logtitude:Double?
     var lattitude:Double?
     var arrays = [Around]()
+    var googlePlace = [GooglePlace]()
+    var textLocation:String?
     var currentLocation: CLLocationCoordinate2D?
     var searchController = UISearchController(searchResultsController: nil)
     
@@ -111,15 +113,16 @@ class WorkAroundController: BaseViewController {
         //navigationController?.pushViewController(DetailViewController(), animated: true)
     }
     // Get longtitude and lattitue
-    func forwardGeocoding(address: String) {
-        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
-            if error != nil {return}
-            if (placemarks?.count)! > 0 {
-                let placemark = placemarks?[0]
-                let location = placemark?.location
-                self.currentLocation = location?.coordinate
-            }
-        })
+    func forwardGeocoding(){
+        let locationString =  textLocation!
+        APIService.shared.getLocation(url: locationString) { (json, error) in
+            //guard let results = json?["results"].array else{return}
+            guard let geometry = json?[0]["geometry"].dictionary else{return}
+            guard let location = geometry["location"]?.dictionary else{return}
+            guard let lat = location["lat"], let lng = location["lng"] else{return}
+            self.currentLocation?.latitude = lat.double!
+            self.currentLocation?.longitude = lng.double!
+        }
     }
 }
 extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
@@ -172,7 +175,12 @@ extension WorkAroundController:sendIdForViewDetailDelegate{
 extension WorkAroundController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         arrays.removeAll()
-        forwardGeocoding(address: searchText)
+        self.textLocation = searchText
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
+        forwardGeocoding()
+        dismiss(animated: true, completion: nil)
+    
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         loadData()

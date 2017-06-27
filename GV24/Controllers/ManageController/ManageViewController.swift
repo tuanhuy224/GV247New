@@ -120,7 +120,11 @@ extension ManageViewController:UITableViewDataSource{
         cell?.lbDeadline.isHidden = false
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            
+            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue {
+                cell?.lbDirect.isHidden = false
+                cell?.lbDeadline.isHidden = true
+                cell?.lbDirect.text = "Direct".localize
+            }
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"

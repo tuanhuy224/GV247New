@@ -10,6 +10,7 @@ import UIKit
 import IoniconsSwift
 
 class HistoryViewCell: CustomTableViewCell {
+    @IBOutlet weak var lbDirect: UILabel!
     @IBOutlet weak var lbDeadline: UILabel!
     @IBOutlet weak var lbTimePost: UILabel!
     @IBOutlet weak var lbDist: UILabel!
@@ -31,18 +32,23 @@ class HistoryViewCell: CustomTableViewCell {
         setupCell()
     }
     func setupCell() {
+        //255 190 65
         imageWork.layer.cornerRadius = imageWork.frame.width/2
         imageWork.clipsToBounds = true
         lbDeadline.layer.cornerRadius = 6
         lbDeadline.clipsToBounds = true
+        lbDirect.layer.cornerRadius = 6
+        lbDirect.clipsToBounds = true
         workNameLabel.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.caption2.rawValue), size: sizeEight)
         lbDeadline.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.subheadline.rawValue), size: sizeFive)
         lbDist.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         timeWork.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbTimePost.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbDeadline.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbDirect.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         createdDate.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
         lbDeadline.isHidden = true
+        lbDirect.isHidden = true
     }
 
 }

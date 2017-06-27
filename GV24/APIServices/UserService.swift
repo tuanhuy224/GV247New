@@ -17,7 +17,7 @@ class UserService: APIService {
 
     func logIn(userName : String, password: String,device_token:String, completion : @escaping ((User?, String?, String?)->())){
         let url = "https://yukotest123.herokuapp.com/vi/auth/maid/login"
-        let params : Dictionary<String, String>? = ["username": userName, "password": password,device_token:device_token]
+        let params : Dictionary<String, String>? = ["username": userName, "password": password,"device_token":device_token]
         postMultipart(url: url, image: nil, name: nil, parameters: params!) { (jsonData, error) in
             if error == nil{
                 let token = jsonData?["token"].string

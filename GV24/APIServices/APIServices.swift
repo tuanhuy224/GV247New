@@ -215,6 +215,25 @@ class APIService: NSObject {
             }
         }
     }
+    
+    func getLocation(url:String,completion:@escaping((JSON?, Error?) -> ())){
+        let mUrl = "https://maps.googleapis.com/maps/api/geocode/json"
+        let param = ["address" : url]
+        Alamofire.request(mUrl, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            switch response.result{
+            case .success(let value):
+                let json = JSON(value)
+//                guard let results = json["results"].array else{return}
+//                guard let geometry = results[0]["geometry"].dictionary else{return}
+//                guard let location = geometry["location"]?.dictionary else{return}
+//                guard let lat = location["lat"], let lng = location["lng"] else{return}
+                completion(json["results"], nil)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 class BaseService: NSObject {
     

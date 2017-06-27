@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -102,12 +102,23 @@
                             <constraint firstAttribute="height" constant="1" id="F6s-lN-Xdi"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-KN-fXs">
+                        <rect key="frame" x="277" y="6" width="90" height="20"/>
+                        <color key="backgroundColor" red="1" green="0.74509803921568629" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="AYd-WC-bcQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fze-be-NCT" firstAttribute="leading" secondItem="8EU-8A-QEv" secondAttribute="trailing" constant="15" id="01Q-e0-ORV"/>
                     <constraint firstItem="OqR-3B-X6U" firstAttribute="centerY" secondItem="dRE-zI-Q2n" secondAttribute="centerY" id="0ho-t7-6ob"/>
                     <constraint firstItem="Tv6-GD-xEs" firstAttribute="leading" secondItem="dem-v7-fdz" secondAttribute="leading" id="1AY-3c-t8B"/>
                     <constraint firstItem="dRE-zI-Q2n" firstAttribute="leading" secondItem="fze-be-NCT" secondAttribute="leading" id="1bc-Wc-s5r"/>
+                    <constraint firstAttribute="trailing" secondItem="KAo-KN-fXs" secondAttribute="trailing" constant="8" id="3Fp-DP-uLz"/>
                     <constraint firstAttribute="trailing" secondItem="Tv6-GD-xEs" secondAttribute="trailing" id="6Cu-sD-pA5"/>
                     <constraint firstItem="ADu-3e-VgC" firstAttribute="centerY" secondItem="Qj8-fR-18O" secondAttribute="centerY" id="AG0-vv-2qm"/>
                     <constraint firstItem="ADu-3e-VgC" firstAttribute="centerX" secondItem="8EU-8A-QEv" secondAttribute="centerX" constant="1.5" id="Cvg-ML-czd"/>
@@ -115,6 +126,7 @@
                     <constraint firstItem="dRE-zI-Q2n" firstAttribute="top" secondItem="fze-be-NCT" secondAttribute="bottom" constant="3" id="EJA-OH-hon"/>
                     <constraint firstItem="8EU-8A-QEv" firstAttribute="top" secondItem="dem-v7-fdz" secondAttribute="top" constant="8" id="EP4-vQ-Yzx"/>
                     <constraint firstItem="8EU-8A-QEv" firstAttribute="leading" secondItem="dem-v7-fdz" secondAttribute="leading" constant="15" id="G31-hy-vIM"/>
+                    <constraint firstItem="KAo-KN-fXs" firstAttribute="top" secondItem="dem-v7-fdz" secondAttribute="top" constant="6" id="IpN-uB-61D"/>
                     <constraint firstItem="n9a-BP-wxD" firstAttribute="baseline" secondItem="Qj8-fR-18O" secondAttribute="baseline" id="JUU-2z-IhD"/>
                     <constraint firstItem="OqR-3B-X6U" firstAttribute="top" secondItem="dem-v7-fdz" secondAttribute="topMargin" constant="20" id="MyN-lG-wAP"/>
                     <constraint firstItem="FEp-Ro-KDC" firstAttribute="leading" secondItem="OqR-3B-X6U" secondAttribute="trailing" constant="20" id="QTv-6o-1Kz"/>
@@ -141,6 +153,7 @@
                 <outlet property="iconAlarm" destination="ADu-3e-VgC" id="eaf-Jf-QEg"/>
                 <outlet property="imageWork" destination="8EU-8A-QEv" id="TK8-9c-cMC"/>
                 <outlet property="lbDeadline" destination="ThH-uB-yJ1" id="PeG-l3-QTc"/>
+                <outlet property="lbDirect" destination="KAo-KN-fXs" id="JTN-a5-HQb"/>
                 <outlet property="lbDist" destination="dRE-zI-Q2n" id="UN1-Mb-i7N"/>
                 <outlet property="lbTimePost" destination="FEp-Ro-KDC" id="e5X-E6-Nbf"/>
                 <outlet property="timeWork" destination="n9a-BP-wxD" id="yw9-ah-mOR"/>

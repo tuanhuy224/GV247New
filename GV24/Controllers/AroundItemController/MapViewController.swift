@@ -93,6 +93,9 @@ class MapViewController: BaseViewController {
     }
     // MARK: button filter longtitude and latitude
     func addTapped() {
+        if currentLocation == nil {
+            return
+        }
         let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
         around.currentLocation = currentLocation
         navigationController?.pushViewController(around, animated: true)

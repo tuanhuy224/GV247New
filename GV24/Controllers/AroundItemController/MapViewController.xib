@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJ5-Xa-eBb" customClass="GMSMapView">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -29,7 +30,7 @@
                 <constraint firstAttribute="bottom" secondItem="EJ5-Xa-eBb" secondAttribute="bottom" id="Fxs-jt-iW7"/>
                 <constraint firstItem="EJ5-Xa-eBb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GkJ-SV-f6R"/>
                 <constraint firstAttribute="trailing" secondItem="EJ5-Xa-eBb" secondAttribute="trailing" id="PN8-Uo-th6"/>
-                <constraint firstItem="EJ5-Xa-eBb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="yGd-ke-g9C"/>
+                <constraint firstItem="EJ5-Xa-eBb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yGd-ke-g9C"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>

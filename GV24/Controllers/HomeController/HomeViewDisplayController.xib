@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +36,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_app" translatesAutoresizingMaskIntoConstraints="NO" id="IfV-CO-NgB">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbg-ns-OA4">
                     <rect key="frame" x="0.0" y="455" width="375" height="108"/>
@@ -171,7 +172,7 @@
                 <constraint firstItem="ybs-He-bXS" firstAttribute="centerX" secondItem="IVq-MO-6nx" secondAttribute="centerX" id="Eke-Lx-wCV"/>
                 <constraint firstAttribute="bottom" secondItem="P7f-tP-CUz" secondAttribute="bottom" id="HRy-NX-prd"/>
                 <constraint firstAttribute="trailing" secondItem="Kbg-ns-OA4" secondAttribute="trailing" id="Jhz-Bp-e09"/>
-                <constraint firstItem="IfV-CO-NgB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="YaY-rT-1bw"/>
+                <constraint firstItem="IfV-CO-NgB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YaY-rT-1bw"/>
                 <constraint firstItem="P7f-tP-CUz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZWV-2I-AGP"/>
                 <constraint firstItem="IfV-CO-NgB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pqs-LX-EVq"/>
             </constraints>

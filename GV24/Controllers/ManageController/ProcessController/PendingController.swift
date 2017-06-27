@@ -34,6 +34,9 @@ extension PendingController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
+            if processPending?.process?.id == WorkStatus.Direct.rawValue {
+                cell.btChoose.isHidden = false
+            }
             cell.nameUser.text = processPending?.stakeholders?.owner?.name
             cell.delegate = self
             cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
@@ -64,6 +67,9 @@ extension PendingController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
+            if processPending?.process?.id == WorkStatus.Direct.rawValue {
+                return 120
+            }
             return CGFloat(heightConstantWorkDetailCell)
         case 1:
             return 293

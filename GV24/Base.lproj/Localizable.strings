@@ -23,6 +23,7 @@ LogOutAlert = "Bạn có chắc chắn muốn thoát ra khỏi ứng dụng này
 Back = "Trở lại";
 Girl = "Bà";
 Boy = "Ông";
+Direct = "Gửi trực tiếp";
 TimeMonth = "tháng trước";
 TimeDay = "ngày trước";
 TimeHour = "giờ trước";

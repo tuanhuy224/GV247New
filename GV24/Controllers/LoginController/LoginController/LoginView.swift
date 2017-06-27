@@ -39,7 +39,6 @@ class LoginView: BaseViewController {
         scrollLogin.isScrollEnabled = true
         scrollLogin.delegate = self
         self.setupView()
-        //loadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -57,6 +56,7 @@ class LoginView: BaseViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         btnLogin.setBackgroundImage(nil, for: .normal)
         btnLogin.setBackgroundImage(nil, for: .highlighted)
+        //cG5rDsFRDms:APA91bFOlbdbPUnSu9HLsrj-wr-JFgBuqCWLmYsLpKQi80QeyxBvSD5GdDcj9uQw_vjX3rzHoqxfvf8OHK5V6P1nYm4P_vD8mlU3iPeVcWqP6MjnqmKkY6yqucEDbEPqLMl2HN3fOoxQ
         let apiClient = UserService.sharedInstance
         apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: UserDefaultHelper.getString()!, completion: { (user, string, error) in
             if let user = user{
@@ -68,19 +68,6 @@ class LoginView: BaseViewController {
                 AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
             }
         })
-    }
-    func loadData() {
-        let apiService = APIService.shared
-        let param:[String:Double] = ["lng": 106.6882557,"lat": 10.7677238]
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
-            if let jsonArray = json?.array{
-                for data in jsonArray{
-                    self.arrays.append(Around(json: data))
-                    MBProgressHUD.hide(for: self.view, animated: true)
-                }
-            }
-        }
     }
     @IBAction func btAround(_ sender: Any) {
         let navi = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
