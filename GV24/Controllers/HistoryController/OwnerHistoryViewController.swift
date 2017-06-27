@@ -31,9 +31,10 @@ class OwnerHistoryViewController: BaseViewController {
     }()
     
     lazy var emptyLabel: UILabel = {
-       return TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+        let label = TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+        label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        return label
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
