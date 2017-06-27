@@ -120,7 +120,11 @@ extension ManageViewController:UITableViewDataSource{
         cell?.lbDeadline.isHidden = false
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            
+            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue {
+                cell?.lbDirect.isHidden = false
+                cell?.lbDeadline.isHidden = true
+                cell?.lbDirect.text = "Direct".localize
+            }
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
@@ -133,6 +137,7 @@ extension ManageViewController:UITableViewDataSource{
                 cell?.lbDeadline.isHidden = true
             }
             cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
+            
         case 1:
             cell?.workNameLabel.text = processRecieved[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].history?.createAt)!).dayMonthYear)"
@@ -145,6 +150,7 @@ extension ManageViewController:UITableViewDataSource{
                 cell?.lbDeadline.isHidden = true
             }
             cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
+            cell?.lbDirect.isHidden = true
         case 2:
             cell?.workNameLabel.text = processOnDoing[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].history?.createAt)!).dayMonthYear)"
@@ -153,6 +159,7 @@ extension ManageViewController:UITableViewDataSource{
             cell?.lbDist.text = processOnDoing[indexPath.row].process?.name
             cell?.lbDeadline.isHidden = true
             cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
+            cell?.lbDirect.isHidden = true
         default:
             break
         }

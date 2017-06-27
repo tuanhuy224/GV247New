@@ -24,39 +24,35 @@
 * THE SOFTWARE.
 */
 
+//let results = dic["results"] as! NSArray
+//for result in results {
+//    let strObj = result as! NSDictionary
+//    let geometry = strObj["geometry"] as! NSDictionary
+//    let location = geometry["location"] as! NSDictionary
+//    let lat = location["lat"] as! NSNumber
+//    let lon = location["lng"] as! NSNumber
+//}
+
 import UIKit
 import Foundation
 import CoreLocation
 import SwiftyJSON
 
-class GooglePlace {
-  let name: String
-  let address: String
-  let coordinate: CLLocationCoordinate2D
-  let placeType: String
-  var photoReference: String?
-  var photo: UIImage?
-  
-  init(dictionary:[String : AnyObject], acceptedTypes: [String])
-  {
-    let json = JSON(dictionary)
-    name = json["name"].stringValue
-    address = json["vicinity"].stringValue
-    
-    let lat = json["geometry"]["location"]["lat"].doubleValue as CLLocationDegrees
-    let lng = json["geometry"]["location"]["lng"].doubleValue as CLLocationDegrees
-    coordinate = CLLocationCoordinate2DMake(lat, lng)
-    
-    photoReference = json["photos"][0]["photo_reference"].string
-    
-    var foundType = "restaurant"
-    let possibleTypes = acceptedTypes.count > 0 ? acceptedTypes : ["bakery", "bar", "cafe", "grocery_or_supermarket", "restaurant"]
-    for type in json["types"].arrayObject as! [String] {
-      if possibleTypes.contains(type) {
-        foundType = type
-        break
-      }
+class GooglePlace:AppModel {
+    var address: String?
+    var lat:Double?
+    var long:Double?
+    var coordinate: CLLocationCoordinate2D?
+    var placeType: String?
+    var photoReference: String?
+    var photo: UIImage?
+    override init() {
+        super.init()
     }
-    placeType = foundType
+  override init(json: JSON?){
+    super.init(json: json!)
+
+    self.lat = json?["geometry"]["location"]["lat"].double
+    self.long = json?["geometry"]["location"]["lng"].double
   }
 }

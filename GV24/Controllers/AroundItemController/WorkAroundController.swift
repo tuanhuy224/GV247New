@@ -11,6 +11,8 @@ import IoniconsSwift
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import CoreLocation
+import AddressBookUI
 
 class WorkAroundController: BaseViewController {
     @IBOutlet weak var arWork: WorkAround!
@@ -23,6 +25,9 @@ class WorkAroundController: BaseViewController {
     var logtitude:Double?
     var lattitude:Double?
     var arrays = [Around]()
+    var googlePlace = [GooglePlace]()
+    var textLocation:String?
+    var currentLocation: CLLocationCoordinate2D?
     var searchController = UISearchController(searchResultsController: nil)
     
     var work = [WorkName]()
@@ -32,10 +37,12 @@ class WorkAroundController: BaseViewController {
         aroundTableView.register(UINib(nibName:NibWorkTableViewCell,bundle: nil), forCellReuseIdentifier: workCellID)
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
+        searchController.searchBar.delegate = self
         aroundTableView.separatorStyle = .none
         setup()
         //aroundTableView.reloadData()
         configSearchBar()
+        loadData()
     }
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {
@@ -44,6 +51,21 @@ class WorkAroundController: BaseViewController {
             }
             arWork.sliderMax.text = "\(UserDefaultHelper.getSlider()!)"
             arWork.slider.setValue(Float(UserDefaultHelper.getSlider()!)!, animated: true)
+        }
+    }
+    
+    func loadData() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        let apiService = APIService.shared
+        let param:[String:Double] = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!]
+        apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
+            if let jsonArray = json?.array{
+                for data in jsonArray{
+                    self.arrays.append(Around(json: data))
+                    self.aroundTableView.reloadData()
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            }
         }
     }
     func configSearchBar() {
@@ -90,6 +112,18 @@ class WorkAroundController: BaseViewController {
     func selectButton() {
         //navigationController?.pushViewController(DetailViewController(), animated: true)
     }
+    // Get longtitude and lattitue
+    func forwardGeocoding(){
+        let locationString =  textLocation!
+        APIService.shared.getLocation(url: locationString) { (json, error) in
+            //guard let results = json?["results"].array else{return}
+            guard let geometry = json?[0]["geometry"].dictionary else{return}
+            guard let location = geometry["location"]?.dictionary else{return}
+            guard let lat = location["lat"], let lng = location["lng"] else{return}
+            self.currentLocation?.latitude = lat.double!
+            self.currentLocation?.longitude = lng.double!
+        }
+    }
 }
 extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,6 +150,7 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
          let vc = AroundItemController(nibName: CTAroundItemController, bundle: nil)
             vc.id = "\(arrays[indexPath.row].id!.id!)"
             vc.name = "\(arrays[indexPath.row].id!.name!)"
+            vc.currentLocation = currentLocation
             navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -136,5 +171,21 @@ extension WorkAroundController:sendIdForViewDetailDelegate{
     func sendId(id: String) {
     }
 }
+
+extension WorkAroundController:UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        arrays.removeAll()
+        self.textLocation = searchText
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
+        forwardGeocoding()
+        dismiss(animated: true, completion: nil)
+    
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        loadData()
+    }
+}
+
 
 

@@ -34,6 +34,11 @@ extension PendingController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
+            if processPending?.process?.id == WorkStatus.Direct.rawValue {
+                cell.topBtChoose.constant = 18
+                cell.btChoose.isHidden = false
+                cell.delegateRequest = self
+            }
             cell.nameUser.text = processPending?.stakeholders?.owner?.name
             cell.delegate = self
             cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
@@ -64,6 +69,9 @@ extension PendingController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
+            if processPending?.process?.id == WorkStatus.Direct.rawValue {
+                return 120
+            }
             return CGFloat(heightConstantWorkDetailCell)
         case 1:
             return 293
@@ -90,6 +98,20 @@ extension PendingController:CancelWorkDelegate{
             print(string!)
             let alertC = AlertStandard.sharedInstance
             alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "cancelWork".localize)
+        }
+    }
+}
+extension PendingController:directRequestDelegate{
+    func chooseActionRequest() {
+        guard let ownerId = processPending?.stakeholders?.owner?.id else {return}
+        guard let taskID = processPending?.id else {return}
+        let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
+        print(processPending!.id!)
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let apiClient = APIService.shared
+        apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
+            let alertC = AlertStandard.sharedInstance
+            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
         }
     }
 }

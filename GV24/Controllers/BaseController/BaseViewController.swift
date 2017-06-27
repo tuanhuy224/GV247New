@@ -25,6 +25,7 @@ class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         self.setupViewBase()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.done, target: nil, action: nil)
+        //self.navigationController?.navigationBar.isTranslucent = false
         install.startNetworkReachabilityObserver()
         if install.reachabilityManager?.isReachable == false {
             self.displayNetwork()

@@ -24,6 +24,7 @@ Back = "Trở lại";
 LogOutAlert = "Bạn có chắc chắn muốn thoát ra khỏi ứng dụng này không?";
 Around = "Công việc quanh đây";
 SignIn = "Đăng nhập";
+Direct = "Gửi trực tiếp";
 Password = "Mật khẩu";
 TimeMonth = "tháng trước";
 TimeDay = "ngày trước";

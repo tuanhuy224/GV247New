@@ -8,6 +8,9 @@
 
 import UIKit
 import IoniconsSwift
+@objc protocol directRequestDelegate:class{
+    @objc optional func chooseActionRequest()
+}
 @objc protocol OwnerDelegate:class{
     @objc optional func chooseActionOwner()
 }
@@ -31,6 +34,7 @@ class WorkDetailCell: CustomTableViewCell {
     weak var delegate:chooseWorkDelegate?
     weak var delegateWork:clickChooseWorkID?
     weak var ownerDelegate:OwnerDelegate?
+    weak var delegateRequest:directRequestDelegate?
     @IBOutlet weak var aroundRight: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,10 +51,16 @@ class WorkDetailCell: CustomTableViewCell {
         btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
         btChoose.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
     }
-    @IBAction func btChooseAction(_ sender: Any) {
+    @IBAction func btDirectRequest(_ sender: Any) {
+        if delegateRequest != nil {
+            delegateRequest?.chooseActionRequest!()
+        }
         if delegateWork != nil {
             delegateWork?.chooseAction!()
         }
+    }
+    @IBAction func btChooseAction(_ sender: Any) {
+        
     }
     @IBAction func aroundRightAction(_ sender: Any) {
         if delegate != nil {

@@ -29,7 +29,7 @@ class HomeViewDisplayController: BaseViewController {
         super.viewDidLoad()
         print(UserDefaultHelper.getToken()!)
         self.customBarRightButton()
-        self.title = "Home".localize
+        
     }
     override func decorate() {
             buttonTest(button: workAround, imageName: "quanhday")
@@ -39,6 +39,8 @@ class HomeViewDisplayController: BaseViewController {
         //loadData()
     }
     override func setupViewBase() {
+        super.setupViewBase()
+        self.title = "Home".localize
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
         if lang.languageCode == "en" {
             lbLogo.text = "TrustQuality".localize
@@ -50,17 +52,7 @@ class HomeViewDisplayController: BaseViewController {
         lbManage.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbAround.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
     }
-    func loadData() {
-        let apiService = APIService.shared
-        let param:[String:Double] = ["lng": 106.6882557,"lat": 10.7677238]
-        apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
-            if let jsonArray = json?.array{
-                for data in jsonArray{
-                    self.arrays.append(Around(json: data))
-                }
-            }
-        }
-    }
+
     func customBarRightButton(){
         let button = UIButton(type: .custom)
         button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 24, greenValue: 179, blueValue: 110, alpha: 1)), for: .normal)

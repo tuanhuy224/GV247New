@@ -14,6 +14,7 @@ class AroundItemController: BaseViewController {
     var id:String?
     var name:String?
     var works = [Work]()
+    var currentLocation: CLLocationCoordinate2D?
     override func viewDidLoad() {
         super.viewDidLoad()
         tbAround.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
@@ -22,7 +23,7 @@ class AroundItemController: BaseViewController {
         tbAround.reloadData()
     }
     func loadAroundItem(){
-        let parameter:[String:Any] = ["work":id!,"lng": 106.6882557,"lat": 10.7677238,"maxDistance":300]
+        let parameter:[String:Any] = ["work":id!,"lng": currentLocation!.longitude,"lat": currentLocation!.latitude,"maxDistance":5]
         let apiClient = AroundTask.sharedInstall
         MBProgressHUD.showAdded(to: self.view, animated: true)
         apiClient.getWorkFromURL(url: APIPaths().getTaskByAround(), parameter: parameter) { (works, string) in
