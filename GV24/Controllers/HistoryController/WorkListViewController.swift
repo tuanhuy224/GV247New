@@ -90,43 +90,17 @@ class WorkListViewController: BaseViewController {
                     self.tableView.separatorStyle = .singleLine
                     break
                 case .EmptyData:
-                    //self.setTableViewMessage(result: .EmptyData)
-                    self.doEmptyData()
+                    self.setTableViewMessage(result: .EmptyData)
                     break
                 default:
-                    //self.setTableViewMessage(result: .Unauthorize)
-                    self.doTimeoutExpired()
+                    self.setTableViewMessage(result: .Unauthorize)
                     break
                 }
                 DispatchQueue.main.async {
                     self.activityIndicatorView.stopAnimating()
                     self.tableView.reloadData()
                 }
-            }else {
-                self.doNetworkIsDisconnected()
             }
-        }
-    }
-    
-    func doEmptyData() {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
-        self.tableView.backgroundView = emptyView
-        self.tableView.backgroundView?.isHidden = false
-    }
-    
-    func doTimeoutExpired() {
-        self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
-        self.tableView.backgroundView = self.emptyLabel
-        self.tableView.backgroundView?.isHidden = false
-    }
-    
-    func doNetworkIsDisconnected() {
-        self.emptyLabel.text = "NetworkIsLost".localize
-        self.tableView.backgroundView = self.emptyLabel
-        self.tableView.backgroundView?.isHidden = false
-        DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-            self.tableView.reloadData()
         }
     }
     
