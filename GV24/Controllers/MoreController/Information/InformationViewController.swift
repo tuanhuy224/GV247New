@@ -28,6 +28,7 @@ class InformationViewController: BaseViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InformationViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         getOwnerComments()
+        getWorkAbility()
     }
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -82,6 +83,17 @@ class InformationViewController: BaseViewController {
             self.tbInformation.reloadData()
         }
     }
+    
+    /* https://yukotest123.herokuapp.com/vi/maid/getAbility
+     params: no
+     */
+    func getWorkAbility() {
+        let params:[String:Any] = [:]
+        let header: HTTPHeaders = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        HistoryServices.sharedInstance.getWorkAbility(url: APIPaths().urlGetWorkAbility(), param: params, header: header) { (data, resultStatus) in
+            switch resul
+        }
+    }
 }
 extension InformationViewController:UITableViewDataSource{
 
@@ -113,6 +125,7 @@ extension InformationViewController:UITableViewDataSource{
             return cell
         }else if indexPath.section == 1{
             let cell: WorkInfoCell = tbInformation.dequeueReusableCell(withIdentifier: workInfoCellID, for: indexPath) as! WorkInfoCell
+//            cell.priceLabel.text = 
             cell.data = ["Trông trẻ","Nấu ăn","Thú cưng","a","b","c","a","b","c","a","b","c"]
             return cell
         }else{

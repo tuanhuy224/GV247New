@@ -157,6 +157,7 @@
 		00EDD49C1EF02D660098F505 /* DetailManagementController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EDD49A1EF02D660098F505 /* DetailManagementController.xib */; };
 		0318C9C61EFCBFA500FAFEE3 /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0318C9C41EFCBFA500FAFEE3 /* StatisticCell.swift */; };
 		0318C9C71EFCBFA500FAFEE3 /* StatisticCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0318C9C51EFCBFA500FAFEE3 /* StatisticCell.xib */; };
+		031CD6631F03521600459612 /* WorkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CD6621F03521600459612 /* WorkType.swift */; };
 		037E10E61EF90DF50072442F /* WorkDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002A04551EE14667001876E5 /* WorkDetailCell.xib */; };
 		037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */; };
 		037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */; };
@@ -369,6 +370,7 @@
 		00EDD49A1EF02D660098F505 /* DetailManagementController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailManagementController.xib; sourceTree = "<group>"; };
 		0318C9C41EFCBFA500FAFEE3 /* StatisticCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
 		0318C9C51EFCBFA500FAFEE3 /* StatisticCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticCell.xib; sourceTree = "<group>"; };
+		031CD6621F03521600459612 /* WorkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkType.swift; sourceTree = "<group>"; };
 		037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCell.swift; sourceTree = "<group>"; };
 		037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCell.xib; sourceTree = "<group>"; };
 		037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 				03AD9B681EF8D6DA0038AEE9 /* Task.swift */,
 				003B34661EFB6EEB004FA591 /* Contact.swift */,
 				003B34721EFBA883004FA591 /* Statistic.swift */,
+				031CD6621F03521600459612 /* WorkType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1521,6 +1524,7 @@
 				002BA1031EDD26090099352D /* MoreCell.swift in Sources */,
 				006BD3A61F00A0C8002867EC /* ReportController.swift in Sources */,
 				009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */,
+				031CD6631F03521600459612 /* WorkType.swift in Sources */,
 				002572411EDE648800AACC52 /* LanguageViewController.swift in Sources */,
 				002BA1071EDD52F60099352D /* NotifiCell.swift in Sources */,
 				000CCF401EFE191A00331D8E /* HeaderCell.swift in Sources */,

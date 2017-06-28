@@ -64,4 +64,29 @@ class HistoryServices: APIService {
         }
     }
  
+    func getWorkAbility(url: String, param:Parameters, header: HTTPHeaders, completion: @escaping(([WorkType]?, ResultStatus) -> ())){
+        Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value).dictionary
+                if let status = json?["status"], status == true {
+                    var list: [WorkType] = []
+                    let result = json?["data"]?.array
+                    for item in result! {
+                        let workType = WorkType(json: item)
+                        list.append(workType)
+                    }
+                    (list.count > 0) ? completion(list, ResultStatus.Success) : completion(nil, ResultStatus.EmptyData)
+                }
+                else {
+                    (json?["message"] == "Unauthorized") ? completion(nil, ResultStatus.Unauthorize) : completion(nil, ResultStatus.EmptyData)
+                }
+                break;
+            case .failure:
+                completion(nil, ResultStatus.Unauthorize)
+                break;
+            }
+        }
+
+    }
 }

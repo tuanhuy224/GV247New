@@ -25,6 +25,7 @@ enum urlPath:String {
     case getstatistical = "/maid/statistical"
     case urlMaidReport = "/maid/report"
     case urlTaskAcceptRequest = "/task/acceptRequest"
+    case getWorkAbility = "/maid/getAbility"
 }
 struct APIPaths {
     func urlGetListAround() -> String {
@@ -74,5 +75,8 @@ struct APIPaths {
     }
     func urlTaskAcceptRequest() -> String {
         return "rootDomain".localize + urlPath.urlTaskAcceptRequest.rawValue
+    }
+    func urlGetWorkAbility() -> String {
+        return "rootDomain".localize + urlPath.getWorkAbility.rawValue
     }
  }

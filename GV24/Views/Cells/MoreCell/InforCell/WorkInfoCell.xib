@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,7 +44,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.000 VND/1 giờ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-9n-gRk">
-                                <rect key="frame" x="31" y="46" width="106" height="14.5"/>
+                                <rect key="frame" x="31" y="45.5" width="106" height="14"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -97,6 +98,7 @@
             <connections>
                 <outlet property="collectionView" destination="ZwP-dK-VXF" id="nhj-wG-NkT"/>
                 <outlet property="imgIcon" destination="jWV-Tp-dWw" id="dXB-l6-nJs"/>
+                <outlet property="priceLabel" destination="5ag-9n-gRk" id="tbx-t6-W2r"/>
                 <outlet property="topLabel" destination="X1i-GH-KuG" id="xDq-ad-fpj"/>
             </connections>
             <point key="canvasLocation" x="35" y="46"/>
