@@ -8,6 +8,7 @@
 
 import UIKit
 import IoniconsSwift
+import Kingfisher
 
 class WorkInfoCell: CustomTableViewCell {
     @IBOutlet weak var topLabel: UILabel!
@@ -15,7 +16,7 @@ class WorkInfoCell: CustomTableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imgIcon: UIImageView!
     
-    var data: [String] = []{
+    var data = [WorkType]() {
         didSet {
             collectionView.reloadData()
         }
@@ -42,7 +43,13 @@ extension WorkInfoCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: workInfoCollectionCellID, for: indexPath) as! WorkInfoCollectionViewCell
-        cell.titleLabel.text = data[indexPath.row]
+        let workType = data[indexPath.row]
+        cell.titleLabel.text = workType.name
+        
+        if let imageString = workType.image {
+            let url = URL(string: imageString)
+            cell.icon.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+        }
         cell.delegate = self
         return cell
     }

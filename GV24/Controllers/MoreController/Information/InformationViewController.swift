@@ -18,6 +18,7 @@ class InformationViewController: BaseViewController {
     var page: Int = 1
     var limit: Int = 10
     var list: [Comment] = []
+    var workTypeList: [WorkType] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         tbInformation.register(UINib(nibName:NibInforCell,bundle:nil), forCellReuseIdentifier: inforCellID)
@@ -28,6 +29,7 @@ class InformationViewController: BaseViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InformationViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         getOwnerComments()
+        getWorkType()
     }
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -82,6 +84,48 @@ class InformationViewController: BaseViewController {
             self.tbInformation.reloadData()
         }
     }
+    
+    /* https://yukotest123.herokuapp.com/vi/maid/getAbility
+     no params
+     */
+    func getWorkType() {
+        let params: [String:Any] = [:]
+        let header: HTTPHeaders = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        HistoryServices.sharedInstance.getWorkAbility(url: APIPaths().urlGetWorkAbility(), param: params, header: header) { (data, err) in
+            if (self.net?.isReachable)! {
+                switch err{
+                case .Success:
+                    if self.page != 1{
+                        self.workTypeList.append(contentsOf: data!)
+                    }else {
+                        self.workTypeList = data!
+                    }
+                    DispatchQueue.main.async {
+                        let indexPath = IndexPath(item: 0, section: 1)
+                        self.tbInformation.reloadRows(at: [indexPath], with: .fade)
+                    }
+                    break
+                case .EmptyData:
+                    DispatchQueue.main.async {
+                        let alertController = AlertHelper().showAlertError(title: "Announcement".localize, message: "NoDataFound".localize)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    break
+                default:
+                    self.doTimeoutExpired()
+                    break
+                }
+            }else {
+                self.doNetworkIsDisconnected()
+            }
+        }
+    }
+    func doTimeoutExpired() {
+        AlertStandard.sharedInstance.showAlert(controller: self, title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize)
+    }
+    func doNetworkIsDisconnected() {
+        AlertStandard.sharedInstance.showAlert(controller: self, title: "Announcement".localize, message: "NetworkIsLost".localize)
+    }
 }
 extension InformationViewController:UITableViewDataSource{
 
@@ -113,8 +157,7 @@ extension InformationViewController:UITableViewDataSource{
             return cell
         }else if indexPath.section == 1{
             let cell: WorkInfoCell = tbInformation.dequeueReusableCell(withIdentifier: workInfoCellID, for: indexPath) as! WorkInfoCell
-//            cell.priceLabel.text = 
-            cell.data = ["Trông trẻ","Nấu ăn","Thú cưng","a","b","c","a","b","c","a","b","c"]
+            cell.data = workTypeList
             return cell
         }else{
             let cell:InfoCommentCell = tbInformation.dequeueReusableCell(withIdentifier: infoCommentCellID, for: indexPath) as! InfoCommentCell
@@ -142,7 +185,7 @@ extension InformationViewController:UITableViewDataSource{
 extension InformationViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 320
+            return 340
         }
         else if indexPath.section == 1 {
             return 154
