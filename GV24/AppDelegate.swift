@@ -8,19 +8,21 @@
 
 import UIKit
 import UserNotifications
-import Firebase
-import FirebaseInstanceID
 import FirebaseMessaging
 import GooglePlaces
 import GoogleMaps
-
+import Firebase
+import FirebaseInstanceID
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     var window: UIWindow?
     var isLogged = false
-    let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
+    let googleMapsApiKey = "AIzaSyBX-3Rllq_T7YJALhs-4RmDvHvf_nofEq4"
+    //AIzaSyBX-3Rllq_T7YJALhs-4RmDvHvf_nofEq4
     //AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w
     //cG5rDsFRDms:APA91bFOlbdbPUnSu9HLsrj-wr-JFgBuqCWLmYsLpKQi80QeyxBvSD5GdDcj9uQw_vjX3rzHoqxfvf8OHK5V6P1nYm4P_vD8mlU3iPeVcWqP6MjnqmKkY6yqucEDbEPqLMl2HN3fOoxQ
+    //cG5rDsFRDms:APA91bGO6fwYt0Y43gHoPp4LIjU3c9VFPpJ2lGq4WB2EPLpXSIMKsLT4FRomnAOrFIL2bgXCCMhOPciUdjWI2plDC62Zv15AIrgcCbwC1-FVnxgCqW2xKkE6AFOVwiEY-dHwC1u3GmSI
+    
     var navi:UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DGLocalization.sharedInstance.startLocalization()
@@ -62,22 +64,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
       
     // [START receive_message]
-    private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
-        
+    private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if ( application.applicationState == .inactive || application.applicationState == .background){
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: ManageViewController())
             window.rootViewController = navi
         }
     }
-    func tokenRefreshNotification(notification: NSNotification) {
-        if let refreshedToken = InstanceID.instanceID().token() {
-            print("InstanceID token: \(refreshedToken)")
-        }
-        connectToFcm()
-    }
+
     func connectToFcm() {
         Messaging.messaging().connect { (error) in
             if (error != nil) {
@@ -100,11 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        print("APNs device token: \(deviceTokenString)")
-        InstanceID.instanceID().setAPNSToken(deviceToken, type: InstanceIDAPNSTokenType.sandbox)
-        InstanceID.instanceID().setAPNSToken(deviceToken, type: InstanceIDAPNSTokenType.prod)
-        print("firebase token string: \(String(describing: InstanceID.instanceID().token()))")
+        InstanceID.instanceID().setAPNSToken(deviceToken, type: .sandbox)
+        print("APNs device token: \(deviceToken.hexString())")
+        print("firebase token string: \(InstanceID.instanceID().token() ?? "")")
         guard let firebaseToken = InstanceID.instanceID().token() else {return}
         UserDefaultHelper.setString(string: firebaseToken)
     }

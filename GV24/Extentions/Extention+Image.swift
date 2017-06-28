@@ -228,3 +228,10 @@ extension UILabel{
         return UILabel(frame: frame)
     }
 }
+extension Data {
+    func hexString() -> String {
+        return self.reduce("") { string, byte in
+            string + String(format: "%02X", byte)
+        }
+    }
+}

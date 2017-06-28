@@ -10,7 +10,8 @@ import UIKit
 import IoniconsSwift
 import Alamofire
 import SwiftyJSON
-
+import FirebaseCore
+import FirebaseInstanceID
 
 class HomeViewDisplayController: BaseViewController {
     var user:User?
@@ -29,7 +30,6 @@ class HomeViewDisplayController: BaseViewController {
         super.viewDidLoad()
         print(UserDefaultHelper.getToken()!)
         self.customBarRightButton()
-        
     }
     override func decorate() {
             buttonTest(button: workAround, imageName: "quanhday")

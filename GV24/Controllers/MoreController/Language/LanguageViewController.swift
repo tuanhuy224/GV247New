@@ -11,6 +11,7 @@ import UIKit
 class LanguageViewController: BaseViewController {
     var languages:[String] = ["VietNam","English"]
     @IBOutlet weak var tbLanguage: UITableView!
+    var rowsWhichAreChecked = [NSIndexPath]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tbLanguage.register(UITableViewCell.self, forCellReuseIdentifier: DefaultCellID)
@@ -53,3 +54,8 @@ extension LanguageViewController:UITableViewDelegate{
             }
     }
 }
+
+
+
+
+
