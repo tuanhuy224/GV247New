@@ -113,6 +113,7 @@ extension InformationViewController:UITableViewDataSource{
             return cell
         }else if indexPath.section == 1{
             let cell: WorkInfoCell = tbInformation.dequeueReusableCell(withIdentifier: workInfoCellID, for: indexPath) as! WorkInfoCell
+//            cell.priceLabel.text = 
             cell.data = ["Trông trẻ","Nấu ăn","Thú cưng","a","b","c","a","b","c","a","b","c"]
             return cell
         }else{
@@ -141,7 +142,7 @@ extension InformationViewController:UITableViewDataSource{
 extension InformationViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 307
+            return 320
         }
         else if indexPath.section == 1 {
             return 154

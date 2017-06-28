@@ -11,6 +11,7 @@ import IoniconsSwift
 
 class WorkInfoCell: CustomTableViewCell {
     @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imgIcon: UIImageView!
     

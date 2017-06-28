@@ -21,7 +21,8 @@ enum WorkStatus: String {
 enum ResultStatus: String {
     case Success     = "Success"
     case EmptyData   = "NoDataFound"
-    case Unauthorize = "ErrorWhileRetrievingInformationFromServer"
+    case Unauthorize = "TimeoutExpiredPleaseLoginAgain"
+    case LostInternet = "NetworkIsLost"
 }
 
 enum enumGender:String {

@@ -157,6 +157,7 @@
 		00EDD49C1EF02D660098F505 /* DetailManagementController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EDD49A1EF02D660098F505 /* DetailManagementController.xib */; };
 		0318C9C61EFCBFA500FAFEE3 /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0318C9C41EFCBFA500FAFEE3 /* StatisticCell.swift */; };
 		0318C9C71EFCBFA500FAFEE3 /* StatisticCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0318C9C51EFCBFA500FAFEE3 /* StatisticCell.xib */; };
+		031CD6631F03521600459612 /* WorkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CD6621F03521600459612 /* WorkType.swift */; };
 		037E10E61EF90DF50072442F /* WorkDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002A04551EE14667001876E5 /* WorkDetailCell.xib */; };
 		037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */; };
 		037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */; };
@@ -164,8 +165,6 @@
 		037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */; };
 		03AD9B671EF8D25A0038AEE9 /* CommentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */; };
 		03AD9B691EF8D6DA0038AEE9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B681EF8D6DA0038AEE9 /* Task.swift */; };
-		03BBF0211F00ACAD0059C907 /* ReportHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBF01F1F00ACAD0059C907 /* ReportHelperViewController.swift */; };
-		03BBF0221F00ACAD0059C907 /* ReportHelperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BBF0201F00ACAD0059C907 /* ReportHelperViewController.xib */; };
 		03D50F401EF8FDA10056F6AE /* InfoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */; };
 		03D50F411EF8FDA10056F6AE /* InfoCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */; };
 		03F81FBA1EF238AD0052B440 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F81FB91EF238AD0052B440 /* TableViewHelper.swift */; };
@@ -369,14 +368,13 @@
 		00EDD49A1EF02D660098F505 /* DetailManagementController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailManagementController.xib; sourceTree = "<group>"; };
 		0318C9C41EFCBFA500FAFEE3 /* StatisticCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
 		0318C9C51EFCBFA500FAFEE3 /* StatisticCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticCell.xib; sourceTree = "<group>"; };
+		031CD6621F03521600459612 /* WorkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkType.swift; sourceTree = "<group>"; };
 		037EA8A41EF7CAED00F60824 /* WorkInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCell.swift; sourceTree = "<group>"; };
 		037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCell.xib; sourceTree = "<group>"; };
 		037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentServices.swift; sourceTree = "<group>"; };
 		03AD9B681EF8D6DA0038AEE9 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		03BBF01F1F00ACAD0059C907 /* ReportHelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportHelperViewController.swift; sourceTree = "<group>"; };
-		03BBF0201F00ACAD0059C907 /* ReportHelperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportHelperViewController.xib; sourceTree = "<group>"; };
 		03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCommentCell.swift; sourceTree = "<group>"; };
 		03D50F3F1EF8FDA10056F6AE /* InfoCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoCommentCell.xib; sourceTree = "<group>"; };
 		03F81FB91EF238AD0052B440 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
@@ -829,8 +827,6 @@
 				00EB19451EE93EB4003B2C5D /* FinishedWorkViewController.xib */,
 				00EB19461EE93EB4003B2C5D /* HistoryViewController.swift */,
 				00EB19471EE93EB4003B2C5D /* HistoryViewController.xib */,
-				03BBF01F1F00ACAD0059C907 /* ReportHelperViewController.swift */,
-				03BBF0201F00ACAD0059C907 /* ReportHelperViewController.xib */,
 			);
 			path = HistoryController;
 			sourceTree = "<group>";
@@ -1021,6 +1017,7 @@
 				03AD9B681EF8D6DA0038AEE9 /* Task.swift */,
 				003B34661EFB6EEB004FA591 /* Contact.swift */,
 				003B34721EFBA883004FA591 /* Statistic.swift */,
+				031CD6621F03521600459612 /* WorkType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1203,7 +1200,6 @@
 			files = (
 				0022C5021EE84D1700027665 /* WorkerViewCell.xib in Resources */,
 				002A045B1EE14A82001876E5 /* InfoDetailCell.xib in Resources */,
-				03BBF0221F00ACAD0059C907 /* ReportHelperViewController.xib in Resources */,
 				004467B41EEF92BC00DDD0ED /* RecievedController.xib in Resources */,
 				002A043E1EE116AB001876E5 /* WorkAround.xib in Resources */,
 				009A76EC1EEE94270021BFB0 /* MapViewController.xib in Resources */,
@@ -1345,7 +1341,6 @@
 				002BA1181EDD62730099352D /* UserService.swift in Sources */,
 				00EB19571EE93EF5003B2C5D /* Address.swift in Sources */,
 				037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */,
-				03BBF0211F00ACAD0059C907 /* ReportHelperViewController.swift in Sources */,
 				003C9A091EDFC85F003F1189 /* ManageViewController.swift in Sources */,
 				003B34671EFB6EEB004FA591 /* Contact.swift in Sources */,
 				00EB194A1EE93EB4003B2C5D /* FinishedWorkViewController.swift in Sources */,
@@ -1421,6 +1416,7 @@
 				002BA1031EDD26090099352D /* MoreCell.swift in Sources */,
 				006BD3A61F00A0C8002867EC /* ReportController.swift in Sources */,
 				009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */,
+				031CD6631F03521600459612 /* WorkType.swift in Sources */,
 				002572411EDE648800AACC52 /* LanguageViewController.swift in Sources */,
 				002BA1071EDD52F60099352D /* NotifiCell.swift in Sources */,
 				000CCF401EFE191A00331D8E /* HeaderCell.swift in Sources */,

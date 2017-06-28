@@ -31,9 +31,10 @@ class OwnerHistoryViewController: BaseViewController {
     }()
     
     lazy var emptyLabel: UILabel = {
-       return TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+        let label = TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+        label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        return label
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -70,6 +71,8 @@ class OwnerHistoryViewController: BaseViewController {
      params: startAt, endAt
      */
     func getOwnerList(startAt: Date?, endAt: Date) {
+        self.ownerList.removeAll()
+        self.tableView.reloadData()
         self.tableView.backgroundView = self.activityIndicatorView
         self.activityIndicatorView.startAnimating()
         var params: [String: Any] = [:]
@@ -79,23 +82,48 @@ class OwnerHistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         let headers: HTTPHeaders = ["hbbgvauth": UserDefaultHelper.getToken()!]
         OwnerServices.sharedInstance.getOwnersList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, err) in
-            switch err {
-            case .Success:
-                self.ownerList.append(contentsOf: data!)
-                break
-            case .EmptyData:
-                self.emptyLabel.text = ResultStatus.EmptyData.rawValue.localize
-                self.tableView.backgroundView = self.emptyLabel
-                break
-            default:
-                self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
-                AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize)
-                break
+            if (self.net?.isReachable)! {
+                switch err {
+                case .Success:
+                    self.ownerList = data!
+                    self.tableView.backgroundView?.isHidden = true
+                    break
+                case .EmptyData:
+                    self.doEmptyData()
+                    break
+                default:
+                    self.doTimeoutExpired()
+                    break
+                }
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                    self.tableView.reloadData()
+                }
+            }else {
+                self.doNetworkIsDisconnected()
             }
-            DispatchQueue.main.async {
-                self.activityIndicatorView.stopAnimating()
-                self.tableView.reloadData()
-            }
+        }
+    }
+    
+    func doEmptyData() {
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y - 100, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
+        self.tableView.backgroundView = emptyView
+        self.tableView.backgroundView?.isHidden = false
+    }
+    
+    func doTimeoutExpired() {
+        self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
+        self.tableView.backgroundView = self.emptyLabel
+        self.tableView.backgroundView?.isHidden = false
+    }
+    
+    func doNetworkIsDisconnected() {
+        self.emptyLabel.text = "NetworkIsLost".localize
+        self.tableView.backgroundView = self.emptyLabel
+        self.tableView.backgroundView?.isHidden = false
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.tableView.reloadData()
         }
     }
     
@@ -117,9 +145,6 @@ class OwnerHistoryViewController: BaseViewController {
     @objc fileprivate func btnClicked(sender: UIButton) {
         let vc = WorkListViewController()
         vc.owner = ownerList[sender.tag]
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back".localize
-        navigationItem.backBarButtonItem = backItem
         myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -140,14 +165,14 @@ extension OwnerHistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = InformationViewController()
+        let vc = DetailManagementController()
         let owner = ownerList[indexPath.item]
-        vc.user = owner.convertToUser()
+        vc.workPending = owner.convertToWork(owner: owner)
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension OwnerHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
     }
 }

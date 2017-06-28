@@ -17,4 +17,11 @@ class AlertHelper: NSObject {
         alertController.addAction(okAction)
         return alertController
     }
+    
+//    func showAlertError(title: String, message: String) -> UIAlertController{
+//        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+//        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+//        alertController.addAction(okAction)
+//        return alertController
+//    }
 }

@@ -58,7 +58,7 @@ class LoginView: BaseViewController {
         btnLogin.setBackgroundImage(nil, for: .highlighted)
         //cG5rDsFRDms:APA91bFOlbdbPUnSu9HLsrj-wr-JFgBuqCWLmYsLpKQi80QeyxBvSD5GdDcj9uQw_vjX3rzHoqxfvf8OHK5V6P1nYm4P_vD8mlU3iPeVcWqP6MjnqmKkY6yqucEDbEPqLMl2HN3fOoxQ
         let apiClient = UserService.sharedInstance
-        apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: UserDefaultHelper.getString()!, completion: { (user, string, error) in
+        apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: "cG5rDsFRDms:APA91bGO6fwYt0Y43gHoPp4LIjU3c9VFPpJ2lGq4WB2EPLpXSIMKsLT4FRomnAOrFIL2bgXCCMhOPciUdjWI2plDC62Zv15AIrgcCbwC1-FVnxgCqW2xKkE6AFOVwiEY-dHwC1u3GmSI"/*UserDefaultHelper.getString()!*/, completion: { (user, string, error) in
             if let user = user{
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
                 guard let window = UIApplication.shared.keyWindow else{return}

@@ -6,6 +6,7 @@
 //  Copyright © 2017 admin. All rights reserved.
 //
 import UIKit
+import Alamofire
 
 class BaseViewController: UIViewController {
     let install = NetworkStatus.sharedInstance
@@ -15,11 +16,13 @@ class BaseViewController: UIViewController {
     let backItem = UIBarButtonItem()
     var actionSheet: UIAlertController!
     var dGlocale = DGLocalization()
+    let net = NetworkReachabilityManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         DGLocalization.sharedInstance.Delegate = self
         self.decorate()
         print("====Current self:\(self)====")
+        net?.startListening()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

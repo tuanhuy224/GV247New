@@ -28,7 +28,9 @@ class WorkListViewController: BaseViewController {
     var limit: Int = 10
     
     lazy var emptyLabel: UILabel = {
-       return TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+        let label = TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+        label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        return label
     }()
     
     override func viewDidLoad() {
@@ -65,9 +67,14 @@ class WorkListViewController: BaseViewController {
     }
     
     fileprivate func setTableViewMessage(result:ResultStatus) {
-        self.emptyLabel.text = result.rawValue
-        self.tableView.backgroundView = self.emptyLabel
-        self.tableView.separatorStyle = .none
+        if result == .EmptyData {
+            let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y - 100, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
+            self.tableView.backgroundView = emptyView
+        }else {
+            self.emptyLabel.text = result.rawValue.localize
+            self.tableView.backgroundView = self.emptyLabel
+            self.tableView.separatorStyle = .none
+        }
     }
     
     /*  GET: /maid/getTaskOfOwner owner: ownerId
@@ -83,21 +90,25 @@ class WorkListViewController: BaseViewController {
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetTaskOfOwner(), param: params, header: headers) { (data, error) in
-            switch error {
-            case .Success:
-                self.list.append(contentsOf: data!)
-                self.tableView.separatorStyle = .singleLine
-                break
-            case .EmptyData:
-                self.setTableViewMessage(result: .EmptyData)
-                break
-            default:
-                self.setTableViewMessage(result: .Unauthorize)
-                break
-            }
-            DispatchQueue.main.async {
-                self.activityIndicatorView.stopAnimating()
-                self.tableView.reloadData()
+            if (self.net?.isReachable)! {
+                switch error {
+                case .Success:
+                    self.list.append(contentsOf: data!)
+                    self.tableView.separatorStyle = .singleLine
+                    break
+                case .EmptyData:
+                    self.setTableViewMessage(result: .EmptyData)
+                    break
+                default:
+                    self.setTableViewMessage(result: .Unauthorize)
+                    break
+                }
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                    self.tableView.reloadData()
+                }
+            }else {
+                self.setTableViewMessage(result: ResultStatus.LostInternet)
             }
         }
     }
@@ -124,6 +135,7 @@ class WorkListViewController: BaseViewController {
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
             cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
             cell.lbDist.text = "CompletedWork".localize
+            
         }
     }
     

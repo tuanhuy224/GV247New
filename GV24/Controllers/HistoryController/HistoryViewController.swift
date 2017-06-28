@@ -36,9 +36,10 @@ class HistoryViewController: BaseViewController {
     }()
     
     lazy var emptyLabel: UILabel = {
-        return TableViewHelper().emptyMessage(message: "", size: self.historyTableView.bounds.size)
+        let label = TableViewHelper().emptyMessage(message: "", size: self.historyTableView.bounds.size)
+        label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        return label
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -81,26 +82,54 @@ class HistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         params["page"] = self.page
         params["limit"] = self.limit
-        self.historyTableView.backgroundView?.isHidden = true
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
-            switch err{
-            case .Success:
-                self.workList.append(contentsOf: data!)
-                break
-            case .EmptyData:
-                self.emptyLabel.text = ResultStatus.EmptyData.rawValue.localize
-                self.historyTableView.backgroundView = self.emptyLabel
-                break
-            default:
-                self.emptyLabel.text = ResultStatus.Unauthorize.rawValue.localize
-                AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "Announcement".localize, message: "TimeoutExpiredPleaseLoginAgain".localize)
-                break
+            if (self.net?.isReachable)! {
+                switch err{
+                case .Success:
+                    if self.page != 1{
+                        self.workList.append(contentsOf: data!)
+                    }else {
+                        self.workList = data!
+                    }
+                    self.historyTableView.backgroundView?.isHidden = true
+                    break
+                case .EmptyData:
+                    self.doEmptyData()
+                    break
+                default:
+                    self.doTimeoutExpired()
+                    break
+                }
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                    self.historyTableView.reloadData()
+                }
+            }else {
+                self.doNetworkIsDisconnected()
             }
-            DispatchQueue.main.async {
-                self.activityIndicatorView.stopAnimating()
-                self.historyTableView.reloadData()
-            }
+        }
+    }
+    
+    func doEmptyData() {
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.historyTableView.center.x, y: self.historyTableView.center.y - 100, width: self.historyTableView.frame.size.width, height: self.historyTableView.frame.size.height))
+        self.historyTableView.backgroundView = emptyView
+        self.historyTableView.backgroundView?.isHidden = false
+    }
+    
+    func doTimeoutExpired() {
+        self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
+        self.historyTableView.backgroundView = self.emptyLabel
+        self.historyTableView.backgroundView?.isHidden = false
+    }
+    
+    func doNetworkIsDisconnected() {
+        self.emptyLabel.text = "NetworkIsLost".localize
+        self.historyTableView.backgroundView = self.emptyLabel
+        self.historyTableView.backgroundView?.isHidden = false
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.historyTableView.reloadData()
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -148,9 +177,6 @@ extension HistoryViewController:UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back".localize
-        navigationItem.backBarButtonItem = backItem
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
