@@ -74,6 +74,9 @@ class FinishedWorkViewController: BaseViewController {
 
     fileprivate func configureWorkDetailsCell(cell: FinishedWorkCell) {
         cell.selectionStyle = .none
+        cell.btPay.isHidden = false
+        cell.delegate = self
+        
         if work != nil {
             if let imageString = work?.info?.workName?.image {
                 let url = URL(string: imageString)
@@ -157,14 +160,10 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //let vc = InformationViewController()
-        //let owner = work?.stakeholders?.owner
-        //vc.user = owner?.convertToUser()
-        
         if indexPath.section == 1 {
             let vc = DetailManagementController()
             vc.workPending = self.work
-            _ = navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
@@ -188,5 +187,10 @@ extension FinishedWorkViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 20
+    }
+}
+extension FinishedWorkViewController:paymentDelegate{
+    func paymentRequest() {
+        
     }
 }

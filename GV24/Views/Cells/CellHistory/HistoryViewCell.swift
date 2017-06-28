@@ -35,9 +35,9 @@ class HistoryViewCell: CustomTableViewCell {
         //255 190 65
         imageWork.layer.cornerRadius = imageWork.frame.width/2
         imageWork.clipsToBounds = true
-        lbDeadline.layer.cornerRadius = 6
+        lbDeadline.layer.cornerRadius = 10
         lbDeadline.clipsToBounds = true
-        lbDirect.layer.cornerRadius = 6
+        lbDirect.layer.cornerRadius = 10
         lbDirect.clipsToBounds = true
         workNameLabel.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.caption2.rawValue), size: sizeEight)
         lbDeadline.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.subheadline.rawValue), size: sizeFive)

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,14 +52,24 @@
                                             <action selector="btCancelAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pm5-sX-H8v"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK2-E1-T4R">
+                                        <rect key="frame" x="0.0" y="3" width="320" height="61"/>
+                                        <connections>
+                                            <action selector="btDeleteWork:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="M5C-X7-Bkg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="tag-dl-y98" firstAttribute="centerY" secondItem="GPH-mF-AJZ" secondAttribute="centerY" id="8d2-Gv-7J7"/>
                                     <constraint firstAttribute="trailing" secondItem="tag-dl-y98" secondAttribute="trailing" constant="8" id="9aN-bg-EPr"/>
+                                    <constraint firstItem="cK2-E1-T4R" firstAttribute="top" secondItem="XW3-k4-BcN" secondAttribute="top" constant="3" id="CDz-Y4-BXo"/>
+                                    <constraint firstAttribute="trailing" secondItem="cK2-E1-T4R" secondAttribute="trailing" id="Gid-Qr-mZJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="cK2-E1-T4R" secondAttribute="bottom" id="MYB-BY-21J"/>
                                     <constraint firstItem="GPH-mF-AJZ" firstAttribute="leading" secondItem="XW3-k4-BcN" secondAttribute="leading" constant="8" id="aRa-uK-qDE"/>
                                     <constraint firstItem="GPH-mF-AJZ" firstAttribute="top" secondItem="XW3-k4-BcN" secondAttribute="top" constant="22" id="jAZ-Yu-rue"/>
                                     <constraint firstAttribute="height" constant="64" id="vbd-9o-CKg"/>
+                                    <constraint firstItem="cK2-E1-T4R" firstAttribute="leading" secondItem="XW3-k4-BcN" secondAttribute="leading" id="xX7-e9-oTR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gts-eP-20N">

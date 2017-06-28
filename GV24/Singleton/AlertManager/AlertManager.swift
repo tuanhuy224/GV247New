@@ -58,6 +58,17 @@ class AlertStandard {
         alertController.addAction(noAction)
         controller.present(alertController, animated: true, completion: nil)
     }
+    func showAlertView(controller: UIViewController, title: String, message: String, buttonTitle:String = "OK") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "AnswerYes".localize, style: .default) { (action) -> Void in
+            
+        }
+        let noAction = UIAlertAction(title: "AnswerNo".localize, style: .default) { (action) -> Void in
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        controller.present(alertController, animated: true, completion: nil)
+    }
     
     func showAlertPopToView(controller: UIViewController, title: String, message: String, buttonTitle:String = "OK") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

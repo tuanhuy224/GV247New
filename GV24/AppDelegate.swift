@@ -17,7 +17,7 @@ import FirebaseInstanceID
 class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     var window: UIWindow?
     var isLogged = false
-    let googleMapsApiKey = "AIzaSyBX-3Rllq_T7YJALhs-4RmDvHvf_nofEq4"
+    let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
     //AIzaSyBX-3Rllq_T7YJALhs-4RmDvHvf_nofEq4
     //AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w
     //cG5rDsFRDms:APA91bFOlbdbPUnSu9HLsrj-wr-JFgBuqCWLmYsLpKQi80QeyxBvSD5GdDcj9uQw_vjX3rzHoqxfvf8OHK5V6P1nYm4P_vD8mlU3iPeVcWqP6MjnqmKkY6yqucEDbEPqLMl2HN3fOoxQ
@@ -67,8 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if ( application.applicationState == .inactive || application.applicationState == .background){
             guard let window = UIApplication.shared.keyWindow else{return}
-            let navi = UINavigationController(rootViewController: ManageViewController())
+            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
+            let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
+            navi.pushViewController(managerController, animated: true)
+            
         }
     }
 
@@ -111,13 +114,76 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("User Info = ",notification.request.content.userInfo)
+        guard let status = notification.request.content.userInfo["status"] as? String else {return}
+        
+        switch status {
+        case "1":
+            print("## status = 1")
+        case "5":
+            print("## status = 5")
+            guard let window = UIApplication.shared.keyWindow else{return}
+            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            window.rootViewController = navi
+            let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+            navi.pushViewController(managerController, animated: true)
+            break
+
+        case "6":
+            print("## status = 6")
+            guard let window = UIApplication.shared.keyWindow else{return}
+            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            window.rootViewController = navi
+            let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
+            navi.pushViewController(managerController, animated: true)
+            break
+            case "9":
+                print("## status = 9")
+            guard let window = UIApplication.shared.keyWindow else{return}
+            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            window.rootViewController = navi
+            let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
+            navi.pushViewController(managerController, animated: true)
+            break
+        default:
+            break
+        }
         completionHandler([.alert, .badge, .sound])
+        
     }
     
     //Called to let your app know which action was selected by the user for a given notification.
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("User Info = ",response.notification.request.content.userInfo)
+        guard let param = response.notification.request.content.userInfo["status"] as? String else {return}
+        guard let billID = response.notification.request.content.userInfo["bill"] as? String else {return}
+        switch param {
+        case "1":
+            print("## status = 1")
+            case "5":
+                let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+                window?.rootViewController = navi
+                let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+                navi.pushViewController(managerController, animated: true)
+            case "6":
+                print("## status = 6")
+                let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+                window?.rootViewController = navi
+                let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
+                navi.pushViewController(managerController, animated: true)
+            break
+            case "9":
+                print("## status = 9")
+                let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+                window?.rootViewController = navi
+                let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+                managerController.isDisplayAlert = true
+                managerController.billId = billID
+                navi.pushViewController(managerController, animated: true)
+            break
+        default:
+            break
+        }
         completionHandler()
     }
 }

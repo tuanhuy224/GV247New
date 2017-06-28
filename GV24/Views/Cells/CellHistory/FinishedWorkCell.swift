@@ -9,13 +9,14 @@
 import UIKit
 import IoniconsSwift
 
+protocol paymentDelegate:class {
+    func paymentRequest()
+}
 class FinishedWorkCell: CustomTableViewCell {
-
+    @IBOutlet weak var btPay: UIButton!
     @IBOutlet weak var salaryImage: UIImageView!
     @IBOutlet weak var dateImage: UIImageView!
     @IBOutlet weak var addressImage: UIImageView!
-    
-    //Outlets UI to set data
     @IBOutlet weak var workImage: UIImageView!
     @IBOutlet weak var workNameLabel: UILabel!
     @IBOutlet weak var workTypeLabel: UILabel!
@@ -24,13 +25,21 @@ class FinishedWorkCell: CustomTableViewCell {
     @IBOutlet weak var workCreateAtLabel: UILabel!
     @IBOutlet weak var workAddressLabel: UILabel!
     @IBOutlet weak var workTimeLabel: UILabel!
-    
+    weak var delegate:paymentDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
     
+    @IBAction func btPayment(_ sender: Any) {
+        if delegate != nil{
+        delegate?.paymentRequest()
+        }
+    }
     func setupCell() {
+        btPay.setTitle("Thanhtoan", for: .normal)
+        btPay.tintColor = UIColor.colorWithRedValue(redValue: 46, greenValue: 188, blueValue: 194, alpha: 1)
+        btPay.isHidden = true
         salaryImage.image = Ionicons.socialUsd.image(15, color: UIColor.colorWithRedValue(redValue: 46, greenValue: 188, blueValue: 194, alpha: 1))
         addressImage.image = Ionicons.home.image(15, color: UIColor.colorWithRedValue(redValue: 46, greenValue: 188, blueValue: 194, alpha: 1))
         dateImage.image = Ionicons.androidAlarmClock.image(32, color: UIColor.colorWithRedValue(redValue: 46, greenValue: 188, blueValue: 194, alpha: 1))

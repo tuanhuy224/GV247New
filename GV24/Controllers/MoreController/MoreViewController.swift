@@ -137,6 +137,8 @@ extension MoreViewController:LogOutDelegate{
 }
 extension MoreViewController:clickChooseWorkID{
     func chooseAction() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         navigationController?.pushViewController(StatisticViewController(), animated: true)
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
 }
