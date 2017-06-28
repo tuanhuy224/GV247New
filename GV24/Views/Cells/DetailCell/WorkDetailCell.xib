@@ -67,6 +67,7 @@
                             <constraint firstAttribute="height" constant="45" id="z4U-jk-t7W"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
+                        <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                         <state key="normal" title="Chọn công việc này"/>
                         <connections>
                             <action selector="btChooseAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ozh-HQ-o9D"/>

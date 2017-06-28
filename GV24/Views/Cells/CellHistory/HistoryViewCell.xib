@@ -85,11 +85,11 @@
                         </constraints>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-uB-yJ1">
-                        <rect key="frame" x="312" y="9" width="55" height="15"/>
+                        <rect key="frame" x="312" y="4" width="55" height="25"/>
                         <color key="backgroundColor" red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="55" id="9aN-JQ-d4k"/>
-                            <constraint firstAttribute="height" constant="15" id="zn2-WE-LgS"/>
+                            <constraint firstAttribute="height" constant="25" id="zn2-WE-LgS"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -103,10 +103,11 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-KN-fXs">
-                        <rect key="frame" x="277" y="6" width="90" height="20"/>
+                        <rect key="frame" x="277" y="6" width="90" height="25"/>
                         <color key="backgroundColor" red="1" green="0.74509803921568629" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="AYd-WC-bcQ"/>
+                            <constraint firstAttribute="height" constant="25" id="xAF-M0-2MM"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

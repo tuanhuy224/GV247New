@@ -23,6 +23,14 @@ class ForgotPasswordViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @IBAction func btRequestAction(_ sender: Any) {
+        guard let username = UserDefaultHelper.currentUser?.username else {return}
+        guard let email = UserDefaultHelper.currentUser?.email else {return}
+        guard let token = UserDefaultHelper.getToken() else {return}
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
+        let param = ["username":username,"email":email]
+        APIService.shared.post(url: APIPaths().urlMoreMaidForgotPassword(), parameters: param, header: header) { (json, error) in
+            
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

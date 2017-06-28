@@ -93,9 +93,6 @@ class MapViewController: BaseViewController {
     }
     // MARK: button filter longtitude and latitude
     func addTapped() {
-        if currentLocation == nil {
-            return
-        }
         let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
         around.currentLocation = currentLocation
         navigationController?.pushViewController(around, animated: true)
@@ -109,6 +106,7 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,longitude: location.coordinate.longitude,zoom: zoomLevel)
+        currentLocation = location.coordinate
         if mapView.isHidden {
             mapView.isHidden = false
             mapView.camera = camera

@@ -61,7 +61,6 @@ extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
-            cell.topBtChoose.constant = 10
             cell.ownerDelegate = self
             cell.delegateWork = self
             cell.constraintHeightButtonChoose.constant = 28
@@ -102,13 +101,16 @@ extension DetailViewController:UITableViewDelegate{
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         let parameter = ["id":idWork!]
         print(idWork!)
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
         apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
             let alertC = AlertStandard.sharedInstance
+            MBProgressHUD.hide(for: self.view, animated: true)
             alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
+            
         }
     }
 }

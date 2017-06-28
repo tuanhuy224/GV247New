@@ -55,7 +55,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             }
                 cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)
                 cell.btChoose.setTitleColor(.black, for: .normal)
-                cell.constraintHeightButtonChoose.constant = 25
+                cell.topBtChoose.constant = 15
                 cell.vSegment.isHidden = false
                 cell.btChoose.isHidden = false
                 cell.delegateWork = self

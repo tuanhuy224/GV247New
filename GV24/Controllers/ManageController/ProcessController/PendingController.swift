@@ -35,7 +35,7 @@ extension PendingController:UITableViewDataSource{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
             if processPending?.process?.id == WorkStatus.Direct.rawValue {
-                cell.topBtChoose.constant = 18
+                cell.topBtChoose.constant = 15
                 cell.btChoose.isHidden = false
                 cell.delegateRequest = self
             }
@@ -103,6 +103,7 @@ extension PendingController:CancelWorkDelegate{
 }
 extension PendingController:directRequestDelegate{
     func chooseActionRequest() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         guard let ownerId = processPending?.stakeholders?.owner?.id else {return}
         guard let taskID = processPending?.id else {return}
         let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
@@ -111,6 +112,7 @@ extension PendingController:directRequestDelegate{
         let apiClient = APIService.shared
         apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
             let alertC = AlertStandard.sharedInstance
+            MBProgressHUD.hide(for: self.view, animated: true)
             alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
         }
     }
