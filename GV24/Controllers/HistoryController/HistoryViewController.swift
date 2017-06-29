@@ -27,7 +27,10 @@ class HistoryViewController: BaseViewController {
     @IBOutlet weak var fromDateContainer: UIView!
     
     lazy var activityIndicatorView: UIActivityIndicatorView = {
-       return UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        // configure
+        indicator.hidesWhenStopped = true
+       return indicator
     }()
     lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
@@ -38,20 +41,77 @@ class HistoryViewController: BaseViewController {
     lazy var emptyLabel: UILabel = {
         let label = TableViewHelper().emptyMessage(message: "", size: self.historyTableView.bounds.size)
         label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        label.isHidden = true
         return label
     }()
+    lazy var emptyDataView: UIView = {
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 20, y: 50, width: 100, height: 150))
+        emptyView.isHidden = true
+        return emptyView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         getWorkList(startAt: startAtDate, endAt: endAtDate)
+        
+        // add loading indicator at here
+        setupLoadingIndicator()
+        setupEmptyDataView()
+        setupEmptyLabel()
     }
     
+    func setupLoadingIndicator() {
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.center = view.center
+    }
+    
+    func setupEmptyDataView() {
+        view.addSubview(emptyDataView)
+    }
+    
+    func setupEmptyLabel(){
+        view.addSubview(emptyLabel)
+    }
+    
+    func showLoadingIndicator() {
+        self.activityIndicatorView.startAnimating()
+    }
+    
+    func hideLoadingIndicator() {
+        self.activityIndicatorView.stopAnimating()
+    }
+    
+    func updateUI(status: ResultStatus) {
+        switch status {
+        case .Success:
+//            self.historyTableView.isHidden = false
+            self.emptyDataView.isHidden = true
+            self.emptyLabel.isHidden = true
+        case .EmptyData:
+//            self.historyTableView.isHidden = true
+            self.emptyDataView.isHidden = false
+            self.emptyLabel.isHidden = true
+            break
+        case .LostInternet:
+            self.emptyLabel.text = "NetworkIsLost".localize
+//            self.historyTableView.isHidden = true
+            self.emptyDataView.isHidden = true
+            self.emptyLabel.isHidden = false
+        default:
+            self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
+//            self.historyTableView.isHidden = true
+            self.emptyDataView.isHidden = true
+            self.emptyLabel.isHidden = false
+            break
+        }
+        self.historyTableView.reloadData()
+    }
     func setupTableView() {
         historyTableView.register(UINib(nibName: NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: historyCellID)
         self.automaticallyAdjustsScrollViewInsets = false
         historyTableView.tableFooterView = UIView()
         self.historyTableView.addSubview(self.refreshControl)
-        historyTableView.backgroundView = self.activityIndicatorView
         historyTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: historyTableView.bounds.size.width, height: 0.01))
         self.historyTableView.separatorStyle = .singleLine
     }
@@ -72,8 +132,7 @@ class HistoryViewController: BaseViewController {
      Params: startAt (opt), endAt (opt): ISO Date, page, limit: Number
      */
     func getWorkList(startAt: Date?, endAt: Date) {
-        self.historyTableView.backgroundView = self.activityIndicatorView
-        self.activityIndicatorView.startAnimating()
+        showLoadingIndicator()
         user = UserDefaultHelper.currentUser
         var params:[String:Any] = [:]
         if startAt != nil {
@@ -83,53 +142,21 @@ class HistoryViewController: BaseViewController {
         params["page"] = self.page
         params["limit"] = self.limit
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
-        HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
-            if (self.net?.isReachable)! {
-                switch err{
-                case .Success:
-                    if self.page != 1{
-                        self.workList.append(contentsOf: data!)
-                    }else {
-                        self.workList = data!
-                    }
-                    self.historyTableView.backgroundView?.isHidden = true
-                    break
-                case .EmptyData:
-                    self.doEmptyData()
-                    break
-                default:
-                    self.doTimeoutExpired()
-                    break
+        HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, status) in
+            
+            let stat: ResultStatus = (self.net?.isReachable)! ? status : .LostInternet
+            
+            if stat == .Success {
+                if self.page != 1 {
+                    self.workList.append(contentsOf: data!)
+                }else {
+                    self.workList = data!
                 }
-                DispatchQueue.main.async {
-                    self.activityIndicatorView.stopAnimating()
-                    self.historyTableView.reloadData()
-                }
-            }else {
-                self.doNetworkIsDisconnected()
             }
-        }
-    }
-    
-    func doEmptyData() {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.historyTableView.center.x, y: self.historyTableView.center.y - 100, width: self.historyTableView.frame.size.width, height: self.historyTableView.frame.size.height))
-        self.historyTableView.backgroundView = emptyView
-        self.historyTableView.backgroundView?.isHidden = false
-    }
-    
-    func doTimeoutExpired() {
-        self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
-        self.historyTableView.backgroundView = self.emptyLabel
-        self.historyTableView.backgroundView?.isHidden = false
-    }
-    
-    func doNetworkIsDisconnected() {
-        self.emptyLabel.text = "NetworkIsLost".localize
-        self.historyTableView.backgroundView = self.emptyLabel
-        self.historyTableView.backgroundView?.isHidden = false
-        DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-            self.historyTableView.reloadData()
+            DispatchQueue.main.async {
+                self.updateUI(status: stat)
+                self.hideLoadingIndicator()
+            }
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -159,7 +186,7 @@ class HistoryViewController: BaseViewController {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == self.workList.count - 1 {
             self.page = self.page + 1
-            self.getWorkList(startAt: self.startAtDate, endAt: self.endAtDate)
+            //self.getWorkList(startAt: self.startAtDate, endAt: self.endAtDate)
         }
     }
 }
