@@ -17,7 +17,6 @@ Back = "Back";
 Expired = "Expired";
 Invalid = "Invalid Username/ Password";
 loginFail = "UserName or password not correct";
-Dollar = "$";
 Information = "Information";
 Language = "Language";
 TimeMonth = "month ago";

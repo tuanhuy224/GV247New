@@ -91,6 +91,9 @@ extension DetailViewController:UITableViewDataSource{
 extension DetailViewController:UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let navi = DetailOwnerViewController(nibName: "DetailOwnerViewController", bundle: nil)
+        navi.owner = works
+        navigationController?.pushViewController(navi, animated: true)
     }
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{

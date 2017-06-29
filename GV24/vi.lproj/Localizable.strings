@@ -16,6 +16,7 @@ SwitchLanguage = "Đổi ngôn ngữ";
 loginFail = "Tên đăng nhập hoặc mật khẩu không đúng";
 Back = "Trở lại";
 Home = "Trang chủ";
+Dollar = "VND";
 Expired = "Quá hạn";
 Information = "Thông tin";
 More = "Thêm";

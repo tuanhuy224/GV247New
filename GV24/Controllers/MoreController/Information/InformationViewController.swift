@@ -41,9 +41,9 @@ class InformationViewController: BaseViewController {
     func customBarLeftButton(){
         let button = UIButton(type: .custom)
         button.setTitle("Update".localize, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSeven)
         button.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
-        button.setTitleColor(UIColor(red: 46/255, green: 186/255, blue: 191/255, alpha: 1), for: .normal)
+        button.setTitleColor( UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
         button.setTitleColor(UIColor.brown, for: .highlighted)
         button.addTarget(self, action: #selector(InformationViewController.selectButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
@@ -138,7 +138,7 @@ extension InformationViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tableview selected: \(indexPath.row)")
+
     }
 }
 

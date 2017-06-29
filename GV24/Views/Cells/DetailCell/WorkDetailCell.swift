@@ -60,6 +60,15 @@ class WorkDetailCell: CustomTableViewCell {
         }
     }
 
+    @IBAction func customButtonRightClick(_ sender: Any) {
+        if delegate != nil {
+            delegate?.detailManagementDelegate!()
+        }
+        if ownerDelegate != nil {
+            ownerDelegate?.chooseActionOwner!()
+        }
+
+    }
     @IBAction func aroundRightAction(_ sender: Any) {
         if delegate != nil {
             delegate?.detailManagementDelegate!()

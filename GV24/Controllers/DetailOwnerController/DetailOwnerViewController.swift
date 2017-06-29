@@ -16,6 +16,8 @@ class DetailOwnerViewController: BaseViewController {
         super.viewDidLoad()
         tbOwner.register(UINib(nibName:NibInforCell,bundle:nil), forCellReuseIdentifier: inforCellID)
         tbOwner.register(UINib(nibName:NibInforOwnerCell,bundle:nil), forCellReuseIdentifier: InforOwnerCellID)
+        self.tbOwner.rowHeight = UITableViewAutomaticDimension
+        self.tbOwner.estimatedRowHeight = 100.0
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -46,8 +48,4 @@ extension DetailOwnerViewController:UITableViewDataSource{
         return cell
     }
 }
-extension DetailOwnerViewController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 307
-    }
-}
+

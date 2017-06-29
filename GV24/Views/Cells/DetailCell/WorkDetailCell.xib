@@ -24,7 +24,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-YY-Ygx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_circle" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-YY-Ygx">
                         <rect key="frame" x="8" y="22.5" width="50" height="50"/>
                         <color key="backgroundColor" red="0.29290099330000002" green="0.6020064128" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -41,7 +41,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Ham Nghi, Q 1, Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRf-WL-mHp">
                         <rect key="frame" x="66" y="47" width="266" height="12"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jn0-47-poD">
@@ -67,7 +67,6 @@
                             <constraint firstAttribute="height" constant="36" id="vPh-r9-7jE"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
-                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                         <state key="normal" title="Chọn công việc này"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKj-A0-kyS">
@@ -78,12 +77,18 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sct-l4-Mv6">
-                        <rect key="frame" x="0.0" y="50" width="171" height="70"/>
+                        <rect key="frame" x="0.0" y="67" width="136" height="53"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="171" id="5ie-nG-7JM"/>
+                            <constraint firstAttribute="width" constant="136" id="5ie-nG-7JM"/>
                         </constraints>
                         <connections>
                             <action selector="btDirectRequest:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hJg-6I-WWh"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brU-VK-xMR">
+                        <rect key="frame" x="86" y="17" width="289" height="57"/>
+                        <connections>
+                            <action selector="customButtonRightClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Oe8-FR-pj9"/>
                         </connections>
                     </button>
                 </subviews>
@@ -92,23 +97,27 @@
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3WX-st-gMw"/>
                     <constraint firstItem="TKq-Mx-div" firstAttribute="top" secondItem="RAp-YY-Ygx" secondAttribute="top" id="48v-QV-drX"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="oRf-WL-mHp" secondAttribute="bottom" constant="5" id="8Fy-ds-cH0"/>
-                    <constraint firstItem="sct-l4-Mv6" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="32" id="ARL-2o-SDo"/>
+                    <constraint firstItem="sct-l4-Mv6" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="49" id="ARL-2o-SDo"/>
                     <constraint firstAttribute="trailing" secondItem="qKj-A0-kyS" secondAttribute="trailing" id="CSH-RI-jM9"/>
                     <constraint firstItem="TKq-Mx-div" firstAttribute="leading" secondItem="RAp-YY-Ygx" secondAttribute="trailing" constant="8" id="Csv-S3-U7s"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="centerY" secondItem="RAp-YY-Ygx" secondAttribute="centerY" constant="-2" id="DlC-wN-VBF"/>
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FMu-DV-fzb"/>
+                    <constraint firstItem="brU-VK-xMR" firstAttribute="leading" secondItem="RAp-YY-Ygx" secondAttribute="trailing" constant="28" id="HcC-OG-1kN"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="L24-OA-LEN"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LH2-yn-H2U"/>
+                    <constraint firstAttribute="trailing" secondItem="brU-VK-xMR" secondAttribute="trailing" id="MV9-vb-xvz"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Oh9-6N-Gkd"/>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="top" secondItem="TKq-Mx-div" secondAttribute="bottom" constant="6.5" id="X5r-Xe-Hus"/>
                     <constraint firstAttribute="trailing" secondItem="jOn-Cv-dAZ" secondAttribute="trailing" id="Zuy-32-kSY"/>
                     <constraint firstAttribute="bottom" secondItem="sct-l4-Mv6" secondAttribute="bottom" constant="-0.5" id="aHV-Zd-bc0"/>
                     <constraint firstAttribute="trailing" secondItem="Jn0-47-poD" secondAttribute="trailing" constant="5" id="btZ-Mp-Zr9"/>
+                    <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="brU-VK-xMR" secondAttribute="bottom" constant="0.5" id="gvM-7P-y7b"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="RAp-YY-Ygx" secondAttribute="bottom" constant="5" id="jZN-VZ-Z3q"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" id="jvX-pg-Lbd"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="4.5" id="mEx-st-nB7"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="4.5" id="mP7-mZ-No3"/>
                     <constraint firstItem="sct-l4-Mv6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rbU-MC-I94"/>
+                    <constraint firstItem="brU-VK-xMR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="ujU-Tf-2Ze"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uxt-4V-QaK" secondAttribute="bottom" constant="-4" id="vM8-Bx-5Zz"/>
                     <constraint firstAttribute="bottomMargin" secondItem="sct-l4-Mv6" secondAttribute="bottom" constant="-8.5" id="vZp-9b-PrC"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="oRf-WL-mHp" secondAttribute="bottom" constant="15.5" id="yuS-NR-E7k"/>
@@ -128,4 +137,7 @@
             <point key="canvasLocation" x="26.5" y="49"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_account_circle" width="24" height="24"/>
+    </resources>
 </document>
