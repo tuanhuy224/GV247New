@@ -74,9 +74,6 @@ class FinishedWorkViewController: BaseViewController {
 
     fileprivate func configureWorkDetailsCell(cell: FinishedWorkCell) {
         cell.selectionStyle = .none
-        cell.btPay.isHidden = false
-        cell.delegate = self
-        
         if work != nil {
             if let imageString = work?.info?.workName?.image {
                 let url = URL(string: imageString)
@@ -189,8 +186,4 @@ extension FinishedWorkViewController: UITableViewDelegate {
         return 20
     }
 }
-extension FinishedWorkViewController:paymentDelegate{
-    func paymentRequest() {
-        
-    }
-}
+

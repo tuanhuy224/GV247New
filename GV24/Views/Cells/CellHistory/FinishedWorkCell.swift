@@ -9,9 +9,6 @@
 import UIKit
 import IoniconsSwift
 
-protocol paymentDelegate:class {
-    func paymentRequest()
-}
 class FinishedWorkCell: CustomTableViewCell {
     @IBOutlet weak var btPay: UIButton!
     @IBOutlet weak var salaryImage: UIImageView!
@@ -25,17 +22,11 @@ class FinishedWorkCell: CustomTableViewCell {
     @IBOutlet weak var workCreateAtLabel: UILabel!
     @IBOutlet weak var workAddressLabel: UILabel!
     @IBOutlet weak var workTimeLabel: UILabel!
-    weak var delegate:paymentDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
-    
-    @IBAction func btPayment(_ sender: Any) {
-        if delegate != nil{
-        delegate?.paymentRequest()
-        }
-    }
+
     func setupCell() {
         btPay.setTitle("Thanhtoan", for: .normal)
         btPay.tintColor = UIColor.colorWithRedValue(redValue: 46, greenValue: 188, blueValue: 194, alpha: 1)
@@ -50,12 +41,5 @@ class FinishedWorkCell: CustomTableViewCell {
         workCreateAtLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeFive)
         workAddressLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeFive)
         workTimeLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    }    
 }

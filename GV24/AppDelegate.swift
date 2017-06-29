@@ -157,6 +157,20 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         print("User Info = ",response.notification.request.content.userInfo)
         guard let param = response.notification.request.content.userInfo["status"] as? String else {return}
         guard let billID = response.notification.request.content.userInfo["bill"] as? String else {return}
+        
+//        
+//        var business: pushnotifi
+//        switch param {
+//        case "1":
+//            business = OpenHomeBusiness(userinfo)
+//        default:
+//            <#code#>
+//        }
+//        
+//        business.execute()
+//        
+        
+        
         switch param {
         case "1":
             print("## status = 1")
