@@ -21,7 +21,8 @@ class ManagerHistoryViewController: BaseViewController {
     var toDate: Date = Date()
     var currentSelectedIndex: Int = 0
     var isFirstTime: Bool = true
-    
+    var isDisplayAlert:Bool = false
+    var billId:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         customNavigationController()
@@ -30,6 +31,7 @@ class ManagerHistoryViewController: BaseViewController {
         setupSegmentTitle()
         addSwipeGesture()
     }
+    
     
     func addSwipeGesture() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(doSwipeTab(gesture:)))
@@ -100,6 +102,7 @@ class ManagerHistoryViewController: BaseViewController {
         
         toDateButton.setTitle(String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -163,12 +166,45 @@ class ManagerHistoryViewController: BaseViewController {
         ownerListVC?.endAtDate = toDate
         ownerListVC?.getOwnerList(startAt: fromDate, endAt: toDate)
     }
+    // MARK: - show alert accept or cancel work
+    func showAlertView(controller: UIViewController, title: String, message: String, buttonTitle:String = "OK") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "AnswerYes".localize, style: .default) { (action) -> Void in
+            UIView.animate(withDuration: 1, animations: {
+                
+            })
+        }
+        let noAction = UIAlertAction(title: "AnswerNo".localize, style: .default) { (action) -> Void in
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        controller.present(alertController, animated: true, completion: nil)
+    }
     
-    override func setupViewBase() {}
-    
+    override func setupViewBase() {
+    super.setupViewBase()
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        guard let bill = billId else{return}
+        let param = ["billId":bill]
+        let apiClient = APIService.shared
+        if isDisplayAlert == true {
+            self.isDisplayAlert = false
+            apiClient.postRequest(url: APIPaths().paymentPayDirectConfirm(), method: .post, parameters: param, header: header, completion: { (json, error) in
+                guard let errorString = error else{return}
+                self.showAlert(error: errorString)
+            })
+        }
+    }
+    func showAlert(error:String)  {
+        switch error {
+        case "SUCCESS":
+            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: ManageViewController(), title: "WorkCompleted".localize, message: "vui long xac nhan bang cach nhan")
+        default:
+            break
+        }
+    }
     override func decorate() {}
 }
-
 extension ManagerHistoryViewController: PopupViewControllerDelegate {
     func selectedDate(date: Date, isFromDate: Bool, isToDate: Bool) {
         if isFromDate == true {

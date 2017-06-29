@@ -24,6 +24,8 @@ class ManageViewController: BaseViewController {
         tbManage.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
         tbManage.separatorStyle = .none
         self.title = "Taskmanagement".localize
+        self.tbManage.rowHeight = UITableViewAutomaticDimension
+        self.tbManage.estimatedRowHeight = 100.0
     }
     override func decorate() {
         super.decorate()
@@ -124,6 +126,9 @@ extension ManageViewController:UITableViewDataSource{
                 cell?.lbDirect.isHidden = false
                 cell?.lbDeadline.isHidden = true
                 cell?.lbDirect.text = "Direct".localize
+            }else{
+                cell?.lbDirect.isHidden = true
+                cell?.lbDeadline.isHidden = false
             }
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
@@ -165,26 +170,15 @@ extension ManageViewController:UITableViewDataSource{
         }
         return cell!
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        switch segmentCtr.selectedSegmentIndex {
-        case 0:
-            if editingStyle == .delete {
-                processOnCreate.remove(at: indexPath.row)
-                tbManage.deleteRows(at: [indexPath], with: .fade)
-                
-            }
-        default:
-            break
-        }
-    }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
+
 }
 extension ManageViewController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 94
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 94
+//    }
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch segmentCtr.selectedSegmentIndex {
         case 0:

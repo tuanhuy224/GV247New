@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -123,9 +124,16 @@
                             <constraint firstAttribute="height" constant="1" id="Zcn-8a-ihy"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ei-vx-Uye">
+                        <rect key="frame" x="8" y="63" width="225" height="54"/>
+                        <connections>
+                            <action selector="btPayment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kkP-my-jiF"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="aCH-JF-qhT" secondAttribute="bottom" constant="10" id="20O-Rx-9iV"/>
+                    <constraint firstItem="0Ei-vx-Uye" firstAttribute="top" secondItem="jBP-uT-YKh" secondAttribute="bottom" constant="5" id="3zZ-Ty-LKw"/>
                     <constraint firstAttribute="trailing" secondItem="We0-ti-Eyc" secondAttribute="trailing" constant="15" id="4EA-iV-obu"/>
                     <constraint firstItem="jBP-uT-YKh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="4de-p6-Irk"/>
                     <constraint firstItem="QeV-W9-ghJ" firstAttribute="top" secondItem="gld-MG-Jhg" secondAttribute="bottom" constant="44" id="5DJ-l8-eQM"/>
@@ -138,11 +146,14 @@
                     <constraint firstItem="BTp-yg-o1g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="GNE-fw-a91"/>
                     <constraint firstItem="K4f-Yg-jJf" firstAttribute="top" secondItem="4g8-qc-JJK" secondAttribute="bottom" constant="1" id="GUt-nO-VJn"/>
                     <constraint firstItem="5oj-Fy-raL" firstAttribute="centerY" secondItem="JiD-AK-gny" secondAttribute="centerY" id="GjF-QX-fQI"/>
+                    <constraint firstItem="L7V-25-yhS" firstAttribute="top" secondItem="0Ei-vx-Uye" secondAttribute="bottom" constant="1.5" id="L3I-Dn-zhc"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="0Ei-vx-Uye" secondAttribute="leading" id="NDC-d6-WZE"/>
                     <constraint firstItem="aCH-JF-qhT" firstAttribute="top" secondItem="QeV-W9-ghJ" secondAttribute="bottom" constant="10.5" id="Nqw-b2-DnC"/>
                     <constraint firstItem="5oj-Fy-raL" firstAttribute="leading" secondItem="JiD-AK-gny" secondAttribute="trailing" constant="10" id="Nyx-CB-Ko5"/>
                     <constraint firstAttribute="trailing" secondItem="BTp-yg-o1g" secondAttribute="trailing" constant="15" id="OMM-sU-cF0"/>
                     <constraint firstItem="aCH-JF-qhT" firstAttribute="leading" secondItem="QeV-W9-ghJ" secondAttribute="leading" id="TXD-g7-A1H"/>
                     <constraint firstItem="gld-MG-Jhg" firstAttribute="leading" secondItem="lK4-OF-8jx" secondAttribute="leading" id="W6f-1y-bXk"/>
+                    <constraint firstItem="0Ei-vx-Uye" firstAttribute="trailing" secondItem="4g8-qc-JJK" secondAttribute="trailing" id="XOo-XK-c73"/>
                     <constraint firstItem="olJ-UK-exx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="YYp-hG-U8D"/>
                     <constraint firstAttribute="trailing" secondItem="L7V-25-yhS" secondAttribute="trailing" id="Z53-Ux-OPJ"/>
                     <constraint firstItem="QeV-W9-ghJ" firstAttribute="leading" secondItem="5oj-Fy-raL" secondAttribute="leading" id="aZd-1b-pDQ"/>
@@ -171,6 +182,7 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="addressImage" destination="w6W-Ac-chQ" id="7QE-x3-vqG"/>
+                <outlet property="btPay" destination="0Ei-vx-Uye" id="5x6-TI-cKw"/>
                 <outlet property="dateImage" destination="JiD-AK-gny" id="Ctr-xj-qR5"/>
                 <outlet property="salaryImage" destination="olJ-UK-exx" id="xhu-xG-Fyv"/>
                 <outlet property="workAddressLabel" destination="aCH-JF-qhT" id="iPm-Q5-doW"/>

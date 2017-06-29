@@ -32,6 +32,7 @@ TimeHour = "giờ trước";
 TimeMinute = "phút trước";
 AnswerYes = "Có";
 AnswerNo = "Không";
+WorkCompleted = "Hoàn tất công việc";
 Nearbyjobs = "Công việc quanh đây";
 Taskmanagement = "Quản lí công việc";
 Taskhistory = "Lịch sử công việc";

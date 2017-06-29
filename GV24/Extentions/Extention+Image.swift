@@ -235,3 +235,22 @@ extension Data {
         }
     }
 }
+
+
+protocol pushnotifi {
+    func pushviewcontroller()
+}
+
+//class OpenHomeBusinesss: pushnotifi {
+//    let var1 = ...
+//    let var2 = ...
+//    
+//    init(var1)
+//    
+//    
+    func pushviewcontroller() {
+        // creaete required controller
+        // push to navigation
+        // etc..
+    }
+

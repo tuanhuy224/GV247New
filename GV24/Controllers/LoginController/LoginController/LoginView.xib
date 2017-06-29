@@ -86,8 +86,8 @@
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grg-Ad-yYh">
-                                            <rect key="frame" x="37" y="186.5" width="303" height="24"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                            <rect key="frame" x="37" y="180.5" width="303" height="30"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <state key="normal" title="Quên mật khẩu">
                                                 <color key="titleColor" red="0.18431372549019609" green="0.73725490196078436" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
@@ -96,7 +96,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCQ-nH-rFS">
-                                            <rect key="frame" x="37" y="140.5" width="303" height="36"/>
+                                            <rect key="frame" x="37" y="134.5" width="303" height="36"/>
                                             <color key="backgroundColor" red="0.23921568627450979" green="0.77647058823529413" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="36" id="8L6-mr-SnB"/>

@@ -30,9 +30,12 @@ class CancelCell: CustomTableViewCell {
         lbCancel.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
         lbCancel.text = "CancelTask".localize
     } 
-    @IBAction func btCancelAction(_ sender: Any) {
+    @IBAction func btDeleteWork(_ sender: Any) {
         if delegate != nil {
             delegate?.CancelButton!()
         }
+    }
+    @IBAction func btCancelAction(_ sender: Any) {
+        
     }
 }

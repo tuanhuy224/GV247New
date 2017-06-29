@@ -36,6 +36,7 @@ AnswerNo = "No";
 Send = "Send";
 search = "Search";
 login = "Log In";
+WorkCompleted = "WorkCompleted";
 forgotPassword = "Forgot password?";
 Feedback = "Feedback";
 waiting = "Waiting";
