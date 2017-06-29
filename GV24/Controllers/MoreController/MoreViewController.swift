@@ -22,6 +22,8 @@ class MoreViewController: BaseViewController {
         tbMore.register(UINib(nibName:NibFollowCell,bundle:nil), forCellReuseIdentifier: followCell)
         tbMore.register(UINib(nibName:NibHeaderCell,bundle:nil), forCellReuseIdentifier: headerCellID)
         self.userLogin = UserDefaultHelper.currentUser
+        self.tbMore.rowHeight = UITableViewAutomaticDimension
+        self.tbMore.estimatedRowHeight = 100.0
         tbMore.separatorStyle = .none
     }
     override func setupViewBase() {
@@ -55,7 +57,6 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             }
                 cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)
                 cell.btChoose.setTitleColor(.black, for: .normal)
-                cell.topBtChoose.constant = 15
                 cell.vSegment.isHidden = false
                 cell.btChoose.isHidden = false
                 cell.delegateWork = self
@@ -88,20 +89,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
             return 20
     }
-     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section{
-        case 0:
-            return 100
-        case 1:
-            return 70
-        case 2:
-            return 33
-        case 3:
-            return 128
-        default:
-            return 500
-        }
-    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if indexPath.section == 2 {
             switch indexPath.row {

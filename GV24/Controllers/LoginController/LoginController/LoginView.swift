@@ -29,6 +29,7 @@ class LoginView: BaseViewController {
     @IBOutlet weak var scrollBt: NSLayoutConstraint!
     @IBOutlet weak var btAround: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var keyboardHeightLayoutConstraint: NSLayoutConstraint!
     weak var delegate:customButtonLoginDelegate?
     var user:User?
     var arrays = [Around]()
@@ -49,16 +50,40 @@ class LoginView: BaseViewController {
         userLogin.placeholder = "Username".localize
         passwordLogin.placeholder = "Password".localize
     }
+    func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
+                self.keyboardHeightLayoutConstraint?.constant = 0.0
+            } else {
+                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+            }
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
+        }
+    }
+    func token() -> String {
+        return UserDefaultHelper.getString()! + "@//@ios"
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unRegisterAutoKeyboard()
+        NotificationCenter.default.removeObserver(self)
     }
     @IBAction func loginButtonAction(_ sender: Any) {
         btnLogin.setBackgroundImage(nil, for: .normal)
         btnLogin.setBackgroundImage(nil, for: .highlighted)
         let apiClient = UserService.sharedInstance
-        apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: UserDefaultHelper.getString()!, completion: { (user, string, error) in
+        apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: token(), completion: { (user, string, error) in
             if let user = user{
+                print(self.token())
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
                 guard let window = UIApplication.shared.keyWindow else{return}
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())

@@ -25,6 +25,8 @@ class InformationViewController: BaseViewController {
         tbInformation.register(UINib(nibName: NibWorkInfoCell, bundle: nil), forCellReuseIdentifier: workInfoCellID)
         self.user = UserDefaultHelper.currentUser
         customBarLeftButton()
+        self.tbInformation.rowHeight = UITableViewAutomaticDimension
+        self.tbInformation.estimatedRowHeight = 100.0
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InformationViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         getOwnerComments()
@@ -139,18 +141,6 @@ extension InformationViewController:UITableViewDataSource{
         print("tableview selected: \(indexPath.row)")
     }
 }
-extension InformationViewController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 320
-        }
-        else if indexPath.section == 1 {
-            return 154
-        }
-        return 170
-    }
-}
-
 
 
 

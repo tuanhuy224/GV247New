@@ -39,8 +39,13 @@ class WorkAroundController: BaseViewController {
         arWork.setupView()
         searchController.searchBar.delegate = self
         aroundTableView.separatorStyle = .none
+        searchController.searchBar.tintColor = .black
+        searchController.searchBar.placeholder = "SearchLocation".localize
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.tintColor =  UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        self.aroundTableView.rowHeight = UITableViewAutomaticDimension
+        self.aroundTableView.estimatedRowHeight = 100.0
         setup()
-        //aroundTableView.reloadData()
         configSearchBar()
         loadData()
     }
@@ -114,7 +119,7 @@ class WorkAroundController: BaseViewController {
     }
     // Get longtitude and lattitue
     func forwardGeocoding(){
-        let locationString =  textLocation!
+        guard let locationString =  textLocation else{return}
         APIService.shared.getLocation(url: locationString) { (json, error) in
             //guard let results = json?["results"].array else{return}
             guard let geometry = json?[0]["geometry"].dictionary else{return}
@@ -142,9 +147,6 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
         }
         cell.delegate = self
         return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 62
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let vc = AroundItemController(nibName: CTAroundItemController, bundle: nil)

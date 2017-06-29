@@ -24,6 +24,7 @@
                 <outlet property="imagePassword" destination="DYE-tj-cgt" id="9s3-md-ZAX"/>
                 <outlet property="imageProfile" destination="Wr1-a1-7LV" id="qSr-NE-LQc"/>
                 <outlet property="imgeLogo" destination="44P-rF-dgj" id="Zds-ba-zuM"/>
+                <outlet property="keyboardHeightLayoutConstraint" destination="KvP-PB-1Sc" id="FMM-Fe-idn"/>
                 <outlet property="logoImage" destination="0Us-JN-Sph" id="rh2-4G-wsG"/>
                 <outlet property="passwordLogin" destination="h4j-Lx-Rib" id="4fh-4f-jAz"/>
                 <outlet property="scrollBt" destination="Ums-S6-nOb" id="AWH-rY-392"/>
@@ -44,7 +45,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_dn" translatesAutoresizingMaskIntoConstraints="NO" id="44P-rF-dgj">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="381"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="445"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxc-wH-YAW">
                                     <rect key="frame" x="0.0" y="444.5" width="375" height="222.5"/>
@@ -163,7 +164,7 @@
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="centerY" secondItem="tLj-6N-x88" secondAttribute="centerY" constant="32.5" id="bBp-PU-jYA"/>
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="centerX" secondItem="tLj-6N-x88" secondAttribute="centerX" id="dgc-wM-AfG"/>
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="leading" secondItem="Wr1-a1-7LV" secondAttribute="leading" id="hAa-CB-TDN"/>
-                                <constraint firstItem="44P-rF-dgj" firstAttribute="top" secondItem="tLj-6N-x88" secondAttribute="top" constant="64" id="t4i-WW-3mR"/>
+                                <constraint firstItem="44P-rF-dgj" firstAttribute="top" secondItem="tLj-6N-x88" secondAttribute="top" id="t4i-WW-3mR"/>
                                 <constraint firstAttribute="trailing" secondItem="44P-rF-dgj" secondAttribute="trailing" id="vWU-Ls-enD"/>
                             </constraints>
                         </view>

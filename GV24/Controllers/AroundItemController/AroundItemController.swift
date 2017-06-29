@@ -21,6 +21,8 @@ class AroundItemController: BaseViewController {
         loadAroundItem()
         tbAround.separatorStyle = .none
         tbAround.reloadData()
+        self.tbAround.rowHeight = UITableViewAutomaticDimension
+        self.tbAround.estimatedRowHeight = 100.0
     }
     func loadAroundItem(){
         let parameter:[String:Any] = ["work":id!,"lng": currentLocation!.longitude,"lat": currentLocation!.latitude,"maxDistance":5]
@@ -67,9 +69,6 @@ extension AroundItemController:UITableViewDelegate{
             AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
         }
         navigationController?.pushViewController(detail, animated: true)
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 95
     }
 }
 

@@ -22,7 +22,8 @@ import IoniconsSwift
     @objc optional func detailManagementDelegate()
 }
 class WorkDetailCell: CustomTableViewCell {
-    @IBOutlet weak var topBtChoose: NSLayoutConstraint!
+
+    @IBOutlet weak var heightBtChoose: NSLayoutConstraint!
     @IBOutlet weak var heightHeader: NSLayoutConstraint!
     @IBOutlet weak var constraintChoose: NSLayoutConstraint!
     @IBOutlet weak var vSegment: UIView!
@@ -43,7 +44,6 @@ class WorkDetailCell: CustomTableViewCell {
         let image = Ionicons.chevronRight.image(15)
         aroundRight.setImage(image, for: .normal)
         aroundRight.tintColor = UIColor.colorWithRedValue(redValue: 187, greenValue: 187, blueValue: 193, alpha: 1)
-        constraintHeightButtonChoose.constant = 0
         btChoose.isHidden = true
         vSegment.isHidden = true
         nameUser.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
@@ -59,9 +59,7 @@ class WorkDetailCell: CustomTableViewCell {
             delegateWork?.chooseAction!()
         }
     }
-    @IBAction func btChooseAction(_ sender: Any) {
-        
-    }
+
     @IBAction func aroundRightAction(_ sender: Any) {
         if delegate != nil {
             delegate?.detailManagementDelegate!()

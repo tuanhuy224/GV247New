@@ -18,6 +18,8 @@ class RecievedController: BaseViewController {
         tbRecieved.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
         tbRecieved.separatorStyle = .none
         tbRecieved.reloadData()
+        self.tbRecieved.rowHeight = UITableViewAutomaticDimension
+        self.tbRecieved.estimatedRowHeight = 100.0
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -37,6 +39,13 @@ extension RecievedController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbRecieved.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
+            if processRecieved?.process?.id == WorkStatus.Direct.rawValue {
+                cell.btChoose.isHidden = false
+                cell.vSegment.isHidden = false
+            }else{
+                cell.btChoose.isEnabled = true
+                cell.heightBtChoose.constant = 0
+            }
             cell.nameUser.text = processRecieved?.stakeholders?.owner?.name
             print(processRecieved!.id!)
             cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
@@ -64,18 +73,7 @@ extension RecievedController:UITableViewDataSource{
         return UITableViewCell()
     }
 }
-extension RecievedController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return CGFloat(heightConstantWorkDetailCell)
-        case 1:
-            return 293
-        default:
-            return 172
-        }
-    }
-}
+
 extension RecievedController:CancelWorkDelegate{
     func CancelButton() {
         let parameter = ["id":processRecieved!.id!]

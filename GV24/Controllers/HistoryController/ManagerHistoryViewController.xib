@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pk1-gm-Tw8">
-                    <rect key="frame" x="0.0" y="65" width="375" height="35"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Tt-w4-wKs">
                             <rect key="frame" x="16" y="0.0" width="343" height="31"/>
@@ -52,7 +52,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h22-SV-zdb">
-                    <rect key="frame" x="0.0" y="100" width="375" height="35"/>
+                    <rect key="frame" x="0.0" y="35" width="375" height="35"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="đến" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6q-Rq-HMh">
                             <rect key="frame" x="175" y="9" width="26" height="18"/>
@@ -97,14 +97,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-57-egJ">
-                    <rect key="frame" x="0.0" y="135" width="375" height="20"/>
+                    <rect key="frame" x="0.0" y="70" width="375" height="20"/>
                     <color key="backgroundColor" red="0.94453328847885132" green="0.94106453657150269" blue="0.96249121427536011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="yRi-0d-NVr"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaV-N2-myv">
-                    <rect key="frame" x="0.0" y="155" width="375" height="512"/>
+                    <rect key="frame" x="0.0" y="90" width="375" height="577"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -114,7 +114,7 @@
                 <constraint firstItem="Pk1-gm-Tw8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NN7-9f-PSI"/>
                 <constraint firstAttribute="trailing" secondItem="h22-SV-zdb" secondAttribute="trailing" id="NWl-U4-JPh"/>
                 <constraint firstAttribute="trailing" secondItem="LaV-N2-myv" secondAttribute="trailing" id="bDo-LE-o1P"/>
-                <constraint firstItem="Pk1-gm-Tw8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="bMQ-at-ENP"/>
+                <constraint firstItem="Pk1-gm-Tw8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bMQ-at-ENP"/>
                 <constraint firstAttribute="trailing" secondItem="4gd-57-egJ" secondAttribute="trailing" id="dbl-87-MAp"/>
                 <constraint firstItem="LaV-N2-myv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gJd-Zi-rBx"/>
                 <constraint firstItem="4gd-57-egJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lE0-dI-LKT"/>

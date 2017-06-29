@@ -57,7 +57,9 @@ class MapViewController: BaseViewController {
     func configurationSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchBar.delegate = self
-        searchController?.searchBar.placeholder = "search".localize
+        searchController?.searchBar.placeholder = "SearchLocation".localize
+        searchController?.searchBar.barTintColor = .white
+        searchController?.searchBar.tintColor =  UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         let subView = UIView(frame: CGRect(x: 0, y: 64.0, width:UIScreen.main.bounds.width, height: 45.0))
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)

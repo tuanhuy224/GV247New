@@ -24,6 +24,7 @@ Back = "Trở lại";
 Girl = "Bà";
 Boy = "Ông";
 WorkCompleted = "Hoàn tất công việc";
+SearchLocation = "Tìm vị trí";
 Direct = "Gửi trực tiếp";
 TimeMonth = "tháng trước";
 TimeDay = "ngày trước";

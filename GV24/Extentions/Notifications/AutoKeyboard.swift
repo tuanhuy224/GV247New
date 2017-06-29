@@ -13,12 +13,6 @@ fileprivate var savedConstant:[UIViewController:[NSLayoutConstraint:CGFloat]] = 
 extension UIViewController {
     
     public func registerAutoKeyboard() {
-        print("Adding observers")
-        var consts:[NSLayoutConstraint:CGFloat] = [:]
-        for each in getBottomConstrainsts() {
-            consts[each] = each.constant
-        }
-        savedConstant[self] = consts
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
@@ -30,50 +24,32 @@ extension UIViewController {
         savedConstant.removeValue(forKey: self)
         
     }
+    func keyboard(constraint:NSLayoutConstraint) -> NSLayoutConstraint {
+        let contraint = NSLayoutConstraint()
+        return contraint
+    }
     
     func keyboardWillShow(notification: NSNotification) {
-//        guard let userInfo = notification.userInfo else { return }
-//        let keyboardFrameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-//        
-//        if let saved = savedConstant[self] {
-//            let const = getBottomConstrainsts()
-//            for each in const {
-//                if let savedValue = saved[each] {
-//                    each.constant = savedValue + keyboardFrameEnd.height
-//                }
+        self.view.frame.origin.y = -150
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0{
+//                UIView.animate(withDuration: 0.5, animations: {
+//                    self.view.frame.origin.y -= keyboardSize.height
+//                })
 //            }
-//            animateWithKeyboardEventNotified(notification: notification)
 //        }
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.view.frame.origin.y -= keyboardSize.height
-                })
-            }
-        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        
-//        if let saved = savedConstant[self] {
-//            let const = getBottomConstrainsts()
-//            for each in const {
-//                if let savedValue = saved[each] {
-//                    each.constant = savedValue
-//                }
+        self.view.frame.origin.y = 0
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                UIView.animate(withDuration: 0.5, animations: {
+//                    self.view.frame.origin.y += keyboardSize.height
+//                })
 //            }
-//            animateWithKeyboardEventNotified(notification: notification)
+//            
 //        }
-        
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.view.frame.origin.y += keyboardSize.height
-                    //self.scrollLogin.contentOffset = .zero
-                })
-            }
-            
-        }
     }
     func getBottomConstrainsts() -> [NSLayoutConstraint] {
         var consts:[NSLayoutConstraint] = []

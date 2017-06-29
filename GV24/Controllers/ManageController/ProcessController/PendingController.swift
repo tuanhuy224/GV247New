@@ -16,6 +16,8 @@ class PendingController: BaseViewController {
         tbPending.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
         tbPending.separatorStyle = .none
         self.title = "\(processPending?.info?.title ?? "")".localize
+        self.tbPending.rowHeight = UITableViewAutomaticDimension
+        self.tbPending.estimatedRowHeight = 100.0
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -35,9 +37,12 @@ extension PendingController:UITableViewDataSource{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
             if processPending?.process?.id == WorkStatus.Direct.rawValue {
-                cell.topBtChoose.constant = 15
                 cell.btChoose.isHidden = false
                 cell.delegateRequest = self
+                cell.vSegment.isHidden = false
+            }else{
+                cell.btChoose.isEnabled = true
+                cell.heightBtChoose.constant = 0
             }
             cell.nameUser.text = processPending?.stakeholders?.owner?.name
             cell.delegate = self
@@ -66,20 +71,13 @@ extension PendingController:UITableViewDataSource{
     }
 }
 extension PendingController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            if processPending?.process?.id == WorkStatus.Direct.rawValue {
-                return 120
-            }
-            return CGFloat(heightConstantWorkDetailCell)
-        case 1:
-            return 293
-        default:
-            return 172
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+        navi.workPending = processPending
+        navigationController?.pushViewController(navi, animated: true)
     }
 }
+
 extension PendingController:chooseWorkDelegate{
     func detailManagementDelegate() {
         let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)

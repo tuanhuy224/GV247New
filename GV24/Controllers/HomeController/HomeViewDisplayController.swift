@@ -35,8 +35,7 @@ class HomeViewDisplayController: BaseViewController {
             buttonTest(button: workAround, imageName: "quanhday")
             buttonTest(button: manageButton, imageName: "quanlyconviec")
             buttonTest(button: historyButton, imageName: "lichsu")
-        lbLogo.textColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        //loadData()
+            lbLogo.textColor = .black
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -55,7 +54,7 @@ class HomeViewDisplayController: BaseViewController {
 
     func customBarRightButton(){
         let button = UIButton(type: .custom)
-        button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 24, greenValue: 179, blueValue: 110, alpha: 1)), for: .normal)
+        button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.setTitleColor(UIColor.blue, for: .highlighted)
         button.addTarget(self, action: #selector(HomeViewDisplayController.selectButton), for: .touchUpInside)

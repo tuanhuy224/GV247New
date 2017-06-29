@@ -18,11 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     var window: UIWindow?
     var isLogged = false
     let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
-    //AIzaSyBX-3Rllq_T7YJALhs-4RmDvHvf_nofEq4
-    //AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w
-    //cG5rDsFRDms:APA91bFOlbdbPUnSu9HLsrj-wr-JFgBuqCWLmYsLpKQi80QeyxBvSD5GdDcj9uQw_vjX3rzHoqxfvf8OHK5V6P1nYm4P_vD8mlU3iPeVcWqP6MjnqmKkY6yqucEDbEPqLMl2HN3fOoxQ
-    //cG5rDsFRDms:APA91bGO6fwYt0Y43gHoPp4LIjU3c9VFPpJ2lGq4WB2EPLpXSIMKsLT4FRomnAOrFIL2bgXCCMhOPciUdjWI2plDC62Zv15AIrgcCbwC1-FVnxgCqW2xKkE6AFOVwiEY-dHwC1u3GmSI
-    
     var navi:UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DGLocalization.sharedInstance.startLocalization()
@@ -35,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             navi = UINavigationController(rootViewController: LoginView())
         }
         window?.rootViewController = navi
-        UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1),NSFontAttributeName: UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)]
+        UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.black,NSFontAttributeName: UIFont(descriptor: UIFontDescriptor.BoldDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)]
         UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         UINavigationBar.appearance().backgroundColor = .white
         UIApplication.shared.statusBarView?.backgroundColor = .white
@@ -115,7 +110,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("User Info = ",notification.request.content.userInfo)
         guard let status = notification.request.content.userInfo["status"] as? String else {return}
-        
+        guard let billID = notification.request.content.userInfo["bill"] as? String else {return}
         switch status {
         case "1":
             print("## status = 1")
@@ -127,7 +122,6 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
             navi.pushViewController(managerController, animated: true)
             break
-
         case "6":
             print("## status = 6")
             guard let window = UIApplication.shared.keyWindow else{return}
@@ -141,7 +135,9 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
+            let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+                managerController.isDisplayAlert = true
+                managerController.billId = billID
             navi.pushViewController(managerController, animated: true)
             break
         default:
@@ -168,9 +164,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
 //        }
 //        
 //        business.execute()
-//        
-        
-        
+//
         switch param {
         case "1":
             print("## status = 1")

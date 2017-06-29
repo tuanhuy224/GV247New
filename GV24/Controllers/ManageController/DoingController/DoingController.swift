@@ -19,6 +19,8 @@ class DoingController: BaseViewController {
         tbDoing.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
         tbDoing.allowsSelection = false
         tbDoing.separatorStyle = .none
+        self.tbDoing.rowHeight = UITableViewAutomaticDimension
+        self.tbDoing.estimatedRowHeight = 100.0
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -37,6 +39,13 @@ extension DoingController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbDoing.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
+            if ProcessDoing?.process?.id == WorkStatus.Direct.rawValue {
+                cell.btChoose.isHidden = false
+                cell.vSegment.isHidden = false
+            }else{
+                cell.btChoose.isEnabled = true
+                cell.heightBtChoose.constant = 0
+            }
             cell.nameUser.text = ProcessDoing?.stakeholders?.owner?.name
             cell.addressName.text = ProcessDoing?.stakeholders?.owner?.address?.name
             let url = URL(string: (ProcessDoing?.stakeholders?.owner?.image)!)
@@ -61,18 +70,7 @@ extension DoingController:UITableViewDataSource{
         return UITableViewCell()
     }
 }
-extension DoingController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return CGFloat(heightConstantWorkDetailCell)
-        case 1:
-            return 293
-        default:
-            return 172
-        }
-    }
-}
+
 extension DoingController:chooseWorkDelegate{
     func detailManagementDelegate() {
         let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)

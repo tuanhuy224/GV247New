@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -44,7 +45,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.000 VND/1 giờ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-9n-gRk">
-                                <rect key="frame" x="31" y="45.5" width="106" height="14"/>
+                                <rect key="frame" x="31" y="48" width="106" height="9"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,9 +78,10 @@
                             <constraint firstAttribute="trailing" secondItem="lWm-e4-CSR" secondAttribute="trailing" id="NFP-8H-6Yu"/>
                             <constraint firstItem="jWV-Tp-dWw" firstAttribute="top" secondItem="X1i-GH-KuG" secondAttribute="bottom" constant="5" id="V9R-jy-rE6"/>
                             <constraint firstItem="lWm-e4-CSR" firstAttribute="leading" secondItem="Lgc-HX-yHg" secondAttribute="leading" id="XOs-cl-vtJ"/>
-                            <constraint firstItem="lWm-e4-CSR" firstAttribute="top" secondItem="jWV-Tp-dWw" secondAttribute="bottom" constant="5" id="cjX-ya-WkD"/>
+                            <constraint firstItem="lWm-e4-CSR" firstAttribute="top" secondItem="5ag-9n-gRk" secondAttribute="bottom" constant="8" id="ggl-ue-c5w"/>
                             <constraint firstItem="5ag-9n-gRk" firstAttribute="leading" secondItem="jWV-Tp-dWw" secondAttribute="trailing" constant="8" id="hdY-4z-4X8"/>
                             <constraint firstItem="jWV-Tp-dWw" firstAttribute="leading" secondItem="Lgc-HX-yHg" secondAttribute="leading" constant="8" id="hp3-49-bch"/>
+                            <constraint firstItem="5ag-9n-gRk" firstAttribute="top" secondItem="X1i-GH-KuG" secondAttribute="bottom" constant="8" id="nBV-su-cSJ"/>
                             <constraint firstAttribute="trailing" secondItem="X1i-GH-KuG" secondAttribute="trailing" id="nRN-fd-Zfq"/>
                             <constraint firstItem="X1i-GH-KuG" firstAttribute="leading" secondItem="Lgc-HX-yHg" secondAttribute="leading" id="qUa-Gx-xe7"/>
                             <constraint firstItem="X1i-GH-KuG" firstAttribute="top" secondItem="Lgc-HX-yHg" secondAttribute="top" id="sz3-8X-6SG"/>
@@ -89,7 +91,9 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="ZwP-dK-VXF" secondAttribute="bottom" constant="-8.5" id="1z4-Gr-4Qu"/>
                     <constraint firstItem="Lgc-HX-yHg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="578-NU-UZj"/>
+                    <constraint firstItem="X1i-GH-KuG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="CNK-Vf-2VX"/>
                     <constraint firstAttribute="bottom" secondItem="Lgc-HX-yHg" secondAttribute="bottom" id="GYX-F9-XMg"/>
                     <constraint firstAttribute="trailing" secondItem="Lgc-HX-yHg" secondAttribute="trailing" id="wqg-51-SRq"/>
                     <constraint firstItem="Lgc-HX-yHg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zRO-XZ-jMv"/>

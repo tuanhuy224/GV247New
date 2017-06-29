@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +34,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="POq-W6-jqC"/>
                     </constraints>
-                    <color key="minimumTrackTintColor" red="0.9882352941176471" green="0.72941176470588232" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="minimumTrackTintColor" red="0.18431372549019609" green="0.72941176470588232" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <action selector="changeAction:" destination="-1" eventType="valueChanged" id="aw4-JM-ojC"/>

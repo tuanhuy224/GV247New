@@ -26,6 +26,7 @@ class ManageViewController: BaseViewController {
         self.title = "Taskmanagement".localize
         self.tbManage.rowHeight = UITableViewAutomaticDimension
         self.tbManage.estimatedRowHeight = 100.0
+
     }
     override func decorate() {
         super.decorate()

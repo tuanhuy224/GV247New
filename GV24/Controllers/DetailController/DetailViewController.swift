@@ -25,6 +25,8 @@ class DetailViewController: BaseViewController {
         tbDetail.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tbDetail.allowsSelection = false
         postRerves()
+        self.tbDetail.rowHeight = UITableViewAutomaticDimension
+        self.tbDetail.estimatedRowHeight = 100.0
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.tbDetail.reloadData()
         }
@@ -63,7 +65,6 @@ extension DetailViewController:UITableViewDataSource{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
             cell.ownerDelegate = self
             cell.delegateWork = self
-            cell.constraintHeightButtonChoose.constant = 28
             cell.btChoose.isHidden = false
             cell.vSegment.isHidden = false
             cell.nameUser.text = works.stakeholders?.owner?.username
@@ -89,13 +90,6 @@ extension DetailViewController:UITableViewDataSource{
 }
 extension DetailViewController:UITableViewDelegate{
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 120
-        }else{
-            return 276
-        }
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
