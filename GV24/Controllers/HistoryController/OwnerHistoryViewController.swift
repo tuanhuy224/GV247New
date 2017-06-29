@@ -26,18 +26,30 @@ class OwnerHistoryViewController: BaseViewController {
         return refresh
     }()
     
-    var activityIndicatorView = {
-        return UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        // configure
+        indicator.hidesWhenStopped = true
+        return indicator
     }()
-    
     lazy var emptyLabel: UILabel = {
         let label = TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
         label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        label.isHidden = true
         return label
+    }()
+    lazy var emptyDataView: UIView = {
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 20, y: 50, width: 100, height: 150))
+        emptyView.isHidden = true
+        return emptyView
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupLoadingIndicator()
+        setupEmptyDataView()
+        setupEmptyLabel()
+
         getOwnerList(startAt: startAtDate, endAt: endAtDate)
     }
     
@@ -48,6 +60,55 @@ class OwnerHistoryViewController: BaseViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         self.tableView.backgroundView = self.activityIndicatorView
     }
+    
+    func setupLoadingIndicator() {
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.center = view.center
+    }
+    
+    func setupEmptyDataView() {
+        view.addSubview(emptyDataView)
+    }
+    
+    func setupEmptyLabel(){
+        view.addSubview(emptyLabel)
+    }
+    
+    func showLoadingIndicator() {
+        self.activityIndicatorView.startAnimating()
+    }
+    
+    func hideLoadingIndicator() {
+        self.activityIndicatorView.stopAnimating()
+    }
+
+    
+    func updateUI(status: ResultStatus) {
+        switch status {
+        case .Success:
+            //self.tableView.isHidden = false
+            self.emptyDataView.isHidden = true
+            self.emptyLabel.isHidden = true
+        case .EmptyData:
+            //self.tableView.isHidden = true
+            self.emptyDataView.isHidden = false
+            self.emptyLabel.isHidden = true
+            break
+        case .LostInternet:
+            self.emptyLabel.text = "NetworkIsLost".localize
+            //self.tableView.isHidden = true
+            self.emptyDataView.isHidden = true
+            self.emptyLabel.isHidden = false
+        default:
+            self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
+            //self.tableView.isHidden = true
+            self.emptyDataView.isHidden = true
+            self.emptyLabel.isHidden = false
+            break
+        }
+        self.tableView.reloadData()
+    }
+
     
     @objc fileprivate func updateOwnerList(){
         self.refreshControl.endRefreshing()
@@ -81,49 +142,16 @@ class OwnerHistoryViewController: BaseViewController {
         }
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         let headers: HTTPHeaders = ["hbbgvauth": UserDefaultHelper.getToken()!]
-        OwnerServices.sharedInstance.getOwnersList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, err) in
-            if (self.net?.isReachable)! {
-                switch err {
-                case .Success:
-                    self.ownerList = data!
-                    self.tableView.backgroundView?.isHidden = true
-                    break
-                case .EmptyData:
-                    self.doEmptyData()
-                    break
-                default:
-                    self.doTimeoutExpired()
-                    break
-                }
-                DispatchQueue.main.async {
-                    self.activityIndicatorView.stopAnimating()
-                    self.tableView.reloadData()
-                }
-            }else {
-                self.doNetworkIsDisconnected()
+        OwnerServices.sharedInstance.getOwnersList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, status) in
+            let stat: ResultStatus = (self.net?.isReachable)! ? status : .LostInternet
+            
+            if stat == .Success {
+                self.ownerList =  data!
             }
-        }
-    }
-    
-    func doEmptyData() {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y - 100, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
-        self.tableView.backgroundView = emptyView
-        self.tableView.backgroundView?.isHidden = false
-    }
-    
-    func doTimeoutExpired() {
-        self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
-        self.tableView.backgroundView = self.emptyLabel
-        self.tableView.backgroundView?.isHidden = false
-    }
-    
-    func doNetworkIsDisconnected() {
-        self.emptyLabel.text = "NetworkIsLost".localize
-        self.tableView.backgroundView = self.emptyLabel
-        self.tableView.backgroundView?.isHidden = false
-        DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.updateUI(status: stat)
+                self.hideLoadingIndicator()
+            }
         }
     }
     

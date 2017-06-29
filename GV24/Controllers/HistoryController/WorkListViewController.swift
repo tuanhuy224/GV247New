@@ -68,7 +68,7 @@ class WorkListViewController: BaseViewController {
     
     fileprivate func setTableViewMessage(result:ResultStatus) {
         if result == .EmptyData {
-            let emptyView = TableViewHelper().noData(frame: CGRect(x: self.tableView.center.x, y: self.tableView.center.y - 100, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height))
+            let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 20, y: 50, width: 100, height: 150))
             self.tableView.backgroundView = emptyView
         }else {
             self.emptyLabel.text = result.rawValue.localize
@@ -142,7 +142,7 @@ class WorkListViewController: BaseViewController {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == list.count - 1 {
             self.page = self.page + 1
-            self.getTaskOfOwner()
+            //self.getTaskOfOwner()
         }
     }
 }
