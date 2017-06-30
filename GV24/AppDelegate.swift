@@ -79,20 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             
         }
     }
-
-    func connectToFcm() {
-        Messaging.messaging().connect { (error) in
-            if (error != nil) {
-                print("Unable to connect with FCM. \(error!)")
-            } else {
-                print("Connected to FCM.")
-            }
-        }
-    }
     // [END connect_to_fcm]
-    
     func applicationDidBecomeActive(_ application: UIApplication) {
-        connectToFcm()
     }
     // [START disconnect_from_fcm]
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -102,8 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
 
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        InstanceID.instanceID().setAPNSToken(deviceToken, type: .sandbox)
-        print("APNs device token: \(deviceToken.hexString())")
         print("firebase token string: \(InstanceID.instanceID().token() ?? "")")
         guard let firebaseToken = InstanceID.instanceID().token() else {return}
         UserDefaultHelper.setString(string: firebaseToken)
@@ -196,7 +182,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
                 print("## status = 9")
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                 window?.rootViewController = navi
-                let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+                let managerController = ManagerHistoryViewController(nibName:"ManagerHistoryViewController", bundle: nil)
                 managerController.isDisplayAlert = true
                 managerController.billId = billID
                 navi.pushViewController(managerController, animated: true)

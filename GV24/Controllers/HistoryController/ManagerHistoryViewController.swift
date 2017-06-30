@@ -198,7 +198,7 @@ class ManagerHistoryViewController: BaseViewController {
     func showAlert(error:String)  {
         switch error {
         case "SUCCESS":
-            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: ManageViewController(), title: "WorkCompleted".localize, message: "vui long xac nhan bang cach nhan")
+            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: ManagerHistoryViewController(), title: "WorkCompleted".localize, message: "confirmReceive".localize)
         default:
             break
         }

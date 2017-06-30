@@ -42,6 +42,22 @@ class AlertStandard {
         alertController.addAction(noAction)
         controller.present(alertController, animated: true, completion: nil)
     }
+    
+    func showAlertCt(controller: UIViewController,pushVC:UIViewController?, title: String, message: String, buttonTitle:String = "OK", completion:@escaping (()->())) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "AnswerYes".localize, style: .default) { (action) -> Void in
+            UIView.animate(withDuration: 1, animations: {
+                completion()
+            })
+        }
+        let noAction = UIAlertAction(title: "AnswerNo".localize, style: .default) { (action) -> Void in
+            
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        controller.present(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: - show login view when logout button touch
     func showAlertSetRoot(controller: UIViewController,pushVC:UIViewController, title: String, message: String, buttonTitle:String = "OK") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -63,6 +63,7 @@ extension PendingController:UITableViewDataSource{
             let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
             cell.lbCancelDetail.isHidden = true
             cell.delegate = self
+            cell.denyDelegate = self
             return cell
         default:
             break
@@ -93,7 +94,6 @@ extension PendingController:CancelWorkDelegate{
         MBProgressHUD.showAdded(to: self.view, animated: true)
         apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            print(string!)
             let alertC = AlertStandard.sharedInstance
             alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "cancelWork".localize)
         }
@@ -102,16 +102,32 @@ extension PendingController:CancelWorkDelegate{
 extension PendingController:directRequestDelegate{
     func chooseActionRequest() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
+        let alertC = AlertStandard.sharedInstance
+        alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) { 
+            guard let ownerId = self.processPending?.stakeholders?.owner?.id else {return}
+            guard let taskID = self.processPending?.id else {return}
+            let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
+            let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+            let apiClient = APIService.shared
+            apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+        }
+    }
+}
+extension PendingController:denyRequestDelegate{
+    func denyRequest() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         guard let ownerId = processPending?.stakeholders?.owner?.id else {return}
         guard let taskID = processPending?.id else {return}
         let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
-        print(processPending!.id!)
         let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
-        apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
+        apiClient.postReserve(url: APIPaths().taskdenyRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
             let alertC = AlertStandard.sharedInstance
             MBProgressHUD.hide(for: self.view, animated: true)
-            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
+            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "cancelWork".localize)
         }
+        
     }
 }

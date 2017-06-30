@@ -57,6 +57,7 @@ class HomeViewDisplayController: BaseViewController {
         button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.setTitleColor(UIColor.blue, for: .highlighted)
+        button.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,0)
         button.addTarget(self, action: #selector(HomeViewDisplayController.selectButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }

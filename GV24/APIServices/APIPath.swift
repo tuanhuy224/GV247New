@@ -29,6 +29,7 @@ enum urlPath:String {
     case getWorkAbility = "/maid/getAbility"
     case payDirectConfirm = "/payment/getDirectlyBill"
     case paymentPayDirectConfirm = "/payment/payDirectConfirm"
+    case taskdenyRequest = "/task/denyRequest"
 }
 struct APIPaths {
     func urlGetListAround() -> String {
@@ -90,6 +91,9 @@ struct APIPaths {
     }
     func paymentPayDirectConfirm() -> String {
         return "rootDomain".localize + urlPath.paymentPayDirectConfirm.rawValue
+    }
+    func taskdenyRequest() -> String {
+        return "rootDomain".localize + urlPath.taskdenyRequest.rawValue
     }
     
  }

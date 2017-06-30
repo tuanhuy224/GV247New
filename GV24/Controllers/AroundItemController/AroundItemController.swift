@@ -25,7 +25,7 @@ class AroundItemController: BaseViewController {
         self.tbAround.estimatedRowHeight = 100.0
     }
     func loadAroundItem(){
-        let parameter:[String:Any] = ["work":id!,"lng": currentLocation!.longitude,"lat": currentLocation!.latitude,"maxDistance":5]
+        let parameter:[String:Any] = ["work":id!,"lng": currentLocation!.longitude,"lat": currentLocation!.latitude,"minDistance":0,"maxDistance":10]
         let apiClient = AroundTask.sharedInstall
         MBProgressHUD.showAdded(to: self.view, animated: true)
         apiClient.getWorkFromURL(url: APIPaths().getTaskByAround(), parameter: parameter) { (works, string) in

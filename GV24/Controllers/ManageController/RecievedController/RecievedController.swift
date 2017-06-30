@@ -95,7 +95,6 @@ extension RecievedController:CancelWorkDelegate{
         MBProgressHUD.showAdded(to: self.view, animated: true)
         apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            print(string!)
             let alertC = AlertStandard.sharedInstance
             alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "cancelWork".localize)
         }

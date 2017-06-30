@@ -58,12 +58,11 @@ class WorkAroundController: BaseViewController {
             arWork.slider.setValue(Float(UserDefaultHelper.getSlider()!)!, animated: true)
         }
     }
-    
     func loadData() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         self.arrays.removeAll()
         let apiService = APIService.shared
-        let param:[String:Double] = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!]
+        let param:[String:Double] = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!,"minDistance":0,"maxDistance":10]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
             if let jsonArray = json?.array{
                 for data in jsonArray{
@@ -110,7 +109,7 @@ class WorkAroundController: BaseViewController {
         button.setTitle("search".localize, for: .normal)
         button.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
-        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
+        button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSeven)
         button.addTarget(self, action: #selector(WorkAroundController.selectButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
@@ -162,11 +161,11 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
 }
 extension WorkAroundController:changeSliderDelegate{
     func change(slider: UISlider) {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
         if slider.isContinuous == true {
             arWork.sliderMax.text = String(stringInterpolation: "\(Int(slider.value))km")
             UserDefaultHelper.setSlider(slider: "\(Int(slider.value))")
-            MBProgressHUD.hide(for: self.view, animated: true)
+           // MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }

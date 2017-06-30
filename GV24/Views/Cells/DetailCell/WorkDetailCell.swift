@@ -8,6 +8,7 @@
 
 import UIKit
 import IoniconsSwift
+
 @objc protocol directRequestDelegate:class{
     @objc optional func chooseActionRequest()
 }
@@ -35,6 +36,7 @@ class WorkDetailCell: CustomTableViewCell {
     weak var delegate:chooseWorkDelegate?
     weak var delegateWork:clickChooseWorkID?
     weak var ownerDelegate:OwnerDelegate?
+    
     weak var delegateRequest:directRequestDelegate?
     @IBOutlet weak var aroundRight: UIButton!
     override func awakeFromNib() {

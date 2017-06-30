@@ -147,6 +147,7 @@ nocomment = "Không có nhận xét";
 NetworkIsLost = "Không có kết nối internet!";
 SoonUpdate = "Đang cập nhật!";
 Youcancancelyouraccepted = "Bạn được quyền hủy công việc đã nhận trong vòng 24 giờ trước khi bắt đầu làm việc.Vui lòng gọi điện thông báo công ty hoặc chủ nhà khi xác nhận thay đổi.";
+confirmReceive = "Vui lòng xác nhận tiền mặt bằng cách nhấn OK";
 
 
 

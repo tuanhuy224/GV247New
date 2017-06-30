@@ -129,7 +129,6 @@ class APIService: NSObject {
             }
         }
     }
-    
     func getAllAround(url : String,method:HTTPMethod, parameters: Parameters,encoding: URLEncoding, completion: @escaping (ResponseCompletion)){
         Alamofire.request(url, method:method,parameters: parameters, encoding: encoding).responseJSON { (response) in
             switch response.result {
@@ -145,10 +144,7 @@ class APIService: NSObject {
                 completion(nil, error.localizedDescription)
             }
         }
-    
     }
-    
-        
     func posturl(url:String,parameters:Parameters,completion: @escaping ((JSON?,Error?)->())){
         Alamofire.request(url, method: .post, parameters: parameters).responseJSON { (response) in
             switch response.result {

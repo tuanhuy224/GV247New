@@ -9,6 +9,9 @@
 import UIKit
 import IoniconsSwift
 
+@objc protocol denyRequestDelegate:class{
+    @objc optional func denyRequest()
+}
 @objc protocol CancelWorkDelegate:class{
     @objc optional func CancelButton()
     @objc optional func CancelButtonForPending()
@@ -20,6 +23,7 @@ class CancelCell: CustomTableViewCell {
     @IBOutlet weak var lbCancel: UILabel!
     @IBOutlet weak var viewSpace: UIView!
     weak var delegate:CancelWorkDelegate?
+    weak var denyDelegate:denyRequestDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         viewSpace.backgroundColor = UIColor.colorWithRedValue(redValue: 239, greenValue: 239, blueValue: 244, alpha: 1)
@@ -35,8 +39,16 @@ class CancelCell: CustomTableViewCell {
         if delegate != nil {
             delegate?.CancelButton!()
         }
+        if denyDelegate != nil {
+            denyDelegate?.denyRequest!()
+        }
     }
     @IBAction func btCancelAction(_ sender: Any) {
-        
+        if delegate != nil {
+            delegate?.CancelButton!()
+        }
+        if denyDelegate != nil {
+            denyDelegate?.denyRequest!()
+        }
     }
 }

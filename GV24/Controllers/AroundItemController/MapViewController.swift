@@ -78,7 +78,7 @@ class MapViewController: BaseViewController {
     }
     func loadData(lng:Double,lat:Double) {
         let apiService = APIService.shared
-        let param:[String:Double] = ["lng": lng,"lat": lat]
+        let param:[String:Double] = ["lng": lng,"lat": lat,"minDistance":0,"maxDistance":10]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
             if let jsonArray = json?.array{
                 for data in jsonArray{
@@ -152,7 +152,6 @@ extension MapViewController:GMSMapViewDelegate{
 extension MapViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         hideKeyboard()
-        
         let text = searchBar.text!
         geocoder.geocodeAddressString(text) { (placeMarks, error) in
             if error == nil{
