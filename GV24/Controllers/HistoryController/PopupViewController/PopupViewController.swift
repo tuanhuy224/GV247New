@@ -13,7 +13,7 @@ protocol PopupViewControllerDelegate: class {
 }
 
 class PopupViewController: BaseViewController {
-
+    
     var delegate: PopupViewControllerDelegate?
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var effectView: UIView!
@@ -24,6 +24,7 @@ class PopupViewController: BaseViewController {
     var isToDate: Bool = false
     var fromDate: Date?
     var toDate: Date!
+    @IBOutlet weak var bottomConstraintToSuperView: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +40,61 @@ class PopupViewController: BaseViewController {
         containerView.layer.shadowOpacity = 0.7
         cancelButton.setTitle("Cancel".localize, for: .normal)
         selectButton.setTitle("Select".localize, for: .normal)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancel(_:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismiss(animated:)))
         effectView.addGestureRecognizer(tapGesture)
+        bottomConstraintToSuperView.constant -= self.containerView.frame.size.height
+        effectView.alpha = 0.0
+        self.view.layoutIfNeeded()
+    }
+    
+    func show() {
+        
+        guard var rootController = UIApplication.shared.keyWindow?.rootViewController else {
+            return
+        }
+        
+        //        if let navigation = rootController as? UINavigationController,
+        //            let controller = navigation.viewControllers.last {
+        //            rootController = controller
+        //        }
+        // setup begin state
+        // - set constraint to datePicker
+        
+        
+        view.frame = rootController.view.bounds
+        rootController.view.addSubview(view)
+        self.willMove(toParentViewController: rootController)
+        rootController.addChildViewController(self)
+        self.didMove(toParentViewController: rootController)
+        
+        
+        // animation
+        UIView.animate(withDuration: 0.24, animations: {
+            // move constraint correctly
+            self.bottomConstraintToSuperView.constant = 0
+            self.effectView.alpha = 0.5
+            self.view.layoutIfNeeded()
+            
+        }) { (success) in
+            //  do nothing
+        }
+        
+    }
+    
+    func dismiss(animated: Bool = false) {
+        
+        if animated {
+            // animation
+            UIView.animate(withDuration: 0.24, animations: {
+                self.bottomConstraintToSuperView.constant -= self.containerView.frame.size.height
+                self.effectView.alpha = 0
+                self.view.layoutIfNeeded()
+            }, completion: { (completed) in
+                self.view.removeFromSuperview()
+                self.removeFromParentViewController()
+            })
+        }
+        
     }
     
     @IBAction func selectDate(_ sender: Any) {
@@ -75,17 +129,17 @@ class PopupViewController: BaseViewController {
     
     @IBAction func cancel(_ sender: Any) {
         effectView.alpha = 0
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
     fileprivate func doDismiss(date: Date, isFromDate: Bool, isToDate: Bool) {
         effectView.alpha = 0
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
         self.delegate?.selectedDate(date: date, isFromDate: isFromDate, isToDate: isToDate)
     }
     
     override func setupViewBase() {}
     
     override func decorate() {}
-
+    
 }

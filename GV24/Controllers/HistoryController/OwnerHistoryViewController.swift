@@ -33,13 +33,14 @@ class OwnerHistoryViewController: BaseViewController {
         return indicator
     }()
     lazy var emptyLabel: UILabel = {
-        let label = TableViewHelper().emptyMessage(message: "", size: self.tableView.bounds.size)
+        let label = TableViewHelper().emptyMessage(message: "", size: CGSize(width: 200, height: 100))
         label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        
         label.isHidden = true
         return label
     }()
     lazy var emptyDataView: UIView = {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 20, y: 50, width: 100, height: 150))
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
         emptyView.isHidden = true
         return emptyView
     }()
@@ -72,10 +73,13 @@ class OwnerHistoryViewController: BaseViewController {
     
     func setupEmptyLabel(){
         view.addSubview(emptyLabel)
+        emptyLabel.frame = CGRect(x: self.view.frame.size.width/2 - 100, y: 0, width: 200, height: 100)
     }
     
     func showLoadingIndicator() {
-        self.activityIndicatorView.startAnimating()
+        if !self.refreshControl.isRefreshing {
+            self.activityIndicatorView.startAnimating()
+        }
     }
     
     func hideLoadingIndicator() {
@@ -111,10 +115,11 @@ class OwnerHistoryViewController: BaseViewController {
 
     
     @objc fileprivate func updateOwnerList(){
-        self.refreshControl.endRefreshing()
+        self.refreshControl.beginRefreshing()
         self.ownerList.removeAll()
         self.tableView.reloadData()
         self.getOwnerList(startAt: startAtDate, endAt: endAtDate)
+        self.refreshControl.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,8 +139,7 @@ class OwnerHistoryViewController: BaseViewController {
     func getOwnerList(startAt: Date?, endAt: Date) {
         self.ownerList.removeAll()
         self.tableView.reloadData()
-        self.tableView.backgroundView = self.activityIndicatorView
-        self.activityIndicatorView.startAnimating()
+        self.showLoadingIndicator()
         var params: [String: Any] = [:]
         if startAt != nil {
             params["startAt"] = "\(String.convertDateToISODateType(date: startAt!)!)"
