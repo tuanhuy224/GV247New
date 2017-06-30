@@ -39,13 +39,13 @@ class HistoryViewController: BaseViewController {
     }()
     
     lazy var emptyLabel: UILabel = {
-        let label = TableViewHelper().emptyMessage(message: "", size: self.historyTableView.bounds.size)
+        let label = TableViewHelper().emptyMessage(message: "", size: CGSize(width: 200, height: 100))
         label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
         label.isHidden = true
         return label
     }()
     lazy var emptyDataView: UIView = {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 20, y: 50, width: 100, height: 150))
+        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
         emptyView.isHidden = true
         return emptyView
     }()
@@ -72,10 +72,13 @@ class HistoryViewController: BaseViewController {
     
     func setupEmptyLabel(){
         view.addSubview(emptyLabel)
+        emptyLabel.frame = CGRect(x: self.view.frame.size.width/2 - 100, y: 0, width: 200, height: 100)
     }
     
     func showLoadingIndicator() {
-        self.activityIndicatorView.startAnimating()
+        if !self.refreshControl.isRefreshing {
+            self.activityIndicatorView.startAnimating()
+        }
     }
     
     func hideLoadingIndicator() {
@@ -114,14 +117,16 @@ class HistoryViewController: BaseViewController {
         self.historyTableView.addSubview(self.refreshControl)
         historyTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: historyTableView.bounds.size.width, height: 0.01))
         self.historyTableView.separatorStyle = .singleLine
+        self.historyTableView.backgroundView = self.activityIndicatorView
     }
     
     func updateOwnerList() {
-        self.refreshControl.endRefreshing()
+        self.refreshControl.beginRefreshing()
         self.page = 1
         self.workList.removeAll()
         self.historyTableView.reloadData()
         self.getWorkList(startAt: startAtDate, endAt: endAtDate)
+        self.refreshControl.endRefreshing()
     }
     
     override func decorate() {}
@@ -147,11 +152,12 @@ class HistoryViewController: BaseViewController {
             let stat: ResultStatus = (self.net?.isReachable)! ? status : .LostInternet
             
             if stat == .Success {
-                if self.page != 1 {
-                    self.workList.append(contentsOf: data!)
-                }else {
-                    self.workList = data!
-                }
+                self.workList = data!
+//                if self.page != 1 {
+//                    self.workList.append(contentsOf: data!)
+//                }else {
+//                    self.workList = data!
+//                }
             }
             DispatchQueue.main.async {
                 self.updateUI(status: stat)
@@ -181,6 +187,7 @@ class HistoryViewController: BaseViewController {
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
          cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
         cell.lbDist.text = "CompletedWork".localize
+        cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

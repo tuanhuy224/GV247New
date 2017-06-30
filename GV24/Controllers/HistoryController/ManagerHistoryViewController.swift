@@ -139,15 +139,12 @@ class ManagerHistoryViewController: BaseViewController {
     
     fileprivate func showPopup(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date) {
         let popup = PopupViewController()
-        popup.modalPresentationStyle = .overCurrentContext
         popup.delegate = self
         popup.isFromDate = isFromDate
         popup.isToDate = isToDate
         popup.fromDate = fromDate
         popup.toDate = toDate
-        present(popup, animated: true) {
-            popup.effectView.alpha = 0.5
-        }
+        popup.show()
     }
     
     func reloadWorkListViewController() {
