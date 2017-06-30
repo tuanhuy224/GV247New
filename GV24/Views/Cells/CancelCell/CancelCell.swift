@@ -29,6 +29,7 @@ class CancelCell: CustomTableViewCell {
         lbCancel.textColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
         lbCancel.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
         lbCancel.text = "CancelTask".localize
+        lbCancelDetail.text = "Youcancancelyouraccepted".localize
     } 
     @IBAction func btDeleteWork(_ sender: Any) {
         if delegate != nil {

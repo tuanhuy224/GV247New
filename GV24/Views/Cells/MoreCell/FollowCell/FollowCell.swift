@@ -24,7 +24,7 @@ class FollowCell: CustomTableViewCell {
     weak var delegate:LogOutDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        btFollow.setImage(Ionicons.socialFacebookOutline.image(32), for: .normal)
+        btFollow.setImage(Ionicons.socialFacebook.image(32), for: .normal)
         btFollow.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         btFacebook.setImage(Ionicons.androidShareAlt.image(32), for: .normal)
         btFacebook.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)

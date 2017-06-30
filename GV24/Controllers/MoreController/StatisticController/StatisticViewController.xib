@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -45,7 +45,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-5Q-avI" userLabel="top view">
-                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjC-yN-Spz" userLabel="top line">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -110,7 +110,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-L9-PuH">
-                    <rect key="frame" x="0.0" y="468" width="375" height="199"/>
+                    <rect key="frame" x="0.0" y="404" width="375" height="263"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="oHd-a0-kXY"/>
@@ -118,7 +118,7 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9o-zD-FjW">
-                    <rect key="frame" x="0.0" y="108" width="375" height="360"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="360"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="NJP-XQ-3Tf">
                             <rect key="frame" x="0.0" y="20" width="375" height="235"/>
@@ -254,7 +254,7 @@
                 <constraint firstItem="f9o-zD-FjW" firstAttribute="top" secondItem="MXe-5Q-avI" secondAttribute="bottom" id="2uB-UV-XHt"/>
                 <constraint firstItem="MXe-5Q-avI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6VW-LA-TdY"/>
                 <constraint firstAttribute="trailing" secondItem="MXe-5Q-avI" secondAttribute="trailing" id="QSF-Nb-7Zm"/>
-                <constraint firstItem="MXe-5Q-avI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="VdN-uE-6aD"/>
+                <constraint firstItem="MXe-5Q-avI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VdN-uE-6aD"/>
                 <constraint firstAttribute="bottom" secondItem="a5w-L9-PuH" secondAttribute="bottom" id="mQb-Ph-c06"/>
                 <constraint firstItem="a5w-L9-PuH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nc0-0m-x1Q"/>
                 <constraint firstItem="a5w-L9-PuH" firstAttribute="top" secondItem="f9o-zD-FjW" secondAttribute="bottom" id="rVM-bo-c1i"/>

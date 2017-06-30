@@ -24,9 +24,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_circle" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-YY-Ygx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-YY-Ygx">
                         <rect key="frame" x="8" y="22.5" width="50" height="50"/>
-                        <color key="backgroundColor" red="0.29290099330000002" green="0.6020064128" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="1h8-nr-5ae"/>
                             <constraint firstAttribute="width" constant="50" id="TZB-Mf-mTz"/>
@@ -85,12 +84,6 @@
                             <action selector="btDirectRequest:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hJg-6I-WWh"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brU-VK-xMR">
-                        <rect key="frame" x="86" y="17" width="289" height="57"/>
-                        <connections>
-                            <action selector="customButtonRightClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Oe8-FR-pj9"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="leading" secondItem="TKq-Mx-div" secondAttribute="leading" id="0O6-Vk-CMy"/>
@@ -102,22 +95,18 @@
                     <constraint firstItem="TKq-Mx-div" firstAttribute="leading" secondItem="RAp-YY-Ygx" secondAttribute="trailing" constant="8" id="Csv-S3-U7s"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="centerY" secondItem="RAp-YY-Ygx" secondAttribute="centerY" constant="-2" id="DlC-wN-VBF"/>
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FMu-DV-fzb"/>
-                    <constraint firstItem="brU-VK-xMR" firstAttribute="leading" secondItem="RAp-YY-Ygx" secondAttribute="trailing" constant="28" id="HcC-OG-1kN"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="L24-OA-LEN"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LH2-yn-H2U"/>
-                    <constraint firstAttribute="trailing" secondItem="brU-VK-xMR" secondAttribute="trailing" id="MV9-vb-xvz"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Oh9-6N-Gkd"/>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="top" secondItem="TKq-Mx-div" secondAttribute="bottom" constant="6.5" id="X5r-Xe-Hus"/>
                     <constraint firstAttribute="trailing" secondItem="jOn-Cv-dAZ" secondAttribute="trailing" id="Zuy-32-kSY"/>
                     <constraint firstAttribute="bottom" secondItem="sct-l4-Mv6" secondAttribute="bottom" constant="-0.5" id="aHV-Zd-bc0"/>
                     <constraint firstAttribute="trailing" secondItem="Jn0-47-poD" secondAttribute="trailing" constant="5" id="btZ-Mp-Zr9"/>
-                    <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="brU-VK-xMR" secondAttribute="bottom" constant="0.5" id="gvM-7P-y7b"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="RAp-YY-Ygx" secondAttribute="bottom" constant="5" id="jZN-VZ-Z3q"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" id="jvX-pg-Lbd"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="4.5" id="mEx-st-nB7"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="4.5" id="mP7-mZ-No3"/>
                     <constraint firstItem="sct-l4-Mv6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rbU-MC-I94"/>
-                    <constraint firstItem="brU-VK-xMR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="ujU-Tf-2Ze"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uxt-4V-QaK" secondAttribute="bottom" constant="-4" id="vM8-Bx-5Zz"/>
                     <constraint firstAttribute="bottomMargin" secondItem="sct-l4-Mv6" secondAttribute="bottom" constant="-8.5" id="vZp-9b-PrC"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="oRf-WL-mHp" secondAttribute="bottom" constant="15.5" id="yuS-NR-E7k"/>
@@ -138,6 +127,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_account_circle" width="24" height="24"/>
+        <image name="avatar" width="91" height="91"/>
     </resources>
 </document>

@@ -46,13 +46,13 @@
                                 <rect key="frame" x="0.0" y="162" width="320" height="185"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nữ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRJ-bX-Gsg">
-                                        <rect key="frame" x="31" y="26.5" width="18.5" height="16"/>
+                                        <rect key="frame" x="31" y="27" width="18.5" height="16"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="vqE-c7-eqT">
-                                        <rect key="frame" x="31" y="50.5" width="289" height="1"/>
+                                        <rect key="frame" x="31" y="51" width="289" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="vmB-eX-39p"/>
@@ -98,7 +98,7 @@
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-df-x0Z">
-                                        <rect key="frame" x="8" y="62.5" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="63" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="PRA-en-5vb"/>
                                             <constraint firstAttribute="height" constant="15" id="WJO-gf-6TJ"/>
@@ -156,7 +156,7 @@
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="mcX-x9-GHd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Iron_man_the_game_1" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-Ls-j1r">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-Ls-j1r">
                                         <rect key="frame" x="125" y="14" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="CBl-Cm-dVw"/>
@@ -164,7 +164,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen van A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chM-NL-lYr">
-                                        <rect key="frame" x="118.5" y="99" width="84" height="16"/>
+                                        <rect key="frame" x="118" y="99" width="84" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="aar-ud-zVk"/>
                                         </constraints>
@@ -234,7 +234,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="xlA-dp-uYp" secondAttribute="bottom" constant="14" id="0J3-Mw-ql6"/>
                                     <constraint firstItem="chM-NL-lYr" firstAttribute="centerX" secondItem="OCj-Ls-j1r" secondAttribute="centerX" id="Eck-cU-2dY"/>
-                                    <constraint firstItem="chM-NL-lYr" firstAttribute="top" secondItem="OCj-Ls-j1r" secondAttribute="bottom" constant="15" id="KcC-0J-vR3"/>
+                                    <constraint firstItem="chM-NL-lYr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OCj-Ls-j1r" secondAttribute="bottom" constant="14" id="KcC-0J-vR3"/>
                                     <constraint firstItem="xlA-dp-uYp" firstAttribute="top" secondItem="chM-NL-lYr" secondAttribute="bottom" constant="13" id="Zgs-V5-I2m"/>
                                     <constraint firstItem="OCj-Ls-j1r" firstAttribute="centerX" secondItem="mcX-x9-GHd" secondAttribute="centerX" id="blO-y4-nS6"/>
                                     <constraint firstItem="OCj-Ls-j1r" firstAttribute="top" secondItem="mcX-x9-GHd" secondAttribute="top" constant="14" id="x0L-Nv-rzT"/>
@@ -245,10 +245,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dNr-Xu-WTy" secondAttribute="trailing" id="5i1-ZA-zwr"/>
+                            <constraint firstItem="eIs-PH-imK" firstAttribute="top" secondItem="mcX-x9-GHd" secondAttribute="bottom" id="66W-mR-F0D"/>
                             <constraint firstItem="dNr-Xu-WTy" firstAttribute="leading" secondItem="Wac-eb-eix" secondAttribute="leading" id="7FS-Ii-Sa2"/>
+                            <constraint firstItem="mcX-x9-GHd" firstAttribute="leading" secondItem="Wac-eb-eix" secondAttribute="leading" id="7YJ-O4-tbA"/>
                             <constraint firstItem="dNr-Xu-WTy" firstAttribute="leading" secondItem="9dx-sf-NC9" secondAttribute="leading" id="E5D-D0-Rie"/>
                             <constraint firstItem="dNr-Xu-WTy" firstAttribute="top" secondItem="9dx-sf-NC9" secondAttribute="top" id="Fmn-zt-2e0"/>
                             <constraint firstItem="eIs-PH-imK" firstAttribute="top" secondItem="mcX-x9-GHd" secondAttribute="bottom" id="HQM-Ec-keV"/>
+                            <constraint firstAttribute="trailing" secondItem="mcX-x9-GHd" secondAttribute="trailing" id="IHO-pI-dJv"/>
                             <constraint firstAttribute="trailing" secondItem="eIs-PH-imK" secondAttribute="trailing" id="IZJ-Gh-REU"/>
                             <constraint firstItem="dNr-Xu-WTy" firstAttribute="trailing" secondItem="9dx-sf-NC9" secondAttribute="trailing" id="IuG-B6-L2s"/>
                             <constraint firstAttribute="trailing" secondItem="mcX-x9-GHd" secondAttribute="trailing" id="OEd-Qd-9Xd"/>
@@ -264,6 +267,7 @@
                             <constraint firstItem="9dx-sf-NC9" firstAttribute="leading" secondItem="Wac-eb-eix" secondAttribute="leading" id="nPQ-yu-q4w"/>
                             <constraint firstAttribute="trailing" secondItem="9dx-sf-NC9" secondAttribute="trailing" id="rbT-or-mL2"/>
                             <constraint firstItem="mcX-x9-GHd" firstAttribute="top" secondItem="Wac-eb-eix" secondAttribute="top" id="wFF-9r-Q02"/>
+                            <constraint firstItem="mcX-x9-GHd" firstAttribute="top" secondItem="Wac-eb-eix" secondAttribute="top" id="xUK-rW-Duj"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -275,6 +279,7 @@
                     <constraint firstItem="Wac-eb-eix" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hI9-4A-lDB"/>
                     <constraint firstAttribute="bottomMargin" secondItem="5Lo-rB-u1h" secondAttribute="bottom" constant="18.5" id="i8O-BS-1oo"/>
                     <constraint firstItem="Wac-eb-eix" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="j9h-DW-0TL"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="eIs-PH-imK" secondAttribute="bottom" constant="-8.5" id="q9J-3D-7l7"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -298,7 +303,4 @@
             <point key="canvasLocation" x="-75" y="-8.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Iron_man_the_game_1" width="1280" height="1024"/>
-    </resources>
 </document>

@@ -73,6 +73,19 @@ extension RecievedController:UITableViewDataSource{
         return UITableViewCell()
     }
 }
+extension RecievedController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+            navi.workPending = processRecieved
+            navigationController?.pushViewController(navi, animated: true)
+            break
+        default:
+            break
+        }
+    }
+}
 
 extension RecievedController:CancelWorkDelegate{
     func CancelButton() {

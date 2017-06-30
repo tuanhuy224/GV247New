@@ -180,25 +180,11 @@ extension InformationViewController:UITableViewDataSource{
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-<<<<<<< HEAD
-
-=======
-        print("tableview selected: \(indexPath.row)")
-    }
 }
 extension InformationViewController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 340
-        }
-        else if indexPath.section == 1 {
-            return 154
-        }
-        return 170
->>>>>>> V1.0
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
-
 
 

@@ -110,6 +110,7 @@
 		004508151EFCA8CC00402986 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004508141EFCA8CC00402986 /* Reachability.swift */; };
 		004508171EFCBE2600402986 /* ChangeFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004508161EFCBE2600402986 /* ChangeFontSize.swift */; };
 		0045081B1EFCF02100402986 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0045081A1EFCF02100402986 /* StatisticViewController.xib */; };
+		0057723E1F060366008F446D /* fontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057723D1F060366008F446D /* fontSize.swift */; };
 		005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */; };
 		005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */; };
 		005A4DE01EF136AF00FA76FB /* CancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DDE1EF136AF00FA76FB /* CancelCell.swift */; };
@@ -321,6 +322,7 @@
 		004508251EFD1EE200402986 /* SFUIText-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularItalic.ttf"; sourceTree = "<group>"; };
 		004508261EFD1EE200402986 /* SFUIText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.ttf"; sourceTree = "<group>"; };
 		004508271EFD1EE200402986 /* SFUIText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		0057723D1F060366008F446D /* fontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fontSize.swift; sourceTree = "<group>"; };
 		005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforOwnerCell.swift; sourceTree = "<group>"; };
 		005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforOwnerCell.xib; sourceTree = "<group>"; };
 		005A4DDE1EF136AF00FA76FB /* CancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelCell.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				0041035C1EF37058004BF446 /* Notifications */,
 				002315571EDF07DC00B29F36 /* Extention+Image.swift */,
 				004508161EFCBE2600402986 /* ChangeFontSize.swift */,
+				0057723D1F060366008F446D /* fontSize.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -1338,6 +1341,7 @@
 				003BC6851ED9D92E00FF6D14 /* HomeViewDisplayController.swift in Sources */,
 				003BC68F1ED9D98100FF6D14 /* UserDefaultHelper.swift in Sources */,
 				002572461EDE698200AACC52 /* ForgotPasswordViewController.swift in Sources */,
+				0057723E1F060366008F446D /* fontSize.swift in Sources */,
 				002BA1181EDD62730099352D /* UserService.swift in Sources */,
 				00EB19571EE93EF5003B2C5D /* Address.swift in Sources */,
 				037EA8A61EF7CAED00F60824 /* WorkInfoCell.swift in Sources */,

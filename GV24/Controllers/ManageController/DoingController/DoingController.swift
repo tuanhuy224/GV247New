@@ -17,7 +17,6 @@ class DoingController: BaseViewController {
         tbDoing.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
         tbDoing.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tbDoing.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
-        tbDoing.allowsSelection = false
         tbDoing.separatorStyle = .none
         self.tbDoing.rowHeight = UITableViewAutomaticDimension
         self.tbDoing.estimatedRowHeight = 100.0
@@ -68,6 +67,19 @@ extension DoingController:UITableViewDataSource{
             break
         }
         return UITableViewCell()
+    }
+}
+extension DoingController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+            navi.workPending = ProcessDoing
+            navigationController?.pushViewController(navi, animated: true)
+            break
+        default:
+            break
+        }
     }
 }
 

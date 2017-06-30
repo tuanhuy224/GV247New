@@ -17,6 +17,8 @@ class DetailManagementController: BaseViewController {
         detailManager.register(UINib(nibName:NibInforOwnerCell,bundle:nil), forCellReuseIdentifier: InforOwnerCellID)
         detailManager.allowsSelection = false
         detailManager.separatorStyle = .none
+        self.detailManager.rowHeight = UITableViewAutomaticDimension
+        self.detailManager.estimatedRowHeight = 100.0
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -53,16 +55,6 @@ extension DetailManagementController:UITableViewDataSource{
             let cell:InforOwnerCell = detailManager.dequeueReusableCell(withIdentifier: InforOwnerCellID, for: indexPath) as! InforOwnerCell
             cell.delegate = self
             return cell
-        }
-    }
-}
-extension DetailManagementController:UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 307
-        }else{
-            return 246
         }
     }
 }

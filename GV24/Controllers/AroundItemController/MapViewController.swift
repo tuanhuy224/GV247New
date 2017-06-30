@@ -152,6 +152,7 @@ extension MapViewController:GMSMapViewDelegate{
 extension MapViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         hideKeyboard()
+        
         let text = searchBar.text!
         geocoder.geocodeAddressString(text) { (placeMarks, error) in
             if error == nil{
@@ -160,6 +161,7 @@ extension MapViewController:UISearchBarDelegate{
                     self.handle(location: firstLocation.coordinate)
                     let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
                     around.currentLocation = firstLocation.coordinate
+                    self.navigationController?.navigationItem.rightBarButtonItem?.customView?.isUserInteractionEnabled = false
                     self.navigationController?.pushViewController(around, animated: true)
                 }else{
                     print("không tìm thấy địa điểm")

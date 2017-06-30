@@ -142,3 +142,4 @@ comment = "Comment";
 nocomment = "There are no comments";
 NetworkIsLost = "No internet connection!";
 SoonUpdate = "Soon update!";
+Youcancancelyouraccepted = "You can cancel your accepted work within 24 hours before starting. Please call your host or company to confirm your change.";

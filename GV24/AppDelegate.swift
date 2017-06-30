@@ -17,6 +17,7 @@ import FirebaseInstanceID
 class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     var window: UIWindow?
     var isLogged = false
+    var isNotification:Bool = false
     let googleMapsApiKey = "AIzaSyCNhv23qd9NWrFOalVL3u6w241HdJk7d-w"
     var navi:UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -30,13 +31,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             navi = UINavigationController(rootViewController: LoginView())
         }
         window?.rootViewController = navi
-        UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.black,NSFontAttributeName: UIFont(descriptor: UIFontDescriptor.BoldDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)]
+       // UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.black,NSFontAttributeName:UIFont(name:"SFUIText-Bold", size: sizeSeven)]
+    
+        
         UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         UINavigationBar.appearance().backgroundColor = .white
         UIApplication.shared.statusBarView?.backgroundColor = .white
         FirebaseApp.configure()
         registerForRemoteNotification()
         application.registerForRemoteNotifications()
+        if isNotification == true {
+            isNotification = false
+            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            window?.rootViewController = navi
+            let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
+            navi.pushViewController(managerController, animated: true)
+        }
         return true
     }
     // MARK: - Check vesion IOS
@@ -119,11 +129,12 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+            let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
             navi.pushViewController(managerController, animated: true)
             break
         case "6":
             print("## status = 6")
+            isNotification = true
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
@@ -171,10 +182,11 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             case "5":
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                 window?.rootViewController = navi
-                let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+                let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
                 navi.pushViewController(managerController, animated: true)
             case "6":
                 print("## status = 6")
+                isNotification = true
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                 window?.rootViewController = navi
                 let managerController = RecievedController(nibName: "RecievedController", bundle: nil)

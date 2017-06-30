@@ -61,6 +61,7 @@ class WorkAroundController: BaseViewController {
     
     func loadData() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.arrays.removeAll()
         let apiService = APIService.shared
         let param:[String:Double] = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
@@ -115,7 +116,7 @@ class WorkAroundController: BaseViewController {
         
     }
     func selectButton() {
-        //navigationController?.pushViewController(DetailViewController(), animated: true)
+        self.forwardGeocoding()
     }
     // Get longtitude and lattitue
     func forwardGeocoding(){
