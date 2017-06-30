@@ -152,11 +152,12 @@ class HistoryViewController: BaseViewController {
             let stat: ResultStatus = (self.net?.isReachable)! ? status : .LostInternet
             
             if stat == .Success {
-                if self.page != 1 {
-                    self.workList.append(contentsOf: data!)
-                }else {
-                    self.workList = data!
-                }
+                self.workList = data!
+//                if self.page != 1 {
+//                    self.workList.append(contentsOf: data!)
+//                }else {
+//                    self.workList = data!
+//                }
             }
             DispatchQueue.main.async {
                 self.updateUI(status: stat)
@@ -186,6 +187,7 @@ class HistoryViewController: BaseViewController {
         cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
          cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
         cell.lbDist.text = "CompletedWork".localize
+        cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
