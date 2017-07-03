@@ -30,26 +30,17 @@ extension UIViewController {
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y = -150
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0{
-//                UIView.animate(withDuration: 0.5, animations: {
-//                    self.view.frame.origin.y -= keyboardSize.height
-//                })
-//            }
-//        }
+        UIView.animate(withDuration: 0.5) { 
+            self.view.frame.origin.y = -150
+        }
+        
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                UIView.animate(withDuration: 0.5, animations: {
-//                    self.view.frame.origin.y += keyboardSize.height
-//                })
-//            }
-//            
-//        }
+        UIView.animate(withDuration: 0.5) { 
+            self.view.frame.origin.y = +64
+        }
+
     }
     func getBottomConstrainsts() -> [NSLayoutConstraint] {
         var consts:[NSLayoutConstraint] = []

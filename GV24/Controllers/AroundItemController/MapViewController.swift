@@ -36,6 +36,7 @@ class MapViewController: BaseViewController {
         super.viewDidLoad()
         initializeTheLocationManager()
         configurationSearchBar()
+        MBProgressHUD.showAdded(to: self.view, animated: true)
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -109,6 +110,7 @@ extension MapViewController: CLLocationManagerDelegate {
         let location: CLLocation = locations.last!
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,longitude: location.coordinate.longitude,zoom: zoomLevel)
         currentLocation = location.coordinate
+        MBProgressHUD.hide(for: self.view, animated: true)
         if mapView.isHidden {
             mapView.isHidden = false
             mapView.camera = camera
@@ -163,10 +165,10 @@ extension MapViewController:UISearchBarDelegate{
                     self.navigationController?.navigationItem.rightBarButtonItem?.customView?.isUserInteractionEnabled = false
                     self.navigationController?.pushViewController(around, animated: true)
                 }else{
-                    print("không tìm thấy địa điểm")
+                    
                 }
             }else{
-                print(error?.localizedDescription as Any)
+               AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
             }
         }
     }

@@ -60,13 +60,15 @@ class ManageViewController: BaseViewController {
         let parmaterRecieve = ["process":"\(WorkStatus.Recieved.rawValue)"]
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiService = AroundTask.sharedInstall
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //LoadingView.shared.show()
+        LoadingView.init().show()
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parameterCreate, header: header) { (json, error) in
             if json != nil{
                 self.processOnCreate = json!
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.tbManage.reloadData()
             }
+            //LoadingView.shared.close()
+            LoadingView.init().close()
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
             if json != nil{
@@ -174,12 +176,6 @@ extension ManageViewController:UITableViewDataSource{
 
 }
 extension ManageViewController:UITableViewDelegate{
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 94
-//    }
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch segmentCtr.selectedSegmentIndex {
         case 0:

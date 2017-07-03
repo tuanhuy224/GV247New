@@ -37,6 +37,7 @@ class FollowCell: CustomTableViewCell {
         btLogOut.tintColor =  UIColor.colorWithRedValue(redValue: 253, greenValue: 189, blueValue: 78, alpha: 1)
         btFollowAc.setTitle("shareGv24".localize, for: .normal)
         btFacebookAc.setTitle("followUs".localize, for: .normal)
+        btLogOut.setTitle("Logout".localize, for: .normal)
         
     }
     @IBAction func btLogOutAction(_ sender: Any) {

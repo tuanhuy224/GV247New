@@ -146,18 +146,14 @@ class HistoryViewController: BaseViewController {
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
         params["page"] = self.page
         params["limit"] = self.limit
-        let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
+        guard let header = UserDefaultHelper.getToken() else {return}
+        let headers: HTTPHeaders = ["hbbgvauth": header]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, status) in
             
             let stat: ResultStatus = (self.net?.isReachable)! ? status : .LostInternet
             
             if stat == .Success {
                 self.workList = data!
-//                if self.page != 1 {
-//                    self.workList.append(contentsOf: data!)
-//                }else {
-//                    self.workList = data!
-//                }
             }
             DispatchQueue.main.async {
                 self.updateUI(status: stat)

@@ -48,7 +48,9 @@ extension PendingController:UITableViewDataSource{
             cell.delegate = self
             cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
             let url = URL(string: (processPending?.stakeholders?.owner?.image)!)
-            cell.imageName.kf.setImage(with: url)
+            DispatchQueue.main.async {
+                cell.imageName.kf.setImage(with: url)
+            }
             return cell
         case 1:
             let cell:InfoDetailCell = tbPending.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
@@ -73,9 +75,15 @@ extension PendingController:UITableViewDataSource{
 }
 extension PendingController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
-        navi.workPending = processPending
-        navigationController?.pushViewController(navi, animated: true)
+        switch indexPath.section {
+        case 0:
+            let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+            navi.workPending = processPending
+            navigationController?.pushViewController(navi, animated: true)
+            break
+        default:
+            break
+        }
     }
 }
 

@@ -23,13 +23,9 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad()
         tbDetail.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
         tbDetail.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
-        tbDetail.allowsSelection = false
         postRerves()
         self.tbDetail.rowHeight = UITableViewAutomaticDimension
         self.tbDetail.estimatedRowHeight = 100.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.tbDetail.reloadData()
-        }
     }
     func loadData() {
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
@@ -67,6 +63,7 @@ extension DetailViewController:UITableViewDataSource{
             cell.delegateWork = self
             cell.btChoose.isHidden = false
             cell.vSegment.isHidden = false
+            cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
             cell.nameUser.text = works.stakeholders?.owner?.username
             cell.addressName.text = works.stakeholders?.owner?.address?.name
             DispatchQueue.main.async {

@@ -50,25 +50,6 @@ class LoginView: BaseViewController {
         userLogin.placeholder = "Username".localize
         passwordLogin.placeholder = "Password".localize
     }
-    func keyboardNotification(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
-            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
-            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
-            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
-                self.keyboardHeightLayoutConstraint?.constant = 0.0
-            } else {
-                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
-            }
-            UIView.animate(withDuration: duration,
-                           delay: TimeInterval(0),
-                           options: animationCurve,
-                           animations: { self.view.layoutIfNeeded() },
-                           completion: nil)
-        }
-    }
     func token() -> String {
         return UserDefaultHelper.getString()! + "@//@ios"
     }
@@ -80,10 +61,10 @@ class LoginView: BaseViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         btnLogin.setBackgroundImage(nil, for: .normal)
         btnLogin.setBackgroundImage(nil, for: .highlighted)
+        LoadingView.init().show()
         let apiClient = UserService.sharedInstance
         apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: token(), completion: { (user, string, error) in
             if let user = user{
-                print(self.token())
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
                 guard let window = UIApplication.shared.keyWindow else{return}
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())
@@ -91,11 +72,12 @@ class LoginView: BaseViewController {
             }else{
                 AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
             }
+            LoadingView.init().close()
         })
+        self.dismissKeyboard()
     }
     @IBAction func btAround(_ sender: Any) {
-        let navi = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
-        navi.arrays = arrays
+        let navi = MapViewController(nibName: "MapViewController", bundle: nil)
         navigationController?.pushViewController(navi, animated: true)
     }
     @IBAction func forgotPasswordAction(_ sender: Any) {

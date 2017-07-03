@@ -7,27 +7,24 @@
 //
 
 import UIKit
-import Alamofire
+
 
 class AboutViewController: UIViewController {
 
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var lbAbout: UILabel!
+    @IBOutlet weak var scroll: UIScrollView!
+    @IBOutlet weak var tfTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.tfTextField.text = "Aboutus".localize
+        scroll.isScrollEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Aboutus".localize
+        self.title = "AboutUsTitle".localize
+        
     }
     
 

@@ -9,7 +9,7 @@ import Foundation
 
 enum urlPath:String {
     case getListAround = "/more/getTaskAround"
-    case getListHome = "/vi/auth/maid/login"
+    case getListHome = "/auth/maid/login"
     case getURLWorkListHistory = "/maid/getHistoryTasks"
     case getTaskCommentWithTaskID = "/maid/getTaskComment"
     case getOwnerList = "/maid/getAllWorkedOwner"
@@ -30,6 +30,9 @@ enum urlPath:String {
     case payDirectConfirm = "/payment/getDirectlyBill"
     case paymentPayDirectConfirm = "/payment/payDirectConfirm"
     case taskdenyRequest = "/task/denyRequest"
+    case maidCheckToken = "/maid/checkToken"
+    case maidOnAnnouncement = "/maid/onAnnouncement"
+    case maidOffAnnouncement = "/maid/offAnnouncement"
 }
 struct APIPaths {
     func urlGetListAround() -> String {
@@ -94,6 +97,15 @@ struct APIPaths {
     }
     func taskdenyRequest() -> String {
         return "rootDomain".localize + urlPath.taskdenyRequest.rawValue
+    }
+    func maidCheckToken() -> String {
+        return "rootDomain".localize + urlPath.maidCheckToken.rawValue
+    }
+    func maidOnAnnouncement() -> String {
+        return "rootDomain".localize + urlPath.maidOnAnnouncement.rawValue
+    }
+    func maidOffAnnouncement() -> String {
+        return "rootDomain".localize + urlPath.maidOffAnnouncement.rawValue
     }
     
  }

@@ -35,7 +35,9 @@ class BaseViewController: UIViewController {
         }
         print("++++view display:\(self)+++++++")
     }
-    func setupViewBase() {}
+    func setupViewBase() {
+        checkTokenApp()
+    }
     func decorate(){}
     func displayNetwork(){
         viewNetwork = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
@@ -43,11 +45,21 @@ class BaseViewController: UIViewController {
         lbViewNetwork?.backgroundColor = UIColor.red
         viewNetwork?.addSubview(lbViewNetwork!)
     }
-    func timeString(time:TimeInterval) -> String {
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+    func checkTokenApp() {
+        guard let token = UserDefaultHelper.getToken() else{return}
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(token)"]
+        let apiClient = APIService.shared
+        apiClient.getUrl(url: APIPaths().maidCheckToken(), param: [:], header: header) { (json, error) in
+            if error != "SUCCESS"{
+                _ = UserDefaultHelper().removeUserDefault()
+                let alert = AlertStandard.sharedInstance
+                alert.showAlertLogin(controller: self, pushVC: LoginView(), title: "", message: "Youraccountwasaccessedfromanotherdevice".localize, buttonTitle:"" , completion: {
+                    guard let window = UIApplication.shared.keyWindow else{return}
+                    let navi = UINavigationController(rootViewController: LoginView())
+                    window.rootViewController = navi
+                })
+            }
+        }
     }
 }
 extension BaseViewController:DGLocalizationDelegate{

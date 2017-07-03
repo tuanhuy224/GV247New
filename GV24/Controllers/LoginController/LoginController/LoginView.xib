@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -192,6 +191,7 @@
                 <constraint firstItem="dxc-wH-YAW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:3" id="GJ0-uf-5Tg"/>
                 <constraint firstAttribute="bottom" secondItem="tLj-6N-x88" secondAttribute="bottom" id="KvP-PB-1Sc"/>
                 <constraint firstAttribute="trailing" secondItem="5Fa-cN-kOO" secondAttribute="trailing" id="Occ-3q-3ac"/>
+                <constraint firstAttribute="bottom" secondItem="dxc-wH-YAW" secondAttribute="bottom" id="Var-IS-le5"/>
                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="top" secondItem="0Us-JN-Sph" secondAttribute="bottom" constant="80" id="YAE-GO-sbQ"/>
                 <constraint firstItem="5Fa-cN-kOO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fJr-BV-eLf"/>
                 <constraint firstItem="tLj-6N-x88" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gZx-T7-xK1"/>

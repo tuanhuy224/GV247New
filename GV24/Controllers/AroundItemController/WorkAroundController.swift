@@ -59,16 +59,18 @@ class WorkAroundController: BaseViewController {
         }
     }
     func loadData() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        //LoadingView.shared.show()
+        LoadingView.init().show()
         self.arrays.removeAll()
         let apiService = APIService.shared
         let param:[String:Double] = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!,"minDistance":0,"maxDistance":10]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
+            //LoadingView.shared.close()
+            LoadingView.init().close()
             if let jsonArray = json?.array{
                 for data in jsonArray{
                     self.arrays.append(Around(json: data))
                     self.aroundTableView.reloadData()
-                    MBProgressHUD.hide(for: self.view, animated: true)
                 }
             }
         }
@@ -121,7 +123,6 @@ class WorkAroundController: BaseViewController {
     func forwardGeocoding(){
         guard let locationString =  textLocation else{return}
         APIService.shared.getLocation(url: locationString) { (json, error) in
-            //guard let results = json?["results"].array else{return}
             guard let geometry = json?[0]["geometry"].dictionary else{return}
             guard let location = geometry["location"]?.dictionary else{return}
             guard let lat = location["lat"], let lng = location["lng"] else{return}
@@ -154,9 +155,6 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
             vc.name = "\(arrays[indexPath.row].id!.name!)"
             vc.currentLocation = currentLocation
             navigationController?.pushViewController(vc, animated: true)
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
     }
 }
 extension WorkAroundController:changeSliderDelegate{

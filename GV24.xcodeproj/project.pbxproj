@@ -118,6 +118,7 @@
 		006613BD1F0348A200FBF378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 006613BC1F0348A200FBF378 /* GoogleService-Info.plist */; };
 		006BD3A61F00A0C8002867EC /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006BD3A41F00A0C8002867EC /* ReportController.swift */; };
 		006BD3A71F00A0C8002867EC /* ReportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006BD3A51F00A0C8002867EC /* ReportController.xib */; };
+		006E80021F0A34C1007E9963 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006E80011F0A34C1007E9963 /* LoadingView.swift */; };
 		009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76D31EEE8B250021BFB0 /* Enum.swift */; };
 		009A76DC1EEE8EF90021BFB0 /* OwnerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */; };
 		009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009A76DF1EEE8F480021BFB0 /* APIServices.swift */; };
@@ -330,6 +331,7 @@
 		006613BC1F0348A200FBF378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		006BD3A41F00A0C8002867EC /* ReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		006BD3A51F00A0C8002867EC /* ReportController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportController.xib; sourceTree = "<group>"; };
+		006E80011F0A34C1007E9963 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		009A76D31EEE8B250021BFB0 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerServices.swift; sourceTree = "<group>"; };
 		009A76DF1EEE8F480021BFB0 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 			children = (
 				002A04441EE11C97001876E5 /* xibView.swift */,
 				004467BA1EEF9B8900DDD0ED /* CustomTableViewCell.swift */,
+				006E80011F0A34C1007E9963 /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1397,6 +1400,7 @@
 				00AEBA401EF7C329009FFA69 /* FollowCell.swift in Sources */,
 				00EB194C1EE93EB4003B2C5D /* HistoryViewController.swift in Sources */,
 				00CC0D4B1EEE3FCE002D24D4 /* WorkListViewController.swift in Sources */,
+				006E80021F0A34C1007E9963 /* LoadingView.swift in Sources */,
 				003BC68B1ED9D94F00FF6D14 /* User.swift in Sources */,
 				002315581EDF07DC00B29F36 /* Extention+Image.swift in Sources */,
 				00CC0D451EEE3F7B002D24D4 /* PopupViewController.swift in Sources */,
@@ -1619,7 +1623,7 @@
 					"$(PROJECT_DIR)/FrameWorks/Firebase/Storage",
 				);
 				INFOPLIST_FILE = GV24/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBB.GV24Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1656,7 +1660,7 @@
 					"$(PROJECT_DIR)/FrameWorks/Firebase/Storage",
 				);
 				INFOPLIST_FILE = GV24/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBB.GV24Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";

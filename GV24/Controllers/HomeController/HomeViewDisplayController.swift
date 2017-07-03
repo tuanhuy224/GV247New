@@ -28,7 +28,6 @@ class HomeViewDisplayController: BaseViewController {
     @IBOutlet weak var lbAround: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(UserDefaultHelper.getToken()!)
         self.customBarRightButton()
     }
     override func decorate() {
@@ -40,10 +39,9 @@ class HomeViewDisplayController: BaseViewController {
     override func setupViewBase() {
         super.setupViewBase()
         self.title = "Home".localize
-        let lang = DGLocalization.sharedInstance.getCurrentLanguage()
-        if lang.languageCode == "en" {
-            lbLogo.text = "TrustQuality".localize
-        }
+        //let lang = DGLocalization.sharedInstance.getCurrentLanguage()
+        lbLogo.text = "TrustQuality".localize
+        
         lbAround.text = "Around".localize
         lbManage.text = "Taskmanagement".localize
         lbHistory.text = "Taskhistory".localize

@@ -22,6 +22,8 @@ class ConstactViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Contact".localize
+        self.callPhone.setTitle("Call".localize, for: .normal)
+        //self.emailButton.setTitle("".localize, for: .normal)
     }
     @IBAction func callPhoneAction(_ sender: Any) {
         if let url = NSURL(string: "tel://\(contact!.phone!)"){

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import IoniconsSwift
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: BaseViewController {
     
     @IBOutlet weak var btRequest: UIButton!
     @IBOutlet weak var tfEmail: UITextField!
@@ -18,6 +19,8 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tfEmail.delegate = self
+        tfUsername.delegate = self
+        setup()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -28,13 +31,24 @@ class ForgotPasswordViewController: UIViewController {
         guard let token = UserDefaultHelper.getToken() else {return}
         let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
         let param = ["username":username,"email":email]
-        APIService.shared.post(url: APIPaths().urlMoreMaidForgotPassword(), parameters: param, header: header) { (json, error) in
-            
+        if username == "" || email == ""{
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
         }
+        APIService.shared.post(url: APIPaths().urlMoreMaidForgotPassword(), parameters: param, header: header) { (json, error) in
+
+        }
+    }
+    func setup() {
+        let imageprofile = Ionicons.iosPerson.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
+        imgaAvatar.image = imageprofile
+        let imageEmailProfile = Ionicons.iosEmail.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
+        imageEmail.image = imageEmailProfile
+        btRequest.setTitle("Sendrequest".localize, for: .normal)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Quên mật khẩu"
+        self.title = "Forgotpassword".localize
     }
 }
 extension ForgotPasswordViewController:KeyboardNotificationsDelegate{
@@ -53,4 +67,7 @@ extension ForgotPasswordViewController:KeyboardNotificationsDelegate{
     }
 }
 extension ForgotPasswordViewController:UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
 }

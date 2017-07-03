@@ -11,12 +11,16 @@ import IoniconsSwift
 @objc protocol changeLanguageDelegate:class {
    @objc optional func changeLanguage()
 }
+@objc protocol notificationDelegate:class {
+    @objc optional func notificationAnnotation(noti:UISwitch)
+}
 class NotifiCell: CustomTableViewCell {
     @IBOutlet weak var btChoose: UIButton!
     @IBOutlet weak var btChooseLanguage: UIButton!
     @IBOutlet weak var lbNotif: UILabel!
     @IBOutlet weak var switchNoti: UISwitch!
     weak var delegate:changeLanguageDelegate?
+    weak var notiDelegate:notificationDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         let image = Ionicons.chevronRight.image(32)
@@ -26,6 +30,11 @@ class NotifiCell: CustomTableViewCell {
         btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
     }
 
+    @IBAction func notifiAction(_ sender: Any) {
+        if notiDelegate != nil {
+            notiDelegate?.notificationAnnotation!(noti: switchNoti)
+        }
+    }
     @IBAction func btChooseLanguageAction(_ sender: Any) {
         if delegate != nil {
             delegate?.changeLanguage!()

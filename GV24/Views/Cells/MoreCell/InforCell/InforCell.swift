@@ -33,6 +33,9 @@ class InforCell: CustomTableViewCell {
         avatar.layer.borderWidth = 1
         avatar.layer.borderColor = UIColor.white.cgColor
         lbName.textColor = UIColor.white
+        DispatchQueue.main.async {
+            self.avatar.image = UIImage(named: "avatar")
+        }
         imageFirst = Ionicons.star.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 255, greenValue: 255, blueValue: 255, alpha: 1))
         let imagegender = Ionicons.transgender.image(32)
         ImageGender.setImage(imagegender, for: .normal)

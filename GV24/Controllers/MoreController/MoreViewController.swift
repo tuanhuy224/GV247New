@@ -9,11 +9,14 @@
 import UIKit
 import Kingfisher
 import Alamofire
+import Firebase
+import FirebaseInstanceID
 
 class MoreViewController: BaseViewController {
-    var arryMore:[String] = ["Aboutus","Termsofuse", "Contact"]
+    var arryMore:[String] = ["AboutUsTitle","TermsofuseTitle", "Contact"]
     @IBOutlet weak var tbMore: UITableView!
     var userLogin:User?
+    var isnotification:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         tbMore.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
@@ -67,6 +70,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
                 cell.btChooseLanguage.setTitle("Language".localize, for: .normal)
                 cell.lbNotif.text = "Announcement".localize
                 cell.delegate = self
+                cell.notiDelegate = self
             return cell
         }else if indexPath.section == 2{
             let cell:MoreCell = (tbMore.dequeueReusableCell(withIdentifier: MoreCellID, for: indexPath) as? MoreCell)!
@@ -74,6 +78,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             if lang.languageCode == "en" {
                 cell.lbMore.text = arryMore[indexPath.row].localize
             }
+        
             cell.lbMore.text = arryMore[indexPath.row].localize
             cell.textLabel?.font = UIFont(name: "SFUIText-Light", size: 13)
             return cell
@@ -128,6 +133,24 @@ extension MoreViewController:clickChooseWorkID{
         MBProgressHUD.showAdded(to: self.view, animated: true)
         navigationController?.pushViewController(StatisticViewController(), animated: true)
         MBProgressHUD.hide(for: self.view, animated: true)
+    }
+}
+extension MoreViewController:notificationDelegate{
+    func notificationAnnotation(noti: UISwitch) {
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        guard let token = InstanceID.instanceID().token() else {return}
+        let parameter = ["device_token":"\(token)"]
+        let apiClient = APIService.shared
+        if noti.isOn == true{
+            self.isnotification = noti.isOn
+            apiClient.postReserve(url: APIPaths().maidOnAnnouncement(), method: .post, parameters: parameter, header: header, completion: { (json, error) in
+                
+            })
+        }else{
+            apiClient.postReserve(url: APIPaths().maidOffAnnouncement(), method: .post, parameters: [:], header: header, completion: { (json, error) in
+                
+            })
+        }
     }
 }
 

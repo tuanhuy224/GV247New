@@ -4,19 +4,13 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SFUIText-Light.ttf">
-            <string>SFUIText-Light</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RuleViewController" customModule="GV24" customModuleProvider="target">
             <connections>
-                <outlet property="lbRule" destination="TZi-JX-weZ" id="yZZ-9i-1lu"/>
+                <outlet property="tfTextFiled" destination="ziB-Fk-ynZ" id="AXy-M0-keM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,20 +22,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaH-yu-kHb">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZi-JX-weZ">
-                            <rect key="frame" x="8" y="70" width="359" height="304.5"/>
-                            <mutableString key="text">When creating cells, you can customize them yourself or use one of several predefined styles. The predefined cell styles are the simplest option. With the predefined styles, the cell provides label and image subviews whose positions and styling are fixed. All you have to do is provide the text and image content to go into those fixed views. To use a cell with a predefined style, initialize it using the init(style:reuseIdentifier:) method or configure the cell with that style in Xcode. To set the text and images of the cell, use the textLabel, detailTextLabel, and imageView properties.If you want to go beyond the predefined styles, you can add subviews to the contentView property of the cell. When adding subviews, you are responsible for positioning those views and setting their content yourself.</mutableString>
-                            <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ziB-Fk-ynZ">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="TZi-JX-weZ" firstAttribute="top" secondItem="gaH-yu-kHb" secondAttribute="top" constant="70" id="6fX-Sa-kd9"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TZi-JX-weZ" secondAttribute="bottom" constant="8" id="Ce0-f3-61g"/>
-                        <constraint firstItem="TZi-JX-weZ" firstAttribute="leading" secondItem="gaH-yu-kHb" secondAttribute="leading" constant="8" id="MKN-lF-QrL"/>
-                        <constraint firstAttribute="trailing" secondItem="TZi-JX-weZ" secondAttribute="trailing" constant="8" id="Mo5-DC-3N0"/>
+                        <constraint firstItem="ziB-Fk-ynZ" firstAttribute="top" secondItem="gaH-yu-kHb" secondAttribute="top" id="383-rV-Vwi"/>
+                        <constraint firstAttribute="trailing" secondItem="ziB-Fk-ynZ" secondAttribute="trailing" id="4pK-mn-PuQ"/>
+                        <constraint firstAttribute="bottom" secondItem="ziB-Fk-ynZ" secondAttribute="bottom" id="7ks-45-2Bz"/>
+                        <constraint firstItem="ziB-Fk-ynZ" firstAttribute="leading" secondItem="gaH-yu-kHb" secondAttribute="leading" id="ITN-o5-6W1"/>
                     </constraints>
                 </view>
             </subviews>
