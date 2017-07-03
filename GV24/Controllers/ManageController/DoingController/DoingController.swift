@@ -59,6 +59,7 @@ extension DoingController:UITableViewDataSource{
             cell.lbDate.text = "\(Date(isoDateString: (ProcessDoing?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (ProcessDoing?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(ProcessDoing?.info?.salary ?? 0) $"
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.ProcessDoing?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.ProcessDoing?.workTime!.endAt)!, format: "HH:mm a")!
+            cell.lbAddress.text = ProcessDoing?.stakeholders?.owner?.address?.name
             return cell
         case 2:
             let cell:CancelCell = tbDoing.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell

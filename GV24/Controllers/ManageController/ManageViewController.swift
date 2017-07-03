@@ -39,7 +39,7 @@ class ManageViewController: BaseViewController {
         segmentCtr.setTitle("assigned".localize, forSegmentAt: 1)
         segmentCtr.setTitle("runnning".localize, forSegmentAt: 2)
         getProcess()
-        tbManage.reloadData()
+        //tbManage.reloadData()
     }
     @IBAction func segmentControlAction(_ sender: Any) {
         let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
@@ -60,15 +60,14 @@ class ManageViewController: BaseViewController {
         let parmaterRecieve = ["process":"\(WorkStatus.Recieved.rawValue)"]
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiService = AroundTask.sharedInstall
-        //LoadingView.shared.show()
-        LoadingView.init().show()
+        loadingView.show()
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parameterCreate, header: header) { (json, error) in
+            self.loadingView.close()
             if json != nil{
                 self.processOnCreate = json!
                 self.tbManage.reloadData()
             }
-            //LoadingView.shared.close()
-            LoadingView.init().close()
+            
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
             if json != nil{
@@ -77,12 +76,14 @@ class ManageViewController: BaseViewController {
             }
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterRecieve, header: header) { (json, error) in
+            self.loadingView.close()
             if json != nil{
                 self.processRecieved = json!
                 self.tbManage.reloadData()
             }
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterOnDoing, header: header) { (json, error) in
+            self.loadingView.close()
             if json != nil{
                 self.processOnDoing = json!
             }
@@ -136,7 +137,9 @@ extension ManageViewController:UITableViewDataSource{
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
-            cell?.lbDist.text = processOnCreate[indexPath.row].process?.name
+            if processOnCreate[indexPath.row].process?.name?.localize == "On Create" {
+                cell?.lbDist.text = "Proccess".localize
+            }
             cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
             if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).day! > 0 {
@@ -151,7 +154,7 @@ extension ManageViewController:UITableViewDataSource{
             cell?.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processRecieved[indexPath.row].history?.createAt)!))"
             cell?.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
-            cell?.lbDist.text = processRecieved[indexPath.row].process?.name
+            cell?.lbDist.text = processRecieved[indexPath.row].process?.name?.localize
             if Date().date(datePost: (processRecieved[indexPath.row].history?.createAt)!).day! > 0 {
                 cell?.lbDeadline.text = "Expired".localize
             }else{
@@ -164,7 +167,10 @@ extension ManageViewController:UITableViewDataSource{
             cell?.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnDoing[indexPath.row].history?.createAt)!))"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.endAt)!).hourMinute)"
-            cell?.lbDist.text = processOnDoing[indexPath.row].process?.name
+            if processOnDoing[indexPath.row].process?.name?.localize == "On Doing" {
+                cell?.lbDist.text = "Proccess".localize
+            }
+            cell?.lbDist.text = "OnDoing".localize
             cell?.lbDeadline.isHidden = true
             cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
             cell?.lbDirect.isHidden = true

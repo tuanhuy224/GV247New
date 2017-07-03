@@ -11,10 +11,13 @@ import Alamofire
 class BaseViewController: UIViewController {
     let install = NetworkStatus.sharedInstance
     var islog = false
+    var isLoginWhenChangeToken:Bool = false
+    var viewControllerLogin = UIViewController()
     var viewNetwork:UIView?
     var lbViewNetwork:UILabel?
     let backItem = UIBarButtonItem()
     var actionSheet: UIAlertController!
+    let loadingView = LoadingView()
     var dGlocale = DGLocalization()
     let net = NetworkReachabilityManager()
     override func viewDidLoad() {
@@ -54,6 +57,8 @@ class BaseViewController: UIViewController {
                 _ = UserDefaultHelper().removeUserDefault()
                 let alert = AlertStandard.sharedInstance
                 alert.showAlertLogin(controller: self, pushVC: LoginView(), title: "", message: "Youraccountwasaccessedfromanotherdevice".localize, buttonTitle:"" , completion: {
+                    self.isLoginWhenChangeToken = true
+                    self.viewControllerLogin = self
                     guard let window = UIApplication.shared.keyWindow else{return}
                     let navi = UINavigationController(rootViewController: LoginView())
                     window.rootViewController = navi

@@ -27,15 +27,13 @@ class AroundItemController: BaseViewController {
     func loadAroundItem(){
         let parameter:[String:Any] = ["work":id!,"lng": currentLocation!.longitude,"lat": currentLocation!.latitude,"minDistance":0,"maxDistance":10]
         let apiClient = AroundTask.sharedInstall
-        //LoadingView.shared.show()
-        LoadingView.init().show()
+        loadingView.show()
         apiClient.getWorkFromURL(url: APIPaths().getTaskByAround(), parameter: parameter) { (works, string) in
+            self.loadingView.close()
             if string == nil{
                 self.works = works!
                 self.tbAround.reloadData()
             }
-            //LoadingView.shared.close()
-            LoadingView.init().close()
         }
     }
     override func setupViewBase() {

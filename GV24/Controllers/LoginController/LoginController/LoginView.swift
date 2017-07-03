@@ -61,18 +61,23 @@ class LoginView: BaseViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         btnLogin.setBackgroundImage(nil, for: .normal)
         btnLogin.setBackgroundImage(nil, for: .highlighted)
-        LoadingView.init().show()
+        loadingView.show()
         let apiClient = UserService.sharedInstance
         apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: token(), completion: { (user, string, error) in
-            if let user = user{
+            if self.isLoginWhenChangeToken == true{
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
-                guard let window = UIApplication.shared.keyWindow else{return}
-                let navi = UINavigationController(rootViewController: HomeViewDisplayController())
-                window.rootViewController = navi
+                self.navigationController?.pushViewController(self.viewControllerLogin, animated: true)
             }else{
-                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
+                if let user = user{
+                    UserDefaultHelper.setUserDefault(token: string!, user: user)
+                    guard let window = UIApplication.shared.keyWindow else{return}
+                    let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+                    window.rootViewController = navi
+                    }else{
+                    AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
+                }
             }
-            LoadingView.init().close()
+            self.loadingView.close()
         })
         self.dismissKeyboard()
     }

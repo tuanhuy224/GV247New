@@ -49,18 +49,7 @@ class PopupViewController: BaseViewController {
     
     func show() {
         
-        guard var rootController = UIApplication.shared.keyWindow?.rootViewController else {
-            return
-        }
-        
-        //        if let navigation = rootController as? UINavigationController,
-        //            let controller = navigation.viewControllers.last {
-        //            rootController = controller
-        //        }
-        // setup begin state
-        // - set constraint to datePicker
-        
-        
+        guard let rootController = UIApplication.shared.keyWindow?.rootViewController else {return}        
         view.frame = rootController.view.bounds
         rootController.view.addSubview(view)
         self.willMove(toParentViewController: rootController)

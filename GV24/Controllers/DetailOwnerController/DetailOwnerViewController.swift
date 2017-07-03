@@ -26,7 +26,9 @@ class DetailOwnerViewController: BaseViewController {
     fileprivate func ownerCell(cell:InforCell){
         cell.lbName.text = owner.stakeholders?.owner?.username
         guard let image = URL(string: (owner.stakeholders?.owner?.image)!) else{return}
-        cell.avatar.kf.setImage(with: image)
+        DispatchQueue.main.async {
+            cell.avatar.kf.setImage(with: image)
+        }
         cell.imageProfile.kf.setImage(with: image)
         if owner.stakeholders?.owner?.gender == 1 {
             cell.lbGender.text = "Girl".localize

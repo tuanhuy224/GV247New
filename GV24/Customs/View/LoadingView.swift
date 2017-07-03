@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class LoadingView: NSObject {
-    //static let shared = LoadingView()
     let blackView = UIView()
     let mainView : UIView = {
         let view = UIView()
@@ -64,12 +63,19 @@ class LoadingView: NSObject {
     }
     
     func close(){
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.5) { 
             self.blackView.alpha = 0
             self.mainView.alpha = 0
-        }) { (Bool) in
             self.blackView.isHidden = true
             self.mainView.isHidden = true
+
         }
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.blackView.alpha = 0
+//            self.mainView.alpha = 0
+//        }) { (Bool) in
+//            self.blackView.isHidden = true
+//            self.mainView.isHidden = true
+//        }
     }
 }

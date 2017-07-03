@@ -36,7 +36,6 @@ class MapViewController: BaseViewController {
         super.viewDidLoad()
         initializeTheLocationManager()
         configurationSearchBar()
-        MBProgressHUD.showAdded(to: self.view, animated: true)
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -110,7 +109,6 @@ extension MapViewController: CLLocationManagerDelegate {
         let location: CLLocation = locations.last!
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,longitude: location.coordinate.longitude,zoom: zoomLevel)
         currentLocation = location.coordinate
-        MBProgressHUD.hide(for: self.view, animated: true)
         if mapView.isHidden {
             mapView.isHidden = false
             mapView.camera = camera
@@ -154,15 +152,16 @@ extension MapViewController:GMSMapViewDelegate{
 extension MapViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         hideKeyboard()
+        loadingView.show()
         let text = searchBar.text!
         geocoder.geocodeAddressString(text) { (placeMarks, error) in
+            self.loadingView.close()
             if error == nil{
                 if (placeMarks?.count)! > 0{
                     guard let firstLocation = placeMarks?.first?.location else{return}
                     self.handle(location: firstLocation.coordinate)
                     let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
                     around.currentLocation = firstLocation.coordinate
-                    self.navigationController?.navigationItem.rightBarButtonItem?.customView?.isUserInteractionEnabled = false
                     self.navigationController?.pushViewController(around, animated: true)
                 }else{
                     

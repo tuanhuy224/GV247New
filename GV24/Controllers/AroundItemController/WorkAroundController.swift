@@ -59,19 +59,18 @@ class WorkAroundController: BaseViewController {
         }
     }
     func loadData() {
-        //LoadingView.shared.show()
-        LoadingView.init().show()
+        loadingView.show()
         self.arrays.removeAll()
         let apiService = APIService.shared
         let param:[String:Double] = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!,"minDistance":0,"maxDistance":10]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
-            //LoadingView.shared.close()
-            LoadingView.init().close()
+            self.loadingView.close()
             if let jsonArray = json?.array{
                 for data in jsonArray{
                     self.arrays.append(Around(json: data))
                     self.aroundTableView.reloadData()
                 }
+                
             }
         }
     }

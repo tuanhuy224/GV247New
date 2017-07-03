@@ -48,8 +48,14 @@ extension PendingController:UITableViewDataSource{
             cell.delegate = self
             cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
             let url = URL(string: (processPending?.stakeholders?.owner?.image)!)
-            DispatchQueue.main.async {
-                cell.imageName.kf.setImage(with: url)
+            if url == nil {
+                DispatchQueue.main.async {
+                    cell.imageName.image = UIImage(named: "avatar")
+                }
+            }else{
+                DispatchQueue.main.async {
+                    cell.imageName.kf.setImage(with: url)
+                }
             }
             return cell
         case 1:
@@ -60,6 +66,7 @@ extension PendingController:UITableViewDataSource{
             cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processPending?.info?.salary ?? 0) $"
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.endAt)!, format: "HH:mm a")!
+            cell.lbAddress.text = processPending?.stakeholders?.owner?.address?.name
             return cell
         case 2:
             let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
