@@ -161,7 +161,7 @@ class OwnerHistoryViewController: BaseViewController {
     
     fileprivate func configureOwnerCell(cell: OwnerHistoryViewCell, indexPath: IndexPath) {
         if ownerList.count != 0 {
-            let owner = ownerList[indexPath.item]
+            let owner = ownerList[indexPath.section]
             if let imageString = owner.image {
                 let url = URL(string: imageString)
                 cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
