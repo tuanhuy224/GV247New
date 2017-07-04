@@ -32,6 +32,8 @@ class WorkInfoCell: CustomTableViewCell {
         collectionView.register(nib, forCellWithReuseIdentifier: workInfoCollectionCellID)
         collectionView.delegate = self
         collectionView.dataSource = self
+         priceLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
+         topLabel.font = UIFont(descriptor: UIFontDescriptor.BoldDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 17)
     }
 }
 extension WorkInfoCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -45,6 +47,8 @@ extension WorkInfoCell: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: workInfoCollectionCellID, for: indexPath) as! WorkInfoCollectionViewCell
         let workType = data[indexPath.row]
         cell.titleLabel.text = workType.name
+        cell.titleLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
+        cell.titleLabel.numberOfLines = 0
         
         if let imageString = workType.image {
             let url = URL(string: imageString)
