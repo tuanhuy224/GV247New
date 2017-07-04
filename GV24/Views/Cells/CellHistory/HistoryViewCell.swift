@@ -10,6 +10,8 @@ import UIKit
 import IoniconsSwift
 
 class HistoryViewCell: CustomTableViewCell {
+    @IBOutlet weak var contraintWidthDeadline: NSLayoutConstraint!
+    @IBOutlet weak var constraintWidthDirect: NSLayoutConstraint!
     @IBOutlet weak var lbDirect: UILabel!
     @IBOutlet weak var lbDeadline: UILabel!
     @IBOutlet weak var lbTimePost: UILabel!

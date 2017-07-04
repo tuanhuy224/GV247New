@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
     let backItem = UIBarButtonItem()
     var actionSheet: UIAlertController!
     let loadingView = LoadingView()
-    var dGlocale = DGLocalization()
+    //var dGlocale = DGLocalization()
     let net = NetworkReachabilityManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,11 @@ class BaseViewController: UIViewController {
         self.decorate()
         print("====Current self:\(self)====")
         net?.startListening()
+//        let english = Locale().initWithLanguageCode(languageCode: "en", countryCode: "gb", name: "")
+//        
+//        //set current language
+//        DGLocalization.sharedInstance.setLanguage(withCode: english)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -57,10 +62,11 @@ class BaseViewController: UIViewController {
                 _ = UserDefaultHelper().removeUserDefault()
                 let alert = AlertStandard.sharedInstance
                 alert.showAlertLogin(controller: self, pushVC: LoginView(), title: "", message: "Youraccountwasaccessedfromanotherdevice".localize, buttonTitle:"" , completion: {
-                    self.isLoginWhenChangeToken = true
-                    self.viewControllerLogin = self
+                    let loginController = LoginView()
+                    loginController.viewControllerLogin = self
+                    loginController.isLoginWhenChangeToken = true
                     guard let window = UIApplication.shared.keyWindow else{return}
-                    let navi = UINavigationController(rootViewController: LoginView())
+                    let navi = UINavigationController(rootViewController: loginController)
                     window.rootViewController = navi
                 })
             }

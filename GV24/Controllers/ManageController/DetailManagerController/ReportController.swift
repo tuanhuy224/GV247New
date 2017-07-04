@@ -20,9 +20,8 @@ class ReportController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.setupView()
-        }
+            setupView()
+        tfReport.delegate = self
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -35,8 +34,16 @@ class ReportController: BaseViewController {
         imageProfile.clipsToBounds = true
         nameProfile.text = work.stakeholders?.owner?.username
         addressProfile.text = work.stakeholders?.owner?.address?.name
-        let imag = URL(string: (work.stakeholders?.owner?.image)!)
-        imageProfile.kf.setImage(with: imag)
+        let url = URL(string: (work.stakeholders?.owner?.image)!)
+        if url == nil {
+            DispatchQueue.main.async {
+                self.imageProfile.image = UIImage(named: "avatar")
+            }
+        }else{
+            DispatchQueue.main.async {
+                self.imageProfile.kf.setImage(with: url)
+            }
+        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send".localize, style: .plain, target: self, action: #selector(ReportController.addTapped))
     }
     func addTapped() {
@@ -50,4 +57,9 @@ class ReportController: BaseViewController {
         }
     }
 
+}
+extension ReportController:UITextViewDelegate{
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+    }
 }

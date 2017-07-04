@@ -12,16 +12,17 @@ protocol ReportDelegate:class {
 }
 
 class InforOwnerCell: CustomTableViewCell {
+    @IBOutlet weak var tfReport: UITextView!
     @IBOutlet weak var lbComment: UILabel!
     @IBOutlet weak var lbCommentText: UILabel!
     @IBOutlet weak var btReport: UIButton!
     weak var delegate:ReportDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        btReport.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
-        lbComment.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbComment.text = "comment".localize
-        lbCommentText.text = "nocomment".localize
+        btReport.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        lbComment.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
+        lbComment.text = "comment".localize.uppercased()
+
         btReport.setTitle("report".localize, for: .normal)
     }
     @IBAction func reportAction(_ sender: Any) {

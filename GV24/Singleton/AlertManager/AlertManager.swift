@@ -62,7 +62,7 @@ class AlertStandard {
     func showAlertSetRoot(controller: UIViewController,pushVC:UIViewController, title: String, message: String, buttonTitle:String = "OK") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "AnswerYes".localize, style: .default) { (action) -> Void in
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0, animations: {
                 guard let window = UIApplication.shared.keyWindow else{return}
                 let navi = UINavigationController(rootViewController: pushVC)
                 window.rootViewController = navi

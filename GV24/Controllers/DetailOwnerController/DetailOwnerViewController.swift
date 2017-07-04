@@ -25,10 +25,17 @@ class DetailOwnerViewController: BaseViewController {
     }
     fileprivate func ownerCell(cell:InforCell){
         cell.lbName.text = owner.stakeholders?.owner?.username
-        guard let image = URL(string: (owner.stakeholders?.owner?.image)!) else{return}
-        DispatchQueue.main.async {
-            cell.avatar.kf.setImage(with: image)
+         let image = URL(string: (owner.stakeholders?.owner?.image)!)
+        if image == nil {
+            DispatchQueue.main.async {
+                cell.avatar.image = UIImage(named: "avatar")
+            }
+        }else{
+            DispatchQueue.main.async {
+                cell.avatar.kf.setImage(with: image)
+            }
         }
+        
         cell.imageProfile.kf.setImage(with: image)
         if owner.stakeholders?.owner?.gender == 1 {
             cell.lbGender.text = "Girl".localize

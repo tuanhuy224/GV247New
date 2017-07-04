@@ -31,12 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             navi = UINavigationController(rootViewController: LoginView())
         }
         window?.rootViewController = navi
-       // UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.black,NSFontAttributeName:UIFont(name:"SFUIText-Bold", size: sizeSeven)]
-    
-        
+       // UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.black,NSFontAttributeName:UIFont(name:"SFUIText-Bold", size: sizeSeven)
         UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         UINavigationBar.appearance().backgroundColor = .white
-        UIApplication.shared.statusBarView?.backgroundColor = .white
+        //UIApplication.shared.statusBarView?.backgroundColor = .white
         FirebaseApp.configure()
         registerForRemoteNotification()
         application.registerForRemoteNotifications()

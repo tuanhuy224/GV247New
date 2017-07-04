@@ -31,6 +31,7 @@ class LoginView: BaseViewController {
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var keyboardHeightLayoutConstraint: NSLayoutConstraint!
     weak var delegate:customButtonLoginDelegate?
+    let loading = LoadingView()
     var user:User?
     var arrays = [Around]()
     override func viewDidLoad() {
@@ -46,7 +47,7 @@ class LoginView: BaseViewController {
         registerAutoKeyboard()
         self.title = "login".localize
         btnLogin.setTitle("login".localize, for: .normal)
-        forgotPassword.setTitle("forgotPassword".localize, for: .normal)
+        forgotPassword.setTitle("Forgotpassword".localize, for: .normal)
         userLogin.placeholder = "Username".localize
         passwordLogin.placeholder = "Password".localize
     }
@@ -59,12 +60,12 @@ class LoginView: BaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
     @IBAction func loginButtonAction(_ sender: Any) {
-        btnLogin.setBackgroundImage(nil, for: .normal)
-        btnLogin.setBackgroundImage(nil, for: .highlighted)
-        loadingView.show()
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+//        btnLogin.setBackgroundImage(nil, for: .normal)
+//        btnLogin.setBackgroundImage(nil, for: .highlighted)
+        loading.show()
         let apiClient = UserService.sharedInstance
         apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: token(), completion: { (user, string, error) in
+            self.loading.close()
             if self.isLoginWhenChangeToken == true{
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
                 self.navigationController?.pushViewController(self.viewControllerLogin, animated: true)
@@ -77,8 +78,6 @@ class LoginView: BaseViewController {
                     }else{
                     AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
                 }
-                self.loadingView.close()
-                MBProgressHUD.hide(for: self.view, animated: true)
             }
         })
         self.dismissKeyboard()

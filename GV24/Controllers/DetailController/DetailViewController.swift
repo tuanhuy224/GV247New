@@ -66,8 +66,15 @@ extension DetailViewController:UITableViewDataSource{
             cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
             cell.nameUser.text = works.stakeholders?.owner?.username
             cell.addressName.text = works.stakeholders?.owner?.address?.name
-            DispatchQueue.main.async {
-                cell.imageName.kf.setImage(with:URL(string: self.works.stakeholders!.owner!.image!))
+            let url = URL(string: self.works.stakeholders!.owner!.image!)
+            if url == nil {
+                DispatchQueue.main.async {
+                    cell.imageName.image = UIImage(named: "avatar")
+                }
+            }else{
+                DispatchQueue.main.async {
+                    cell.imageName.kf.setImage(with:url)
+                }
             }
             return cell
         }else{
@@ -88,8 +95,8 @@ extension DetailViewController:UITableViewDataSource{
 extension DetailViewController:UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let navi = DetailOwnerViewController(nibName: "DetailOwnerViewController", bundle: nil)
-        navi.owner = works
+        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+        navi.workPending = works
         navigationController?.pushViewController(navi, animated: true)
     }
 }

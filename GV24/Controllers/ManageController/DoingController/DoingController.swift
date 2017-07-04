@@ -48,7 +48,15 @@ extension DoingController:UITableViewDataSource{
             cell.nameUser.text = ProcessDoing?.stakeholders?.owner?.name
             cell.addressName.text = ProcessDoing?.stakeholders?.owner?.address?.name
             let url = URL(string: (ProcessDoing?.stakeholders?.owner?.image)!)
-            cell.imageName.kf.setImage(with: url)
+            if url == nil {
+                DispatchQueue.main.async {
+                    cell.imageName.image = UIImage(named: "avatar")
+                }
+            }else{
+                DispatchQueue.main.async {
+                    cell.imageName.kf.setImage(with: url)
+                }
+            }
             cell.delegate = self
             return cell
         case 1:

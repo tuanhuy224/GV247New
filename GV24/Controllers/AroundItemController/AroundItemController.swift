@@ -56,6 +56,8 @@ extension AroundItemController:UITableViewDataSource{
         }
          cell.timeWork.text = String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
         cell.lbDeadline.isHidden = true
+        cell.constraintWidthDirect.constant = 0
+        cell.contraintWidthDeadline.constant = 0
         return cell
     }
 }

@@ -50,7 +50,15 @@ extension RecievedController:UITableViewDataSource{
             print(processRecieved!.id!)
             cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
             let url = URL(string: (processRecieved?.stakeholders?.owner?.image)!)
-            cell.imageName.kf.setImage(with: url)
+            if url == nil {
+                DispatchQueue.main.async {
+                    cell.imageName.image = UIImage(named: "avatar")
+                }
+            }else{
+                DispatchQueue.main.async {
+                    cell.imageName.kf.setImage(with: url)
+                }
+            }
             cell.delegate = self
             return cell
         case 1:

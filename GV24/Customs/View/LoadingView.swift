@@ -21,7 +21,7 @@ class LoadingView: NSObject {
         view.layer.masksToBounds = true
         return view
     }()
-    let activity : UIActivityIndicatorView = {
+    lazy var activity : UIActivityIndicatorView = {
         let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         act.hidesWhenStopped = true
         act.translatesAutoresizingMaskIntoConstraints = false
