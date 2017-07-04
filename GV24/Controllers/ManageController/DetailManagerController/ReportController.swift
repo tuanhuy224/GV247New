@@ -26,6 +26,7 @@ class ReportController: BaseViewController {
     override func setupViewBase() {
         super.setupViewBase()
         self.navigationItem.title = "Feedback".localize
+        self.tfReport.text = "Pleasefillinthereport".localize
     }
     func setupView()  {
         
@@ -53,7 +54,7 @@ class ReportController: BaseViewController {
         let apiClient = APIService.shared
             apiClient.postReserve(url: APIPaths().maidReport(), method: .post, parameters: param, header: headers) { (json, message) in
                 if message == "SUCCESS"{
-                    AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "ok", message: "da gui")
+                    AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "", message: "Reportsentsuccessfully".localize)
                 }
         }
     }

@@ -7,13 +7,14 @@
 //
 rootDomain = "https://yukotest123.herokuapp.com/en";
 English = "English";
-VietNam = "VietNamese";
+VietNam = "Tiếng việt";
 SignIn = "Sign in";
 Dollar = "VND";
 Back = "Back";
 Home = "Home";
 More = "More";
 Back = "Back";
+Logout = "Logout";
 Expired = "Expired";
 Invalid = "Invalid Username/ Password";
 loginFail = "UserName or password not correct";
@@ -43,6 +44,8 @@ waiting = "Waiting";
 assigned = "Assigned";
 runnning = "Running";
 Information = "Information";
+Pleasefillinthereport = "Please fill in the report";
+Reportsentsuccessfully = "Report sent successfully!";
 Nearbyjobs = "Nearby work";
 Sendrequest = "Send request";
 Taskmanagement = "Work management";

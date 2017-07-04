@@ -22,8 +22,8 @@ import UIKit
 }
 
 class DGLocalization:NSObject {
-    
-   weak var Delegate:DGLocalizationDelegate?
+    var current:Int = 0
+    weak var Delegate:DGLocalizationDelegate?
     
     //MARK:- Instance var
     var DEFAULTS_KEY_LANGUAGE_CODE = "DEFAULTS_KEY_LANGUAGE_CODE"
@@ -67,8 +67,7 @@ class DGLocalization:NSObject {
             if(((userDefaults.string(forKey: DEFAULTS_KEY_LANGUAGE_CODE))) == nil){
                 languageManager.setLanguage(withCode:languageManager.availableLocales[0])
             }
-        }
-        else {
+        }else {
             languageManager.setLanguage(withCode: Locale().initWithLanguageCode(languageCode: currentLanguage! as NSString, countryCode: currentLanguage! as NSString, name: currentLanguage! as NSString) as! Locale)
         }
     }
@@ -113,6 +112,7 @@ class Locale: NSObject {
         self.countryCode = countryCode
         return self
     }
+
 }
 //MARK:- extension
 extension String {

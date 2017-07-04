@@ -111,9 +111,7 @@ class StatisticViewController: BaseViewController {
         popup.isToDate = isToDate
         popup.fromDate = fromDate
         popup.toDate = toDate
-        present(popup, animated: true) {
-            popup.effectView.alpha = 0.5
-        }
+        popup.show()
     }
 }
 extension StatisticViewController:UITableViewDataSource, UITableViewDelegate{

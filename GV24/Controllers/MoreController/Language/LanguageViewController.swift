@@ -12,6 +12,7 @@ class LanguageViewController: BaseViewController {
     var languages:[String] = ["VietNam","English"]
     @IBOutlet weak var tbLanguage: UITableView!
     var rowsWhichAreChecked = [NSIndexPath]()
+    var isSelection:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         tbLanguage.register(UITableViewCell.self, forCellReuseIdentifier: DefaultCellID)
@@ -22,14 +23,22 @@ class LanguageViewController: BaseViewController {
 }
 extension LanguageViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return languages.count
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = (tbLanguage.dequeueReusableCell(withIdentifier: DefaultCellID, for: indexPath))
+        cell.selectionStyle = .none
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
         if lang.languageCode == "en" {
             cell.textLabel?.text  = languages[indexPath.row].localize
         }
+        if indexPath.row == isSelection{
+            cell.accessoryType = .checkmark
+        }
+        cell.accessoryType = .none
         cell.textLabel?.text  = languages[indexPath.row].localize
         cell.textLabel?.font = UIFont(name: "SFUIText-Light", size: 13)
         return cell
@@ -43,13 +52,14 @@ extension LanguageViewController:UITableViewDelegate{
                 DGLocalization.sharedInstance.setLanguage(withCode:Nepali)
                 //Load selected Language to Views
                 self.title = "Language".localize
+                self.isSelection = 0
                 self.decorate()
-            }
-            else {
+            }else {
                 let english = Locale().initWithLanguageCode(languageCode: "en", countryCode: "gb", name: "United Kingdom")
                 DGLocalization.sharedInstance.setLanguage(withCode:english)
                 //Load selected Language to Views
                 self.title = "Language".localize
+                self.isSelection = 1
                 self.decorate()
             }
     }
