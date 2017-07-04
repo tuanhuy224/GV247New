@@ -68,9 +68,8 @@ class WorkAroundController: BaseViewController {
             if let jsonArray = json?.array{
                 for data in jsonArray{
                     self.arrays.append(Around(json: data))
-                    self.aroundTableView.reloadData()
                 }
-                
+                self.aroundTableView.reloadData()
             }
         }
     }
@@ -103,9 +102,9 @@ class WorkAroundController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Nearbyjobs".localize
-        self.customBarLeftButton()
+        self.customBarRightButton()
     }
-    func customBarLeftButton(){
+    func customBarRightButton(){
         let button = UIButton(type: .custom)
         button.setTitle("search".localize, for: .normal)
         button.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
@@ -115,13 +114,15 @@ class WorkAroundController: BaseViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
     }
-    func selectButton() {
-        self.forwardGeocoding()
+    @objc fileprivate func selectButton() {
+            self.loadData()
     }
     // Get longtitude and lattitue
     func forwardGeocoding(){
+        loadingView.show()
         guard let locationString =  textLocation else{return}
         APIService.shared.getLocation(url: locationString) { (json, error) in
+            self.loadingView.close()
             guard let geometry = json?[0]["geometry"].dictionary else{return}
             guard let location = geometry["location"]?.dictionary else{return}
             guard let lat = location["lat"], let lng = location["lng"] else{return}
@@ -158,11 +159,9 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
 }
 extension WorkAroundController:changeSliderDelegate{
     func change(slider: UISlider) {
-        //MBProgressHUD.showAdded(to: self.view, animated: true)
         if slider.isContinuous == true {
             arWork.sliderMax.text = String(stringInterpolation: "\(Int(slider.value))km")
             UserDefaultHelper.setSlider(slider: "\(Int(slider.value))")
-           // MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
 }
@@ -178,8 +177,6 @@ extension WorkAroundController:UISearchBarDelegate{
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
         forwardGeocoding()
-        dismiss(animated: true, completion: nil)
-    
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         loadData()
