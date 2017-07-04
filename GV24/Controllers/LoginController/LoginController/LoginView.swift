@@ -62,6 +62,7 @@ class LoginView: BaseViewController {
         btnLogin.setBackgroundImage(nil, for: .normal)
         btnLogin.setBackgroundImage(nil, for: .highlighted)
         loadingView.show()
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         let apiClient = UserService.sharedInstance
         apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: token(), completion: { (user, string, error) in
             if self.isLoginWhenChangeToken == true{
@@ -76,8 +77,9 @@ class LoginView: BaseViewController {
                     }else{
                     AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
                 }
+                self.loadingView.close()
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
-            self.loadingView.close()
         })
         self.dismissKeyboard()
     }

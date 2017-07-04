@@ -63,19 +63,12 @@ class LoadingView: NSObject {
     }
     
     func close(){
-        UIView.animate(withDuration: 0.5) { 
+        UIView.animate(withDuration: 0.5, animations: {
             self.blackView.alpha = 0
             self.mainView.alpha = 0
+        }) { (Bool) in
             self.blackView.isHidden = true
             self.mainView.isHidden = true
-
         }
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.blackView.alpha = 0
-//            self.mainView.alpha = 0
-//        }) { (Bool) in
-//            self.blackView.isHidden = true
-//            self.mainView.isHidden = true
-//        }
     }
 }
