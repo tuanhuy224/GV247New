@@ -28,6 +28,7 @@ class ReportController: BaseViewController {
         self.navigationItem.title = "Feedback".localize
     }
     func setupView()  {
+        
         nameProfile.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)
         addressProfile.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         imageProfile.layer.cornerRadius = imageProfile.frame.size.width/2
@@ -56,7 +57,6 @@ class ReportController: BaseViewController {
                 }
         }
     }
-
 }
 extension ReportController:UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
