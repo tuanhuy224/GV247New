@@ -11,41 +11,62 @@ import Alamofire
 import MessageUI
 
 class ConstactViewController: BaseViewController {
+    
     @IBOutlet weak var callPhone: UIButton!
     @IBOutlet weak var emailButton: UIButton!
-    var contact:Contact?
-    let mailComposerVC = MFMailComposeViewController()
+    @IBOutlet weak var contentLabel: UILabel!
+    
+    let loadingIndicator = LoadingView()
+    var contact:Contact! {
+        didSet {
+            if let contact = contact, let content = contact.address {
+                contentLabel.text = content
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // fetch information for server side
         getContactForMore()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "Contact".localize
         self.callPhone.setTitle("Call".localize, for: .normal)
-        //self.emailButton.setTitle("".localize, for: .normal)
     }
+    
+    func createComposer() -> MFMailComposeViewController? {
+        guard let email = self.contact.email else {
+            return nil
+        }
+        
+        let controller = MFMailComposeViewController()
+        controller.mailComposeDelegate = self
+        controller.setToRecipients([email])
+        controller.setSubject("Sending you an in-app e-mail...")
+        controller.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        return controller
+    }
+    
+    
     @IBAction func callPhoneAction(_ sender: Any) {
-        if let url = NSURL(string: "tel://\(contact!.phone!)"){
-        UIApplication.shared.openURL(url as URL)
+        if let phone = contact.phone, let url = NSURL(string: "tel://\(phone)"){
+            UIApplication.shared.openURL(url as URL)
         }
     }
 
     @IBAction func emailAction(_ sender: Any) {
-        let mailComposeViewController = configuredMailComposeViewController()
+        
+        guard let composer = createComposer() else { return }
+        
         if MFMailComposeViewController.canSendMail() {
-            self.present(mailComposeViewController, animated: true, completion: nil)
+            self.present(composer, animated: true, completion: nil)
         } else {
             self.showSendMailErrorAlert()
         }
-    }
-    
-    func configuredMailComposeViewController() -> MFMailComposeViewController {
-        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-        mailComposerVC.setToRecipients([(contact?.email)!])
-        mailComposerVC.setSubject("Sending you an in-app e-mail...")
-        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
-        return mailComposerVC
     }
     
     func showSendMailErrorAlert() {
@@ -54,18 +75,25 @@ class ConstactViewController: BaseViewController {
 
 
     fileprivate func getContactForMore(){
+        
+        loadingIndicator.show()
+        
         let headers:HTTPHeaders = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
-        apiClient.getOwner(url: APIPaths().urlGetContact(), param: [:], header: headers) { (json, error) in
+        apiClient.getOwner(url: APIPaths().urlGetContact(), param: [:], header: headers) { [unowned self] (json, error) in
             self.contact = Contact(json: json!)
+            self.loadingIndicator.close()
         }
     }
 }
-extension ConstactViewController:MFMailComposeViewControllerDelegate{
+
+
+
+extension ConstactViewController: MFMailComposeViewControllerDelegate {
     
     // MARK: MFMailComposeViewControllerDelegate
-     private func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: Error!) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Swift.Error?) {
         controller.dismiss(animated: true, completion: nil)
-        
     }
+    
 }
