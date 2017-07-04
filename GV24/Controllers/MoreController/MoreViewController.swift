@@ -36,6 +36,7 @@ class MoreViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tbMore.reloadData()
+        
     }
 
 }
@@ -48,7 +49,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {

@@ -106,6 +106,7 @@ Evaluate = "Đánh giá";
 Applicantprofile = "Thông tin";
 Addcomments = "Nhận xét của bạn";
 Comment = "Bình luận";
+Logout = "Đăng xuất";
 Payment = "Thanh toán";
 Gv24account = "Tài khoản Gv24";
 Onlinepayment = "Thanh toán online";

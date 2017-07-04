@@ -105,6 +105,7 @@ Evaluate = "Evaluate";
 Applicantprofile = "Applicant profile";
 Addcomments = "Add comments";
 Comment = "Comment";
+Logout = "Logout";
 Payment = "Payment";
 Gv24account = "Gv24 account";
 Onlinepayment = "Online payment";
