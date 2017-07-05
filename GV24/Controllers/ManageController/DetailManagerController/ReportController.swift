@@ -26,10 +26,11 @@ class ReportController: BaseViewController {
     override func setupViewBase() {
         super.setupViewBase()
         self.navigationItem.title = "Feedback".localize
-        self.tfReport.text = "Pleasefillinthereport".localize
     }
     func setupView()  {
-        
+        let placeholderTextView = KMPlaceholderTextView(frame: view.bounds)
+        placeholderTextView.placeholder = "Pleasefillinthereport".localize
+        view.addSubview(placeholderTextView)
         nameProfile.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)
         addressProfile.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         imageProfile.layer.cornerRadius = imageProfile.frame.size.width/2

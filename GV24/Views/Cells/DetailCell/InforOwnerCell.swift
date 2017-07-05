@@ -24,6 +24,8 @@ class InforOwnerCell: CustomTableViewCell {
         lbComment.text = "comment".localize.uppercased()
 
         btReport.setTitle("report".localize, for: .normal)
+        lbCommentText.text = "nocomment".localize
+        lbCommentText.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
     }
     @IBAction func reportAction(_ sender: Any) {
         if delegate != nil {
