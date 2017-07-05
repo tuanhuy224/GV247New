@@ -60,13 +60,12 @@ class LoginView: BaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
     @IBAction func loginButtonAction(_ sender: Any) {
-//        btnLogin.setBackgroundImage(nil, for: .normal)
-//        btnLogin.setBackgroundImage(nil, for: .highlighted)
         loading.show()
         let apiClient = UserService.sharedInstance
         apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: token(), completion: { (user, string, error) in
             self.loading.close()
             if self.isLoginWhenChangeToken == true{
+                self.isLoginWhenChangeToken = false
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
                 self.navigationController?.pushViewController(self.viewControllerLogin, animated: true)
             }else{

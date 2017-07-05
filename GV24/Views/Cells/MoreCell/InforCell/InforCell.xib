@@ -90,21 +90,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jS0-t3-Iod">
-                                        <rect key="frame" x="8" y="8.5" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="9" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="iHo-AQ-1sz"/>
                                             <constraint firstAttribute="height" constant="15" id="mWu-Kj-KmY"/>
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-df-x0Z">
-                                        <rect key="frame" x="8" y="44" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="44.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="PRA-en-5vb"/>
                                             <constraint firstAttribute="height" constant="15" id="WJO-gf-6TJ"/>
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-lU-jZW">
-                                        <rect key="frame" x="8" y="80.5" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="80" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="1D7-Mo-vdt"/>
                                             <constraint firstAttribute="width" constant="15" id="YPN-fX-TyP"/>
@@ -152,15 +152,16 @@
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="mcX-x9-GHd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-Ls-j1r">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-Ls-j1r">
                                         <rect key="frame" x="125" y="26" width="70" height="70"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="CBl-Cm-dVw"/>
                                             <constraint firstAttribute="height" constant="70" id="Ifv-PX-6qI"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen van A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chM-NL-lYr">
-                                        <rect key="frame" x="118.5" y="113" width="84" height="16"/>
+                                        <rect key="frame" x="118" y="113" width="84" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="aar-ud-zVk"/>
                                         </constraints>
@@ -300,4 +301,7 @@
             <point key="canvasLocation" x="-75" y="-12.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="avatar" width="91" height="91"/>
+    </resources>
 </document>

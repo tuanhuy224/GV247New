@@ -59,6 +59,7 @@ Girl = "Lady";
 Boy = "Gentleman";
 Contact = "Contact";
 cancelWork = "Are you sure to cancel this work ?";
+RefuseworkAlert = "Are you sure to refuse this work ?";
 Login = "Login";
 Username = "Username";
 Call = "Call";
@@ -157,6 +158,7 @@ OnDoing = "On doing";
 nocomment = "There are no comments";
 NetworkIsLost = "No internet connection!";
 SoonUpdate = "Soon update!";
+Refusework = "Refuse work";
 Youcancancelyouraccepted = "You can cancel your accepted work within 24 hours before starting. Please call your host or company to confirm your change.";
 confirmReceive = "Click Ok to confirm the right amount you receive";
 

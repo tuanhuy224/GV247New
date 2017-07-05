@@ -65,22 +65,21 @@ class ManageViewController: BaseViewController {
             self.loadingView.close()
             if json != nil{
                 self.processOnCreate = json!
-                self.tbManage.reloadData()
             }
-            
+            self.tbManage.reloadData()
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
             if json != nil{
                 self.processPending = json!
-                self.tbManage.reloadData()
             }
+            self.tbManage.reloadData()
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterRecieve, header: header) { (json, error) in
             self.loadingView.close()
             if json != nil{
                 self.processRecieved = json!
-                self.tbManage.reloadData()
             }
+            self.tbManage.reloadData()
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterOnDoing, header: header) { (json, error) in
             self.loadingView.close()
@@ -89,17 +88,6 @@ class ManageViewController: BaseViewController {
             }
         }
         self.tbManage.reloadData()
-    }
-    // MARK: - longGesture
-    func longTap(ges:UILongPressGestureRecognizer) {
-        let longPress = ges as UILongPressGestureRecognizer
-        _ = longPress.state
-        let locationInView = longPress.location(in: tbManage)
-        let indexPath = tbManage.indexPathForRow(at: locationInView)
-        tbManage.beginUpdates()
-        tbManage.deleteRows(at: [indexPath!], with: .fade)
-        processOnCreate.remove(at: (indexPath?.row)!)
-        tbManage.endUpdates()
     }
     
     fileprivate func configurationCell(cell:UITableViewCell){
@@ -130,18 +118,16 @@ extension ManageViewController:UITableViewDataSource{
                 cell?.lbDirect.isHidden = false
                 cell?.lbDeadline.isHidden = true
                 cell?.lbDirect.text = "Direct".localize
-                cell?.contraintWidthDeadline.constant = 0
+                //cell?.contraintWidthDeadline.constant = 0
             }else{
                 cell?.lbDirect.isHidden = true
                 cell?.lbDeadline.isHidden = false
-                cell?.constraintWidthDirect.constant = 0
+                //cell?.constraintWidthDirect.constant = 0
             }
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
-            if processOnCreate[indexPath.row].process?.name?.localize == "On Create" {
                 cell?.lbDist.text = "Proccess".localize
-            }
             cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
             if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).day! > 0 {
@@ -170,10 +156,7 @@ extension ManageViewController:UITableViewDataSource{
             cell?.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].history?.createAt)!).dayMonthYear)"
             cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnDoing[indexPath.row].history?.createAt)!))"
             cell?.timeWork.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.endAt)!).hourMinute)"
-            if processOnDoing[indexPath.row].process?.name?.localize == "On Doing" {
-                cell?.lbDist.text = "Proccess".localize
-            }
-            cell?.lbDist.text = "OnDoing".localize
+                cell?.lbDist.text = "OnDoing".localize
             cell?.lbDeadline.isHidden = true
             cell?.timeWork.text = String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
             cell?.lbDirect.isHidden = true

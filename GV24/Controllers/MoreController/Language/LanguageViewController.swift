@@ -53,17 +53,16 @@ extension LanguageViewController: UITableViewDataSource {
         if let name = language.name as String? {
             cell.textLabel?.text = name.localize
         }
-        let cell:UITableViewCell = (tbLanguage.dequeueReusableCell(withIdentifier: DefaultCellID, for: indexPath))
         cell.selectionStyle = .none
         let lang = DGLocalization.sharedInstance.getCurrentLanguage()
         if lang.languageCode == "en" {
-            cell.textLabel?.text  = languages[indexPath.row].localize
+            cell.textLabel?.text  = (languages[indexPath.row].name! as String).localize
         }
         if indexPath.row == isSelection{
             cell.accessoryType = .checkmark
         }
         cell.accessoryType = .none
-        cell.textLabel?.text  = languages[indexPath.row].localize
+        cell.textLabel?.text  = (languages[indexPath.row].name! as String).localize
         cell.textLabel?.font = UIFont(name: "SFUIText-Light", size: 13)
         cell.selectionStyle = .none
         
