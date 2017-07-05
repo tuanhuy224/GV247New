@@ -34,9 +34,10 @@ class InfoCommentCell: CustomTableViewCell {
             i.setImage(star, for: .normal)
         }
         userName.font = UIFont(descriptor: UIFontDescriptor.BoldDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
+        topLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 17)
         workTitle.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
-         content.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
-         createAtLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
+        content.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
+        createAtLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
     }
     
     @IBAction func btRatingAction(_ sender: UIButton) {

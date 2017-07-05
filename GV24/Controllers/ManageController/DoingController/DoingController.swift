@@ -61,6 +61,7 @@ extension DoingController:UITableViewDataSource{
             return cell
         case 1:
             let cell:InfoDetailCell = tbDoing.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
+            cell.lbDescription.text = "Description".localize
             cell.lbTitle.text = ProcessDoing?.info?.title
             cell.lbSubTitle.text = ProcessDoing?.info?.address?.name
             cell.lbComment.text = ProcessDoing?.info?.content

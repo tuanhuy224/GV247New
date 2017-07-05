@@ -60,6 +60,9 @@ extension DetailManagementController:UITableViewDataSource{
             return cell
         }else{
             let cell:InforOwnerCell = detailManager.dequeueReusableCell(withIdentifier: InforOwnerCellID, for: indexPath) as! InforOwnerCell
+            cell.lbComment.text = "comment".localize.uppercased()
+            cell.btReport.setTitle("report".localize, for: .normal)
+            cell.lbCommentText.text = "nocomment".localize
             cell.delegate = self
             return cell
         }

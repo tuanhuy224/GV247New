@@ -60,7 +60,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XC7-cN-Go5">
                             <rect key="frame" x="0.0" y="63" width="375" height="604"/>
                             <subviews>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Aj9-jH-etn">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Aj9-jH-etn" customClass="KMPlaceholderTextView" customModule="GV24" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -94,7 +94,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Z1I-xS-XdJ" secondAttribute="trailing" id="GKE-BG-fMO"/>
                 <constraint firstItem="Z1I-xS-XdJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TeP-Ar-WBg"/>

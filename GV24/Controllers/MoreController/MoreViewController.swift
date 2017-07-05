@@ -79,6 +79,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             if lang.languageCode == "en" {
                 cell.lbMore.text = arryMore[indexPath.row].localize
             }
+
         
             cell.lbMore.text = arryMore[indexPath.row].localize
             cell.textLabel?.font = UIFont(name: "SFUIText-Light", size: 13)

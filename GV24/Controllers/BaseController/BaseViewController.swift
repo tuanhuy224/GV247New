@@ -11,6 +11,7 @@ import Alamofire
 class BaseViewController: UIViewController {
     let install = NetworkStatus.sharedInstance
     var islog = false
+    var currentLanguage:Int?
     var isLoginWhenChangeToken:Bool = false
     var viewControllerLogin = UIViewController()
     var viewNetwork:UIView?
@@ -26,11 +27,6 @@ class BaseViewController: UIViewController {
         self.decorate()
         print("====Current self:\(self)====")
         net?.startListening()
-//        let english = Locale().initWithLanguageCode(languageCode: "en", countryCode: "gb", name: "")
-//        
-//        //set current language
-//        DGLocalization.sharedInstance.setLanguage(withCode: english)
-
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,6 +71,10 @@ class BaseViewController: UIViewController {
 }
 extension BaseViewController:DGLocalizationDelegate{
     func languageDidChanged(to: (String)) {
-        print("language changed to \(to)")
+        if to == "en" {
+            currentLanguage = 1
+        }else{
+            currentLanguage = 0
+        }
     }
 }

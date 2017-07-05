@@ -104,7 +104,7 @@ class InformationViewController: BaseViewController {
                     }
                     DispatchQueue.main.async {
                         let indexPath = IndexPath(item: 0, section: 1)
-                        self.tbInformation.reloadRows(at: [indexPath], with: .fade)
+                        //self.tbInformation.reloadRows(at: [indexPath], with: .fade)
                     }
                     break
                 case .EmptyData:
@@ -174,7 +174,7 @@ extension InformationViewController:UITableViewDataSource{
             cell.content.text = comment.content
             cell.workTitle.text = comment.task?.title
             if indexPath.row != 0 {
-                cell.topLabelHeight.constant = 0
+                //cell.topLabelHeight.constant = 0
             }
             return cell
         }
