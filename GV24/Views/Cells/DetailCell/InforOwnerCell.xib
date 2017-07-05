@@ -47,7 +47,10 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZt-Pe-5X0">
-                                <rect key="frame" x="0.0" y="77" width="416" height="76"/>
+                                <rect key="frame" x="8" y="77" width="408" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="9FQ-ag-0PV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,7 +60,7 @@
                         <constraints>
                             <constraint firstItem="oIa-rv-pUb" firstAttribute="leading" secondItem="5pi-Pt-NaJ" secondAttribute="leading" constant="8" id="5ms-GC-sYk"/>
                             <constraint firstAttribute="trailing" secondItem="RZt-Pe-5X0" secondAttribute="trailing" id="9ma-qT-q1N"/>
-                            <constraint firstItem="RZt-Pe-5X0" firstAttribute="leading" secondItem="5pi-Pt-NaJ" secondAttribute="leading" id="GgD-fQ-bnq"/>
+                            <constraint firstItem="RZt-Pe-5X0" firstAttribute="leading" secondItem="5pi-Pt-NaJ" secondAttribute="leading" constant="8" id="GgD-fQ-bnq"/>
                             <constraint firstItem="HLv-dn-vDM" firstAttribute="leading" secondItem="5pi-Pt-NaJ" secondAttribute="leading" id="JMs-un-PSE"/>
                             <constraint firstAttribute="bottom" secondItem="HLv-dn-vDM" secondAttribute="bottom" id="PFJ-3e-M38"/>
                             <constraint firstItem="oIa-rv-pUb" firstAttribute="top" secondItem="5pi-Pt-NaJ" secondAttribute="top" id="RDd-70-7J6"/>

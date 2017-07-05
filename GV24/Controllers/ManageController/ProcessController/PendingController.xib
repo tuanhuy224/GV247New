@@ -28,7 +28,7 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="6NW-03-xax" secondAttribute="bottom" id="Au6-bx-lyM"/>
                 <constraint firstItem="6NW-03-xax" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MBg-q3-Oj4"/>

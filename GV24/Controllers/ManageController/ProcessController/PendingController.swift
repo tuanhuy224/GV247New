@@ -60,6 +60,7 @@ extension PendingController:UITableViewDataSource{
             return cell
         case 1:
             let cell:InfoDetailCell = tbPending.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
+            cell.lbDescription.text = "Description".localize
             cell.lbTitle.text = processPending?.info?.title
             cell.lbSubTitle.text = processPending?.info?.address?.name
             cell.lbComment.text = processPending?.info?.content
@@ -71,6 +72,8 @@ extension PendingController:UITableViewDataSource{
         case 2:
             let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
             cell.lbCancelDetail.isHidden = true
+            cell.lbCancel.text = "CancelTask".localize
+            cell.lbCancelDetail.text = "Youcancancelyouraccepted".localize
             cell.delegate = self
             cell.denyDelegate = self
             return cell

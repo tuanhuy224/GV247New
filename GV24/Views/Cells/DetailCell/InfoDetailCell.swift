@@ -38,7 +38,7 @@ class InfoDetailCell: CustomTableViewCell {
         lbDate.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbTime.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbAddress.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbDescription.text = "Description".localize
+        lbDescription.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

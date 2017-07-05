@@ -21,10 +21,6 @@ class InforOwnerCell: CustomTableViewCell {
         super.awakeFromNib()
         btReport.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         lbComment.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
-        lbComment.text = "comment".localize.uppercased()
-
-        btReport.setTitle("report".localize, for: .normal)
-        lbCommentText.text = "nocomment".localize
         lbCommentText.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
     }
     @IBAction func reportAction(_ sender: Any) {
