@@ -34,11 +34,7 @@ class FollowCell: CustomTableViewCell {
         btIconRight.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         btIconRight2.setImage(Ionicons.chevronRight.image(32), for: .normal)
         btIconRight2.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        btLogOut.tintColor =  UIColor.colorWithRedValue(redValue: 253, greenValue: 189, blueValue: 78, alpha: 1)
-        btFollowAc.setTitle("shareGv24".localize, for: .normal)
-        btFacebookAc.setTitle("followUs".localize, for: .normal)
-        btLogOut.setTitle("Logout".localize, for: .normal)
-        
+        btLogOut.tintColor =  UIColor.colorWithRedValue(redValue: 253, greenValue: 189, blueValue: 78, alpha: 1)        
     }
     @IBAction func btLogOutAction(_ sender: Any) {
         if delegate != nil {

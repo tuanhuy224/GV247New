@@ -165,6 +165,7 @@
 		037EA8A71EF7CAED00F60824 /* WorkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */; };
 		037EA8AA1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */; };
 		037EA8AB1EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */; };
+		03A5E0221F0BA2FA009CDB7B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A5E0211F0BA2FA009CDB7B /* Extensions.swift */; };
 		03AD9B671EF8D25A0038AEE9 /* CommentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */; };
 		03AD9B691EF8D6DA0038AEE9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD9B681EF8D6DA0038AEE9 /* Task.swift */; };
 		03D50F401EF8FDA10056F6AE /* InfoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */; };
@@ -377,6 +378,7 @@
 		037EA8A51EF7CAED00F60824 /* WorkInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCell.xib; sourceTree = "<group>"; };
 		037EA8A81EF7D4EA00F60824 /* WorkInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		037EA8A91EF7D4EA00F60824 /* WorkInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkInfoCollectionViewCell.xib; sourceTree = "<group>"; };
+		03A5E0211F0BA2FA009CDB7B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		03AD9B661EF8D25A0038AEE9 /* CommentServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentServices.swift; sourceTree = "<group>"; };
 		03AD9B681EF8D6DA0038AEE9 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		03D50F3E1EF8FDA10056F6AE /* InfoCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCommentCell.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				002315571EDF07DC00B29F36 /* Extention+Image.swift */,
 				004508161EFCBE2600402986 /* ChangeFontSize.swift */,
 				0057723D1F060366008F446D /* fontSize.swift */,
+				03A5E0211F0BA2FA009CDB7B /* Extensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -1364,6 +1367,7 @@
 				002AFD641EE7FD8800D3B88A /* APIPath.swift in Sources */,
 				844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */,
 				004103621EF37858004BF446 /* AutoKeyboard.swift in Sources */,
+				03A5E0221F0BA2FA009CDB7B /* Extensions.swift in Sources */,
 				000E1CA21EF6D56400E26FD4 /* GooglePlace.swift in Sources */,
 				003BC6951ED9DA0600FF6D14 /* Constant.swift in Sources */,
 				0318C9C61EFCBFA500FAFEE3 /* StatisticCell.swift in Sources */,

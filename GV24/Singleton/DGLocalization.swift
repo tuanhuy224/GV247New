@@ -113,6 +113,17 @@ class Locale: NSObject {
         self.countryCode = countryCode
         return self
     }
+    
+    override init() {
+        super.init()
+    }
+    
+    init(languageCode: NSString, countryCode:NSString, name: NSString) {
+        self.name = name
+        self.languageCode = languageCode
+        self.countryCode = countryCode
+        super.init()
+    }
 }
 //MARK:- extension
 extension String {

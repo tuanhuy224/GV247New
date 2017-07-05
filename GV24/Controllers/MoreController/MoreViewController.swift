@@ -85,6 +85,9 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             return cell
         }else if indexPath.section == 3{
             let cell:FollowCell = (tbMore.dequeueReusableCell(withIdentifier: followCell, for: indexPath) as? FollowCell)!
+            cell.btFollowAc.setTitle("shareGv24".localize, for: .normal)
+            cell.btFacebookAc.setTitle("followUs".localize, for: .normal)
+            cell.btLogOut.setTitle("Logout".localize, for: .normal)
             cell.delegate = self
             return cell
         }else{

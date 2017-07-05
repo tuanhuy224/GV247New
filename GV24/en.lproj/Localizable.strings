@@ -7,7 +7,7 @@
 //
 rootDomain = "https://yukotest123.herokuapp.com/en";
 English = "English";
-VietNam = "VietNamese";
+VietNam = "Tiếng Việt";
 SignIn = "Sign in";
 Dollar = "VND";
 Back = "Back";
