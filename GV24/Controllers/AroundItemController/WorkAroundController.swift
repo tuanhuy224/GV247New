@@ -54,7 +54,7 @@ class WorkAroundController: BaseViewController {
             if UserDefaultHelper.getSlider() == nil {
                 return
             }
-            arWork.sliderMax.text = "\(UserDefaultHelper.getSlider()!)"
+            arWork.sliderMax.text = "\(UserDefaultHelper.getSlider()!)km"
             arWork.slider.setValue(Float(UserDefaultHelper.getSlider()!)!, animated: true)
         }
     }
@@ -75,7 +75,7 @@ class WorkAroundController: BaseViewController {
         }
     }
     func configSearchBar() {
-        let subView = UIView(frame: CGRect(x: 0, y: 64.0, width:UIScreen.main.bounds.width, height: 45.0))
+        let subView = UIView(frame: CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height: 45.0))
         subView.addSubview((searchController.searchBar))
         view.addSubview(subView)
         searchController.searchBar.sizeToFit()
@@ -156,16 +156,19 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
             navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+
+let stepper = 1
 extension WorkAroundController:changeSliderDelegate{
     func change(slider: UISlider) {
-        //MBProgressHUD.showAdded(to: self.view, animated: true)
-        if slider.isContinuous == true {
-            arWork.sliderMax.text = String(stringInterpolation: "\(Int(slider.value))km")
-            UserDefaultHelper.setSlider(slider: "\(Int(slider.value))")
-           // MBProgressHUD.hide(for: self.view, animated: true)
-        }
+        let value = round(slider.value / Float(stepper))
+        let step = value * Float(stepper)
+        arWork.sliderMax.text = String(stringInterpolation: "\(Int(step))km")
+        arWork.slider.value = value
+        UserDefaultHelper.setSlider(slider: "\(Int(step))")
     }
 }
+
 extension WorkAroundController:sendIdForViewDetailDelegate{
     func sendId(id: String) {
     }

@@ -26,6 +26,7 @@ class WorkAround: xibView {
         sliderMax.text = "\(2)km"
     }
     func setupView()  {
+        
     }
     @IBAction func changeAction(_ sender: Any) {
         delegate?.change(slider: slider)
