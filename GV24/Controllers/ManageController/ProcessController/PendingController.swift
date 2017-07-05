@@ -72,10 +72,14 @@ extension PendingController:UITableViewDataSource{
         case 2:
             let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
             cell.lbCancelDetail.isHidden = true
-            cell.lbCancel.text = "CancelTask".localize
+            if processPending?.process?.id == WorkStatus.Direct.rawValue {
+                cell.lbCancel.text = "Refusework".localize
+            }else{
+                cell.lbCancel.text = "CancelTask".localize
+            }
             cell.lbCancelDetail.text = "Youcancancelyouraccepted".localize
             cell.delegate = self
-            cell.denyDelegate = self
+            //cell.denyDelegate = self
             return cell
         default:
             break
@@ -106,20 +110,40 @@ extension PendingController:chooseWorkDelegate{
 }
 extension PendingController:CancelWorkDelegate{
     func CancelButton() {
-        let parameter = ["id":processPending!.id!]
-        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-        let apiClient = APIService.shared
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
-            MBProgressHUD.hide(for: self.view, animated: true)
+        if processPending?.process?.id == WorkStatus.Direct.rawValue{
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            guard let ownerId = processPending?.stakeholders?.owner?.id else {return}
+            guard let taskID = processPending?.id else {return}
+            let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
+            let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+            let apiClient = APIService.shared
             let alertC = AlertStandard.sharedInstance
-            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "cancelWork".localize)
+            MBProgressHUD.hide(for: self.view, animated: true)
+            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {
+                apiClient.postReserve(url: APIPaths().taskdenyRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
+                }
+                let mana = ManageViewController(nibName: NibManageViewController, bundle: nil)
+                self.navigationController?.pushViewController(mana, animated: true)
+            })
+        }else{
+            let parameter = ["id":processPending!.id!]
+            let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+            let apiClient = APIService.shared
+            let alertC = AlertStandard.sharedInstance
+            alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "cancelWork".localize, completion: {
+                apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
+                }
+                let mana = ManageViewController(nibName: NibManageViewController, bundle: nil)
+                self.navigationController?.pushViewController(mana, animated: true)
+            })
         }
+ 
+        tbPending.reloadData()
     }
 }
 extension PendingController:directRequestDelegate{
     func chooseActionRequest() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingView.show()
         let alertC = AlertStandard.sharedInstance
         alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) { 
             guard let ownerId = self.processPending?.stakeholders?.owner?.id else {return}
@@ -128,24 +152,26 @@ extension PendingController:directRequestDelegate{
             let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
             let apiClient = APIService.shared
             apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
-                MBProgressHUD.hide(for: self.view, animated: true)
+            
             }
+            self.loadingView.close()
         }
     }
 }
-extension PendingController:denyRequestDelegate{
-    func denyRequest() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        guard let ownerId = processPending?.stakeholders?.owner?.id else {return}
-        guard let taskID = processPending?.id else {return}
-        let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
-        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-        let apiClient = APIService.shared
-        apiClient.postReserve(url: APIPaths().taskdenyRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
-            let alertC = AlertStandard.sharedInstance
-            MBProgressHUD.hide(for: self.view, animated: true)
-            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "cancelWork".localize)
-        }
-        
-    }
-}
+//extension PendingController:denyRequestDelegate{
+//    func denyRequest() {
+//        MBProgressHUD.showAdded(to: self.view, animated: true)
+//        guard let ownerId = processPending?.stakeholders?.owner?.id else {return}
+//        guard let taskID = processPending?.id else {return}
+//        let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
+//        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+//        let apiClient = APIService.shared
+//            let alertC = AlertStandard.sharedInstance
+//            MBProgressHUD.hide(for: self.view, animated: true)
+//            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {
+//                 apiClient.postReserve(url: APIPaths().taskdenyRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
+//            }
+//        })
+//  }
+//}
+

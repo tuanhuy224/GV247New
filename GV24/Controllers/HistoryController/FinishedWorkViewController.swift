@@ -22,9 +22,9 @@ class FinishedWorkViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        if work != nil {
-            tableView.reloadData()
-        }
+//        if work != nil {
+//            tableView.reloadData()
+//        }
     }
     
     func setupTableView() {
@@ -77,7 +77,9 @@ class FinishedWorkViewController: BaseViewController {
         if work != nil {
             if let imageString = work?.info?.workName?.image {
                 let url = URL(string: imageString)
-                cell.workImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+                DispatchQueue.main.async {
+                    cell.workImage.kf.setImage(with: url)
+                }
             }
             
             cell.workNameLabel.text = work?.info?.title
@@ -103,7 +105,9 @@ class FinishedWorkViewController: BaseViewController {
         if work != nil {
             if let imageString = work?.stakeholders?.owner?.image {
                 let url = URL(string: imageString)
-                cell.imageUser.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+                DispatchQueue.main.async {
+                    cell.imageUser.kf.setImage(with: url)
+                }
             }
             cell.imageUser.layer.cornerRadius = cell.imageUser.frame.width / 2
             cell.imageUser.clipsToBounds = true
