@@ -26,17 +26,24 @@ class ForgotPasswordViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     @IBAction func btRequestAction(_ sender: Any) {
-        guard let username = UserDefaultHelper.currentUser?.username else {return}
-        guard let email = UserDefaultHelper.currentUser?.email else {return}
-        guard let token = UserDefaultHelper.getToken() else {return}
-        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
-        let param = ["username":username,"email":email]
-        if username == "" || email == ""{
+        //let header = ["Content-Type":"application/x-www-form-urlencoded"]
+        let param = ["username":tfUsername.text!,"email":tfEmail.text!]
+        if tfEmail.text == "" || tfUsername.text == ""{
             AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
         }
-        APIService.shared.post(url: APIPaths().urlMoreMaidForgotPassword(), parameters: param, header: header) { (json, error) in
-
+        APIService.shared.postFotGotPassword(url: APIPaths().urlMoreMaidForgotPassword(), method: .post, parameters: param) { (json, error) in
+            if error == "DATA_NOT_EXIST"{
+                let login = LoginView(nibName:"LoginView", bundle: nil)
+            self.navigationController?.pushViewController(login, animated: true)
+            }
         }
+    }
+    func editing() {
+        self.view.endEditing(true)
+    }
+    func dismissKeyboard() {
+        tfUsername.resignFirstResponder()
+        tfEmail.resignFirstResponder()
     }
     func setup() {
         let imageprofile = Ionicons.iosPerson.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
@@ -44,6 +51,8 @@ class ForgotPasswordViewController: BaseViewController {
         let imageEmailProfile = Ionicons.iosEmail.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
         imageEmail.image = imageEmailProfile
         btRequest.setTitle("Sendrequest".localize, for: .normal)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
     }
     override func viewWillAppear(_ animated: Bool) {
