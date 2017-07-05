@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -107,7 +106,7 @@
                     <rect key="frame" x="0.0" y="90" width="375" height="577"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="h22-SV-zdb" firstAttribute="top" secondItem="Pk1-gm-Tw8" secondAttribute="bottom" id="2hQ-Lo-Gou"/>
                 <constraint firstAttribute="bottom" secondItem="LaV-N2-myv" secondAttribute="bottom" id="HrE-I6-WXe"/>

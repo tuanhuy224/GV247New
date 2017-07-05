@@ -110,6 +110,7 @@
 		004508151EFCA8CC00402986 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004508141EFCA8CC00402986 /* Reachability.swift */; };
 		004508171EFCBE2600402986 /* ChangeFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004508161EFCBE2600402986 /* ChangeFontSize.swift */; };
 		0045081B1EFCF02100402986 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0045081A1EFCF02100402986 /* StatisticViewController.xib */; };
+		005028291F0C7B8300FE9F91 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005028281F0C7B8300FE9F91 /* KMPlaceholderTextView.swift */; };
 		0057723E1F060366008F446D /* fontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057723D1F060366008F446D /* fontSize.swift */; };
 		005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */; };
 		005A4DDC1EF0EAE400FA76FB /* InforOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */; };
@@ -324,6 +325,7 @@
 		004508251EFD1EE200402986 /* SFUIText-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularItalic.ttf"; sourceTree = "<group>"; };
 		004508261EFD1EE200402986 /* SFUIText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.ttf"; sourceTree = "<group>"; };
 		004508271EFD1EE200402986 /* SFUIText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		005028281F0C7B8300FE9F91 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		0057723D1F060366008F446D /* fontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fontSize.swift; sourceTree = "<group>"; };
 		005A4DD91EF0EAE400FA76FB /* InforOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforOwnerCell.swift; sourceTree = "<group>"; };
 		005A4DDA1EF0EAE400FA76FB /* InforOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InforOwnerCell.xib; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 		002BA0C41EDD206D0099352D /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				005028271F0C7B7600FE9F91 /* TextView */,
 				0014A57A1EFED31E00DBD0C4 /* Lable */,
 				000E1E771EF2885B0058838B /* MBProgressHUD */,
 				002BA0CE1EDD20B10099352D /* View */,
@@ -775,6 +778,14 @@
 				004508141EFCA8CC00402986 /* Reachability.swift */,
 			);
 			path = CheckNetwork;
+			sourceTree = "<group>";
+		};
+		005028271F0C7B7600FE9F91 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				005028281F0C7B8300FE9F91 /* KMPlaceholderTextView.swift */,
+			);
+			path = TextView;
 			sourceTree = "<group>";
 		};
 		005A4DDD1EF1369E00FA76FB /* CancelCell */ = {
@@ -1422,6 +1433,7 @@
 				002BA0F91EDD25320099352D /* MoreViewController.swift in Sources */,
 				004508171EFCBE2600402986 /* ChangeFontSize.swift in Sources */,
 				002AFD661EE8058A00D3B88A /* HistoryServices.swift in Sources */,
+				005028291F0C7B8300FE9F91 /* KMPlaceholderTextView.swift in Sources */,
 				002715291EE799B7006E6671 /* Around.swift in Sources */,
 				842FEC6A1ED40C6900000606 /* AppDelegate.swift in Sources */,
 				00EB19581EE93EF5003B2C5D /* Dist.swift in Sources */,

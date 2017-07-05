@@ -28,7 +28,9 @@ class ReportController: BaseViewController {
         self.navigationItem.title = "Feedback".localize
     }
     func setupView()  {
-        
+        let placeholderTextView = KMPlaceholderTextView(frame: view.bounds)
+        placeholderTextView.placeholder = "Pleasefillinthereport".localize
+        view.addSubview(placeholderTextView)
         nameProfile.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)
         addressProfile.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         imageProfile.layer.cornerRadius = imageProfile.frame.size.width/2
@@ -53,7 +55,7 @@ class ReportController: BaseViewController {
         let apiClient = APIService.shared
             apiClient.postReserve(url: APIPaths().maidReport(), method: .post, parameters: param, header: headers) { (json, message) in
                 if message == "SUCCESS"{
-                    AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "ok", message: "da gui")
+                    AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "", message: "Reportsentsuccessfully".localize)
                 }
         }
     }

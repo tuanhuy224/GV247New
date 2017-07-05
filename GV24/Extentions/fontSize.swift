@@ -25,7 +25,6 @@ public enum FontSizeText: String{
 }
 
 class fontSize: UIFont {
-    
     static func fontName(name: FontSizeText, size: CGFloat)-> UIFont{
         return UIFont(name: name.rawValue, size: size)!
     }
