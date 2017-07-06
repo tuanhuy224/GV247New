@@ -119,17 +119,17 @@ extension ManageViewController:UITableViewDataSource{
                     cell?.lbDirect.isHidden = true
                     cell?.lbDeadline.isHidden = false
                     cell?.lbDeadline.text = "Expired".localize
+                    cell?.contraintWidthDeadline.constant = (cell?.lbDeadline.isHidden)! ? 0 : 75
                 }else{
                     cell?.lbDirect.isHidden = false
                     cell?.lbDeadline.isHidden = true
                     cell?.lbDirect.text = "Direct".localize
+                    cell?.constraintWidthDirect.constant = (cell?.lbDirect.isHidden)! ? 0 : 110
                 }
-//                cell?.lbDirect.isHidden = false
-//                cell?.lbDeadline.isHidden = true
-//                cell?.lbDirect.text = "Direct".localize
             }else{
                 cell?.lbDirect.isHidden = true
                 cell?.lbDeadline.isHidden = false
+                cell?.lbDeadline.text = "Expired".localize
             }
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"

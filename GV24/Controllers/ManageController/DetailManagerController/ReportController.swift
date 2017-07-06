@@ -30,10 +30,10 @@ class ReportController: BaseViewController {
     }
     func setupView()  {
 
-        let placeholderTextView = KMPlaceholderTextView(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 40, height: 200))
+        let placeholderTextView = KMPlaceholderTextView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 200))
         placeholderTextView.textContainerInset.left = 8
-        placeholderTextView.textContainerInset.right = 20
-        placeholderTextView.textAlignment = .justified
+        placeholderTextView.textContainerInset.right = 8
+        placeholderTextView.textAlignment = .left
         placeholderTextView.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         placeholderTextView.placeholder = "Pleasefillinthereport".localize
         viewTextView.addSubview(placeholderTextView)

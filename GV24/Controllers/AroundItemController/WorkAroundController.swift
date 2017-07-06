@@ -114,10 +114,10 @@ class WorkAroundController: BaseViewController {
         
     }
     @objc fileprivate func selectButton() {
-            searchBar.resignFirstResponder()
+        searchBar.resignFirstResponder()
         guard let searchTextChange = textLocation else{return}
-            searchText(text: searchTextChange)
-            self.loadData()
+        searchText(text: searchTextChange)
+        self.loadData()
     }
     // Get longtitude and lattitue
     func forwardGeocoding(){
@@ -134,8 +134,6 @@ class WorkAroundController: BaseViewController {
     }
     func handle(location : CLLocationCoordinate2D){
         self.currentLocation = location
-        loadData()
-        
     }
     func searchText(text:String) {
         geocoder.geocodeAddressString(text) { (placeMarks, error) in
@@ -144,7 +142,6 @@ class WorkAroundController: BaseViewController {
                 if (placeMarks?.count)! > 0{
                     guard let firstLocation = placeMarks?.first?.location else{return}
                     self.handle(location: firstLocation.coordinate)
-                    
                 }else{
                     
                 }
@@ -204,10 +201,11 @@ extension WorkAroundController:UISearchBarDelegate{
         self.textLocation = searchText
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
         arrays.removeAll()
-        let text = searchBar.text!
+        searchBar.resignFirstResponder()
+        guard let text = self.textLocation else{return}
         searchText(text: text)
+        self.loadData()
     }
 }
 
