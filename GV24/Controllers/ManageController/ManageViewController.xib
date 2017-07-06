@@ -20,8 +20,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wOA-Yg-yHk">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="W0G-Vc-xW6"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bsD-CC-ERM">
-                    <rect key="frame" x="0.0" y="37" width="375" height="630"/>
+                    <rect key="frame" x="0.0" y="45" width="375" height="622"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="vtz-fB-Kmg"/>
@@ -43,12 +50,15 @@
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bsD-CC-ERM" secondAttribute="bottom" id="D0D-kS-zgm"/>
+                <constraint firstItem="wOA-Yg-yHk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DeP-F8-3W3"/>
+                <constraint firstItem="wOA-Yg-yHk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GU0-Ce-TpK"/>
+                <constraint firstAttribute="trailing" secondItem="wOA-Yg-yHk" secondAttribute="trailing" id="HqB-iN-xba"/>
                 <constraint firstItem="vOB-SU-7Ta" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Okk-Rv-3hs"/>
                 <constraint firstAttribute="trailing" secondItem="vOB-SU-7Ta" secondAttribute="trailing" constant="16" id="RZV-xz-xL1"/>
                 <constraint firstAttribute="trailing" secondItem="bsD-CC-ERM" secondAttribute="trailing" id="UMz-oW-eTt"/>
                 <constraint firstItem="vOB-SU-7Ta" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aNp-uv-UAb"/>
                 <constraint firstItem="bsD-CC-ERM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ou0-vj-QA8"/>
-                <constraint firstItem="bsD-CC-ERM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="37" id="qs7-m7-bgg"/>
+                <constraint firstItem="bsD-CC-ERM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="45" id="qs7-m7-bgg"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="33.5" y="60.5"/>

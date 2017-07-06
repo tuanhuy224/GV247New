@@ -25,7 +25,7 @@ class MapViewController: BaseViewController {
     var likelyPlaces: [GMSPlace] = []
     var selectedPlace: GMSPlace?
     lazy var geocoder = CLGeocoder()
-    var searchController: UISearchController?
+    var searchController = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     var resultView: UITextView?
     var arrays = [Around]()
     var arrayMap = [Around]()
@@ -55,16 +55,16 @@ class MapViewController: BaseViewController {
         placesClient = GMSPlacesClient.shared()
     }
     func configurationSearchBar() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController?.searchBar.delegate = self
-        searchController?.searchBar.placeholder = "SearchLocation".localize
-        searchController?.searchBar.barTintColor = .white
-        searchController?.searchBar.tintColor =  UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+//        searchController = UISearchController(searchResultsController: nil)
+        searchController.delegate = self
+        searchController.placeholder = "SearchLocation".localize
+        searchController.barTintColor = .white
+        searchController.tintColor =  UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         let subView = UIView(frame: CGRect(x: 0, y: 64.0, width:UIScreen.main.bounds.width, height: 45.0))
-        subView.addSubview((searchController?.searchBar)!)
+        subView.addSubview(searchController)
         view.addSubview(subView)
-        searchController?.searchBar.sizeToFit()
-        searchController?.hidesNavigationBarDuringPresentation = false
+        searchController.sizeToFit()
+//    searchController?.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = .top

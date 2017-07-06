@@ -23,7 +23,7 @@ class RecievedController: BaseViewController {
     }
     override func setupViewBase() {
         super.setupViewBase()
-        self.title = "\(processRecieved?.info?.title ?? "")".localize
+        self.title = "assigned".localize
     }
 
 }
@@ -67,7 +67,7 @@ extension RecievedController:UITableViewDataSource{
             cell.lbTitle.text = processRecieved?.info?.title
             cell.lbSubTitle.text = processRecieved?.info?.address?.name
             cell.lbComment.text = processRecieved?.info?.content
-            cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (processRecieved?.workTime?.endAt)!).dayMonthYear)"
+            cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) $"
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processRecieved?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processRecieved?.workTime!.endAt)!, format: "HH:mm a")!
             cell.lbAddress.text = processRecieved?.stakeholders?.owner?.address?.name
@@ -98,7 +98,6 @@ extension RecievedController:UITableViewDelegate{
         }
     }
 }
-
 extension RecievedController:CancelWorkDelegate{
     func CancelButton() {
         let parameter = ["id":processRecieved!.id!]

@@ -37,7 +37,8 @@ class AroundItemController: BaseViewController {
         }
     }
     override func setupViewBase() {
-        self.title = "\(name!)".localize
+        guard let name = name else{return}
+        self.title = "\(name)".localize
         tbAround.reloadData()
     }
 }
@@ -66,7 +67,7 @@ extension AroundItemController:UITableViewDelegate{
         let detail = DetailViewController(nibName: NibDetailViewController, bundle: nil)
         detail.works = works[indexPath.row]
         detail.idWork = works[indexPath.row].id
-        detail.titleString = works[indexPath.row].info?.title
+        detail.titleString = name
         if UserDefaultHelper.getToken() == nil {
             AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
         }

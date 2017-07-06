@@ -25,11 +25,12 @@ class WorkAroundController: BaseViewController {
     var logtitude:Double?
     var lattitude:Double?
     var arrays = [Around]()
+    lazy var geocoder = CLGeocoder()
     var googlePlace = [GooglePlace]()
     var textLocation:String?
     var currentLocation: CLLocationCoordinate2D?
-    var searchController = UISearchController(searchResultsController: nil)
-    
+   // var searchController = UISearchController(searchResultsController: nil)
+    var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     var work = [WorkName]()
     @IBOutlet weak var aroundTableView: UITableView!
     override func viewDidLoad() {
@@ -37,12 +38,11 @@ class WorkAroundController: BaseViewController {
         aroundTableView.register(UINib(nibName:NibWorkTableViewCell,bundle: nil), forCellReuseIdentifier: workCellID)
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
-        searchController.searchBar.delegate = self
-        aroundTableView.separatorStyle = .none
-        searchController.searchBar.tintColor = .black
-        searchController.searchBar.placeholder = "SearchLocation".localize
-        searchController.searchBar.barTintColor = .white
-        searchController.searchBar.tintColor =  UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        searchBar.delegate = self
+        //        aroundTableView.separatorStyle = .none
+        searchBar.placeholder = "SearchLocation".localize
+        searchBar.barTintColor = .white
+        searchBar.tintColor =  UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         self.aroundTableView.rowHeight = UITableViewAutomaticDimension
         self.aroundTableView.estimatedRowHeight = 100.0
         setup()
@@ -62,23 +62,22 @@ class WorkAroundController: BaseViewController {
         loadingView.show()
         self.arrays.removeAll()
         let apiService = APIService.shared
-        let param:[String:Double] = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!,"minDistance":0,"maxDistance":10]
+        let param:Parameters = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!,"minDistance":0,"maxDistance":10]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
-            self.loadingView.close()
             if let jsonArray = json?.array{
                 for data in jsonArray{
                     self.arrays.append(Around(json: data))
+                    self.aroundTableView.reloadData()
                 }
-                self.aroundTableView.reloadData()
             }
+            self.loadingView.close()
         }
     }
     func configSearchBar() {
         let subView = UIView(frame: CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height: 45.0))
-        subView.addSubview((searchController.searchBar))
+        subView.addSubview(searchBar)
         view.addSubview(subView)
-        searchController.searchBar.sizeToFit()
-        searchController.hidesNavigationBarDuringPresentation = false
+        searchBar.sizeToFit()
     }
     lazy var handleRefresh:UIRefreshControl = {
     let refresh = UIRefreshControl()
@@ -115,6 +114,9 @@ class WorkAroundController: BaseViewController {
         
     }
     @objc fileprivate func selectButton() {
+            searchBar.resignFirstResponder()
+        guard let searchTextChange = textLocation else{return}
+            searchText(text: searchTextChange)
             self.loadData()
     }
     // Get longtitude and lattitue
@@ -128,6 +130,27 @@ class WorkAroundController: BaseViewController {
             guard let lat = location["lat"], let lng = location["lng"] else{return}
             self.currentLocation?.latitude = lat.double!
             self.currentLocation?.longitude = lng.double!
+        }
+    }
+    func handle(location : CLLocationCoordinate2D){
+        self.currentLocation = location
+        loadData()
+        
+    }
+    func searchText(text:String) {
+        geocoder.geocodeAddressString(text) { (placeMarks, error) in
+            self.loadingView.close()
+            if error == nil{
+                if (placeMarks?.count)! > 0{
+                    guard let firstLocation = placeMarks?.first?.location else{return}
+                    self.handle(location: firstLocation.coordinate)
+                    
+                }else{
+                    
+                }
+            }else{
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
+            }
         }
     }
 }
@@ -180,11 +203,11 @@ extension WorkAroundController:UISearchBarDelegate{
         arrays.removeAll()
         self.textLocation = searchText
     }
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
-        forwardGeocoding()
-    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        loadData()
+        searchBar.resignFirstResponder()
+        arrays.removeAll()
+        let text = searchBar.text!
+        searchText(text: text)
     }
 }
 

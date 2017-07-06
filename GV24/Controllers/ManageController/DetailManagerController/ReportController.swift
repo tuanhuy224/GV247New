@@ -12,6 +12,7 @@ import IoniconsSwift
 import Alamofire
 
 class ReportController: BaseViewController {
+    @IBOutlet weak var viewTextView: UIView!
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var nameProfile: UILabel!
     @IBOutlet weak var addressProfile: UILabel!
@@ -20,17 +21,22 @@ class ReportController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            setupView()
+        self.setupView()
         tfReport.delegate = self
     }
     override func setupViewBase() {
         super.setupViewBase()
-        self.navigationItem.title = "Feedback".localize
+        self.navigationItem.title = "report".localize
     }
     func setupView()  {
-        let placeholderTextView = KMPlaceholderTextView(frame: view.bounds)
+
+        let placeholderTextView = KMPlaceholderTextView(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 40, height: 200))
+        placeholderTextView.textContainerInset.left = 8
+        placeholderTextView.textContainerInset.right = 20
+        placeholderTextView.textAlignment = .justified
+        placeholderTextView.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         placeholderTextView.placeholder = "Pleasefillinthereport".localize
-        view.addSubview(placeholderTextView)
+        viewTextView.addSubview(placeholderTextView)
         nameProfile.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)
         addressProfile.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         imageProfile.layer.cornerRadius = imageProfile.frame.size.width/2
@@ -48,6 +54,11 @@ class ReportController: BaseViewController {
             }
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send".localize, style: .plain, target: self, action: #selector(ReportController.addTapped))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ReportController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     func addTapped() {
         let headers:HTTPHeaders = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]

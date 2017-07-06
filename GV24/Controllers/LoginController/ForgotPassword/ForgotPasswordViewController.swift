@@ -26,20 +26,23 @@ class ForgotPasswordViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     @IBAction func btRequestAction(_ sender: Any) {
-        //let header = ["Content-Type":"application/x-www-form-urlencoded"]
-        let param = ["username":tfUsername.text!,"email":tfEmail.text!]
         if tfEmail.text == "" || tfUsername.text == ""{
             AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
         }
+        loadingView.show()
+        guard let username = tfUsername.text else{return}
+        guard let email = tfEmail.text else{return}
+        let param = ["username":username,"email":email]
+        
         APIService.shared.postFotGotPassword(url: APIPaths().urlMoreMaidForgotPassword(), method: .post, parameters: param) { (json, error) in
+            self.loadingView.close()
             if error == "DATA_NOT_EXIST"{
                 let login = LoginView(nibName:"LoginView", bundle: nil)
-            self.navigationController?.pushViewController(login, animated: true)
+                guard let window = UIApplication.shared.keyWindow else{return}
+                let navi = UINavigationController(rootViewController: login)
+                window.rootViewController = navi
             }
         }
-    }
-    func editing() {
-        self.view.endEditing(true)
     }
     func dismissKeyboard() {
         tfUsername.resignFirstResponder()

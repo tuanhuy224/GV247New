@@ -45,9 +45,13 @@ class BaseViewController: UIViewController {
     func decorate(){}
     func displayNetwork(){
         viewNetwork = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        lbViewNetwork = UILabel(frame: CGRect(x: self.view.center.x, y: 0, width: self.view.frame.size.width, height: 20))
-        lbViewNetwork?.backgroundColor = UIColor.red
+        lbViewNetwork = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
+        lbViewNetwork?.text = "Nointernetconnection".localize
+        lbViewNetwork?.textAlignment = .center
+        lbViewNetwork?.tintColor = UIColor.white
+        lbViewNetwork?.backgroundColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
         viewNetwork?.addSubview(lbViewNetwork!)
+        view.addSubview(viewNetwork!)
     }
     func checkTokenApp() {
         guard let token = UserDefaultHelper.getToken() else{return}

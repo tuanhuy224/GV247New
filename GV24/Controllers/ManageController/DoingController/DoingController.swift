@@ -23,7 +23,7 @@ class DoingController: BaseViewController {
     }
     override func setupViewBase() {
         super.setupViewBase()
-        self.title = "\(ProcessDoing?.info?.title ?? "")".localize
+        self.title = "runnning".localize
     }
 }
 extension DoingController:UITableViewDataSource{
@@ -65,7 +65,7 @@ extension DoingController:UITableViewDataSource{
             cell.lbTitle.text = ProcessDoing?.info?.title
             cell.lbSubTitle.text = ProcessDoing?.info?.address?.name
             cell.lbComment.text = ProcessDoing?.info?.content
-            cell.lbDate.text = "\(Date(isoDateString: (ProcessDoing?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (ProcessDoing?.workTime?.endAt)!).dayMonthYear)"
+            cell.lbDate.text = "\(Date(isoDateString: (ProcessDoing?.workTime?.startAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(ProcessDoing?.info?.salary ?? 0) $"
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.ProcessDoing?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.ProcessDoing?.workTime!.endAt)!, format: "HH:mm a")!
             cell.lbAddress.text = ProcessDoing?.stakeholders?.owner?.address?.name

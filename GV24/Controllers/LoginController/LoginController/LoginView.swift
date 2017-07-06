@@ -9,6 +9,9 @@
 import UIKit
 import IoniconsSwift
 import Alamofire
+import FirebaseMessaging
+import Firebase
+import FirebaseInstanceID
 
 @objc protocol customButtonLoginDelegate:class {
     func buttonLogin(username:String,password:String)
@@ -52,7 +55,8 @@ class LoginView: BaseViewController {
         passwordLogin.placeholder = "Password".localize
     }
     func token() -> String {
-        return UserDefaultHelper.getString()! + "@//@ios"
+        guard let firebaseToken = InstanceID.instanceID().token() else {return ""}
+        return firebaseToken + "@//@ios"
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -62,7 +66,11 @@ class LoginView: BaseViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         loading.show()
         let apiClient = UserService.sharedInstance
-        apiClient.logIn(userName: userLogin.text!, password: passwordLogin.text!, device_token: token(), completion: { (user, string, error) in
+        guard let username = userLogin.text, let password = passwordLogin.text else {return}
+        if username == "" || password == "" {
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
+        }
+        apiClient.logIn(userName: username, password: password, device_token: token(), completion: { (user, string, error) in
             self.loading.close()
             if self.isLoginWhenChangeToken == true{
                 self.isLoginWhenChangeToken = false

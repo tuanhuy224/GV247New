@@ -15,13 +15,12 @@ class PendingController: BaseViewController {
         tbPending.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tbPending.register(UINib(nibName:NibCancelCell,bundle:nil), forCellReuseIdentifier: cancelCellID)
         tbPending.separatorStyle = .none
-        self.title = "\(processPending?.info?.title ?? "")".localize
         self.tbPending.rowHeight = UITableViewAutomaticDimension
         self.tbPending.estimatedRowHeight = 100.0
     }
     override func setupViewBase() {
         super.setupViewBase()
-        
+        self.title = "waiting".localize
     }
 }
 extension PendingController:UITableViewDataSource{
@@ -36,6 +35,7 @@ extension PendingController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
+                cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
             if processPending?.process?.id == WorkStatus.Direct.rawValue {
                 cell.btChoose.isHidden = false
                 cell.delegateRequest = self
@@ -64,7 +64,7 @@ extension PendingController:UITableViewDataSource{
             cell.lbTitle.text = processPending?.info?.title
             cell.lbSubTitle.text = processPending?.info?.address?.name
             cell.lbComment.text = processPending?.info?.content
-            cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.startAt)!).dayMonthYear) \(" - ") \(Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear)"
+            cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.startAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processPending?.info?.salary ?? 0) $"
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.endAt)!, format: "HH:mm a")!
             cell.lbAddress.text = processPending?.stakeholders?.owner?.address?.name
@@ -143,18 +143,20 @@ extension PendingController:CancelWorkDelegate{
 }
 extension PendingController:directRequestDelegate{
     func chooseActionRequest() {
-        loadingView.show()
         let alertC = AlertStandard.sharedInstance
-        alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) { 
+        alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) {
+            self.loadingView.show()
             guard let ownerId = self.processPending?.stakeholders?.owner?.id else {return}
             guard let taskID = self.processPending?.id else {return}
+            guard let token = UserDefaultHelper.getToken() else{return}
             let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
-            let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+            let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
             let apiClient = APIService.shared
             apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
-            
+                self.loadingView.close()
+                self.navigationController?.popViewController(animated: true)
             }
-            self.loadingView.close()
+            
         }
     }
 }

@@ -31,10 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             navi = UINavigationController(rootViewController: LoginView())
         }
         window?.rootViewController = navi
-       // UINavigationBar.appearance().titleTextAttributes = [ NSForegroundColorAttributeName:UIColor.black,NSFontAttributeName:UIFont(name:"SFUIText-Bold", size: sizeSeven)
         UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         UINavigationBar.appearance().backgroundColor = .white
-        //UIApplication.shared.statusBarView?.backgroundColor = .white
         FirebaseApp.configure()
         registerForRemoteNotification()
         application.registerForRemoteNotifications()
@@ -45,6 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
             navi.pushViewController(managerController, animated: true)
         }
+        
+        if let token = InstanceID.instanceID().token() {
+           print(token)
+        }
         return true
     }
     // MARK: - Check vesion IOS
@@ -53,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             let center  = UNUserNotificationCenter.current()
             center.delegate = self
             center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+            Messaging.messaging().delegate = self
                 if error == nil{
                     UIApplication.shared.registerForRemoteNotifications()
                 }
@@ -62,8 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             UIApplication.shared.registerForRemoteNotifications()
         }
     }
+
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
+         UserDefaultHelper.setString(string: fcmToken)
     }
       
     // [START receive_message]
@@ -88,9 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
 
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("firebase token string: \(InstanceID.instanceID().token() ?? "")")
-        guard let firebaseToken = InstanceID.instanceID().token() else {return}
-        UserDefaultHelper.setString(string: firebaseToken)
+        Messaging.messaging().apnsToken = deviceToken
     }
     
     // Called when APNs failed to register the device for push notifications
@@ -148,18 +151,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         print("User Info = ",response.notification.request.content.userInfo)
         guard let param = response.notification.request.content.userInfo["status"] as? String else {return}
         guard let billID = response.notification.request.content.userInfo["bill"] as? String else {return}
-        
-//        
-//        var business: pushnotifi
-//        switch param {
-//        case "1":
-//            business = OpenHomeBusiness(userinfo)
-//        default:
-//            <#code#>
-//        }
-//        
-//        business.execute()
-//
+
         switch param {
         case "1":
             print("## status = 1")

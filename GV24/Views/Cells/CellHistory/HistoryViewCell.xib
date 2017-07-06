@@ -30,20 +30,20 @@
                             <constraint firstAttribute="height" constant="50" id="fkA-XV-5HI"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="254" text="Lau don nha" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fze-be-NCT">
-                        <rect key="frame" x="80" y="14" width="184" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Lau don nha" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fze-be-NCT">
+                        <rect key="frame" x="73" y="14" width="191" height="26"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Đã hoàn thành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRE-zI-Q2n">
-                        <rect key="frame" x="80" y="39" width="68.333333333333343" height="12"/>
+                        <rect key="frame" x="73" y="48" width="68.333333333333343" height="12"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OqR-3B-X6U">
-                        <rect key="frame" x="188.33333333333334" y="39" width="1" height="12"/>
+                        <rect key="frame" x="181.33333333333334" y="48" width="1" height="12"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="4Wt-dX-Fbm"/>
@@ -51,38 +51,38 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 phut truoc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEp-Ro-KDC">
-                        <rect key="frame" x="201.33333333333331" y="39" width="63.999999999999943" height="12"/>
+                        <rect key="frame" x="194.33333333333331" y="48" width="63.999999999999943" height="12"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="10/05/2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qj8-fR-18O">
-                        <rect key="frame" x="80" y="61" width="62.666666666666657" height="21"/>
+                        <rect key="frame" x="73" y="68" width="62.666666666666657" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ADu-3e-VgC">
-                        <rect key="frame" x="33" y="64" width="15" height="15"/>
+                        <rect key="frame" x="33" y="67.666666666666671" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="GTf-fk-7IU"/>
                             <constraint firstAttribute="height" constant="15" id="WjV-Jd-htV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9h00am - 12h00am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9a-BP-wxD">
-                        <rect key="frame" x="172.66666666666663" y="66" width="92.333333333333371" height="12"/>
+                        <rect key="frame" x="165.66666666666663" y="69.666666666666671" width="92.333333333333371" height="12"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qy-7n-pTy">
-                        <rect key="frame" x="28" y="59" width="25" height="25"/>
+                        <rect key="frame" x="28" y="62.666666666666671" width="25" height="25.000000000000014"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="H2A-wZ-2GD"/>
                             <constraint firstAttribute="height" constant="25" id="O0P-ZW-PZi"/>
                         </constraints>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-uB-yJ1">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-uB-yJ1">
                         <rect key="frame" x="297" y="14" width="70" height="25"/>
                         <color key="backgroundColor" red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -100,7 +100,7 @@
                             <constraint firstAttribute="height" constant="1" id="olD-R5-yPz"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-KN-fXs">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="254" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-KN-fXs">
                         <rect key="frame" x="272" y="14" width="95" height="25"/>
                         <color key="backgroundColor" red="1" green="0.74509803921568629" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -123,7 +123,7 @@
                     <constraint firstItem="ADu-3e-VgC" firstAttribute="centerX" secondItem="7qy-7n-pTy" secondAttribute="centerX" id="Lhe-Je-80Q"/>
                     <constraint firstItem="ADu-3e-VgC" firstAttribute="centerY" secondItem="7qy-7n-pTy" secondAttribute="centerY" id="Mjj-sW-Ipf"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Qj8-fR-18O" secondAttribute="bottom" constant="4" id="Ob1-rL-uQX"/>
-                    <constraint firstItem="Qj8-fR-18O" firstAttribute="top" secondItem="dRE-zI-Q2n" secondAttribute="bottom" constant="10" id="XYI-jD-ig8"/>
+                    <constraint firstItem="Qj8-fR-18O" firstAttribute="top" secondItem="dRE-zI-Q2n" secondAttribute="bottom" constant="8" id="XYI-jD-ig8"/>
                     <constraint firstItem="KAo-KN-fXs" firstAttribute="top" secondItem="fze-be-NCT" secondAttribute="top" id="ZMB-ko-8qU"/>
                     <constraint firstItem="dRE-zI-Q2n" firstAttribute="top" secondItem="fze-be-NCT" secondAttribute="bottom" constant="8" id="bPZ-8x-cpZ"/>
                     <constraint firstItem="ThH-uB-yJ1" firstAttribute="top" secondItem="fze-be-NCT" secondAttribute="top" id="eoW-5x-fea"/>
@@ -133,7 +133,8 @@
                     <constraint firstItem="8EU-8A-QEv" firstAttribute="leading" secondItem="dem-v7-fdz" secondAttribute="leadingMargin" constant="7" id="fth-Ue-X6m"/>
                     <constraint firstItem="OqR-3B-X6U" firstAttribute="centerY" secondItem="dRE-zI-Q2n" secondAttribute="centerY" id="jPq-eD-2nY"/>
                     <constraint firstAttribute="trailing" secondItem="Tv6-GD-xEs" secondAttribute="trailing" id="nvC-wy-vBH"/>
-                    <constraint firstItem="fze-be-NCT" firstAttribute="leading" secondItem="8EU-8A-QEv" secondAttribute="trailing" constant="15" id="pq4-BP-8Tw"/>
+                    <constraint firstItem="fze-be-NCT" firstAttribute="leading" secondItem="8EU-8A-QEv" secondAttribute="trailing" constant="8" id="pq4-BP-8Tw"/>
+                    <constraint firstItem="ThH-uB-yJ1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fze-be-NCT" secondAttribute="trailing" constant="8" id="r9x-KM-Ja2"/>
                     <constraint firstItem="FEp-Ro-KDC" firstAttribute="centerY" secondItem="OqR-3B-X6U" secondAttribute="centerY" id="rPX-Xc-qwz"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ThH-uB-yJ1" secondAttribute="trailing" id="rux-fA-TI9"/>
                     <constraint firstAttribute="topMargin" secondItem="fze-be-NCT" secondAttribute="top" constant="-6" id="v1S-qF-RSj"/>
