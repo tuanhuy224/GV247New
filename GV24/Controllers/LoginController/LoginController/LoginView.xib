@@ -175,7 +175,7 @@
                         <constraint firstAttribute="trailing" secondItem="tLj-6N-x88" secondAttribute="trailing" id="bVK-VX-SEz"/>
                     </constraints>
                 </scrollView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Us-JN-Sph">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NGV247" translatesAutoresizingMaskIntoConstraints="NO" id="0Us-JN-Sph">
                     <rect key="frame" x="137" y="168" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="Qu3-Yc-9uY"/>
@@ -206,9 +206,9 @@
         </view>
     </objects>
     <resources>
+        <image name="NGV247" width="380" height="280"/>
         <image name="bg_dn" width="750" height="682"/>
         <image name="ic_account_circle" width="24" height="24"/>
         <image name="ic_lock_outline" width="24" height="24"/>
-        <image name="logo" width="186" height="197"/>
     </resources>
 </document>

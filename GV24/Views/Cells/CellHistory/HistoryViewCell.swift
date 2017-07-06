@@ -34,7 +34,6 @@ class HistoryViewCell: CustomTableViewCell {
         setupCell()
     }
     func setupCell() {
-        //255 190 65
         imageWork.layer.cornerRadius = imageWork.frame.width/2
         imageWork.clipsToBounds = true
         lbDeadline.layer.cornerRadius = 10
@@ -52,5 +51,4 @@ class HistoryViewCell: CustomTableViewCell {
         lbDeadline.isHidden = true
         lbDirect.isHidden = true
     }
-
 }

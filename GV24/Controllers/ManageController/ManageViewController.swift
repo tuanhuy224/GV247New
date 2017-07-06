@@ -115,14 +115,21 @@ extension ManageViewController:UITableViewDataSource{
         switch segmentCtr.selectedSegmentIndex {
         case 0:
             if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue {
-                cell?.lbDirect.isHidden = false
-                cell?.lbDeadline.isHidden = true
-                cell?.lbDirect.text = "Direct".localize
-                //cell?.contraintWidthDeadline.constant = 0
+                if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).hour! > 0 {
+                    cell?.lbDirect.isHidden = true
+                    cell?.lbDeadline.isHidden = false
+                    cell?.lbDeadline.text = "Expired".localize
+                }else{
+                    cell?.lbDirect.isHidden = false
+                    cell?.lbDeadline.isHidden = true
+                    cell?.lbDirect.text = "Direct".localize
+                }
+//                cell?.lbDirect.isHidden = false
+//                cell?.lbDeadline.isHidden = true
+//                cell?.lbDirect.text = "Direct".localize
             }else{
                 cell?.lbDirect.isHidden = true
                 cell?.lbDeadline.isHidden = false
-                //cell?.constraintWidthDirect.constant = 0
             }
             cell?.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell?.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
@@ -143,7 +150,7 @@ extension ManageViewController:UITableViewDataSource{
             cell?.lbTimePost.text = "\(Date().dateComPonent(datePost: (processRecieved[indexPath.row].history?.createAt)!))"
             cell?.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell?.lbDist.text = processRecieved[indexPath.row].process?.name?.localize
-            if Date().date(datePost: (processRecieved[indexPath.row].history?.createAt)!).day! > 0 {
+            if Date().date(datePost: (processRecieved[indexPath.row].history?.createAt)!).hour! > 0 {
                 cell?.lbDeadline.text = "Expired".localize
             }else{
                 cell?.lbDeadline.isHidden = true
@@ -164,11 +171,11 @@ extension ManageViewController:UITableViewDataSource{
         default:
             break
         }
-        
-        if let cell = cell {
-            cell.constraintWidthDirect.constant = cell.lbDirect.isHidden ? 0 : 110
-            cell.contraintWidthDeadline.constant = cell.lbDeadline.isHidden ? 0 : 70
-        }
+//        
+//        if let cell = cell {
+//            cell.constraintWidthDirect.constant = cell.lbDirect.isHidden ? 0 : 110
+//            cell.contraintWidthDeadline.constant = cell.lbDeadline.isHidden ? 0 : 70
+//        }
         
         return cell!
     }

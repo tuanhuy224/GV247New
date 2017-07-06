@@ -30,7 +30,7 @@
                             <constraint firstAttribute="height" constant="50" id="fkA-XV-5HI"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Lau don nha" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fze-be-NCT">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Lau don nha" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fze-be-NCT">
                         <rect key="frame" x="73" y="14" width="191" height="26"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
                         <nil key="textColor"/>
@@ -82,7 +82,7 @@
                             <constraint firstAttribute="height" constant="25" id="O0P-ZW-PZi"/>
                         </constraints>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-uB-yJ1">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-uB-yJ1">
                         <rect key="frame" x="297" y="14" width="70" height="25"/>
                         <color key="backgroundColor" red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -134,7 +134,7 @@
                     <constraint firstItem="OqR-3B-X6U" firstAttribute="centerY" secondItem="dRE-zI-Q2n" secondAttribute="centerY" id="jPq-eD-2nY"/>
                     <constraint firstAttribute="trailing" secondItem="Tv6-GD-xEs" secondAttribute="trailing" id="nvC-wy-vBH"/>
                     <constraint firstItem="fze-be-NCT" firstAttribute="leading" secondItem="8EU-8A-QEv" secondAttribute="trailing" constant="8" id="pq4-BP-8Tw"/>
-                    <constraint firstItem="ThH-uB-yJ1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fze-be-NCT" secondAttribute="trailing" constant="8" id="r9x-KM-Ja2"/>
+                    <constraint firstItem="ThH-uB-yJ1" firstAttribute="leading" secondItem="fze-be-NCT" secondAttribute="trailing" constant="33" id="r9x-KM-Ja2"/>
                     <constraint firstItem="FEp-Ro-KDC" firstAttribute="centerY" secondItem="OqR-3B-X6U" secondAttribute="centerY" id="rPX-Xc-qwz"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ThH-uB-yJ1" secondAttribute="trailing" id="rux-fA-TI9"/>
                     <constraint firstAttribute="topMargin" secondItem="fze-be-NCT" secondAttribute="top" constant="-6" id="v1S-qF-RSj"/>

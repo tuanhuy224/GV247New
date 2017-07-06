@@ -35,7 +35,7 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         install.startNetworkReachabilityObserver()
         if install.reachabilityManager?.isReachable == false {
-            self.displayNetwork()
+            //self.displayNetwork()
         }
         print("++++view display:\(self)+++++++")
     }
