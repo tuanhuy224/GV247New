@@ -35,10 +35,8 @@ class DetailManagementController: BaseViewController {
         cell.lbPhone.text = workPending?.stakeholders?.owner?.phone
         let url = URL(string: (workPending?.stakeholders?.owner?.image)!)
         if url == nil {
-                DispatchQueue.main.async {
-                    cell.avatar.image = UIImage(named: "avatar")
-                    cell.imageProfile.image = UIImage(named: "avatar")
-                }
+            cell.imageProfile.image = UIImage(named: "avatar")
+            cell.avatar.image = UIImage(named: "avatar")
             }else{
                 DispatchQueue.main.async {
                     cell.avatar.kf.setImage(with: url)

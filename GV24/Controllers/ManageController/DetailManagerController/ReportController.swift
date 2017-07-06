@@ -45,9 +45,7 @@ class ReportController: BaseViewController {
         addressProfile.text = work.stakeholders?.owner?.address?.name
         let url = URL(string: (work.stakeholders?.owner?.image)!)
         if url == nil {
-            DispatchQueue.main.async {
-                self.imageProfile.image = UIImage(named: "avatar")
-            }
+            self.imageProfile.image = UIImage(named: "avatar")
         }else{
             DispatchQueue.main.async {
                 self.imageProfile.kf.setImage(with: url)
@@ -61,10 +59,12 @@ class ReportController: BaseViewController {
         view.endEditing(true)
     }
     func addTapped() {
+        loadingView.show()
         let headers:HTTPHeaders = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let param:Parameters = ["toId":"\(work.stakeholders!.owner!.id!)","content":tfReport.text]
         let apiClient = APIService.shared
             apiClient.postReserve(url: APIPaths().maidReport(), method: .post, parameters: param, header: headers) { (json, message) in
+                self.loadingView.close()
                 if message == "SUCCESS"{
                     AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "", message: "Reportsentsuccessfully".localize)
                 }

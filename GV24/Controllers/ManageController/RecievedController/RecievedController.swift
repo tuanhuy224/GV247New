@@ -51,9 +51,7 @@ extension RecievedController:UITableViewDataSource{
             cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
             let url = URL(string: (processRecieved?.stakeholders?.owner?.image)!)
             if url == nil {
-                DispatchQueue.main.async {
-                    cell.imageName.image = UIImage(named: "avatar")
-                }
+                cell.imageName.image = UIImage(named: "avatar")
             }else{
                 DispatchQueue.main.async {
                     cell.imageName.kf.setImage(with: url)
