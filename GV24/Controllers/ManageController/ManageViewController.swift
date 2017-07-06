@@ -164,6 +164,12 @@ extension ManageViewController:UITableViewDataSource{
         default:
             break
         }
+        
+        if let cell = cell {
+            cell.constraintWidthDirect.constant = cell.lbDirect.isHidden ? 0 : 110
+            cell.contraintWidthDeadline.constant = cell.lbDeadline.isHidden ? 0 : 70
+        }
+        
         return cell!
     }
 
