@@ -21,20 +21,19 @@ class InfoCommentCell: CustomTableViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var imageAvatar: UIImageView!
     @IBOutlet weak var createAtLabel: UILabel!
+    @IBOutlet weak var heightContraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        topLabel.text = "Assessment".localize.uppercased()
         imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
         imageAvatar.clipsToBounds = true
-        //content.font = UIFont(fontSize()
         unstar = Ionicons.iosStarOutline.image(16).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
         star = Ionicons.star.image(16).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
         for i in btRating {
             i.setImage(star, for: .normal)
         }
+        
         userName.font = UIFont(descriptor: UIFontDescriptor.BoldDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
-        topLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 17)
         workTitle.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
         content.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
         createAtLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)

@@ -15,6 +15,7 @@ class WorkInfoCell: CustomTableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imgIcon: UIImageView!
+    @IBOutlet weak var llbAssessment: UILabel!
     
     var data = [WorkType]() {
         didSet {
@@ -23,7 +24,8 @@ class WorkInfoCell: CustomTableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        topLabel.text = "WorkCapacity".localize.uppercased()
+        topLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: 15)
+        llbAssessment.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: 15)
         imgIcon.image = Ionicons.socialUsd.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 48, greenValue: 199, blueValue: 209, alpha: 1))
         setupCollectionView()
     }

@@ -103,6 +103,7 @@ class FinishedWorkViewController: BaseViewController {
 
     fileprivate func configureOwnerCommentsCell(cell: WorkerViewCell) {
         if work != nil {
+            cell.imageUser.image = UIImage(named: "avatar")
             if let imageString = work?.stakeholders?.owner?.image {
                 let url = URL(string: imageString)
                 DispatchQueue.main.async {

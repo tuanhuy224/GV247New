@@ -80,7 +80,7 @@ extension DetailViewController:UITableViewDataSource{
             DispatchQueue.main.async {
                 cell.lbTitle.text = self.works.info?.title
                 cell.lbSubTitle.text = self.works.info?.content
-                cell.lbMoney.text = "\(self.works.info!.salary!)\(" Dollar".localize)"
+                cell.lbMoney.text = "\(self.works.info!.salary!)\("Dollar".localize)"
                 cell.lbComment.text = self.works.info?.content
                 cell.lbAddress.text = self.works.info?.address?.name
                 cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear

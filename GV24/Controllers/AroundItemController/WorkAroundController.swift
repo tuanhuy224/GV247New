@@ -60,15 +60,23 @@ class WorkAroundController: BaseViewController {
     }
     func loadData() {
         loadingView.show()
-        self.arrays.removeAll()
         let apiService = APIService.shared
         let param:Parameters = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!,"minDistance":0,"maxDistance":10]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
-            if let jsonArray = json?.array{
-                for data in jsonArray{
-                    self.arrays.append(Around(json: data))
-                    self.aroundTableView.reloadData()
-                }
+            // success
+            if let jsons = json?.array{
+                let works = jsons.map({ (json) -> Around in
+                    return Around(json: json)
+                })
+                self.arrays = works
+                self.aroundTableView.reloadData()
+            }
+            // failure
+            else {
+                let alert = AlertStandard.sharedInstance
+                alert.showAlert(controller: self, title: "", message: "notResultFound".localize)
+                self.arrays = []
+                self.aroundTableView.reloadData()
             }
             self.loadingView.close()
         }
@@ -153,6 +161,9 @@ class WorkAroundController: BaseViewController {
 }
 extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if arrays.count == 0 {
+            return 0
+        }
          return arrays.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -160,19 +171,23 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell: WorkTableViewCell = (aroundTableView.dequeueReusableCell(withIdentifier: workCellID, for: indexPath) as? WorkTableViewCell)!
-        cell.lbWork.text = "\(arrays[indexPath.row].id!.name!)"
-        cell.amountWork.text = "\(arrays[indexPath.row].count!)"
+        let index = arrays[indexPath.row]
+        let id = index.id?.name ?? ""
+        let amount = index.count ?? 0
+        cell.lbWork.text = "\(id)"
+        cell.amountWork.text = "\(amount)"
         let image = URL(string: arrays[indexPath.row].id!.image!)
-        DispatchQueue.main.async {
-             cell.imageWork.kf.setImage(with: image)
-        }
+        cell.imageWork.kf.setImage(with: image)
         cell.delegate = self
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let vc = AroundItemController(nibName: CTAroundItemController, bundle: nil)
-            vc.id = "\(arrays[indexPath.row].id!.id!)"
-            vc.name = "\(arrays[indexPath.row].id!.name!)"
+        let index = arrays[indexPath.row]
+        let id = index.id?.id ?? ""
+        let name = index.id?.name ?? ""
+            vc.id = "\(id)"
+            vc.name = "\(name)"
             vc.currentLocation = currentLocation
             navigationController?.pushViewController(vc, animated: true)
     }

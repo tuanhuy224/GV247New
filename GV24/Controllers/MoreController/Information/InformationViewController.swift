@@ -160,10 +160,13 @@ extension InformationViewController:UITableViewDataSource{
         }else if indexPath.section == 1{
             let cell: WorkInfoCell = tbInformation.dequeueReusableCell(withIdentifier: workInfoCellID, for: indexPath) as! WorkInfoCell
             cell.data = workTypeList
+            cell.topLabel.text = "WorkCapacity".localize.uppercased()
+            cell.llbAssessment.text = "Assessment".localize.uppercased()
             return cell
         }else{
             let cell:InfoCommentCell = tbInformation.dequeueReusableCell(withIdentifier: infoCommentCellID, for: indexPath) as! InfoCommentCell
             let comment = list[indexPath.row]
+            cell.imageAvatar.image = UIImage(named: "avatar")
             let url = URL(string: (comment.fromId?.image)!)
             DispatchQueue.main.async {
                 cell.imageAvatar.kf.setImage(with: url)

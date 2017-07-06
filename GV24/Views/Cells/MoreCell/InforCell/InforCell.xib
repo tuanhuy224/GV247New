@@ -83,28 +83,28 @@
                                             <constraint firstAttribute="height" constant="1" id="qIf-vD-s4W"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Cống Quỳnh, P Phạm Ngũ Lão, Q1, Thành phố Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lo-rB-u1h">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Cống Quỳnh, P Phạm Ngũ Lão, Q1, Thành phố Hồ Chí Minh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lo-rB-u1h">
                                         <rect key="frame" x="31" y="117" width="281" height="29"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jS0-t3-Iod">
-                                        <rect key="frame" x="8" y="9" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="8.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="iHo-AQ-1sz"/>
                                             <constraint firstAttribute="height" constant="15" id="mWu-Kj-KmY"/>
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-df-x0Z">
-                                        <rect key="frame" x="8" y="44.5" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="44" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="PRA-en-5vb"/>
                                             <constraint firstAttribute="height" constant="15" id="WJO-gf-6TJ"/>
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-lU-jZW">
-                                        <rect key="frame" x="8" y="80" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="80.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="1D7-Mo-vdt"/>
                                             <constraint firstAttribute="width" constant="15" id="YPN-fX-TyP"/>
@@ -160,8 +160,8 @@
                                             <constraint firstAttribute="height" constant="70" id="Ifv-PX-6qI"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen van A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chM-NL-lYr">
-                                        <rect key="frame" x="118" y="113" width="84" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen van A" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chM-NL-lYr">
+                                        <rect key="frame" x="20" y="113" width="280" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="aar-ud-zVk"/>
                                         </constraints>
@@ -230,7 +230,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="xlA-dp-uYp" secondAttribute="bottom" constant="22" id="0J3-Mw-ql6"/>
-                                    <constraint firstItem="chM-NL-lYr" firstAttribute="centerX" secondItem="OCj-Ls-j1r" secondAttribute="centerX" id="Eck-cU-2dY"/>
+                                    <constraint firstItem="chM-NL-lYr" firstAttribute="leading" secondItem="mcX-x9-GHd" secondAttribute="leading" constant="20" id="9KX-Po-Cny"/>
+                                    <constraint firstAttribute="trailing" secondItem="chM-NL-lYr" secondAttribute="trailing" constant="20" id="JKl-La-RgZ"/>
                                     <constraint firstItem="chM-NL-lYr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OCj-Ls-j1r" secondAttribute="bottom" constant="8" id="KcC-0J-vR3"/>
                                     <constraint firstItem="xlA-dp-uYp" firstAttribute="top" secondItem="chM-NL-lYr" secondAttribute="bottom" constant="14" id="Zgs-V5-I2m"/>
                                     <constraint firstItem="OCj-Ls-j1r" firstAttribute="centerX" secondItem="mcX-x9-GHd" secondAttribute="centerX" id="blO-y4-nS6"/>
