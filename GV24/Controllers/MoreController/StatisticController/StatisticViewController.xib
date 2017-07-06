@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,6 +24,7 @@
             <connections>
                 <outlet property="btChooseDay" destination="nFm-R4-hZw" id="Dha-n3-Awi"/>
                 <outlet property="btChooseDayTwo" destination="hmy-J3-h3r" id="Hez-OE-Nte"/>
+                <outlet property="indicator" destination="i9L-4B-fG3" id="uwa-01-ced"/>
                 <outlet property="lbCompletedWork" destination="uny-2s-EvG" id="PnD-Z7-ctG"/>
                 <outlet property="lbDuration" destination="5km-t0-Sl6" id="OeK-hn-hwy"/>
                 <outlet property="lbInProcess" destination="bIc-xl-PQb" id="aWA-Bx-7JJ"/>
@@ -229,10 +230,14 @@
                                 <constraint firstItem="uny-2s-EvG" firstAttribute="top" secondItem="Ntt-fm-VhR" secondAttribute="bottom" constant="15" id="zjI-9x-nBX"/>
                             </constraints>
                         </view>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-4B-fG3">
+                            <rect key="frame" x="178" y="128" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="vF0-c9-uqp" firstAttribute="leading" secondItem="f9o-zD-FjW" secondAttribute="leading" id="28B-wq-lLX"/>
+                        <constraint firstItem="i9L-4B-fG3" firstAttribute="centerX" secondItem="MYd-B2-d2Y" secondAttribute="centerX" id="29N-ce-mwI"/>
                         <constraint firstItem="09j-YP-eBy" firstAttribute="top" secondItem="MYd-B2-d2Y" secondAttribute="bottom" constant="25" id="2ar-NA-Q1j"/>
                         <constraint firstAttribute="trailing" secondItem="vF0-c9-uqp" secondAttribute="trailing" id="D11-7T-ABi"/>
                         <constraint firstItem="NJP-XQ-3Tf" firstAttribute="top" secondItem="rDj-Ea-b2y" secondAttribute="top" constant="-56" id="Odz-Cs-fkX"/>
@@ -240,6 +245,7 @@
                         <constraint firstItem="NJP-XQ-3Tf" firstAttribute="leading" secondItem="f9o-zD-FjW" secondAttribute="leading" id="SvZ-x0-Yyk"/>
                         <constraint firstItem="vF0-c9-uqp" firstAttribute="top" secondItem="NJP-XQ-3Tf" secondAttribute="bottom" constant="-3" id="Wlg-d3-uOS"/>
                         <constraint firstItem="rDj-Ea-b2y" firstAttribute="centerX" secondItem="NJP-XQ-3Tf" secondAttribute="centerX" id="aSS-Hm-oqJ"/>
+                        <constraint firstItem="i9L-4B-fG3" firstAttribute="centerY" secondItem="MYd-B2-d2Y" secondAttribute="centerY" id="jH0-C5-H4B"/>
                         <constraint firstItem="09j-YP-eBy" firstAttribute="centerX" secondItem="NJP-XQ-3Tf" secondAttribute="centerX" id="p6r-r0-1hX"/>
                         <constraint firstItem="MYd-B2-d2Y" firstAttribute="centerY" secondItem="NJP-XQ-3Tf" secondAttribute="centerY" id="qG2-LR-qrX"/>
                         <constraint firstAttribute="trailing" secondItem="NJP-XQ-3Tf" secondAttribute="trailing" id="sLh-ja-nkm"/>
