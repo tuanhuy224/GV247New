@@ -107,5 +107,7 @@ struct APIPaths {
     func maidOffAnnouncement() -> String {
         return "rootDomain".localize + urlPath.maidOffAnnouncement.rawValue
     }
-    
+    func login() -> String {
+        return "rootDomain".localize + urlPath.getListHome.rawValue
+    }
  }
