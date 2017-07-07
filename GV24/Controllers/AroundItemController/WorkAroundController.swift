@@ -63,8 +63,18 @@ class WorkAroundController: BaseViewController {
         }
     }
     func loadData(_ completion:((_ arounds: [Around], _ error: Error?)->Void)?) {
+        
+        guard let longitude = currentLocation?.longitude, let latitude = currentLocation?.latitude else {
+            return
+        }
+        
+        let distance = Int(arWork.slider.value)
+        
         let apiService = APIService.shared
-        let param:Parameters = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!,"minDistance":0,"maxDistance":10]
+        let param:Parameters = ["lng": longitude,
+                                "lat": latitude,
+                                "minDistance":0,
+                                "maxDistance":distance]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
             
             var arounds = [Around]()
