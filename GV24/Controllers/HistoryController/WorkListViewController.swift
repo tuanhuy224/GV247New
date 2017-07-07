@@ -162,7 +162,6 @@ extension WorkListViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = FinishedWorkViewController()
         vc.work = list[indexPath.item]
-        vc.isWorkListComing = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }

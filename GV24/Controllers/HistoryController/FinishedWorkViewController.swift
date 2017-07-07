@@ -17,14 +17,10 @@ class FinishedWorkViewController: BaseViewController {
 
     var work: Work?
     var taskComment:Comment? = nil
-    var isWorkListComing: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-//        if work != nil {
-//            tableView.reloadData()
-//        }
     }
     
     func setupTableView() {
@@ -33,7 +29,6 @@ class FinishedWorkViewController: BaseViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName: NibFinishedWorkCell, bundle: nil), forCellReuseIdentifier: finishedWorkCellID)
         tableView.register(UINib(nibName: NibWorkerViewCell, bundle: nil), forCellReuseIdentifier: workerCellID)
-        tableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -66,9 +61,7 @@ class FinishedWorkViewController: BaseViewController {
             default:
                 break
             }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            self.tableView.reloadData()
         }
     }
 
@@ -116,28 +109,23 @@ class FinishedWorkViewController: BaseViewController {
             cell.addressLabel.text = work?.stakeholders?.owner?.address?.name!
             cell.workCompletedLabel.text = "CompletedWork".localize
         }
-    
-        if isWorkListComing == true {
-            //cell.btnComment.isHidden = false
-            cell.commentLabel.isHidden = true
-        }
-        else {
-            //cell.btnComment.isHidden =  true
+        
+        if let comment = taskComment?.content {
             cell.commentLabel.isHidden = false
-            cell.commentLabel.text = self.taskComment?.content!
+            cell.separateLine.isHidden = false
+            cell.commentLabel.text = comment
+        } else {
+            cell.commentLabel.isHidden = true
+            cell.separateLine.isHidden = true
+            cell.commentLabel.text = ""
         }
+    
     }
 
 }
 
 extension FinishedWorkViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if self.taskComment == nil {
-            if isWorkListComing == true {
-                return 2
-            }
-            return 1
-        }
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -172,13 +160,7 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
 extension FinishedWorkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 1 {
-            if isWorkListComing == true {
-                return "Owner".localize
-            }
-            return "Doer".localize
-        }
-        return ""
+        return section == 0 ? "" : "Doer".localize
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -186,9 +168,13 @@ extension FinishedWorkViewController: UITableViewDelegate {
         header.textLabel?.textColor = UIColor.lightGray
         header.textLabel?.font = UIFont(name: "SF UI Text Light", size: 16)
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0.1 : 20
+    }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return 40
     }
 }
 

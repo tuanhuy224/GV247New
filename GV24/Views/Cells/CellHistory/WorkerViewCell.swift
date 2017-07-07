@@ -18,7 +18,8 @@ class WorkerViewCell: CustomTableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var workCompletedLabel: UILabel!
     @IBOutlet weak var btnComment: UIButton!
-    
+    @IBOutlet weak var separateLine: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
