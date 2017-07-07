@@ -31,6 +31,7 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupViewBase()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:fontSize.fontName(name: .bold, size: sizeSix)]
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.done, target: nil, action: nil)
         self.navigationController?.navigationBar.isTranslucent = false
         install.startNetworkReachabilityObserver()

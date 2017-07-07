@@ -48,7 +48,7 @@ class WorkDetailCell: CustomTableViewCell {
         aroundRight.tintColor = UIColor.colorWithRedValue(redValue: 187, greenValue: 187, blueValue: 193, alpha: 1)
         btChoose.isHidden = true
         vSegment.isHidden = true
-        nameUser.font = UIFont(descriptor: UIFontDescriptor.BoldDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
+        nameUser.font = fontSize.fontName(name: .medium, size: 17)
         addressName.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
         btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
         btChoose.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)

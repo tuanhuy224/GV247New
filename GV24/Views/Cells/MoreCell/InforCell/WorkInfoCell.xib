@@ -35,7 +35,7 @@
                                             <constraint firstAttribute="height" constant="40" id="2SL-DV-o4a"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
-                                        <color key="textColor" red="0.41176470588235292" green="0.41568627450980389" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>

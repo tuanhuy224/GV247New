@@ -24,8 +24,8 @@ class WorkInfoCell: CustomTableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        topLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: 15)
-        llbAssessment.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: 15)
+        topLabel.font = fontSize.fontName(name: .light, size: 15)
+        llbAssessment.font = fontSize.fontName(name: .light, size: 15)
         imgIcon.image = Ionicons.socialUsd.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 48, greenValue: 199, blueValue: 209, alpha: 1))
         setupCollectionView()
     }
@@ -35,7 +35,6 @@ class WorkInfoCell: CustomTableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
          priceLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
-         topLabel.font = UIFont(descriptor: UIFontDescriptor.BoldDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 17)
     }
 }
 extension WorkInfoCell: UICollectionViewDelegate, UICollectionViewDataSource {

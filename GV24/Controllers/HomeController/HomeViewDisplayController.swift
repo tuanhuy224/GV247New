@@ -43,11 +43,10 @@ class HomeViewDisplayController: BaseViewController {
         lbAround.text = "Around".localize
         lbManage.text = "Taskmanagement".localize
         lbHistory.text = "Taskhistory".localize
-        lbHistory.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbManage.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbAround.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbHistory.font = fontSize.fontName(name: .medium, size: sizeFour)
+        lbManage.font = fontSize.fontName(name: .medium, size: sizeFour)
+        lbAround.font = fontSize.fontName(name: .medium, size: sizeFour)
     }
-
     func customBarRightButton(){
         let button = UIButton(type: .custom)
         button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)), for: .normal)
