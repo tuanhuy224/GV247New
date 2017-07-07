@@ -47,7 +47,11 @@ class WorkAroundController: BaseViewController {
         self.aroundTableView.estimatedRowHeight = 100.0
         setup()
         configSearchBar()
-        loadData()
+        
+        self.loadingView.show()
+        loadData { (_,_) in
+            self.loadingView.close()
+        }
     }
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {
@@ -58,29 +62,39 @@ class WorkAroundController: BaseViewController {
             arWork.slider.setValue(Float(UserDefaultHelper.getSlider()!)!, animated: true)
         }
     }
-    func loadData() {
-        loadingView.show()
+    func loadData(_ completion:((_ arounds: [Around], _ error: Error?)->Void)?) {
         let apiService = APIService.shared
         let param:Parameters = ["lng": (currentLocation?.longitude)!,"lat": (currentLocation?.latitude)!,"minDistance":0,"maxDistance":10]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
+            
+            var arounds = [Around]()
+            var error: Error?
+            
             // success
             if let jsons = json?.array{
-                let works = jsons.map({ (json) -> Around in
+                arounds = jsons.map({ (json) -> Around in
                     return Around(json: json)
                 })
-                self.arrays = works
-                self.aroundTableView.reloadData()
             }
             // failure
             else {
-                let alert = AlertStandard.sharedInstance
-                alert.showAlert(controller: self, title: "", message: "notResultFound".localize)
-                self.arrays = []
-                self.aroundTableView.reloadData()
+                // TODO: should specify error clearly
+                error = Error()
             }
-            self.loadingView.close()
+            
+            self.arrays = arounds
+            self.aroundTableView.reloadData()
+            
+            if let _ = error {
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
+            } else if arounds.count == 0 {
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "notResultFound".localize)
+            }
+            
+            completion?(arounds, error)
         }
     }
+    
     func configSearchBar() {
         let subView = UIView(frame: CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height: 45.0))
         subView.addSubview(searchBar)
@@ -117,15 +131,13 @@ class WorkAroundController: BaseViewController {
         button.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
         button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.SemiBoldDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSeven)
-        button.addTarget(self, action: #selector(WorkAroundController.selectButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(selectButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
     }
-    @objc fileprivate func selectButton() {
+    func selectButton() {
         searchBar.resignFirstResponder()
-        guard let searchTextChange = textLocation else{return}
-        searchText(text: searchTextChange)
-        self.loadData()
+        searchText()
     }
     // Get longtitude and lattitue
     func forwardGeocoding(){
@@ -140,23 +152,29 @@ class WorkAroundController: BaseViewController {
             self.currentLocation?.longitude = lng.double!
         }
     }
-    func handle(location : CLLocationCoordinate2D){
-        self.currentLocation = location
-    }
-    func searchText(text:String) {
-        geocoder.geocodeAddressString(text) { (placeMarks, error) in
-            self.loadingView.close()
-            if error == nil{
-                if (placeMarks?.count)! > 0{
-                    guard let firstLocation = placeMarks?.first?.location else{return}
-                    self.handle(location: firstLocation.coordinate)
-                }else{
-                    
-                }
-            }else{
+
+    func searchText() {
+        
+        guard let text = self.textLocation else {
+            return
+        }
+        
+        loadingView.show()
+        
+        geocoder.geocodeAddressString(text) { [unowned self] (placeMarks, error) in
+            
+            guard let location = placeMarks?.first?.location, error == nil else {
+                self.loadingView.close()
                 AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
+                return
+            }
+            
+            self.currentLocation = location.coordinate
+            self.loadData { (arounds, error) in
+                self.loadingView.close()
             }
         }
+        
     }
 }
 extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
@@ -212,15 +230,11 @@ extension WorkAroundController:sendIdForViewDetailDelegate{
 
 extension WorkAroundController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        arrays.removeAll()
         self.textLocation = searchText
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        arrays.removeAll()
         searchBar.resignFirstResponder()
-        guard let text = self.textLocation else{return}
-        searchText(text: text)
-        self.loadData()
+        searchText()
     }
 }
 
