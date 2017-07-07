@@ -36,9 +36,9 @@ class HistoryViewCell: CustomTableViewCell {
     func setupCell() {
         imageWork.layer.cornerRadius = imageWork.frame.width/2
         imageWork.clipsToBounds = true
-        lbDeadline.layer.cornerRadius = 10
+        lbDeadline.layer.cornerRadius = 12.5
         lbDeadline.clipsToBounds = true
-        lbDirect.layer.cornerRadius = 10
+        lbDirect.layer.cornerRadius = 12.5
         lbDirect.clipsToBounds = true
         workNameLabel.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.caption2.rawValue), size: sizeEight)
         lbDeadline.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
@@ -50,5 +50,11 @@ class HistoryViewCell: CustomTableViewCell {
         createdDate.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
         lbDeadline.isHidden = true
         lbDirect.isHidden = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        lbDeadline.layer.cornerRadius = lbDeadline.bounds.height/2
+        lbDirect.layer.cornerRadius = lbDirect.bounds.height/2
     }
 }

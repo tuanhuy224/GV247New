@@ -172,10 +172,29 @@ extension ManageViewController:UITableViewDataSource{
             break
         }
         
-//        if let cell = cell {
-//            cell.constraintWidthDirect.constant = cell.lbDirect.isHidden ? 0 : 110
-//            cell.contraintWidthDeadline.constant = cell.lbDeadline.isHidden ? 0 : 70
-//        }
+        if let cell = cell {
+            
+            var directWidth:CGFloat = 0
+            var deadlineWitdh:CGFloat = 0
+            
+            if !cell.lbDirect.isHidden {
+                let text = cell.lbDirect.text ?? ""
+                let height = cell.lbDirect.bounds.height
+                let font = cell.lbDirect.font!
+                directWidth = text.width(withConstraintedHeight: height, font: font)
+                directWidth = ceil(directWidth) + 20
+            }
+            if !cell.lbDeadline.isHidden {
+                let text = cell.lbDeadline.text ?? ""
+                let height = cell.lbDeadline.bounds.height
+                let font = cell.lbDeadline.font!
+                deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
+                deadlineWitdh = ceil(deadlineWitdh) + 20
+            }
+
+            cell.constraintWidthDirect.constant =  directWidth
+            cell.contraintWidthDeadline.constant = deadlineWitdh
+        }
         
         return cell!
     }
