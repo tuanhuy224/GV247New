@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ziB-Fk-ynZ">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="659"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -34,7 +34,7 @@
                     <constraints>
                         <constraint firstItem="ziB-Fk-ynZ" firstAttribute="top" secondItem="gaH-yu-kHb" secondAttribute="top" id="383-rV-Vwi"/>
                         <constraint firstAttribute="trailing" secondItem="ziB-Fk-ynZ" secondAttribute="trailing" id="4pK-mn-PuQ"/>
-                        <constraint firstAttribute="bottom" secondItem="ziB-Fk-ynZ" secondAttribute="bottom" id="7ks-45-2Bz"/>
+                        <constraint firstAttribute="bottom" secondItem="ziB-Fk-ynZ" secondAttribute="bottom" constant="8" id="7ks-45-2Bz"/>
                         <constraint firstItem="ziB-Fk-ynZ" firstAttribute="leading" secondItem="gaH-yu-kHb" secondAttribute="leading" id="ITN-o5-6W1"/>
                     </constraints>
                 </view>

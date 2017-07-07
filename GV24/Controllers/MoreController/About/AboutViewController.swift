@@ -9,7 +9,7 @@
 import UIKit
 
 
-class AboutViewController: UIViewController {
+class AboutViewController: BaseViewController {
 
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var lbAbout: UILabel!
@@ -20,6 +20,7 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         self.tfTextField.text = "Aboutus".localize
         scroll.isScrollEnabled = true
+        tfTextField.isEditable = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

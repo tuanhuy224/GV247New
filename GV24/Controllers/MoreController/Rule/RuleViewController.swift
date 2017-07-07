@@ -21,6 +21,7 @@ class RuleViewController: UIViewController {
         super.viewWillAppear(animated)
         self.title = "TermsofuseTitle".localize
         tfTextFiled.text = "Termsofuse".localize
+        tfTextFiled.isEditable = false
     }
 
 }

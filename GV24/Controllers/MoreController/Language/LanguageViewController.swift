@@ -53,7 +53,7 @@ extension LanguageViewController: UITableViewDataSource {
         if let name = language.name as String? {
             cell.textLabel?.text = name.localize
         }
-        cell.textLabel?.font = UIFont(name: "SFUIText-Light", size: 13)
+        cell.textLabel?.font = fontSize.fontName(name: .light, size: sizeFive)
         cell.selectionStyle = .none
         
         // show checkmark for selected language

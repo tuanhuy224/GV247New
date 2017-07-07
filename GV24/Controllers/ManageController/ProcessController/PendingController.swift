@@ -154,7 +154,6 @@ extension PendingController:directRequestDelegate{
                 self.loadingView.close()
                 self.navigationController?.popViewController(animated: true)
             }
-            
         }
     }
 }

@@ -39,7 +39,6 @@ class ManageViewController: BaseViewController {
         segmentCtr.setTitle("assigned".localize, forSegmentAt: 1)
         segmentCtr.setTitle("runnning".localize, forSegmentAt: 2)
         getProcess()
-        //tbManage.reloadData()
     }
     @IBAction func segmentControlAction(_ sender: Any) {
         let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )

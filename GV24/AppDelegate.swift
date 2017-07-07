@@ -44,10 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
             navi.pushViewController(managerController, animated: true)
         }
-        
-        if let token = InstanceID.instanceID().token() {
-           print(token)
-        }
         return true
     }
     // MARK: - Check vesion IOS
