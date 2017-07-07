@@ -122,7 +122,35 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             navigationController?.pushViewController(InformationViewController(), animated: true)
         }
     }
+    
+    func shareToAirDrop() {
+        let text = "ShareApp".localize
+        
+        // set up activity view controller
+        let textToShare = [text as Any]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: [])
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won’t crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func shareToFacebook() {
+        guard let url = URL(string: "fb://profile/122998571630965") else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.openURL(url)
+        } else {
+            UIApplication.shared.openURL(URL(string: "https://www.facebook.com/Ng%C6%B0%E1%BB%9Di-Gi%C3%BAp-Vi%E1%BB%87c-247-122998571630965/")!)
+        }
+    }
 }
+
+
 extension MoreViewController:changeLanguageDelegate{
     func changeLanguage() {
         navigationController?.pushViewController(LanguageViewController(), animated: true)
@@ -134,6 +162,14 @@ extension MoreViewController:LogOutDelegate{
         if UserDefaultHelper().removeUserDefault() == true{
             AlertStandard.sharedInstance.showAlertSetRoot(controller: self, pushVC: LoginView(), title: "", message: "LogOutAlert".localize)
         }
+    }
+    
+    func cellDidPressedShareToAirDrop(_ cell: FollowCell) {
+        shareToAirDrop()
+    }
+    
+    func cellDidPressedShareToFacebook(_ cell: FollowCell) {
+        shareToFacebook()
     }
 }
 extension MoreViewController:clickChooseWorkID{
