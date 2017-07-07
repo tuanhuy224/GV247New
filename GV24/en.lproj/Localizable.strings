@@ -5,7 +5,7 @@
 //  Created by HuyNguyen on 5/31/17.
 //  Copyright © 2017 admin. All rights reserved.
 //
-rootDomain = "https://yukotest123.herokuapp.com/en";
+rootDomain = "http://api.ngv247.com/en"; //"https://yukotest123.herokuapp.com/en";
 English = "English";
 VietNam = "Tiếng Việt";
 SignIn = "Sign in";

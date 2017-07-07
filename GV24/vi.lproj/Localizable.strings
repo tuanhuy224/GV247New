@@ -6,7 +6,7 @@
 //
 
 
-rootDomain = "https://yukotest123.herokuapp.com/vi";
+rootDomain = "http://api.ngv247.com/vi"; //"https://yukotest123.herokuapp.com/vi";
 English = "English";
 VietNam = "Tiếng Việt";
 SignIn = "Đăng nhập";
