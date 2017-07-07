@@ -141,6 +141,18 @@
 		00CC0D4C1EEE3FCE002D24D4 /* WorkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CC0D4A1EEE3FCE002D24D4 /* WorkListViewController.xib */; };
 		00D270041EFFE30700D772A3 /* DetailOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D270021EFFE30700D772A3 /* DetailOwnerViewController.swift */; };
 		00D270051EFFE30700D772A3 /* DetailOwnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D270031EFFE30700D772A3 /* DetailOwnerViewController.xib */; };
+		00E244E31F0F4C3900B2A2A9 /* SFUIText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0045081C1EFD1EE200402986 /* SFUIText-Bold.ttf */; };
+		00E244E41F0F4C3900B2A2A9 /* SFUIText-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0045081D1EFD1EE200402986 /* SFUIText-BoldItalic.ttf */; };
+		00E244E51F0F4C3900B2A2A9 /* SFUIText-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0045081E1EFD1EE200402986 /* SFUIText-Heavy.ttf */; };
+		00E244E61F0F4C3900B2A2A9 /* SFUIText-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0045081F1EFD1EE200402986 /* SFUIText-HeavyItalic.ttf */; };
+		00E244E71F0F4C3900B2A2A9 /* SFUIText-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004508201EFD1EE200402986 /* SFUIText-Light.ttf */; };
+		00E244E81F0F4C3900B2A2A9 /* SFUIText-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004508211EFD1EE200402986 /* SFUIText-LightItalic.ttf */; };
+		00E244E91F0F4C3900B2A2A9 /* SFUIText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004508221EFD1EE200402986 /* SFUIText-Medium.ttf */; };
+		00E244EA1F0F4C3900B2A2A9 /* SFUIText-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004508231EFD1EE200402986 /* SFUIText-MediumItalic.ttf */; };
+		00E244EB1F0F4C3900B2A2A9 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004508241EFD1EE200402986 /* SFUIText-Regular.ttf */; };
+		00E244EC1F0F4C3900B2A2A9 /* SFUIText-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004508251EFD1EE200402986 /* SFUIText-RegularItalic.ttf */; };
+		00E244ED1F0F4C3900B2A2A9 /* SFUIText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004508261EFD1EE200402986 /* SFUIText-Semibold.ttf */; };
+		00E244EE1F0F4C3900B2A2A9 /* SFUIText-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 004508271EFD1EE200402986 /* SFUIText-SemiboldItalic.ttf */; };
 		00EB193D1EE93E61003B2C5D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB193B1EE93E61003B2C5D /* LoginView.swift */; };
 		00EB193E1EE93E61003B2C5D /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00EB193C1EE93E61003B2C5D /* LoginView.xib */; };
 		00EB19411EE93E81003B2C5D /* WorkAroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */; };
@@ -1218,6 +1230,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E244E31F0F4C3900B2A2A9 /* SFUIText-Bold.ttf in Resources */,
+				00E244E41F0F4C3900B2A2A9 /* SFUIText-BoldItalic.ttf in Resources */,
+				00E244E51F0F4C3900B2A2A9 /* SFUIText-Heavy.ttf in Resources */,
+				00E244E61F0F4C3900B2A2A9 /* SFUIText-HeavyItalic.ttf in Resources */,
+				00E244E71F0F4C3900B2A2A9 /* SFUIText-Light.ttf in Resources */,
+				00E244E81F0F4C3900B2A2A9 /* SFUIText-LightItalic.ttf in Resources */,
+				00E244E91F0F4C3900B2A2A9 /* SFUIText-Medium.ttf in Resources */,
+				00E244EA1F0F4C3900B2A2A9 /* SFUIText-MediumItalic.ttf in Resources */,
+				00E244EB1F0F4C3900B2A2A9 /* SFUIText-Regular.ttf in Resources */,
+				00E244EC1F0F4C3900B2A2A9 /* SFUIText-RegularItalic.ttf in Resources */,
+				00E244ED1F0F4C3900B2A2A9 /* SFUIText-Semibold.ttf in Resources */,
+				00E244EE1F0F4C3900B2A2A9 /* SFUIText-SemiboldItalic.ttf in Resources */,
 				0022C5021EE84D1700027665 /* WorkerViewCell.xib in Resources */,
 				002A045B1EE14A82001876E5 /* InfoDetailCell.xib in Resources */,
 				004467B41EEF92BC00DDD0ED /* RecievedController.xib in Resources */,

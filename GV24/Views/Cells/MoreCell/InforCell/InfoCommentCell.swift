@@ -25,6 +25,7 @@ class InfoCommentCell: CustomTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        content.isUserInteractionEnabled = false
         imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
         imageAvatar.clipsToBounds = true
         unstar = Ionicons.iosStarOutline.image(16).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
@@ -32,9 +33,8 @@ class InfoCommentCell: CustomTableViewCell {
         for i in btRating {
             i.setImage(star, for: .normal)
         }
-        
-        userName.font = UIFont(descriptor: UIFontDescriptor.BoldDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: 17)
-        workTitle.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
+        userName.font = fontSize.fontName(name: .medium, size: 17)
+        workTitle.font = fontSize.fontName(name: .medium, size: 17)
         content.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
         createAtLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
     }

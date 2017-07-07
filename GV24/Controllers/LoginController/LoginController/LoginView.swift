@@ -75,7 +75,7 @@ class LoginView: BaseViewController {
             if self.isLoginWhenChangeToken == true{
                 self.isLoginWhenChangeToken = false
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
-                self.navigationController?.pushViewController(self.viewControllerLogin, animated: true)
+                self.navigationController?.popToViewController(self.viewControllerLogin, animated: true)
             }else{
                 if let user = user{
                     UserDefaultHelper.setUserDefault(token: string!, user: user)

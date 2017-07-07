@@ -168,7 +168,7 @@ extension InformationViewController:UITableViewDataSource{
             cell.llbAssessment.text = "Assessment".localize.uppercased()
             return cell
         }else{
-            let cell:InfoCommentCell = tbInformation.dequeueReusableCell(withIdentifier: infoCommentCellID, for: indexPath) as! InfoCommentCell
+            let cell:InfoCommentCell = (tbInformation.dequeueReusableCell(withIdentifier: infoCommentCellID, for: indexPath) as? InfoCommentCell)!
             let comment = list[indexPath.row]
             let url = URL(string: (comment.fromId?.image)!)
             if  url == nil {
@@ -181,6 +181,7 @@ extension InformationViewController:UITableViewDataSource{
             cell.userName.text = comment.fromId?.name
             let creatAt = String.convertISODateToString(isoDateStr: comment.createAt!, format: "dd/MM/yyyy")
             cell.createAtLabel.text = creatAt
+            cell.content.allowsEditingTextAttributes = true
             cell.content.text = comment.content
             cell.workTitle.text = comment.task?.title
             return cell
