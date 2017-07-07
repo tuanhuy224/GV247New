@@ -63,7 +63,7 @@ class LoadingView: NSObject {
     }
     
     func close(){
-        setupMainView()
+        //setupMainView()
         UIView.animate(withDuration: 0.5, animations: {
             self.blackView.alpha = 0
             self.mainView.alpha = 0
