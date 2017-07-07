@@ -117,14 +117,14 @@ extension ManageViewController:UITableViewDataSource{
             if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue {
                 if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).hour! > 0 {
                     cell?.lbDirect.isHidden = true
-                    cell?.lbDeadline.isHidden = false
+                    //cell?.lbDeadline.isHidden = false
                     cell?.lbDeadline.text = "Expired".localize
-                    cell?.contraintWidthDeadline.constant = (cell?.lbDeadline.isHidden)! ? 0 : 75
+                    //cell?.contraintWidthDeadline.constant = (cell?.lbDeadline.isHidden)! ? 0 : 75
                 }else{
                     cell?.lbDirect.isHidden = false
                     cell?.lbDeadline.isHidden = true
                     cell?.lbDirect.text = "Direct".localize
-                    cell?.constraintWidthDirect.constant = (cell?.lbDirect.isHidden)! ? 0 : 110
+                    //cell?.constraintWidthDirect.constant = (cell?.lbDirect.isHidden)! ? 0 : 110
                 }
             }else{
                 cell?.lbDirect.isHidden = true
@@ -171,7 +171,7 @@ extension ManageViewController:UITableViewDataSource{
         default:
             break
         }
-//        
+        
 //        if let cell = cell {
 //            cell.constraintWidthDirect.constant = cell.lbDirect.isHidden ? 0 : 110
 //            cell.contraintWidthDeadline.constant = cell.lbDeadline.isHidden ? 0 : 70

@@ -109,14 +109,14 @@ extension PendingController:chooseWorkDelegate{
 extension PendingController:CancelWorkDelegate{
     func CancelButton() {
         if processPending?.process?.id == WorkStatus.Direct.rawValue{
-            MBProgressHUD.showAdded(to: self.view, animated: true)
+            self.loadingView.show()
             guard let ownerId = processPending?.stakeholders?.owner?.id else {return}
             guard let taskID = processPending?.id else {return}
             let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
             let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
             let apiClient = APIService.shared
             let alertC = AlertStandard.sharedInstance
-            MBProgressHUD.hide(for: self.view, animated: true)
+            self.loadingView.close()
             alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {
                 apiClient.postReserve(url: APIPaths().taskdenyRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
                 }

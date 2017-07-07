@@ -35,7 +35,9 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         install.startNetworkReachabilityObserver()
         if install.reachabilityManager?.isReachable == false {
-            //self.displayNetwork()
+            self.displayNetwork()
+        }else{
+            //self.removeFromParentViewController()
         }
         print("++++view display:\(self)+++++++")
     }
@@ -44,14 +46,13 @@ class BaseViewController: UIViewController {
     }
     func decorate(){}
     func displayNetwork(){
-        viewNetwork = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        viewNetwork = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
         lbViewNetwork = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
         lbViewNetwork?.text = "Nointernetconnection".localize
         lbViewNetwork?.textAlignment = .center
         lbViewNetwork?.tintColor = UIColor.white
         lbViewNetwork?.backgroundColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
         viewNetwork?.addSubview(lbViewNetwork!)
-        view.addSubview(viewNetwork!)
     }
     func checkTokenApp() {
         guard let token = UserDefaultHelper.getToken() else{return}

@@ -25,24 +25,33 @@ class ForgotPasswordViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func setupViewBase() {
+        super.setupViewBase()
+        tfUsername.placeholder = "Username".localize
+        tfEmail.placeholder = "Emailaddress".localize
+    }
     @IBAction func btRequestAction(_ sender: Any) {
         if tfEmail.text == "" || tfUsername.text == ""{
             AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
         }
-        loadingView.show()
         guard let username = tfUsername.text else{return}
         guard let email = tfEmail.text else{return}
         let param = ["username":username,"email":email]
-        
-        APIService.shared.postFotGotPassword(url: APIPaths().urlMoreMaidForgotPassword(), method: .post, parameters: param) { (json, error) in
-            self.loadingView.close()
-            if error == "DATA_NOT_EXIST"{
-                let login = LoginView(nibName:"LoginView", bundle: nil)
-                guard let window = UIApplication.shared.keyWindow else{return}
-                let navi = UINavigationController(rootViewController: login)
-                window.rootViewController = navi
+        let alert = AlertStandard.sharedInstance
+        alert.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Apasswordresetlinkissenttoyouremail".localize, buttonTitle: "", completion: {
+            self.loadingView.show()
+            APIService.shared.postFotGotPassword(url: APIPaths().urlMoreMaidForgotPassword(), method: .post, parameters: param) { (json, error) in
+                self.loadingView.close()
+                if error == "SUCCESS"{
+                    let login = LoginView(nibName:"LoginView", bundle: nil)
+                    guard let window = UIApplication.shared.keyWindow else{return}
+                    let navi = UINavigationController(rootViewController: login)
+                    window.rootViewController = navi
+                }else{
+                    
+                }
             }
-        }
+        })
     }
     func dismissKeyboard() {
         tfUsername.resignFirstResponder()

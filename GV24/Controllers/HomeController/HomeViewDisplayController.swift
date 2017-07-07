@@ -39,9 +39,7 @@ class HomeViewDisplayController: BaseViewController {
     override func setupViewBase() {
         super.setupViewBase()
         self.title = "Home".localize
-        //let lang = DGLocalization.sharedInstance.getCurrentLanguage()
-        lbLogo.text = "TrustQuality".localize
-        
+        lbLogo.text = "AnyTime".localize
         lbAround.text = "Around".localize
         lbManage.text = "Taskmanagement".localize
         lbHistory.text = "Taskhistory".localize
