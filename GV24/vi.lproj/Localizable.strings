@@ -70,7 +70,6 @@ distance = "Khoảng cách";
 Username = "Tên đăng nhập";
 Signupnow = "Đăng kí ngay";
 Loginwith = "Đăng nhập bằng";
-Username = "Tên đăng nhập";
 Confirmpassword = "Xác nhận mật khẩu";
 Next = "Tiếp theo";
 Forgotpassword = "Quên mật khẩu";

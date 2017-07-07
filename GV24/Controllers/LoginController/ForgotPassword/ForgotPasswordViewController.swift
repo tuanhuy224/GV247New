@@ -25,6 +25,11 @@ class ForgotPasswordViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func setupViewBase() {
+        super.setupViewBase()
+        tfUsername.placeholder = "Username".localize
+        tfEmail.placeholder = "Emailaddress".localize
+    }
     @IBAction func btRequestAction(_ sender: Any) {
         if tfEmail.text == "" || tfUsername.text == ""{
             AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
