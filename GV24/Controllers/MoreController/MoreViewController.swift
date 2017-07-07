@@ -56,7 +56,10 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             let cell:WorkDetailCell = tbMore.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
                 cell.nameUser.text = userLogin?.username
                 cell.addressName.text = userLogin?.nameAddress
-            if let url = URL(string: userLogin!.image!){
+            let url = URL(string: userLogin!.image!)
+            if url == nil {
+                cell.imageName.image = UIImage(named: "avatar")
+            }else{
                 cell.imageName.kf.setImage(with: url)
             }
                 cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)

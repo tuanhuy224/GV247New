@@ -149,8 +149,12 @@ extension InformationViewController:UITableViewDataSource{
                 cell.lbGender.text = gender.boy
             }
             let url = URL(string: user!.image!)
-            DispatchQueue.main.async {
-                cell.avatar?.kf.setImage(with: url)
+            if url == nil {
+                cell.avatar.image = UIImage(named: "avatar")
+            }else{
+                DispatchQueue.main.async {
+                    cell.avatar?.kf.setImage(with: url)
+                }
             }
             cell.imageProfile.kf.setImage(with: url)
             cell.lbName.text = user?.username
@@ -166,23 +170,22 @@ extension InformationViewController:UITableViewDataSource{
         }else{
             let cell:InfoCommentCell = tbInformation.dequeueReusableCell(withIdentifier: infoCommentCellID, for: indexPath) as! InfoCommentCell
             let comment = list[indexPath.row]
-            cell.imageAvatar.image = UIImage(named: "avatar")
             let url = URL(string: (comment.fromId?.image)!)
-            DispatchQueue.main.async {
-                cell.imageAvatar.kf.setImage(with: url)
+            if  url == nil {
+                cell.imageAvatar.image = UIImage(named: "avatar")
+            }else{
+                DispatchQueue.main.async {
+                    cell.imageAvatar.kf.setImage(with: url)
+                }
             }
             cell.userName.text = comment.fromId?.name
             let creatAt = String.convertISODateToString(isoDateStr: comment.createAt!, format: "dd/MM/yyyy")
             cell.createAtLabel.text = creatAt
             cell.content.text = comment.content
             cell.workTitle.text = comment.task?.title
-            if indexPath.row != 0 {
-                //cell.topLabelHeight.constant = 0
-            }
             return cell
         }
     }
-    
 }
 extension InformationViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

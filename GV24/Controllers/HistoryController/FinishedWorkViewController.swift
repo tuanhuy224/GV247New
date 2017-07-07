@@ -22,9 +22,6 @@ class FinishedWorkViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-//        if work != nil {
-//            tableView.reloadData()
-//        }
     }
     
     func setupTableView() {
@@ -75,13 +72,20 @@ class FinishedWorkViewController: BaseViewController {
     fileprivate func configureWorkDetailsCell(cell: FinishedWorkCell) {
         cell.selectionStyle = .none
         if work != nil {
-            if let imageString = work?.info?.workName?.image {
-                let url = URL(string: imageString)
+//            if let imageString = work?.info?.workName?.image {
+//                let url = URL(string: imageString)
+//                DispatchQueue.main.async {
+//                    cell.workImage.kf.setImage(with: url)
+//                }
+//            }
+            let url = URL(string: (work?.info?.workName?.image)!)
+            if url == nil {
+                cell.workImage.image = UIImage(named: "avatar")
+            }else{
                 DispatchQueue.main.async {
-                    cell.workImage.kf.setImage(with: url)
+                    cell.workImage.kf.setImage(with:url)
                 }
             }
-            
             cell.workNameLabel.text = work?.info?.title
             cell.workTypeLabel.text = work?.info?.workName?.name
             cell.workContentLabel.text = work?.info?.content
@@ -103,11 +107,12 @@ class FinishedWorkViewController: BaseViewController {
 
     fileprivate func configureOwnerCommentsCell(cell: WorkerViewCell) {
         if work != nil {
-            cell.imageUser.image = UIImage(named: "avatar")
-            if let imageString = work?.stakeholders?.owner?.image {
-                let url = URL(string: imageString)
+            let url = URL(string: (work?.stakeholders?.owner?.image)!)
+            if url == nil {
+                cell.imageUser.image = UIImage(named: "avatar")
+            }else{
                 DispatchQueue.main.async {
-                    cell.imageUser.kf.setImage(with: url)
+                    cell.imageUser.kf.setImage(with:url)
                 }
             }
             cell.imageUser.layer.cornerRadius = cell.imageUser.frame.width / 2

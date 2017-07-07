@@ -100,14 +100,14 @@ extension DetailViewController:UITableViewDelegate{
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingView.show()
         let parameter = ["id":idWork!]
         print(idWork!)
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
         apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
+            self.loadingView.close()
             let alertC = AlertStandard.sharedInstance
-            MBProgressHUD.hide(for: self.view, animated: true)
             alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
             
         }

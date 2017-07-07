@@ -15,7 +15,7 @@ class DetailManagementController: BaseViewController {
         super.viewDidLoad()
         detailManager.register(UINib(nibName:NibInforCell,bundle:nil), forCellReuseIdentifier: inforCellID)
         detailManager.register(UINib(nibName:NibInforOwnerCell,bundle:nil), forCellReuseIdentifier: InforOwnerCellID)
-        detailManager.allowsSelection = false
+//        detailManager.allowsSelection = false
         detailManager.separatorStyle = .none
         self.detailManager.rowHeight = UITableViewAutomaticDimension
         self.detailManager.estimatedRowHeight = 100.0

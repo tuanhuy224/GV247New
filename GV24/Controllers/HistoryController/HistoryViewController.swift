@@ -163,18 +163,25 @@ class HistoryViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "WorkHistory".localize//"Lịch sự công việc"
+        self.title = "WorkHistory".localize
     }
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
-        let work = workList[indexPath.item]
-        if let imageString = work.info?.workName?.image {
-            let url = URL(string: imageString)
-            cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
-            cell.lbDeadline.isHidden = true
+            let work = workList[indexPath.item]
+//        if let imageString = work.info?.workName?.image {
+//            let url = URL(string: imageString)
+//            cell.imageWork.kf.setImage(with: url)
+//            cell.lbDeadline.isHidden = true
+//        }
+        let url = URL(string: (work.info?.workName?.image)!)
+        if url == nil {
+            cell.imageWork.image = UIImage(named: "avatar")
+        }else{
+            DispatchQueue.main.async {
+                cell.imageWork.kf.setImage(with:url)
+                cell.lbDeadline.isHidden = true
+            }
         }
-
         cell.lbDeadline.isHidden = true
-
         cell.workNameLabel.text = work.info?.title
         let startAt = work.workTime?.startAt
         let startAtString = String(describing: startAt!)
