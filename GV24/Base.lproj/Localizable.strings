@@ -95,6 +95,7 @@ notResultFound = "Không tìm thấy kết quả";
 Jobsforapplications = "Đang chờ ứng tuyển";
 Description = "Mô tả";
 Send = "Gửi";
+Cancelthetask = "Huỷ";
 Inprocess = "Chờ duyệt";
 Applicantlist = "Danh sách ứng tuyển";
 Selectyourapplicants = "Chọn người giúp việc";

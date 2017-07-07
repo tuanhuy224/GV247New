@@ -141,7 +141,7 @@ class StatisticViewController: BaseViewController {
                 self.statistic = Statistic(json: json)
                 self.updateUI()
             } else {
-                AlertStandard.sharedInstance.showAlert(controller: self, title: "Announcement".localize, message: "NoDataFound".localize)
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "Notifications".localize, message: "NoDataFound".localize)
             }
             
             self.hideLoading()

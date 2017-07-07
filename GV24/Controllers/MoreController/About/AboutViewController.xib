@@ -24,7 +24,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56d-iQ-ey9">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="SzF-Vv-hiL">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NGV247" translatesAutoresizingMaskIntoConstraints="NO" id="SzF-Vv-hiL">
                             <rect key="frame" x="127" y="20" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="Lw7-PM-7FZ"/>
@@ -101,6 +101,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo" width="186" height="197"/>
+        <image name="NGV247" width="380" height="280"/>
     </resources>
 </document>

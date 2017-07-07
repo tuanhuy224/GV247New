@@ -73,7 +73,7 @@ extension RecievedController:UITableViewDataSource{
             return cell
         case 2:
             let cell:CancelCell = tbRecieved.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
-            cell.lbCancel.text = "CancelTask".localize
+            cell.lbCancel.text = "Cancelthetask".localize
             cell.lbCancelDetail.text = "Youcancancelyouraccepted".localize
             cell.delegate = self
             return cell

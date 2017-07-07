@@ -96,7 +96,7 @@ class WorkAroundController: BaseViewController {
             self.aroundTableView.reloadData()
             
             if let _ = error {
-                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "notResultFound".localize)
             } else if arounds.count == 0 {
                 AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "notResultFound".localize)
             }
@@ -178,7 +178,6 @@ class WorkAroundController: BaseViewController {
                 AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
                 return
             }
-            
             self.currentLocation = location.coordinate
             self.loadData { (arounds, error) in
                 self.loadingView.close()
