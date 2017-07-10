@@ -139,9 +139,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func shareToFacebook() {
-        guard let url = URL(string: "fb://profile/122998571630965") else {
-            return
-        }
+        guard let url = URL(string: "fb://profile/122998571630965") else {return}
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.openURL(url)
         } else {

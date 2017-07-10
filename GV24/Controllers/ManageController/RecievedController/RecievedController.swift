@@ -47,7 +47,6 @@ extension RecievedController:UITableViewDataSource{
                 cell.heightBtChoose.constant = 0
             }
             cell.nameUser.text = processRecieved?.stakeholders?.owner?.name
-            print(processRecieved!.id!)
             cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
             let url = URL(string: (processRecieved?.stakeholders?.owner?.image)!)
             if url == nil {
