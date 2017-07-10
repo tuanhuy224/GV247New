@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,7 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inforOwnerCell" rowHeight="198" id="KGk-i7-Jjw" customClass="InforOwnerCell" customModule="GV24" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inforOwnerCell" id="KGk-i7-Jjw" customClass="InforOwnerCell" customModule="GV24" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="416" height="198"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -40,11 +39,8 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLv-dn-vDM">
-                                <rect key="frame" x="0.0" y="154" width="416" height="44"/>
+                                <rect key="frame" x="0.0" y="153" width="416" height="45"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="El5-lf-hsn"/>
-                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZt-Pe-5X0">
                                 <rect key="frame" x="8" y="77" width="408" height="76"/>
@@ -60,15 +56,14 @@
                         <constraints>
                             <constraint firstItem="oIa-rv-pUb" firstAttribute="leading" secondItem="5pi-Pt-NaJ" secondAttribute="leading" constant="8" id="5ms-GC-sYk"/>
                             <constraint firstAttribute="trailing" secondItem="RZt-Pe-5X0" secondAttribute="trailing" id="9ma-qT-q1N"/>
+                            <constraint firstAttribute="bottom" secondItem="HLv-dn-vDM" secondAttribute="bottom" constant="-0.5" id="BVj-AG-uS2"/>
+                            <constraint firstItem="HLv-dn-vDM" firstAttribute="leading" secondItem="5pi-Pt-NaJ" secondAttribute="leading" id="Cbm-4h-Gjr"/>
                             <constraint firstItem="RZt-Pe-5X0" firstAttribute="leading" secondItem="5pi-Pt-NaJ" secondAttribute="leading" constant="8" id="GgD-fQ-bnq"/>
-                            <constraint firstItem="HLv-dn-vDM" firstAttribute="leading" secondItem="5pi-Pt-NaJ" secondAttribute="leading" id="JMs-un-PSE"/>
-                            <constraint firstAttribute="bottom" secondItem="HLv-dn-vDM" secondAttribute="bottom" id="PFJ-3e-M38"/>
                             <constraint firstItem="oIa-rv-pUb" firstAttribute="top" secondItem="5pi-Pt-NaJ" secondAttribute="top" id="RDd-70-7J6"/>
                             <constraint firstItem="oIa-rv-pUb" firstAttribute="top" secondItem="5pi-Pt-NaJ" secondAttribute="top" id="Wdf-9K-Xdv"/>
+                            <constraint firstAttribute="trailing" secondItem="HLv-dn-vDM" secondAttribute="trailing" id="ZqJ-mU-VBa"/>
                             <constraint firstAttribute="trailing" secondItem="oIa-rv-pUb" secondAttribute="trailing" constant="8" id="aaN-hr-Usx"/>
-                            <constraint firstAttribute="trailing" secondItem="HLv-dn-vDM" secondAttribute="trailing" id="cG0-g5-Mme"/>
-                            <constraint firstAttribute="bottom" secondItem="HLv-dn-vDM" secondAttribute="bottom" id="cgm-xo-7eL"/>
-                            <constraint firstItem="HLv-dn-vDM" firstAttribute="top" secondItem="RZt-Pe-5X0" secondAttribute="bottom" constant="1" id="uhN-Yn-t6C"/>
+                            <constraint firstItem="HLv-dn-vDM" firstAttribute="top" secondItem="RZt-Pe-5X0" secondAttribute="bottom" id="gtu-Y2-pK7"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2B-KU-552">
@@ -105,18 +100,13 @@
                     <constraint firstItem="B1n-MB-zyK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="U18-JI-NDK"/>
                     <constraint firstAttribute="trailing" secondItem="5pi-Pt-NaJ" secondAttribute="trailing" id="VIX-pE-Zct"/>
                     <constraint firstItem="s2B-KU-552" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bTx-4B-Eof"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="HLv-dn-vDM" secondAttribute="bottom" constant="-8.5" id="dUn-Qt-l6g"/>
                     <constraint firstItem="5pi-Pt-NaJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eLW-jm-D5X"/>
                     <constraint firstAttribute="trailing" secondItem="s2B-KU-552" secondAttribute="trailing" id="gQg-XY-qAb"/>
                     <constraint firstAttribute="trailing" secondItem="B1n-MB-zyK" secondAttribute="trailing" id="gUc-qS-pcA"/>
-                    <constraint firstItem="oIa-rv-pUb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="hZD-Pt-rRA"/>
                     <constraint firstItem="s2B-KU-552" firstAttribute="top" secondItem="oIa-rv-pUb" secondAttribute="bottom" id="nh4-sE-F26"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="HLv-dn-vDM" secondAttribute="bottom" id="nXL-d2-Alt"/>
-            </constraints>
             <connections>
                 <outlet property="btReport" destination="oIa-rv-pUb" id="zAW-Kw-MDV"/>
                 <outlet property="lbComment" destination="aJT-oY-W1S" id="0iB-ps-coz"/>
