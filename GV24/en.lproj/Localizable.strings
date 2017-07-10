@@ -99,6 +99,7 @@ Postyourjobs = "Post your jobs";
 Typeofjobs = "Type of jobs";
 Jobdescription = "Job description";
 Address = "Address";
+PleasegotoSettings = "Please go to \"Settings\" --> NGV247 --> Location, and set \"While Using the App\" to continue";
 Enterthesalary = "Enter the salary";
 Typesofpay = "Types of pay";
 Daysofworking = "Days of working";

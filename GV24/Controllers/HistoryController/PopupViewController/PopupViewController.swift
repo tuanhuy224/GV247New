@@ -48,7 +48,6 @@ class PopupViewController: BaseViewController {
     }
     
     func show() {
-        
         guard let rootController = UIApplication.shared.keyWindow?.rootViewController else {return}        
         view.frame = rootController.view.bounds
         rootController.view.addSubview(view)

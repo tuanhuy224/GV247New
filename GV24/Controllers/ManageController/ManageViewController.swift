@@ -116,14 +116,11 @@ extension ManageViewController:UITableViewDataSource{
             if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue {
                 if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).hour! > 0 {
                     cell?.lbDirect.isHidden = true
-                    //cell?.lbDeadline.isHidden = false
                     cell?.lbDeadline.text = "Expired".localize
-                    //cell?.contraintWidthDeadline.constant = (cell?.lbDeadline.isHidden)! ? 0 : 75
                 }else{
                     cell?.lbDirect.isHidden = false
                     cell?.lbDeadline.isHidden = true
                     cell?.lbDirect.text = "Direct".localize
-                    //cell?.constraintWidthDirect.constant = (cell?.lbDirect.isHidden)! ? 0 : 110
                 }
             }else{
                 cell?.lbDirect.isHidden = true
@@ -170,7 +167,6 @@ extension ManageViewController:UITableViewDataSource{
         default:
             break
         }
-        
         if let cell = cell {
             
             var directWidth:CGFloat = 0
@@ -190,14 +186,12 @@ extension ManageViewController:UITableViewDataSource{
                 deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
                 deadlineWitdh = ceil(deadlineWitdh) + 20
             }
-
             cell.constraintWidthDirect.constant =  directWidth
             cell.contraintWidthDeadline.constant = deadlineWitdh
         }
         
         return cell!
     }
-
 }
 extension ManageViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

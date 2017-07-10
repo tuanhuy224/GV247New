@@ -47,10 +47,8 @@ class WorkAroundController: BaseViewController {
         self.aroundTableView.estimatedRowHeight = 100.0
         setup()
         configSearchBar()
-        
-        self.loadingView.show()
         loadData { (_,_) in
-            self.loadingView.close()
+            
         }
     }
     override func setupViewBase() {
@@ -63,20 +61,21 @@ class WorkAroundController: BaseViewController {
         }
     }
     func loadData(_ completion:((_ arounds: [Around], _ error: Error?)->Void)?) {
-        
         guard let longitude = currentLocation?.longitude, let latitude = currentLocation?.latitude else {
+            AlertStandard.sharedInstance.showAlertCt(controller: self, title: "", message: "PleasegotoSettings".localize, completion: {
+                UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
+            })
             return
         }
-        
+        self.loadingView.show()
         let distance = Int(arWork.slider.value)
-        
         let apiService = APIService.shared
         let param:Parameters = ["lng": longitude,
                                 "lat": latitude,
                                 "minDistance":0,
                                 "maxDistance":distance]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
-            
+            self.loadingView.close()
             var arounds = [Around]()
             var error: Error?
             

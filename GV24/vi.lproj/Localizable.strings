@@ -34,6 +34,7 @@ TimeHour = "giờ trước";
 TimeMinute = "phút trước";
 AnswerYes = "Có";
 AnswerNo = "Không";
+PleasegotoSettings = "Vui lòng vào Settings --> NGV247 --> Location, bật chế độ While using the App để tiếp tục sử dụng";
 notResultFound = "Không tìm thấy kết quả";
 SearchLocation = "Tìm vị trí";
 WorkCompleted = "Hoàn tất công việc";

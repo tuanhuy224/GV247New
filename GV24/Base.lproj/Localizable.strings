@@ -96,6 +96,7 @@ Jobsforapplications = "Đang chờ ứng tuyển";
 Description = "Mô tả";
 Send = "Gửi";
 Cancelthetask = "Huỷ";
+PleasegotoSettings = "Vui lòng vào Settings --> NGV247 --> Location, bật chế độ While using the App để tiếp tục sử dụng";
 Inprocess = "Chờ duyệt";
 Applicantlist = "Danh sách ứng tuyển";
 Selectyourapplicants = "Chọn người giúp việc";

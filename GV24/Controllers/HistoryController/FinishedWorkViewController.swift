@@ -68,19 +68,11 @@ class FinishedWorkViewController: BaseViewController {
     fileprivate func configureWorkDetailsCell(cell: FinishedWorkCell) {
         cell.selectionStyle = .none
         if work != nil {
-//            if let imageString = work?.info?.workName?.image {
-//                let url = URL(string: imageString)
-//                DispatchQueue.main.async {
-//                    cell.workImage.kf.setImage(with: url)
-//                }
-//            }
             let url = URL(string: (work?.info?.workName?.image)!)
             if url == nil {
                 cell.workImage.image = UIImage(named: "avatar")
             }else{
-                DispatchQueue.main.async {
-                    cell.workImage.kf.setImage(with:url)
-                }
+                cell.workImage.kf.setImage(with:url)
             }
             cell.workNameLabel.text = work?.info?.title
             cell.workTypeLabel.text = work?.info?.workName?.name
@@ -107,9 +99,8 @@ class FinishedWorkViewController: BaseViewController {
             if url == nil {
                 cell.imageUser.image = UIImage(named: "avatar")
             }else{
-                DispatchQueue.main.async {
-                    cell.imageUser.kf.setImage(with:url)
-                }
+                cell.imageUser.kf.setImage(with:url)
+
             }
             cell.imageUser.layer.cornerRadius = cell.imageUser.frame.width / 2
             cell.imageUser.clipsToBounds = true
