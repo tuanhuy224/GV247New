@@ -198,7 +198,7 @@ extension OwnerHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DetailManagementController()
-        let owner = ownerList[indexPath.item]
+        let owner = ownerList[indexPath.section]
         vc.workPending = owner.convertToWork(owner: owner)
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
