@@ -19,11 +19,11 @@ class MoreViewController: BaseViewController {
     var isnotification:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbMore.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
-        tbMore.register(UINib(nibName:NibMoreCell,bundle:nil), forCellReuseIdentifier: MoreCellID)
-        tbMore.register(UINib(nibName:NibNotifiCell,bundle:nil), forCellReuseIdentifier: notifCellID)
-        tbMore.register(UINib(nibName:NibFollowCell,bundle:nil), forCellReuseIdentifier: followCell)
-        tbMore.register(UINib(nibName:NibHeaderCell,bundle:nil), forCellReuseIdentifier: headerCellID)
+        tbMore.on_register(type: WorkDetailCell.self)
+        tbMore.on_register(type: MoreCell.self)
+        tbMore.on_register(type: NotifiCell.self)
+        tbMore.on_register(type: FollowCell.self)
+        tbMore.on_register(type: HeaderCell.self)
         self.userLogin = UserDefaultHelper.currentUser
         self.tbMore.rowHeight = UITableViewAutomaticDimension
         self.tbMore.estimatedRowHeight = 100.0
@@ -53,7 +53,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell:WorkDetailCell = tbMore.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
+            let cell:WorkDetailCell = self.tbMore.on_dequeue(idxPath: indexPath)
                 cell.nameUser.text = userLogin?.username
                 cell.addressName.text = userLogin?.nameAddress
             let url = URL(string: userLogin!.image!)
@@ -70,14 +70,14 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
                 cell.heightHeader.constant = 0
             return cell
         }else if indexPath.section == 1{
-            let cell:NotifiCell = (tbMore.dequeueReusableCell(withIdentifier: notifCellID, for: indexPath) as? NotifiCell)!
+            let cell:NotifiCell = tbMore.on_dequeue(idxPath: indexPath)
                 cell.btChooseLanguage.setTitle("Language".localize, for: .normal)
                 cell.lbNotif.text = "Announcement".localize
                 cell.delegate = self
                 cell.notiDelegate = self
             return cell
         }else if indexPath.section == 2{
-            let cell:MoreCell = (tbMore.dequeueReusableCell(withIdentifier: MoreCellID, for: indexPath) as? MoreCell)!
+            let cell:MoreCell = tbMore.on_dequeue(idxPath: indexPath)
             let lang = DGLocalization.sharedInstance.getCurrentLanguage()
             if lang.languageCode == "en" {
                 cell.lbMore.text = arryMore[indexPath.row].localize
@@ -88,14 +88,14 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             cell.textLabel?.font = UIFont(name: "SFUIText-Light", size: 13)
             return cell
         }else if indexPath.section == 3{
-            let cell:FollowCell = (tbMore.dequeueReusableCell(withIdentifier: followCell, for: indexPath) as? FollowCell)!
+            let cell:FollowCell = tbMore.on_dequeue(idxPath: indexPath)
             cell.btFollowAc.setTitle("shareGv24".localize, for: .normal)
             cell.btFacebookAc.setTitle("followUs".localize, for: .normal)
             cell.btLogOut.setTitle("Logout".localize, for: .normal)
             cell.delegate = self
             return cell
         }else{
-            let cell:HeaderCell = (tbMore.dequeueReusableCell(withIdentifier: headerCellID, for: indexPath) as? HeaderCell)!
+            let cell:HeaderCell = tbMore.on_dequeue(idxPath: indexPath)
             return cell
         }
     }

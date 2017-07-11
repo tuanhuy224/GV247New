@@ -22,8 +22,8 @@ class StatisticViewController: BaseViewController {
     var popUp = PopupViewController()
     var statistic: Statistic? {
         didSet {
-            if let statistic = statistic, let total = statistic.totalPrice {
-                self.lbTotalPriceNumber.text = "\(self.numberFormatter.string(from: total) ?? "0")"
+            if let statistic = statistic {
+                self.lbTotalPriceNumber.text = "\(self.numberFormatter.string(from: NSNumber(value: statistic.totalPrice)) ?? "0")"
             }
         }
     }
