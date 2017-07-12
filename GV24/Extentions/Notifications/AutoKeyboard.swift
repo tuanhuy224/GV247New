@@ -30,37 +30,14 @@ extension UIViewController {
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        UIView.animate(withDuration: 0.5) { 
-            self.view.frame.origin.y = -150
-        }
-        
+        let info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.view.bounds.origin.y = keyboardFrame.size.height
+        })
     }
-    
     func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.5) { 
-            self.view.frame.origin.y = +64
-        }
-
-    }
-    func getBottomConstrainsts() -> [NSLayoutConstraint] {
-        var consts:[NSLayoutConstraint] = []
-        for each in self.view.constraints {
-            if (each.firstItem === self.bottomLayoutGuide && each.firstAttribute == .top && each.secondAttribute == .bottom) || (each.secondItem === self.bottomLayoutGuide && each.secondAttribute == .top && each.firstAttribute == .bottom) {
-                consts.append(each)
-            }
-        }
-        return consts
-    }
-    
-    private func animateWithKeyboardEventNotified(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        let curve = UIViewAnimationCurve(rawValue: (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue)!
-        let options = UIViewAnimationOptions(rawValue: UInt(curve.rawValue << 16))
-        let duration = TimeInterval(userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber)
-        UIView.animate(withDuration: duration, delay: 0.0, options: [options], animations:
-            { [weak self] () -> Void in
-                self!.view.layoutIfNeeded()
-            } , completion: nil)
+        self.view.bounds.origin.y = 0
     }
 }
 

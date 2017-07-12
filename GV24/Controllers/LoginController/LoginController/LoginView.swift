@@ -100,6 +100,7 @@ class LoginView: BaseViewController {
         })
         self.dismissKeyboard()
     }
+    
     @IBAction func btAround(_ sender: Any) {
         let navi = MapViewController(nibName: "MapViewController", bundle: nil)
         navigationController?.pushViewController(navi, animated: true)
