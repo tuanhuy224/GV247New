@@ -100,10 +100,11 @@ extension RecievedController:CancelWorkDelegate{
         let parameter = ["id":processRecieved!.id!]
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
-        MBProgressHUD.showAdded(to: self.view, animated: true)
         let alertC = AlertStandard.sharedInstance
         alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {
+          self.loadingView.show()
           apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
+            self.loadingView.close()
           }
         let mana = ManageViewController(nibName: NibManageViewController, bundle: nil)
         self.navigationController?.pushViewController(mana, animated: true)
