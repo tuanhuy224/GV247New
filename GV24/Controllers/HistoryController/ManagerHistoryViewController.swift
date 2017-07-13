@@ -179,18 +179,20 @@ class ManagerHistoryViewController: BaseViewController {
     }
     
     override func setupViewBase() {
-    super.setupViewBase()
-        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-        guard let bill = billId else{return}
-        let param = ["billId":bill]
-        let apiClient = APIService.shared
-        if isDisplayAlert == true {
-            self.isDisplayAlert = false
-            apiClient.postRequest(url: APIPaths().paymentPayDirectConfirm(), method: .post, parameters: param, header: header, completion: { (json, error) in
-                guard let errorString = error else{return}
-                self.showAlert(error: errorString)
-            })
-        }
+      super.setupViewBase()
+      let alert = AlertStandard.sharedInstance
+      let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+      guard let bill = billId else{return}
+      let param = ["billId":bill]
+      let apiClient = APIService.shared
+      if isDisplayAlert == true {
+        self.isDisplayAlert = false
+        alert.showAlertCt(controller: self,pushVC: nil, title: "WorkCompleted".localize, message: "confirmReceive".localize, completion: {
+          apiClient.postRequest(url: APIPaths().paymentPayDirectConfirm(), method: .post, parameters: param, header: header, completion: { (json, error) in
+
+          })
+        })
+      }
     }
     func showAlert(error:String)  {
         switch error {

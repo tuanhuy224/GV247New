@@ -60,7 +60,7 @@ class AlertStandard {
                 completion()
             })
         }
-        let noAction = UIAlertAction(title: "AnswerNo".localize, style: .default) { (action) -> Void in
+        let noAction = UIAlertAction(title: "AnswerNo".localize, style: .cancel) { (action) -> Void in
             
         }
         alertController.addAction(yesAction)
