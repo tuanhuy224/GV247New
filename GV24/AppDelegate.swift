@@ -104,35 +104,23 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("User Info = ",notification.request.content.userInfo)
         guard let status = notification.request.content.userInfo["status"] as? String else {return}
-        guard let billID = notification.request.content.userInfo["bill"] as? String else {return}
-        switch status {
-        case "1":
-            print("## status = 1")
-        case "5":
-            print("## status = 5")
+        if let billID = notification.request.content.userInfo["bill"] as? String {
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
+            let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+            managerController.isDisplayAlert = true
+            managerController.billId = billID
             navi.pushViewController(managerController, animated: true)
-            break
+        }
+        switch status {
         case "6":
             print("## status = 6")
             isNotification = true
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
-            navi.pushViewController(managerController, animated: true)
-            break
-            case "9":
-                print("## status = 9")
-            guard let window = UIApplication.shared.keyWindow else{return}
-            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
-            window.rootViewController = navi
-            let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
-                managerController.isDisplayAlert = true
-                managerController.billId = billID
+            let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
             navi.pushViewController(managerController, animated: true)
             break
         default:
@@ -147,31 +135,21 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("User Info = ",response.notification.request.content.userInfo)
         guard let param = response.notification.request.content.userInfo["status"] as? String else {return}
-        guard let billID = response.notification.request.content.userInfo["bill"] as? String else {return}
-
+        if let billID = response.notification.request.content.userInfo["bill"] as? String {
+            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            window?.rootViewController = navi
+            let managerController = ManagerHistoryViewController(nibName:"ManagerHistoryViewController", bundle: nil)
+            managerController.isDisplayAlert = true
+            managerController.billId = billID
+            navi.pushViewController(managerController, animated: true)
+        }
         switch param {
-        case "1":
-            print("## status = 1")
-            case "5":
-                let navi = UINavigationController(rootViewController: HomeViewDisplayController())
-                window?.rootViewController = navi
-                let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
-                navi.pushViewController(managerController, animated: true)
-            case "6":
+        case "6":
                 print("## status = 6")
                 isNotification = true
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                 window?.rootViewController = navi
-                let managerController = RecievedController(nibName: "RecievedController", bundle: nil)
-                navi.pushViewController(managerController, animated: true)
-            break
-            case "9":
-                print("## status = 9")
-                let navi = UINavigationController(rootViewController: HomeViewDisplayController())
-                window?.rootViewController = navi
-                let managerController = ManagerHistoryViewController(nibName:"ManagerHistoryViewController", bundle: nil)
-                managerController.isDisplayAlert = true
-                managerController.billId = billID
+                let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
                 navi.pushViewController(managerController, animated: true)
             break
         default:

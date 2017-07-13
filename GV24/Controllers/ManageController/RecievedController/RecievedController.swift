@@ -47,7 +47,6 @@ extension RecievedController:UITableViewDataSource{
                 cell.heightBtChoose.constant = 0
             }
             cell.nameUser.text = processRecieved?.stakeholders?.owner?.name
-            print(processRecieved!.id!)
             cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
             let url = URL(string: (processRecieved?.stakeholders?.owner?.image)!)
             if url == nil {
@@ -102,11 +101,13 @@ extension RecievedController:CancelWorkDelegate{
         let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
         let apiClient = APIService.shared
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            let alertC = AlertStandard.sharedInstance
-            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "cancelWork".localize)
-        }
+        let alertC = AlertStandard.sharedInstance
+        alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {
+          apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
+          }
+        let mana = ManageViewController(nibName: NibManageViewController, bundle: nil)
+        self.navigationController?.pushViewController(mana, animated: true)
+      })
     }
 }
 extension RecievedController:chooseWorkDelegate{
