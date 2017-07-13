@@ -45,6 +45,7 @@ class DetailManagementController: BaseViewController {
             }
             }
         cell.lbName.text = workPending?.stakeholders?.owner?.name
+      cell.lbAge.text = "   "
     }
 }
 extension DetailManagementController:UITableViewDataSource{
