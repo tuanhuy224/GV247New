@@ -2,7 +2,7 @@
 //  LoadingView.swift
 //  GV24
 //
-//  Created by HuyNguyen on 7/3/17.
+//  Created by DuongNguyen on 7/3/17.
 //  Copyright © 2017 admin. All rights reserved.
 //
 
