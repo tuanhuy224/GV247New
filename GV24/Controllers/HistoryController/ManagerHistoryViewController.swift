@@ -163,21 +163,6 @@ class ManagerHistoryViewController: BaseViewController {
         ownerListVC?.endAtDate = toDate
         ownerListVC?.getOwnerList(startAt: fromDate, endAt: toDate)
     }
-    // MARK: - show alert accept or cancel work
-    func showAlertView(controller: UIViewController, title: String, message: String, buttonTitle:String = "OK") {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "AnswerYes".localize, style: .default) { (action) -> Void in
-            UIView.animate(withDuration: 1, animations: {
-                
-            })
-        }
-        let noAction = UIAlertAction(title: "AnswerNo".localize, style: .default) { (action) -> Void in
-        }
-        alertController.addAction(yesAction)
-        alertController.addAction(noAction)
-        controller.present(alertController, animated: true, completion: nil)
-    }
-    
     override func setupViewBase() {
       super.setupViewBase()
       let alert = AlertStandard.sharedInstance
@@ -193,14 +178,6 @@ class ManagerHistoryViewController: BaseViewController {
           })
         })
       }
-    }
-    func showAlert(error:String)  {
-        switch error {
-        case "SUCCESS":
-            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: ManagerHistoryViewController(), title: "WorkCompleted".localize, message: "confirmReceive".localize)
-        default:
-            break
-        }
     }
     override func decorate() {}
 }
