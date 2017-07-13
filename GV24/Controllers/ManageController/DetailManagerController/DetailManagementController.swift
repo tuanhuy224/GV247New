@@ -22,16 +22,18 @@ class DetailManagementController: BaseViewController {
     }
     override func setupViewBase() {
         super.setupViewBase()
+        detailManager.reloadData()
         self.navigationItem.title = "Information".localize
     }
     // Mark: - custom cell for detail management
     func InforCellConfigure(cell:InforCell){
-        cell.lbGender.text = workPending?.stakeholders?.owner?.gender?.description
+      guard let gender = workPending?.stakeholders?.owner?.gender! else{return}
+      if gender == 0 {
+        cell.lbGender.text = "Boy".localize
+      }else{
+        cell.lbGender.text = "Girl".localize
+      }
         cell.lbAddress.text = workPending?.stakeholders?.owner?.address?.name
-        if workPending?.stakeholders?.owner?.gender == 1 {
-            cell.lbGender.text = enumGender.Boy.rawValue
-        }
-        cell.lbGender.text = enumGender.Girl.rawValue
         cell.lbPhone.text = workPending?.stakeholders?.owner?.phone
         let url = URL(string: (workPending?.stakeholders?.owner?.image)!)
         if url == nil {
