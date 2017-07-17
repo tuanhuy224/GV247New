@@ -60,7 +60,7 @@ extension PendingController:UITableViewDataSource{
             let cell:InfoDetailCell = tbPending.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
             cell.lbDescription.text = "Description".localize
             cell.lbTitle.text = processPending?.info?.title
-            cell.lbSubTitle.text = processPending?.info?.address?.name
+            cell.lbSubTitle.text = processPending?.info?.workName?.name
             cell.lbComment.text = processPending?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.startAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processPending?.info?.salary ?? 0) $"

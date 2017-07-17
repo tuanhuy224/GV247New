@@ -19,8 +19,8 @@ class AroundItemController: BaseViewController {
         super.viewDidLoad()
         tbAround.register(UINib(nibName:NibHistoryViewCell,bundle:nil), forCellReuseIdentifier: HistoryViewCellID)
         loadAroundItem()
+        self.tbAround.reloadData()
         tbAround.separatorStyle = .none
-        tbAround.reloadData()
         self.tbAround.rowHeight = UITableViewAutomaticDimension
         self.tbAround.estimatedRowHeight = 100.0
     }
@@ -39,7 +39,7 @@ class AroundItemController: BaseViewController {
     override func setupViewBase() {
         guard let name = name else{return}
         self.title = "\(name)".localize
-        tbAround.reloadData()
+        self.tbAround.reloadData()
     }
 }
 extension AroundItemController:UITableViewDataSource{

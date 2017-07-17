@@ -35,7 +35,7 @@ class DetailViewController: BaseViewController {
     }
     override func setupViewBase() {
         self.title = titleString
-        tbDetail.reloadData()
+        //tbDetail.reloadData()
     }
     func postRerves(){
         let apiService = APIService.shared
@@ -79,7 +79,7 @@ extension DetailViewController:UITableViewDataSource{
             let cell:InfoDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath) as! InfoDetailCell
             DispatchQueue.main.async {
                 cell.lbTitle.text = self.works.info?.title
-                cell.lbSubTitle.text = self.works.info?.content
+                cell.lbSubTitle.text = self.works.info?.workName?.name
                 cell.lbMoney.text = "\(self.works.info!.salary!)\("Dollar".localize)"
                 cell.lbComment.text = self.works.info?.content
                 cell.lbAddress.text = self.works.info?.address?.name

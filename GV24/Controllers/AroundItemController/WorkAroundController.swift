@@ -17,7 +17,7 @@ import AddressBookUI
 class WorkAroundController: BaseViewController {
     @IBOutlet weak var arWork: WorkAround!
     var cellHeight: CGFloat?
-    var  user:User?
+    var user:User?
     var id:String?
     var isLoading:Bool = false
     var currentPage:Int = 1
@@ -26,10 +26,8 @@ class WorkAroundController: BaseViewController {
     var lattitude:Double?
     var arrays = [Around]()
     lazy var geocoder = CLGeocoder()
-    var googlePlace = [GooglePlace]()
     var textLocation:String?
     var currentLocation: CLLocationCoordinate2D?
-   // var searchController = UISearchController(searchResultsController: nil)
     var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     var work = [WorkName]()
     @IBOutlet weak var aroundTableView: UITableView!
@@ -39,7 +37,6 @@ class WorkAroundController: BaseViewController {
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
         searchBar.delegate = self
-        //        aroundTableView.separatorStyle = .none
         searchBar.placeholder = "SearchLocation".localize
         searchBar.barTintColor = .white
         searchBar.tintColor =  UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)

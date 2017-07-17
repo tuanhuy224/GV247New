@@ -57,7 +57,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dọn dẹp nhà cửa" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyC-YP-vOT">
-                                <rect key="frame" x="56" y="27" width="256" height="32.5"/>
+                                <rect key="frame" x="56" y="27" width="256" height="27.5"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
                             <constraint firstItem="1fm-AF-ACV" firstAttribute="leading" secondItem="naY-2R-kB4" secondAttribute="leading" id="7Az-dV-3NJ"/>
                             <constraint firstItem="Mih-Hy-g7T" firstAttribute="top" secondItem="1fm-AF-ACV" secondAttribute="bottom" constant="10" id="7co-Fc-EkN"/>
                             <constraint firstItem="naY-2R-kB4" firstAttribute="top" secondItem="fbP-lW-e6f" secondAttribute="bottom" constant="10" id="APZ-7s-G5q"/>
-                            <constraint firstItem="tIU-xK-zfc" firstAttribute="top" secondItem="LyC-YP-vOT" secondAttribute="bottom" constant="10" id="BEI-xh-gFf"/>
+                            <constraint firstItem="tIU-xK-zfc" firstAttribute="top" secondItem="LyC-YP-vOT" secondAttribute="bottom" constant="15" id="BEI-xh-gFf"/>
                             <constraint firstItem="eev-F8-DLK" firstAttribute="top" secondItem="naY-2R-kB4" secondAttribute="bottom" constant="11" id="DVE-3l-luF"/>
                             <constraint firstItem="Mih-Hy-g7T" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" id="EHo-4b-x0b"/>
                             <constraint firstItem="tIU-xK-zfc" firstAttribute="leading" secondItem="SBw-tO-pxj" secondAttribute="leading" id="GPX-Tv-5lW"/>

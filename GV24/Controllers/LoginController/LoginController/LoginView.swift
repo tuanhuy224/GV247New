@@ -77,7 +77,7 @@ class LoginView: BaseViewController {
                 UserDefaultHelper.setUserDefault(token: string!, user: user)
                 
                 // pop to previous controller if can. Otherwise, pop to root controller
-                if let navigation = self.navigationController {
+                if let navigation = self.navigationController{
                     if navigation.viewControllers.contains(self.viewControllerLogin) {
                         navigation.popToViewController(self.viewControllerLogin, animated: true)
                     } else {
@@ -86,7 +86,6 @@ class LoginView: BaseViewController {
                         window.rootViewController = navi
                     }
                 }
-                
             }else{
                 if let user = user{
                     UserDefaultHelper.setUserDefault(token: string!, user: user)
