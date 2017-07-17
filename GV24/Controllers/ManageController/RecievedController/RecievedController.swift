@@ -65,7 +65,7 @@ extension RecievedController:UITableViewDataSource{
             cell.lbSubTitle.text = processRecieved?.info?.address?.name
             cell.lbComment.text = processRecieved?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear)"
-            cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) $"
+            cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) VND"
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processRecieved?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processRecieved?.workTime!.endAt)!, format: "HH:mm a")!
             cell.lbAddress.text = processRecieved?.stakeholders?.owner?.address?.name
             

@@ -54,7 +54,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell:WorkDetailCell = self.tbMore.on_dequeue(idxPath: indexPath)
-                cell.nameUser.text = userLogin?.username
+                cell.nameUser.text = userLogin?.name
                 cell.addressName.text = userLogin?.nameAddress
             let url = URL(string: userLogin!.image!)
             if url == nil {

@@ -64,7 +64,7 @@ extension DoingController:UITableViewDataSource{
             cell.lbSubTitle.text = ProcessDoing?.info?.address?.name
             cell.lbComment.text = ProcessDoing?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (ProcessDoing?.workTime?.startAt)!).dayMonthYear)"
-            cell.lbMoney.text = "\(ProcessDoing?.info?.salary ?? 0) $"
+            cell.lbMoney.text = "\(ProcessDoing?.info?.salary ?? 0) VND"
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.ProcessDoing?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.ProcessDoing?.workTime!.endAt)!, format: "HH:mm a")!
             cell.lbAddress.text = ProcessDoing?.stakeholders?.owner?.address?.name
             return cell
