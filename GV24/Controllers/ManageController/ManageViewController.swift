@@ -114,7 +114,7 @@ extension ManageViewController:UITableViewDataSource{
         switch segmentCtr.selectedSegmentIndex {
         case 0:
             if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue {
-                if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).hour! > 0 {
+                if Date().date(datePost: (processOnCreate[indexPath.row].workTime?.startAt)!).hour! > 0 {
                     cell.lbDirect.isHidden = true
                     cell.lbDeadline.text = "Expired".localize
                 }else{
@@ -128,7 +128,8 @@ extension ManageViewController:UITableViewDataSource{
                 cell.lbDeadline.text = "Expired".localize
             }
             cell.workNameLabel.text = processOnCreate[indexPath.row].info?.title
-            cell.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].history?.createAt)!).dayMonthYear)"
+            cell.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).dayMonthYear)"
+            //"\(Date(isoDateString: (processPending?.workTime?.startAt)!).dayMonthYear)"
             cell.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
                 cell.lbDist.text = "Proccess".localize
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"

@@ -37,6 +37,7 @@ class UserDefaultHelper {
         let dic = [
                     "idUser":user!.id!,
                     "userName":user!.username!,
+                    "name":user!.name!,
                    "email":user!.email!,
                    "phone":user!.phone!,
                    "avatarUrl": user!.image!,
@@ -59,6 +60,7 @@ class UserDefaultHelper {
                 user.id = userDic["idUser"] as? String
                 user.username = userDic["userName"] as? String
                 user.email = userDic["email"] as? String
+                user.name = userDic["name"] as? String
                 user.phone = userDic["phone"] as? String
                 user.image = userDic["avatarUrl"] as? String
                 user.nameAddress = userDic["addressName"] as? String

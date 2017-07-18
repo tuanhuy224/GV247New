@@ -105,10 +105,11 @@ extension URLSession{
 extension Date{
     
     init(isoDateString: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-        let date = dateFormatter.date(from: isoDateString)!
-        self = date
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+      dateFormatter.timeZone = TimeZone.current
+      let newDate = dateFormatter.date(from: isoDateString)
+      self = newDate!
     }
     var year : String{
         let calendar = Calendar(identifier: .gregorian)
@@ -156,10 +157,10 @@ extension Date{
     }
     
     var hourMinute: String{
-        let calendar = Calendar(identifier: .gregorian)
-        let hour = calendar.component(.hour, from: self)
-        let minute = calendar.component(.minute, from: self)
-        return "\(hour)h\(minute)"
+      let formatter = DateFormatter()
+      formatter.dateFormat = "hh:mm a"
+      let hourMinute = formatter.string(from: self)
+      return hourMinute
     }
     var hourMinuteSecond: String{
         let calendar = Calendar(identifier: .gregorian)
