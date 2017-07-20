@@ -161,6 +161,7 @@ SendReportSuccess = "Gửi phản hồi thành công";
 SendReportFailure = "Gửi phản hồi thất bại";
 report = "Báo cáo chủ nhà";
 comment = "Nhận xét";
+Titlemanagement = "Quản lý công việc";
 Sendrequest = "Gửi yêu cầu";
 nocomment = "Không có nhận xét";
 NetworkIsLost = "Không có kết nối internet!";

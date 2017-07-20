@@ -23,7 +23,7 @@ class ManageViewController: BaseViewController {
         super.viewDidLoad()
         tbManage.on_register(type: HistoryViewCell.self)
         tbManage.separatorStyle = .none
-        self.title = "Taskmanagement".localize
+        self.title = "Titlemanagement".localize
         self.tbManage.rowHeight = UITableViewAutomaticDimension
         self.tbManage.estimatedRowHeight = 100.0
 
