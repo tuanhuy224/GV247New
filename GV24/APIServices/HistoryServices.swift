@@ -71,8 +71,8 @@ class HistoryServices: APIService {
                 let json = JSON(value).dictionary
                 if let status = json?["status"], status == true {
                     var list: [WorkType] = []
-                    let result = json?["data"]?.array
-                    for item in result! {
+                    guard let result = json?["data"]?.array else{return}
+                    for item in result {
                         let workType = WorkType(json: item)
                         list.append(workType)
                     }

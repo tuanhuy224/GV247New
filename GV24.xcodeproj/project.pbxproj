@@ -15,6 +15,8 @@
 		000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 000E1E7A1EF288690058838B /* MBProgressHUD.m */; };
 		000E2EB01EF8FAF900E531C5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */; };
 		0014A57C1EFED32E00DBD0C4 /* CustomLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0014A57B1EFED32E00DBD0C4 /* CustomLable.swift */; };
+		0018D9701F204C4200524609 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018D96E1F204C4200524609 /* RegisterViewController.swift */; };
+		0018D9711F204C4200524609 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0018D96F1F204C4200524609 /* RegisterViewController.xib */; };
 		00198EAA1EF96B2A004843C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EA91EF96B2A004843C3 /* AVFoundation.framework */; };
 		00198EAC1EF96B36004843C3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EAB1EF96B36004843C3 /* CoreData.framework */; };
 		00198EAE1EF96B3F004843C3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00198EAD1EF96B3F004843C3 /* CoreLocation.framework */; };
@@ -222,6 +224,8 @@
 		000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		0014A57B1EFED32E00DBD0C4 /* CustomLable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLable.swift; sourceTree = "<group>"; };
 		0018BA501EF81F8200D4B35E /* GV24.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GV24.entitlements; sourceTree = "<group>"; };
+		0018D96E1F204C4200524609 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0018D96F1F204C4200524609 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		00198EA91EF96B2A004843C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		00198EAB1EF96B36004843C3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		00198EAD1EF96B3F004843C3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -479,6 +483,15 @@
 			path = Lable;
 			sourceTree = "<group>";
 		};
+		0018D96D1F204C2C00524609 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0018D96E1F204C4200524609 /* RegisterViewController.swift */,
+				0018D96F1F204C4200524609 /* RegisterViewController.xib */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		002315561EDF07A200B29F36 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +740,7 @@
 		003BC6821ED9D92E00FF6D14 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
+				0018D96D1F204C2C00524609 /* Register */,
 				00EB193A1EE93E61003B2C5D /* LoginController */,
 				002572431EDE693800AACC52 /* ForgotPassword */,
 			);
@@ -1281,6 +1295,7 @@
 				002A04601EE15084001876E5 /* DetailViewController.xib in Resources */,
 				0318C9C71EFCBFA500FAFEE3 /* StatisticCell.xib in Resources */,
 				009A76E41EEE92360021BFB0 /* OwnerHistoryViewController.xib in Resources */,
+				0018D9711F204C4200524609 /* RegisterViewController.xib in Resources */,
 				003C9A191EDFEC02003F1189 /* LaunchScreen.storyboard in Resources */,
 				00CC0D4C1EEE3FCE002D24D4 /* WorkListViewController.xib in Resources */,
 				00EB193E1EE93E61003B2C5D /* LoginView.xib in Resources */,
@@ -1331,7 +1346,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ABFFCFD45244EDBAA672BCF1 /* [CP] Embed Pods Frameworks */ = {
@@ -1446,6 +1461,7 @@
 				002572541EDEAD4000AACC52 /* CommentCell.swift in Sources */,
 				0022C4FF1EE84D1700027665 /* OwnerHistoryViewCell.swift in Sources */,
 				004103601EF37090004BF446 /* KeyboardNotifications.swift in Sources */,
+				0018D9701F204C4200524609 /* RegisterViewController.swift in Sources */,
 				003BC69B1ED9EAF300FF6D14 /* Info.swift in Sources */,
 				00EB19411EE93E81003B2C5D /* WorkAroundController.swift in Sources */,
 				003B346B1EFB7419004FA591 /* ConstactViewController.swift in Sources */,

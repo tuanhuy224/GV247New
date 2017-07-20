@@ -165,6 +165,7 @@ nocomment = "Không có nhận xét";
 NetworkIsLost = "Không có kết nối internet!";
 SoonUpdate = "Đang cập nhật!";
 AboutUsTitle = "Về chúng tôi";
+RegisterNow = "Đăng ký ngay";
 Youcancancelyouraccepted = "Bạn được quyền hủy công việc đã nhận trong vòng 24 giờ trước khi bắt đầu làm việc.Vui lòng gọi điện thông báo công ty hoặc chủ nhà khi xác nhận thay đổi.";
 confirmReceive = "Vui lòng xác nhận tiền mặt bằng cách nhấn OK";
 NGV247 = "ABOUT US \n NGV247 contributes to improving the quality of your life! \n 1. Mission and Capability";
@@ -173,5 +174,6 @@ Aboutus = "VỀ CHÚNG TÔI \n NGV247 góp phần nâng cao chất lượng cu�
 
 Somethingwentwrong = "Từ khoá bạn tìm kiếm không đúng. Vui lòng kiểm tra lại.";
 ShareApp = "Giao diện hiện đại, tính năng độc đáo, hoạt động cực kỳ hiệu quả là những gì bạn vừa trải nghiệm. Với phương châm \"Chất lượng tạo niềm tin\", chúng tôi mong muốn mang đến cho khách hàng của mình những điều tốt nhất. Và giờ đây, hãy chia sẻ ứng dụng NGV247 với chúng tôi để cùng nhau phát triển những điều lợi ích nhất.";
+Pleaseleaveusabriefdescriptionofyourself = "Bạn vui lòng giới thiệu đôi nét về bản thân, khả năng và những kinh nghiệm bạn đang có!";
 
 

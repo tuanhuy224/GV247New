@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Kingfisher
 import IoniconsSwift
+import Kingfisher
 import Alamofire
 
 class InformationViewController: BaseViewController {

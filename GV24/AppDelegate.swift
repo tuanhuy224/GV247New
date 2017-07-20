@@ -13,6 +13,7 @@ import GooglePlaces
 import GoogleMaps
 import Firebase
 import FirebaseInstanceID
+import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     var window: UIWindow?
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
         DGLocalization.sharedInstance.startLocalization()
         GMSServices.provideAPIKey(googleMapsApiKey)
         GMSPlacesClient.provideAPIKey(googleMapsApiKey)
+        IQKeyboardManager.sharedManager().enable = true
         window = UIWindow(frame: UIScreen.main.bounds)
         if UserDefaultHelper.isLogin {
             navi = UINavigationController(rootViewController: HomeViewDisplayController())

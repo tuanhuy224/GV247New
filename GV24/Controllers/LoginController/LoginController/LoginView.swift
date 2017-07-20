@@ -33,6 +33,7 @@ class LoginView: BaseViewController {
     @IBOutlet weak var btAround: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var keyboardHeightLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var btRegister: UIButton!
     weak var delegate:customButtonLoginDelegate?
     let loading = LoadingView()
     var user:User?
@@ -53,6 +54,7 @@ class LoginView: BaseViewController {
         forgotPassword.setTitle("Forgotpassword".localize, for: .normal)
         userLogin.placeholder = "Username".localize
         passwordLogin.placeholder = "Password".localize
+        btRegister.setTitle("RegisterNow".localize, for: .normal)
     }
     func token() -> String {
         guard let firebaseToken = InstanceID.instanceID().token() else {return ""}
@@ -99,6 +101,12 @@ class LoginView: BaseViewController {
         })
         self.dismissKeyboard()
     }
+  
+  @IBAction func btRegisterAction(_ sender: Any) {
+    let navi = RegisterViewController(nibName: "RegisterViewController", bundle: nil)
+    navigationController?.pushViewController(navi, animated: true)
+  }
+  
     
     @IBAction func btAround(_ sender: Any) {
         let navi = MapViewController(nibName: "MapViewController", bundle: nil)
