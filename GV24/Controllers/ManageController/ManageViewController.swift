@@ -113,32 +113,22 @@ extension ManageViewController:UITableViewDataSource{
         cell.lbDeadline.isHidden = false
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue {
-                if Date().date(datePost: (processOnCreate[indexPath.row].workTime?.startAt)!).hour! > 0 {
-                    cell.lbDirect.isHidden = true
-                    cell.lbDeadline.text = "Expired".localize
-                }else{
-                    cell.lbDirect.isHidden = false
-                    cell.lbDeadline.isHidden = true
-                    cell.lbDirect.text = "Direct".localize
-                }
-            }else{
+            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue  || Date().date(datePost: (processOnCreate[indexPath.row].workTime?.startAt)!).day! > 0 {
                 cell.lbDirect.isHidden = true
                 cell.lbDeadline.isHidden = false
                 cell.lbDeadline.text = "Expired".localize
+
+            }else{
+                cell.lbDirect.isHidden = false
+                cell.lbDeadline.isHidden = true
+                cell.lbDirect.text = "Direct".localize
             }
             cell.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).dayMonthYear)"
-            //"\(Date(isoDateString: (processPending?.workTime?.startAt)!).dayMonthYear)"
             cell.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
                 cell.lbDist.text = "Proccess".localize
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
-            if Date().date(datePost: (processOnCreate[indexPath.row].history?.createAt)!).day! > 0 {
-                cell.lbDeadline.text = "Expired".localize
-            }else{
-                cell.lbDeadline.isHidden = true
-            }
             cell.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
             
         case 1:
@@ -147,10 +137,10 @@ extension ManageViewController:UITableViewDataSource{
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processRecieved[indexPath.row].history?.createAt)!))"
             cell.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell.lbDist.text = processRecieved[indexPath.row].process?.name?.localize
-            if Date().date(datePost: (processRecieved[indexPath.row].history?.createAt)!).hour! > 0 {
-                cell.lbDeadline.text = "Expired".localize
-            }else{
-                cell.lbDeadline.isHidden = true
+            if processRecieved[indexPath.row].process?.id == WorkStatus.Direct.rawValue  || Date().date(datePost: (processRecieved[indexPath.row].workTime?.startAt)!).day! > 0 {
+              cell.lbDirect.isHidden = true
+              cell.lbDeadline.isHidden = false
+              cell.lbDeadline.text = "Expired".localize
             }
             cell.timeWork.text = String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
             cell.lbDirect.isHidden = true

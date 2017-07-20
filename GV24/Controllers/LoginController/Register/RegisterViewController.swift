@@ -32,6 +32,10 @@ class RegisterViewController: BaseViewController {
     tfEmail.placeholder = "Emailaddress".localize
     tfPhone.placeholder = "Phonenumber".localize
     comment.placeholder = "Pleaseleaveusabriefdescriptionofyourself".localize
+    comment.font = fontSize.fontName(name: .regular, size: 15)
+    tfPhone.font = fontSize.fontName(name: .regular, size: 15)
+    tfName.font = fontSize.fontName(name: .regular, size: 15)
+    tfEmail.font = fontSize.fontName(name: .regular, size: 15)
   }
   
   @IBAction func btRegisterAction(_ sender: Any) {

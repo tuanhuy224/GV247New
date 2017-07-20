@@ -76,11 +76,14 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLH-7y-9fh">
-                                    <rect key="frame" x="8" y="519.5" width="359" height="44"/>
+                                    <rect key="frame" x="8" y="533.5" width="359" height="34"/>
+                                    <color key="backgroundColor" red="0.23921568630000001" green="0.77647058820000003" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="Ma5-ME-CZ8"/>
+                                        <constraint firstAttribute="height" constant="34" id="Ma5-ME-CZ8"/>
                                     </constraints>
-                                    <state key="normal" title="Đang ký ngay"/>
+                                    <state key="normal" title="Đang ký ngay">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
                                     <connections>
                                         <action selector="btRegisterAction:" destination="-1" eventType="touchUpInside" id="WRv-OK-abg"/>
                                     </connections>
@@ -102,7 +105,7 @@
                                 <constraint firstItem="xhc-SQ-0as" firstAttribute="trailing" secondItem="QGP-Lf-z8T" secondAttribute="trailing" id="k2c-Bw-5k7"/>
                                 <constraint firstItem="OvC-Tm-fRm" firstAttribute="trailing" secondItem="xhc-SQ-0as" secondAttribute="trailing" id="lKN-aS-QtY"/>
                                 <constraint firstItem="xhc-SQ-0as" firstAttribute="leading" secondItem="QGP-Lf-z8T" secondAttribute="leading" id="nUP-jZ-70b"/>
-                                <constraint firstItem="jLH-7y-9fh" firstAttribute="top" secondItem="rH9-jb-aAI" secondAttribute="bottom" constant="8" id="sYu-XI-c5W"/>
+                                <constraint firstItem="jLH-7y-9fh" firstAttribute="top" secondItem="rH9-jb-aAI" secondAttribute="bottom" constant="22" id="sYu-XI-c5W"/>
                                 <constraint firstItem="xhc-SQ-0as" firstAttribute="top" secondItem="QGP-Lf-z8T" secondAttribute="bottom" constant="8" id="zyQ-Yi-71h"/>
                             </constraints>
                         </view>

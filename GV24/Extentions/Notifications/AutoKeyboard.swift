@@ -23,7 +23,7 @@ extension UIViewController {
         let info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         UIView.animate(withDuration: 0.4, animations: { () -> Void in
-            self.view.bounds.origin.y = keyboardFrame.size.height
+            self.view.bounds.origin.y = keyboardFrame.size.height - 64
         })
     }
     func keyboardWillHide(notification: NSNotification) {
