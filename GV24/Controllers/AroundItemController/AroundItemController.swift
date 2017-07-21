@@ -50,7 +50,8 @@ extension AroundItemController:UITableViewDataSource{
         let cell:HistoryViewCell = tbAround.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as! HistoryViewCell
         cell.workNameLabel.text = works[indexPath.row].info?.title
         cell.lbDist.text = "\(Int(works[indexPath.row].dist!.calculated!)) m"
-        cell.createdDate.text = Date(isoDateString: (works[indexPath.row].history!.createAt!)).dayMonthYear
+        cell.createdDate.text = Date(isoDateString: (works[indexPath.row].workTime!.startAt!)).dayMonthYear
+        //Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear
         cell.lbTimePost.text = Date().dateComPonent(datePost: (works[indexPath.row].history!.createAt!))
         DispatchQueue.main.async {
             cell.imageWork.kf.setImage(with: URL(string: self.works[indexPath.row].info!.workName!.image!))

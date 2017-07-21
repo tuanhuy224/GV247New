@@ -175,4 +175,8 @@ Termsofuse = "ĐIỀU KHOẢN SỬ DỤNG \n VUI LÒNG ĐỌC KỸ CÁC ĐIỀU 
 Somethingwentwrong = "Từ khoá bạn tìm kiếm không đúng. Vui lòng kiểm tra lại.";
 ShareApp = "Giao diện hiện đại, tính năng độc đáo, hoạt động cực kỳ hiệu quả là những gì bạn vừa trải nghiệm. Với phương châm \"Chất lượng tạo niềm tin\", chúng tôi mong muốn mang đến cho khách hàng của mình những điều tốt nhất. Và giờ đây, hãy chia sẻ ứng dụng NGV247 với chúng tôi để cùng nhau phát triển những điều lợi ích nhất.";
 Pleaseleaveusabriefdescriptionofyourself = "Bạn vui lòng giới thiệu đôi nét về bản thân, khả năng và những kinh nghiệm bạn đang có!";
-
+Pleaseenteryourname = "Vui lòng điền tên";
+Pleaseenteryouremailaddress = "Vui lòng điền địa chỉ Email";
+Pleaseenteryourphonenumber = "Vui lòng điền số điện thoại";
+Emailformatisincorrect = "Định dạng email không chính xác";
+Requestsentsuccessfully = "Yêu cầu đã được gửi thành công. Chúng tôi sẽ sớm hồi âm. Xin cảm ơn!";

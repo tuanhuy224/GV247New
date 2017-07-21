@@ -64,7 +64,7 @@ extension DetailViewController:UITableViewDataSource{
             cell.btChoose.isHidden = false
             cell.vSegment.isHidden = false
             cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
-            cell.nameUser.text = works.stakeholders?.owner?.username
+            cell.nameUser.text = works.stakeholders?.owner?.name
             cell.addressName.text = works.stakeholders?.owner?.address?.name
             let url = URL(string: self.works.stakeholders!.owner!.image!)
             if url == nil {

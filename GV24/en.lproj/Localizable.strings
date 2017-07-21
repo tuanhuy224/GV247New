@@ -173,3 +173,9 @@ Aboutus = "ABOUT US \n NGV247 contributes to improving the quality of your life!
 Somethingwentwrong = "Oops! Something went wrong. Please double check the keyword you entered.";
 ShareApp = "Modern designs, unique features, extremely efficient performance are what you just experienced. Following the motto \"Quality builds Trust\", we desire to bring our customers the best of the best. And now, let's share the NGV247 application to develop the greatest.";
 Pleaseleaveusabriefdescriptionofyourself = "Please leave us a brief description of yourself, your work experience and abilities!";
+Pleaseenteryourname = "Please enter your name";
+Pleaseenteryouremailaddress = "Please enter your email address";
+Pleaseenteryourphonenumber = "Please enter your phone number";
+Emailformatisincorrect = "Email format is incorrect";
+Requestsentsuccessfully = "Request sent successfully! NGV247 will contact you soon. Thank you!";
+

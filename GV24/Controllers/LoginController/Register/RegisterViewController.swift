@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RegisterViewController: BaseViewController {
   @IBOutlet weak var comment: KMPlaceholderTextView!
@@ -39,10 +40,29 @@ class RegisterViewController: BaseViewController {
   }
   
   @IBAction func btRegisterAction(_ sender: Any) {
-    //let apiClient = UserService.sharedInstance
-    guard let email = tfEmail.text, let name = tfName.text,let phone = tfPhone.text else {return}
-    if email == "" || name == "" || phone == "" {
-      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
+    let apiClient = APIService.shared
+    guard let email = tfEmail.text, let name = tfName.text,let phone = tfPhone.text,let note = comment.text else {return}
+
+    if email == ""{
+      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryouremailaddress".localize)
+      
+    }else if name == "" {
+      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryourname".localize)
+
+    }else if phone == "" {
+      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryourphonenumber".localize)
+    }
+    if email.isEmail == false {
+      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Emailformatisincorrect".localize)
+    }
+    let headers = ["Content-Type":"application/x-www-form-urlencoded"]
+    let parameters:Parameters = ["name":name,"address":email,"phone":phone, "note":note]
+    apiClient.postReserve(url: APIPaths().register(), method: .post, parameters: parameters, header: headers) { (json, error) in
+      if error == "SUCCESS"{
+        AlertStandard.sharedInstance.showAlertCt(controller: self, title: "", message: "Requestsentsuccessfully".localize, completion: { 
+          self.navigationController?.popViewController(animated: true)
+        })
+      }
     }
   }
 }

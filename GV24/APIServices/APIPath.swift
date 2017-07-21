@@ -33,6 +33,7 @@ enum urlPath:String {
     case maidCheckToken = "/maid/checkToken"
     case maidOnAnnouncement = "/maid/onAnnouncement"
     case maidOffAnnouncement = "/maid/offAnnouncement"
+    case register = "/more/maidRegister"
 }
 struct APIPaths {
     func urlGetListAround() -> String {
@@ -109,5 +110,8 @@ struct APIPaths {
     }
     func login() -> String {
         return "rootDomain".localize + urlPath.getListHome.rawValue
+    }
+    func register() -> String {
+        return "rootDomain".localize + urlPath.register.rawValue
     }
  }
