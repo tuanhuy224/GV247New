@@ -1,4 +1,3 @@
-
 //
 //  KMPlaceholderTextView.swift
 //
@@ -21,6 +20,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+
 import UIKit
 
 @IBDesignable
@@ -96,9 +96,9 @@ open class KMPlaceholderTextView: UITextView {
     
     private func commonInit() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(textDidChange),
-                                               name: NSNotification.Name.UITextViewTextDidChange,
-                                               object: nil)
+            selector: #selector(textDidChange),
+            name: NSNotification.Name.UITextViewTextDidChange,
+            object: nil)
         
         placeholderLabel.font = font
         placeholderLabel.textColor = placeholderColor
@@ -128,7 +128,7 @@ open class KMPlaceholderTextView: UITextView {
             attribute: .width,
             multiplier: 1.0,
             constant: -(textContainerInset.left + textContainerInset.right + textContainer.lineFragmentPadding * 2.0)
-        ))
+            ))
         removeConstraints(placeholderLabelConstraints)
         addConstraints(newConstraints)
         placeholderLabelConstraints = newConstraints
@@ -145,8 +145,8 @@ open class KMPlaceholderTextView: UITextView {
     
     deinit {
         NotificationCenter.default.removeObserver(self,
-                                                  name: NSNotification.Name.UITextViewTextDidChange,
-                                                  object: nil)
+            name: NSNotification.Name.UITextViewTextDidChange,
+            object: nil)
     }
     
 }

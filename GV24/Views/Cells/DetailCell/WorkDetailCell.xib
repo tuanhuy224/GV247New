@@ -117,6 +117,7 @@
             <connections>
                 <outlet property="addressName" destination="oRf-WL-mHp" id="kC6-Kj-5ix"/>
                 <outlet property="aroundRight" destination="Jn0-47-poD" id="06W-Jd-yMb"/>
+                <outlet property="btAction" destination="sct-l4-Mv6" id="tfO-N9-ti6"/>
                 <outlet property="btChoose" destination="uxt-4V-QaK" id="fiF-Nv-KBw"/>
                 <outlet property="heightBtChoose" destination="vPh-r9-7jE" id="FCB-xP-YUT"/>
                 <outlet property="heightHeader" destination="wLP-Qb-Bet" id="fqe-Fv-aPh"/>

@@ -39,11 +39,13 @@ class DetailViewController: BaseViewController {
     }
     func postRerves(){
         let apiService = APIService.shared
-        let parameter:Parameters = ["id":idWork!]
-            header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        guard let token = UserDefaultHelper.getToken() else{return}
+        guard let id = idWork else{return}
+        let parameter:Parameters = ["id":id]
+            header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
             apiService.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header!) { (json, error) in
                 if json == "SUCCESS"{
-                    self.isStatus = true
+                    //self.isStatus = true
                 }
         }
     }
@@ -100,15 +102,16 @@ extension DetailViewController:UITableViewDelegate{
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
-        loadingView.show()
-        let parameter = ["id":idWork!]
-        print(idWork!)
-        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-        let apiClient = APIService.shared
-        apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
-            self.loadingView.close()
-            let alertC = AlertStandard.sharedInstance
-            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
+      loadingView.show()
+      guard let id = idWork else{return}
+      guard let token = UserDefaultHelper.getToken() else{return}
+      let parameter = ["id":id]
+      let header = ["hbbgvauth":token]
+      let apiClient = APIService.shared
+      apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
+          self.loadingView.close()
+          let alertC = AlertStandard.sharedInstance
+          alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
             
         }
     }

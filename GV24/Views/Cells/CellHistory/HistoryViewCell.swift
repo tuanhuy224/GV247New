@@ -48,8 +48,7 @@ class HistoryViewCell: CustomTableViewCell {
         lbDeadline.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbDirect.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         createdDate.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
-        lbDeadline.isHidden = true
-        lbDirect.isHidden = true
+
     }
     
     override func layoutSubviews() {

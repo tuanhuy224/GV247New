@@ -10,6 +10,11 @@ import UIKit
 
 class RecievedController: BaseViewController {
     var processRecieved:Work?
+  var lable:UILabel?{
+    didSet{
+    
+    }
+  }
     @IBOutlet weak var tbRecieved: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +71,22 @@ extension RecievedController:UITableViewDataSource{
             cell.lbComment.text = processRecieved?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) VND"
-            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processRecieved?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processRecieved?.workTime!.endAt)!, format: "HH:mm a")!
+            cell.lbTime.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved?.workTime?.endAt)!).hourMinute)"
             cell.lbAddress.text = processRecieved?.info?.address?.name
-            
+            if Date() > String.convertISODateToDate(isoDateStr: (processRecieved?.workTime?.endAt)!)! {
+              cell.lbdeadLine.isHidden = false
+              cell.lbdeadLine.text = "Expired".localize
+              cell.lbdeadLine.textAlignment = .center
+            }
+            var deadlineWitdh:CGFloat = 0
+            if !cell.lbdeadLine.isHidden {
+              let text = cell.lbdeadLine.text ?? ""
+              let height = cell.lbdeadLine.bounds.height
+              let font = cell.lbdeadLine.font!
+              deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
+              deadlineWitdh = ceil(deadlineWitdh) + 20
+            }
+            cell.contraintWidthDeadline.constant = deadlineWitdh
             return cell
         case 2:
             let cell:CancelCell = tbRecieved.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell

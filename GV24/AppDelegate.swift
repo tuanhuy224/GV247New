@@ -14,6 +14,7 @@ import GoogleMaps
 import Firebase
 import FirebaseInstanceID
 import IQKeyboardManagerSwift
+import BRYXBanner
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     var window: UIWindow?
@@ -72,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
       
     // [START receive_message]
     private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+      
+      
         if ( application.applicationState == .inactive || application.applicationState == .background){
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
@@ -79,7 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
             navi.pushViewController(managerController, animated: true)
             
-        }
+        }else{
+      
+      }
     }
     // [END connect_to_fcm]
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -104,6 +109,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     //Called when a notification is delivered to a foreground app.
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+      
         print("User Info = ",notification.request.content.userInfo)
         guard let status = notification.request.content.userInfo["status"] as? String else {return}
         if let billID = notification.request.content.userInfo["bill"] as? String {
@@ -115,9 +121,12 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             managerController.billId = billID
             navi.pushViewController(managerController, animated: true)
         }
+      
         switch status {
         case "6":
-            print("## status = 6")
+          let banner = Banner(title: "Image Notification", subtitle: "", image: UIImage(named: ""), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+          banner.dismissesOnTap = true
+          banner.show(duration: 3.0)
             isNotification = true
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
@@ -129,7 +138,6 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             break
         }
         completionHandler([.alert, .badge, .sound])
-        
     }
     
     //Called to let your app know which action was selected by the user for a given notification.

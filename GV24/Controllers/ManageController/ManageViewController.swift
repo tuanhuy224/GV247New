@@ -110,14 +110,16 @@ extension ManageViewController:UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:HistoryViewCell = tbManage.on_dequeue(idxPath: indexPath)
-        cell.lbDeadline.isHidden = false
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue  || Date().date(datePost: (processOnCreate[indexPath.row].workTime?.startAt)!).day! > 0 {
+            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date() > String.convertISODateToDate(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!)! {
                 cell.lbDirect.isHidden = true
                 cell.lbDeadline.isHidden = false
                 cell.lbDeadline.text = "Expired".localize
-
+            }else if Date() > String.convertISODateToDate(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!)!{
+                cell.lbDirect.isHidden = true
+                cell.lbDeadline.isHidden = false
+                cell.lbDeadline.text = "Expired".localize
             }else{
                 cell.lbDirect.isHidden = false
                 cell.lbDeadline.isHidden = true
@@ -126,28 +128,31 @@ extension ManageViewController:UITableViewDataSource{
             cell.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).dayMonthYear)"
             cell.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
-                cell.lbDist.text = "Proccess".localize
+            cell.lbDist.text = "Proccess".localize
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
             cell.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
             
         case 1:
             cell.workNameLabel.text = processRecieved[indexPath.row].info?.title
-            cell.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].history?.createAt)!).dayMonthYear)"
+            cell.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).dayMonthYear)"
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processRecieved[indexPath.row].history?.createAt)!))"
             cell.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell.lbDist.text = processRecieved[indexPath.row].process?.name?.localize
-            if processRecieved[indexPath.row].process?.id == WorkStatus.Direct.rawValue  || Date().date(datePost: (processRecieved[indexPath.row].workTime?.startAt)!).day! > 0 {
+            if processRecieved[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date() > String.convertISODateToDate(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!)! {
+              cell.lbDirect.isHidden = true
+              cell.lbDeadline.isHidden = false
+              cell.lbDeadline.text = "Expired".localize
+            }else if Date() > String.convertISODateToDate(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!)!{
               cell.lbDirect.isHidden = true
               cell.lbDeadline.isHidden = false
               cell.lbDeadline.text = "Expired".localize
             }
-            cell.timeWork.text = String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
             cell.lbDirect.isHidden = true
             cell.constraintWidthDirect.constant = 0
         case 2:
             cell.workNameLabel.text = processOnDoing[indexPath.row].info?.title
-            cell.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].history?.createAt)!).dayMonthYear)"
+            cell.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).dayMonthYear)"
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnDoing[indexPath.row].history?.createAt)!))"
             cell.timeWork.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.endAt)!).hourMinute)"
                 cell.lbDist.text = "OnDoing".localize

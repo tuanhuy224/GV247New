@@ -8,7 +8,7 @@
 import UIKit
 class PendingController: BaseViewController {
     @IBOutlet weak var tbPending: UITableView!
-    var processPending:Work?
+  var processPending:Work?
     override func viewDidLoad() {
         super.viewDidLoad()
         tbPending.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
@@ -21,6 +21,7 @@ class PendingController: BaseViewController {
     override func setupViewBase() {
         super.setupViewBase()
         self.title = "waiting".localize
+        tbPending.reloadData()
     }
 }
 extension PendingController:UITableViewDataSource{
@@ -35,15 +36,14 @@ extension PendingController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
-                cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
-            if processPending?.process?.id == WorkStatus.Direct.rawValue {
-                cell.btChoose.isHidden = false
-                cell.delegateRequest = self
-                cell.vSegment.isHidden = false
-            }else{
-                cell.btChoose.isEnabled = true
-                cell.heightBtChoose.constant = 0
+            cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
+            if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
+              cell.btAction.isUserInteractionEnabled = false
+              cell.btChoose.isUserInteractionEnabled = false
             }
+              cell.btChoose.isHidden = false
+              cell.delegateRequest = self
+              cell.vSegment.isHidden = false
             cell.nameUser.text = processPending?.stakeholders?.owner?.name
             cell.delegate = self
             cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
@@ -65,6 +65,21 @@ extension PendingController:UITableViewDataSource{
             cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear)"
             cell.lbMoney.text = "\(processPending?.info?.salary ?? 0) VND"
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.endAt)!, format: "HH:mm a")!
+            if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
+              cell.lbdeadLine.isHidden = false
+              cell.lbdeadLine.text = "Expired".localize
+            }else{
+              cell.lbdeadLine.isHidden = true
+            }
+            var deadlineWitdh:CGFloat = 0
+            if !cell.lbdeadLine.isHidden {
+              let text = cell.lbdeadLine.text ?? ""
+              let height = cell.lbdeadLine.bounds.height
+              let font = cell.lbdeadLine.font!
+              deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
+              deadlineWitdh = ceil(deadlineWitdh) + 20
+            }
+            cell.contraintWidthDeadline.constant = deadlineWitdh
             cell.lbAddress.text = processPending?.info?.address?.name
             return cell
         case 2:

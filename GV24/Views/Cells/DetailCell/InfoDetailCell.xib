@@ -51,7 +51,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Lau dọn phòng khách" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRJ-Ti-vzz">
-                                <rect key="frame" x="56" y="8" width="256" height="18"/>
+                                <rect key="frame" x="56" y="8" width="152" height="18"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -134,6 +134,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kal-Lq-Zdb">
+                                <rect key="frame" x="312" y="8" width="0.0" height="25"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" id="G3B-52-n45"/>
+                                    <constraint firstAttribute="height" constant="25" id="Y4L-d3-9Ne"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -153,15 +164,16 @@
                             <constraint firstItem="naY-2R-kB4" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" constant="8" id="M0V-TE-RWS"/>
                             <constraint firstItem="SBw-tO-pxj" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" constant="8" id="Me1-kd-1Z3"/>
                             <constraint firstItem="fbP-lW-e6f" firstAttribute="top" secondItem="tIU-xK-zfc" secondAttribute="bottom" constant="3" id="Mgh-Pd-hhI"/>
-                            <constraint firstItem="LyC-YP-vOT" firstAttribute="top" secondItem="CRJ-Ti-vzz" secondAttribute="bottom" constant="1" id="NS8-Z3-chm"/>
                             <constraint firstAttribute="trailing" secondItem="LyC-YP-vOT" secondAttribute="trailing" constant="8" id="OXn-bZ-taQ"/>
                             <constraint firstItem="CRJ-Ti-vzz" firstAttribute="top" secondItem="SBw-tO-pxj" secondAttribute="top" id="PPJ-ak-pBi"/>
                             <constraint firstAttribute="trailing" secondItem="Mih-Hy-g7T" secondAttribute="trailing" id="SKs-5z-N82"/>
                             <constraint firstAttribute="trailing" secondItem="eev-F8-DLK" secondAttribute="trailing" id="XhY-Tf-Uhj"/>
                             <constraint firstItem="tIU-xK-zfc" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" constant="8" id="Z1r-K9-e5l"/>
-                            <constraint firstAttribute="trailing" secondItem="CRJ-Ti-vzz" secondAttribute="trailing" constant="8" id="Z8S-LH-sdc"/>
                             <constraint firstAttribute="trailing" secondItem="tHL-W1-aAy" secondAttribute="trailing" constant="8" id="ZDZ-ON-i3v"/>
+                            <constraint firstItem="kal-Lq-Zdb" firstAttribute="top" secondItem="CRJ-Ti-vzz" secondAttribute="top" id="ZNX-Mt-0K7"/>
                             <constraint firstItem="Sli-n1-c3B" firstAttribute="leading" secondItem="1fm-AF-ACV" secondAttribute="trailing" constant="8" id="dj0-GL-AvV"/>
+                            <constraint firstItem="kal-Lq-Zdb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CRJ-Ti-vzz" secondAttribute="trailing" constant="8" id="e5i-vQ-l3G"/>
+                            <constraint firstAttribute="trailing" secondItem="kal-Lq-Zdb" secondAttribute="trailing" constant="8" id="goE-Sr-XKl"/>
                             <constraint firstItem="nES-dj-iVH" firstAttribute="centerY" secondItem="naY-2R-kB4" secondAttribute="centerY" id="k1b-ak-oMN"/>
                             <constraint firstItem="Oz2-pV-2nb" firstAttribute="leading" secondItem="1fm-AF-ACV" secondAttribute="leading" id="kxA-R4-Bav"/>
                             <constraint firstItem="Oz2-pV-2nb" firstAttribute="top" secondItem="13w-wN-SXO" secondAttribute="top" id="mMu-H1-Mc1"/>
@@ -191,6 +203,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="contraintWidthDeadline" destination="G3B-52-n45" id="iAz-yc-nmo"/>
                 <outlet property="imageAddress" destination="Oz2-pV-2nb" id="fTo-6K-COh"/>
                 <outlet property="imageAvatar" destination="SBw-tO-pxj" id="LUP-kn-lDz"/>
                 <outlet property="imageDate" destination="1fm-AF-ACV" id="h8j-xE-Sdg"/>
@@ -203,6 +216,7 @@
                 <outlet property="lbSubTitle" destination="LyC-YP-vOT" id="2jg-tT-q9B"/>
                 <outlet property="lbTime" destination="tHL-W1-aAy" id="3GV-op-DTw"/>
                 <outlet property="lbTitle" destination="CRJ-Ti-vzz" id="ZHN-KT-htY"/>
+                <outlet property="lbdeadLine" destination="kal-Lq-Zdb" id="hzY-JL-V0d"/>
             </connections>
             <point key="canvasLocation" x="70" y="-65.5"/>
         </tableViewCell>

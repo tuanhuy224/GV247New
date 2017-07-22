@@ -42,7 +42,7 @@
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIs-PH-imK">
-                                <rect key="frame" x="0.0" y="188.5" width="320" height="153.5"/>
+                                <rect key="frame" x="0.0" y="189" width="320" height="153"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nữ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRJ-bX-Gsg">
                                         <rect key="frame" x="31" y="8" width="18.5" height="16"/>
@@ -58,39 +58,39 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBG-Bt-44F">
-                                        <rect key="frame" x="31" y="43.5" width="16" height="16"/>
+                                        <rect key="frame" x="31" y="43.5" width="16" height="15.5"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGx-bU-HDh">
-                                        <rect key="frame" x="31" y="67.5" width="289" height="1"/>
+                                        <rect key="frame" x="31" y="67" width="289" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="bax-nB-4y5"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="+84090909090909" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bo-zT-Sed">
-                                        <rect key="frame" x="31" y="79.5" width="123" height="16"/>
+                                        <rect key="frame" x="31" y="79" width="123" height="16"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAm-xO-d7M">
-                                        <rect key="frame" x="31" y="107.5" width="289" height="1"/>
+                                        <rect key="frame" x="31" y="107" width="289" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="qIf-vD-s4W"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="20 Cống Quỳnh, P Phạm Ngũ Lão, Q1, Thành phố Hồ Chí Minh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lo-rB-u1h">
-                                        <rect key="frame" x="31" y="116.5" width="281" height="29"/>
+                                        <rect key="frame" x="31" y="116" width="281" height="29"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jS0-t3-Iod">
-                                        <rect key="frame" x="8" y="8.5" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="9" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="iHo-AQ-1sz"/>
                                             <constraint firstAttribute="height" constant="15" id="mWu-Kj-KmY"/>
@@ -104,14 +104,14 @@
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-lU-jZW">
-                                        <rect key="frame" x="8" y="80.5" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="79.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="1D7-Mo-vdt"/>
                                             <constraint firstAttribute="width" constant="15" id="YPN-fX-TyP"/>
                                         </constraints>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJb-ra-yEA">
-                                        <rect key="frame" x="8" y="123" width="15" height="15"/>
+                                        <rect key="frame" x="8" y="122.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="1J4-Jo-k8Q"/>
                                             <constraint firstAttribute="width" constant="15" id="2O2-cT-0sQ"/>
@@ -145,12 +145,13 @@
                                     <constraint firstItem="5Lo-rB-u1h" firstAttribute="leading" secondItem="qJb-ra-yEA" secondAttribute="trailing" constant="8" id="Yrc-TK-brd"/>
                                     <constraint firstItem="qJb-ra-yEA" firstAttribute="leading" secondItem="l7u-lU-jZW" secondAttribute="leading" id="abH-T4-9gJ"/>
                                     <constraint firstItem="vqE-c7-eqT" firstAttribute="leading" secondItem="QRJ-bX-Gsg" secondAttribute="leading" id="dfh-2k-kKJ"/>
+                                    <constraint firstItem="UGx-bU-HDh" firstAttribute="top" secondItem="vqE-c7-eqT" secondAttribute="bottom" constant="34" id="mnm-6J-EiR"/>
                                     <constraint firstItem="1Bo-zT-Sed" firstAttribute="leading" secondItem="l7u-lU-jZW" secondAttribute="trailing" constant="8" id="smy-vi-ox4"/>
                                     <constraint firstItem="JBG-Bt-44F" firstAttribute="leading" secondItem="v4Z-df-x0Z" secondAttribute="trailing" constant="8" id="uJS-9p-zRb"/>
                                 </constraints>
                             </view>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="mcX-x9-GHd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="188.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-Ls-j1r">
                                         <rect key="frame" x="125" y="26" width="70" height="70"/>
@@ -167,7 +168,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="xlA-dp-uYp">
-                                        <rect key="frame" x="106" y="134" width="108" height="26.5"/>
+                                        <rect key="frame" x="106" y="134" width="108" height="27"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YC-oz-kOu">
                                                 <rect key="frame" x="0.0" y="3.5" width="20" height="20"/>
@@ -270,6 +271,7 @@
             <connections>
                 <outlet property="ImageGender" destination="jS0-t3-Iod" id="Spb-gB-Uwk"/>
                 <outlet property="avatar" destination="OCj-Ls-j1r" id="rGI-c8-o0V"/>
+                <outlet property="contraintAge" destination="mnm-6J-EiR" id="LBC-5W-69B"/>
                 <outlet property="imageAddress" destination="qJb-ra-yEA" id="LWE-5I-uLp"/>
                 <outlet property="imageAge" destination="v4Z-df-x0Z" id="WZh-Ti-On7"/>
                 <outlet property="imagePhone" destination="l7u-lU-jZW" id="LxI-uq-mBt"/>
@@ -279,6 +281,7 @@
                 <outlet property="lbGender" destination="QRJ-bX-Gsg" id="9W2-gI-Sl6"/>
                 <outlet property="lbName" destination="chM-NL-lYr" id="hUj-Bo-BHA"/>
                 <outlet property="lbPhone" destination="1Bo-zT-Sed" id="eYp-m8-mRf"/>
+                <outlet property="vViewAge" destination="UGx-bU-HDh" id="uEI-vt-W69"/>
                 <outletCollection property="btRating" destination="1YC-oz-kOu" collectionClass="NSMutableArray" id="Yf6-VZ-Tpt"/>
                 <outletCollection property="btRating" destination="QxE-oE-FSC" collectionClass="NSMutableArray" id="e8s-U9-n29"/>
                 <outletCollection property="btRating" destination="7rJ-1Y-JGH" collectionClass="NSMutableArray" id="4BM-aF-E8F"/>

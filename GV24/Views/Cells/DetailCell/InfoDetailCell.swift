@@ -9,6 +9,7 @@
 import UIKit
 import IoniconsSwift
 class InfoDetailCell: CustomTableViewCell {
+  @IBOutlet weak var contraintWidthDeadline: NSLayoutConstraint!
     @IBOutlet weak var lbDescription: UILabel!
     @IBOutlet weak var imageAvatar: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
@@ -21,6 +22,11 @@ class InfoDetailCell: CustomTableViewCell {
     @IBOutlet weak var lbTime: UILabel!
     @IBOutlet weak var imageAddress: UIImageView!
     @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var lbdeadLine: UILabel!{
+    didSet{
+    lbdeadLine.textAlignment = .center
+    }
+  }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +44,10 @@ class InfoDetailCell: CustomTableViewCell {
         lbDate.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbTime.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbAddress.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        lbdeadLine.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
         lbDescription.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
+        lbdeadLine.layer.cornerRadius = 12.5
+        lbdeadLine.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

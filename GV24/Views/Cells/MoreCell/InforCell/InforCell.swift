@@ -13,6 +13,8 @@ class InforCell: CustomTableViewCell {
     var buttons:[UIButton]?
     var imageFirst:UIImage?
     
+    @IBOutlet weak var vViewAge: UIView!
+    @IBOutlet weak var contraintAge: NSLayoutConstraint!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet var btRating: [UIButton]!
     @IBOutlet weak var avatar: UIImageView!
