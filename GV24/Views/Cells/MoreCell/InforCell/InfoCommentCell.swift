@@ -12,7 +12,7 @@ import IoniconsSwift
 class InfoCommentCell: CustomTableViewCell {
   @IBOutlet var btRating: [UIButton]!{
     didSet{
-    UserDefaultHelper.currentUser?.workInfor?.evaluation_point = btRating.count
+    getStar()
     }
   }
     var buttons:[UIButton]?
@@ -42,15 +42,18 @@ class InfoCommentCell: CustomTableViewCell {
         content.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
         createAtLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
     }
-    
+  func getStar() {
+    let tag = UserDefaultHelper.currentUser?.workInfor?.evaluation_point
+    for i in btRating{
+      if i.tag <= tag! {
+        i.setImage(star, for: .normal)
+      }else{
+        i.setImage(unstar, for: .normal)
+      }
+    }
+  }
+  
     @IBAction func btRatingAction(_ sender: UIButton) {
-        let tag = sender.tag
-        for i in btRating{
-            if i.tag <= tag {
-                i.setImage(star, for: .normal)
-            }else{
-                i.setImage(unstar, for: .normal)
-            }
-        }
+
     }
 }

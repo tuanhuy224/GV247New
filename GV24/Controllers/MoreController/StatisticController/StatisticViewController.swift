@@ -64,7 +64,7 @@ class StatisticViewController: BaseViewController {
         tbStatistic.register(UINib(nibName: NibStatisticCell,bundle:nil), forCellReuseIdentifier: statisticCellID)
         
         endAtDate = Date()
-        
+        tbStatistic.allowsSelection = false
         getStatistic(startAt: startAtDate, endAt: endAtDate)
     }
 

@@ -12,7 +12,11 @@ import IoniconsSwift
 class StatisticCell: UITableViewCell {
 
     var buttons:[UIButton]?
-    @IBOutlet var btnRating: [UIButton]!
+  @IBOutlet var btnRating: [UIButton]!{
+    didSet{
+    starBt()
+    }
+  }
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -30,7 +34,17 @@ class StatisticCell: UITableViewCell {
         super.awakeFromNib()
         setupCell()
     }
-    
+  func starBt() {
+    let tag = UserDefaultHelper.currentUser?.workInfor?.evaluation_point
+    for i in btnRating {
+      if i.tag <= tag! {
+        i.setImage(star, for: .normal)
+      }
+      else {
+        i.setImage(unstar, for: .normal)
+      }
+    }
+  }
     func setupCell() {
         userImage.layer.cornerRadius = userImage.frame.size.width/2
         userImage.clipsToBounds = true
@@ -40,15 +54,7 @@ class StatisticCell: UITableViewCell {
     }
     
     @IBAction func btnRatingAction(_ sender: UIButton) {
-        let tag = sender.tag
-        for i in btnRating {
-            if i.tag <= tag {
-                i.setImage(star, for: .normal)
-            }
-            else {
-                i.setImage(unstar, for: .normal)
-            }
-        }
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

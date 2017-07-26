@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+import IoniconsSwift
+let imageFirst = Ionicons.androidStarOutline.image(32).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
 public enum FontSizeText: String{
     
     case bold = "SFUIText-Bold"
