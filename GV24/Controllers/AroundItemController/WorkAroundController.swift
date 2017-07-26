@@ -168,15 +168,15 @@ class WorkAroundController: BaseViewController {
         loadingView.show()
         
         geocoder.geocodeAddressString(text) { [unowned self] (placeMarks, error) in
-            
+            self.loadingView.close()
             guard let location = placeMarks?.first?.location, error == nil else {
-                self.loadingView.close()
+                //self.loadingView.close()
                 AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
                 return
             }
             self.currentLocation = location.coordinate
             self.loadData { (arounds, error) in
-                self.loadingView.close()
+              
             }
         }
         

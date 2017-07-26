@@ -9,6 +9,7 @@
 import UIKit
 
 class ManageViewController: BaseViewController {
+  @IBOutlet weak var vDoing: UIView!
     @IBOutlet weak var segmentCtr: UISegmentedControl!
     @IBOutlet weak var tbManage: UITableView!
     var idProcess:String?
@@ -22,10 +23,13 @@ class ManageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tbManage.on_register(type: HistoryViewCell.self)
+        tbManage.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
+        tbManage.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tbManage.separatorStyle = .none
         self.title = "Titlemanagement".localize
         self.tbManage.rowHeight = UITableViewAutomaticDimension
         self.tbManage.estimatedRowHeight = 100.0
+        vDoing.isHidden = true
 
     }
     override func decorate() {
@@ -84,6 +88,7 @@ class ManageViewController: BaseViewController {
             self.loadingView.close()
             if json != nil{
                 self.processOnDoing = json!
+              print(json!)
             }
         }
         self.tbManage.reloadData()
@@ -100,8 +105,6 @@ extension ManageViewController:UITableViewDataSource{
             returnValue = processOnCreate.count
         case 1:
             returnValue = processRecieved.count
-        case 2:
-            returnValue = processOnDoing.count
             break
         default:
             break
@@ -109,14 +112,16 @@ extension ManageViewController:UITableViewDataSource{
         return returnValue
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:HistoryViewCell = tbManage.on_dequeue(idxPath: indexPath)
+      let cell:HistoryViewCell = tbManage.on_dequeue(idxPath: indexPath)
+
         switch segmentCtr.selectedSegmentIndex {
         case 0:
-            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date() > String.convertISODateToDate(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!)! {
+          vDoing.isHidden = true
+            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).comparse == true {
                 cell.lbDirect.isHidden = true
                 cell.lbDeadline.isHidden = false
                 cell.lbDeadline.text = "Expired".localize
-            }else if Date() > String.convertISODateToDate(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!)!{
+            }else if Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).comparse == true{
                 cell.lbDirect.isHidden = true
                 cell.lbDeadline.isHidden = false
                 cell.lbDeadline.text = "Expired".localize
@@ -134,32 +139,36 @@ extension ManageViewController:UITableViewDataSource{
             cell.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
             
         case 1:
+          vDoing.isHidden = true
             cell.workNameLabel.text = processRecieved[indexPath.row].info?.title
             cell.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).dayMonthYear)"
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processRecieved[indexPath.row].history?.createAt)!))"
             cell.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell.lbDist.text = processRecieved[indexPath.row].process?.name?.localize
-            if processRecieved[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date() > String.convertISODateToDate(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!)! {
+            if processRecieved[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).comparse == true {
               cell.lbDirect.isHidden = true
               cell.lbDeadline.isHidden = false
               cell.lbDeadline.text = "Expired".localize
-            }else if Date() > String.convertISODateToDate(isoDateStr: (processRecieved[indexPath.row].workTime?.endAt)!)!{
+            }else if Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).comparse == true{
               cell.lbDirect.isHidden = true
               cell.lbDeadline.isHidden = false
               cell.lbDeadline.text = "Expired".localize
-            }
-            cell.lbDirect.isHidden = true
-            cell.constraintWidthDirect.constant = 0
+            }else{
+              cell.lbDeadline.isHidden = true
+              cell.lbDirect.isHidden = true
+              cell.constraintWidthDirect.constant = 0
+          }
+
         case 2:
-            cell.workNameLabel.text = processOnDoing[indexPath.row].info?.title
-            cell.createdDate.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).dayMonthYear)"
-            cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnDoing[indexPath.row].history?.createAt)!))"
-            cell.timeWork.text = "\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnDoing[indexPath.row].workTime?.endAt)!).hourMinute)"
-                cell.lbDist.text = "OnDoing".localize
-            cell.lbDeadline.isHidden = true
-            cell.timeWork.text = String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnDoing[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
-            cell.lbDirect.isHidden = true
-            cell.constraintWidthDirect.constant = 0
+          vDoing.isHidden = false
+          let doing = DoingController()
+          if processOnDoing == [] {
+            return UITableViewCell()
+          }else{
+            doing.ProcessDoing = processOnDoing[0]
+            vDoing.layoutIfNeeded()
+            vDoing.addSubview(doing.view)
+          }
         default:
             break
         }
@@ -199,8 +208,8 @@ extension ManageViewController:UITableViewDelegate{
             navigationController?.pushViewController(navi, animated: true)
             break
         case 2:
-            let navi = DoingController(nibName: CTDoingController, bundle: nil)
-            navi.ProcessDoing = processOnDoing[indexPath.row]
+            let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+            navi.workPending = processOnDoing[indexPath.row]
             navigationController?.pushViewController(navi, animated: true)
             break
         default:

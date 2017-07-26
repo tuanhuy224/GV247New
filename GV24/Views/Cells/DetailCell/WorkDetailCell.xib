@@ -32,19 +32,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen van A" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKq-Mx-div">
-                        <rect key="frame" x="66" y="22.5" width="266" height="18"/>
+                        <rect key="frame" x="66" y="22.5" width="261" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Ham Nghi, Q 1, Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRf-WL-mHp">
-                        <rect key="frame" x="66" y="47" width="266" height="12"/>
+                        <rect key="frame" x="66" y="47" width="261" height="12"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jn0-47-poD">
-                        <rect key="frame" x="340" y="30.5" width="30" height="30"/>
+                        <rect key="frame" x="335" y="30.5" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="0SG-yu-nmv"/>
                             <constraint firstAttribute="width" constant="30" id="6uA-HT-6Ld"/>
@@ -102,7 +102,7 @@
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="top" secondItem="TKq-Mx-div" secondAttribute="bottom" constant="6.5" id="X5r-Xe-Hus"/>
                     <constraint firstAttribute="trailing" secondItem="jOn-Cv-dAZ" secondAttribute="trailing" id="Zuy-32-kSY"/>
                     <constraint firstAttribute="bottom" secondItem="sct-l4-Mv6" secondAttribute="bottom" constant="-0.5" id="aHV-Zd-bc0"/>
-                    <constraint firstAttribute="trailing" secondItem="Jn0-47-poD" secondAttribute="trailing" constant="5" id="btZ-Mp-Zr9"/>
+                    <constraint firstAttribute="trailing" secondItem="Jn0-47-poD" secondAttribute="trailing" constant="10" id="btZ-Mp-Zr9"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="RAp-YY-Ygx" secondAttribute="bottom" constant="5" id="jZN-VZ-Z3q"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" id="jvX-pg-Lbd"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="4.5" id="mEx-st-nB7"/>

@@ -12,23 +12,24 @@
             <connections>
                 <outlet property="segmentCtr" destination="vOB-SU-7Ta" id="Apy-iZ-6bd"/>
                 <outlet property="tbManage" destination="bsD-CC-ERM" id="tSv-Rp-Cc3"/>
+                <outlet property="vDoing" destination="Fnp-D5-d1h" id="0AV-Vc-pXN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="QcB-9u-2em"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="444" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wOA-Yg-yHk">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="444" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="W0G-Vc-xW6"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bsD-CC-ERM">
-                    <rect key="frame" x="0.0" y="52" width="375" height="615"/>
+                    <rect key="frame" x="0.0" y="52" width="444" height="615"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="vtz-fB-Kmg"/>
@@ -36,7 +37,7 @@
                     </connections>
                 </tableView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vOB-SU-7Ta">
-                    <rect key="frame" x="16" y="8" width="343" height="29"/>
+                    <rect key="frame" x="16" y="8" width="412" height="29"/>
                     <segments>
                         <segment title="Đang chờ"/>
                         <segment title="Đã phân công"/>
@@ -46,6 +47,10 @@
                         <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="PoW-ed-fvT"/>
                     </connections>
                 </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fnp-D5-d1h">
+                    <rect key="frame" x="0.0" y="52" width="444" height="615"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
@@ -55,13 +60,17 @@
                 <constraint firstAttribute="trailing" secondItem="wOA-Yg-yHk" secondAttribute="trailing" id="HqB-iN-xba"/>
                 <constraint firstItem="vOB-SU-7Ta" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Okk-Rv-3hs"/>
                 <constraint firstAttribute="trailing" secondItem="vOB-SU-7Ta" secondAttribute="trailing" constant="16" id="RZV-xz-xL1"/>
+                <constraint firstAttribute="trailing" secondItem="Fnp-D5-d1h" secondAttribute="trailing" id="RkI-jJ-AnB"/>
                 <constraint firstAttribute="trailing" secondItem="bsD-CC-ERM" secondAttribute="trailing" id="UMz-oW-eTt"/>
                 <constraint firstItem="vOB-SU-7Ta" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aNp-uv-UAb"/>
+                <constraint firstAttribute="bottom" secondItem="Fnp-D5-d1h" secondAttribute="bottom" id="aRS-dX-K58"/>
+                <constraint firstItem="Fnp-D5-d1h" firstAttribute="top" secondItem="wOA-Yg-yHk" secondAttribute="bottom" constant="8" id="hT0-ej-LpD"/>
+                <constraint firstItem="Fnp-D5-d1h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mx8-eq-EC3"/>
                 <constraint firstItem="bsD-CC-ERM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ou0-vj-QA8"/>
                 <constraint firstItem="bsD-CC-ERM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="52" id="qs7-m7-bgg"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="33.5" y="60.5"/>
+            <point key="canvasLocation" x="68" y="60.5"/>
         </view>
     </objects>
 </document>

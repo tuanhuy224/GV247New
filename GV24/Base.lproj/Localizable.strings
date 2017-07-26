@@ -151,8 +151,8 @@ Success = "Thành công";
 AreYouSureYouWantToLogOut = "Bạn có chắc chắn muốn thoát ra khỏi ứng dụng này không?";
 PendingConfirmation = "Công việc đang chờ";
 InProcess = "Công việc đang xử lý";
-Assessment = "Năng lực làm việc";
-WorkCapacity = "Nhận xét";
+Assessment = "Nhận xét";
+WorkCapacity = "Năng lực làm việc";
 Statistic = "Thống kê";
 TotalEarnings = "Tổng thu nhập";
 Update = "Cập nhật";
@@ -182,4 +182,6 @@ Pleaseenteryouremailaddress = "Vui lòng điền địa chỉ Email ";
 Pleaseenteryourphonenumber = "Vui lòng điền số điện thoại";
 Emailformatisincorrect = "Định dạng email không chính xác";
 Requestsentsuccessfully = "Yêu cầu đã được gửi thành công. Chúng tôi sẽ sớm hồi âm. Xin cảm ơn!";
+Workyouchooseisexpired = "Công việc đã quá hạn";
+hour = "giờ";
 

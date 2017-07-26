@@ -189,6 +189,17 @@ extension Date{
         }
         return ""
     }
+  var comparse:Bool{
+    let currentDate = Date()
+    switch self.compare(currentDate){
+    case .orderedAscending:
+      return true
+    case .orderedDescending:
+      return false
+    default:
+      return false
+    }
+  }
 }
 extension String {
     static func convertISODateToString(isoDateStr: String, format: String) -> String? {

@@ -179,7 +179,7 @@ extension StatisticViewController:UITableViewDataSource, UITableViewDelegate{
             let url = URL(string: imageString)
             cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
         }
-        cell.userNameLabel.text = user.username
+        cell.userNameLabel.text = user.name
         cell.addressLabel.text = user.nameAddress
         return cell
     }

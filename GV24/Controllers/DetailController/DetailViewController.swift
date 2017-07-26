@@ -23,7 +23,7 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad()
         tbDetail.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
         tbDetail.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
-        postRerves()
+        //postRerves()
         self.tbDetail.rowHeight = UITableViewAutomaticDimension
         self.tbDetail.estimatedRowHeight = 100.0
     }
@@ -102,18 +102,18 @@ extension DetailViewController:UITableViewDelegate{
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
-      loadingView.show()
       guard let id = idWork else{return}
       guard let token = UserDefaultHelper.getToken() else{return}
       let parameter = ["id":id]
       let header = ["hbbgvauth":token]
       let apiClient = APIService.shared
-      apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
+      AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) {
+        self.loadingView.show()
+        apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
           self.loadingView.close()
-          let alertC = AlertStandard.sharedInstance
-          alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "Dothiswork".localize)
-            
         }
+      }
+
     }
 }
 extension DetailViewController:chooseWorkDelegate{

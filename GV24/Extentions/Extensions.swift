@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import IoniconsSwift
 
 
 //------------------ 3rd Party - Model ------------------//
@@ -62,6 +63,20 @@ extension String {
       }
     } catch {
       return false
+    }
+  }
+
+}
+
+extension UIButton{
+
+  override open var isSelected: Bool{
+    didSet{
+      if isSelected == true {
+        //self.setImage(Icon.by(name: .iosStar, color: AppColor.homeButton1), for: .normal)
+      }else{
+       // self.setImage(Icon.by(name: .iosStarOutline, color: AppColor.homeButton1), for: .normal)
+      }
     }
   }
 

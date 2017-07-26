@@ -10,7 +10,11 @@ import UIKit
 import IoniconsSwift
 
 class InfoCommentCell: CustomTableViewCell {
-    @IBOutlet var btRating: [UIButton]!
+  @IBOutlet var btRating: [UIButton]!{
+    didSet{
+    UserDefaultHelper.currentUser?.workInfor?.evaluation_point = btRating.count
+    }
+  }
     var buttons:[UIButton]?
     var star:UIImage?
     var unstar:UIImage?

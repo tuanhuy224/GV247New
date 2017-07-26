@@ -12,7 +12,7 @@ import Kingfisher
 import Alamofire
 
 class InformationViewController: BaseViewController {
-
+    let point = UserDefaultHelper.currentUser?.workInfor?.evaluation_point
     @IBOutlet weak var tbInformation: UITableView!
     var user:User?
     var page: Int = 1
@@ -44,7 +44,7 @@ class InformationViewController: BaseViewController {
         let button = UIButton(type: .custom)
         button.setTitle("Update".localize, for: .normal)
         button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSeven)
-        button.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 30)
         button.setTitleColor( UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
         button.setTitleColor(UIColor.brown, for: .highlighted)
         button.addTarget(self, action: #selector(InformationViewController.selectButton), for: .touchUpInside)
@@ -128,6 +128,32 @@ class InformationViewController: BaseViewController {
     func doNetworkIsDisconnected() {
         AlertStandard.sharedInstance.showAlert(controller: self, title: "Announcement".localize, message: "NetworkIsLost".localize)
     }
+  
+  
+  let imageFirst = Ionicons.star.image(32).maskWithColor(color: UIColor.blue)
+  
+
+  func configCell(cell:InforCell) {
+    if point! >= 5 {
+       cell.btRating[0].isSelected = true
+       cell.btRating[1].isSelected = true
+       cell.btRating[2].isSelected = true
+       cell.btRating[3].isSelected = true
+       cell.btRating[4].isSelected = true
+    }else{
+      cell.btRating[0].isSelected = false
+      cell.btRating[1].isSelected = false
+      cell.btRating[2].isSelected = false
+      cell.btRating[3].isSelected = false
+      cell.btRating[4].isSelected = false
+    }
+  }
+  
+  
+  
+  
+  
+  
 }
 extension InformationViewController:UITableViewDataSource{
 
@@ -142,7 +168,7 @@ extension InformationViewController:UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell:InforCell = (tbInformation.dequeueReusableCell(withIdentifier: inforCellID, for: indexPath) as? InforCell)!
+          let cell:InforCell = (tbInformation.dequeueReusableCell(withIdentifier: inforCellID, for: indexPath) as? InforCell)!
             if user?.gender == 0 {
                 cell.lbGender.text = gender.girl
             }else{
@@ -157,13 +183,15 @@ extension InformationViewController:UITableViewDataSource{
                 }
             }
             cell.imageProfile.kf.setImage(with: url)
-            cell.lbName.text = user?.username
+            cell.lbName.text = user?.name
             cell.lbPhone.text = user?.phone
             cell.lbAddress.text = user?.nameAddress
             return cell
         }else if indexPath.section == 1{
             let cell: WorkInfoCell = tbInformation.dequeueReusableCell(withIdentifier: workInfoCellID, for: indexPath) as! WorkInfoCell
+          
             cell.data = workTypeList
+            cell.priceLabel.text = "\(UserDefaultHelper.currentUser?.workInfor?.price ?? 0)" + " /" +  "hour".localize
             cell.topLabel.text = "WorkCapacity".localize.uppercased()
             cell.llbAssessment.text = "Assessment".localize.uppercased()
             return cell

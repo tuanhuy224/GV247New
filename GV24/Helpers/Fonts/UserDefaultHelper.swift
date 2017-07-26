@@ -44,7 +44,9 @@ class UserDefaultHelper {
                    "addressName":user!.nameAddress ?? "",
                    "gender":user!.gender!,
                     "lat":user!.address!.location!.latitude,
-                    "lng":user!.address!.location!.longitude
+                    "lng":user!.address!.location!.longitude,
+                    "workInfor":user?.workInfor!.price! ?? 0,
+                    "evaluation":user?.workInfor!.evaluation_point! ?? 0
                    ] as Dictionary<String, Any>
         UserDefaults.standard.set(dic, forKey: "user")
         UserDefaults.standard.set(token, forKey: "token")
@@ -57,6 +59,7 @@ class UserDefaultHelper {
             if isLogin {
                 let userDic = UserDefaults.standard.value(forKey: "user") as! Dictionary<String, Any>
                 let user = User()
+                user.workInfor = WorkInfor()
                 user.id = userDic["idUser"] as? String
                 user.username = userDic["userName"] as? String
                 user.email = userDic["email"] as? String
@@ -67,6 +70,8 @@ class UserDefaultHelper {
                 user.lat = (userDic["lat"] as? Double)!
                 user.lng = (userDic["lng"] as? Double)!
                 user.gender = userDic["gender"] as? Int
+                user.workInfor?.price = userDic["workInfor"] as? Int
+                user.workInfor?.evaluation_point = userDic["evaluation"] as? Int
                 return user
             }
             return nil

@@ -11,6 +11,9 @@ import Kingfisher
 import IoniconsSwift
 import Alamofire
 
+
+
+
 class ReportController: BaseViewController {
   @IBOutlet weak var viewTextView: UIView!
   @IBOutlet weak var imageProfile: UIImageView!
@@ -22,6 +25,7 @@ class ReportController: BaseViewController {
       rp.text = text
     }
   }
+  
   var placeholder = "Pleasefillinthereport".localize
   @IBOutlet weak var rp: UITextView!{
     didSet {
@@ -37,10 +41,12 @@ class ReportController: BaseViewController {
     self.setupView()
     rp.delegate = self
   }
+  
   override func setupViewBase() {
     super.setupViewBase()
     self.navigationItem.title = "report".localize
   }
+  
   func setupView()  {
     nameProfile.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)
     addressProfile.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
@@ -82,16 +88,16 @@ class ReportController: BaseViewController {
   func dismissKeyboard() {
     view.endEditing(true)
   }
+  
   func addTapped() {
     guard let token = UserDefaultHelper.getToken() else{return}
     let headers:HTTPHeaders = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
     guard let id = work.stakeholders?.owner?.id else{return}
-    guard let content = text else{
-      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasefillinthereport".localize)
-      return
-    }
+    
+    
+    if (text?.characters.count)! > 0 && text != "Pleasefillinthereport".localize {
       self.loadingView.show()
-      let param:Parameters = ["toId":id,"content":content]
+      let param:Parameters = ["toId":id,"content":text!]
       let apiClient = APIService.shared
       apiClient.postReserve(url: APIPaths().maidReport(), method: .post, parameters: param, header: headers) { (json, message) in
         self.loadingView.close()
@@ -99,13 +105,17 @@ class ReportController: BaseViewController {
           AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "", message: "Reportsentsuccessfully".localize)
         }
       }
+    }else{
+       AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasefillinthereport".localize)
+    }
   }
 }
+
 extension ReportController: UITextViewDelegate {
   
   func textViewShouldBeginEditing(aTextView: UITextView) -> Bool{
     if aTextView == aTextView && aTextView.text == "Pleasefillinthereport".localize{
-      //moveCursorToStart(aTextView: aTextView)
+      moveCursorToStart(aTextView: aTextView)
     }
     return true
   }

@@ -18,6 +18,7 @@ class User: AppModel {
     var username:String?
     var image:String?
     var address:Address?
+    var workInfor:WorkInfor?
     var owner:Owner?
     var lat:Double?
     var lng:Double?
@@ -37,7 +38,8 @@ class User: AppModel {
         self.address = Address(json:(json?["info"]["address"])!)
         self.owner = Owner(json: (json?["stakeholders"]["owner"])!)
         self.nameAddress = json?["info"]["address"]["name"].string
-        
+        self.workInfor = WorkInfor(json:(json?["work_info"])!)
+      
     }
 }
 class DataUser: User {
@@ -58,4 +60,29 @@ class DataUser: User {
     }
 
 }
+
+class WorkInfor: AppModel {
+  var ability:[String:Any]?
+  var price:Int?
+  var evaluation_point:Int?
+  
+  override init() {
+    super.init()
+  }
+  init(price:Int, evaluation_point:Int) {
+    super.init()
+    self.price = price
+    self.evaluation_point = evaluation_point
+  }
+  override init(json: JSON) {
+    super.init(json: json)
+    self.price = json["price"].int ?? 0
+    self.evaluation_point = json["evaluation_point"].int ?? 0
+  }
+}
+
+
+
+
+
 

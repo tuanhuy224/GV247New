@@ -9,6 +9,7 @@ import UIKit
 class PendingController: BaseViewController {
     @IBOutlet weak var tbPending: UITableView!
   var processPending:Work?
+  var isChoose:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         tbPending.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
@@ -38,8 +39,9 @@ extension PendingController:UITableViewDataSource{
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
             cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
             if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
-              cell.btAction.isUserInteractionEnabled = false
-              cell.btChoose.isUserInteractionEnabled = false
+//              cell.btAction.isUserInteractionEnabled = false
+//              cell.btChoose.isUserInteractionEnabled = false
+              isChoose = true
             }
               cell.btChoose.isHidden = false
               cell.delegateRequest = self
@@ -157,19 +159,23 @@ extension PendingController:CancelWorkDelegate{
 extension PendingController:directRequestDelegate{
     func chooseActionRequest() {
         let alertC = AlertStandard.sharedInstance
+      if isChoose == true {
+         AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workyouchooseisexpired".localize)
+      }else{
         alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) {
-            self.loadingView.show()
-            guard let ownerId = self.processPending?.stakeholders?.owner?.id else {return}
-            guard let taskID = self.processPending?.id else {return}
-            guard let token = UserDefaultHelper.getToken() else{return}
-            let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
-            let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
-            let apiClient = APIService.shared
-            apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
-                self.loadingView.close()
-                self.navigationController?.popViewController(animated: true)
-            }
+          self.loadingView.show()
+          guard let ownerId = self.processPending?.stakeholders?.owner?.id else {return}
+          guard let taskID = self.processPending?.id else {return}
+          guard let token = UserDefaultHelper.getToken() else{return}
+          let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
+          let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
+          let apiClient = APIService.shared
+          apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
+            self.loadingView.close()
+            self.navigationController?.popViewController(animated: true)
+          }
         }
+      }
     }
 }
 //extension PendingController:denyRequestDelegate{

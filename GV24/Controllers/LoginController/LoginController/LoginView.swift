@@ -49,12 +49,12 @@ class LoginView: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerAutoKeyboard()
-        self.title = "login".localize
+        self.title = "SignIn".localize
         btnLogin.setTitle("login".localize, for: .normal)
         forgotPassword.setTitle("Forgotpassword".localize, for: .normal)
         userLogin.placeholder = "Username".localize
         passwordLogin.placeholder = "Password".localize
-        btRegister.setTitle("RegisterNow".localize, for: .normal)
+        btRegister.setTitle("SignIn".localize, for: .normal)
     }
     func token() -> String {
         guard let firebaseToken = InstanceID.instanceID().token() else {return ""}

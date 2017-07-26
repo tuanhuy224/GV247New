@@ -60,15 +60,75 @@ class InforCell: CustomTableViewCell {
         lbGender.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
         lbAddress.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
     }
-    @IBAction func btRatingAction(_ sender: UIButton) {
-        let image = Ionicons.star.image(32).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
-        let tag = sender.tag
-        for i in btRating{
-            if i.tag <= tag {
-                i.setImage(image, for: .normal)
-            }else{
-                i.setImage(imageFirst, for: .normal)
-            }
+  var isEnable : Bool?{
+    didSet{
+      btRating[0].isUserInteractionEnabled = isEnable!
+      btRating[1].isUserInteractionEnabled = isEnable!
+      btRating[2].isUserInteractionEnabled = isEnable!
+      btRating[3].isUserInteractionEnabled = isEnable!
+      btRating[4].isUserInteractionEnabled = isEnable!
+    }
+  }
+  var point : Double? = 0{
+    didSet{
+      if point != nil{
+        handle(point: point!)
+      }
+      
+    }
+  }
+  var isHalf: Bool?{
+    didSet{
+      if isHalf == true{
+        //self.setImage(Icon.by(name: .iosStarHalf, color: AppColor.homeButton1), for: .normal)
+      }else{
+        
+      }
+    }
+  }
+  
+  func handle(point: Double){
+    if point >= 5{
+      btRating[0].isSelected = true
+      btRating[1].isSelected = true
+      btRating[2].isSelected = true
+      btRating[3].isSelected = true
+      btRating[4].isSelected = true
+      return
+    }
+    btRating[0].isSelected = false
+    btRating[1].isSelected = false
+    btRating[2].isSelected = false
+    btRating[3].isSelected = false
+    btRating[4].isSelected = false
+    
+    var currentStart : Int = 0
+    var currentPoint = point
+    while currentPoint > 0 {
+      if currentPoint < 0.3 {
+        //btRating[currentStart].isHalf = true
+      }else{
+        if currentPoint < 0.7 {
+         // btRating[currentStart].isHalf = true
         }
-    }    
+        else{
+          btRating[currentStart].isSelected = true
+        }
+      }
+      currentStart = currentStart + 1
+      currentPoint = currentPoint - 1
+    }
+  }
+
+    @IBAction func btRatingAction(_ sender: UIButton) {
+//        let image = Ionicons.star.image(32).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
+//        let tag = sender.tag
+//        for i in btRating{
+//            if i.tag <= tag {
+//                i.setImage(image, for: .normal)
+//            }else{
+//                i.setImage(imageFirst, for: .normal)
+//            }
+//        }
+    }
 }

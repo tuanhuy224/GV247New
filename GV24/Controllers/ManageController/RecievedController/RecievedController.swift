@@ -73,10 +73,12 @@ extension RecievedController:UITableViewDataSource{
             cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) VND"
             cell.lbTime.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved?.workTime?.endAt)!).hourMinute)"
             cell.lbAddress.text = processRecieved?.info?.address?.name
-            if Date() > String.convertISODateToDate(isoDateStr: (processRecieved?.workTime?.endAt)!)! {
+            if Date(isoDateString: (processRecieved?.workTime?.startAt)!).comparse == true {
               cell.lbdeadLine.isHidden = false
               cell.lbdeadLine.text = "Expired".localize
               cell.lbdeadLine.textAlignment = .center
+            }else{
+              cell.lbdeadLine.isHidden = true
             }
             var deadlineWitdh:CGFloat = 0
             if !cell.lbdeadLine.isHidden {

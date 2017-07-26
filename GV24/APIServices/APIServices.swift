@@ -187,8 +187,6 @@ class APIService: NSObject {
                         completion(nil, message)
                     }
                 }
-                guard let data = json["data"].dictionary else{return}
-                print(data)
                 completion(json, nil)
             case .failure(let error):
                 completion(nil, error.localizedDescription)
@@ -196,6 +194,26 @@ class APIService: NSObject {
             }
         }
     }
+  func getListWorkOfOwner(page:Int,url:String,param:Parameters,header:HTTPHeaders, lastPage:Int,completion:@escaping(ResponseCompletion)) {
+    Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default,headers:header).responseJSON { (response) in
+      switch response.result{
+      case .success(let value):
+        let json = JSON(value)
+        let status = json["status"].bool
+        if status == nil{return}
+        if status == false{
+          if let message = json["message"].string{
+            completion(nil, message)
+          }
+        }
+        guard let data = json["data"].dictionary else{return}
+        completion(json["data"], nil)
+      case .failure(let error):
+        completion(nil, error.localizedDescription)
+        print(error)
+      }
+    }
+  }
     func getProcess(url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(ResponseCompletion)) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default,headers:header).responseJSON { (response) in
             switch response.result{

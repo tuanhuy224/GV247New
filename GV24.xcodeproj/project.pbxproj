@@ -14,6 +14,7 @@
 		000E1CA61EF6D6C000E26FD4 /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000E1CA41EF6D6C000E26FD4 /* MarkerInfoView.xib */; };
 		000E1E7B1EF288690058838B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 000E1E7A1EF288690058838B /* MBProgressHUD.m */; };
 		000E2EB01EF8FAF900E531C5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */; };
+		00145E6A1F25A141009C907D /* APIServices+GetOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00145E691F25A141009C907D /* APIServices+GetOwner.swift */; };
 		0014A57C1EFED32E00DBD0C4 /* CustomLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0014A57B1EFED32E00DBD0C4 /* CustomLable.swift */; };
 		0018D9701F204C4200524609 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018D96E1F204C4200524609 /* RegisterViewController.swift */; };
 		0018D9711F204C4200524609 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0018D96F1F204C4200524609 /* RegisterViewController.xib */; };
@@ -222,6 +223,7 @@
 		000E1E791EF288690058838B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		000E1E7A1EF288690058838B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		000E2EAF1EF8FAF900E531C5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		00145E691F25A141009C907D /* APIServices+GetOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIServices+GetOwner.swift"; sourceTree = "<group>"; };
 		0014A57B1EFED32E00DBD0C4 /* CustomLable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLable.swift; sourceTree = "<group>"; };
 		0018BA501EF81F8200D4B35E /* GV24.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GV24.entitlements; sourceTree = "<group>"; };
 		0018D96E1F204C4200524609 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -952,6 +954,7 @@
 				009A76DB1EEE8EF90021BFB0 /* OwnerServices.swift */,
 				009A76D31EEE8B250021BFB0 /* Enum.swift */,
 				009A76DF1EEE8F480021BFB0 /* APIServices.swift */,
+				00145E691F25A141009C907D /* APIServices+GetOwner.swift */,
 				002AFD651EE8058A00D3B88A /* HistoryServices.swift */,
 				002BA1171EDD62730099352D /* UserService.swift */,
 				003BC6911ED9DA0600FF6D14 /* Constant.swift */,
@@ -1395,6 +1398,7 @@
 				003175ED1EE6A6B000F3F9B4 /* AroundTask.swift in Sources */,
 				00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */,
 				003BC6851ED9D92E00FF6D14 /* HomeViewDisplayController.swift in Sources */,
+				00145E6A1F25A141009C907D /* APIServices+GetOwner.swift in Sources */,
 				003BC68F1ED9D98100FF6D14 /* UserDefaultHelper.swift in Sources */,
 				002572461EDE698200AACC52 /* ForgotPasswordViewController.swift in Sources */,
 				0057723E1F060366008F446D /* fontSize.swift in Sources */,

@@ -8,9 +8,11 @@
 
 import UIKit
 import IoniconsSwift
-
+protocol getOwnerId {
+  func getOwnerId(cell:OwnerHistoryViewCell,index:Any)
+}
 class OwnerHistoryViewCell: CustomTableViewCell {
-
+    var delegate:getOwnerId?
     var buttons:[UIButton]?
     @IBOutlet var btnRating: [UIButton]!
     
@@ -46,6 +48,9 @@ class OwnerHistoryViewCell: CustomTableViewCell {
         dateLabel.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
     }
     
+  @IBAction func chooseId(_ sender: Any) {
+    self.delegate?.getOwnerId(cell: self, index: sender)
+  }
     @IBAction func btnRatingAction(_ sender: UIButton) {
         let tag = sender.tag
         for i in btnRating {

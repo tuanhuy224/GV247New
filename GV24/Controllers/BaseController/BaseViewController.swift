@@ -60,18 +60,18 @@ class BaseViewController: UIViewController {
         let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(token)"]
         let apiClient = APIService.shared
         apiClient.getUrl(url: APIPaths().maidCheckToken(), param: [:], header: header) { (json, error) in
-            if error != "SUCCESS"{
-                _ = UserDefaultHelper().removeUserDefault()
-                let alert = AlertStandard.sharedInstance
-                alert.showAlertLogin(controller: self, pushVC: LoginView(), title: "", message: "Youraccountwasaccessedfromanotherdevice".localize, buttonTitle:"" , completion: {
-                    let loginController = LoginView()
-                    loginController.viewControllerLogin = self
-                    loginController.isLoginWhenChangeToken = true
-                    guard let window = UIApplication.shared.keyWindow else{return}
-                    let navi = UINavigationController(rootViewController: loginController)
-                    window.rootViewController = navi
-                })
-            }
+          if json?["message"] != "SUCCESS"{
+            _ = UserDefaultHelper().removeUserDefault()
+            let alert = AlertStandard.sharedInstance
+            alert.showAlertLogin(controller: self, pushVC: LoginView(), title: "", message: "Youraccountwasaccessedfromanotherdevice".localize, buttonTitle:"" , completion: {
+              let loginController = LoginView()
+              loginController.viewControllerLogin = self
+              loginController.isLoginWhenChangeToken = true
+              guard let window = UIApplication.shared.keyWindow else{return}
+              let navi = UINavigationController(rootViewController: loginController)
+              window.rootViewController = navi
+            })
+          }
         }
     }
 }
