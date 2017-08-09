@@ -20,11 +20,7 @@ class ReportController: BaseViewController {
   @IBOutlet weak var nameProfile: UILabel!
   @IBOutlet weak var addressProfile: UILabel!
   var work = Work()
-  var text:String?{
-    didSet{
-      rp.text = text
-    }
-  }
+  var text:String?
   
   var placeholder = "Pleasefillinthereport".localize
   @IBOutlet weak var rp: UITextView!{
@@ -93,11 +89,12 @@ class ReportController: BaseViewController {
     guard let token = UserDefaultHelper.getToken() else{return}
     let headers:HTTPHeaders = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
     guard let id = work.stakeholders?.owner?.id else{return}
-    
-    
-    if (text?.characters.count)! > 0 && text != "Pleasefillinthereport".localize {
+    guard let text = text else{return}
+    if text == "Pleasefillinthereport".localize || text.characters.count < 1  {
+      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasefillinthereport".localize)
+    }else{
       self.loadingView.show()
-      let param:Parameters = ["toId":id,"content":text!]
+      let param:Parameters = ["toId":id,"content":text]
       let apiClient = APIService.shared
       apiClient.postReserve(url: APIPaths().maidReport(), method: .post, parameters: param, header: headers) { (json, message) in
         self.loadingView.close()
@@ -105,8 +102,6 @@ class ReportController: BaseViewController {
           AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "", message: "Reportsentsuccessfully".localize)
         }
       }
-    }else{
-       AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasefillinthereport".localize)
     }
   }
 }

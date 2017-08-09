@@ -50,11 +50,11 @@ class LoginView: BaseViewController {
         super.viewWillAppear(animated)
         registerAutoKeyboard()
         self.title = "SignIn".localize
-        btnLogin.setTitle("login".localize, for: .normal)
+        btnLogin.setTitle("SignIn".localize.uppercased(), for: .normal)
         forgotPassword.setTitle("Forgotpassword".localize, for: .normal)
         userLogin.placeholder = "Username".localize
         passwordLogin.placeholder = "Password".localize
-        btRegister.setTitle("SignIn".localize, for: .normal)
+        btRegister.setTitle("SignUpNow".localize, for: .normal)
     }
     func token() -> String {
         guard let firebaseToken = InstanceID.instanceID().token() else {return ""}
@@ -70,7 +70,7 @@ class LoginView: BaseViewController {
         let apiClient = UserService.sharedInstance
         guard let username = userLogin.text, let password = passwordLogin.text else {return}
         if username == "" || password == "" {
-            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasecompleteallinformation".localize)
         }
         apiClient.logIn(userName: username, password: password, device_token: token(), completion: { (user, string, error) in
             self.loading.close()
@@ -121,7 +121,7 @@ class LoginView: BaseViewController {
         imageProfile.image = imageprofile
         let imagepassword = Ionicons.locked.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
         imagePassword.image = imagepassword
-        btAround.setTitle("Around".localize, for: .normal)
+        btAround.setTitle("Nearby".localize, for: .normal)
         btAround.backgroundColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
         logoImage.backgroundColor = UIColor.clear
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))

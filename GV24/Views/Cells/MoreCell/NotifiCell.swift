@@ -26,7 +26,7 @@ class NotifiCell: CustomTableViewCell {
         let image = Ionicons.chevronRight.image(32)
         btChoose.setImage(image, for: .normal)
         btChoose.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        lbNotif.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
+        lbNotif.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
         btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
     }
 

@@ -66,7 +66,6 @@ extension WorkInfoCell:disSelectIndexPathDelegate{
     func didSelect(index: Any) {
         let buttonPosition:CGPoint = (index as AnyObject).convert(.zero, to:self.collectionView)
         let indexPath = self.collectionView.indexPathForItem(at: buttonPosition)
-        print(indexPath!)
     
     }
 

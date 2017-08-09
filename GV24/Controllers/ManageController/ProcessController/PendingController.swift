@@ -65,7 +65,10 @@ extension PendingController:UITableViewDataSource{
             cell.lbSubTitle.text = processPending?.info?.workName?.name
             cell.lbComment.text = processPending?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear)"
-            cell.lbMoney.text = "\(processPending?.info?.salary ?? 0) VND"
+            if let salary = processPending?.info?.salary {
+               cell.lbMoney.text = String().numberFormat(number: salary) + " " + "VND"
+            }
+            
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.endAt)!, format: "HH:mm a")!
             if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
               cell.lbdeadLine.isHidden = false

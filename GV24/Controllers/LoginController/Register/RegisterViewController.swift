@@ -23,12 +23,12 @@ class RegisterViewController: BaseViewController {
     }
   override func setupViewBase() {
     super.setupViewBase()
-    self.title = "RegisterNow".localize
+    self.title = "SignUp".localize
     vComment.layer.borderWidth = 0.5
     vComment.layer.borderColor = UIColor.lightGray.cgColor
     vComment.layer.cornerRadius = 5
     vComment.clipsToBounds = true
-    btRegister.setTitle("RegisterNow".localize, for: .normal)
+    btRegister.setTitle("SignUp".localize, for: .normal)
     tfName.placeholder = "Fullname".localize
     tfEmail.placeholder = "Emailaddress".localize
     tfPhone.placeholder = "Phonenumber".localize
@@ -43,21 +43,26 @@ class RegisterViewController: BaseViewController {
     let apiClient = APIService.shared
     guard let email = tfEmail.text, let name = tfName.text,let phone = tfPhone.text,let note = comment.text else {return}
 
-    if email == ""{
-      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryouremailaddress".localize)
+    if name == ""{
+      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryourfullname".localize)
       
-    }else if name == "" {
-      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryourname".localize)
+    }else if email == "" {
+      AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryouremailaddress".localize)
 
     }else if phone == "" {
       AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryourphonenumber".localize)
+    }
+    if phone.isPhoneNumber == false {
+        AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleaseenteryourphonenumber".localize)
     }
     if email.isEmail == false {
       AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Emailformatisincorrect".localize)
     }
     let headers = ["Content-Type":"application/x-www-form-urlencoded"]
     let parameters:Parameters = ["name":name,"address":email,"phone":phone, "note":note]
+    loadingView.show()
     apiClient.postReserve(url: APIPaths().register(), method: .post, parameters: parameters, header: headers) { (json, error) in
+        self.loadingView.close()
       if error == "SUCCESS"{
         AlertStandard.sharedInstance.showAlertCt(controller: self, title: "", message: "Requestsentsuccessfully".localize, completion: { 
           self.navigationController?.popViewController(animated: true)

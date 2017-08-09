@@ -26,7 +26,7 @@ class InformationViewController: BaseViewController {
     tbInformation.register(UINib(nibName:NibInfoCommentCell,bundle:nil), forCellReuseIdentifier: infoCommentCellID)
     tbInformation.register(UINib(nibName: NibWorkInfoCell, bundle: nil), forCellReuseIdentifier: workInfoCellID)
     self.user = UserDefaultHelper.currentUser
-    customBarLeftButton()
+    //customBarLeftButton()
     self.tbInformation.rowHeight = UITableViewAutomaticDimension
     self.tbInformation.estimatedRowHeight = 100.0
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InformationViewController.dismissKeyboard))
@@ -39,18 +39,13 @@ class InformationViewController: BaseViewController {
     view.endEditing(true)
   }
   override func setupViewBase() {
-    self.title = "Information".localize
+    self.title = "Applicantprofile".localize
   }
-  func customBarLeftButton(){
-    let button = UIButton(type: .custom)
-    button.setTitle("Update".localize, for: .normal)
-    button.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSeven)
-    button.frame = CGRect(x: 0, y: 0, width: 100, height: 30)
-    button.setTitleColor( UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
-    button.setTitleColor(UIColor.brown, for: .highlighted)
-    button.addTarget(self, action: #selector(InformationViewController.selectButton), for: .touchUpInside)
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-  }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+    }
   
   func selectButton() {
     //navigationController?.pushViewController(DetailViewController(), animated: true)
@@ -161,9 +156,9 @@ extension InformationViewController:UITableViewDataSource{
       let cell:InforCell = (tbInformation.dequeueReusableCell(withIdentifier: inforCellID, for: indexPath) as? InforCell)!
       InforCell(cell: cell)
       if user?.gender == 0 {
-        cell.lbGender.text = gender.girl
+        cell.lbGender.text = "Girl".localize
       }else{
-        cell.lbGender.text = gender.boy
+        cell.lbGender.text = "Boy".localize
       }
       let url = URL(string: user!.image!)
       if url == nil {
@@ -182,9 +177,10 @@ extension InformationViewController:UITableViewDataSource{
       let cell: WorkInfoCell = tbInformation.dequeueReusableCell(withIdentifier: workInfoCellID, for: indexPath) as! WorkInfoCell
       
       cell.data = workTypeList
-      cell.priceLabel.text = "\(UserDefaultHelper.currentUser?.workInfor?.price ?? 0)" + " /" +  "hour".localize
+      cell.priceLabel.text = String().numberFormat(number: UserDefaultHelper.currentUser?.workInfor?.price ?? 0) + " / " +  "hour".localize
       cell.topLabel.text = "WorkCapacity".localize.uppercased()
       cell.llbAssessment.text = "Assessment".localize.uppercased()
+        
       return cell
     }else{
       let cell:InfoCommentCell = (tbInformation.dequeueReusableCell(withIdentifier: infoCommentCellID, for: indexPath) as? InfoCommentCell)!

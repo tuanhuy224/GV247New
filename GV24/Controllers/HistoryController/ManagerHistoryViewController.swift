@@ -61,8 +61,8 @@ class ManagerHistoryViewController: BaseViewController {
     }
     
     func setupSegmentTitle() {
-        self.segmentControl.setTitle("CompletedWork".localize, forSegmentAt: 0)
-        self.segmentControl.setTitle("Workplace".localize, forSegmentAt: 1)
+        self.segmentControl.setTitle("CompleteW".localize, forSegmentAt: 0)
+        self.segmentControl.setTitle("Formerpartners".localize, forSegmentAt: 1)
         self.toLabel.text = "Duration".localize
     }
     

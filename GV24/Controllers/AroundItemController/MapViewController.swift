@@ -39,7 +39,7 @@ class MapViewController: BaseViewController {
     }
     override func setupViewBase() {
         super.setupViewBase()
-        self.title = "Around".localize
+        self.title = "Nearby".localize
     }
     func initializeTheLocationManager(){
         mapView.isMyLocationEnabled = true

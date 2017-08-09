@@ -16,7 +16,11 @@ class ManageViewController: BaseViewController {
   var processOnCreate = [Work]()
   var processPending = [Work]()
   var processDone = [Work]()
-  var processOnDoing = [Work]()
+  var processOnDoing = [Work](){
+    didSet{
+    tbManage.reloadData()
+    }
+  }
   var processRecieved = [Work]()
   var returnValue:Int = 0
   var longGesture = UILongPressGestureRecognizer()
@@ -43,6 +47,9 @@ class ManageViewController: BaseViewController {
     segmentCtr.setTitle("assigned".localize, forSegmentAt: 1)
     segmentCtr.setTitle("runnning".localize, forSegmentAt: 2)
     getProcess()
+    if processOnDoing == [] {
+      return
+    }
   }
   @IBAction func segmentControlAction(_ sender: Any) {
     let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
@@ -151,6 +158,7 @@ extension ManageViewController:UITableViewDataSource{
       UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
       cell.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
       
+      
     case 1:
       vDoing.isHidden = true
       cell.workNameLabel.text = processRecieved[indexPath.row].info?.title
@@ -180,27 +188,38 @@ extension ManageViewController:UITableViewDataSource{
         cell1.vSegment.isHidden = true
         cell1.heightBtChoose.constant = 0
         
-        cell1.nameUser.text = processOnDoing[0].stakeholders?.owner?.name
-        cell1.addressName.text = processOnDoing[0].stakeholders?.owner?.address?.name
-        let url = URL(string: (processOnDoing[0].stakeholders?.owner?.image)!)!
-        if url == nil {
-          cell1.imageName.image = UIImage(named: "avatar")
+        if processOnDoing == [] {
+          cell1.backgroundColor = .groupTableViewBackground
+          cell1.isHidden = true
+          return cell1
         }else{
-          DispatchQueue.main.async {
-            cell1.imageName.kf.setImage(with: url)
+          cell1.nameUser.text = processOnDoing[0].stakeholders?.owner?.name
+          cell1.addressName.text = processOnDoing[0].stakeholders?.owner?.address?.name
+          let url = URL(string: (processOnDoing[0].stakeholders?.owner?.image)!)!
+          if url == nil {
+            cell1.imageName.image = UIImage(named: "avatar")
+          }else{
+            DispatchQueue.main.async {
+              cell1.imageName.kf.setImage(with: url)
+            }
           }
         }
         return cell1
       case 1:
-        
-        cell2.lbDescription.text = "Description".localize
-        cell2.lbTitle.text = processOnDoing[0].info?.title
-        cell2.lbSubTitle.text = processOnDoing[0].info?.address?.name
-        cell2.lbComment.text = processOnDoing[0].info?.content
-        cell2.lbDate.text = "\(Date(isoDateString: (processOnDoing[0].workTime?.startAt)!).dayMonthYear)"
-        cell2.lbMoney.text = "\(processOnDoing[0].info?.salary ?? 0) VND"
-        cell2.lbTime.text = String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.endAt)!, format: "HH:mm a")!
-        cell2.lbAddress.text = processOnDoing[0].stakeholders?.owner?.address?.name
+        if processOnDoing == [] {
+          cell2.backgroundColor = .groupTableViewBackground
+          cell2.isHidden = true
+           return cell2
+        }else{
+          cell2.lbDescription.text = "Description".localize
+          cell2.lbTitle.text = processOnDoing[0].info?.title
+          cell2.lbSubTitle.text = processOnDoing[0].info?.address?.name
+          cell2.lbComment.text = processOnDoing[0].info?.content
+          cell2.lbDate.text = "\(Date(isoDateString: (processOnDoing[0].workTime?.startAt)!).dayMonthYear)"
+          cell2.lbMoney.text = "\(processOnDoing[0].info?.salary ?? 0) VND"
+          cell2.lbTime.text = String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.endAt)!, format: "HH:mm a")!
+          cell2.lbAddress.text = processOnDoing[0].stakeholders?.owner?.address?.name
+        }
         return cell2
       default:
         break
@@ -246,9 +265,14 @@ extension ManageViewController:UITableViewDelegate{
       navigationController?.pushViewController(navi, animated: true)
       break
     case 2:
-      let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
-      navi.workPending = processOnDoing[indexPath.row]
-      navigationController?.pushViewController(navi, animated: true)
+      if processOnDoing == [] {
+        
+      }else{
+        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+        navi.workPending = processOnDoing[indexPath.row]
+        navigationController?.pushViewController(navi, animated: true)
+      }
+
       break
     default:
       break

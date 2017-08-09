@@ -52,19 +52,24 @@ extension String {
   }
   
   //validate PhoneNumber
-  var isPhoneNumber: Bool {
-    do {
-      let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
-      let matches = detector.matches(in: self, options: [], range: NSMakeRange(0, self.characters.count))
-      if let res = matches.first {
-        return res.resultType == .phoneNumber && res.range.location == 0 && res.range.length == self.characters.count
-      } else {
-        return false
-      }
-    } catch {
-      return false
+    var isPhoneNumber : Bool {
+        let mobileFormat = "^(\\+\\d{1,3}[- ]?)?\\d{10,11}$"
+        
+        let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobileFormat)
+        let mobileTestResult = mobileTest.evaluate(with: self)
+        if !mobileTestResult {
+            return false
+        }
+        return true
     }
-  }
+    
+    func numberFormat(number: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.groupingSeparator = "."
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:number))
+        return formattedNumber!
+    }
 
 }
 

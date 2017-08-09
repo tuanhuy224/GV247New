@@ -81,8 +81,10 @@ extension DetailViewController:UITableViewDataSource{
             let cell:InfoDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath) as! InfoDetailCell
             DispatchQueue.main.async {
                 cell.lbTitle.text = self.works.info?.title
+                cell.lbDescription.text = "Description".localize
                 cell.lbSubTitle.text = self.works.info?.workName?.name
-                cell.lbMoney.text = "\(self.works.info!.salary!)\("Dollar".localize)"
+                guard let salary = self.works.info?.salary else {return}
+                cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
                 cell.lbComment.text = self.works.info?.content
                 cell.lbAddress.text = self.works.info?.address?.name
                 cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
@@ -95,9 +97,13 @@ extension DetailViewController:UITableViewDataSource{
 extension DetailViewController:UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
-        navi.workPending = works
-        navigationController?.pushViewController(navi, animated: true)
+        
+        if indexPath.section == 0 {
+            let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+            navi.workPending = works
+            navigationController?.pushViewController(navi, animated: true)
+        }
+
     }
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
@@ -111,6 +117,7 @@ extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
         self.loadingView.show()
         apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
           self.loadingView.close()
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workchosensuccessfully".localize)
         }
       }
 

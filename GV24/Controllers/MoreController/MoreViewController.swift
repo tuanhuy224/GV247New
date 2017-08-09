@@ -72,7 +72,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         }else if indexPath.section == 1{
             let cell:NotifiCell = tbMore.on_dequeue(idxPath: indexPath)
                 cell.btChooseLanguage.setTitle("Language".localize, for: .normal)
-                cell.lbNotif.text = "Announcement".localize
+                cell.lbNotif.text = "Notification".localize
                 cell.delegate = self
                 cell.notiDelegate = self
             return cell
@@ -91,7 +91,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             let cell:FollowCell = tbMore.on_dequeue(idxPath: indexPath)
             cell.btFollowAc.setTitle("shareGv24".localize, for: .normal)
             cell.btFacebookAc.setTitle("followUs".localize, for: .normal)
-            cell.btLogOut.setTitle("Logout".localize, for: .normal)
+            cell.btLogOut.setTitle("SignOut".localize, for: .normal)
             cell.delegate = self
             return cell
         }else{

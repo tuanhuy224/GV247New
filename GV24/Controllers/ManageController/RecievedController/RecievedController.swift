@@ -70,7 +70,9 @@ extension RecievedController:UITableViewDataSource{
             cell.lbSubTitle.text = processRecieved?.info?.address?.name
             cell.lbComment.text = processRecieved?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear)"
-            cell.lbMoney.text = "\(processRecieved?.info?.salary ?? 0) VND"
+            if let salary = processRecieved?.info?.salary {
+                cell.lbMoney.text = String().numberFormat(number: salary) + " " + "VND"
+            }
             cell.lbTime.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved?.workTime?.endAt)!).hourMinute)"
             cell.lbAddress.text = processRecieved?.info?.address?.name
             if Date(isoDateString: (processRecieved?.workTime?.startAt)!).comparse == true {

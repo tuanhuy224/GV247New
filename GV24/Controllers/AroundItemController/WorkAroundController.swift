@@ -160,6 +160,11 @@ class WorkAroundController: BaseViewController {
     }
 
     func searchText() {
+        if self.textLocation == nil {
+            loadData({ (_, _) in
+                
+            })
+        }
         
         guard let text = self.textLocation else {
             return

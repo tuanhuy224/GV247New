@@ -51,7 +51,7 @@ class WorkDetailCell: CustomTableViewCell {
         vSegment.isHidden = true
         nameUser.font = fontSize.fontName(name: .medium, size: 17)
         addressName.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
-        btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
+        btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 15)
         btChoose.setTitleColor(UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1), for: .normal)
         DispatchQueue.main.async {
             self.imageName.image = UIImage(named: "avatar")
