@@ -13,7 +13,11 @@ class AroundItemController: BaseViewController {
     @IBOutlet weak var tbAround: UITableView!
     var id:String?
     var name:String?
-    var works = [Work]()
+    var works = [Work](){
+        didSet{
+        self.tbAround.reloadData()
+        }
+    }
     var currentLocation: CLLocationCoordinate2D?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +29,16 @@ class AroundItemController: BaseViewController {
         self.tbAround.estimatedRowHeight = 100.0
     }
     func loadAroundItem(){
-        let parameter:[String:Any] = ["work":id!,"lng": currentLocation!.longitude,"lat": currentLocation!.latitude,"minDistance":0,"maxDistance":10]
+        guard let id = id else{return}
+        guard let current = currentLocation else{return}
+        let parameter:[String:Any] = ["work":id,"lat": current.latitude,"lng": current.longitude,"minDistance":0,"maxDistance":10]
         let apiClient = AroundTask.sharedInstall
         loadingView.show()
         apiClient.getWorkFromURL(url: APIPaths().getTaskByAround(), parameter: parameter) { (works, string) in
             self.loadingView.close()
             if string == nil{
                 self.works = works!
-                self.tbAround.reloadData()
+                
             }
         }
     }
@@ -69,9 +75,9 @@ extension AroundItemController:UITableViewDelegate{
         detail.works = works[indexPath.row]
         detail.idWork = works[indexPath.row].id
         detail.titleString = name
-        if UserDefaultHelper.getToken() == nil {
-            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
-        }
+//        if UserDefaultHelper.getToken() == nil {
+//            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
+//        }
         navigationController?.pushViewController(detail, animated: true)
     }
 }

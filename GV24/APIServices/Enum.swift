@@ -16,7 +16,7 @@ enum WorkStatus: String {
     case OnDoing =  "000000000000000000000004"
     case Done    =  "000000000000000000000005"
     case Direct  =  "000000000000000000000006"
-}
+}                    
 
 enum ResultStatus: String {
     case Success     = "Success"

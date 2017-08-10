@@ -89,7 +89,9 @@ class ReportController: BaseViewController {
     guard let token = UserDefaultHelper.getToken() else{return}
     let headers:HTTPHeaders = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
     guard let id = work.stakeholders?.owner?.id else{return}
-    guard let text = text else{return}
+    guard let text = text else{
+        return AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasefillinthereport".localize)
+    }
     if text == "Pleasefillinthereport".localize || text.characters.count < 1  {
       AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasefillinthereport".localize)
     }else{

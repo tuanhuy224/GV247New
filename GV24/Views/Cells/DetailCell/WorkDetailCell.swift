@@ -24,12 +24,12 @@ import IoniconsSwift
 }
 class WorkDetailCell: CustomTableViewCell {
 
-  @IBOutlet weak var btAction: UIButton!
+    @IBOutlet weak var btChooseConstraint: NSLayoutConstraint!
+    @IBOutlet weak var constraintH: NSLayoutConstraint!
+    @IBOutlet weak var btAction: UIButton!
     @IBOutlet weak var heightBtChoose: NSLayoutConstraint!
     @IBOutlet weak var heightHeader: NSLayoutConstraint!
-    @IBOutlet weak var constraintChoose: NSLayoutConstraint!
     @IBOutlet weak var vSegment: UIView!
-    @IBOutlet weak var constraintHeightButtonChoose: NSLayoutConstraint!
     @IBOutlet weak var imageName: UIImageView!
     @IBOutlet weak var nameUser: UILabel!
     @IBOutlet weak var addressName: UILabel!

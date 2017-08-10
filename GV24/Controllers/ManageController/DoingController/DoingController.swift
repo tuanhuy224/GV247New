@@ -61,7 +61,7 @@ extension DoingController:UITableViewDataSource{
             let cell:InfoDetailCell = tbDoing.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
             cell.lbDescription.text = "Description".localize
             cell.lbTitle.text = ProcessDoing?.info?.title
-            cell.lbSubTitle.text = ProcessDoing?.info?.address?.name
+            cell.lbSubTitle.text = ProcessDoing?.info?.workName?.name
             cell.lbComment.text = ProcessDoing?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (ProcessDoing?.workTime?.startAt)!).dayMonthYear)"
             if let salary = ProcessDoing?.info?.salary {

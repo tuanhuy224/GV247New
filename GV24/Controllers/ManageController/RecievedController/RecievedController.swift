@@ -51,6 +51,11 @@ extension RecievedController:UITableViewDataSource{
                 cell.btChoose.isEnabled = true
                 cell.heightBtChoose.constant = 0
             }
+            cell.heightBtChoose.constant = 0
+            cell.btChoose.isHidden = true
+            cell.vSegment.isHidden = true
+            cell.constraintH.constant = 0
+            cell.btChooseConstraint.constant = 0
             cell.nameUser.text = processRecieved?.stakeholders?.owner?.name
             cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
             let url = URL(string: (processRecieved?.stakeholders?.owner?.image)!)
@@ -67,7 +72,7 @@ extension RecievedController:UITableViewDataSource{
             let cell:InfoDetailCell = tbRecieved.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
             cell.lbDescription.text = "Description".localize
             cell.lbTitle.text = processRecieved?.info?.title
-            cell.lbSubTitle.text = processRecieved?.info?.address?.name
+            cell.lbSubTitle.text = processRecieved?.info?.workName?.name
             cell.lbComment.text = processRecieved?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear)"
             if let salary = processRecieved?.info?.salary {

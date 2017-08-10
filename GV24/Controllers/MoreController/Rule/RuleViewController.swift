@@ -10,18 +10,14 @@ import UIKit
 
 class RuleViewController: UIViewController {
 
-    @IBOutlet weak var tfTextFiled: UITextView!
-    @IBOutlet weak var lbRule: UILabel!
+    @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        webView.loadHTMLString("Termsofuse".localize, baseURL: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "TermsofuseTitle".localize
-        tfTextFiled.text = "Termsofuse".localize
-        tfTextFiled.isEditable = false
     }
 
 }

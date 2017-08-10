@@ -8,8 +8,8 @@
 import UIKit
 class PendingController: BaseViewController {
     @IBOutlet weak var tbPending: UITableView!
-  var processPending:Work?
-  var isChoose:Bool = false
+    var processPending:Work?
+    var isChoose:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         tbPending.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
@@ -26,7 +26,7 @@ class PendingController: BaseViewController {
     }
 }
 extension PendingController:UITableViewDataSource{
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -37,26 +37,32 @@ extension PendingController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
-            cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
             if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
-//              cell.btAction.isUserInteractionEnabled = false
-//              cell.btChoose.isUserInteractionEnabled = false
-              isChoose = true
-            }
-              cell.btChoose.isHidden = false
-              cell.delegateRequest = self
-              cell.vSegment.isHidden = false
-            cell.nameUser.text = processPending?.stakeholders?.owner?.name
-            cell.delegate = self
-            cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
-            let url = URL(string: (processPending?.stakeholders?.owner?.image)!)
-            if url == nil {
-                cell.imageName.image = UIImage(named: "avatar")
+                cell.heightBtChoose.constant = 0
+                cell.btChoose.isHidden = true
+                cell.vSegment.isHidden = true
+                cell.constraintH.constant = 0
+                cell.btChooseConstraint.constant = 0
+                isChoose = true
             }else{
-                DispatchQueue.main.async {
-                    cell.imageName.kf.setImage(with: url)
+                cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
+                cell.btChoose.isHidden = false
+                cell.delegateRequest = self
+                cell.vSegment.isHidden = false
+                cell.nameUser.text = processPending?.stakeholders?.owner?.name
+                cell.delegate = self
+                cell.addressName.text = processPending?.stakeholders?.owner?.address?.name
+                let url = URL(string: (processPending?.stakeholders?.owner?.image)!)
+                if url == nil {
+                    cell.imageName.image = UIImage(named: "avatar")
+                }else{
+                    DispatchQueue.main.async {
+                        cell.imageName.kf.setImage(with: url)
+                    }
                 }
+            
             }
+            
             return cell
         case 1:
             let cell:InfoDetailCell = tbPending.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
@@ -66,23 +72,23 @@ extension PendingController:UITableViewDataSource{
             cell.lbComment.text = processPending?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear)"
             if let salary = processPending?.info?.salary {
-               cell.lbMoney.text = String().numberFormat(number: salary) + " " + "VND"
+                cell.lbMoney.text = String().numberFormat(number: salary) + " " + "VND"
             }
             
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.endAt)!, format: "HH:mm a")!
             if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
-              cell.lbdeadLine.isHidden = false
-              cell.lbdeadLine.text = "Expired".localize
+                cell.lbdeadLine.isHidden = false
+                cell.lbdeadLine.text = "Expired".localize
             }else{
-              cell.lbdeadLine.isHidden = true
+                cell.lbdeadLine.isHidden = true
             }
             var deadlineWitdh:CGFloat = 0
             if !cell.lbdeadLine.isHidden {
-              let text = cell.lbdeadLine.text ?? ""
-              let height = cell.lbdeadLine.bounds.height
-              let font = cell.lbdeadLine.font!
-              deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
-              deadlineWitdh = ceil(deadlineWitdh) + 20
+                let text = cell.lbdeadLine.text ?? ""
+                let height = cell.lbdeadLine.bounds.height
+                let font = cell.lbdeadLine.font!
+                deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
+                deadlineWitdh = ceil(deadlineWitdh) + 20
             }
             cell.contraintWidthDeadline.constant = deadlineWitdh
             cell.lbAddress.text = processPending?.info?.address?.name
@@ -155,30 +161,30 @@ extension PendingController:CancelWorkDelegate{
                 self.navigationController?.pushViewController(mana, animated: true)
             })
         }
- 
+        
         tbPending.reloadData()
     }
 }
 extension PendingController:directRequestDelegate{
     func chooseActionRequest() {
         let alertC = AlertStandard.sharedInstance
-      if isChoose == true {
-         AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workyouchooseisexpired".localize)
-      }else{
-        alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) {
-          self.loadingView.show()
-          guard let ownerId = self.processPending?.stakeholders?.owner?.id else {return}
-          guard let taskID = self.processPending?.id else {return}
-          guard let token = UserDefaultHelper.getToken() else{return}
-          let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
-          let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
-          let apiClient = APIService.shared
-          apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
-            self.loadingView.close()
-            self.navigationController?.popViewController(animated: true)
-          }
+        if isChoose == true {
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workyouchooseisexpired".localize)
+        }else{
+            alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) {
+                self.loadingView.show()
+                guard let ownerId = self.processPending?.stakeholders?.owner?.id else {return}
+                guard let taskID = self.processPending?.id else {return}
+                guard let token = UserDefaultHelper.getToken() else{return}
+                let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
+                let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
+                let apiClient = APIService.shared
+                apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
+                    self.loadingView.close()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
-      }
     }
 }
 //extension PendingController:denyRequestDelegate{

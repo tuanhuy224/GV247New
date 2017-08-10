@@ -13,8 +13,9 @@ import SwiftyJSON
 import FirebaseCore
 import FirebaseInstanceID
 
-class HomeViewDisplayController: BaseViewController {
+class HomeViewDisplayController: BaseViewController{
     var user:User?
+    
     @IBOutlet weak var lbHistory: UILabel!
     @IBOutlet weak var lbManage: UILabel!
     @IBOutlet weak var workAround: UIButton!
@@ -28,6 +29,7 @@ class HomeViewDisplayController: BaseViewController {
     @IBOutlet weak var lbAround: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.customBarRightButton()
     }
     override func decorate() {
@@ -47,6 +49,8 @@ class HomeViewDisplayController: BaseViewController {
         lbManage.font = fontSize.fontName(name: .medium, size: sizeFour)
         lbAround.font = fontSize.fontName(name: .medium, size: sizeFour)
     }
+    
+    
     func customBarRightButton(){
         let button = UIButton(type: .custom)
         button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)), for: .normal)

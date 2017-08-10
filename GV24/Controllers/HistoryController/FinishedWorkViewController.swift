@@ -24,9 +24,8 @@ class FinishedWorkViewController: BaseViewController {
     }
     
     func setupTableView() {
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName: NibFinishedWorkCell, bundle: nil), forCellReuseIdentifier: finishedWorkCellID)
         tableView.register(UINib(nibName: NibWorkerViewCell, bundle: nil), forCellReuseIdentifier: workerCellID)
     }
@@ -77,7 +76,8 @@ class FinishedWorkViewController: BaseViewController {
             cell.workNameLabel.text = work?.info?.title
             cell.workTypeLabel.text = work?.info?.workName?.name
             cell.workContentLabel.text = work?.info?.content
-            
+//            cell.lbDes.text = "Description".localize
+//            cell.lbDes.font = fontSize.fontName(name: .regular, size: 16)
             let salary = work?.info?.salary
             let salaryText = String(describing: salary!)
             cell.workSalaryLabel.text = salaryText + " VND"
@@ -159,21 +159,7 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
 extension FinishedWorkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "" : "Doer".localize
-    }
-
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.lightGray
-        header.textLabel?.font = UIFont(name: "SF UI Text Light", size: 16)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0.1 : 20
-    }
-
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 40
+        return section == 0 ? "Description".localize.uppercased() : "Chủ nhà".localize.uppercased()
     }
 }
 

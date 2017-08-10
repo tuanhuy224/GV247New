@@ -42,18 +42,18 @@ class DetailViewController: BaseViewController {
         guard let token = UserDefaultHelper.getToken() else{return}
         guard let id = idWork else{return}
         let parameter:Parameters = ["id":id]
-            header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
-            apiService.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header!) { (json, error) in
-                if json == "SUCCESS"{
-                    //self.isStatus = true
-                }
+        header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":token]
+        apiService.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header!) { (json, error) in
+            if json == "SUCCESS"{
+                //self.isStatus = true
+            }
         }
     }
 }
 extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
-    
+        return 1
+        
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -95,7 +95,7 @@ extension DetailViewController:UITableViewDataSource{
     }
 }
 extension DetailViewController:UITableViewDelegate{
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
@@ -103,29 +103,33 @@ extension DetailViewController:UITableViewDelegate{
             navi.workPending = works
             navigationController?.pushViewController(navi, animated: true)
         }
-
     }
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
-      guard let id = idWork else{return}
-      guard let token = UserDefaultHelper.getToken() else{return}
-      let parameter = ["id":id]
-      let header = ["hbbgvauth":token]
-      let apiClient = APIService.shared
-      AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) {
-        self.loadingView.show()
-        apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
-          self.loadingView.close()
-            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workchosensuccessfully".localize)
+        guard let id = idWork else{return}
+        guard let token = UserDefaultHelper.getToken() else{
+            return AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
+            }
+        let parameter = ["id":id]
+        let header = ["hbbgvauth":token]
+        let apiClient = APIService.shared
+        AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) {
+            self.loadingView.show()
+            apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
+                self.loadingView.close()
+                if string == "RESERVE_EXIST"{
+                    AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workcurrentlychosen".localize)
+                }
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workchosensuccessfully".localize)
+            }
         }
-      }
-
+        
     }
 }
 extension DetailViewController:chooseWorkDelegate{
     func detailManagementDelegate(){
-    
+        
     }
 }
 extension DetailViewController:OwnerDelegate{

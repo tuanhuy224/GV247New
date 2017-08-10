@@ -86,3 +86,18 @@ extension UIButton{
   }
 
 }
+
+extension NSMutableAttributedString {
+    @discardableResult func bold(_ text:String) -> NSMutableAttributedString {
+        let attrs:[String:AnyObject] = [NSFontAttributeName : fontSize.fontName(name: .bold, size: 16)]
+        let boldString = NSMutableAttributedString(string:"\(text)", attributes:attrs)
+        self.append(boldString)
+        return self
+    }
+    
+    @discardableResult func normal(_ text:String)->NSMutableAttributedString {
+        let normal =  NSAttributedString(string: text)
+        self.append(normal)
+        return self
+    }
+}

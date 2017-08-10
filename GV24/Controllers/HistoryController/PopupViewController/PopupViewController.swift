@@ -93,7 +93,7 @@ class PopupViewController: BaseViewController {
             }
             else {
                 print("aaa: descending")
-                let alertController = AlertHelper.sharedInstance.showAlertError(title: "Announcement".localize, message: "PleaseSelectTheStartDateLessThanOrEqualTheEndDate".localize)
+                let alertController = AlertHelper.sharedInstance.showAlertError(title: "Notification".localize, message: "PleaseSelectTheStartDateLessThanOrEqualTheEndDate".localize)
                 present(alertController, animated: true, completion: nil)
             }
         }
@@ -108,7 +108,7 @@ class PopupViewController: BaseViewController {
                 }
                 else {
                     print("bbb: ascending")
-                    let alertController = AlertHelper.sharedInstance.showAlertError(title: "Announcement".localize, message: "PleaseSelectTheEndDateGreaterThanOrEqualTheStartDate".localize)
+                    let alertController = AlertHelper.sharedInstance.showAlertError(title: "Notification".localize, message: "PleaseSelectTheEndDateGreaterThanOrEqualTheStartDate".localize)
                     present(alertController, animated: true, completion: nil)
                 }
             }

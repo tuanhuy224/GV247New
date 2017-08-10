@@ -57,13 +57,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dọn dẹp nhà cửa" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyC-YP-vOT">
-                                <rect key="frame" x="56" y="27" width="256" height="13.5"/>
+                                <rect key="frame" x="56" y="27" width="256" height="13"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Cần một bạn nữ siêng năng dọn phòng vào thứ tư sau 9h.Cần một bạn nữ siêng năng dọn phòng vào thứ tư sau 9h." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIU-xK-zfc">
-                                <rect key="frame" x="8" y="50.5" width="304" height="43"/>
+                                <rect key="frame" x="8" y="50" width="304" height="43"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -194,7 +194,6 @@
                     <constraint firstAttribute="trailing" secondItem="hFV-g3-z2u" secondAttribute="trailing" id="6AM-DT-IW1"/>
                     <constraint firstAttribute="bottom" secondItem="hFV-g3-z2u" secondAttribute="bottom" id="AHG-OA-Jbn"/>
                     <constraint firstItem="WnA-1h-0K6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="D4I-as-0pr"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hFV-g3-z2u" secondAttribute="bottom" constant="-8" id="KRD-ql-e6N"/>
                     <constraint firstItem="hFV-g3-z2u" firstAttribute="top" secondItem="WnA-1h-0K6" secondAttribute="bottom" id="NXP-mD-48I"/>
                     <constraint firstAttribute="trailing" secondItem="WnA-1h-0K6" secondAttribute="trailing" id="SSG-hI-p38"/>
                     <constraint firstItem="WnA-1h-0K6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="kPv-A8-Pey"/>

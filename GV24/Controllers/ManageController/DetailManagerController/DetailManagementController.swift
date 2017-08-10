@@ -22,7 +22,7 @@ class DetailManagementController: BaseViewController {
   override func setupViewBase() {
     super.setupViewBase()
     detailManager.reloadData()
-    self.navigationItem.title = "Information".localize
+    self.navigationItem.title = "Applicantprofile".localize
   }
   // Mark: - custom cell for detail management
   func InforCellConfigure(cell:InforCell){

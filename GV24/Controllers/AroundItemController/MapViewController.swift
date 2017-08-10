@@ -41,6 +41,15 @@ class MapViewController: BaseViewController {
         super.setupViewBase()
         self.title = "Nearby".localize
     }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let current = currentLocation else {return}
+        let marker = GMSMarker(position: current)
+        marker.map = mapView
+    }
     func initializeTheLocationManager(){
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
@@ -109,6 +118,7 @@ extension MapViewController: CLLocationManagerDelegate {
         let location: CLLocation = locations.last!
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,longitude: location.coordinate.longitude,zoom: zoomLevel)
         currentLocation = location.coordinate
+        
         if mapView.isHidden {
             mapView.isHidden = false
             mapView.camera = camera
@@ -116,6 +126,10 @@ extension MapViewController: CLLocationManagerDelegate {
             mapView.animate(to: camera)
         }
     }
+    
+    
+    
+
     // MARK: - Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -138,16 +152,16 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController:GMSMapViewDelegate{
-    //MARK: GMSMapViewDelegate Implimentation.
-    internal func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D){
-        plotMarker(AtCoordinate: CLLocationCoordinate2D.init(latitude: coordinate.latitude, longitude: coordinate.longitude),onMapView: mapView)
-    }
-    //MARK: Plot Marker Helper
-    private func plotMarker(AtCoordinate coordinate : CLLocationCoordinate2D, onMapView vwMap : GMSMapView) -> Void{
-        mapView.clear()
-        let marker = GMSMarker(position: coordinate)
-        marker.map = vwMap
-    }
+//    //MARK: GMSMapViewDelegate Implimentation.
+//    internal func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D){
+//        plotMarker(AtCoordinate: CLLocationCoordinate2D.init(latitude: coordinate.latitude, longitude: coordinate.longitude),onMapView: mapView)
+//    }
+//    //MARK: Plot Marker Helper
+//    private func plotMarker(AtCoordinate coordinate : CLLocationCoordinate2D, onMapView vwMap : GMSMapView) -> Void{
+//        mapView.clear()
+//        let marker = GMSMarker(position: coordinate)
+//        marker.map = vwMap
+//    }
 }
 extension MapViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -160,6 +174,7 @@ extension MapViewController:UISearchBarDelegate{
                 if (placeMarks?.count)! > 0{
                     guard let firstLocation = placeMarks?.first?.location else{return}
                     self.handle(location: firstLocation.coordinate)
+                    
                     let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
                     around.currentLocation = firstLocation.coordinate
                     self.navigationController?.pushViewController(around, animated: true)

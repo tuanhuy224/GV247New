@@ -16,89 +16,81 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FinishedWorkCell" rowHeight="218" id="KGk-i7-Jjw" customClass="FinishedWorkCell" customModule="GV24" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="218"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FinishedWorkCell" rowHeight="215" id="KGk-i7-Jjw" customClass="FinishedWorkCell" customModule="GV24" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="217.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="214.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6JX-1Q-xbz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="1Xd-Qo-a23"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="78S-Hp-G7B"/>
-                        </constraints>
-                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="don dep nha" translatesAutoresizingMaskIntoConstraints="NO" id="jBP-uT-YKh">
-                        <rect key="frame" x="8" y="11" width="50" height="50"/>
+                        <rect key="frame" x="8" y="8" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="C9s-hH-k4t"/>
                             <constraint firstAttribute="width" constant="50" id="j3A-pj-5du"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dọn dẹp nhà cửa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4f-Yg-jJf">
-                        <rect key="frame" x="68" y="34" width="236" height="14"/>
+                        <rect key="frame" x="68" y="31" width="236" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTp-yg-o1g">
-                        <rect key="frame" x="15" y="71" width="297" height="39.5"/>
+                        <rect key="frame" x="15" y="68" width="297" height="39.5"/>
                         <string key="text">Cần một bạn nữ siêng năng dọn phòng ngày sáng thứ tư, sau 9 giờ. Cần một bạn nữ siêng năng dọn phòng ngày sáng thứ tư, sau 9 giờ.</string>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7V-25-yhS">
-                        <rect key="frame" x="0.0" y="118.5" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="115.5" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="C7k-wR-1vv"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="olJ-UK-exx">
-                        <rect key="frame" x="15" y="129" width="15" height="15"/>
+                        <rect key="frame" x="15" y="126" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="wOd-Rg-mUB"/>
                             <constraint firstAttribute="width" constant="15" id="wsP-Ep-ACW"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JiD-AK-gny">
-                        <rect key="frame" x="15" y="162.5" width="15" height="15"/>
+                        <rect key="frame" x="15" y="159.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="1TX-Lg-0Tf"/>
                             <constraint firstAttribute="width" constant="15" id="fkg-6c-6bQ"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w6W-Ac-chQ">
-                        <rect key="frame" x="15" y="196" width="15" height="15"/>
+                        <rect key="frame" x="15" y="193" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="KvO-aL-ZGq"/>
                             <constraint firstAttribute="width" constant="15" id="efX-ow-HA5"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.000 VND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-OF-8jx">
-                        <rect key="frame" x="38" y="129" width="76" height="14.5"/>
+                        <rect key="frame" x="38" y="126" width="76" height="14.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/10/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oj-Fy-raL">
-                        <rect key="frame" x="38" y="162.5" width="61" height="14.5"/>
+                        <rect key="frame" x="38" y="159.5" width="61" height="14.5"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 đường 2, Phường Bình Thọ, Quận 3, Thành phố Hồ Chí Minh." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCH-JF-qhT">
-                        <rect key="frame" x="40" y="196" width="272" height="15"/>
+                        <rect key="frame" x="40" y="193" width="272" height="15"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeV-W9-ghJ">
-                        <rect key="frame" x="0.0" y="186" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="183" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="WHg-Zr-Gme"/>
@@ -106,26 +98,26 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lau dọn phòng khách" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-qc-JJK">
-                        <rect key="frame" x="68" y="15" width="236" height="18"/>
+                        <rect key="frame" x="68" y="12" width="236" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gld-MG-Jhg">
-                        <rect key="frame" x="0.0" y="152.5" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="149.5" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="Zcn-8a-ihy"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ei-vx-Uye">
-                        <rect key="frame" x="8" y="87" width="30" height="30"/>
+                        <rect key="frame" x="8" y="84" width="30" height="30"/>
                         <connections>
                             <action selector="btPayment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kkP-my-jiF"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9h00 am - 12h00 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We0-ti-Eyc">
-                        <rect key="frame" x="186" y="162" width="118" height="14"/>
+                        <rect key="frame" x="186" y="159" width="118" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -133,22 +125,19 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="gld-MG-Jhg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="16b-lo-ubq"/>
-                    <constraint firstItem="4g8-qc-JJK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="3V9-8u-1r3"/>
                     <constraint firstItem="BTp-yg-o1g" firstAttribute="top" secondItem="K4f-Yg-jJf" secondAttribute="bottom" constant="23" id="3ZG-20-uDh"/>
                     <constraint firstItem="5oj-Fy-raL" firstAttribute="top" secondItem="gld-MG-Jhg" secondAttribute="bottom" constant="9" id="5gT-ir-mTY"/>
-                    <constraint firstItem="6JX-1Q-xbz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="A3Q-rE-aKn"/>
                     <constraint firstItem="5oj-Fy-raL" firstAttribute="leading" secondItem="JiD-AK-gny" secondAttribute="trailing" constant="8" id="Bfa-cR-kjC"/>
                     <constraint firstItem="lK4-OF-8jx" firstAttribute="top" secondItem="L7V-25-yhS" secondAttribute="bottom" constant="9.5" id="C76-YD-qJY"/>
                     <constraint firstAttribute="trailing" secondItem="gld-MG-Jhg" secondAttribute="trailing" id="CFG-ct-whX"/>
                     <constraint firstItem="jBP-uT-YKh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="D07-LO-muX"/>
-                    <constraint firstItem="6JX-1Q-xbz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DON-PJ-LlH"/>
                     <constraint firstItem="w6W-Ac-chQ" firstAttribute="centerY" secondItem="aCH-JF-qhT" secondAttribute="centerY" id="EEF-Iz-4SR"/>
-                    <constraint firstItem="6JX-1Q-xbz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="EhA-ra-boA"/>
                     <constraint firstItem="aCH-JF-qhT" firstAttribute="leading" secondItem="w6W-Ac-chQ" secondAttribute="trailing" constant="10" id="FfK-Oo-mUC"/>
                     <constraint firstItem="BTp-yg-o1g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="GNE-fw-a91"/>
                     <constraint firstItem="K4f-Yg-jJf" firstAttribute="top" secondItem="4g8-qc-JJK" secondAttribute="bottom" constant="1" id="GUt-nO-VJn"/>
                     <constraint firstItem="lK4-OF-8jx" firstAttribute="leading" secondItem="olJ-UK-exx" secondAttribute="trailing" constant="8" id="HtS-Pb-iIQ"/>
                     <constraint firstItem="w6W-Ac-chQ" firstAttribute="leading" secondItem="JiD-AK-gny" secondAttribute="leading" id="IUH-YZ-xyW"/>
+                    <constraint firstItem="4g8-qc-JJK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="KbV-fq-Rt8"/>
                     <constraint firstItem="L7V-25-yhS" firstAttribute="top" secondItem="0Ei-vx-Uye" secondAttribute="bottom" constant="1.5" id="L3I-Dn-zhc"/>
                     <constraint firstItem="4g8-qc-JJK" firstAttribute="leading" secondItem="jBP-uT-YKh" secondAttribute="trailing" constant="10" id="MHg-xV-u1K"/>
                     <constraint firstAttribute="leadingMargin" secondItem="0Ei-vx-Uye" secondAttribute="leading" id="NDC-d6-WZE"/>
@@ -161,25 +150,19 @@
                     <constraint firstAttribute="trailingMargin" secondItem="4g8-qc-JJK" secondAttribute="trailing" constant="8" id="WWO-KF-GKT"/>
                     <constraint firstAttribute="trailing" secondItem="gld-MG-Jhg" secondAttribute="trailing" id="Wlk-V9-V08"/>
                     <constraint firstAttribute="trailing" secondItem="L7V-25-yhS" secondAttribute="trailing" id="Z53-Ux-OPJ"/>
-                    <constraint firstAttribute="trailing" secondItem="6JX-1Q-xbz" secondAttribute="trailing" id="ae3-Cy-JQW"/>
                     <constraint firstItem="L7V-25-yhS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bWe-23-gKf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="We0-ti-Eyc" secondAttribute="trailing" constant="8" id="fMw-NV-mdK"/>
                     <constraint firstAttribute="trailing" secondItem="aCH-JF-qhT" secondAttribute="trailing" constant="8" id="fv0-bs-veK"/>
                     <constraint firstItem="olJ-UK-exx" firstAttribute="centerY" secondItem="lK4-OF-8jx" secondAttribute="centerY" id="ius-jh-TWG"/>
-                    <constraint firstItem="6JX-1Q-xbz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nVW-dQ-3FF"/>
-                    <constraint firstItem="6JX-1Q-xbz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="o9h-Zh-Rkc"/>
                     <constraint firstItem="K4f-Yg-jJf" firstAttribute="leading" secondItem="4g8-qc-JJK" secondAttribute="leading" id="opX-mE-TnP"/>
                     <constraint firstItem="JiD-AK-gny" firstAttribute="centerY" secondItem="5oj-Fy-raL" secondAttribute="centerY" id="pMJ-cz-SJ2"/>
                     <constraint firstAttribute="bottomMargin" secondItem="aCH-JF-qhT" secondAttribute="bottom" constant="-1.5" id="qup-bR-lab"/>
                     <constraint firstItem="L7V-25-yhS" firstAttribute="top" secondItem="BTp-yg-o1g" secondAttribute="bottom" constant="8" id="r8M-jL-OCr"/>
                     <constraint firstItem="jBP-uT-YKh" firstAttribute="centerY" secondItem="K4f-Yg-jJf" secondAttribute="centerY" constant="-5" id="rB3-Le-jfd"/>
                     <constraint firstItem="We0-ti-Eyc" firstAttribute="centerY" secondItem="5oj-Fy-raL" secondAttribute="centerY" id="rdF-Wn-8r3"/>
-                    <constraint firstAttribute="trailing" secondItem="6JX-1Q-xbz" secondAttribute="trailing" id="rzL-0d-CN7"/>
-                    <constraint firstItem="6JX-1Q-xbz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sAH-WW-R3t"/>
                     <constraint firstItem="QeV-W9-ghJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sN7-Dh-78S"/>
                     <constraint firstAttribute="trailing" secondItem="QeV-W9-ghJ" secondAttribute="trailing" id="uOm-wB-g8K"/>
                     <constraint firstItem="aCH-JF-qhT" firstAttribute="top" secondItem="QeV-W9-ghJ" secondAttribute="bottom" constant="9" id="xLM-xg-NlF"/>
-                    <constraint firstAttribute="trailing" secondItem="6JX-1Q-xbz" secondAttribute="trailing" id="zwu-Uz-dZK"/>
                     <constraint firstItem="olJ-UK-exx" firstAttribute="leading" secondItem="BTp-yg-o1g" secondAttribute="leading" id="zxV-C1-gY1"/>
                 </constraints>
             </tableViewCellContentView>
@@ -198,7 +181,7 @@
                 <outlet property="workTimeLabel" destination="We0-ti-Eyc" id="dOs-gB-0Kx"/>
                 <outlet property="workTypeLabel" destination="K4f-Yg-jJf" id="V7p-lM-ygB"/>
             </connections>
-            <point key="canvasLocation" x="-164" y="81"/>
+            <point key="canvasLocation" x="-164" y="82.5"/>
         </tableViewCell>
     </objects>
     <resources>

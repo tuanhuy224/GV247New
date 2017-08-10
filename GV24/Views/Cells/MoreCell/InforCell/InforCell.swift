@@ -16,7 +16,7 @@ class InforCell: CustomTableViewCell {
   @IBOutlet weak var vViewAge: UIView!
   @IBOutlet weak var contraintAge: NSLayoutConstraint!
   @IBOutlet weak var lbName: UILabel!
-  @IBOutlet var btRating: [UIButton]!{
+  @IBOutlet var btRating: [UIButton]?{
     didSet{
     getStar()
     }
@@ -54,16 +54,16 @@ class InforCell: CustomTableViewCell {
     let imageaddress = Ionicons.iosHome.image(32)
     imageAddress.setImage(imageaddress, for: .normal)
     imageAddress.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-    lbAge.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
-    lbName.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
-    lbPhone.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
-    lbGender.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
-    lbAddress.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
+    lbAge.font = fontSize.fontName(name: .regular, size: sizeFive)
+    lbName.font = fontSize.fontName(name: .regular, size: sizeFive)
+    lbPhone.font = fontSize.fontName(name: .regular, size: sizeFive)
+    lbGender.font = fontSize.fontName(name: .regular, size: sizeFive)
+    lbAddress.font = fontSize.fontName(name: .regular, size: sizeFive)
   }
   func getStar() {
     let image = Ionicons.star.image(32).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
     let tag = UserDefaultHelper.currentUser?.workInfor?.evaluation_point
-    for i in btRating{
+    for i in btRating!{
       if i.tag <= tag! {
         i.setImage(image, for: .normal)
       }else{

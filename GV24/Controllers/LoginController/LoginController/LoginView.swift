@@ -18,7 +18,7 @@ import FirebaseInstanceID
     @objc optional func sendTextfield(login:UITextField,password:UITextField)
     @objc optional func buttonForgot()
 }
-class LoginView: BaseViewController {
+class LoginView: BaseViewController,CLLocationManagerDelegate {
     @IBOutlet weak var blurImage: UIVisualEffectView!
     @IBOutlet weak var Sview: UIView!
     @IBOutlet weak var scrollLogin: UIScrollView!
@@ -35,6 +35,7 @@ class LoginView: BaseViewController {
     @IBOutlet weak var keyboardHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var btRegister: UIButton!
     weak var delegate:customButtonLoginDelegate?
+    let locationManager = CLLocationManager()
     let loading = LoadingView()
     var user:User?
     var arrays = [Around]()
@@ -44,7 +45,14 @@ class LoginView: BaseViewController {
         passwordLogin.delegate = self
         scrollLogin.isScrollEnabled = true
         scrollLogin.delegate = self
+        location()
         self.setupView()
+    }
+    func location() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -76,7 +84,8 @@ class LoginView: BaseViewController {
             self.loading.close()
             if self.isLoginWhenChangeToken == true{
                 self.isLoginWhenChangeToken = false
-                UserDefaultHelper.setUserDefault(token: string!, user: user)
+                guard let string = string else {return}
+                UserDefaultHelper.setUserDefault(token: string, user: user)
                 
                 // pop to previous controller if can. Otherwise, pop to root controller
                 if let navigation = self.navigationController{
@@ -109,7 +118,8 @@ class LoginView: BaseViewController {
   
     
     @IBAction func btAround(_ sender: Any) {
-        let navi = MapViewController(nibName: "MapViewController", bundle: nil)
+        let navi = WorkAroundController(nibName: "WorkAroundController", bundle: nil)
+        navi.currentLocation = locationManager.location?.coordinate
         navigationController?.pushViewController(navi, animated: true)
     }
     @IBAction func forgotPasswordAction(_ sender: Any) {

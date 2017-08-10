@@ -129,7 +129,7 @@ class InformationViewController: BaseViewController {
   func InforCell(cell:InforCell) {
     let image = Ionicons.star.image(32).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
     let tag = point
-    for i in cell.btRating{
+    for i in cell.btRating!{
       if i.tag <= tag! {
         i.setImage(image, for: .normal)
       }else{
@@ -177,7 +177,7 @@ extension InformationViewController:UITableViewDataSource{
       let cell: WorkInfoCell = tbInformation.dequeueReusableCell(withIdentifier: workInfoCellID, for: indexPath) as! WorkInfoCell
       
       cell.data = workTypeList
-      cell.priceLabel.text = String().numberFormat(number: UserDefaultHelper.currentUser?.workInfor?.price ?? 0) + " / " +  "hour".localize
+      cell.priceLabel.text = String().numberFormat(number: UserDefaultHelper.currentUser?.workInfor?.price ?? 0) + " VND" + " / " +  "hour".localize
       cell.topLabel.text = "WorkCapacity".localize.uppercased()
       cell.llbAssessment.text = "Assessment".localize.uppercased()
         

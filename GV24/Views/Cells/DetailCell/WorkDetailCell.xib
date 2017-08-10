@@ -77,6 +77,9 @@
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sct-l4-Mv6">
                         <rect key="frame" x="0.0" y="75.5" width="375" height="44.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44.5" id="AB2-lk-Vox"/>
+                        </constraints>
                         <connections>
                             <action selector="btDirectRequest:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hJg-6I-WWh"/>
                         </connections>
@@ -86,7 +89,6 @@
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="leading" secondItem="TKq-Mx-div" secondAttribute="leading" id="0O6-Vk-CMy"/>
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3WX-st-gMw"/>
                     <constraint firstItem="TKq-Mx-div" firstAttribute="top" secondItem="RAp-YY-Ygx" secondAttribute="top" id="48v-QV-drX"/>
-                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="oRf-WL-mHp" secondAttribute="bottom" constant="5" id="8Fy-ds-cH0"/>
                     <constraint firstAttribute="trailing" secondItem="qKj-A0-kyS" secondAttribute="trailing" id="CSH-RI-jM9"/>
                     <constraint firstItem="TKq-Mx-div" firstAttribute="leading" secondItem="RAp-YY-Ygx" secondAttribute="trailing" constant="8" id="Csv-S3-U7s"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="centerY" secondItem="RAp-YY-Ygx" secondAttribute="centerY" constant="-2" id="DlC-wN-VBF"/>
@@ -100,14 +102,12 @@
                     <constraint firstAttribute="trailing" secondItem="jOn-Cv-dAZ" secondAttribute="trailing" id="Zuy-32-kSY"/>
                     <constraint firstAttribute="bottom" secondItem="sct-l4-Mv6" secondAttribute="bottom" constant="-0.5" id="aHV-Zd-bc0"/>
                     <constraint firstItem="sct-l4-Mv6" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" id="bJB-4g-A7K"/>
+                    <constraint firstItem="TKq-Mx-div" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="4.5" id="bUg-VI-gcv"/>
                     <constraint firstAttribute="trailing" secondItem="Jn0-47-poD" secondAttribute="trailing" constant="10" id="btZ-Mp-Zr9"/>
-                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="RAp-YY-Ygx" secondAttribute="bottom" constant="5" id="jZN-VZ-Z3q"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sct-l4-Mv6" secondAttribute="bottom" constant="-8.5" id="dNS-rM-H0D"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" id="jvX-pg-Lbd"/>
-                    <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="4.5" id="mEx-st-nB7"/>
-                    <constraint firstItem="RAp-YY-Ygx" firstAttribute="top" secondItem="qKj-A0-kyS" secondAttribute="bottom" constant="4.5" id="mP7-mZ-No3"/>
                     <constraint firstItem="sct-l4-Mv6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rbU-MC-I94"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uxt-4V-QaK" secondAttribute="bottom" constant="-4" id="vM8-Bx-5Zz"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="sct-l4-Mv6" secondAttribute="bottom" constant="-8.5" id="vZp-9b-PrC"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" secondItem="oRf-WL-mHp" secondAttribute="bottom" constant="15.5" id="yuS-NR-E7k"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="leading" secondItem="oRf-WL-mHp" secondAttribute="trailing" constant="8" id="z2a-sv-5sQ"/>
                 </constraints>
@@ -117,6 +117,8 @@
                 <outlet property="aroundRight" destination="Jn0-47-poD" id="06W-Jd-yMb"/>
                 <outlet property="btAction" destination="sct-l4-Mv6" id="tfO-N9-ti6"/>
                 <outlet property="btChoose" destination="uxt-4V-QaK" id="fiF-Nv-KBw"/>
+                <outlet property="btChooseConstraint" destination="vPh-r9-7jE" id="2nw-JD-Ec5"/>
+                <outlet property="constraintH" destination="AB2-lk-Vox" id="uKV-gv-5S5"/>
                 <outlet property="heightBtChoose" destination="vPh-r9-7jE" id="FCB-xP-YUT"/>
                 <outlet property="heightHeader" destination="wLP-Qb-Bet" id="fqe-Fv-aPh"/>
                 <outlet property="imageName" destination="RAp-YY-Ygx" id="IYF-AP-QRX"/>

@@ -137,6 +137,7 @@ extension ManageViewController:UITableViewDataSource{
     switch segmentCtr.selectedSegmentIndex {
     case 0:
       vDoing.isHidden = true
+      
       if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).comparse == true {
         cell.lbDirect.isHidden = true
         cell.lbDeadline.isHidden = false
@@ -145,6 +146,14 @@ extension ManageViewController:UITableViewDataSource{
         cell.lbDirect.isHidden = true
         cell.lbDeadline.isHidden = false
         cell.lbDeadline.text = "Expired".localize
+        
+      }else if processOnCreate[indexPath.row].process?.id == WorkStatus.OnCreate.rawValue {
+        cell.lbDirect.isHidden = true
+        cell.lbDeadline.isHidden = true
+         cell.constraintWidthDirect.constant = 0
+        cell.contraintWidthDeadline.constant = 0
+
+      
       }else{
         cell.lbDirect.isHidden = false
         cell.lbDeadline.isHidden = true
@@ -187,6 +196,8 @@ extension ManageViewController:UITableViewDataSource{
         cell1.btChoose.isHidden = true
         cell1.vSegment.isHidden = true
         cell1.heightBtChoose.constant = 0
+        cell1.constraintH.constant = 0
+        cell1.btChooseConstraint.constant = 0
         
         if processOnDoing == [] {
           cell1.backgroundColor = .groupTableViewBackground
@@ -213,7 +224,7 @@ extension ManageViewController:UITableViewDataSource{
         }else{
           cell2.lbDescription.text = "Description".localize
           cell2.lbTitle.text = processOnDoing[0].info?.title
-          cell2.lbSubTitle.text = processOnDoing[0].info?.address?.name
+          cell2.lbSubTitle.text = processOnDoing[0].info?.workName?.name
           cell2.lbComment.text = processOnDoing[0].info?.content
           cell2.lbDate.text = "\(Date(isoDateString: (processOnDoing[0].workTime?.startAt)!).dayMonthYear)"
           cell2.lbMoney.text = "\(processOnDoing[0].info?.salary ?? 0) VND"

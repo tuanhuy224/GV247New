@@ -26,8 +26,18 @@ class WorkAroundController: BaseViewController {
     var lattitude:Double?
     var arrays = [Around]()
     lazy var geocoder = CLGeocoder()
-    var textLocation:String?
-    var currentLocation: CLLocationCoordinate2D?
+    var textLocation:String?{
+        didSet{
+        textInput = textLocation
+        }
+    }
+    var current: CLLocationCoordinate2D?
+    var textInput: String?
+    var currentLocation: CLLocationCoordinate2D?{
+    didSet{
+        current = currentLocation
+        }
+    }
     var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     var work = [WorkName]()
     @IBOutlet weak var aroundTableView: UITableView!
@@ -37,6 +47,7 @@ class WorkAroundController: BaseViewController {
         aroundTableView.addSubview(handleRefresh)
         arWork.setupView()
         searchBar.delegate = self
+        aroundTableView.separatorStyle = .none
         searchBar.placeholder = "SearchLocation".localize
         searchBar.barTintColor = .white
         searchBar.tintColor =  UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
@@ -47,7 +58,13 @@ class WorkAroundController: BaseViewController {
         loadData { (_,_) in
             
         }
+        if #available(iOS 10.0, *) {
+            aroundTableView.refreshControl = handleRefresh
+        } else {
+            // Fallback on earlier versions
+        }
     }
+
     override func setupViewBase() {
         if UserDefaultHelper.getSlider() != "" {
             if UserDefaultHelper.getSlider() == nil {
@@ -58,7 +75,7 @@ class WorkAroundController: BaseViewController {
         }
     }
     func loadData(_ completion:((_ arounds: [Around], _ error: Error?)->Void)?) {
-        guard let longitude = currentLocation?.longitude, let latitude = currentLocation?.latitude else {
+        guard let longitude = current?.longitude, let latitude = current?.latitude else {
             AlertStandard.sharedInstance.showAlertCt(controller: self, title: "", message: "PleasegotoSettings".localize, completion: {
                 UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
             })
@@ -67,8 +84,8 @@ class WorkAroundController: BaseViewController {
         self.loadingView.show()
         let distance = Int(arWork.slider.value)
         let apiService = APIService.shared
-        let param:Parameters = ["lng": longitude,
-                                "lat": latitude,
+        let param:Parameters = ["lat": latitude,
+                                "lng": longitude,
                                 "minDistance":0,
                                 "maxDistance":distance]
         apiService.getAllAround(url: APIPaths().urlGetListAround(), method: .get, parameters: param, encoding: URLEncoding.default) { (json, string) in
@@ -146,39 +163,43 @@ class WorkAroundController: BaseViewController {
         searchText()
     }
     // Get longtitude and lattitue
-    func forwardGeocoding(){
-        loadingView.show()
-        guard let locationString =  textLocation else{return}
-        APIService.shared.getLocation(url: locationString) { (json, error) in
-            self.loadingView.close()
-            guard let geometry = json?[0]["geometry"].dictionary else{return}
-            guard let location = geometry["location"]?.dictionary else{return}
-            guard let lat = location["lat"], let lng = location["lng"] else{return}
-            self.currentLocation?.latitude = lat.double!
-            self.currentLocation?.longitude = lng.double!
-        }
-    }
+//    func forwardGeocoding(){
+//        loadingView.show()
+//        guard let locationString = textInput else{return}
+//        APIService.shared.getLocation(url: locationString) { (json, error) in
+//            self.loadingView.close()
+//            guard let geometry = json?[0]["geometry"].dictionary else{return}
+//            guard let location = geometry["location"]?.dictionary else{return}
+//            guard let lat = location["lat"], let lng = location["lng"] else{return}
+//            self.currentLocation?.latitude = lat.double!
+//            self.currentLocation?.longitude = lng.double!
+//        }
+//    }
 
     func searchText() {
-        if self.textLocation == nil {
+        if self.textInput == nil {
             loadData({ (_, _) in
                 
             })
         }
         
-        guard let text = self.textLocation else {
+        guard let text = self.textInput else {
             return
         }
         
         loadingView.show()
         
-        geocoder.geocodeAddressString(text) { [unowned self] (placeMarks, error) in
+        geocoder.geocodeAddressString(text) {  (placeMarks, error) in
             self.loadingView.close()
-            guard let location = placeMarks?.first?.location, error == nil else {
+            self.currentLocation = nil
+            guard let placemarks = placeMarks, let location = placemarks[0].location, error == nil else {
                 //self.loadingView.close()
                 AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
                 return
             }
+            
+            
+            
             self.currentLocation = location.coordinate
             self.loadData { (arounds, error) in
               
@@ -203,7 +224,7 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
         let id = index.id?.name ?? ""
         let amount = index.count ?? 0
         cell.lbWork.text = "\(id)"
-        cell.amountWork.text = "\(amount)"
+        cell.amountWork.text = "\(amount)" + " " + "Work".localize
         let image = URL(string: arrays[indexPath.row].id!.image!)
         cell.imageWork.kf.setImage(with: image)
         cell.delegate = self
@@ -216,7 +237,7 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
         let name = index.id?.name ?? ""
             vc.id = "\(id)"
             vc.name = "\(name)"
-            vc.currentLocation = currentLocation
+            vc.currentLocation = current
             navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -241,6 +262,7 @@ extension WorkAroundController:sendIdForViewDetailDelegate{
 extension WorkAroundController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.textLocation = searchText
+        print(searchText)
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()

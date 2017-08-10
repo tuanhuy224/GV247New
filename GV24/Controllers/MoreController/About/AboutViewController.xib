@@ -11,9 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController" customModule="GV24" customModuleProvider="target">
             <connections>
                 <outlet property="imageLogo" destination="SzF-Vv-hiL" id="bZy-EV-lSF"/>
-                <outlet property="scroll" destination="dJf-Ck-zqa" id="Pgg-vg-oDE"/>
-                <outlet property="tfTextField" destination="3ju-Z4-sgX" id="8qd-Rg-JXt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="X0B-kp-3Qj" id="8cd-JZ-ry8"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,54 +32,20 @@
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nV-FE-dQa">
                             <rect key="frame" x="0.0" y="140" width="375" height="527"/>
-                            <subviews>
-                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJf-Ck-zqa">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJN-ya-7z3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3ju-Z4-sgX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="3ju-Z4-sgX" firstAttribute="leading" secondItem="qJN-ya-7z3" secondAttribute="leading" id="4P4-mb-QY5"/>
-                                                <constraint firstAttribute="bottom" secondItem="3ju-Z4-sgX" secondAttribute="bottom" id="DtZ-Jf-dAp"/>
-                                                <constraint firstItem="3ju-Z4-sgX" firstAttribute="top" secondItem="qJN-ya-7z3" secondAttribute="top" id="bj2-BB-Fry"/>
-                                                <constraint firstAttribute="trailing" secondItem="3ju-Z4-sgX" secondAttribute="trailing" id="ivD-J1-poL"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="qJN-ya-7z3" secondAttribute="bottom" id="FUY-BJ-fjf"/>
-                                        <constraint firstItem="qJN-ya-7z3" firstAttribute="top" secondItem="dJf-Ck-zqa" secondAttribute="top" id="cRt-Mo-sKX"/>
-                                        <constraint firstItem="qJN-ya-7z3" firstAttribute="leading" secondItem="dJf-Ck-zqa" secondAttribute="leading" id="rPU-qi-VXO"/>
-                                        <constraint firstAttribute="trailing" secondItem="qJN-ya-7z3" secondAttribute="trailing" id="ziE-xb-tRG"/>
-                                    </constraints>
-                                </scrollView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="dJf-Ck-zqa" secondAttribute="bottom" id="1Je-Ga-jof"/>
-                                <constraint firstItem="dJf-Ck-zqa" firstAttribute="top" secondItem="1nV-FE-dQa" secondAttribute="top" id="6bO-V1-aps"/>
-                                <constraint firstItem="qJN-ya-7z3" firstAttribute="height" secondItem="1nV-FE-dQa" secondAttribute="height" id="GvB-Mt-BFi"/>
-                                <constraint firstItem="dJf-Ck-zqa" firstAttribute="leading" secondItem="1nV-FE-dQa" secondAttribute="leading" id="NJa-z7-4xp"/>
-                                <constraint firstItem="dJf-Ck-zqa" firstAttribute="height" secondItem="1nV-FE-dQa" secondAttribute="height" id="VVe-vr-bqI"/>
-                                <constraint firstItem="dJf-Ck-zqa" firstAttribute="width" secondItem="1nV-FE-dQa" secondAttribute="width" id="bkx-tu-MtP"/>
-                                <constraint firstItem="qJN-ya-7z3" firstAttribute="width" secondItem="1nV-FE-dQa" secondAttribute="width" id="n1c-QR-QNY"/>
-                                <constraint firstAttribute="trailing" secondItem="dJf-Ck-zqa" secondAttribute="trailing" id="rWa-Lh-NqP"/>
-                            </constraints>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0B-kp-3Qj">
+                            <rect key="frame" x="0.0" y="140" width="375" height="527"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </webView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="X0B-kp-3Qj" secondAttribute="bottom" id="1yA-pH-1pd"/>
+                        <constraint firstItem="X0B-kp-3Qj" firstAttribute="top" secondItem="SzF-Vv-hiL" secondAttribute="bottom" id="7EE-ms-MUk"/>
                         <constraint firstAttribute="trailing" secondItem="1nV-FE-dQa" secondAttribute="trailing" id="8lF-ba-2SN"/>
+                        <constraint firstItem="X0B-kp-3Qj" firstAttribute="leading" secondItem="56d-iQ-ey9" secondAttribute="leading" id="C9F-km-0eS"/>
+                        <constraint firstAttribute="trailing" secondItem="X0B-kp-3Qj" secondAttribute="trailing" id="F0H-il-vfk"/>
                         <constraint firstItem="SzF-Vv-hiL" firstAttribute="centerX" secondItem="56d-iQ-ey9" secondAttribute="centerX" id="I9e-Uu-dnd"/>
                         <constraint firstAttribute="bottom" secondItem="1nV-FE-dQa" secondAttribute="bottom" id="Ryu-2j-VnL"/>
                         <constraint firstItem="SzF-Vv-hiL" firstAttribute="top" secondItem="56d-iQ-ey9" secondAttribute="top" constant="20" id="Ulb-ea-A76"/>

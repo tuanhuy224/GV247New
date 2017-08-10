@@ -70,7 +70,7 @@ class StatisticViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Statistic".localize
+        title = "Generalstatistic".localize
     }
     
     override func decorate() {
@@ -79,9 +79,9 @@ class StatisticViewController: BaseViewController {
         lbPriceChange.text = "VND"
         
         lbDuration.text = "Duration".localize
-        lbInProcess.text = "InProcess".localize
+        lbInProcess.text = "Processing".localize
         lbPendingConfirmation.text = "PendingConfirmation".localize
-        lbCompletedWork.text = "CompletedWork".localize
+        lbCompletedWork.text = "CompleteW".localize
     }
     
     func showLoading() {
@@ -141,7 +141,7 @@ class StatisticViewController: BaseViewController {
                 self.statistic = Statistic(json: json)
                 self.updateUI()
             } else {
-                AlertStandard.sharedInstance.showAlert(controller: self, title: "Notifications".localize, message: "NoDataFound".localize)
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "Notification".localize, message: "NoDataFound".localize)
             }
             
             self.hideLoading()
@@ -180,6 +180,8 @@ extension StatisticViewController:UITableViewDataSource, UITableViewDelegate{
             cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         cell.userNameLabel.text = user.name
+        cell.userNameLabel.font = fontSize.fontName(name: .bold, size: 16)
+        cell.addressLabel.font = fontSize.fontName(name: .regular, size: 14)
         cell.addressLabel.text = user.nameAddress
         return cell
     }
