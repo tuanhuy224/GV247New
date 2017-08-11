@@ -30,7 +30,7 @@ class MapViewController: BaseViewController {
     var arrays = [Around]()
     var arrayMap = [Around]()
     @IBAction func findMeAction(_ sender: Any) {
-       
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,7 @@ class MapViewController: BaseViewController {
         super.viewWillAppear(animated)
         guard let current = currentLocation else {return}
         let marker = GMSMarker(position: current)
+        mapView.animate(toLocation: current)
         marker.map = mapView
     }
     func initializeTheLocationManager(){
@@ -64,7 +65,7 @@ class MapViewController: BaseViewController {
         placesClient = GMSPlacesClient.shared()
     }
     func configurationSearchBar() {
-//        searchController = UISearchController(searchResultsController: nil)
+        //        searchController = UISearchController(searchResultsController: nil)
         searchController.delegate = self
         searchController.placeholder = "SearchLocation".localize
         searchController.barTintColor = .white
@@ -73,7 +74,7 @@ class MapViewController: BaseViewController {
         subView.addSubview(searchController)
         view.addSubview(subView)
         searchController.sizeToFit()
-//    searchController?.hidesNavigationBarDuringPresentation = false
+        //    searchController?.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = .top
@@ -129,7 +130,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     
     
-
+    
     // MARK: - Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -152,40 +153,43 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController:GMSMapViewDelegate{
-//    //MARK: GMSMapViewDelegate Implimentation.
-//    internal func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D){
-//        plotMarker(AtCoordinate: CLLocationCoordinate2D.init(latitude: coordinate.latitude, longitude: coordinate.longitude),onMapView: mapView)
-//    }
-//    //MARK: Plot Marker Helper
-//    private func plotMarker(AtCoordinate coordinate : CLLocationCoordinate2D, onMapView vwMap : GMSMapView) -> Void{
-//        mapView.clear()
-//        let marker = GMSMarker(position: coordinate)
-//        marker.map = vwMap
-//    }
+//        //MARK: GMSMapViewDelegate Implimentation.
+//        internal func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D){
+//            plotMarker(AtCoordinate: CLLocationCoordinate2D.init(latitude: coordinate.latitude, longitude: coordinate.longitude),onMapView: mapView)
+//        }
+//        //MARK: Plot Marker Helper
+//        private func plotMarker(AtCoordinate coordinate : CLLocationCoordinate2D, onMapView vwMap : GMSMapView) -> Void{
+//            mapView.clear()
+//            let marker = GMSMarker(position: coordinate)
+//            marker.map = vwMap
+//        }
 }
 extension MapViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         hideKeyboard()
         loadingView.show()
-        let text = searchBar.text!
-        geocoder.geocodeAddressString(text) { (placeMarks, error) in
+        guard let text = searchBar.text else {return}
+        APIService.shared.getLocation(url: text) { (json, error) in
             self.loadingView.close()
-            if error == nil{
-                if (placeMarks?.count)! > 0{
-                    guard let firstLocation = placeMarks?.first?.location else{return}
-                    self.handle(location: firstLocation.coordinate)
-                    
-                    let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
-                    around.currentLocation = firstLocation.coordinate
-                    self.navigationController?.pushViewController(around, animated: true)
-                }else{
-                    
+            if json != nil {
+                guard let geometry = json?[0]["geometry"].dictionary else{return}
+                guard let location = geometry["location"]?.dictionary else{return}
+                guard let lat = location["lat"]?.double, let lng = location["lng"]?.double else{
+                    AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
+                    return
                 }
+                self.currentLocation?.latitude = lat
+                self.currentLocation?.longitude = lng
+                let around = WorkAroundController(nibName: NibWorkAroundController, bundle: nil)
+                around.currentLocation = self.currentLocation
+                self.navigationController?.pushViewController(around, animated: true)
             }else{
-               AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
+                AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Somethingwentwrong".localize)
             }
+            
+            
         }
     }
-
+    
 }
 
