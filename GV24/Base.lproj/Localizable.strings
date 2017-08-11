@@ -18,7 +18,6 @@ loginFail = "Tên đăng nhập hoặc mật khẩu không đúng";
 Dollar = "VND";
 Language = "Ngôn ngữ";
 SwitchLanguage = "Đổi ngôn ngữ";
-Back = "Trở lại";
 Home = "Trang chủ";
 Expired = "Quá hạn";
 LogOutAlert = "Bạn có chắc chắn muốn thoát ra khỏi ứng dụng này không?";
@@ -196,4 +195,4 @@ Workchosensuccessfully = "Chọn công việc thành công";
 Formerpartners = "Giúp việc đã làm";
 Workcurrentlychosen = "Công việc bạn chọn trùng khung giờ với công việc trước. Vui lòng chọn công việc khác.";
 Work = "công việc";
-
+Bringyourcleaningsupplies = "Mang theo dụng cụ làm việc.";

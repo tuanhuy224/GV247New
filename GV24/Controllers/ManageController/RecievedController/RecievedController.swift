@@ -96,6 +96,11 @@ extension RecievedController:UITableViewDataSource{
               deadlineWitdh = ceil(deadlineWitdh) + 20
             }
             cell.contraintWidthDeadline.constant = deadlineWitdh
+            let tool = processRecieved?.info?.tools
+            if  tool == true {
+                cell.lbTools.isHidden = false
+                cell.lbTools.text = "Bringyourcleaningsupplies".localize
+            }
             return cell
         case 2:
             let cell:CancelCell = tbRecieved.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell

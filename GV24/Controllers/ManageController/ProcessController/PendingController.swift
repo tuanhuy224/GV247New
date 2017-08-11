@@ -92,6 +92,11 @@ extension PendingController:UITableViewDataSource{
             }
             cell.contraintWidthDeadline.constant = deadlineWitdh
             cell.lbAddress.text = processPending?.info?.address?.name
+            let tool = processPending?.info?.tools
+            if  tool == true {
+                cell.lbTools.isHidden = false
+                cell.lbTools.text = "Bringyourcleaningsupplies".localize
+            }
             return cell
         case 2:
             let cell:CancelCell = tbPending.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell

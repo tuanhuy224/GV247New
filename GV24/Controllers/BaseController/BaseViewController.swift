@@ -9,8 +9,10 @@ import UIKit
 import Alamofire
 
 class BaseViewController: UIViewController {
+    let notificationIdentifier: String = "NotificationIdentifier"
     let install = NetworkStatus.sharedInstance
     var islog = false
+    var isChange: Bool = false
     var currentLanguage:Int?
     var isLoginWhenChangeToken:Bool = false
     var viewControllerLogin = UIViewController()
@@ -24,6 +26,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DGLocalization.sharedInstance.Delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.setupNavi), name: NSNotification.Name(rawValue: notificationIdentifier), object: nil)
         self.decorate()
         print("====Current self:\(self)====")
         net?.startListening()
@@ -32,7 +35,8 @@ class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         self.setupViewBase()
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:fontSize.fontName(name: .bold, size: sizeSix)]
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.done, target: nil, action: nil)
+        //BackButtonItem()
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.done, target: nil, action: nil)
         self.navigationController?.navigationBar.isTranslucent = false
         install.startNetworkReachabilityObserver()
         if install.reachabilityManager?.isReachable == false {
@@ -42,8 +46,24 @@ class BaseViewController: UIViewController {
         }
         print("++++view display:\(self)+++++++")
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func setupNavi() {
+        BackButtonItem()
+    }
     func setupViewBase() {
         checkTokenApp()
+    }
+    
+    
+    
+    func BackButtonItem() {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back".localize
+        navigationItem.backBarButtonItem = backItem
     }
     func decorate(){}
     func displayNetwork(){

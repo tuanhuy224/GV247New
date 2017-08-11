@@ -16,7 +16,6 @@ Language = "Ngôn ngữ";
 Invalid = "Tên đăng nhập hoặc mật khẩu không đúng";
 SwitchLanguage = "Đổi ngôn ngữ";
 loginFail = "Tên đăng nhập hoặc mật khẩu không đúng";
-Back = "Trở lại";
 Home = "Trang chủ";
 Dollar = "VND";
 Expired = "Quá hạn";
@@ -194,4 +193,4 @@ Workchosensuccessfully = "Chọn công việc thành công";
 Formerpartners = "Giúp việc đã làm";
 Workcurrentlychosen = "Công việc bạn chọn trùng khung giờ với công việc trước. Vui lòng chọn công việc khác.";
 Work = "công việc";
-
+Bringyourcleaningsupplies = "Mang theo dụng cụ làm việc.";

@@ -38,6 +38,10 @@ class MoreViewController: BaseViewController {
         tbMore.reloadData()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
 
 }
 extension MoreViewController: UITableViewDataSource,UITableViewDelegate{

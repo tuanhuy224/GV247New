@@ -15,6 +15,7 @@ import IoniconsSwift
 extension Locale {
     
     func IOSLanguageCode() -> String? {
+//        print("languageCode:\(languageCode ?? "nil"), countryCode:\(countryCode ?? "nil")")
         guard let languageCode = languageCode, let countryCode = countryCode else {
             return nil
         }

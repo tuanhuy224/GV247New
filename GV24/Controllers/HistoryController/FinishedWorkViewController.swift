@@ -26,7 +26,7 @@ class FinishedWorkViewController: BaseViewController {
     func setupTableView() {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.register(UINib(nibName: NibFinishedWorkCell, bundle: nil), forCellReuseIdentifier: finishedWorkCellID)
+        tableView.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tableView.register(UINib(nibName: NibWorkerViewCell, bundle: nil), forCellReuseIdentifier: workerCellID)
     }
 
@@ -64,32 +64,35 @@ class FinishedWorkViewController: BaseViewController {
         }
     }
 
-    fileprivate func configureWorkDetailsCell(cell: FinishedWorkCell) {
+    fileprivate func configureWorkDetailsCell(cell: InfoDetailCell) {
         cell.selectionStyle = .none
+        cell.constraintDescription.constant = 0
+        cell.lbDescription.isHidden = true
+        cell.lbDescription.text = "Description".localize
         if work != nil {
             let url = URL(string: (work?.info?.workName?.image)!)
             if url == nil {
-                cell.workImage.image = UIImage(named: "avatar")
+                cell.imageAvatar.image = UIImage(named: "avatar")
             }else{
-                cell.workImage.kf.setImage(with:url)
+                cell.imageAvatar.kf.setImage(with:url)
             }
-            cell.workNameLabel.text = work?.info?.title
-            cell.workTypeLabel.text = work?.info?.workName?.name
-            cell.workContentLabel.text = work?.info?.content
+            cell.lbTitle.text = work?.info?.title
+            cell.lbSubTitle.text = work?.info?.workName?.name
+            cell.lbComment.text = work?.info?.content
 //            cell.lbDes.text = "Description".localize
 //            cell.lbDes.font = fontSize.fontName(name: .regular, size: 16)
             let salary = work?.info?.salary
             let salaryText = String(describing: salary!)
-            cell.workSalaryLabel.text = salaryText + " VND"
+            cell.lbMoney.text = salaryText + " VND"
             
             let startAt = work?.workTime?.startAt
             let startAtStr = String(describing: startAt!)
-            cell.workCreateAtLabel.text = String.convertISODateToString(isoDateStr: startAtStr, format: "dd/MM/yyyy")
-            cell.workAddressLabel.text = work?.info?.address?.name
+            cell.lbDate.text = String.convertISODateToString(isoDateStr: startAtStr, format: "dd/MM/yyyy")
+            cell.lbAddress.text = work?.info?.address?.name
             
             let endAt = work?.workTime?.endAt
             let endAtStr = String(describing: endAt!)
-            cell.workTimeLabel.text = String.convertISODateToString(isoDateStr: startAtStr, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtStr, format: "HH:mm a")!
+            cell.lbTime.text = String.convertISODateToString(isoDateStr: startAtStr, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtStr, format: "HH:mm a")!
         }
     }
 
@@ -133,7 +136,7 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: finishedWorkCellID, for: indexPath) as! FinishedWorkCell
+            let cell:InfoDetailCell = tableView.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
 
             self.configureWorkDetailsCell(cell: cell)
 

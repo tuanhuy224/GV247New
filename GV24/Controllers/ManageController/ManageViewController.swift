@@ -34,7 +34,7 @@ class ManageViewController: BaseViewController {
     self.tbManage.rowHeight = UITableViewAutomaticDimension
     self.tbManage.estimatedRowHeight = 100.0
     vDoing.isHidden = true
-    
+    print(UserDefaultHelper.getToken())
   }
   override func decorate() {
     super.decorate()
@@ -75,12 +75,14 @@ class ManageViewController: BaseViewController {
       self.loadingView.close()
       if json != nil{
         self.processOnCreate = json!
+        
       }
       self.tbManage.reloadData()
     }
     apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
       if json != nil{
         self.processPending = json!
+      
       }
       self.tbManage.reloadData()
     }
@@ -95,7 +97,7 @@ class ManageViewController: BaseViewController {
       self.loadingView.close()
       if json != nil{
         self.processOnDoing = json!
-        print(json!)
+        
       }
     }
     self.tbManage.reloadData()

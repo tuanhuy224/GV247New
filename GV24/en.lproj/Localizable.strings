@@ -11,7 +11,6 @@ VietNam = "Tiếng Việt";
 SignIn = "Sign in";
 SignUp = "Sign up";
 Dollar = "VND";
-Back = "Back";
 Home = "Home";
 More = "More";
 Back = "Back";
@@ -194,7 +193,7 @@ Workchosensuccessfully = "Work chosen successfully";
 Formerpartners = "Former partners";
 Workcurrentlychosen = "Work currently chosen has the same working time as your previous one. Please choose another.";
 Work = "work";
-
+Bringyourcleaningsupplies = "Bring your cleaning supplies.";
 
 
 

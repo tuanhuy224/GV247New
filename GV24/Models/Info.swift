@@ -17,6 +17,7 @@ class Info: AppModel {
     var content: String?
     var salary: Int?
     var address: Address?
+    var tools: Bool?
     
     override init() {
         super.init()
@@ -29,6 +30,7 @@ class Info: AppModel {
         self.content = json["description"].string
         self.salary = json["price"].int
         self.address = Address(json: json["address"])
+        self.tools = json["tools"].bool
     }   
 }
 class Package: Info {

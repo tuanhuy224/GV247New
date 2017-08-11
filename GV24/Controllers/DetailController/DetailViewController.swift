@@ -23,7 +23,6 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad()
         tbDetail.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
         tbDetail.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
-        //postRerves()
         self.tbDetail.rowHeight = UITableViewAutomaticDimension
         self.tbDetail.estimatedRowHeight = 100.0
     }
@@ -35,7 +34,6 @@ class DetailViewController: BaseViewController {
     }
     override func setupViewBase() {
         self.title = titleString
-        //tbDetail.reloadData()
     }
     func postRerves(){
         let apiService = APIService.shared
@@ -79,17 +77,15 @@ extension DetailViewController:UITableViewDataSource{
             return cell
         }else{
             let cell:InfoDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath) as! InfoDetailCell
-            DispatchQueue.main.async {
-                cell.lbTitle.text = self.works.info?.title
-                cell.lbDescription.text = "Description".localize
-                cell.lbSubTitle.text = self.works.info?.workName?.name
-                guard let salary = self.works.info?.salary else {return}
-                cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
-                cell.lbComment.text = self.works.info?.content
-                cell.lbAddress.text = self.works.info?.address?.name
-                cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
-                cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
-            }
+            cell.lbTitle.text = self.works.info?.title
+            cell.lbDescription.text = "Description".localize
+            cell.lbSubTitle.text = self.works.info?.workName?.name
+            let salary = self.works.info?.salary ?? 0
+            cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
+            cell.lbComment.text = self.works.info?.content
+            cell.lbAddress.text = self.works.info?.address?.name
+            cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
+            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
             return cell
         }
     }
@@ -102,6 +98,8 @@ extension DetailViewController:UITableViewDelegate{
             let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
             navi.workPending = works
             navigationController?.pushViewController(navi, animated: true)
+        }else{
+        
         }
     }
 }

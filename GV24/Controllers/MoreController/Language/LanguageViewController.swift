@@ -9,23 +9,27 @@
 import UIKit
 
 class LanguageViewController: BaseViewController {
-    
+   
     @IBOutlet weak var tbLanguage: UITableView!
 
-    
     var languages: [Locale] = [Locale(languageCode: "vi", countryCode: "vi", name: "VietNam"),
                                Locale(languageCode: "en", countryCode: "en", name: "English")]
     var selectedLanguage = DGLocalization.sharedInstance.getCurrentLanguage()
-
     var rowsWhichAreChecked = [NSIndexPath]()
     var isSelection:Int = 0
+
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tbLanguage.register(UITableViewCell.self, forCellReuseIdentifier: DefaultCellID)
     }
+
     
     override func setupViewBase() {
         self.title = "Language".localize
+        BackButtonItem()
     }
     
     override func viewDidLayoutSubviews() {
@@ -48,8 +52,6 @@ extension LanguageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tbLanguage.dequeueReusableCell(withIdentifier: DefaultCellID, for: indexPath)
         let language = languages[indexPath.row]
-        
-        // cell configure
         if let name = language.name as String? {
             cell.textLabel?.text = name.localize
         }
@@ -57,11 +59,12 @@ extension LanguageViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         
         // show checkmark for selected language
-        if language.IOSLanguageCode() == selectedLanguage.IOSLanguageCode() {
+        if language.IOSLanguageCode() == selectedLanguage.IOSLanguageCode(){
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
         }
+
 
         return cell
     }
@@ -76,7 +79,6 @@ extension LanguageViewController: UITableViewDataSource {
 extension LanguageViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let language = languages[indexPath.row]
         DGLocalization.sharedInstance.setLanguage(withCode: language)
         selectedLanguage = language
@@ -85,20 +87,23 @@ extension LanguageViewController: UITableViewDelegate {
         
         tableView.reloadData()
             if indexPath.row == 0 {
-                let Nepali = Locale().initWithLanguageCode(languageCode: "vi", countryCode: "vi", name: "Viet Nam")
-                DGLocalization.sharedInstance.setLanguage(withCode:Nepali)
+                let VietNam = Locale().initWithLanguageCode(languageCode: "vi", countryCode: "vi", name: "Viet Nam")
+                DGLocalization.sharedInstance.setLanguage(withCode:VietNam)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIdentifier), object: nil)
                 //Load selected Language to Views
                 self.title = "Language".localize
                 self.isSelection = 0
                 self.decorate()
             }else {
-                let english = Locale().initWithLanguageCode(languageCode: "en", countryCode: "gb", name: "United Kingdom")
+                let english = Locale().initWithLanguageCode(languageCode: "en", countryCode: "en", name: "United Kingdom")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIdentifier), object: nil)
                 DGLocalization.sharedInstance.setLanguage(withCode:english)
                 //Load selected Language to Views
                 self.title = "Language".localize
                 self.isSelection = 1
                 self.decorate()
             }
+
     }
 
 }

@@ -10,7 +10,9 @@ import UIKit
 import IoniconsSwift
 class InfoDetailCell: CustomTableViewCell {
   @IBOutlet weak var contraintWidthDeadline: NSLayoutConstraint!
+    @IBOutlet weak var toolConstraint: NSLayoutConstraint!
     @IBOutlet weak var lbDescription: UILabel!
+    @IBOutlet weak var lbTools: UILabel!
     @IBOutlet weak var imageAvatar: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbSubTitle: UILabel!
@@ -27,9 +29,14 @@ class InfoDetailCell: CustomTableViewCell {
     lbdeadLine.textAlignment = .center
     }
   }
+    @IBOutlet weak var constraintDescription: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        lbTools.isHidden = true
+        //toolConstraint.constant = 0
+        lbTools.font = fontSize.fontName(name: .regular, size: sizeFive)
+        lbTools.textColor = UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1)
         imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
         imageAvatar.clipsToBounds = true
         imageMoney.backgroundColor = UIColor.clear
