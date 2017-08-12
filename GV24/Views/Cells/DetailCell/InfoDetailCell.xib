@@ -44,26 +44,26 @@
                         <rect key="frame" x="0.0" y="60" width="320" height="216.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="don dep nha" translatesAutoresizingMaskIntoConstraints="NO" id="SBw-tO-pxj">
-                                <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                <rect key="frame" x="8" y="5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="86k-qk-0XZ"/>
                                     <constraint firstAttribute="width" constant="40" id="aq8-O5-LYS"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Lau dọn phòng khách" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRJ-Ti-vzz">
-                                <rect key="frame" x="56" y="8" width="152" height="18"/>
+                                <rect key="frame" x="56" y="5" width="152" height="18"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="254" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" text="Dọn dẹp nhà cửa" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyC-YP-vOT">
-                                <rect key="frame" x="56" y="27" width="256" height="13.5"/>
+                                <rect key="frame" x="56" y="27" width="256" height="13"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Cần một bạn nữ siêng năng dọn phòng vào thứ tư sau 9h.Cần một bạn nữ siêng năng dọn phòng vào thứ tư sau 9h." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIU-xK-zfc">
-                                <rect key="frame" x="8" y="52" width="304" height="43"/>
+                                <rect key="frame" x="8" y="51.5" width="304" height="43"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -146,7 +146,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Mang theo dung cu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFG-c9-Cjx">
-                                <rect key="frame" x="8" y="97" width="304" height="16"/>
+                                <rect key="frame" x="8" y="96.5" width="304" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="nMv-vf-VYx"/>
                                 </constraints>
@@ -157,7 +157,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SBw-tO-pxj" firstAttribute="top" secondItem="hFV-g3-z2u" secondAttribute="top" constant="8" id="0dn-eA-OQX"/>
+                            <constraint firstItem="SBw-tO-pxj" firstAttribute="top" secondItem="hFV-g3-z2u" secondAttribute="top" constant="5" id="0dn-eA-OQX"/>
                             <constraint firstItem="fbP-lW-e6f" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" id="10D-gN-iOx"/>
                             <constraint firstItem="Sli-n1-c3B" firstAttribute="centerY" secondItem="1fm-AF-ACV" secondAttribute="centerY" id="48O-Ur-BNO"/>
                             <constraint firstItem="1fm-AF-ACV" firstAttribute="leading" secondItem="naY-2R-kB4" secondAttribute="leading" id="7Az-dV-3NJ"/>
@@ -166,7 +166,7 @@
                             <constraint firstItem="Mih-Hy-g7T" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" id="EHo-4b-x0b"/>
                             <constraint firstItem="tIU-xK-zfc" firstAttribute="leading" secondItem="SBw-tO-pxj" secondAttribute="leading" id="GPX-Tv-5lW"/>
                             <constraint firstItem="tIU-xK-zfc" firstAttribute="trailing" secondItem="LyC-YP-vOT" secondAttribute="trailing" id="HYf-Gg-gbh"/>
-                            <constraint firstItem="LyC-YP-vOT" firstAttribute="top" secondItem="CRJ-Ti-vzz" secondAttribute="bottom" constant="1" id="IwP-et-UfQ"/>
+                            <constraint firstItem="LyC-YP-vOT" firstAttribute="top" secondItem="CRJ-Ti-vzz" secondAttribute="bottom" constant="4" id="IwP-et-UfQ"/>
                             <constraint firstItem="eev-F8-DLK" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" id="L8Y-V7-UmR"/>
                             <constraint firstItem="naY-2R-kB4" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" constant="8" id="M0V-TE-RWS"/>
                             <constraint firstItem="SBw-tO-pxj" firstAttribute="leading" secondItem="hFV-g3-z2u" secondAttribute="leading" constant="8" id="Me1-kd-1Z3"/>
@@ -176,7 +176,7 @@
                             <constraint firstAttribute="trailing" secondItem="Mih-Hy-g7T" secondAttribute="trailing" id="SKs-5z-N82"/>
                             <constraint firstAttribute="trailing" secondItem="eev-F8-DLK" secondAttribute="trailing" id="XhY-Tf-Uhj"/>
                             <constraint firstAttribute="trailing" secondItem="tHL-W1-aAy" secondAttribute="trailing" constant="8" id="ZDZ-ON-i3v"/>
-                            <constraint firstItem="kal-Lq-Zdb" firstAttribute="top" secondItem="CRJ-Ti-vzz" secondAttribute="top" id="ZNX-Mt-0K7"/>
+                            <constraint firstItem="kal-Lq-Zdb" firstAttribute="top" secondItem="CRJ-Ti-vzz" secondAttribute="top" constant="3" id="ZNX-Mt-0K7"/>
                             <constraint firstItem="eev-F8-DLK" firstAttribute="top" secondItem="nES-dj-iVH" secondAttribute="bottom" constant="10" id="aae-KQ-VVj"/>
                             <constraint firstItem="UFG-c9-Cjx" firstAttribute="leading" secondItem="tIU-xK-zfc" secondAttribute="leading" id="axn-rt-bJ4"/>
                             <constraint firstItem="kal-Lq-Zdb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CRJ-Ti-vzz" secondAttribute="trailing" constant="8" id="e5i-vQ-l3G"/>
