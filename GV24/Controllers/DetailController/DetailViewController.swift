@@ -84,6 +84,14 @@ extension DetailViewController:UITableViewDataSource{
             cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
             cell.lbComment.text = self.works.info?.content
             cell.lbAddress.text = self.works.info?.address?.name
+            let url = URL(string: self.works.info!.workName!.image!)
+            if url == nil {
+                cell.imageAvatar.image = UIImage(named: "avatar")
+            }else{
+                DispatchQueue.main.async {
+                    cell.imageAvatar.kf.setImage(with:url)
+                }
+            }
             cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
             return cell
