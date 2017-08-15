@@ -32,6 +32,7 @@ TimeMonth = "tháng trước";
 TimeDay = "ngày trước";
 TimeHour = "giờ trước";
 TimeMinute = "phút trước";
+TimeSecond = "giây trước";
 AnswerYes = "Có";
 AnswerNo = "Không";
 Applicantprofile = "Thông tin";

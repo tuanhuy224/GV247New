@@ -25,6 +25,7 @@ Language = "Language";
 TimeMonth = "month ago";
 TimeDay = "days ago";
 TimeHour = "hour ago";
+TimeSecond = "second ago";
 TimeMinute = "minute ago";
 Direct = "Direct request";
 LogOutAlert = "Are you sure to sign out?";

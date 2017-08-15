@@ -186,6 +186,8 @@ extension Date{
             return "\(date(datePost: datePost).hour! )" + " " + "TimeHour".localize
         }else if date(datePost: datePost).minute! > 0{
             return "\(date(datePost: datePost).minute! )" + " " + "TimeMinute".localize
+        }else if date(datePost: datePost).second! > 0{
+            return "\(date(datePost: datePost).second! )" + " " + "TimeSecond".localize
         }
         return ""
     }
