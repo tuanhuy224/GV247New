@@ -35,7 +35,7 @@ extension BaseCellProtocol where Self : UIView {
 }
 
 
-class CustomTableViewCell: UITableViewCell,BaseCellProtocol {
+class CustomTableViewCell: UITableViewCell, BaseCellProtocol {
     static var identifier: String {
         return NSStringFromClass(self)
     }

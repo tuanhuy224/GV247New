@@ -93,6 +93,12 @@ class FinishedWorkViewController: BaseViewController {
             let endAt = work?.workTime?.endAt
             let endAtStr = String(describing: endAt!)
             cell.lbTime.text = String.convertISODateToString(isoDateStr: startAtStr, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtStr, format: "HH:mm a")!
+            
+            let tool = work?.info?.tools
+            if  tool == true {
+                cell.lbTools.isHidden = false
+                cell.lbTools.text = "Bringyourcleaningsupplies".localize
+            }
         }
     }
 
