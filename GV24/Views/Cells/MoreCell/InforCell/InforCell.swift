@@ -62,9 +62,9 @@ class InforCell: CustomTableViewCell {
   }
   func getStar() {
     let image = Ionicons.star.image(32).maskWithColor(color: UIColor(red: 253/255, green: 179/255, blue: 53/255, alpha: 1))
-    let tag = UserDefaultHelper.currentUser?.workInfor?.evaluation_point
+    guard let tag = UserDefaultHelper.currentUser?.workInfor?.evaluation_point else{return}
     for i in btRating!{
-      if i.tag <= tag! {
+      if i.tag <= tag {
         i.setImage(image, for: .normal)
       }else{
         i.setImage(imageFirst, for: .normal)

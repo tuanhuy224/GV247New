@@ -60,7 +60,6 @@ extension PendingController:UITableViewDataSource{
                         cell.imageName.kf.setImage(with: url)
                     }
                 }
-            
             }
             
             return cell
@@ -192,20 +191,5 @@ extension PendingController:directRequestDelegate{
         }
     }
 }
-//extension PendingController:denyRequestDelegate{
-//    func denyRequest() {
-//        MBProgressHUD.showAdded(to: self.view, animated: true)
-//        guard let ownerId = processPending?.stakeholders?.owner?.id else {return}
-//        guard let taskID = processPending?.id else {return}
-//        let parameter = ["id":taskID,"ownerId":"\(ownerId)"]
-//        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-//        let apiClient = APIService.shared
-//            let alertC = AlertStandard.sharedInstance
-//            MBProgressHUD.hide(for: self.view, animated: true)
-//            alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {
-//                 apiClient.postReserve(url: APIPaths().taskdenyRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
-//            }
-//        })
-//  }
-//}
+
 

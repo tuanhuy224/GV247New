@@ -36,6 +36,7 @@ TimeDay = "ngày trước";
 TimeHour = "giờ trước";
 TimeMinute = "phút trước";
 TimeSecond = "giây trước";
+WorkCompleted = "Công việc hoàn thành";
 AnswerYes = "Có";
 AnswerNo = "Không";
 PleasegotoSettings = "Vui lòng vào Settings --> NGV247 --> Location, bật chế độ While using the App để tiếp tục sử dụng";

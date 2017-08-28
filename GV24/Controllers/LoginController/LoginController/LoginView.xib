@@ -39,7 +39,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signin_bg" translatesAutoresizingMaskIntoConstraints="NO" id="8Oy-JP-LDW">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5Fa-cN-kOO">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fa-cN-kOO">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLj-6N-x88">
@@ -191,6 +191,7 @@
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="leading" secondItem="dxc-wH-YAW" secondAttribute="leading" id="P3E-5W-fh7"/>
                                 <constraint firstItem="eMz-iF-q3y" firstAttribute="centerY" secondItem="grg-Ad-yYh" secondAttribute="centerY" id="aae-96-drc"/>
                                 <constraint firstItem="dCQ-nH-rFS" firstAttribute="leading" secondItem="CgH-Q4-PrF" secondAttribute="leading" id="gu5-HR-hni"/>
+                                <constraint firstItem="dxc-wH-YAW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CgH-Q4-PrF" secondAttribute="bottom" constant="8" id="h8V-xT-uiX"/>
                                 <constraint firstItem="dxc-wH-YAW" firstAttribute="centerX" secondItem="tLj-6N-x88" secondAttribute="centerX" id="kna-Us-eOK"/>
                                 <constraint firstItem="eMz-iF-q3y" firstAttribute="height" secondItem="grg-Ad-yYh" secondAttribute="height" multiplier="1:2" id="lKM-j0-1dl"/>
                                 <constraint firstItem="dxc-wH-YAW" firstAttribute="height" secondItem="tLj-6N-x88" secondAttribute="height" multiplier="1:2" id="mUo-Uw-hAo"/>

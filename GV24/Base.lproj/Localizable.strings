@@ -35,6 +35,7 @@ TimeMinute = "phút trước";
 TimeSecond = "giây trước";
 AnswerYes = "Có";
 AnswerNo = "Không";
+WorkCompleted = "Công việc hoàn thành";
 Applicantprofile = "Thông tin";
 More = "Thêm";
 Received = "Đã nhận";

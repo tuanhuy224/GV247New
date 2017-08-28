@@ -80,34 +80,40 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
         if username == "" || password == "" {
             AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasecompleteallinformation".localize)
         }
-        apiClient.logIn(userName: username, password: password, device_token: token(), completion: { (user, string, error) in
-            self.loading.close()
-            if self.isLoginWhenChangeToken == true{
-                self.isLoginWhenChangeToken = false
-                guard let string = string else {return}
-                UserDefaultHelper.setUserDefault(token: string, user: user)
-                
-                // pop to previous controller if can. Otherwise, pop to root controller
-                if let navigation = self.navigationController{
-                    if navigation.viewControllers.contains(self.viewControllerLogin) {
-                        navigation.popToViewController(self.viewControllerLogin, animated: true)
-                    } else {
+        let network = NetworkStatus.sharedInstance.reachabilityManager?.isReachableOnEthernetOrWiFi
+        if network == false {
+            loading.close()
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Nointernetconnection".localize)
+        }else{
+            apiClient.logIn(userName: username, password: password, device_token: token(), completion: { (user, string, error) in
+                self.loading.close()
+                if self.isLoginWhenChangeToken == true{
+                    self.isLoginWhenChangeToken = false
+                    guard let string = string else {return}
+                    UserDefaultHelper.setUserDefault(token: string, user: user)
+                    
+                    // pop to previous controller if can. Otherwise, pop to root controller
+                    if let navigation = self.navigationController{
+                        if navigation.viewControllers.contains(self.viewControllerLogin) {
+                            navigation.popToViewController(self.viewControllerLogin, animated: true)
+                        } else {
+                            guard let window = UIApplication.shared.keyWindow else{return}
+                            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+                            window.rootViewController = navi
+                        }
+                    }
+                }else{
+                    if let user = user{
+                        UserDefaultHelper.setUserDefault(token: string!, user: user)
                         guard let window = UIApplication.shared.keyWindow else{return}
                         let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                         window.rootViewController = navi
+                    }else{
+                        AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
                     }
                 }
-            }else{
-                if let user = user{
-                    UserDefaultHelper.setUserDefault(token: string!, user: user)
-                    guard let window = UIApplication.shared.keyWindow else{return}
-                    let navi = UINavigationController(rootViewController: HomeViewDisplayController())
-                    window.rootViewController = navi
-                    }else{
-                    AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Invalid".localize)
-                }
-            }
-        })
+            })
+        }
         self.dismissKeyboard()
     }
   
