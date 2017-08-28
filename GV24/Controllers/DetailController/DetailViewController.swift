@@ -80,8 +80,15 @@ extension DetailViewController:UITableViewDataSource{
             cell.lbTitle.text = self.works.info?.title
             cell.lbDescription.text = "Description".localize
             cell.lbSubTitle.text = self.works.info?.workName?.name
-            let salary = self.works.info?.salary ?? 0
-            cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
+//            let salary = self.works.info?.salary ?? 0
+//            cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
+            let salary = self.works.info?.salary
+            if salary == 0 {
+                cell.lbMoney.text = "Timework".localize
+            }else{
+                
+                cell.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
+            }
             cell.lbComment.text = self.works.info?.content
             cell.lbAddress.text = self.works.info?.address?.name
             let url = URL(string: self.works.info!.workName!.image!)

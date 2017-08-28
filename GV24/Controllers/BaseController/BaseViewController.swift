@@ -39,9 +39,9 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         install.startNetworkReachabilityObserver()
         if install.reachabilityManager?.isReachable == false {
-            self.displayNetwork()
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Nointernetconnection".localize)
         }else{
-            //self.removeFromParentViewController()
+            checkTokenApp()
         }
         print("++++view display:\(self)+++++++")
     }
@@ -54,7 +54,7 @@ class BaseViewController: UIViewController {
         BackButtonItem()
     }
     func setupViewBase() {
-        checkTokenApp()
+        
     }
     
     
@@ -79,7 +79,7 @@ class BaseViewController: UIViewController {
         let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(token)"]
         let apiClient = APIService.shared
         apiClient.getUrl(url: APIPaths().maidCheckToken(), param: [:], header: header) { (json, error) in
-          if json?["message"] != "SUCCESS"{
+          if json?["message"] != "SUCCESS" {
             _ = UserDefaultHelper().removeUserDefault()
             let alert = AlertStandard.sharedInstance
             alert.showAlertLogin(controller: self, pushVC: LoginView(), title: "", message: "Youraccountwasaccessedfromanotherdevice".localize, buttonTitle:"" , completion: {

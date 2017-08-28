@@ -21,6 +21,8 @@
                 <outlet property="callPhone" destination="aH7-Sq-HO1" id="8ci-FY-GEi"/>
                 <outlet property="contentLabel" destination="fzF-xC-Chy" id="5vh-dO-Nur"/>
                 <outlet property="emailButton" destination="DtP-Db-3Br" id="lEJ-Iv-v5y"/>
+                <outlet property="lbAddress" destination="ZZ6-Kj-7ZU" id="EIs-Gb-3rz"/>
+                <outlet property="lbNameCompany" destination="Ntg-lQ-Wnx" id="IIs-J0-JLF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,13 +48,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-Kj-7ZU">
-                            <rect key="frame" x="25" y="236" width="325" height="18"/>
+                            <rect key="frame" x="25" y="225" width="325" height="18"/>
                             <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số 35, Đường Cống Quỳnh, P Phạm Ngũ Lão,Thành phố Hồ Chí Minh" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzF-xC-Chy">
-                            <rect key="frame" x="25" y="262" width="325" height="36"/>
+                            <rect key="frame" x="25" y="251" width="325" height="36"/>
                             <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -103,7 +105,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="ZZ6-Kj-7ZU" firstAttribute="top" secondItem="Ntg-lQ-Wnx" secondAttribute="bottom" constant="27" id="6BL-F0-UFw"/>
+                        <constraint firstItem="ZZ6-Kj-7ZU" firstAttribute="top" secondItem="Ntg-lQ-Wnx" secondAttribute="bottom" constant="16" id="6BL-F0-UFw"/>
                         <constraint firstItem="fzF-xC-Chy" firstAttribute="top" secondItem="ZZ6-Kj-7ZU" secondAttribute="bottom" constant="8" id="FU9-I7-R4H"/>
                         <constraint firstItem="Ntg-lQ-Wnx" firstAttribute="top" secondItem="v06-7V-915" secondAttribute="bottom" constant="25" id="I1e-UU-ZRR"/>
                         <constraint firstItem="ZZ6-Kj-7ZU" firstAttribute="leading" secondItem="alB-7W-hwS" secondAttribute="leading" constant="25" id="NbT-Ah-SaB"/>

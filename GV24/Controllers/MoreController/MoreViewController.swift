@@ -133,6 +133,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         // set up activity view controller
         let textToShare = [text as Any]
         let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: [])
+        
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won’t crash
         
         // exclude some activity types from the list (optional)

@@ -75,9 +75,7 @@ extension AroundItemController:UITableViewDelegate{
         detail.works = works[indexPath.row]
         detail.idWork = works[indexPath.row].id
         detail.titleString = name
-//        if UserDefaultHelper.getToken() == nil {
-//            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
-//        }
+
         navigationController?.pushViewController(detail, animated: true)
     }
 }

@@ -48,6 +48,12 @@ class FollowCell: CustomTableViewCell {
             delegate?.logOut()
         }
     }
+    @IBAction func shareTap(_ sender: Any) {
+        delegate?.cellDidPressedShareToAirDrop(self)
+    }
+    @IBAction func facebookTap(_ sender: Any) {
+        delegate?.cellDidPressedShareToFacebook(self)
+    }
     
     func tapShareAirDropButton(_ sender: UIButton) {
         delegate?.cellDidPressedShareToAirDrop(self)
