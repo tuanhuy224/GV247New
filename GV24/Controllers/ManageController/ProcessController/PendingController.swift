@@ -191,11 +191,14 @@ extension PendingController:directRequestDelegate{
                 let apiClient = APIService.shared
                 apiClient.postReserve(url: APIPaths().urlTaskAcceptRequest(), method: .post, parameters: parameter, header: header) { (json, string) in
                     self.loadingView.close()
+                        if string == "SCHEDULE_DUPLICATED"{
+                            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workcurrentlychosen".localize)
+                        }
+                        AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workchosensuccessfully".localize)
                     self.navigationController?.popViewController(animated: true)
                 }
             }
         }
     }
 }
-
 

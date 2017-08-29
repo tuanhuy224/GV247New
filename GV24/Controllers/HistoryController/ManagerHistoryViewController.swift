@@ -195,7 +195,8 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
             if isChooseDate {
                 ManagerHistoryViewController.toDate = date
             }else{
-                 ManagerHistoryViewController.toDate = currentDate!
+                guard let current = currentDate else {return}
+                 ManagerHistoryViewController.toDate = current
             }
         }
         if segmentControl.selectedSegmentIndex == 0 {
