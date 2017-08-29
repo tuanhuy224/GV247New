@@ -23,7 +23,7 @@ class Work: AppModel {
     }
     override init(json:JSON) {
         super.init()
-        self.id = json["_id"].string
+        self.id = json["_id"].stringValue
         self.stakeholders = Stakeholders(json: json["stakeholders"])
         self.info = Info(json: json["info"])
         self.process = Process(json: json["process"])
@@ -41,9 +41,9 @@ class WorkTime: AppModel {
     override init(json: JSON) {
         super.init()
         
-        self.startAt = json["startAt"].string
-        self.endAt = json["endAt"].string
-        self.hour = json["hour"].int
+        self.startAt = json["startAt"].stringValue
+        self.endAt = json["endAt"].stringValue
+        self.hour = json["hour"].intValue
     }
     
 }

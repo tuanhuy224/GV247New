@@ -133,8 +133,10 @@ extension RecievedController:UITableViewDelegate{
 }
 extension RecievedController:CancelWorkDelegate{
     func CancelButton() {
-        let parameter = ["id":processRecieved!.id!]
-        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        guard let id = processRecieved?.id else {return}
+        guard let token = UserDefaultHelper.getToken() else {return}
+        let parameter = ["id":id]
+        let header = ["hbbgvauth": token]
         let apiClient = APIService.shared
         let alertC = AlertStandard.sharedInstance
         alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {

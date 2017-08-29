@@ -37,6 +37,8 @@ extension PendingController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
+            
+            
             if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
                 cell.heightBtChoose.constant = 0
                 cell.btChoose.isHidden = true

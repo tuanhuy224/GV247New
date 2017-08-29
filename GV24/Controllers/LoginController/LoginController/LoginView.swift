@@ -43,7 +43,6 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         userLogin.delegate = self
         passwordLogin.delegate = self
-        scrollLogin.isScrollEnabled = true
         scrollLogin.delegate = self
         location()
         self.setupView()
@@ -56,7 +55,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        registerAutoKeyboard()
+        //registerAutoKeyboard()
         self.title = "SignIn".localize
         btnLogin.setTitle("SignIn".localize.uppercased(), for: .normal)
         forgotPassword.setTitle("Forgotpassword".localize, for: .normal)
@@ -70,7 +69,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        unRegisterAutoKeyboard()
+        //unRegisterAutoKeyboard()
         NotificationCenter.default.removeObserver(self)
     }
     @IBAction func loginButtonAction(_ sender: Any) {

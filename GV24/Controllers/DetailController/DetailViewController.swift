@@ -99,8 +99,14 @@ extension DetailViewController:UITableViewDataSource{
                     cell.imageAvatar.kf.setImage(with:url)
                 }
             }
+            let tool = works.info?.tools
+            if  tool == true {
+                cell.lbTools.isHidden = false
+                cell.lbTools.text = "Bringyourcleaningsupplies".localize
+            }
             cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
-            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
+//            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
+            cell.lbTime.text = Date(isoDateString: (works.workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (works.workTime?.endAt)!).hourMinute
             return cell
         }
     }

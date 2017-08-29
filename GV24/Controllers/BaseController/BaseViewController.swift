@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
     let notificationIdentifier: String = "NotificationIdentifier"
     let install = NetworkStatus.sharedInstance
     var islog = false
+//    var toDate: Date = Date()
     var isChange: Bool = false
     var currentLanguage:Int?
     var isLoginWhenChangeToken:Bool = false

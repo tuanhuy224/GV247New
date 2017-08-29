@@ -24,7 +24,7 @@ class Info: AppModel {
     }
     override init(json: JSON) {
         super.init()
-        self.title  = json["title"].string
+        self.title  = json["title"].stringValue
         self.workName = WorkName(json: json["work"])
         self.history = History(json: json["history"])
         self.content = json["description"].string
@@ -44,8 +44,8 @@ class WorkName:AppModel {
     var name:String?
     override init(json: JSON) {
         super.init(json: json)
-        self.id = json["_id"].string
-        self.name = json["name"].string
-        self.image = json["image"].string
+        self.id = json["_id"].stringValue
+        self.name = json["name"].stringValue
+        self.image = json["image"].stringValue
     }
 }

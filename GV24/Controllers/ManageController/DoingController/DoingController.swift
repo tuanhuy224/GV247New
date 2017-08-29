@@ -71,6 +71,12 @@ extension DoingController:UITableViewDataSource{
                 
                 cell.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
             }
+            
+            let tool = ProcessDoing?.info?.tools
+            if  tool == true {
+                cell.lbTools.isHidden = false
+                cell.lbTools.text = "Bringyourcleaningsupplies".localize
+            }
             cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.ProcessDoing?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.ProcessDoing?.workTime!.endAt)!, format: "HH:mm a")!
             cell.lbAddress.text = ProcessDoing?.stakeholders?.owner?.address?.name
             return cell

@@ -18,11 +18,13 @@ class ManagerHistoryViewController: BaseViewController {
     var workListVC: HistoryViewController?
     var ownerListVC: OwnerHistoryViewController?
     var fromDate: Date? = nil
-    var toDate: Date = Date()
+    static var toDate: Date = Date()
+    var currentDate:Date?
     var currentSelectedIndex: Int = 0
     var isFirstTime: Bool = true
     var isDisplayAlert:Bool = false
     var billId:String?
+    var isChooseDate: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         customNavigationController()
@@ -100,7 +102,7 @@ class ManagerHistoryViewController: BaseViewController {
         setupConstraint(vc: workListVC!)
         workListVC?.myParent = self
         
-        toDateButton.setTitle(String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
+        toDateButton.setTitle(String.convertDateToString(date: ManagerHistoryViewController.toDate, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
     }
 
     
@@ -130,11 +132,12 @@ class ManagerHistoryViewController: BaseViewController {
     }
 
     @IBAction func fromDateButtonClicked(_ sender: Any) {
-       showPopup(isFromDate: true, isToDate: false, fromDate: fromDate, toDate: toDate)
+
+       showPopup(isFromDate: true, isToDate: false, fromDate: fromDate, toDate: ManagerHistoryViewController.toDate )
     }
 
     @IBAction func toDateButtonClicked(_ sender: Any) {
-        showPopup(isFromDate: false, isToDate: true, fromDate: fromDate, toDate: toDate)
+        showPopup(isFromDate: false, isToDate: true, fromDate: fromDate, toDate: ManagerHistoryViewController.toDate )
     }
     
     fileprivate func showPopup(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date) {
@@ -151,17 +154,17 @@ class ManagerHistoryViewController: BaseViewController {
         workListVC?.workList.removeAll()
         workListVC?.historyTableView.reloadData()
         workListVC?.startAtDate = fromDate
-        workListVC?.endAtDate = toDate
+        workListVC?.endAtDate = ManagerHistoryViewController.toDate
         workListVC?.page = 1
-        workListVC?.getWorkList(startAt: fromDate, endAt: toDate)
+        workListVC?.getWorkList(startAt: fromDate, endAt: ManagerHistoryViewController.toDate)
     }
     
     func reloadOwnerListViewController() {
         ownerListVC?.ownerList.removeAll()
         ownerListVC?.tableView.reloadData()
         ownerListVC?.startAtDate = fromDate
-        ownerListVC?.endAtDate = toDate
-        ownerListVC?.getOwnerList(startAt: fromDate, endAt: toDate)
+        ownerListVC?.endAtDate = ManagerHistoryViewController.toDate
+        ownerListVC?.getOwnerList(startAt: fromDate, endAt: ManagerHistoryViewController.toDate)
     }
     override func setupViewBase() {
       super.setupViewBase()
@@ -189,7 +192,11 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
         }
         else {
             toDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
-            toDate = date
+            if isChooseDate {
+                ManagerHistoryViewController.toDate = date
+            }else{
+                 ManagerHistoryViewController.toDate = currentDate!
+            }
         }
         if segmentControl.selectedSegmentIndex == 0 {
             self.reloadWorkListViewController()

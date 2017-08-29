@@ -105,11 +105,13 @@ extension URLSession{
 extension Date{
     
     init(isoDateString: String) {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-      dateFormatter.timeZone = TimeZone.current
-      let newDate = dateFormatter.date(from: isoDateString)
-      self = newDate!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        dateFormatter.amSymbol = "AM".localize
+        dateFormatter.amSymbol = "PM".localize
+        dateFormatter.timeZone = TimeZone.current
+        let newDate = dateFormatter.date(from: isoDateString)
+        self = newDate!
     }
     var year : String{
         let calendar = Calendar(identifier: .gregorian)
@@ -157,10 +159,12 @@ extension Date{
     }
     
     var hourMinute: String{
-      let formatter = DateFormatter()
-      formatter.dateFormat = "hh:mm a"
-      let hourMinute = formatter.string(from: self)
-      return hourMinute
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.amSymbol = "AM".localize
+        dateFormatter.amSymbol = "PM".localize
+        let hourMinute =  dateFormatter.string(from: self)
+        return hourMinute
     }
     var hourMinuteSecond: String{
         let calendar = Calendar(identifier: .gregorian)
@@ -169,7 +173,7 @@ extension Date{
         let second = calendar.component(.second, from: self)
         return "\(hour)h\(minute)p\(second)"
     }
-
+    
     func date(datePost:String) -> DateComponents {
         let dateInsert = Date(isoDateString: datePost)
         let dateCurrent = Date()
@@ -191,44 +195,56 @@ extension Date{
         }
         return ""
     }
-  var comparse:Bool{
-    let currentDate = Date()
-    switch self.compare(currentDate){
-    case .orderedAscending:
-      return true
-    case .orderedDescending:
-      return false
-    default:
-      return false
+    var comparse:Bool{
+        let currentDate = Date()
+        switch self.compare(currentDate){
+        case .orderedAscending:
+            return true
+        case .orderedDescending:
+            return false
+        default:
+            return false
+        }
     }
-  }
 }
 extension String {
-   static let dateFormatter = DateFormatter()
+    //static let dateFormatter = DateFormatter()
     static func convertISODateToString(isoDateStr: String, format: String) -> String? {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         dateFormatter.timeZone = TimeZone.current
         let newDate = dateFormatter.date(from: isoDateStr)
         dateFormatter.dateFormat = format
+        dateFormatter.amSymbol = "AM".localize
+        dateFormatter.amSymbol = "PM".localize
         return dateFormatter.string(from: newDate!)
     }
     
     static func convertISODateToDate(isoDateStr: String) -> Date? {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        dateFormatter.amSymbol = "AM".localize
+        dateFormatter.amSymbol = "PM".localize
         dateFormatter.timeZone = TimeZone.current
         let newDate = dateFormatter.date(from: isoDateStr)
         return newDate
     }
     
     static func convertDateToString(date: Date, withFormat: String) -> String? {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = withFormat
         dateFormatter.timeZone = TimeZone.current
+        dateFormatter.amSymbol = "AM".localize
+        dateFormatter.amSymbol = "PM".localize
         let newDateStr = dateFormatter.string(from: date)
         return newDateStr
     }
     
     static func convertDateToISODateType(date: Date) -> String?{
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        dateFormatter.amSymbol = "AM".localize
+        dateFormatter.amSymbol = "PM".localize
         dateFormatter.timeZone = TimeZone.current
         let newISODateStr = dateFormatter.string(from: date)
         return newISODateStr
@@ -255,13 +271,13 @@ protocol pushnotifi {
 //class OpenHomeBusinesss: pushnotifi {
 //    let var1 = ...
 //    let var2 = ...
-//    
+//
 //    init(var1)
-//    
-//    
-    func pushviewcontroller() {
-        // creaete required controller
-        // push to navigation
-        // etc..
-    }
+//
+//
+func pushviewcontroller() {
+    // creaete required controller
+    // push to navigation
+    // etc..
+}
 
