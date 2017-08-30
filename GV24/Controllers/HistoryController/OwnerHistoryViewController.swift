@@ -12,6 +12,7 @@ import SwiftyJSON
 import Kingfisher
 
 class OwnerHistoryViewController: BaseViewController {
+    @IBOutlet weak var ImageNodata: UIImageView!
   @IBOutlet weak var tableView: UITableView!
   var ownerList:[Owner] = []{
     didSet{
@@ -44,7 +45,7 @@ class OwnerHistoryViewController: BaseViewController {
     return label
   }()
   lazy var emptyDataView: UIView = {
-    let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
+    let emptyView = TableViewHelper().noData(frame: CGRect(x: (self.view.frame.width / 2) - 50, y: 50, width: 100, height: 150))
     emptyView.isHidden = true
     return emptyView
   }()
@@ -54,13 +55,13 @@ class OwnerHistoryViewController: BaseViewController {
     setupLoadingIndicator()
     setupEmptyDataView()
     setupEmptyLabel()
-    
+    ImageNodata.isHidden = true
     getOwnerList(startAt: startAtDate, endAt: endAtDate)
   }
   
   func setupTableView() {
     tableView.register(UINib(nibName:NibOwnerHistoryViewCell,bundle:nil), forCellReuseIdentifier: ownerHistoryCellID)
-    tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0.01))
+    tableView.tableHeaderView = UIView(frame: CGRect(x: (self.view.frame.width - 80)/2, y: 0, width: tableView.bounds.size.width, height: 0.01))
     self.tableView.addSubview(self.refreshControl)
     self.automaticallyAdjustsScrollViewInsets = false
     self.tableView.backgroundView = self.activityIndicatorView
@@ -75,11 +76,14 @@ class OwnerHistoryViewController: BaseViewController {
   
   func setupEmptyDataView() {
     view.addSubview(emptyDataView)
+    
+
   }
   
   func setupEmptyLabel(){
     view.addSubview(emptyLabel)
     emptyLabel.frame = CGRect(x: self.view.frame.size.width/2 - 100, y: 0, width: 200, height: 100)
+    
   }
   
   func showLoadingIndicator() {

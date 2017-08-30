@@ -25,16 +25,32 @@ class TableViewHelper: NSObject {
     func noData(frame: CGRect) -> UIView {
         let image = UIImage(named: "icon_nodata")
         let imgView = UIImageView(image: image)
-        imgView.frame = CGRect(x: 10, y: 0, width: 80, height: 100)
-        let view = UIView(frame: frame)
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+
+//        imgView.frame = CGRect(x: 10, y:0, width: 80, height: 100)
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         //view.backgroundColor = UIColor.red
         view.addSubview(imgView)
         let text = UILabel()
+        text.translatesAutoresizingMaskIntoConstraints = false
         text.text = "SoonUpdate".localize
         text.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
-        text.frame = CGRect(x: 0, y: 110, width: 70, height: 20)
+//        text.frame = CGRect(x: 0, y: 110, width: 70, height: 50)
         view.addSubview(text)
         text.sizeToFit()
+        
+        
+        
+        // layout
+        imgView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        imgView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        imgView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        imgView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        
+        text.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        text.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 10).isActive = true
         return view
     }
 }

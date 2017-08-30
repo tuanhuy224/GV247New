@@ -38,8 +38,7 @@ extension PendingController:UITableViewDataSource{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
             
-            
-            if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
+            if Date(isoDateString: (processPending?.workTime?.endAt)!).comparse == true {
                 cell.heightBtChoose.constant = 0
                 cell.btChoose.isHidden = true
                 cell.vSegment.isHidden = true
@@ -79,9 +78,10 @@ extension PendingController:UITableViewDataSource{
                 
                 cell.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
             }
-            
-            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processPending?.workTime!.endAt)!, format: "HH:mm a")!
-            if Date() > String.convertISODateToDate(isoDateStr: (processPending?.workTime?.endAt)!)! {
+
+            cell.lbTime.text = Date(isoDateString: (self.processPending?.workTime!.startAt)!).hourMinute + " - " + Date(isoDateString: (self.processPending?.workTime!.endAt)!).hourMinute
+
+            if Date(isoDateString: (processPending?.workTime?.endAt)!).comparse == true {
                 cell.lbdeadLine.isHidden = false
                 cell.lbdeadLine.text = "Expired".localize
             }else{

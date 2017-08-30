@@ -45,7 +45,8 @@ class HistoryViewController: BaseViewController {
         return label
     }()
     lazy var emptyDataView: UIView = {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
+//        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
+        let emptyView = TableViewHelper().noData(frame: .zero)
         emptyView.isHidden = true
         return emptyView
     }()
@@ -68,6 +69,10 @@ class HistoryViewController: BaseViewController {
     
     func setupEmptyDataView() {
         view.addSubview(emptyDataView)
+        emptyDataView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        emptyDataView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        emptyDataView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        emptyDataView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
     }
     
     func setupEmptyLabel(){
@@ -187,7 +192,9 @@ class HistoryViewController: BaseViewController {
         let startAtString = String(describing: startAt!)
         let endAt = work.workTime?.endAt
         let endAtString = String(describing: endAt!)
-        cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+        //cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+        
+        cell.timeWork.text = Date(isoDateString: startAtString).hourMinute +  " - " + Date(isoDateString: endAtString).hourMinute
          cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
         cell.lbDist.text = "CompletedWork".localize
         cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")

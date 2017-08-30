@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OwnerHistoryViewController" customModule="GV24" customModuleProvider="target">
             <connections>
+                <outlet property="ImageNodata" destination="S5O-jp-fBs" id="0cF-p1-dsq"/>
                 <outlet property="tableView" destination="D0E-0H-1BI" id="dei-gR-MTn"/>
                 <outlet property="view" destination="nuy-Ul-beo" id="Z3a-bz-eJc"/>
             </connections>
@@ -27,9 +28,18 @@
                         <outlet property="delegate" destination="-1" id="w0E-8e-7PV"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S5O-jp-fBs">
+                    <rect key="frame" x="157" y="303.5" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="LYJ-EV-a6e"/>
+                        <constraint firstAttribute="height" constant="60" id="ZZG-I5-1bs"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
+                <constraint firstItem="S5O-jp-fBs" firstAttribute="centerX" secondItem="nuy-Ul-beo" secondAttribute="centerX" id="DUb-xz-y6O"/>
+                <constraint firstItem="S5O-jp-fBs" firstAttribute="centerY" secondItem="nuy-Ul-beo" secondAttribute="centerY" id="H1p-kP-JoP"/>
                 <constraint firstItem="D0E-0H-1BI" firstAttribute="leading" secondItem="nuy-Ul-beo" secondAttribute="leading" id="MTz-II-0Ex"/>
                 <constraint firstAttribute="bottom" secondItem="D0E-0H-1BI" secondAttribute="bottom" id="Obs-hA-Kyk"/>
                 <constraint firstItem="D0E-0H-1BI" firstAttribute="top" secondItem="nuy-Ul-beo" secondAttribute="top" id="VY1-d5-2a9"/>

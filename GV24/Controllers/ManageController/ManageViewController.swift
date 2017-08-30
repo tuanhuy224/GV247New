@@ -13,7 +13,11 @@ class ManageViewController: BaseViewController {
     @IBOutlet weak var segmentCtr: UISegmentedControl!
     @IBOutlet weak var tbManage: UITableView!
     var idProcess:String?
-    var processOnCreate = [Work]()
+    var processOnCreate = [Work](){
+        didSet{
+        tbManage.reloadData()
+        }
+    }
     var processPending = [Work]()
     var processDone = [Work]()
     var processOnDoing = [Work](){
@@ -21,7 +25,11 @@ class ManageViewController: BaseViewController {
             tbManage.reloadData()
         }
     }
-    var processRecieved = [Work]()
+    var processRecieved = [Work](){
+        didSet{
+            tbManage.reloadData()
+        }
+    }
     var returnValue:Int = 0
     var longGesture = UILongPressGestureRecognizer()
     override func viewDidLoad() {
@@ -46,10 +54,15 @@ class ManageViewController: BaseViewController {
         segmentCtr.setTitle("waiting".localize, forSegmentAt: 0)
         segmentCtr.setTitle("assigned".localize, forSegmentAt: 1)
         segmentCtr.setTitle("runnning".localize, forSegmentAt: 2)
-        getProcess()
+        
         if processOnDoing == [] {
             return
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getProcess()
     }
     @IBAction func segmentControlAction(_ sender: Any) {
         let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
@@ -63,12 +76,12 @@ class ManageViewController: BaseViewController {
         tbManage.reloadData()
     }
     func getProcess() {
-        
+        guard let token = UserDefaultHelper.getToken() else{return}
         let parameterCreate = ["process":"\(WorkStatus.OnCreate.rawValue)"]
         let parmaterPending = ["process":"\(WorkStatus.Pending.rawValue)"]
         let parmaterOnDoing = ["process":"\(WorkStatus.OnDoing.rawValue)"]
         let parmaterRecieve = ["process":"\(WorkStatus.Recieved.rawValue)"]
-        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let header = ["hbbgvauth":token]
         let apiService = AroundTask.sharedInstall
         loadingView.show()
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parameterCreate, header: header) { (json, error) in
@@ -163,11 +176,11 @@ extension ManageViewController:UITableViewDataSource{
             }
             cell.workNameLabel.text = processOnCreate[indexPath.row].info?.title
             cell.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).dayMonthYear)"
-            cell.timeWork.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute)"
             cell.lbDist.text = "Proccess".localize
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
-            cell.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
+//            cell.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
+            cell.timeWork.text = Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute
             
             
         case 1:
@@ -230,7 +243,8 @@ extension ManageViewController:UITableViewDataSource{
                     cell2.lbComment.text = processOnDoing[0].info?.content
                     cell2.lbDate.text = "\(Date(isoDateString: (processOnDoing[0].workTime?.startAt)!).dayMonthYear)"
                     cell2.lbMoney.text = "\(processOnDoing[0].info?.salary ?? 0) VND"
-                    cell2.lbTime.text = String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.endAt)!, format: "HH:mm a")!
+                    //cell2.lbTime.text = String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.endAt)!, format: "HH:mm a")!
+                    cell2.lbTime.text = Date(isoDateString: (self.processOnDoing[0].workTime!.startAt)!).hourMinute + " - " + Date(isoDateString: (self.processOnDoing[0].workTime!.endAt)!).hourMinute
                     cell2.lbAddress.text = processOnDoing[0].stakeholders?.owner?.address?.name
                 }
                 return cell2
