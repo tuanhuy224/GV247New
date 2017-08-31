@@ -48,7 +48,6 @@ extension WorkInfoCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: workInfoCollectionCellID, for: indexPath) as! WorkInfoCollectionViewCell
         let workType = data[indexPath.row]
-        collectionView.reloadItems(at: [indexPath])
         cell.titleLabel.text = workType.name
         cell.titleLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
         cell.titleLabel.numberOfLines = 0

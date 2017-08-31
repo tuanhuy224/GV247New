@@ -261,8 +261,6 @@ extension String {
     static func convertDateToString(date: Date, withFormat: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = withFormat
-        //dateFormatter.timeZone = TimeZone.current
-        
         let newDateStr = dateFormatter.string(from: date)
         return newDateStr
     }
