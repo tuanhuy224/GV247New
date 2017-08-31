@@ -122,7 +122,7 @@ extension Date{
         
         return Date12
     }
-
+    
     // convert date to date
     func date(_ currentDate: Date) -> Date {
         Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
@@ -132,7 +132,7 @@ extension Date{
         guard let date = newDate else { return Date()}
         return date
     }
-
+    
     
     var year : String{
         let calendar = Calendar(identifier: .gregorian)
@@ -180,11 +180,11 @@ extension Date{
     }
     
     var hourMinute: String{
-        Date.dateFormatter.dateFormat = "hh:mm a"
-        //Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
-        Date.dateFormatter.amSymbol = "AM".localize
-        Date.dateFormatter.pmSymbol = "PM".localize
-        let hourMinute =  Date.dateFormatter.string(from: self)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        formatter.amSymbol = "AM".localize
+        formatter.pmSymbol = "PM".localize
+        let hourMinute =  formatter.string(from: self)
         return hourMinute
     }
     var hourMinuteSecond: String{
@@ -219,13 +219,13 @@ extension Date{
     
     
     var comparse:Bool{
-//        let currentDate = Date()
-//        //let dateFormatter = DateFormatter()
-//        Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-//        Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
-//        let currentDateString = Date.dateFormatter.string(from: currentDate)
-//        let newDate = Date.dateFormatter.date(from: currentDateString)
-//        guard let date = newDate else { return false }
+        //        let currentDate = Date()
+        //        //let dateFormatter = DateFormatter()
+        //        Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        //        Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
+        //        let currentDateString = Date.dateFormatter.string(from: currentDate)
+        //        let newDate = Date.dateFormatter.date(from: currentDateString)
+        //        guard let date = newDate else { return false }
         
         switch self.compare(date(Date())) {
         case .orderedAscending:
@@ -245,14 +245,14 @@ extension String {
         //dateFormatter.timeZone = TimeZone.current
         let newDate = dateFormatter.date(from: isoDateStr)
         dateFormatter.dateFormat = format
-
+        
         return dateFormatter.string(from: newDate!)
     }
     
     static func convertISODateToDate(isoDateStr: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-
+        
         //dateFormatter.timeZone = TimeZone.current
         let newDate = dateFormatter.date(from: isoDateStr)
         return newDate
@@ -262,7 +262,7 @@ extension String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = withFormat
         //dateFormatter.timeZone = TimeZone.current
-
+        
         let newDateStr = dateFormatter.string(from: date)
         return newDateStr
     }
@@ -270,7 +270,7 @@ extension String {
     static func convertDateToISODateType(date: Date) -> String?{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-
+        
         //dateFormatter.timeZone = TimeZone.current
         let newISODateStr = dateFormatter.string(from: date)
         return newISODateStr

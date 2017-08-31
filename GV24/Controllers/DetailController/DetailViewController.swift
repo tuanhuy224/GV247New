@@ -80,8 +80,8 @@ extension DetailViewController:UITableViewDataSource{
             cell.lbTitle.text = self.works.info?.title
             cell.lbDescription.text = "Description".localize
             cell.lbSubTitle.text = self.works.info?.workName?.name
-//            let salary = self.works.info?.salary ?? 0
-//            cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
+            //            let salary = self.works.info?.salary ?? 0
+            //            cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
             let salary = self.works.info?.salary
             if salary == 0 {
                 cell.lbMoney.text = "Timework".localize
@@ -105,7 +105,7 @@ extension DetailViewController:UITableViewDataSource{
                 cell.lbTools.text = "Bringyourcleaningsupplies".localize
             }
             cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
-//            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
+            //            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
             cell.lbTime.text = Date(isoDateString: (works.workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (works.workTime?.endAt)!).hourMinute
             return cell
         }
@@ -120,7 +120,7 @@ extension DetailViewController:UITableViewDelegate{
             navi.workPending = works
             navigationController?.pushViewController(navi, animated: true)
         }else{
-        
+            
         }
     }
 }
@@ -128,8 +128,14 @@ extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
         guard let id = idWork else{return}
         guard let token = UserDefaultHelper.getToken() else{
-            return AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
-            }
+            //return AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
+            
+            return AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: nil, title: "", message: "Pleasesign".localize, completion: {
+                guard let window = UIApplication.shared.keyWindow else{return}
+                let navi = UINavigationController(rootViewController: LoginView())
+                window.rootViewController = navi
+            })
+        }
         let parameter = ["id":id]
         let header = ["hbbgvauth":token]
         let apiClient = APIService.shared
