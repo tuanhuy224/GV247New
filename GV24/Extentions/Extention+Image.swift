@@ -103,14 +103,36 @@ extension URLSession{
 }
 
 extension Date{
-    
+    static let dateFormatter = DateFormatter()
     init(isoDateString: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
-        let newDate = dateFormatter.date(from: isoDateString)
+        Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
+        let newDate = Date.dateFormatter.date(from: isoDateString)
         self = newDate!
     }
+    
+    // convert date to string
+    func convertDateToString(date: String) -> String? {
+        Date.dateFormatter.dateFormat = "HH:mm"
+        
+        let date = Date.dateFormatter.date(from: date)
+        Date.dateFormatter.dateFormat = "hh:mm a"
+        guard let dateData = date else {return ""}
+        let Date12 = Date.dateFormatter.string(from: dateData)
+        
+        return Date12
+    }
+
+    // convert date to date
+    func date(_ currentDate: Date) -> Date {
+        Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
+        let currentDateString = Date.dateFormatter.string(from: currentDate)
+        let newDate = Date.dateFormatter.date(from: currentDateString)
+        guard let date = newDate else { return Date()}
+        return date
+    }
+
     
     var year : String{
         let calendar = Calendar(identifier: .gregorian)
@@ -158,11 +180,11 @@ extension Date{
     }
     
     var hourMinute: String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
-        dateFormatter.amSymbol = "AM".localize
-        dateFormatter.pmSymbol = "PM".localize
-        let hourMinute =  dateFormatter.string(from: self)
+        Date.dateFormatter.dateFormat = "hh:mm a"
+        //Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
+        Date.dateFormatter.amSymbol = "AM".localize
+        Date.dateFormatter.pmSymbol = "PM".localize
+        let hourMinute =  Date.dateFormatter.string(from: self)
         return hourMinute
     }
     var hourMinuteSecond: String{
@@ -194,16 +216,18 @@ extension Date{
         }
         return ""
     }
+    
+    
     var comparse:Bool{
-        let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
-        let currentDateString = dateFormatter.string(from: currentDate)
-        let newDate = dateFormatter.date(from: currentDateString)
-        guard let date = newDate else { return false }
+//        let currentDate = Date()
+//        //let dateFormatter = DateFormatter()
+//        Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+//        Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
+//        let currentDateString = Date.dateFormatter.string(from: currentDate)
+//        let newDate = Date.dateFormatter.date(from: currentDateString)
+//        guard let date = newDate else { return false }
         
-        switch self.compare(date) {
+        switch self.compare(date(Date())) {
         case .orderedAscending:
             return true
         case .orderedDescending:

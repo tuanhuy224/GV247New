@@ -10,6 +10,7 @@ class PendingController: BaseViewController {
     @IBOutlet weak var tbPending: UITableView!
     var processPending:Work?
     var isChoose:Bool = false
+    var constraint: NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
         tbPending.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
@@ -19,9 +20,10 @@ class PendingController: BaseViewController {
         self.tbPending.rowHeight = UITableViewAutomaticDimension
         self.tbPending.estimatedRowHeight = 100.0
     }
-    override func setupViewBase() {
-        super.setupViewBase()
-        self.title = "waiting".localize
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         self.title = "waiting".localize
         tbPending.reloadData()
     }
 }
@@ -38,14 +40,16 @@ extension PendingController:UITableViewDataSource{
         case 0:
             let cell:WorkDetailCell = tbPending.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
             
+            
             if Date(isoDateString: (processPending?.workTime?.endAt)!).comparse == true {
-                cell.heightBtChoose.constant = 0
                 cell.btChoose.isHidden = true
                 cell.vSegment.isHidden = true
+                cell.heightBtChoose.constant = 0
+
                 cell.constraintH.constant = 0
                 cell.btChooseConstraint.constant = 0
                 isChoose = true
-            }else{
+            }else if processPending?.process?.id == WorkStatus.Direct.rawValue {
                 cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
                 cell.btChoose.isHidden = false
                 cell.delegateRequest = self
@@ -61,7 +65,16 @@ extension PendingController:UITableViewDataSource{
                         cell.imageName.kf.setImage(with: url)
                     }
                 }
+            }else{
+                cell.btChoose.isHidden = true
+                cell.vSegment.isHidden = true
+                cell.heightBtChoose.constant = 0
+                
+                cell.constraintH.constant = 0
+                cell.btChooseConstraint.constant = 0
+            
             }
+//            tbPending.reloadSections([indexPath.section], with: .automatic)
             
             return cell
         case 1:
@@ -167,8 +180,7 @@ extension PendingController:CancelWorkDelegate{
             alertC.showAlertCt(controller: self, pushVC: nil, title: "", message: "cancelWork".localize, completion: {
                 apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
                 }
-                let mana = ManageViewController(nibName: NibManageViewController, bundle: nil)
-                self.navigationController?.pushViewController(mana, animated: true)
+                self.navigationController?.popViewController(animated: true)
             })
         }
         

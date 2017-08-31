@@ -15,7 +15,7 @@ class ManageViewController: BaseViewController {
     var idProcess:String?
     var processOnCreate = [Work](){
         didSet{
-        tbManage.reloadData()
+            tbManage.reloadData()
         }
     }
     var processPending = [Work]()
@@ -42,7 +42,6 @@ class ManageViewController: BaseViewController {
         self.tbManage.rowHeight = UITableViewAutomaticDimension
         self.tbManage.estimatedRowHeight = 100.0
         vDoing.isHidden = true
-        print(UserDefaultHelper.getToken())
     }
     override func decorate() {
         super.decorate()
@@ -54,7 +53,7 @@ class ManageViewController: BaseViewController {
         segmentCtr.setTitle("waiting".localize, forSegmentAt: 0)
         segmentCtr.setTitle("assigned".localize, forSegmentAt: 1)
         segmentCtr.setTitle("runnning".localize, forSegmentAt: 2)
-        
+        tbManage.reloadData()
         if processOnDoing == [] {
             return
         }
@@ -179,8 +178,9 @@ extension ManageViewController:UITableViewDataSource{
             cell.lbDist.text = "Proccess".localize
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
-//            cell.timeWork.text = String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (processOnCreate[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
             cell.timeWork.text = Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute
+            
+            
             
             
         case 1:
@@ -194,7 +194,7 @@ extension ManageViewController:UITableViewDataSource{
                 cell.lbDirect.isHidden = true
                 cell.lbDeadline.isHidden = false
                 cell.lbDeadline.text = "Expired".localize
-            }else if Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).comparse == true{
+            }else if Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).comparse == true{
                 cell.lbDirect.isHidden = true
                 cell.lbDeadline.isHidden = false
                 cell.lbDeadline.text = "Expired".localize
@@ -242,10 +242,25 @@ extension ManageViewController:UITableViewDataSource{
                     cell2.lbSubTitle.text = processOnDoing[0].info?.workName?.name
                     cell2.lbComment.text = processOnDoing[0].info?.content
                     cell2.lbDate.text = "\(Date(isoDateString: (processOnDoing[0].workTime?.startAt)!).dayMonthYear)"
-                    cell2.lbMoney.text = "\(processOnDoing[0].info?.salary ?? 0) VND"
+                    //cell2.lbMoney.text = "\(processOnDoing[0].info?.salary ?? 0) VND"
                     //cell2.lbTime.text = String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.endAt)!, format: "HH:mm a")!
                     cell2.lbTime.text = Date(isoDateString: (self.processOnDoing[0].workTime!.startAt)!).hourMinute + " - " + Date(isoDateString: (self.processOnDoing[0].workTime!.endAt)!).hourMinute
                     cell2.lbAddress.text = processOnDoing[0].stakeholders?.owner?.address?.name
+                    
+                    let tool = processOnDoing[0].info?.tools
+                    if  tool == true {
+                        cell2.lbTools.isHidden = false
+                        cell2.lbTools.text = "Bringyourcleaningsupplies".localize
+                    }
+                    
+                    
+                    let salary = processOnDoing[0].info?.salary
+                    if salary == 0 {
+                        cell2.lbMoney.text = "Timework".localize
+                    }else{
+                        
+                        cell2.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
+                    }
                 }
                 return cell2
             default:

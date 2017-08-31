@@ -84,7 +84,7 @@ extension RecievedController:UITableViewDataSource{
             }
             cell.lbTime.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved?.workTime?.endAt)!).hourMinute)"
             cell.lbAddress.text = processRecieved?.info?.address?.name
-            if Date(isoDateString: (processRecieved?.workTime?.startAt)!).comparse == true {
+            if Date(isoDateString: (processRecieved?.workTime?.endAt)!).comparse == true {
               cell.lbdeadLine.isHidden = false
               cell.lbdeadLine.text = "Expired".localize
               cell.lbdeadLine.textAlignment = .center

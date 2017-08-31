@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryViewController" customModule="GV24" customModuleProvider="target">
             <connections>
                 <outlet property="historyTableView" destination="O2D-hi-VYs" id="7yT-TU-zYC"/>
+                <outlet property="imgNodata" destination="Gz4-bX-TTm" id="zwG-Rd-HDT"/>
+                <outlet property="lbNodata" destination="otx-Vs-myi" id="Px8-98-mVe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,16 +29,36 @@
                         <outlet property="delegate" destination="-1" id="i6C-oy-ybT"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="Gz4-bX-TTm">
+                    <rect key="frame" x="157" y="303.5" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="NtP-Sk-lOU"/>
+                        <constraint firstAttribute="width" constant="60" id="eFn-m3-ko6"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otx-Vs-myi">
+                    <rect key="frame" x="166" y="371" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="O2D-hi-VYs" secondAttribute="bottom" id="0h1-kd-9So"/>
+                <constraint firstItem="Gz4-bX-TTm" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="1dI-vC-ejj"/>
+                <constraint firstItem="otx-Vs-myi" firstAttribute="top" secondItem="Gz4-bX-TTm" secondAttribute="bottom" constant="7.5" id="4qA-19-SPB"/>
                 <constraint firstAttribute="trailing" secondItem="O2D-hi-VYs" secondAttribute="trailing" id="CE3-w1-ipY"/>
                 <constraint firstItem="O2D-hi-VYs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Lxq-ka-wPx"/>
+                <constraint firstItem="otx-Vs-myi" firstAttribute="centerX" secondItem="Gz4-bX-TTm" secondAttribute="centerX" id="M7D-wW-DXh"/>
+                <constraint firstItem="Gz4-bX-TTm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Soe-CM-eW2"/>
                 <constraint firstItem="O2D-hi-VYs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xNh-0R-KGB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="35.5" y="-97.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_nodata" width="178" height="224"/>
+    </resources>
 </document>

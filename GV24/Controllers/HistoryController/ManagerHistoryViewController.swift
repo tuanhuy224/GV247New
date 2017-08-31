@@ -25,6 +25,11 @@ class ManagerHistoryViewController: BaseViewController {
     var isDisplayAlert:Bool = false
     var billId:String?
     var isChooseDate: Bool = false
+    var fromDateChoose: Date?
+    
+    var toDateChoose: Date?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         customNavigationController()
@@ -137,10 +142,20 @@ class ManagerHistoryViewController: BaseViewController {
     }
 
     @IBAction func toDateButtonClicked(_ sender: Any) {
-        showPopup(isFromDate: false, isToDate: true, fromDate: fromDate, toDate: toDate )
+        showToDate(isFromDate: false, isToDate: true, fromDate: fromDate, toDate: toDate )
     }
     
-    fileprivate func showPopup(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date) {
+    fileprivate func showPopup(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date?) {
+        let popup = PopupViewController()
+        popup.delegate = self
+        popup.isFromDate = isFromDate
+        popup.isToDate = isToDate
+        popup.fromDate = fromDate
+        popup.toDate = toDate
+        popup.show()
+    }
+    
+    fileprivate func showToDate(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date?) {
         let popup = PopupViewController()
         popup.delegate = self
         popup.isFromDate = isFromDate
@@ -197,8 +212,7 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
         }
         if segmentControl.selectedSegmentIndex == 0 {
             self.reloadWorkListViewController()
-        }
-        else {
+        }else {
             self.reloadOwnerListViewController()
         }
     }

@@ -13,6 +13,8 @@ import Kingfisher
 
 class HistoryViewController: BaseViewController {
     
+    @IBOutlet weak var lbNodata: UILabel!
+    @IBOutlet weak var imgNodata: UIImageView!
     var user:User?
     var workList: [Work] = []
     var myParent: ManagerHistoryViewController?
@@ -46,7 +48,7 @@ class HistoryViewController: BaseViewController {
     }()
     lazy var emptyDataView: UIView = {
 //        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
-        let emptyView = TableViewHelper().noData(frame: .zero)
+        let emptyView = UIView()//TableViewHelper().noData(frame: .zero)
         emptyView.isHidden = true
         return emptyView
     }()
@@ -61,6 +63,8 @@ class HistoryViewController: BaseViewController {
         setupEmptyDataView()
         setupEmptyLabel()
     }
+    
+
     
     func setupLoadingIndicator() {
         view.addSubview(activityIndicatorView)
@@ -96,21 +100,31 @@ class HistoryViewController: BaseViewController {
 //            self.historyTableView.isHidden = false
             self.emptyDataView.isHidden = true
             self.emptyLabel.isHidden = true
+            
+            self.lbNodata.isHidden = true
+            self.imgNodata.isHidden = true
         case .EmptyData:
 //            self.historyTableView.isHidden = true
             self.emptyDataView.isHidden = false
             self.emptyLabel.isHidden = true
+            self.lbNodata.isHidden = false
+            self.imgNodata.isHidden = false
+            lbNodata.text = "SoonUpdate".localize
             break
         case .LostInternet:
-            self.emptyLabel.text = "NetworkIsLost".localize
+            //self.emptyLabel.text = "NetworkIsLost".localize
 //            self.historyTableView.isHidden = true
             self.emptyDataView.isHidden = true
             self.emptyLabel.isHidden = false
+            self.lbNodata.isHidden = false
+            self.imgNodata.isHidden = false
         default:
             self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
 //            self.historyTableView.isHidden = true
             self.emptyDataView.isHidden = true
             self.emptyLabel.isHidden = false
+            self.lbNodata.isHidden = false
+            self.imgNodata.isHidden = false
             break
         }
         self.historyTableView.reloadData()
@@ -169,6 +183,7 @@ class HistoryViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "WorkHistory".localize
+        historyTableView.reloadData()
     }
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
             let work = workList[indexPath.item]

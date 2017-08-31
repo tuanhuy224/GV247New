@@ -76,7 +76,12 @@ extension DetailManagementController:UITableViewDataSource{
 extension DetailManagementController:ReportDelegate{
   func report() {
     let navi = ReportController(nibName: "ReportController", bundle: nil)
-    navi.work = workPending!
-    navigationController?.pushViewController(navi, animated: true)
+    if UserDefaultHelper.getToken() == nil {
+        return
+    }else{
+        navi.work = workPending!
+        navigationController?.pushViewController(navi, animated: true)
+    }
+    
   }
 }
