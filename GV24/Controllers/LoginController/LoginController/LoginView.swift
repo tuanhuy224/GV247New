@@ -45,15 +45,17 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
         passwordLogin.delegate = self
         scrollLogin.isScrollEnabled = true
         scrollLogin.delegate = self
-        location()
+        //location()
         self.setupView()
     }
+    
     func location() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerAutoKeyboard()
@@ -118,14 +120,13 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
   
     
     @IBAction func btAround(_ sender: Any) {
-        let navi = WorkAroundController(nibName: "WorkAroundController", bundle: nil)
-        navi.currentLocation = locationManager.location?.coordinate
-        navigationController?.pushViewController(navi, animated: true)
+        self.navigationController?.pushViewController(WorksAroundViewController(), animated: true)
     }
+    
     @IBAction func forgotPasswordAction(_ sender: Any) {
         self.navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
-        
     }
+    
     func setupView()  {
         let imageprofile = Ionicons.iosPerson.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
         imageProfile.image = imageprofile

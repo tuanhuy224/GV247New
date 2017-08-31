@@ -177,6 +177,8 @@ extension Date{
         let dateComponent = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateInsert, to: dateCurrent)
         return dateComponent
     }
+    
+
     func dateComPonent(datePost:String) -> String {
         if date(datePost: datePost).month! > 0 {
             return "\(date(datePost: datePost).month! )" + " " + "TimeMonth".localize
@@ -191,6 +193,8 @@ extension Date{
         }
         return ""
     }
+    
+
   var comparse:Bool{
     let currentDate = Date()
     switch self.compare(currentDate){

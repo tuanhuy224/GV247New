@@ -28,18 +28,23 @@ class AroundItemController: BaseViewController {
         self.tbAround.rowHeight = UITableViewAutomaticDimension
         self.tbAround.estimatedRowHeight = 100.0
     }
-    func loadAroundItem(){
-        guard let id = id else{return}
-        guard let current = currentLocation else{return}
+    
+    func loadAroundItem() {
+        
+        guard let id = id else{ return }
+        
+        guard let current = currentLocation else{ return }
+        
         let parameter:[String:Any] = ["work":id,"lat": current.latitude,"lng": current.longitude,"minDistance":0,"maxDistance":10]
         let apiClient = AroundTask.sharedInstall
         loadingView.show()
         apiClient.getWorkFromURL(url: APIPaths().getTaskByAround(), parameter: parameter) { (works, string) in
             self.loadingView.close()
+            
             if string == nil{
                 self.works = works!
-                
             }
+            
         }
     }
     override func setupViewBase() {
