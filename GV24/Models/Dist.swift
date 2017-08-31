@@ -18,4 +18,5 @@ class Dist: AppModel {
         super.init(json: json)
         self.calculated = json["calculated"].doubleValue
     }
+    
 }

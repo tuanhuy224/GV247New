@@ -25,9 +25,18 @@
 */
 
 import UIKit
+import Kingfisher
+
 
 class MarkerInfoView: UIView {
   
   @IBOutlet weak var placePhoto: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
+    
+    var work: Work? {
+        didSet{
+            placePhoto.kf.setImage(with: URL(string: (work?.info?.workName?.image)!))
+            nameLabel.text = work?.info?.title!
+        }
+    }
 }

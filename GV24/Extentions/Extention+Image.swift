@@ -202,6 +202,8 @@ extension Date{
         let dateComponent = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateInsert, to: dateCurrent)
         return dateComponent
     }
+    
+
     func dateComPonent(datePost:String) -> String {
         if date(datePost: datePost).month! > 0 {
             return "\(date(datePost: datePost).month! )" + " " + "TimeMonth".localize
@@ -217,16 +219,7 @@ extension Date{
         return ""
     }
     
-    
     var comparse:Bool{
-        //        let currentDate = Date()
-        //        //let dateFormatter = DateFormatter()
-        //        Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        //        Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
-        //        let currentDateString = Date.dateFormatter.string(from: currentDate)
-        //        let newDate = Date.dateFormatter.date(from: currentDateString)
-        //        guard let date = newDate else { return false }
-        
         switch self.compare(date(Date())) {
         case .orderedAscending:
             return true

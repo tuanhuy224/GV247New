@@ -11,8 +11,22 @@ import SwiftyJSON
 import Alamofire
 
 typealias dataCompletion = (([Work]?,String?)->())
+typealias NearbyWorkCompletion = (( NearbyWork?, String?) -> ())
+
 class AroundTask: APIService {
     static let sharedInstall = AroundTask()
+    
+    func getWorkAround(_ url: String, _ parameter: Parameters, completion: @escaping NearbyWorkCompletion) {
+        getAllAround(url: url, method: .get, parameters: parameter, encoding: URLEncoding.default) { (json, error) in
+            if error != nil{
+                completion(nil, error)
+            }else{
+                let nearbyWork = NearbyWork(json: json!)
+                completion( nearbyWork, nil)
+            }
+        }
+    }
+    
     func getWorkFromURL(url:String?,parameter:Parameters,completion:@escaping(dataCompletion)){
         getAllAround(url: url!, method: .get, parameters: parameter, encoding: URLEncoding.default) { (json, error) in
             if error != nil{
@@ -22,6 +36,8 @@ class AroundTask: APIService {
             }
         }
     }
+    
+    
     func getProcessID(url:String,parameter:Parameters,header:HTTPHeaders,completion:@escaping(dataCompletion)) {
         getProcess(url: url, param: parameter, header: header) { (json, error) in
             if error != nil{
