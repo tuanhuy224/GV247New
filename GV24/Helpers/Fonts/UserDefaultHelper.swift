@@ -41,6 +41,7 @@ class UserDefaultHelper {
                    "email":user!.email!,
                    "phone":user!.phone!,
                    "avatarUrl": user!.image!,
+                   "age": user!.age!,
                    "addressName":user!.nameAddress ?? "",
                    "gender":user!.gender!,
                     "lat":user!.address!.location!.latitude,
@@ -66,6 +67,7 @@ class UserDefaultHelper {
                 user.name = userDic["name"] as? String
                 user.phone = userDic["phone"] as? String
                 user.image = userDic["avatarUrl"] as? String
+                user.age = userDic["age"] as? Int
                 user.nameAddress = userDic["addressName"] as? String
                 user.lat = (userDic["lat"] as? Double)!
                 user.lng = (userDic["lng"] as? Double)!

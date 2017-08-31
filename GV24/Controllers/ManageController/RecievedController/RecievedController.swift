@@ -75,12 +75,16 @@ extension RecievedController:UITableViewDataSource{
             cell.lbSubTitle.text = processRecieved?.info?.workName?.name
             cell.lbComment.text = processRecieved?.info?.content
             cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear)"
-            if let salary = processRecieved?.info?.salary {
-                cell.lbMoney.text = String().numberFormat(number: salary) + " " + "VND"
+            let salary = processRecieved?.info?.salary
+            if salary == 0 {
+                cell.lbMoney.text = "Timework".localize
+            }else{
+                
+                cell.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
             }
             cell.lbTime.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved?.workTime?.endAt)!).hourMinute)"
             cell.lbAddress.text = processRecieved?.info?.address?.name
-            if Date(isoDateString: (processRecieved?.workTime?.startAt)!).comparse == true {
+            if Date(isoDateString: (processRecieved?.workTime?.endAt)!).comparse == true {
               cell.lbdeadLine.isHidden = false
               cell.lbdeadLine.text = "Expired".localize
               cell.lbdeadLine.textAlignment = .center
@@ -129,8 +133,10 @@ extension RecievedController:UITableViewDelegate{
 }
 extension RecievedController:CancelWorkDelegate{
     func CancelButton() {
-        let parameter = ["id":processRecieved!.id!]
-        let header = ["hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        guard let id = processRecieved?.id else {return}
+        guard let token = UserDefaultHelper.getToken() else {return}
+        let parameter = ["id":id]
+        let header = ["hbbgvauth": token]
         let apiClient = APIService.shared
         let alertC = AlertStandard.sharedInstance
         alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {

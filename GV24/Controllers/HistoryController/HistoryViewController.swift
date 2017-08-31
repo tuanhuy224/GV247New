@@ -13,6 +13,8 @@ import Kingfisher
 
 class HistoryViewController: BaseViewController {
     
+    @IBOutlet weak var lbNodata: UILabel!
+    @IBOutlet weak var imgNodata: UIImageView!
     var user:User?
     var workList: [Work] = []
     var myParent: ManagerHistoryViewController?
@@ -45,7 +47,8 @@ class HistoryViewController: BaseViewController {
         return label
     }()
     lazy var emptyDataView: UIView = {
-        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
+//        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
+        let emptyView = UIView()//TableViewHelper().noData(frame: .zero)
         emptyView.isHidden = true
         return emptyView
     }()
@@ -61,6 +64,8 @@ class HistoryViewController: BaseViewController {
         setupEmptyLabel()
     }
     
+
+    
     func setupLoadingIndicator() {
         view.addSubview(activityIndicatorView)
         activityIndicatorView.center = view.center
@@ -68,6 +73,10 @@ class HistoryViewController: BaseViewController {
     
     func setupEmptyDataView() {
         view.addSubview(emptyDataView)
+        emptyDataView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        emptyDataView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        emptyDataView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        emptyDataView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
     }
     
     func setupEmptyLabel(){
@@ -91,21 +100,31 @@ class HistoryViewController: BaseViewController {
 //            self.historyTableView.isHidden = false
             self.emptyDataView.isHidden = true
             self.emptyLabel.isHidden = true
+            
+            self.lbNodata.isHidden = true
+            self.imgNodata.isHidden = true
         case .EmptyData:
 //            self.historyTableView.isHidden = true
             self.emptyDataView.isHidden = false
             self.emptyLabel.isHidden = true
+            self.lbNodata.isHidden = false
+            self.imgNodata.isHidden = false
+            lbNodata.text = "SoonUpdate".localize
             break
         case .LostInternet:
-            self.emptyLabel.text = "NetworkIsLost".localize
+            //self.emptyLabel.text = "NetworkIsLost".localize
 //            self.historyTableView.isHidden = true
             self.emptyDataView.isHidden = true
             self.emptyLabel.isHidden = false
+            self.lbNodata.isHidden = false
+            self.imgNodata.isHidden = false
         default:
             self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
 //            self.historyTableView.isHidden = true
             self.emptyDataView.isHidden = true
             self.emptyLabel.isHidden = false
+            self.lbNodata.isHidden = false
+            self.imgNodata.isHidden = false
             break
         }
         self.historyTableView.reloadData()
@@ -164,6 +183,7 @@ class HistoryViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "WorkHistory".localize
+        historyTableView.reloadData()
     }
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
             let work = workList[indexPath.item]
@@ -187,7 +207,9 @@ class HistoryViewController: BaseViewController {
         let startAtString = String(describing: startAt!)
         let endAt = work.workTime?.endAt
         let endAtString = String(describing: endAt!)
-        cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+        //cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+        
+        cell.timeWork.text = Date(isoDateString: startAtString).hourMinute +  " - " + Date(isoDateString: endAtString).hourMinute
          cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
         cell.lbDist.text = "CompletedWork".localize
         cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")

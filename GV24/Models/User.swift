@@ -22,6 +22,7 @@ class User: AppModel {
     var owner:Owner?
     var lat:Double?
     var lng:Double?
+    var age: Int?
     var nameAddress:String?
     override init(){
     super.init()
@@ -35,6 +36,7 @@ class User: AppModel {
         self.username = json?["info"]["username"].string ?? ""
         self.email = json?["info"]["email"].string ?? ""
         self.image = json?["info"]["image"].string ?? ""
+        self.age = json?["info"]["age"].intValue
         self.address = Address(json:(json?["info"]["address"])!)
         self.owner = Owner(json: (json?["stakeholders"]["owner"])!)
         self.nameAddress = json?["info"]["address"]["name"].string

@@ -132,6 +132,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         // set up activity view controller
         let textToShare = [text as Any]
         let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: [])
+        
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won’t crash
         
         // exclude some activity types from the list (optional)
@@ -160,9 +161,15 @@ extension MoreViewController:changeLanguageDelegate{
 
 extension MoreViewController:LogOutDelegate{
     func logOut() {
-        if UserDefaultHelper().removeUserDefault() == true{
-            AlertStandard.sharedInstance.showAlertSetRoot(controller: self, pushVC: LoginView(), title: "", message: "LogOutAlert".localize)
+        
+        AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "LogOutAlert".localize) {
+            _ = UserDefaultHelper().removeUserDefault()
+            guard let window = UIApplication.shared.keyWindow else{return}
+            let vc = LoginView()
+            let navi = UINavigationController(rootViewController: vc)
+            window.rootViewController = navi
         }
+
     }
     
     func cellDidPressedShareToAirDrop(_ cell: FollowCell) {

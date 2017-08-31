@@ -121,10 +121,10 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             managerController.billId = billID
             navi.pushViewController(managerController, animated: true)
         }
-      
+        let banner = Banner(title: "Image Notification", subtitle: "", image: UIImage(named: ""), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
         switch status {
         case "6":
-          let banner = Banner(title: "Image Notification", subtitle: "", image: UIImage(named: ""), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+          
           banner.dismissesOnTap = true
           banner.show(duration: 3.0)
             isNotification = true
@@ -132,6 +132,15 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
             let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
+            navi.pushViewController(managerController, animated: true)
+            break
+        case "99":
+            banner.dismissesOnTap = true
+            banner.show(duration: 3.0)
+            guard let window = UIApplication.shared.keyWindow else{return}
+            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            window.rootViewController = navi
+            let managerController = ManageViewController()
             navi.pushViewController(managerController, animated: true)
             break
         default:
@@ -161,6 +170,14 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
                 window?.rootViewController = navi
                 let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
                 navi.pushViewController(managerController, animated: true)
+            break
+        case "99":
+
+            guard let window = UIApplication.shared.keyWindow else{return}
+            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            window.rootViewController = navi
+            let managerController = ManageViewController()
+            navi.pushViewController(managerController, animated: true)
             break
         default:
             break

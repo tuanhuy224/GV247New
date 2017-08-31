@@ -29,6 +29,7 @@ class WorkInfoCell: CustomTableViewCell {
         imgIcon.image = Ionicons.socialUsd.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 48, greenValue: 199, blueValue: 209, alpha: 1))
         setupCollectionView()
     }
+
     func setupCollectionView() {
         let nib = UINib(nibName: "WorkInfoCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: workInfoCollectionCellID)
@@ -47,6 +48,7 @@ extension WorkInfoCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: workInfoCollectionCellID, for: indexPath) as! WorkInfoCollectionViewCell
         let workType = data[indexPath.row]
+        collectionView.reloadItems(at: [indexPath])
         cell.titleLabel.text = workType.name
         cell.titleLabel.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: 14)
         cell.titleLabel.numberOfLines = 0

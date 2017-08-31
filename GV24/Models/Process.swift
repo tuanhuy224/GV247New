@@ -18,7 +18,7 @@ class Process: AppModel {
     }
     override init(json: JSON) {
         super.init(json: json)
-        self.id = json["_id"].string
-        self.name = json["name"].string
+        self.id = json["_id"].stringValue
+        self.name = json["name"].stringValue
     }
 }

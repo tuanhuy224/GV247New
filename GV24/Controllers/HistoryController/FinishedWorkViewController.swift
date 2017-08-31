@@ -81,9 +81,17 @@ class FinishedWorkViewController: BaseViewController {
             cell.lbComment.text = work?.info?.content
 //            cell.lbDes.text = "Description".localize
 //            cell.lbDes.font = fontSize.fontName(name: .regular, size: 16)
+//            let salary = work?.info?.salary
+//            let salaryText = String(describing: salary!)
+//            cell.lbMoney.text = salaryText + " VND"
+            
             let salary = work?.info?.salary
-            let salaryText = String(describing: salary!)
-            cell.lbMoney.text = salaryText + " VND"
+            if salary == 0 {
+                cell.lbMoney.text = "Timework".localize
+            }else{
+                
+                cell.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
+            }
             
             let startAt = work?.workTime?.startAt
             let startAtStr = String(describing: startAt!)
@@ -92,7 +100,7 @@ class FinishedWorkViewController: BaseViewController {
             
             let endAt = work?.workTime?.endAt
             let endAtStr = String(describing: endAt!)
-            cell.lbTime.text = String.convertISODateToString(isoDateStr: startAtStr, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtStr, format: "HH:mm a")!
+            cell.lbTime.text = Date(isoDateString: startAtStr).hourMinute + " - " + Date(isoDateString: endAtStr).hourMinute
             
             let tool = work?.info?.tools
             if  tool == true {
@@ -168,7 +176,7 @@ extension FinishedWorkViewController: UITableViewDataSource {
 
 extension FinishedWorkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Description".localize.uppercased() : "Chủ nhà".localize.uppercased()
+        return section == 0 ? "Description".localize.uppercased() : "Owner".localize.uppercased()
     }
 }
 
