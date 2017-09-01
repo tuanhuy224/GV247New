@@ -89,7 +89,7 @@ class PopupViewController: BaseViewController {
     }
     
     @IBAction func selectDate(_ sender: Any) {
-        let currentDate = Date().date(datePicker.date)
+        //let currentDate = Date().date(datePicker.date)
         if isFromDate {
             if datePicker.date.compare(toDate) == ComparisonResult.orderedAscending || Date().date(datePicker.date) <= Date().date(toDate) {
                 print("aaa: ascending")
@@ -103,7 +103,14 @@ class PopupViewController: BaseViewController {
         } else {
             
             if fromDate == nil {
-                doDismiss(date: currentDate, isFromDate: false)
+                if datePicker.date.compare(fromDate) == ComparisonResult.orderedDescending || Date().date(datePicker.date) == Date().date(toDate) {
+                    print("bbb: descending")
+                    doDismiss(date: Date().date(datePicker.date), isFromDate: false)
+                }else {
+                    print("bbb: ascending")
+                    let alertController = AlertHelper.sharedInstance.showAlertError(title: "Notification".localize, message: "PleaseSelectTheEndDateGreaterThanOrEqualTheStartDate".localize)
+                    present(alertController, animated: true, completion: nil)
+                }
                 
             }else{
                 
