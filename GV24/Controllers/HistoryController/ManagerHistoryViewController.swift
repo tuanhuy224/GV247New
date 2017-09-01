@@ -121,6 +121,7 @@ class ManagerHistoryViewController: BaseViewController {
         if isFirstTime {
             setupOwnerHistory()
             isFirstTime = false
+            
         }
         
         if sender.selectedSegmentIndex == 1 {
@@ -183,8 +184,9 @@ class ManagerHistoryViewController: BaseViewController {
     }
     override func setupViewBase() {
         super.setupViewBase()
+        guard let token = UserDefaultHelper.getToken() else {return}
         let alert = AlertStandard.sharedInstance
-        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth": token]
         guard let bill = billId else{return}
         let param = ["billId":bill]
         let apiClient = APIService.shared
@@ -197,7 +199,6 @@ class ManagerHistoryViewController: BaseViewController {
             })
         }
     }
-    override func decorate() {}
 }
 extension ManagerHistoryViewController: PopupViewControllerDelegate {
     func selectedDate(date: Date, isFromDate: Bool) {

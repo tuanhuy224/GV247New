@@ -242,8 +242,6 @@ extension ManageViewController:UITableViewDataSource{
                     cell2.lbSubTitle.text = processOnDoing[0].info?.workName?.name
                     cell2.lbComment.text = processOnDoing[0].info?.content
                     cell2.lbDate.text = "\(Date(isoDateString: (processOnDoing[0].workTime?.startAt)!).dayMonthYear)"
-                    //cell2.lbMoney.text = "\(processOnDoing[0].info?.salary ?? 0) VND"
-                    //cell2.lbTime.text = String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.processOnDoing[0].workTime!.endAt)!, format: "HH:mm a")!
                     cell2.lbTime.text = Date(isoDateString: (self.processOnDoing[0].workTime!.startAt)!).hourMinute + " - " + Date(isoDateString: (self.processOnDoing[0].workTime!.endAt)!).hourMinute
                     cell2.lbAddress.text = processOnDoing[0].stakeholders?.owner?.address?.name
                     
