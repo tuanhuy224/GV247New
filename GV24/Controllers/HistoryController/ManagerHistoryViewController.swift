@@ -9,25 +9,25 @@
 import UIKit
 
 class ManagerHistoryViewController: BaseViewController {
-
+    
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var toDateButton: UIButton!
     @IBOutlet weak var fromDateButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    
     var workListVC: HistoryViewController?
     var ownerListVC: OwnerHistoryViewController?
-    var fromDate: Date? = nil
-    var toDate: Date = Date()
+    
+    var firstFromDate: Date? = nil
+    var firstToDate: Date = Date()
+    var secondFromDate : Date? = nil
+    var secondToDate : Date = Date()
+    
     var currentSelectedIndex: Int = 0
     var isFirstTime: Bool = true
     var isDisplayAlert:Bool = false
     var billId:String?
-    var isChooseDate: Bool = false
-    var fromDateChoose: Date?
-    
-    var toDateChoose: Date?
-    let date = Date().date(Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,15 +56,9 @@ class ManagerHistoryViewController: BaseViewController {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.right:
             self.segmentControl.selectedSegmentIndex = 0
-            
-//            let date = Date(isoDateString: "\(Date().date(toDate))").dayMonthYear
-//            toDateButton.setTitle(date, for: .normal)
-            
             break
         default:
             self.segmentControl.selectedSegmentIndex = 1
-//            let date = Date(isoDateString:  "\(Date().date(toDate))")
-//            toDateButton.setTitle("\(date)", for: .normal)
             break
         }
         if currentSelectedIndex != self.segmentControl.selectedSegmentIndex {
@@ -111,10 +105,9 @@ class ManagerHistoryViewController: BaseViewController {
     func setupConstrains() {
         setupConstraint(vc: workListVC!)
         workListVC?.myParent = self
-        toDateButton.setTitle(date.dayMonthYear, for: UIControlState.normal)
-       // toDateButton.setTitle(String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
+        toDateButton.setTitle(String.convertDateToString(date: Date(), withFormat: "dd/MM/yyyy"), for: .normal)
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -123,7 +116,9 @@ class ManagerHistoryViewController: BaseViewController {
     
     @IBAction func doValueChanged(_ sender: UISegmentedControl) {
         print("selected : \(sender.selectedSegmentIndex)")
-        if isFirstTime == true {
+        self.currentSelectedIndex = self.segmentControl.selectedSegmentIndex
+        
+        if isFirstTime {
             setupOwnerHistory()
             isFirstTime = false
         }
@@ -131,42 +126,38 @@ class ManagerHistoryViewController: BaseViewController {
         if sender.selectedSegmentIndex == 1 {
             workListVC?.view.isHidden = true
             ownerListVC?.view.isHidden = false
-            currentSelectedIndex = 1
-            toDateButton.setTitle(date.dayMonthYear, for: UIControlState.normal)
+            
+            if let date = secondFromDate {
+                fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+            }
+            toDateButton.setTitle(String.convertDateToString(date: secondToDate, withFormat: "dd/MM/yyyy"), for: .normal)
+            
             self.reloadOwnerListViewController()
         }else {
-            toDateButton.setTitle(date.dayMonthYear, for: UIControlState.normal)
             workListVC?.view.isHidden = false
             ownerListVC?.view.isHidden = true
-            currentSelectedIndex = 0
+            
+            if let date = firstFromDate {
+                fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+            }
+            toDateButton.setTitle(String.convertDateToString(date: firstToDate, withFormat: "dd/MM/yyyy"), for: .normal)
+            
             self.reloadWorkListViewController()
         }
     }
-
+    
     @IBAction func fromDateButtonClicked(_ sender: Any) {
-
-       showPopup(isFromDate: true, isToDate: false, fromDate: fromDate, toDate: toDate )
-    }
-
-    @IBAction func toDateButtonClicked(_ sender: Any) {
-        showToDate(isFromDate: false, isToDate: true, fromDate: fromDate, toDate: toDate )
+        self.segmentControl.selectedSegmentIndex == 0 ? showPopup(isFromDate: true, fromDate: firstFromDate, toDate: firstToDate) : showPopup(isFromDate: true, fromDate: secondFromDate, toDate: secondToDate)
     }
     
-    fileprivate func showPopup(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date?) {
+    @IBAction func toDateButtonClicked(_ sender: UIButton) {
+        self.segmentControl.selectedSegmentIndex == 0 ? showPopup(isFromDate: false, fromDate: firstFromDate, toDate: firstToDate) : showPopup(isFromDate: false, fromDate: secondFromDate, toDate: secondToDate)
+    }
+    
+    fileprivate func showPopup(isFromDate: Bool, fromDate: Date?, toDate: Date?) {
         let popup = PopupViewController()
         popup.delegate = self
         popup.isFromDate = isFromDate
-        popup.isToDate = isToDate
-        popup.fromDate = fromDate
-        popup.toDate = toDate
-        popup.show()
-    }
-    
-    fileprivate func showToDate(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date?) {
-        let popup = PopupViewController()
-        popup.delegate = self
-        popup.isFromDate = isFromDate
-        popup.isToDate = isToDate
         popup.fromDate = fromDate
         popup.toDate = toDate
         popup.show()
@@ -175,48 +166,59 @@ class ManagerHistoryViewController: BaseViewController {
     func reloadWorkListViewController() {
         workListVC?.workList.removeAll()
         workListVC?.historyTableView.reloadData()
-        workListVC?.startAtDate = fromDate
-        workListVC?.endAtDate = toDate
+        
+        workListVC?.startAtDate = firstFromDate
+        workListVC?.endAtDate = firstToDate
         workListVC?.page = 1
-        workListVC?.getWorkList(startAt: fromDate, endAt: toDate)
+        workListVC?.getWorkList(startAt: firstFromDate, endAt: firstToDate)
     }
     
     func reloadOwnerListViewController() {
         ownerListVC?.ownerList.removeAll()
         ownerListVC?.tableView.reloadData()
-        ownerListVC?.startAtDate = fromDate
-        ownerListVC?.endAtDate = toDate
-        ownerListVC?.getOwnerList(startAt: fromDate, endAt: toDate)
+        
+        ownerListVC?.startAtDate = secondFromDate
+        ownerListVC?.endAtDate = secondToDate
+        ownerListVC?.getOwnerList(startAt: secondFromDate, endAt: secondToDate)
     }
     override func setupViewBase() {
-      super.setupViewBase()
-      let alert = AlertStandard.sharedInstance
-      let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
-      guard let bill = billId else{return}
-      let param = ["billId":bill]
-      let apiClient = APIService.shared
-      if isDisplayAlert == true {
-        self.isDisplayAlert = false
-        alert.showAlertCt(controller: self,pushVC: nil, title: "WorkCompleted".localize, message: "confirmReceive".localize, completion: {
-          apiClient.postRequest(url: APIPaths().paymentPayDirectConfirm(), method: .post, parameters: param, header: header, completion: { (json, error) in
-
-          })
-        })
-      }
+        super.setupViewBase()
+        let alert = AlertStandard.sharedInstance
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        guard let bill = billId else{return}
+        let param = ["billId":bill]
+        let apiClient = APIService.shared
+        if isDisplayAlert == true {
+            self.isDisplayAlert = false
+            alert.showAlertCt(controller: self,pushVC: nil, title: "WorkCompleted".localize, message: "confirmReceive".localize, completion: {
+                apiClient.postRequest(url: APIPaths().paymentPayDirectConfirm(), method: .post, parameters: param, header: header, completion: { (json, error) in
+                    
+                })
+            })
+        }
     }
     override func decorate() {}
 }
 extension ManagerHistoryViewController: PopupViewControllerDelegate {
-    func selectedDate(date: Date, isFromDate: Bool, isToDate: Bool) {
-        if isFromDate == true {
-            fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
-            fromDate = date
+    func selectedDate(date: Date, isFromDate: Bool) {
+        if isFromDate {
+            if segmentControl.selectedSegmentIndex == 0 {
+                fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                firstFromDate = date
+            } else {
+                fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                secondFromDate = date
+            }
+        } else {
+            if segmentControl.selectedSegmentIndex == 0 {
+                toDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                firstToDate = date
+            } else {
+                toDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                secondToDate = date
+            }
         }
-        else {
-            toDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
-            toDate = date
-
-        }
+        
         if segmentControl.selectedSegmentIndex == 0 {
             self.reloadWorkListViewController()
         }else {

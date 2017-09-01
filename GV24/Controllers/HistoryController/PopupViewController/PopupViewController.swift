@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol PopupViewControllerDelegate: class {
-    func selectedDate(date: Date, isFromDate: Bool, isToDate: Bool)
+    func selectedDate(date: Date, isFromDate: Bool)
     
     @objc optional func current(_ currentDate: Date)
 }
@@ -24,9 +24,9 @@ class PopupViewController: BaseViewController {
     @IBOutlet weak var selectButton: UIButton!
     var isFromDate: Bool = false
     var isToDate: Bool = false
-    var fromDate: Date?
+    var fromDate: Date!
     var toDate: Date!
-    var currentDate:Date?
+    //var currentDate:Date?
     @IBOutlet weak var bottomConstraintToSuperView: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -89,30 +89,28 @@ class PopupViewController: BaseViewController {
     }
     
     @IBAction func selectDate(_ sender: Any) {
-        if isFromDate == true {
-            if datePicker.date.compare(toDate) == ComparisonResult.orderedAscending || String.convertDateToString(date: datePicker.date, withFormat: "dd/MM/yyyy") == String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy") {
+        let currentDate = Date().date(datePicker.date)
+        if isFromDate {
+            if datePicker.date.compare(toDate) == ComparisonResult.orderedAscending || Date().date(datePicker.date) <= Date().date(toDate) {
                 print("aaa: ascending")
-                doDismiss(date: Date().date(datePicker.date), isFromDate: true, isToDate: false)
-                
-                
-            }else {
+                doDismiss(date: Date().date(datePicker.date), isFromDate: true)
+            } else {
                 print("aaa: descending")
                 let alertController = AlertHelper.sharedInstance.showAlertError(title: "Notification".localize, message: "PleaseSelectTheStartDateLessThanOrEqualTheEndDate".localize)
                 present(alertController, animated: true, completion: nil)
             }
             
+        } else {
             
-        }else {
             if fromDate == nil {
-                doDismiss(date: Date().date(datePicker.date), isFromDate: false, isToDate: true)
+                doDismiss(date: currentDate, isFromDate: false)
                 
-                currentDate = Date().date(datePicker.date)
-            }else {
+            }else{
                 
                 
-                if datePicker.date.compare(fromDate!) == ComparisonResult.orderedDescending || String.convertDateToString(date: datePicker.date, withFormat: "dd/MM/yyyy") == String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy") {
+                if datePicker.date.compare(fromDate) == ComparisonResult.orderedDescending || Date().date(datePicker.date) == Date().date(toDate) {
                     print("bbb: descending")
-                    doDismiss(date: Date().date(datePicker.date), isFromDate: false, isToDate: true)
+                    doDismiss(date: Date().date(datePicker.date), isFromDate: false)
                 }else {
                     print("bbb: ascending")
                     let alertController = AlertHelper.sharedInstance.showAlertError(title: "Notification".localize, message: "PleaseSelectTheEndDateGreaterThanOrEqualTheStartDate".localize)
@@ -127,11 +125,10 @@ class PopupViewController: BaseViewController {
         self.dismiss(animated: true)
     }
     
-    fileprivate func doDismiss(date: Date, isFromDate: Bool, isToDate: Bool) {
+    fileprivate func doDismiss(date: Date, isFromDate: Bool) {
         effectView.alpha = 0
         self.dismiss(animated: true)
-        self.delegate?.selectedDate(date: date, isFromDate: isFromDate, isToDate: isToDate)
-
+        self.delegate?.selectedDate(date: date, isFromDate: isFromDate)
     }
     
     override func setupViewBase() {}
