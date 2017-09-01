@@ -137,6 +137,8 @@ class HistoryViewController: BaseViewController {
         historyTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: historyTableView.bounds.size.width, height: 0.01))
         self.historyTableView.separatorStyle = .singleLine
         self.historyTableView.backgroundView = self.activityIndicatorView
+        historyTableView.rowHeight = UITableViewAutomaticDimension
+        historyTableView.estimatedRowHeight = 100
     }
     
     func updateOwnerList() {
@@ -239,8 +241,4 @@ extension HistoryViewController:UITableViewDataSource{
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)
     }
 }
-extension HistoryViewController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-}
+

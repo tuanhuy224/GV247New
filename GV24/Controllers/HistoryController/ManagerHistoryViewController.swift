@@ -19,7 +19,6 @@ class ManagerHistoryViewController: BaseViewController {
     var ownerListVC: OwnerHistoryViewController?
     var fromDate: Date? = nil
     var toDate: Date = Date()
-    var currentDate:Date?
     var currentSelectedIndex: Int = 0
     var isFirstTime: Bool = true
     var isDisplayAlert:Bool = false
@@ -28,7 +27,7 @@ class ManagerHistoryViewController: BaseViewController {
     var fromDateChoose: Date?
     
     var toDateChoose: Date?
-    
+    let date = Date().date(Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +56,15 @@ class ManagerHistoryViewController: BaseViewController {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.right:
             self.segmentControl.selectedSegmentIndex = 0
+            
+//            let date = Date(isoDateString: "\(Date().date(toDate))").dayMonthYear
+//            toDateButton.setTitle(date, for: .normal)
+            
             break
         default:
             self.segmentControl.selectedSegmentIndex = 1
+//            let date = Date(isoDateString:  "\(Date().date(toDate))")
+//            toDateButton.setTitle("\(date)", for: .normal)
             break
         }
         if currentSelectedIndex != self.segmentControl.selectedSegmentIndex {
@@ -106,8 +111,8 @@ class ManagerHistoryViewController: BaseViewController {
     func setupConstrains() {
         setupConstraint(vc: workListVC!)
         workListVC?.myParent = self
-        
-        toDateButton.setTitle(String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
+        toDateButton.setTitle(date.dayMonthYear, for: UIControlState.normal)
+       // toDateButton.setTitle(String.convertDateToString(date: toDate, withFormat: "dd/MM/yyyy"), for: UIControlState.normal)
     }
 
     
@@ -122,13 +127,15 @@ class ManagerHistoryViewController: BaseViewController {
             setupOwnerHistory()
             isFirstTime = false
         }
+        
         if sender.selectedSegmentIndex == 1 {
             workListVC?.view.isHidden = true
             ownerListVC?.view.isHidden = false
             currentSelectedIndex = 1
+            toDateButton.setTitle(date.dayMonthYear, for: UIControlState.normal)
             self.reloadOwnerListViewController()
-        }
-        else {
+        }else {
+            toDateButton.setTitle(date.dayMonthYear, for: UIControlState.normal)
             workListVC?.view.isHidden = false
             ownerListVC?.view.isHidden = true
             currentSelectedIndex = 0

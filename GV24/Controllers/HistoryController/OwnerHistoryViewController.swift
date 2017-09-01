@@ -75,7 +75,7 @@ class OwnerHistoryViewController: BaseViewController {
     
     func setupTableView() {
         tableView.register(UINib(nibName:NibOwnerHistoryViewCell,bundle:nil), forCellReuseIdentifier: ownerHistoryCellID)
-        //tableView.tableHeaderView = UIView(frame: CGRect(x: (self.view.frame.width - 80)/2, y: 0, width: tableView.bounds.size.width, height: 0.01))
+        tableView.tableHeaderView = UIView(frame: CGRect(x: (self.view.frame.width - 80)/2, y: 0, width: tableView.bounds.size.width, height: 0.01))
         self.tableView.addSubview(self.refreshControl)
         self.automaticallyAdjustsScrollViewInsets = false
         self.tableView.backgroundView = self.activityIndicatorView
