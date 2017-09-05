@@ -1,0 +1,86 @@
+PODS:
+  - Alamofire (4.5.0)
+  - BRYXBanner (0.7.3)
+  - Firebase/Core (4.1.0):
+    - FirebaseAnalytics (= 4.0.3)
+    - FirebaseCore (= 4.0.5)
+  - Firebase/Messaging (4.1.0):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.0.1)
+  - FirebaseAnalytics (4.0.3):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.5):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseInstanceID (2.0.1):
+    - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.1):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - GoogleMaps (2.4.0):
+    - GoogleMaps/Maps (= 2.4.0)
+  - GoogleMaps/Base (2.4.0)
+  - GoogleMaps/Maps (2.4.0):
+    - GoogleMaps/Base
+  - GooglePlacePicker (2.4.0):
+    - GoogleMaps (= 2.4.0)
+    - GooglePlaces (= 2.4.0)
+  - GooglePlaces (2.4.0):
+    - GoogleMaps/Base (= 2.4.0)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/Logger (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - IoniconsSwift (2.1.4)
+  - IQKeyboardManagerSwift (4.0.11)
+  - Kingfisher (3.10.4)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - Protobuf (3.3.0)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire
+  - BRYXBanner
+  - Firebase/Core
+  - Firebase/Messaging
+  - GoogleMaps
+  - GooglePlacePicker
+  - GooglePlaces
+  - IoniconsSwift
+  - IQKeyboardManagerSwift
+  - Kingfisher (~> 3.0)
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  BRYXBanner: bd26a91cb8a5826a8bc7687891043d287dd3ee53
+  Firebase: ebebf41db7f10e0c7668b6eaaa857fbe599aa478
+  FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
+  FirebaseCore: 7d876ea97a830cbe62ba7fbbe7670c833a324ba0
+  FirebaseInstanceID: 0500e3cb54a1a4e01a8cffcc09323b8bb8fc7e1e
+  FirebaseMessaging: b45ff9ef5d932600d3f78ff43168e7c5707aa7dc
+  GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
+  GooglePlacePicker: 755f10343d71280c7b016823e73fbae9625dfa8a
+  GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  IoniconsSwift: a9034803dfe59ec48a73c95b812c67afdfa3ed08
+  IQKeyboardManagerSwift: 10f0a6b8ea2904c8943c0e1a116c99f5b8ad83af
+  Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: d493090197ab08842014a96708e2fd3f7593cf29
+
+COCOAPODS: 1.2.0
