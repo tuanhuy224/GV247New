@@ -27,7 +27,11 @@ class WorkDetailCell: CustomTableViewCell {
     @IBOutlet weak var btChooseConstraint: NSLayoutConstraint!
     @IBOutlet weak var constraintH: NSLayoutConstraint!
     @IBOutlet weak var btAction: UIButton!
-    @IBOutlet weak var heightBtChoose: NSLayoutConstraint!
+    @IBOutlet weak var heightBtChoose: NSLayoutConstraint!{
+    didSet{
+        
+        }
+    }
     @IBOutlet weak var heightHeader: NSLayoutConstraint!
     @IBOutlet weak var vSegment: UIView!
     @IBOutlet weak var imageName: UIImageView!

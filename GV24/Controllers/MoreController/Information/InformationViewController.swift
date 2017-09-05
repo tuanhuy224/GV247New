@@ -104,8 +104,8 @@ class InformationViewController: BaseViewController {
                         self.workTypeList = data!
                     }
                     DispatchQueue.main.async {
-                        //let indexPath = IndexPath(item: 0, section: 1)
-                        //self.tbInformation.reloadRows(at: [indexPath], with: .fade)
+                        let indexPath = IndexPath(item: 0, section: 1)
+                        self.tbInformation.reloadRows(at: [indexPath], with: .fade)
                     }
                     break
                 case .EmptyData:

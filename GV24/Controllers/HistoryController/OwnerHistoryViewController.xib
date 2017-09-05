@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OwnerHistoryViewController" customModule="GV24" customModuleProvider="target">
             <connections>
+                <outlet property="ImageNodata" destination="S5O-jp-fBs" id="0cF-p1-dsq"/>
+                <outlet property="imgEmtyData" destination="S5O-jp-fBs" id="s1v-Wg-0os"/>
+                <outlet property="lbEmtyData" destination="cPV-Ub-Th3" id="H1R-lI-KgT"/>
                 <outlet property="tableView" destination="D0E-0H-1BI" id="dei-gR-MTn"/>
                 <outlet property="view" destination="nuy-Ul-beo" id="Z3a-bz-eJc"/>
             </connections>
@@ -27,16 +30,36 @@
                         <outlet property="delegate" destination="-1" id="w0E-8e-7PV"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="S5O-jp-fBs">
+                    <rect key="frame" x="157" y="303.5" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="LYJ-EV-a6e"/>
+                        <constraint firstAttribute="height" constant="60" id="ZZG-I5-1bs"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPV-Ub-Th3">
+                    <rect key="frame" x="187" y="371" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
+                <constraint firstItem="S5O-jp-fBs" firstAttribute="centerX" secondItem="nuy-Ul-beo" secondAttribute="centerX" id="DUb-xz-y6O"/>
+                <constraint firstItem="S5O-jp-fBs" firstAttribute="centerY" secondItem="nuy-Ul-beo" secondAttribute="centerY" id="H1p-kP-JoP"/>
                 <constraint firstItem="D0E-0H-1BI" firstAttribute="leading" secondItem="nuy-Ul-beo" secondAttribute="leading" id="MTz-II-0Ex"/>
                 <constraint firstAttribute="bottom" secondItem="D0E-0H-1BI" secondAttribute="bottom" id="Obs-hA-Kyk"/>
                 <constraint firstItem="D0E-0H-1BI" firstAttribute="top" secondItem="nuy-Ul-beo" secondAttribute="top" id="VY1-d5-2a9"/>
+                <constraint firstItem="cPV-Ub-Th3" firstAttribute="centerX" secondItem="S5O-jp-fBs" secondAttribute="centerX" id="hMr-XK-1WU"/>
+                <constraint firstItem="cPV-Ub-Th3" firstAttribute="top" secondItem="S5O-jp-fBs" secondAttribute="bottom" constant="7.5" id="pCW-Qe-Yfs"/>
                 <constraint firstAttribute="trailing" secondItem="D0E-0H-1BI" secondAttribute="trailing" id="sgF-Za-6oP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="36" y="-97"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_nodata" width="178" height="224"/>
+    </resources>
 </document>

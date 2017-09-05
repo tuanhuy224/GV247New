@@ -29,6 +29,7 @@ class WorkInfoCell: CustomTableViewCell {
         imgIcon.image = Ionicons.socialUsd.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 48, greenValue: 199, blueValue: 209, alpha: 1))
         setupCollectionView()
     }
+
     func setupCollectionView() {
         let nib = UINib(nibName: "WorkInfoCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: workInfoCollectionCellID)

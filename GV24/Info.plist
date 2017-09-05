@@ -48,9 +48,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your explanation</string>
+	<string>Use location to find word around</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allowing access to your location, you can spot your position on the map</string>
+	<string>Use location to find word around</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFUIText-Bold.ttf</string>

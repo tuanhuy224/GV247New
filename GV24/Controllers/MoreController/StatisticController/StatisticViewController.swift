@@ -191,7 +191,7 @@ extension StatisticViewController:UITableViewDataSource, UITableViewDelegate{
     }
 }
 extension StatisticViewController:PopupViewControllerDelegate{
-    func selectedDate(date: Date, isFromDate: Bool, isToDate: Bool) {
+    func selectedDate(date: Date, isFromDate: Bool) {
         if isFromDate == true {
             startAtDate = date
         } else {
@@ -199,6 +199,5 @@ extension StatisticViewController:PopupViewControllerDelegate{
         }
         self.getStatistic(startAt: startAtDate, endAt: endAtDate)
     }
-
 }
 

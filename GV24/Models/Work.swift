@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 
 class Work: AppModel {
+
     var id:String?
     var stakeholders:Stakeholders?
     var info:Info?
@@ -23,7 +24,7 @@ class Work: AppModel {
     }
     override init(json:JSON) {
         super.init()
-        self.id = json["_id"].string
+        self.id = json["_id"].stringValue
         self.stakeholders = Stakeholders(json: json["stakeholders"])
         self.info = Info(json: json["info"])
         self.process = Process(json: json["process"])
@@ -41,9 +42,27 @@ class WorkTime: AppModel {
     override init(json: JSON) {
         super.init()
         
-        self.startAt = json["startAt"].string
-        self.endAt = json["endAt"].string
-        self.hour = json["hour"].int
+        self.startAt = json["startAt"].stringValue
+        self.endAt = json["endAt"].stringValue
+        self.hour = json["hour"].intValue
+    }
+    
+}
+
+class NearbyWork: AppModel {
+    var total: Int?
+    var limit: Int?
+    var page: Int?
+    var pages: Int?
+    var works: [Work]?
+    
+    override init(json: JSON) {
+        super.init(json: json)
+        self.total = json["total"].intValue
+        self.limit = json["limit"].intValue
+        self.page = json["page"].intValue
+        self.pages = json["pages"].intValue
+        self.works = json["docs"].array?.map { return Work(json: $0) }
     }
     
 }

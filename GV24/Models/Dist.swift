@@ -16,6 +16,7 @@ class Dist: AppModel {
     }
     override init(json: JSON) {
         super.init(json: json)
-        self.calculated = json["calculated"].double
+        self.calculated = json["calculated"].doubleValue
     }
+    
 }

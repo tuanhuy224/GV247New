@@ -100,7 +100,7 @@ class FinishedWorkViewController: BaseViewController {
             
             let endAt = work?.workTime?.endAt
             let endAtStr = String(describing: endAt!)
-            cell.lbTime.text = String.convertISODateToString(isoDateStr: startAtStr, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtStr, format: "HH:mm a")!
+            cell.lbTime.text = Date(isoDateString: startAtStr).hourMinute + " - " + Date(isoDateString: endAtStr).hourMinute
             
             let tool = work?.info?.tools
             if  tool == true {

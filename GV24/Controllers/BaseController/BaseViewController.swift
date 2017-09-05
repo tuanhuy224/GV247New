@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
     let notificationIdentifier: String = "NotificationIdentifier"
     let install = NetworkStatus.sharedInstance
     var islog = false
+    //    var toDate: Date = Date()
     var isChange: Bool = false
     var currentLanguage:Int?
     var isLoginWhenChangeToken:Bool = false
@@ -37,12 +38,13 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:fontSize.fontName(name: .bold, size: sizeSix)]
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back".localize, style: UIBarButtonItemStyle.done, target: nil, action: nil)
         self.navigationController?.navigationBar.isTranslucent = false
-        install.startNetworkReachabilityObserver()
-        if install.reachabilityManager?.isReachable == false {
-            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Nointernetconnection".localize)
-        }else{
+        if (install.reachabilityManager?.isReachable)!  {
             checkTokenApp()
+        }else{
+            
+            AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Nointernetconnection".localize)
         }
+        
         print("++++view display:\(self)+++++++")
     }
     
@@ -75,22 +77,26 @@ class BaseViewController: UIViewController {
         viewNetwork?.addSubview(lbViewNetwork!)
     }
     func checkTokenApp() {
+        
+        
         guard let token = UserDefaultHelper.getToken() else{return}
         let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(token)"]
         let apiClient = APIService.shared
         apiClient.getUrl(url: APIPaths().maidCheckToken(), param: [:], header: header) { (json, error) in
-          if json?["message"] != "SUCCESS" {
-            _ = UserDefaultHelper().removeUserDefault()
-            let alert = AlertStandard.sharedInstance
-            alert.showAlertLogin(controller: self, pushVC: LoginView(), title: "", message: "Youraccountwasaccessedfromanotherdevice".localize, buttonTitle:"" , completion: {
-              let loginController = LoginView()
-              loginController.viewControllerLogin = self
-              loginController.isLoginWhenChangeToken = true
-              guard let window = UIApplication.shared.keyWindow else{return}
-              let navi = UINavigationController(rootViewController: loginController)
-              window.rootViewController = navi
-            })
-          }
+            if json?["message"] != "SUCCESS" {
+                let alert = AlertStandard.sharedInstance
+                alert.showAlertLogin(controller: self, pushVC: LoginView(), title: "", message: "Youraccountwasaccessedfromanotherdevice".localize, buttonTitle:"" , completion: {
+                    
+                    _ = UserDefaultHelper().removeUserDefault()
+                    let loginController = LoginView()
+                    loginController.viewControllerLogin = self
+                    loginController.isLoginWhenChangeToken = true
+                    guard let window = UIApplication.shared.keyWindow else{return}
+                    let navi = UINavigationController(rootViewController: loginController)
+                    window.rootViewController = navi
+                })
+                
+            }
         }
     }
 }

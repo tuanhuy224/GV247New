@@ -17,8 +17,8 @@ class History: AppModel {
     }
     override init(json: JSON) {
         super.init(json: json)
-        self.createAt = json["createAt"].string
-        self.updateAt = json["updateAt"].string
+        self.createAt = json["createAt"].stringValue
+        self.updateAt = json["updateAt"].stringValue
     }
 
 }

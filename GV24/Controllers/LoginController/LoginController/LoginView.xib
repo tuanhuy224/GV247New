@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
+        </array>
+        <array key="SFUIText-Regular.ttf">
+            <string>SFUIText-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -50,6 +53,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="BJr-W2-bfd"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
                                     <state key="normal" title="Công việc quanh đây"/>
                                     <connections>
                                         <action selector="btAround:" destination="-1" eventType="touchUpInside" id="Ojy-px-RaM"/>
@@ -71,7 +75,7 @@
                                                 <constraint firstAttribute="height" constant="44" id="ZvC-0f-Cgd"/>
                                             </constraints>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A44-0b-UlI">
@@ -183,18 +187,18 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="0Us-JN-Sph" firstAttribute="top" secondItem="tLj-6N-x88" secondAttribute="top" constant="44" id="52l-K1-4jv"/>
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="centerX" secondItem="tLj-6N-x88" secondAttribute="centerX" id="7bj-vj-u09"/>
                                 <constraint firstItem="0Us-JN-Sph" firstAttribute="centerX" secondItem="CgH-Q4-PrF" secondAttribute="centerX" id="95P-OO-gKk"/>
                                 <constraint firstItem="dxc-wH-YAW" firstAttribute="width" secondItem="tLj-6N-x88" secondAttribute="width" multiplier="8:10" id="AHI-Dp-Rh3"/>
+                                <constraint firstItem="dxc-wH-YAW" firstAttribute="top" secondItem="CgH-Q4-PrF" secondAttribute="bottom" constant="20" id="BwJ-ks-DAn"/>
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="top" secondItem="0Us-JN-Sph" secondAttribute="bottom" constant="20" id="Ecb-kS-6wX"/>
                                 <constraint firstItem="CgH-Q4-PrF" firstAttribute="leading" secondItem="dxc-wH-YAW" secondAttribute="leading" id="P3E-5W-fh7"/>
+                                <constraint firstItem="0Us-JN-Sph" firstAttribute="top" secondItem="tLj-6N-x88" secondAttribute="top" constant="44" id="VAp-Zl-Y0x"/>
                                 <constraint firstItem="eMz-iF-q3y" firstAttribute="centerY" secondItem="grg-Ad-yYh" secondAttribute="centerY" id="aae-96-drc"/>
                                 <constraint firstItem="dCQ-nH-rFS" firstAttribute="leading" secondItem="CgH-Q4-PrF" secondAttribute="leading" id="gu5-HR-hni"/>
                                 <constraint firstItem="dxc-wH-YAW" firstAttribute="centerX" secondItem="tLj-6N-x88" secondAttribute="centerX" id="kna-Us-eOK"/>
                                 <constraint firstItem="eMz-iF-q3y" firstAttribute="height" secondItem="grg-Ad-yYh" secondAttribute="height" multiplier="1:2" id="lKM-j0-1dl"/>
                                 <constraint firstItem="dCQ-nH-rFS" firstAttribute="trailing" secondItem="CgH-Q4-PrF" secondAttribute="trailing" id="n8P-Vc-31E"/>
-                                <constraint firstItem="dxc-wH-YAW" firstAttribute="top" secondItem="CgH-Q4-PrF" secondAttribute="bottom" constant="20" id="oNR-n0-bHn"/>
                                 <constraint firstItem="eMz-iF-q3y" firstAttribute="leading" secondItem="grg-Ad-yYh" secondAttribute="trailing" constant="2" id="tCH-Mr-jxC"/>
                                 <constraint firstItem="eMz-iF-q3y" firstAttribute="centerX" secondItem="tLj-6N-x88" secondAttribute="centerX" id="ts6-KY-l1h"/>
                             </constraints>

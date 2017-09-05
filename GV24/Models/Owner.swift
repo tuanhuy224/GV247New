@@ -28,15 +28,15 @@ class Owner: AppModel {
     }
     override init(json:JSON?) {
         super.init()
-        self.id = json?["_id"].string
-        self.username = json?["info"]["username"].string
-        self.phone = json?["info"]["phone"].string
-        self.image = json?["info"]["image"].string
-        self.gender = json?["info"]["gender"].int
-        self.email = json?["info"]["email"].string
+        self.id = json?["_id"].stringValue
+        self.username = json?["info"]["username"].stringValue
+        self.phone = json?["info"]["phone"].stringValue
+        self.image = json?["info"]["image"].stringValue
+        self.gender = json?["info"]["gender"].intValue
+        self.email = json?["info"]["email"].stringValue
         self.info = Info(json: (json?["info"])!)
         self.address = Address(json:(json?["info"]["address"])!)
-        self.name = json?["info"]["name"].string
+        self.name = json?["info"]["name"].stringValue
     }
     func convertToUser() -> User? {
         let user: User = User()
