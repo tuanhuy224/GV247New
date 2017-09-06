@@ -279,6 +279,30 @@ class APIService: NSObject {
             }
         }
     }
+    
+    //MARK: - GET
+    func get(url : String, completion:@escaping (ResponseCompletion)){
+        Alamofire.request(url).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let status = json["status"].bool
+                if !status!{
+                    if let message = json["message"].string{
+                        completion(nil, message)
+                    }
+                    
+                }else{
+                    completion(json["data"], nil)
+                }
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
+                print(error)
+            }
+        }
+    }
+
+    
 }
 class BaseService: NSObject {
     

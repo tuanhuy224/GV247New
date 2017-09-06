@@ -46,7 +46,6 @@ class WorkTime: AppModel {
         self.endAt = json["endAt"].stringValue
         self.hour = json["hour"].intValue
     }
-    
 }
 
 class NearbyWork: AppModel {

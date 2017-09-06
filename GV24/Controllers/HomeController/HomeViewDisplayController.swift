@@ -73,9 +73,10 @@ class HomeViewDisplayController: BaseViewController{
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: buttonWidth/2, right: 0)
     }
     @IBAction func AroundButton(_ sender: Any) {
-        let map = MapViewController(nibName: "MapViewController", bundle: nil)
+        /*let map = MapViewController(nibName: "MapViewController", bundle: nil)
             map.arrays = arrays
-        navigationController?.pushViewController(map, animated: true)
+        navigationController?.pushViewController(map, animated: true)*/
+        self.navigationController?.pushViewController(WorksAroundViewController(), animated: true)
     }
     @IBAction func ManageButton(_ sender: Any) {
         let manage = ManageViewController(nibName: NibManageViewController, bundle: nil)

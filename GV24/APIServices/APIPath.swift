@@ -34,6 +34,7 @@ enum urlPath:String {
     case maidOnAnnouncement = "/maid/onAnnouncement"
     case maidOffAnnouncement = "/maid/offAnnouncement"
     case register = "/more/maidRegister"
+    case getWorkAll = "/work/getAll"
 }
 struct APIPaths {
     func urlGetListAround() -> String {
@@ -113,5 +114,9 @@ struct APIPaths {
     }
     func register() -> String {
         return "rootDomain".localize + urlPath.register.rawValue
+    }
+    
+    var getWorkAll: String {
+        return "rootDomain".localize + urlPath.getWorkAll.rawValue
     }
  }
