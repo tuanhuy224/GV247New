@@ -14,18 +14,30 @@ class MapWorkControllCell: UICollectionViewCell, CLLocationManagerDelegate, GMSM
     
     var nearByWork: NearbyWork? {
         didSet{
-            reloadMap()
+            if let nearByWork = nearByWork {
+                reloadMap(nearByWork)
+            }
+        }
+    }
+    
+    var currentLocation: CLLocationCoordinate2D? {
+        didSet{
+            if let location = currentLocation {
+                self.mapView.animate(toLocation: location)
+            }
         }
     }
 
     lazy var mapView : GMSMapView = {
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 16.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.settings.myLocationButton = true
+        mapView.isMyLocationEnabled = true
+        mapView.settings.compassButton = true
         mapView.delegate = self
         return mapView
     }()
 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -48,37 +60,32 @@ class MapWorkControllCell: UICollectionViewCell, CLLocationManagerDelegate, GMSM
     }
     
     //MARK: - mapview delegate
-    
     func addMarkerFor(work : Work, at index : String ){
         let marker : GMSMarker = GMSMarker(position: (work.info?.address?.location)!)
         marker.title = index
         marker.map = self.mapView
     }
     
+    //Show UIView Info Window
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let index = Int(marker.title!)
-        let window = MarkerInfoView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-        window.work = nearByWork?.works?[index!]
+        let window = MarkerInfoWindow(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        window.info = nearByWork?.works?[index!].info
         return window
     }
+    
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        /*if UserHelpers.isLogin{
-            if let index = Int(marker.title!){
-                let maidProfileVC = MaidProfileVC()
-                maidProfileVC.maid = maids?[index]
-                self.present(viewController: maidProfileVC)
-            }
-        }else{
-            showAlertLogin()
-        }*/
         
     }
-    func reloadMap(){
+    
+    func reloadMap(_ nearByWork: NearbyWork){
         self.mapView.clear()
         var index = 0
-        for work in (nearByWork?.works)! {
-            self.addMarkerFor(work: work, at: "\(index)")
-            index += 1
+        if let works = nearByWork.works {
+            for work in works {
+                self.addMarkerFor(work: work, at: "\(index)")
+                index += 1
+            }
         }
     }
 }

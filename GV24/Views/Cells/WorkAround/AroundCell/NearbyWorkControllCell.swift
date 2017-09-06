@@ -12,6 +12,7 @@ import UIKit
 protocol NearbyWorkDelegateCell {
     
     func didSelected(_ collectionView: UICollectionView, work: Work)
+    
 }
 class NearbyWorkControllCell: UICollectionViewCell {
     
