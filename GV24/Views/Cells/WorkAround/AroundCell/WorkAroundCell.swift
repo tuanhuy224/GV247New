@@ -20,7 +20,7 @@ class WorkAroundCell: UICollectionViewCell {
             labelLocation.text = "\(work?.dist?.calculated ?? 0)"
             let date = Date(isoDateString: (work?.info?.time?.startAt)!)
             labelDate.text = date.dayMonthYear
-            labelUploadAt.text = Date().dateComPonent(datePost: (work?.info?.time?.startAt)!)
+            labelUploadAt.text = Date().dateComPonent(datePost: (work?.history!.createAt!)!)
             labelTimes.text = Date(isoDateString: (work?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (work?.info?.time?.endAt)!).hourMinute
         }
     }

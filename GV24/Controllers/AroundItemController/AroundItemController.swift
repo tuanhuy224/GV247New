@@ -15,7 +15,9 @@ class AroundItemController: BaseViewController {
     var name:String?
     var works = [Work](){
         didSet{
-        self.tbAround.reloadData()
+            DispatchQueue.main.async {
+                self.tbAround.reloadData()
+            }
         }
     }
     var currentLocation: CLLocationCoordinate2D?

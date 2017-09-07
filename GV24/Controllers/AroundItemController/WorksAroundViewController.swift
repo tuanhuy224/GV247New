@@ -59,6 +59,10 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
         super.viewWillAppear(animated)
     }
     
+    deinit {
+        print("Release!!!!!!!!!!!!!!")
+    }
+    
     
     private func setupLocationManager() {
         self.locationManager.requestWhenInUseAuthorization()
@@ -203,7 +207,6 @@ extension WorksAroundViewController: SettingHeaderDelegate {
 }
 
 extension WorksAroundViewController: FilterVCDelegate {
-    
     func update(_ nearbyWork: NearbyWork?, distanceWork: DistanceWork, currentLocation: CLLocationCoordinate2D) {
         self.nearbyWork = nearbyWork
         self.distanceWork = distanceWork

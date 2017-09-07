@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
       
       
         if ( application.applicationState == .inactive || application.applicationState == .background){
-            guard let window = UIApplication.shared.keyWindow else{return}
+            guard let window = UIApplication.shared.keyWindow else{ return }
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
             let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)

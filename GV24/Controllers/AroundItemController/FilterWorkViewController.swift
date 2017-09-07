@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 import GooglePlacePicker
 
-protocol FilterVCDelegate {
+protocol FilterVCDelegate: class {
     func update(_ nearbyWork : NearbyWork?, distanceWork: DistanceWork, currentLocation: CLLocationCoordinate2D)
 }
 
 class FilterWorkController: BaseViewController {
     
-    var delegate: FilterVCDelegate?
+    weak var delegate: FilterVCDelegate?
+    
     var currentLocation: CLLocationCoordinate2D?
     var distanceWork: DistanceWork?
     var workType: WorkType?

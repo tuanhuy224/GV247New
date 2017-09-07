@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol WorkAroundDelegate {
+protocol WorkAroundDelegate : class{
     func scrollDragWorkAround(cell index: Int)
 }
 class WorkAroundControllCell : UICollectionViewCell {
@@ -22,7 +22,7 @@ class WorkAroundControllCell : UICollectionViewCell {
     
     var currentLocation: CLLocationCoordinate2D?
     
-    var delegate: WorkAroundDelegate?
+    weak var delegate: WorkAroundDelegate?
     
     
     let nearbyWorkCellId = "nearbyWorkCellId"

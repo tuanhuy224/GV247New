@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import IoniconsSwift
 
-protocol SettingHeaderDelegate {
+protocol SettingHeaderDelegate: class {
     func nearByWork(buttonSetting sender: UIButton)
 }
 class HeaderWithTitle: UICollectionReusableView {
 
-    var delegate: SettingHeaderDelegate?
+    weak var delegate: SettingHeaderDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

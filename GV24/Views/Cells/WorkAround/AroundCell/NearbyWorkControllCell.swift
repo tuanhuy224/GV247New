@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-protocol NearbyWorkDelegateCell {
+protocol NearbyWorkDelegateCell: class {
     
     func didSelected(_ collectionView: UICollectionView, work: Work)
     
 }
 class NearbyWorkControllCell: UICollectionViewCell {
     
-    var delegate: NearbyWorkDelegateCell?
+    weak var delegate: NearbyWorkDelegateCell?
     
     var nearByWork: NearbyWork? {
         didSet{
@@ -25,6 +25,7 @@ class NearbyWorkControllCell: UICollectionViewCell {
     }
     
     let workAroundCellId = "workAroundCellId"
+    
     lazy var workCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -53,7 +54,6 @@ class NearbyWorkControllCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         workCollectionView.register(WorkAroundCell.self, forCellWithReuseIdentifier: workAroundCellId)
     }
     
