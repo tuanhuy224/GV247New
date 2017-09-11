@@ -99,7 +99,7 @@ Posted = "Posted";
 Timework = "Hourly pay";
 Notifications = "Notifications";
 Jobsforapplications = "Jobs for applications";
-Description = "Description";
+Description = "Work description";
 Inprocess = "In-process";
 Applicantlist = "Applicant list";
 Selectyourapplicants = "Select your applicants";
@@ -132,7 +132,7 @@ Cancel = "Cancel";
 Delete  = "Delete";
 Edittasks = "Edit tasks";
 ClickOktoconfirmalltaskscompleted = "Click Ok to confirm all tasks completed";
-Description = "Description";
+//Description = "Description";
 WorkHistory = "Work history";
 CompletedWork = "Completed";
 Workplace = "Former hosts";
@@ -200,6 +200,6 @@ Formerpartners = "Former partners";
 Workcurrentlychosen = "Work currently chosen has the same working time as your previous one. Please choose another.";
 Work = "work";
 Bringyourcleaningsupplies = "Bring your cleaning supplies.";
-
-
+ownerInfor = "Owner information";
+selectwork = "Select work";
 

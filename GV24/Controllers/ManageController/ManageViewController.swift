@@ -219,6 +219,7 @@ extension ManageViewController:UITableViewDataSource{
                     cell1.isHidden = true
                     return cell1
                 }else{
+                    cell1.lbOwner.text = "ownerInfor".localize
                     cell1.nameUser.text = processOnDoing[0].stakeholders?.owner?.name
                     cell1.addressName.text = processOnDoing[0].stakeholders?.owner?.address?.name
                     let url = URL(string: (processOnDoing[0].stakeholders?.owner?.image)!)!
@@ -244,7 +245,6 @@ extension ManageViewController:UITableViewDataSource{
                     cell2.lbDate.text = "\(Date(isoDateString: (processOnDoing[0].workTime?.startAt)!).dayMonthYear)"
                     cell2.lbTime.text = Date(isoDateString: (self.processOnDoing[0].workTime!.startAt)!).hourMinute + " - " + Date(isoDateString: (self.processOnDoing[0].workTime!.endAt)!).hourMinute
                     cell2.lbAddress.text = processOnDoing[0].stakeholders?.owner?.address?.name
-                    
                     let tool = processOnDoing[0].info?.tools
                     if  tool == true {
                         cell2.lbTools.isHidden = false

@@ -16,6 +16,7 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
     let locationManager = CLLocationManager()
     var currentLocation : CLLocationCoordinate2D?
     
+    var work: Work?
     var nearbyWork: NearbyWork?
     var distanceWork = DistanceWork()
     var maxDistance = 5
@@ -53,6 +54,14 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
         collectionType.register(HeaderWithTitle.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
         setupLocationManager()
+    }
+    override func setupNavigationButton(naviItem: UINavigationItem, navigationPosition: BaseViewController.NavigationPosition, img: UIImage) {
+        showBackButton = true
+    }
+    
+    override func goBack() {
+        super.goBack()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,8 +121,8 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
     }
     
     func loadNearByWork(_ maxDistance: Int,_ page: Int, completion: @escaping (NearbyWork?) -> ()){
-        let parameter :[String:Any] = ["lat": currentLocation?.latitude,
-                                       "lng": currentLocation?.longitude,
+        let parameter :[String:Any] = ["lat": currentLocation?.latitude as Any,
+                                       "lng": currentLocation?.longitude as Any,
                                        "maxDistance": maxDistance,
                                        "page": page,
                                        "limit": 10]
@@ -161,6 +170,7 @@ extension WorksAroundViewController : UICollectionViewDataSource, UICollectionVi
         cell.nearByWork = nearbyWork
         cell.currentLocation = currentLocation
         cell.delegate = self
+        cell.delegateNearWork = self
         return cell
     }
     
@@ -212,5 +222,14 @@ extension WorksAroundViewController: FilterVCDelegate {
         self.distanceWork = distanceWork
         self.currentLocation = currentLocation
         self.collectionType.reloadData()
+    }
+}
+
+extension WorksAroundViewController: NearbyWorkDelegateCell {
+    func didSelected(_ collectionView: UICollectionView, work: Work) {
+        let detail = DetailViewController()
+        detail.works = work
+        guard UserDefaultHelper.isLogin else { return AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Pleasesign".localize) }
+        self.navigationController?.pushViewController(detail, animated: true)
     }
 }

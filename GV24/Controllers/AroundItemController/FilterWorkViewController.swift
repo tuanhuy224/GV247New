@@ -69,8 +69,9 @@ class FilterWorkController: BaseViewController {
     }
     
     func handleupdateButton(_ sender: UIButton) {
+        guard let current = self.currentLocation else {return}
         loadNearByWork(maxDistance!, 1) { (nearbyWork) in
-            self.delegate?.update(nearbyWork, distanceWork: self.distanceWork!, currentLocation: self.currentLocation!)
+            self.delegate?.update(nearbyWork, distanceWork: self.distanceWork!, currentLocation: current)
         }
         self.navigationController?.popViewController(animated: true)
     }

@@ -70,7 +70,7 @@ CallPhone = "Gọi";
 Cancel = "Huỷ";
 To = "Đến";
 Title = "Chủ đề";
-Description = "Mô tả";
+Description = "Mô tả công việc";
 Generalstatistic = "Thống kê công việc";
 Contact = "Liên hệ";
 Login = "Đăng nhập";
@@ -202,3 +202,6 @@ Formerpartners = "Giúp việc đã làm";
 Workcurrentlychosen = "Công việc bạn chọn trùng khung giờ với công việc trước. Vui lòng chọn công việc khác.";
 Work = "công việc";
 Bringyourcleaningsupplies = "Mang theo dụng cụ làm việc.";
+ownerInfor = "Thông tin chủ nhà";
+selectwork = "Chọn công việc";
+

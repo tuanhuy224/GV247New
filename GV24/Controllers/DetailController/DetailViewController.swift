@@ -11,6 +11,8 @@ import Alamofire
 import Kingfisher
 
 class DetailViewController: BaseViewController {
+    @IBOutlet weak var btSelect: UIButton!
+    @IBOutlet weak var vSelect: UIView!
     @IBOutlet weak var tbDetail: UITableView!
     var id:String?
     var header:HTTPHeaders?
@@ -33,8 +35,14 @@ class DetailViewController: BaseViewController {
         }
     }
     override func setupViewBase() {
-        self.title = titleString
+        self.title = "selectwork".localize
+        btSelect.setTitle("Selectthiswork".localize, for: .normal)
+        btSelect.layer.cornerRadius = 4
+        btSelect.clipsToBounds = true
+        btSelect.tintColor = .white
+        btSelect.backgroundColor = UIColor.colorButton
     }
+    
     func postRerves(){
         let apiService = APIService.shared
         guard let token = UserDefaultHelper.getToken() else{return}
@@ -47,6 +55,34 @@ class DetailViewController: BaseViewController {
             }
         }
     }
+    
+    
+    @IBAction func btSelectAction(_ sender: UIButton) {
+            guard let id = works.id else{return}
+            guard let token = UserDefaultHelper.getToken() else{
+                //return AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
+                
+                return AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: nil, title: "", message: "Pleasesign".localize, completion: {
+                    guard let window = UIApplication.shared.keyWindow else{return}
+                    let navi = UINavigationController(rootViewController: LoginView())
+                    window.rootViewController = navi
+                })
+            }
+            let parameter = ["id":id]
+            let header = ["hbbgvauth":token]
+            let apiClient = APIService.shared
+            AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: nil, title: "", message: "Dothiswork".localize) {
+                self.loadingView.show()
+                apiClient.postReserve(url: APIPaths().urlReserve(), method: .post, parameters: parameter, header: header) { (json, string) in
+                    self.loadingView.close()
+                    if string == "RESERVE_EXIST"{
+                        AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workcurrentlychosen".localize)
+                    }
+                    AlertStandard.sharedInstance.showAlert(controller: self, title: "", message: "Workchosensuccessfully".localize)
+                }
+            }
+    }
+ 
 }
 extension DetailViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,8 +97,12 @@ extension DetailViewController:UITableViewDataSource{
             let cell:WorkDetailCell = tbDetail.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
             cell.ownerDelegate = self
             cell.delegateWork = self
-            cell.btChoose.isHidden = false
-            cell.vSegment.isHidden = false
+            cell.lbOwner.text = "ownerInfor".localize
+            cell.btChoose.isHidden = true
+            cell.vSegment.isHidden = true
+            cell.heightBtChoose.constant = 0
+            cell.constraintH.constant = 0
+            cell.btChooseConstraint.constant = 0
             cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)
             cell.nameUser.text = works.stakeholders?.owner?.name
             cell.addressName.text = works.stakeholders?.owner?.address?.name
@@ -71,7 +111,7 @@ extension DetailViewController:UITableViewDataSource{
                 cell.imageName.image = UIImage(named: "avatar")
             }else{
                 DispatchQueue.main.async {
-                    cell.imageName.kf.setImage(with:url)
+                    cell.imageName.kf.setImage(with: url, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             }
             return cell
@@ -80,8 +120,7 @@ extension DetailViewController:UITableViewDataSource{
             cell.lbTitle.text = self.works.info?.title
             cell.lbDescription.text = "Description".localize
             cell.lbSubTitle.text = self.works.info?.workName?.name
-            //            let salary = self.works.info?.salary ?? 0
-            //            cell.lbMoney.text = String().numberFormat(number: salary) + " " + "Dollar".localize
+
             let salary = self.works.info?.salary
             if salary == 0 {
                 cell.lbMoney.text = "Timework".localize
@@ -105,7 +144,6 @@ extension DetailViewController:UITableViewDataSource{
                 cell.lbTools.text = "Bringyourcleaningsupplies".localize
             }
             cell.lbDate.text = Date(isoDateString: (self.works.workTime!.endAt)!).dayMonthYear
-            //            cell.lbTime.text = String.convertISODateToString(isoDateStr: (self.works.workTime!.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (self.works.workTime!.endAt)!, format: "HH:mm a")!
             cell.lbTime.text = Date(isoDateString: (works.workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (works.workTime?.endAt)!).hourMinute
             return cell
         }
@@ -126,7 +164,7 @@ extension DetailViewController:UITableViewDelegate{
 }
 extension DetailViewController:clickChooseWorkID,UIAlertViewDelegate{
     func chooseAction() {
-        guard let id = idWork else{return}
+        guard let id = works.id else{return}
         guard let token = UserDefaultHelper.getToken() else{
             //return AlertStandard.sharedInstance.showAlertCt(controller: self, pushVC: LoginView(), title: "", message: "Pleasesign".localize)
             

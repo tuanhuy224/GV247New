@@ -9,11 +9,15 @@
 import Foundation
 import UIKit
 
-protocol WorkAroundDelegate : class{
+@objc protocol WorkAroundDelegate : class{
     func scrollDragWorkAround(cell index: Int)
+    @objc optional func detailWork(work: Work?)
 }
 class WorkAroundControllCell : UICollectionViewCell {
     
+    var delegateNearWork: NearbyWorkDelegateCell?
+    
+    var work: Work?
     var nearByWork: NearbyWork? {
         didSet {
             self.collectionWorkAround.reloadData()
@@ -77,6 +81,7 @@ extension WorkAroundControllCell: UICollectionViewDataSource, UICollectionViewDe
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: nearbyWorkCellId, for: indexPath) as! NearbyWorkControllCell
             cell.nearByWork = nearByWork
+            cell.delegate = delegateNearWork
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mapWorkCellId, for: indexPath) as! MapWorkControllCell
@@ -92,6 +97,11 @@ extension WorkAroundControllCell: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let workArrond = WorksAroundViewController()
+        workArrond.work = work
     }
     
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="GV24" customModuleProvider="target">
             <connections>
+                <outlet property="btSelect" destination="A3P-pK-LFB" id="caQ-fA-WQO"/>
                 <outlet property="tbDetail" destination="2Rg-Ef-eaX" id="eRE-a0-AcX"/>
+                <outlet property="vSelect" destination="owP-C2-daJ" id="9wJ-3W-KQa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,20 +22,45 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Rg-Ef-eaX">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="514"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="jrZ-8u-Mrh"/>
                         <outlet property="delegate" destination="-1" id="eDK-jV-58i"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owP-C2-daJ">
+                    <rect key="frame" x="0.0" y="514" width="375" height="54"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3P-pK-LFB">
+                            <rect key="frame" x="8" y="5" width="359" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="73Z-Ka-ztT"/>
+                            </constraints>
+                            <state key="normal" title="Select this work"/>
+                            <connections>
+                                <action selector="btSelectAction:" destination="-1" eventType="touchUpInside" id="gTc-u6-jEH"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="4I4-Hu-sau"/>
+                        <constraint firstItem="A3P-pK-LFB" firstAttribute="leading" secondItem="owP-C2-daJ" secondAttribute="leading" constant="8" id="d5Q-3E-lSF"/>
+                        <constraint firstAttribute="trailing" secondItem="A3P-pK-LFB" secondAttribute="trailing" constant="8" id="rjF-Ck-Dzb"/>
+                        <constraint firstAttribute="bottom" secondItem="A3P-pK-LFB" secondAttribute="bottom" constant="5" id="ujM-zM-SEJ"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="2Rg-Ef-eaX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1l4-d2-mQk"/>
                 <constraint firstAttribute="trailing" secondItem="2Rg-Ef-eaX" secondAttribute="trailing" id="6fX-bC-Axo"/>
-                <constraint firstAttribute="bottom" secondItem="2Rg-Ef-eaX" secondAttribute="bottom" id="TUU-lV-ADg"/>
+                <constraint firstItem="owP-C2-daJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8hc-zP-anc"/>
+                <constraint firstAttribute="bottom" secondItem="owP-C2-daJ" secondAttribute="bottom" id="Hon-aj-JVL"/>
                 <constraint firstItem="2Rg-Ef-eaX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aiw-OQ-9u3"/>
+                <constraint firstItem="owP-C2-daJ" firstAttribute="top" secondItem="2Rg-Ef-eaX" secondAttribute="bottom" id="bWD-d6-hZf"/>
+                <constraint firstAttribute="trailing" secondItem="owP-C2-daJ" secondAttribute="trailing" id="oZa-FH-Ool"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="24.5" y="2"/>

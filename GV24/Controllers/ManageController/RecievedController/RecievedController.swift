@@ -51,6 +51,7 @@ extension RecievedController:UITableViewDataSource{
                 cell.btChoose.isEnabled = true
                 cell.heightBtChoose.constant = 0
             }
+            cell.lbOwner.text = "ownerInfor".localize
             cell.heightBtChoose.constant = 0
             cell.btChoose.isHidden = true
             cell.vSegment.isHidden = true

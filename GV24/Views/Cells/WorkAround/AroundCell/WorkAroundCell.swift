@@ -10,18 +10,26 @@ import Foundation
 import UIKit
 import Kingfisher
 
-
 class WorkAroundCell: UICollectionViewCell {
     
     var work: Work? {
         didSet{
             iconType.kf.setImage(with: URL(string: (work?.info?.workName?.image)!), placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
             labelTitle.text = work?.info?.title
-            labelLocation.text = "\(work?.dist?.calculated ?? 0)"
+            guard let dist = work?.dist?.calculated else {return}
+            labelLocation.text = cal(cal: floor(dist))
             let date = Date(isoDateString: (work?.info?.time?.startAt)!)
             labelDate.text = date.dayMonthYear
             labelUploadAt.text = Date().dateComPonent(datePost: (work?.history!.createAt!)!)
             labelTimes.text = Date(isoDateString: (work?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (work?.info?.time?.endAt)!).hourMinute
+        }
+    }
+    
+    func cal(cal:Double) -> String {
+        if cal > 1000 {
+            return "\(floor(cal/1000)) km"
+        }else{
+            return "\(cal) m"
         }
     }
     
@@ -122,6 +130,7 @@ class WorkAroundCell: UICollectionViewCell {
         
         labelTitle.topAnchor.constraint(equalTo: iconType.topAnchor, constant: margin/4).isActive = true
         labelTitle.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin).isActive = true
+        labelTitle.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -margin).isActive = true
         
         
         labelLocation.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin).isActive = true

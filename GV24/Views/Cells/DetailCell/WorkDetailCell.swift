@@ -24,6 +24,7 @@ import IoniconsSwift
 }
 class WorkDetailCell: CustomTableViewCell {
 
+    @IBOutlet weak var lbOwner: UILabel!
     @IBOutlet weak var btChooseConstraint: NSLayoutConstraint!
     @IBOutlet weak var constraintH: NSLayoutConstraint!
     @IBOutlet weak var btAction: UIButton!
@@ -60,6 +61,7 @@ class WorkDetailCell: CustomTableViewCell {
         DispatchQueue.main.async {
             self.imageName.image = UIImage(named: "avatar")
         }
+        lbOwner.font = fontSize.fontName(name: .regular, size: sizeSix)
         
     }
     @IBAction func btDirectRequest(_ sender: Any) {

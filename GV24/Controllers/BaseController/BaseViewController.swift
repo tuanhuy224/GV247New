@@ -45,10 +45,19 @@ class BaseViewController: UIViewController {
     var showBackButton : Bool?{
         didSet{
             if showBackButton == true{
+                setupNavigationButton(naviItem: navigationItem, navigationPosition: .left, img: Ionicons.iosArrowBack.image(32))
+            }
+        }
+    }
+    
+    var showPresentButton : Bool?{
+        didSet{
+            if showBackButton == true{
                 setupNavigationButton(naviItem: navigationItem, navigationPosition: .left, img: Ionicons.iosCloseEmpty.image(32))
             }
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupViewBase()

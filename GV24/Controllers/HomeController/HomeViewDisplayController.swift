@@ -58,6 +58,9 @@ class HomeViewDisplayController: BaseViewController{
         workAround.setTitle("Around".localize, for: .normal)
         manageButton.setTitle("Taskmanagement".localize, for: .normal)
         historyButton.setTitle("Taskhistory".localize, for: .normal)
+        workAround.tintColor = .white
+        manageButton.tintColor = .white
+        historyButton.tintColor = .white
         cornerButton(workAround, 8)
         cornerButton(manageButton, 8)
         cornerButton(historyButton, 8)

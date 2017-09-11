@@ -51,6 +51,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
         navigationController?.isNavigationBarHidden = true
 
     }
+
     
     func location() {
         locationManager.delegate = self
@@ -102,8 +103,6 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
                             navigation.popToViewController(self.viewControllerLogin, animated: true)
                         } else {
                             guard let window = UIApplication.shared.keyWindow else{return}
-                            
-                            //let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                             window.rootViewController = home
                         }
                     }
@@ -130,9 +129,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
   
     
     @IBAction func btAround(_ sender: Any) {
-        let navi = UINavigationController(rootViewController: WorksAroundViewController())
-        self.present(navi, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(WorksAroundViewController(), animated: true)
+        self.navigationController?.pushViewController(WorksAroundViewController(), animated: true)
     }
     
     @IBAction func forgotPasswordAction(_ sender: Any) {

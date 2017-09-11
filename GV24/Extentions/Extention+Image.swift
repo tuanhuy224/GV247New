@@ -86,6 +86,7 @@ extension UIBarButtonItem{
 }
 
 extension UIColor {
+    
     convenience init(red: Int, green: Int, blue: Int) {
         let newRed = CGFloat(red)/255
         let newGreen = CGFloat(green)/255
@@ -97,6 +98,9 @@ extension UIColor {
     static func colorWithRedValue(redValue: CGFloat, greenValue: CGFloat, blueValue: CGFloat, alpha: CGFloat) -> UIColor {
         return UIColor(red: redValue/255.0, green: greenValue/255.0, blue: blueValue/255.0, alpha: alpha)
     }
+    
+    static let colorButton: UIColor =  colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
+    
 }
 
 extension URLSession{

@@ -82,7 +82,7 @@ Loginwith = "Đăng nhập bằng";
 Confirmpassword = "Xác nhận mật khẩu";
 Next = "Tiếp theo";
 Forgotpassword = "Quên mật khẩu?";
-Description = "Mô tả";
+Description = "Mô tả công việc";
 Assessment = "Nhận xét";
 WorkCapacity = "Năng lực làm việc";
 Notification = "Thông báo";
@@ -200,3 +200,6 @@ Formerpartners = "Giúp việc đã làm";
 Workcurrentlychosen = "Công việc bạn chọn trùng khung giờ với công việc trước. Vui lòng chọn công việc khác.";
 Work = "công việc";
 Bringyourcleaningsupplies = "Mang theo dụng cụ làm việc.";
+ownerInfor = "Thông tin chủ nhà";
+selectwork = "Chọn công việc";
+

@@ -45,7 +45,7 @@ extension PendingController:UITableViewDataSource{
                 cell.btChoose.isHidden = true
                 cell.vSegment.isHidden = true
                 cell.heightBtChoose.constant = 0
-
+                cell.lbOwner.text = "ownerInfor".localize
                 cell.constraintH.constant = 0
                 cell.btChooseConstraint.constant = 0
                 isChoose = true
@@ -74,8 +74,6 @@ extension PendingController:UITableViewDataSource{
                 cell.btChooseConstraint.constant = 0
             
             }
-//            tbPending.reloadSections([indexPath.section], with: .automatic)
-            
             return cell
         case 1:
             let cell:InfoDetailCell = tbPending.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
