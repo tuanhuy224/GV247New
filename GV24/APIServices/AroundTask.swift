@@ -12,6 +12,7 @@ import Alamofire
 
 typealias dataCompletion = (([Work]?,String?)->())
 typealias NearbyWorkCompletion = (( NearbyWork?, String?) -> ())
+typealias WorkTypeAll = (( [WorkType]?, String?) -> ())
 
 class AroundTask: APIService {
     static let sharedInstall = AroundTask()
@@ -55,6 +56,28 @@ class AroundTask: APIService {
             }
         }
         return jsonArray
+    }
+    
+    func getWorkType(_ url: String, completion: @escaping WorkTypeAll){
+        get(url: url) { (response, error) in
+            if error == nil {
+                completion(self.getWorkTypesFrom(jsonData: response!), nil)
+            }else{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    private func getWorkTypesFrom(jsonData : JSON) -> [WorkType]?{
+        if let jsonArray = jsonData.array{
+            var works : [WorkType] = [WorkType]()
+            for workData in jsonArray{
+                works.append(WorkType(json: workData))
+            }
+            
+            return works.reversed()
+        }
+        return nil
     }
     
 }

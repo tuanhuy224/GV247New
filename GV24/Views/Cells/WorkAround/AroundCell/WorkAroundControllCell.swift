@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol WorkAroundDelegate {
+protocol WorkAroundDelegate : class{
     func scrollDragWorkAround(cell index: Int)
 }
 class WorkAroundControllCell : UICollectionViewCell {
@@ -19,7 +19,11 @@ class WorkAroundControllCell : UICollectionViewCell {
             self.collectionWorkAround.reloadData()
         }
     }
-    var delegate: WorkAroundDelegate?
+    
+    var currentLocation: CLLocationCoordinate2D?
+    
+    weak var delegate: WorkAroundDelegate?
+    
     
     let nearbyWorkCellId = "nearbyWorkCellId"
     let mapWorkCellId = "mapWorkCellId"
@@ -56,7 +60,6 @@ class WorkAroundControllCell : UICollectionViewCell {
         self.addConstraintWithFormat(format: "V:|[v0]|", views: collectionWorkAround)
     }
     
-    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let index = targetContentOffset.pointee.x / self.frame.width
         delegate?.scrollDragWorkAround(cell: Int(index))
@@ -77,6 +80,8 @@ extension WorkAroundControllCell: UICollectionViewDataSource, UICollectionViewDe
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mapWorkCellId, for: indexPath) as! MapWorkControllCell
+            cell.nearByWork = nearByWork
+            cell.currentLocation = currentLocation
             return cell
         }
     }

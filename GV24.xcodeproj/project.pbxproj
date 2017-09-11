@@ -193,17 +193,20 @@
 		842FEC8A1ED40C6900000606 /* GV24UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC891ED40C6900000606 /* GV24UITests.swift */; };
 		842FECA01ED40DA800000606 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FEC9E1ED40DA800000606 /* CustomView.swift */; };
 		844E7E431EEFA8D50059B5AD /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E7E421EEFA8D50059B5AD /* AlertHelper.swift */; };
-		A67426C71F53CF2A00F975AF /* WorksAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67426C61F53CF2A00F975AF /* WorksAroundViewController.swift */; };
+		A647CE951F5E536F00A27331 /* MarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647CE941F5E536F00A27331 /* MarkerInfoWindow.swift */; };
 		A67426CD1F5414FE00F975AF /* WorkAroundControllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67426CC1F5414FE00F975AF /* WorkAroundControllCell.swift */; };
 		A67426CF1F54195F00F975AF /* WorkAroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67426CE1F54195F00F975AF /* WorkAroundCell.swift */; };
 		A67426D11F541D1200F975AF /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67426D01F541D1200F975AF /* IconView.swift */; };
 		A67426D51F541F0200F975AF /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67426D41F541F0200F975AF /* Icon.swift */; };
+		A6742EBE1F5EABF9008F3405 /* DistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6742EBD1F5EABF9008F3405 /* DistanceViewController.swift */; };
+		A6742EC01F5EB49B008F3405 /* WorkTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6742EBF1F5EB49B008F3405 /* WorkTypeViewController.swift */; };
 		A68257A91F55625900AC578F /* NearbyWorkControllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68257A81F55625900AC578F /* NearbyWorkControllCell.swift */; };
 		A68257AB1F5565FD00AC578F /* MapWorkControllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68257AA1F5565FD00AC578F /* MapWorkControllCell.swift */; };
 		A68257B11F565DC400AC578F /* HeaderWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68257B01F565DC400AC578F /* HeaderWithTitle.swift */; };
 		A68257B31F56B34700AC578F /* FilterWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68257B21F56B34700AC578F /* FilterWorkViewController.swift */; };
 		A68257B51F56C19000AC578F /* FilterControllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68257B41F56C19000AC578F /* FilterControllCell.swift */; };
-		A68257B71F56C83900AC578F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68257B61F56C83900AC578F /* LocationViewController.swift */; };
+		A6E10FDA1F5FAEF0004FBD96 /* DistanceWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E10FD91F5FAEF0004FBD96 /* DistanceWork.swift */; };
+		A6E2A0D91F586DF70040A6C3 /* WorksAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E2A0D81F586DF70040A6C3 /* WorksAroundViewController.swift */; };
 		BD1378C7B5CF9854974AF6A7 /* Pods_GV24.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C064B5D24EFB6767575CE348 /* Pods_GV24.framework */; };
 /* End PBXBuildFile section */
 
@@ -426,20 +429,23 @@
 		842FEC851ED40C6900000606 /* GV24UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GV24UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842FEC891ED40C6900000606 /* GV24UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GV24UITests.swift; sourceTree = "<group>"; };
 		842FEC8B1ED40C6900000606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		842FEC9E1ED40DA800000606 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		842FEC9E1ED40DA800000606 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomView.swift; path = ../Views/CustomView.swift; sourceTree = "<group>"; };
 		844E7E421EEFA8D50059B5AD /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		8513B9D4BB0A660F2D36EBFD /* Pods-GV24.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GV24/Pods-GV24.debug.xcconfig"; sourceTree = "<group>"; };
-		A67426C61F53CF2A00F975AF /* WorksAroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksAroundViewController.swift; sourceTree = "<group>"; };
+		A647CE941F5E536F00A27331 /* MarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindow.swift; sourceTree = "<group>"; };
 		A67426CC1F5414FE00F975AF /* WorkAroundControllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkAroundControllCell.swift; sourceTree = "<group>"; };
 		A67426CE1F54195F00F975AF /* WorkAroundCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkAroundCell.swift; sourceTree = "<group>"; };
 		A67426D01F541D1200F975AF /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		A67426D41F541F0200F975AF /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		A6742EBD1F5EABF9008F3405 /* DistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceViewController.swift; sourceTree = "<group>"; };
+		A6742EBF1F5EB49B008F3405 /* WorkTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkTypeViewController.swift; sourceTree = "<group>"; };
 		A68257A81F55625900AC578F /* NearbyWorkControllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyWorkControllCell.swift; sourceTree = "<group>"; };
 		A68257AA1F5565FD00AC578F /* MapWorkControllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapWorkControllCell.swift; sourceTree = "<group>"; };
 		A68257B01F565DC400AC578F /* HeaderWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWithTitle.swift; sourceTree = "<group>"; };
 		A68257B21F56B34700AC578F /* FilterWorkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterWorkViewController.swift; sourceTree = "<group>"; };
 		A68257B41F56C19000AC578F /* FilterControllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterControllCell.swift; sourceTree = "<group>"; };
-		A68257B61F56C83900AC578F /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		A6E10FD91F5FAEF0004FBD96 /* DistanceWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceWork.swift; sourceTree = "<group>"; };
+		A6E2A0D81F586DF70040A6C3 /* WorksAroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksAroundViewController.swift; sourceTree = "<group>"; };
 		AD75368AAFF08E6C5C3FA65F /* Pods_GV24UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GV24UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C064B5D24EFB6767575CE348 /* Pods_GV24.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GV24.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE079EEF4D6D78AF4CE07DD1 /* Pods-GV24.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GV24.release.xcconfig"; path = "Pods/Target Support Files/Pods-GV24/Pods-GV24.release.xcconfig"; sourceTree = "<group>"; };
@@ -601,15 +607,16 @@
 		0027152A1EE7AF42006E6671 /* AroundItemController */ = {
 			isa = PBXGroup;
 			children = (
+				A6E2A0D81F586DF70040A6C3 /* WorksAroundViewController.swift */,
 				009A76E81EEE94270021BFB0 /* MapViewController.xib */,
 				009A76E71EEE94270021BFB0 /* MapViewController.swift */,
 				00EB19401EE93E81003B2C5D /* WorkAroundController.xib */,
 				00EB193F1EE93E81003B2C5D /* WorkAroundController.swift */,
 				0027152C1EE7AFAB006E6671 /* AroundItemController.xib */,
 				0027152B1EE7AFAB006E6671 /* AroundItemController.swift */,
-				A67426C61F53CF2A00F975AF /* WorksAroundViewController.swift */,
 				A68257B21F56B34700AC578F /* FilterWorkViewController.swift */,
-				A68257B61F56C83900AC578F /* LocationViewController.swift */,
+				A6742EBD1F5EABF9008F3405 /* DistanceViewController.swift */,
+				A6742EBF1F5EB49B008F3405 /* WorkTypeViewController.swift */,
 			);
 			path = AroundItemController;
 			sourceTree = "<group>";
@@ -1072,6 +1079,7 @@
 				003C9A071EDFC813003F1189 /* ManageController */,
 				002BA0F71EDD25050099352D /* MoreController */,
 				003BC67D1ED9D92E00FF6D14 /* BaseController */,
+				842FEC9E1ED40DA800000606 /* CustomView.swift */,
 				003BC67F1ED9D92E00FF6D14 /* HomeController */,
 				003BC6821ED9D92E00FF6D14 /* LoginController */,
 			);
@@ -1100,6 +1108,7 @@
 				003B34661EFB6EEB004FA591 /* Contact.swift */,
 				003B34721EFBA883004FA591 /* Statistic.swift */,
 				031CD6621F03521600459612 /* WorkType.swift */,
+				A6E10FD91F5FAEF0004FBD96 /* DistanceWork.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1110,7 +1119,7 @@
 				000E1CA31EF6D6C000E26FD4 /* MarkerInfoView.swift */,
 				000E1CA41EF6D6C000E26FD4 /* MarkerInfoView.xib */,
 				841D80F41ED5466B00C916EC /* Cells */,
-				842FEC9E1ED40DA800000606 /* CustomView.swift */,
+				A647CE941F5E536F00A27331 /* MarkerInfoWindow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1430,6 +1439,7 @@
 				A67426D11F541D1200F975AF /* IconView.swift in Sources */,
 				003B34731EFBA883004FA591 /* Statistic.swift in Sources */,
 				003175ED1EE6A6B000F3F9B4 /* AroundTask.swift in Sources */,
+				A647CE951F5E536F00A27331 /* MarkerInfoWindow.swift in Sources */,
 				00EB195D1EE93EF5003B2C5D /* Stakeholders.swift in Sources */,
 				003BC6851ED9D92E00FF6D14 /* HomeViewDisplayController.swift in Sources */,
 				00145E6A1F25A141009C907D /* APIServices+GetOwner.swift in Sources */,
@@ -1450,6 +1460,7 @@
 				00EDD49B1EF02D660098F505 /* DetailManagementController.swift in Sources */,
 				005A4DDB1EF0EAE400FA76FB /* InforOwnerCell.swift in Sources */,
 				009A76D41EEE8B250021BFB0 /* Enum.swift in Sources */,
+				A6E2A0D91F586DF70040A6C3 /* WorksAroundViewController.swift in Sources */,
 				00EB195B1EE93EF5003B2C5D /* Process.swift in Sources */,
 				003175EB1EE69A0000F3F9B4 /* Maid.swift in Sources */,
 				002A04451EE11C97001876E5 /* xibView.swift in Sources */,
@@ -1482,6 +1493,7 @@
 				A68257B51F56C19000AC578F /* FilterControllCell.swift in Sources */,
 				003BC6961ED9DA0600FF6D14 /* Error.swift in Sources */,
 				03F81FBA1EF238AD0052B440 /* TableViewHelper.swift in Sources */,
+				A6742EBE1F5EABF9008F3405 /* DistanceViewController.swift in Sources */,
 				002BA0FF1EDD25AF0099352D /* MoreNameCell.swift in Sources */,
 				002572501EDE9E1600AACC52 /* InforCell.swift in Sources */,
 				002A043D1EE116AB001876E5 /* WorkAround.swift in Sources */,
@@ -1497,8 +1509,8 @@
 				002572371EDE5FB800AACC52 /* AboutViewController.swift in Sources */,
 				00AEBA401EF7C329009FFA69 /* FollowCell.swift in Sources */,
 				00EB194C1EE93EB4003B2C5D /* HistoryViewController.swift in Sources */,
-				A68257B71F56C83900AC578F /* LocationViewController.swift in Sources */,
 				00CC0D4B1EEE3FCE002D24D4 /* WorkListViewController.swift in Sources */,
+				A6742EC01F5EB49B008F3405 /* WorkTypeViewController.swift in Sources */,
 				006E80021F0A34C1007E9963 /* LoadingView.swift in Sources */,
 				003BC68B1ED9D94F00FF6D14 /* User.swift in Sources */,
 				A68257B11F565DC400AC578F /* HeaderWithTitle.swift in Sources */,
@@ -1524,12 +1536,12 @@
 				842FEC6A1ED40C6900000606 /* AppDelegate.swift in Sources */,
 				00EB19581EE93EF5003B2C5D /* Dist.swift in Sources */,
 				002BA1031EDD26090099352D /* MoreCell.swift in Sources */,
+				A6E10FDA1F5FAEF0004FBD96 /* DistanceWork.swift in Sources */,
 				006BD3A61F00A0C8002867EC /* ReportController.swift in Sources */,
 				009A76E01EEE8F480021BFB0 /* APIServices.swift in Sources */,
 				031CD6631F03521600459612 /* WorkType.swift in Sources */,
 				002572411EDE648800AACC52 /* LanguageViewController.swift in Sources */,
 				002BA1071EDD52F60099352D /* NotifiCell.swift in Sources */,
-				A67426C71F53CF2A00F975AF /* WorksAroundViewController.swift in Sources */,
 				000CCF401EFE191A00331D8E /* HeaderCell.swift in Sources */,
 				00EB19591EE93EF5003B2C5D /* History.swift in Sources */,
 				842FECA01ED40DA800000606 /* CustomView.swift in Sources */,

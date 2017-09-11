@@ -17,15 +17,16 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
     var currentLocation : CLLocationCoordinate2D?
     
     var nearbyWork: NearbyWork?
+    var distanceWork = DistanceWork()
+    var maxDistance = 5
     
-    lazy var collectionType : UICollectionView = {
+   lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
-        cv.delegate = self
         cv.dataSource = self
-        cv.isPagingEnabled = true
-        return cv
+        cv.delegate = self
+        return cv  
     }()
     
     let segmentedControl : UISegmentedControl = {
@@ -56,6 +57,10 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    deinit {
+        print("Release!!!!!!!!!!!!!!")
     }
     
     
@@ -100,16 +105,15 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
             return
         }
         currentLocation = coordinate
-        self.loadNearByWork(5, 1) { (nearByWork) in
+        self.loadNearByWork(maxDistance, 1) { (nearByWork) in
             self.nearbyWork = nearByWork
             self.collectionType.reloadData()
         }
     }
     
     func loadNearByWork(_ maxDistance: Int,_ page: Int, completion: @escaping (NearbyWork?) -> ()){
-        
-        let parameter :[String:Any] = ["lat": currentLocation!.latitude,
-                                       "lng": currentLocation!.longitude,
+        let parameter :[String:Any] = ["lat": currentLocation?.latitude,
+                                       "lng": currentLocation?.longitude,
                                        "maxDistance": maxDistance,
                                        "page": page,
                                        "limit": 10]
@@ -130,7 +134,7 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
         
         view.addConstraintWithFormat(format: "V:|-10-[v0(30)]-10-[v1]|", views: segmentedControl, collectionType)
         view.addConstraintWithFormat(format: "H:|-\(15)-[v0]-\(15)-|", views: segmentedControl)
-        view.addConstraintWithFormat(format: "|[v0]|", views: collectionType)
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionType)
     }
     
     func segmentValueChange(_ sender: UISegmentedControl) {
@@ -155,13 +159,13 @@ extension WorksAroundViewController : UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! WorkAroundControllCell
         cell.nearByWork = nearbyWork
+        cell.currentLocation = currentLocation
         cell.delegate = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //print("CollectionView Parent \(self.view.frame.width)")
-        return CGSize(width: self.view.frame.width, height: self.view.frame.size.height - 100)
+        return CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height - 100)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -178,10 +182,9 @@ extension WorksAroundViewController : UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderWithTitle
         headerView.delegate = self
-        headerView.title = "Vị trí: Hiện tại,Khoảng cách: 3km, Loại công việc: Nấu ăn"
+        headerView.title = "Vị trí: \(distanceWork.nameLocation ?? ""), Khoảng cách: \(distanceWork.distance ?? ""), Loại công việc: \(distanceWork.workType ?? "")"
         return headerView
     }
-    
 }
 
 
@@ -191,12 +194,23 @@ extension WorksAroundViewController: WorkAroundDelegate {
     }
 }
 
-
-
 extension WorksAroundViewController: SettingHeaderDelegate {
-    
     func nearByWork(buttonSetting sender: UIButton) {
-        self.navigationController?.pushViewController(FilterWorkController(), animated: true)
+        let filterVC = FilterWorkController()
+        filterVC.distanceWork = distanceWork
+        filterVC.currentLocation = currentLocation
+        filterVC.maxDistance = maxDistance
+        filterVC.delegate = self
+        self.navigationController?.pushViewController(filterVC, animated: true)
         print("Handle Filter Near By Work")
+    }
+}
+
+extension WorksAroundViewController: FilterVCDelegate {
+    func update(_ nearbyWork: NearbyWork?, distanceWork: DistanceWork, currentLocation: CLLocationCoordinate2D) {
+        self.nearbyWork = nearbyWork
+        self.distanceWork = distanceWork
+        self.currentLocation = currentLocation
+        self.collectionType.reloadData()
     }
 }
