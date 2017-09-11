@@ -19,6 +19,8 @@ class NotifiCell: CustomTableViewCell {
     @IBOutlet weak var btChooseLanguage: UIButton!
     @IBOutlet weak var lbNotif: UILabel!
     @IBOutlet weak var switchNoti: UISwitch!
+    @IBOutlet weak var imgNotification: UIImageView!
+    @IBOutlet weak var imgLanguage: UIImageView!
     weak var delegate:changeLanguageDelegate?
     weak var notiDelegate:notificationDelegate?
     override func awakeFromNib() {
@@ -28,6 +30,13 @@ class NotifiCell: CustomTableViewCell {
         btChoose.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         lbNotif.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
         btChoose.titleLabel?.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
+        cornerImage(imgNotification, 4)
+        cornerImage(imgLanguage, 4)
+    }
+    
+    func cornerImage(_ img: UIImageView, _ radius: CGFloat) {
+        img.layer.cornerRadius = radius
+        img.clipsToBounds = true
     }
 
     @IBAction func notifiAction(_ sender: Any) {

@@ -71,11 +71,11 @@
                             <constraint firstAttribute="height" constant="20" id="YfK-as-fWg"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNG-4w-hDp">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNG-4w-hDp">
                         <rect key="frame" x="8" y="121" width="304" height="33"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="17"/>
                         <state key="normal" title="Logout">
-                            <color key="titleColor" red="0.99215686270000003" green="0.74509803919999995" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
                             <action selector="btLogOutAction:" destination="aUC-Vs-Lau" eventType="touchUpInside" id="n9q-6i-uWG"/>

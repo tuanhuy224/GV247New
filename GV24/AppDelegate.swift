@@ -29,11 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
         IQKeyboardManager.sharedManager().enable = true
         window = UIWindow(frame: UIScreen.main.bounds)
         if UserDefaultHelper.isLogin {
-            navi = UINavigationController(rootViewController: HomeViewDisplayController())
+            let home = UINavigationController(rootViewController: HomeViewDisplayController())
+            window?.rootViewController = home
+            window?.makeKeyAndVisible()
         }else{
-            navi = UINavigationController(rootViewController: LoginView())
+            let login = UINavigationController(rootViewController: LoginView())
+            window?.rootViewController = login
+            window?.makeKeyAndVisible()
         }
-        window?.rootViewController = navi
+        
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName:fontSize.fontName(name: .light, size: sizeSix)], for: .normal)
         UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
         UINavigationBar.appearance().backgroundColor = .white

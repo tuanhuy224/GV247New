@@ -7,8 +7,15 @@
 //
 import UIKit
 import Alamofire
+import IoniconsSwift
 
 class BaseViewController: UIViewController {
+    
+    enum NavigationPosition {
+        case left
+        case right
+    }
+    
     let notificationIdentifier: String = "NotificationIdentifier"
     let install = NetworkStatus.sharedInstance
     var islog = false
@@ -31,6 +38,16 @@ class BaseViewController: UIViewController {
         self.decorate()
         print("====Current self:\(self)====")
         net?.startListening()
+        setupNavigation()
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    var showBackButton : Bool?{
+        didSet{
+            if showBackButton == true{
+                setupNavigationButton(naviItem: navigationItem, navigationPosition: .left, img: Ionicons.iosCloseEmpty.image(32))
+            }
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,8 +75,36 @@ class BaseViewController: UIViewController {
     func setupViewBase() {
         
     }
+    func setupNavigation(){
+        navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        self.navigationController?.navigationBar.barTintColor = .white
+        
+    }
     
     
+    func setupNavigationButton(naviItem: UINavigationItem, navigationPosition: NavigationPosition, img: UIImage){
+        let button = UIButton(type: .custom)
+        button.setImage(img.maskWithColor(color: UIColor.colorWithRedValue(redValue: 104, greenValue: 104, blueValue: 104, alpha: 1)), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.setTitleColor(UIColor.blue, for: .highlighted)
+        button.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,0)
+        button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        let naviButton = UIBarButtonItem(customView: button)
+        
+        switch navigationPosition {
+        case .left:
+            naviItem.leftBarButtonItem = naviButton
+            break
+        case .right:
+            naviItem.rightBarButtonItem = naviButton
+            break
+        }
+    }
+    
+    func goBack() {
+        
+    }
     
     func BackButtonItem() {
         let backItem = UIBarButtonItem()
@@ -92,8 +137,7 @@ class BaseViewController: UIViewController {
                     loginController.viewControllerLogin = self
                     loginController.isLoginWhenChangeToken = true
                     guard let window = UIApplication.shared.keyWindow else{return}
-                    let navi = UINavigationController(rootViewController: loginController)
-                    window.rootViewController = navi
+                    window.rootViewController = loginController
                 })
                 
             }

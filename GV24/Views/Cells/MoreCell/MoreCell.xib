@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gS-LX-Vuk">
-                        <rect key="frame" x="8" y="16" width="38" height="17.5"/>
+                        <rect key="frame" x="41" y="16" width="263" height="18"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,21 +43,33 @@
                             <constraint firstAttribute="height" constant="1" id="hKp-7t-2Y1"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jYE-6Z-cpQ">
+                        <rect key="frame" x="8" y="12" width="25" height="25"/>
+                        <color key="backgroundColor" red="0.16744945259999999" green="0.21233699610000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="BdX-KQ-gCt"/>
+                            <constraint firstAttribute="height" constant="25" id="Iih-UW-afZ"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5gS-LX-Vuk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="39V-8m-Q40"/>
                     <constraint firstAttribute="trailing" secondItem="ZsE-wz-SMA" secondAttribute="trailing" constant="8" id="3ig-r4-Wz6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="5gS-LX-Vuk" secondAttribute="trailing" constant="8" id="EcN-i5-QDV"/>
                     <constraint firstItem="8fB-Tw-xMe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FNG-MF-bDL"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="5gS-LX-Vuk" secondAttribute="leading" id="GoR-xI-XaJ"/>
+                    <constraint firstItem="jYE-6Z-cpQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="LPL-Se-b7Y"/>
                     <constraint firstItem="ZsE-wz-SMA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="TBk-KN-elC"/>
                     <constraint firstItem="5gS-LX-Vuk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="Vfo-ru-fcj"/>
                     <constraint firstAttribute="trailing" secondItem="8fB-Tw-xMe" secondAttribute="trailing" id="aiP-hm-kK0"/>
+                    <constraint firstItem="jYE-6Z-cpQ" firstAttribute="centerY" secondItem="5gS-LX-Vuk" secondAttribute="centerY" id="hDW-6d-zy0"/>
                     <constraint firstAttribute="bottom" secondItem="8fB-Tw-xMe" secondAttribute="bottom" id="iJB-3G-gJD"/>
                     <constraint firstAttribute="bottomMargin" secondItem="5gS-LX-Vuk" secondAttribute="bottom" constant="8" id="jR0-uP-fD4"/>
+                    <constraint firstItem="5gS-LX-Vuk" firstAttribute="leading" secondItem="jYE-6Z-cpQ" secondAttribute="trailing" constant="8" id="q0k-dL-WtX"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="iconRight" destination="ZsE-wz-SMA" id="PAC-fC-ano"/>
+                <outlet property="imgMore" destination="jYE-6Z-cpQ" id="n37-Tn-6z6"/>
                 <outlet property="lbMore" destination="5gS-LX-Vuk" id="GoV-7g-rA1"/>
             </connections>
             <point key="canvasLocation" x="32" y="64"/>

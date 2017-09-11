@@ -19,11 +19,14 @@ import FirebaseInstanceID
     @objc optional func buttonForgot()
 }
 class LoginView: BaseViewController,CLLocationManagerDelegate {
+
+    @IBOutlet weak var linePassword: UIView!
+    @IBOutlet weak var lineUsername: UIView!
+    @IBOutlet weak var vLogin: UIView!
     @IBOutlet weak var blurImage: UIVisualEffectView!
     @IBOutlet weak var Sview: UIView!
     @IBOutlet weak var scrollLogin: UIScrollView!
-    @IBOutlet weak var imagePassword: UIImageView!
-    @IBOutlet weak var imageProfile: UIImageView!
+
     @IBOutlet weak var forgotPassword: UIButton!
     @IBOutlet weak var imgeLogo: UIImageView!
     @IBOutlet weak var userLogin: UITextField!
@@ -44,8 +47,9 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
         userLogin.delegate = self
         passwordLogin.delegate = self
         scrollLogin.delegate = self
-        //location()
         self.setupView()
+        navigationController?.isNavigationBarHidden = true
+
     }
     
     func location() {
@@ -57,7 +61,6 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //registerAutoKeyboard()
         self.title = "SignIn".localize
         btnLogin.setTitle("SignIn".localize.uppercased(), for: .normal)
         forgotPassword.setTitle("Forgotpassword".localize, for: .normal)
@@ -71,7 +74,6 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //unRegisterAutoKeyboard()
         NotificationCenter.default.removeObserver(self)
     }
     @IBAction func loginButtonAction(_ sender: Any) {
@@ -88,6 +90,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
         }else{
             apiClient.logIn(userName: username, password: password, device_token: token(), completion: { (user, string, error) in
                 self.loading.close()
+                let home = HomeViewDisplayController()
                 if self.isLoginWhenChangeToken == true{
                     self.isLoginWhenChangeToken = false
                     guard let string = string else {return}
@@ -99,8 +102,9 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
                             navigation.popToViewController(self.viewControllerLogin, animated: true)
                         } else {
                             guard let window = UIApplication.shared.keyWindow else{return}
-                            let navi = UINavigationController(rootViewController: HomeViewDisplayController())
-                            window.rootViewController = navi
+                            
+                            //let navi = UINavigationController(rootViewController: HomeViewDisplayController())
+                            window.rootViewController = home
                         }
                     }
                 }else{
@@ -119,26 +123,39 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     }
   
   @IBAction func btRegisterAction(_ sender: Any) {
-    let navi = RegisterViewController(nibName: "RegisterViewController", bundle: nil)
-    navigationController?.pushViewController(navi, animated: true)
-  }
+    let navi = UINavigationController(rootViewController: RegisterViewController())
+    self.present(navi, animated: true, completion: nil)
+  
+    }
   
     
     @IBAction func btAround(_ sender: Any) {
-        self.navigationController?.pushViewController(WorksAroundViewController(), animated: true)
+        let navi = UINavigationController(rootViewController: WorksAroundViewController())
+        self.present(navi, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(WorksAroundViewController(), animated: true)
     }
     
     @IBAction func forgotPasswordAction(_ sender: Any) {
-        self.navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
+        let navi = UINavigationController(rootViewController: ForgotPasswordViewController())
+        self.present(navi, animated: true, completion: nil)
+    }
+    
+    func cornerButton(_ button: UIButton, _ radius: CGFloat) {
+        button.layer.cornerRadius = radius
+        button.clipsToBounds = true
     }
     
     func setupView()  {
-        let imageprofile = Ionicons.iosPerson.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
-        imageProfile.image = imageprofile
-        let imagepassword = Ionicons.locked.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
-        imagePassword.image = imagepassword
+        vLogin.layer.cornerRadius = 8
+        vLogin.clipsToBounds = true
+        lineUsername.backgroundColor = UIColor.colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
+        linePassword.backgroundColor = UIColor.colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
         btAround.setTitle("Nearby".localize, for: .normal)
-        btAround.backgroundColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 190, blueValue: 78, alpha: 1)
+        btAround.backgroundColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 191, blueValue: 78, alpha: 1)
+        btnLogin.backgroundColor = UIColor.colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
+        cornerButton(btnLogin, 8)
+        cornerButton(btAround, 8)
+
         logoImage.backgroundColor = UIColor.clear
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))
         view.addGestureRecognizer(tap)

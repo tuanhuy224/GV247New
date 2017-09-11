@@ -11,6 +11,7 @@ import Kingfisher
 import Alamofire
 import Firebase
 import FirebaseInstanceID
+import IoniconsSwift
 
 class MoreViewController: BaseViewController {
     var arryMore:[String] = ["AboutUsTitle","TermsofuseTitle", "Contact"]
@@ -28,6 +29,7 @@ class MoreViewController: BaseViewController {
         self.tbMore.rowHeight = UITableViewAutomaticDimension
         self.tbMore.estimatedRowHeight = 100.0
         tbMore.separatorStyle = .none
+        customLeftButton()
     }
     override func setupViewBase() {
         self.title = "More".localize
@@ -38,8 +40,22 @@ class MoreViewController: BaseViewController {
         tbMore.reloadData()
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    static func cornerButton(_ button: UIButton, _ radius: CGFloat) {
+        button.layer.cornerRadius = radius
+        button.clipsToBounds = true
+    }
+    func customLeftButton(){
+        let button = UIButton(type: .custom)
+        button.setImage(Ionicons.iosCloseEmpty.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 74, greenValue: 74, blueValue: 74, alpha: 1)), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,0)
+        button.addTarget(self, action: #selector(MoreViewController.selectButton), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
+    func selectButton() {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
@@ -58,14 +74,19 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
         if indexPath.section == 0 {
             let cell:WorkDetailCell = self.tbMore.on_dequeue(idxPath: indexPath)
                 cell.nameUser.text = userLogin?.name
+                cell.btAction.layer.cornerRadius = 4
+                cell.btAction.backgroundColor = UIColor.colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
+                cell.btAction.setTitle("Generalstatistic".localize, for: .normal)
+                cell.btAction.setTitleColor(.white, for: .normal)
                 cell.addressName.text = userLogin?.nameAddress
-            let url = URL(string: userLogin!.image!)
+            guard let img = userLogin?.image else { return  cell }
+            let url = URL(string: img)
             if url == nil {
                 cell.imageName.image = UIImage(named: "avatar")
             }else{
                 cell.imageName.kf.setImage(with: url)
             }
-                cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)
+                //cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)
                 cell.btChoose.setTitleColor(.black, for: .normal)
                 cell.vSegment.isHidden = false
                 cell.btChoose.isHidden = false
@@ -94,7 +115,13 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             let cell:FollowCell = tbMore.on_dequeue(idxPath: indexPath)
             cell.btFollowAc.setTitle("shareGv24".localize, for: .normal)
             cell.btFacebookAc.setTitle("followUs".localize, for: .normal)
+            cell.btLogOut.backgroundColor = UIColor.colorWithRedValue(redValue: 204, greenValue: 204, blueValue: 204, alpha: 1)
+            cell.btLogOut.layer.cornerRadius = 4
+            cell.clipsToBounds = true
+            
             cell.btLogOut.setTitle("SignOut".localize, for: .normal)
+            cell.btLogOut.titleLabel?.textAlignment = .center
+            
             cell.delegate = self
             return cell
         }else{
@@ -166,8 +193,8 @@ extension MoreViewController:LogOutDelegate{
             _ = UserDefaultHelper().removeUserDefault()
             guard let window = UIApplication.shared.keyWindow else{return}
             let vc = LoginView()
-            let navi = UINavigationController(rootViewController: vc)
-            window.rootViewController = navi
+            //let navi = UINavigationController(rootViewController: vc)
+            window.rootViewController = vc
         }
 
     }
@@ -189,7 +216,8 @@ extension MoreViewController:clickChooseWorkID{
 }
 extension MoreViewController:notificationDelegate{
     func notificationAnnotation(noti: UISwitch) {
-        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth":"\(UserDefaultHelper.getToken()!)"]
+        guard let tokenString = UserDefaultHelper.getToken() else {return}
+        let header = ["Content-Type":"application/x-www-form-urlencoded","hbbgvauth": tokenString]
         guard let token = InstanceID.instanceID().token() else {return}
         let parameter = ["device_token":"\(token)"]
         let apiClient = APIService.shared

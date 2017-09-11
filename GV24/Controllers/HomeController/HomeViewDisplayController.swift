@@ -12,10 +12,13 @@ import Alamofire
 import SwiftyJSON
 import FirebaseCore
 import FirebaseInstanceID
+import Kingfisher
 
 class HomeViewDisplayController: BaseViewController{
     var user:User?
     
+    @IBOutlet weak var imgAvatar: UIImageView!
+    @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbHistory: UILabel!
     @IBOutlet weak var lbManage: UILabel!
     @IBOutlet weak var workAround: UIButton!
@@ -24,6 +27,8 @@ class HomeViewDisplayController: BaseViewController{
     @IBOutlet weak var viewDisplay: UIView!
     @IBOutlet weak var viewBottom: UIView!
     @IBOutlet weak var lbLogo: UILabel!
+    @IBOutlet weak var btAvatar: UIButton!
+    
     var titleAround:String?
     var arrays = [Around]()
     @IBOutlet weak var lbAround: UILabel!
@@ -31,23 +36,37 @@ class HomeViewDisplayController: BaseViewController{
         super.viewDidLoad()
 
         self.customBarRightButton()
+        //navigationController?.isNavigationBarHidden = true
     }
-    override func decorate() {
-            buttonTest(button: workAround, imageName: "quanhday")
-            buttonTest(button: manageButton, imageName: "quanlyconviec")
-            buttonTest(button: historyButton, imageName: "lichsu")
-            lbLogo.textColor = .black
+    
+    func cornerButton(_ button: UIButton, _ radius: CGFloat) {
+        button.layer.cornerRadius = radius
+        button.clipsToBounds = true
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.white.cgColor
     }
+    
+    @IBAction func btAvatarAction(_ sender: Any) {
+        let navi = UINavigationController(rootViewController: MoreViewController())
+        self.present(navi, animated: true, completion: nil)
+    }
+    
     override func setupViewBase() {
         super.setupViewBase()
         self.title = "Home".localize
-        lbLogo.text = "AnyTime".localize
-        lbAround.text = "Around".localize
-        lbManage.text = "Taskmanagement".localize
-        lbHistory.text = "Taskhistory".localize
-        lbHistory.font = fontSize.fontName(name: .medium, size: sizeFour)
-        lbManage.font = fontSize.fontName(name: .medium, size: sizeFour)
-        lbAround.font = fontSize.fontName(name: .medium, size: sizeFour)
+        navigationController?.isNavigationBarHidden = true
+        workAround.setTitle("Around".localize, for: .normal)
+        manageButton.setTitle("Taskmanagement".localize, for: .normal)
+        historyButton.setTitle("Taskhistory".localize, for: .normal)
+        cornerButton(workAround, 8)
+        cornerButton(manageButton, 8)
+        cornerButton(historyButton, 8)
+        cornerButton(btAvatar, btAvatar.frame.size.width/2)
+        guard let urlImage = UserDefaultHelper.currentUser?.image else {return}
+        let url = URL(string: urlImage)
+        btAvatar.kf.setImage(with: url, for: .normal, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
+        lbName.text = UserDefaultHelper.currentUser?.name
+
     }
     
     
@@ -58,10 +77,11 @@ class HomeViewDisplayController: BaseViewController{
         button.setTitleColor(UIColor.blue, for: .highlighted)
         button.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,0)
         button.addTarget(self, action: #selector(HomeViewDisplayController.selectButton), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     func selectButton()  {
-        navigationController?.pushViewController(MoreViewController(), animated: true)
+        let navi = UINavigationController(rootViewController: MoreViewController())
+        self.present(navi, animated: true, completion: nil)
     }
     
     func buttonTest(button:UIButton,imageName:String)  {

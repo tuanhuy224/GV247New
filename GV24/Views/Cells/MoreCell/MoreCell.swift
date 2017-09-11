@@ -11,6 +11,7 @@ import IoniconsSwift
 
 class MoreCell: CustomTableViewCell {
 
+    @IBOutlet weak var imgMore: UIImageView!
     @IBOutlet weak var lbMore: UILabel!
     @IBOutlet weak var iconRight: UIButton!
     
@@ -20,6 +21,11 @@ class MoreCell: CustomTableViewCell {
         let icon = Ionicons.chevronRight.image(32)
         iconRight.setImage(icon, for: .normal)
         iconRight.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        cornerImage(imgMore, 4)
+    }
+    func cornerImage(_ img: UIImageView, _ radius: CGFloat) {
+        img.layer.cornerRadius = radius
+        img.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

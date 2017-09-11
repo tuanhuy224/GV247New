@@ -19,6 +19,7 @@ class RegisterViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showBackButton = true
 
     }
   override func setupViewBase() {
@@ -37,7 +38,12 @@ class RegisterViewController: BaseViewController {
     tfPhone.font = fontSize.fontName(name: .regular, size: 15)
     tfName.font = fontSize.fontName(name: .regular, size: 15)
     tfEmail.font = fontSize.fontName(name: .regular, size: 15)
+    
   }
+    override func goBack() {
+        super.goBack()
+        self.dismiss(animated: true, completion: nil)
+    }
   
   @IBAction func btRegisterAction(_ sender: Any) {
     let apiClient = APIService.shared
