@@ -13,7 +13,7 @@ import IoniconsSwift
 
 class HistoryViewCell: CustomTableViewCell {
     
-    static let icon = Ionicons.androidAlarmClock.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
+    let icon = Ionicons.androidAlarmClock.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
     @IBOutlet weak var contraintWidthDeadline: NSLayoutConstraint!
     @IBOutlet weak var constraintWidthDirect: NSLayoutConstraint!
     @IBOutlet weak var lbDirect: UILabel!
@@ -28,7 +28,7 @@ class HistoryViewCell: CustomTableViewCell {
     @IBOutlet weak var iconAlarm: UIImageView!{
         didSet{
 
-            btImage.setImage(HistoryViewCell.icon, for: .normal)
+            btImage.setImage(icon, for: .normal)
         }
     }
     @IBOutlet weak var imageWork: UIImageView!
@@ -41,9 +41,7 @@ class HistoryViewCell: CustomTableViewCell {
         UILabel.cornerLable(lb: lbDirect, radius: 12.5)
         UILabel.cornerLable(lb: lbDeadline, radius: 12.5)
         
-        UIImageView.cornerLable(img: imageWork, radius: imageWork.bounds.size.width/2)
-
-        
+        UIImageView.cornerImage(img: imageWork, radius: imageWork.bounds.size.width/2)
         workNameLabel.font = fontSize.fontName(name: .medium, size: sizeEight)
         lbDeadline.font = fontSize.fontName(name: .regular, size: sizeFour)
         lbDist.font = fontSize.fontName(name: .regular, size: sizeFour)

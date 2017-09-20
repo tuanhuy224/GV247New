@@ -100,7 +100,7 @@ extension UILabel {
 
 extension UIImageView{
 
-    static func cornerLable(img: UIImageView, radius: CGFloat){
+    static func cornerImage(img: UIImageView, radius: CGFloat){
         img.layer.cornerRadius = radius
         img.layer.masksToBounds = true
     }

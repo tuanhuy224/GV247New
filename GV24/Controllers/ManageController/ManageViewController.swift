@@ -13,23 +13,11 @@ class ManageViewController: BaseViewController {
     @IBOutlet weak var segmentCtr: UISegmentedControl!
     @IBOutlet weak var tbManage: UITableView!
     var idProcess:String?
-    var processOnCreate = [Work](){
-        didSet{
-            tbManage.reloadData()
-        }
-    }
+    var processOnCreate = [Work]()
     var processPending = [Work]()
     var processDone = [Work]()
-    var processOnDoing = [Work](){
-        didSet{
-            tbManage.reloadData()
-        }
-    }
-    var processRecieved = [Work](){
-        didSet{
-            tbManage.reloadData()
-        }
-    }
+    var processOnDoing = [Work]()
+    var processRecieved = [Work]()
     var returnValue:Int = 0
     var longGesture = UILongPressGestureRecognizer()
     override func viewDidLoad() {
@@ -42,6 +30,7 @@ class ManageViewController: BaseViewController {
         self.tbManage.rowHeight = UITableViewAutomaticDimension
         self.tbManage.estimatedRowHeight = 100.0
         vDoing.isHidden = true
+        getProcess()
     }
     override func decorate() {
         super.decorate()
@@ -61,7 +50,7 @@ class ManageViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getProcess()
+        
     }
     @IBAction func segmentControlAction(_ sender: Any) {
         let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
@@ -85,31 +74,45 @@ class ManageViewController: BaseViewController {
         loadingView.show()
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parameterCreate, header: header) { (json, error) in
             self.loadingView.close()
-            if json != nil{
-                self.processOnCreate = json!
-                
+            DispatchQueue.global(qos: .userInitiated).async {
+                if json != nil{
+                    self.processOnCreate = json!
+                }
+                DispatchQueue.main.async {
+                    self.tbManage.reloadData()
+                    
+                }
             }
-            self.tbManage.reloadData()
         }
-        apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
-            if json != nil{
-                self.processPending = json!
-                
-            }
-            self.tbManage.reloadData()
-        }
+//        apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
+//            if json != nil{
+//                self.processPending = json!
+//                
+//            }
+//            self.tbManage.reloadData()
+//        }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterRecieve, header: header) { (json, error) in
             self.loadingView.close()
-            if json != nil{
-                self.processRecieved = json!
+            DispatchQueue.global(qos: .userInitiated).async {
+                if json != nil{
+                    self.processRecieved = json!
+                }
+                DispatchQueue.main.async {
+                    self.tbManage.reloadData()
+                    
+                }
             }
-            self.tbManage.reloadData()
         }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterOnDoing, header: header) { (json, error) in
             self.loadingView.close()
-            if json != nil{
-                self.processOnDoing = json!
-                
+            DispatchQueue.global(qos: .userInitiated).async {
+                if json != nil{
+                    self.processOnDoing = json!
+                }
+                DispatchQueue.main.async {
+                    self.tbManage.reloadData()
+                    
+                }
             }
         }
         self.tbManage.reloadData()
@@ -257,8 +260,6 @@ extension ManageViewController:UITableViewDataSource{
                         cell2.lbTools.isHidden = false
                         cell2.lbTools.text = "Bringyourcleaningsupplies".localize
                     }
-                    
-                    
                     let salary = processOnDoing[0].info?.salary
                     if salary == 0 {
                         cell2.lbMoney.text = "Timework".localize
@@ -279,25 +280,27 @@ extension ManageViewController:UITableViewDataSource{
         var directWidth:CGFloat = 0
         var deadlineWitdh:CGFloat = 0
         
-        if !cell.lbDirect.isHidden {
-            let text = cell.lbDirect.text ?? ""
-            let height = cell.lbDirect.bounds.height
-            let font = cell.lbDirect.font!
-            directWidth = text.width(withConstraintedHeight: height, font: font)
-            directWidth = ceil(directWidth) + 20
+        DispatchQueue.global(qos: .userInitiated).async {
+            if !cell.lbDirect.isHidden {
+                let text = cell.lbDirect.text ?? ""
+                let height = cell.lbDirect.bounds.height
+                let font = cell.lbDirect.font!
+                directWidth = text.width(withConstraintedHeight: height, font: font)
+                directWidth = ceil(directWidth) + 20
+            }
+            if !cell.lbDeadline.isHidden {
+                let text = cell.lbDeadline.text ?? ""
+                let height = cell.lbDeadline.bounds.height
+                let font = cell.lbDeadline.font!
+                deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
+                deadlineWitdh = ceil(deadlineWitdh) + 20
+            }
+            DispatchQueue.main.async {
+                cell.constraintWidthDirect.constant =  directWidth
+                cell.contraintWidthDeadline.constant = deadlineWitdh
+            }
         }
-        if !cell.lbDeadline.isHidden {
-            let text = cell.lbDeadline.text ?? ""
-            let height = cell.lbDeadline.bounds.height
-            let font = cell.lbDeadline.font!
-            deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
-            deadlineWitdh = ceil(deadlineWitdh) + 20
-        }
-        cell.constraintWidthDirect.constant =  directWidth
-        cell.contraintWidthDeadline.constant = deadlineWitdh
-        DispatchQueue.main.async {
-            self.loadViewIfNeeded()
-        }
+
         return cell
     }
 }
