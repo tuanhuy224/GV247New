@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     // [END connect_to_fcm]
     func applicationDidBecomeActive(_ application: UIApplication) {
     }
-    // [START disconnect_from_fcm]
+    // [START disconnect_from_fcm
     func applicationDidEnterBackground(_ application: UIApplication) {
         Messaging.messaging().shouldEstablishDirectChannel = true
         print("Disconnected from FCM.")
@@ -102,6 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
+        
+        print("device token: \(deviceToken)")
+        print("Messaging.messaging().apnsToken:\(String(describing: Messaging.messaging().apnsToken))")
     }
     
     // Called when APNs failed to register the device for push notifications

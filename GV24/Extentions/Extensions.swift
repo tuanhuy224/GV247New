@@ -12,6 +12,8 @@ import IoniconsSwift
 
 //------------------ 3rd Party - Model ------------------//
 
+
+
 extension Locale {
     
     func IOSLanguageCode() -> String? {
@@ -28,16 +30,16 @@ extension Locale {
 //------------------ OS - UIKit ------------------//
 extension String {
     
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: [], attributes: [NSFontAttributeName: font], context: nil)
         
         return boundingBox.height
     }
     
-    func width(withConstraintedHeight height: CGFloat, font: UIFont) -> CGFloat {
+     func width(withConstraintedHeight height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: [], attributes: [NSFontAttributeName: font], context: nil)
         
         return boundingBox.width
     }
@@ -86,6 +88,22 @@ extension UIButton{
     }
   }
 
+}
+
+extension UILabel {
+ 
+    static func cornerLable(lb: UILabel, radius: CGFloat){
+        lb.layer.cornerRadius = radius
+        lb.layer.masksToBounds = true
+    }
+}
+
+extension UIImageView{
+
+    static func cornerLable(img: UIImageView, radius: CGFloat){
+        img.layer.cornerRadius = radius
+        img.layer.masksToBounds = true
+    }
 }
 
 extension NSMutableAttributedString {

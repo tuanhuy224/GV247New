@@ -9,7 +9,11 @@
 import UIKit
 import IoniconsSwift
 
+
+
 class HistoryViewCell: CustomTableViewCell {
+    
+    static let icon = Ionicons.androidAlarmClock.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
     @IBOutlet weak var contraintWidthDeadline: NSLayoutConstraint!
     @IBOutlet weak var constraintWidthDirect: NSLayoutConstraint!
     @IBOutlet weak var lbDirect: UILabel!
@@ -23,8 +27,8 @@ class HistoryViewCell: CustomTableViewCell {
     @IBOutlet weak var estimateWorkTime: UILabel!
     @IBOutlet weak var iconAlarm: UIImageView!{
         didSet{
-            let icon = Ionicons.androidAlarmClock.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
-            btImage.setImage(icon, for: .normal)
+
+            btImage.setImage(HistoryViewCell.icon, for: .normal)
         }
     }
     @IBOutlet weak var imageWork: UIImageView!
@@ -34,26 +38,32 @@ class HistoryViewCell: CustomTableViewCell {
         setupCell()
     }
     func setupCell() {
-        imageWork.layer.cornerRadius = imageWork.frame.width/2
-        imageWork.clipsToBounds = true
-        lbDeadline.layer.cornerRadius = 12.5
-        lbDeadline.clipsToBounds = true
-        lbDirect.layer.cornerRadius = 12.5
-        lbDirect.clipsToBounds = true
-        workNameLabel.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.caption2.rawValue), size: sizeEight)
-        lbDeadline.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbDist.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        timeWork.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbTimePost.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbDeadline.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        lbDirect.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
-        createdDate.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
+        UILabel.cornerLable(lb: lbDirect, radius: 12.5)
+        UILabel.cornerLable(lb: lbDeadline, radius: 12.5)
+        
+        UIImageView.cornerLable(img: imageWork, radius: imageWork.bounds.size.width/2)
+
+        
+        workNameLabel.font = fontSize.fontName(name: .medium, size: sizeEight)
+        lbDeadline.font = fontSize.fontName(name: .regular, size: sizeFour)
+        lbDist.font = fontSize.fontName(name: .regular, size: sizeFour)
+        timeWork.font = fontSize.fontName(name: .regular, size: sizeFour)
+        lbTimePost.font = fontSize.fontName(name: .regular, size: sizeFour)
+        lbDirect.font = fontSize.fontName(name: .regular, size: sizeFour)
+        createdDate.font = fontSize.fontName(name: .regular, size: sizeFive)
+        //workNameLabel.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.caption2.rawValue), size: sizeEight)
+//        lbDeadline.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+//        lbDist.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+//        timeWork.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+//        lbTimePost.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+//        lbDeadline.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+//        lbDirect.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+//        createdDate.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFive)
 
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        lbDeadline.layer.cornerRadius = lbDeadline.bounds.height/2
-        lbDirect.layer.cornerRadius = lbDirect.bounds.height/2
+
     }
 }

@@ -72,6 +72,8 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     func token() -> String {
         guard let firebaseToken = InstanceID.instanceID().token() else {return ""}
         return firebaseToken + "@//@ios"
+        
+        print("firebase token: \(firebaseToken)")
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -91,6 +93,8 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
         }else{
             apiClient.logIn(userName: username, password: password, device_token: token(), completion: { (user, string, error) in
                 self.loading.close()
+                
+                print("token final: \(self.token())")
                 let home = HomeViewDisplayController()
                 if self.isLoginWhenChangeToken == true{
                     self.isLoginWhenChangeToken = false

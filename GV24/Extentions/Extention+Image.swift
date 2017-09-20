@@ -116,7 +116,7 @@ extension Date{
     }
     
     // convert date to string
-    func convertDateToString(date: String) -> String? {
+    static func convertDateToString(date: String) -> String? {
         Date.dateFormatter.dateFormat = "HH:mm"
         
         let date = Date.dateFormatter.date(from: date)
@@ -128,7 +128,7 @@ extension Date{
     }
     
     // convert date to date
-    func date(_ currentDate: Date) -> Date {
+     func date(_ currentDate: Date) -> Date {
         Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         Date.dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
         let currentDateString = Date.dateFormatter.string(from: currentDate)

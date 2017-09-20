@@ -173,7 +173,9 @@ extension ManageViewController:UITableViewDataSource{
                 cell.lbDeadline.isHidden = true
                 cell.lbDirect.text = "Direct".localize
             }
-            cell.workNameLabel.text = processOnCreate[indexPath.row].info?.title
+            cell.workNameLabel.text = self.processOnCreate[indexPath.row].info?.title
+
+            
             cell.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).dayMonthYear)"
             cell.lbDist.text = "Proccess".localize
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
@@ -222,12 +224,17 @@ extension ManageViewController:UITableViewDataSource{
                     cell1.lbOwner.text = "ownerInfor".localize
                     cell1.nameUser.text = processOnDoing[0].stakeholders?.owner?.name
                     cell1.addressName.text = processOnDoing[0].stakeholders?.owner?.address?.name
-                    let url = URL(string: (processOnDoing[0].stakeholders?.owner?.image)!)!
-                    if url == nil {
-                        cell1.imageName.image = UIImage(named: "avatar")
-                    }else{
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        guard let imag = self.processOnDoing[0].stakeholders?.owner?.image else {return}
+                        let url = URL(string: imag)
                         DispatchQueue.main.async {
-                            cell1.imageName.kf.setImage(with: url)
+                            if url == nil {
+                                cell1.imageName.image = UIImage(named: "avatar")
+                            }else{
+                                DispatchQueue.main.async {
+                                    cell1.imageName.kf.setImage(with: url)
+                                }
+                            }
                         }
                     }
                 }
@@ -288,6 +295,9 @@ extension ManageViewController:UITableViewDataSource{
         }
         cell.constraintWidthDirect.constant =  directWidth
         cell.contraintWidthDeadline.constant = deadlineWitdh
+        DispatchQueue.main.async {
+            self.loadViewIfNeeded()
+        }
         return cell
     }
 }
