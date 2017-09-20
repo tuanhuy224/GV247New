@@ -18,9 +18,9 @@ class MoreCell: CustomTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let icon = Ionicons.chevronRight.image(32)
+        let icon = Ionicons.chevronRight.image(32).maskWithColor(color: AppColor.backButton)
         iconRight.setImage(icon, for: .normal)
-        iconRight.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        //iconRight.tintColor = AppColor.backButton
         cornerImage(imgMore, 4)
     }
     func cornerImage(_ img: UIImageView, _ radius: CGFloat) {

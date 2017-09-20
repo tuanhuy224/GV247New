@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
         }
         
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName:fontSize.fontName(name: .light, size: sizeSix)], for: .normal)
-        UINavigationBar.appearance().tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        UINavigationBar.appearance().tintColor = AppColor.backButton
         UINavigationBar.appearance().backgroundColor = .white
         FirebaseApp.configure()
         registerForRemoteNotification()
@@ -53,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
         }
         return true
     }
+    
+    
     // MARK: - Check vesion IOS
     func registerForRemoteNotification() {
         if #available(iOS 10.0, *) {
@@ -74,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
         print("Firebase registration token: \(fcmToken)")
          UserDefaultHelper.setString(string: fcmToken)
     }
+    
       
     // [START receive_message]
     private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

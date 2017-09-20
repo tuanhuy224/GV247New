@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,24 +35,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XW3-k4-BcN">
                                 <rect key="frame" x="0.0" y="30" width="320" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huy cong viec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPH-mF-AJZ">
-                                        <rect key="frame" x="8" y="22" width="99.5" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huy cong viec" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPH-mF-AJZ">
+                                        <rect key="frame" x="16" y="24.5" width="288" height="18"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-dl-y98">
-                                        <rect key="frame" x="282" y="16" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="9Sx-DT-vYu"/>
-                                            <constraint firstAttribute="width" constant="30" id="KgX-Iq-rGP"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="btCancelAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pm5-sX-H8v"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK2-E1-T4R">
-                                        <rect key="frame" x="0.0" y="3" width="320" height="61"/>
+                                        <rect key="frame" x="16" y="3" width="288" height="61"/>
                                         <connections>
                                             <action selector="btDeleteWork:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="M5C-X7-Bkg"/>
                                         </connections>
@@ -61,15 +50,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="tag-dl-y98" firstAttribute="centerY" secondItem="GPH-mF-AJZ" secondAttribute="centerY" id="8d2-Gv-7J7"/>
-                                    <constraint firstAttribute="trailing" secondItem="tag-dl-y98" secondAttribute="trailing" constant="8" id="9aN-bg-EPr"/>
                                     <constraint firstItem="cK2-E1-T4R" firstAttribute="top" secondItem="XW3-k4-BcN" secondAttribute="top" constant="3" id="CDz-Y4-BXo"/>
-                                    <constraint firstAttribute="trailing" secondItem="cK2-E1-T4R" secondAttribute="trailing" id="Gid-Qr-mZJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="cK2-E1-T4R" secondAttribute="trailing" constant="16" id="Gid-Qr-mZJ"/>
                                     <constraint firstAttribute="bottom" secondItem="cK2-E1-T4R" secondAttribute="bottom" id="MYB-BY-21J"/>
-                                    <constraint firstItem="GPH-mF-AJZ" firstAttribute="leading" secondItem="XW3-k4-BcN" secondAttribute="leading" constant="8" id="aRa-uK-qDE"/>
-                                    <constraint firstItem="GPH-mF-AJZ" firstAttribute="top" secondItem="XW3-k4-BcN" secondAttribute="top" constant="22" id="jAZ-Yu-rue"/>
+                                    <constraint firstAttribute="trailing" secondItem="GPH-mF-AJZ" secondAttribute="trailing" constant="16" id="VI1-Xl-7Dy"/>
+                                    <constraint firstItem="GPH-mF-AJZ" firstAttribute="centerY" secondItem="cK2-E1-T4R" secondAttribute="centerY" id="ac1-A3-DeR"/>
+                                    <constraint firstItem="GPH-mF-AJZ" firstAttribute="leading" secondItem="XW3-k4-BcN" secondAttribute="leading" constant="16" id="kfH-cR-lTr"/>
                                     <constraint firstAttribute="height" constant="64" id="vbd-9o-CKg"/>
-                                    <constraint firstItem="cK2-E1-T4R" firstAttribute="leading" secondItem="XW3-k4-BcN" secondAttribute="leading" id="xX7-e9-oTR"/>
+                                    <constraint firstItem="cK2-E1-T4R" firstAttribute="leading" secondItem="XW3-k4-BcN" secondAttribute="leading" constant="16" id="xX7-e9-oTR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gts-eP-20N">
@@ -115,7 +103,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btCancel" destination="tag-dl-y98" id="GYD-7e-ZC8"/>
                 <outlet property="lbCancel" destination="GPH-mF-AJZ" id="q0A-aw-QkD"/>
                 <outlet property="lbCancelDetail" destination="vgn-hl-2K6" id="kwX-Et-8zt"/>
                 <outlet property="viewCancelBottom" destination="Gts-eP-20N" id="byv-fQ-taW"/>

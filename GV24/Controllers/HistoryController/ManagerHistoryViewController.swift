@@ -36,6 +36,9 @@ class ManagerHistoryViewController: BaseViewController {
         setupConstrains()
         setupSegmentTitle()
         addSwipeGesture()
+        segmentControl.tintColor = AppColor.backButton
+        fromDateButton.tintColor = AppColor.backButton
+        toDateButton.tintColor = AppColor.backButton
     }
     
     

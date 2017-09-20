@@ -19,9 +19,9 @@ class InforOwnerCell: CustomTableViewCell {
     weak var delegate:ReportDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        btReport.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        lbComment.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
-        lbCommentText.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+        btReport.tintColor = AppColor.backButton
+        lbComment.font = fontSize.fontName(name: .regular, size: sizeSix)
+        lbCommentText.font = fontSize.fontName(name: .regular, size: sizeFour)
     }
     @IBAction func reportAction(_ sender: Any) {
         if delegate != nil {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,17 +7,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SFUIText-Regular.ttf">
-            <string>SFUIText-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewDisplayController" customModule="GV24" customModuleProvider="target">
             <connections>
                 <outlet property="btAvatar" destination="4W7-eu-dM9" id="eoO-4e-UHz"/>
                 <outlet property="historyButton" destination="2X5-Fp-DLh" id="8kA-Nh-mem"/>
-                <outlet property="lbName" destination="tcn-c1-NWB" id="tJL-1a-SYe"/>
                 <outlet property="manageButton" destination="IVq-MO-6nx" id="7aE-Nu-BIU"/>
                 <outlet property="view" destination="iN0-l3-epB" id="nyk-pr-QAS"/>
                 <outlet property="workAround" destination="XXf-ZK-2vQ" id="VHg-T0-dj1"/>
@@ -51,12 +45,6 @@
                                 <action selector="AroundButton:" destination="-1" eventType="touchUpInside" id="cTB-Cx-vh4"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hieu Hiep Nguyen" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcn-c1-NWB">
-                            <rect key="frame" x="10" y="50.666666666666671" width="285" height="20.000000000000014"/>
-                            <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVq-MO-6nx">
                             <rect key="frame" x="8" y="473" width="359" height="60"/>
                             <color key="backgroundColor" red="0.39215686274509803" green="0.83921568627450982" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,11 +52,11 @@
                                 <action selector="ManageButton:" destination="-1" eventType="touchUpInside" id="WIw-mx-EZ4"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4W7-eu-dM9">
-                            <rect key="frame" x="305" y="30" width="60" height="60"/>
+                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4W7-eu-dM9">
+                            <rect key="frame" x="295" y="30" width="70" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="60" id="eXN-JH-gVd"/>
-                                <constraint firstAttribute="width" constant="60" id="vrc-dF-fey"/>
+                                <constraint firstAttribute="height" constant="70" id="eXN-JH-gVd"/>
+                                <constraint firstAttribute="width" constant="70" id="vrc-dF-fey"/>
                             </constraints>
                             <state key="normal" image="avatar"/>
                             <connections>
@@ -85,12 +73,9 @@
                         <constraint firstItem="IVq-MO-6nx" firstAttribute="top" secondItem="XXf-ZK-2vQ" secondAttribute="bottom" constant="30" id="SPI-a6-Fx5"/>
                         <constraint firstAttribute="trailing" secondItem="XXf-ZK-2vQ" secondAttribute="trailing" constant="8" id="YI6-pM-Kar"/>
                         <constraint firstAttribute="bottom" secondItem="2X5-Fp-DLh" secondAttribute="bottom" constant="44" id="YQh-3g-Xzi"/>
-                        <constraint firstItem="tcn-c1-NWB" firstAttribute="leading" secondItem="x4B-ih-E0S" secondAttribute="leading" constant="10" id="e03-EX-XRd"/>
                         <constraint firstItem="IVq-MO-6nx" firstAttribute="height" secondItem="XXf-ZK-2vQ" secondAttribute="height" id="fAU-59-FM2"/>
                         <constraint firstItem="2X5-Fp-DLh" firstAttribute="height" secondItem="IVq-MO-6nx" secondAttribute="height" id="fKa-uu-I8B"/>
-                        <constraint firstItem="4W7-eu-dM9" firstAttribute="leading" secondItem="tcn-c1-NWB" secondAttribute="trailing" constant="10" id="i7x-QS-YfP"/>
                         <constraint firstAttribute="trailing" secondItem="4W7-eu-dM9" secondAttribute="trailing" constant="10" id="nlK-K6-IMV"/>
-                        <constraint firstItem="tcn-c1-NWB" firstAttribute="centerY" secondItem="4W7-eu-dM9" secondAttribute="centerY" id="rDs-bp-eYX"/>
                         <constraint firstItem="4W7-eu-dM9" firstAttribute="top" secondItem="x4B-ih-E0S" secondAttribute="top" constant="30" id="rUo-vn-O7R"/>
                         <constraint firstItem="IVq-MO-6nx" firstAttribute="leading" secondItem="XXf-ZK-2vQ" secondAttribute="leading" id="ssS-aZ-pt0"/>
                         <constraint firstItem="XXf-ZK-2vQ" firstAttribute="leading" secondItem="x4B-ih-E0S" secondAttribute="leading" constant="8" id="whe-9J-rtq"/>

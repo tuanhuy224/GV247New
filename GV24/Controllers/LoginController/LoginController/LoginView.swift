@@ -63,7 +63,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "SignIn".localize
-        btnLogin.setTitle("SignIn".localize.uppercased(), for: .normal)
+        btnLogin.setTitle("SignIn".localize, for: .normal)
         forgotPassword.setTitle("Forgotpassword".localize, for: .normal)
         userLogin.placeholder = "Username".localize
         passwordLogin.placeholder = "Password".localize
@@ -72,8 +72,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     func token() -> String {
         guard let firebaseToken = InstanceID.instanceID().token() else {return ""}
         return firebaseToken + "@//@ios"
-        
-        print("firebase token: \(firebaseToken)")
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -126,8 +125,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     }
   
   @IBAction func btRegisterAction(_ sender: Any) {
-    let navi = UINavigationController(rootViewController: RegisterViewController())
-    self.present(navi, animated: true, completion: nil)
+    self.navigationController?.pushViewController(RegisterViewController(), animated: true)
   
     }
   
@@ -137,8 +135,7 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     }
     
     @IBAction func forgotPasswordAction(_ sender: Any) {
-        let navi = UINavigationController(rootViewController: ForgotPasswordViewController())
-        self.present(navi, animated: true, completion: nil)
+        self.navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
     }
     
     func cornerButton(_ button: UIButton, _ radius: CGFloat) {

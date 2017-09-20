@@ -21,10 +21,12 @@ class ForgotPasswordViewController: BaseViewController {
     tfEmail.delegate = self
     tfUsername.delegate = self
     setup()
+    showBackButton = true
   }
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
+
+    override func goBack() {
+        
+    }
   override func setupViewBase() {
     super.setupViewBase()
     tfUsername.placeholder = "Username".localize
@@ -71,6 +73,7 @@ class ForgotPasswordViewController: BaseViewController {
     let imageEmailProfile = Ionicons.iosEmail.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 162, greenValue: 162, blueValue: 162, alpha: 1))
     imageEmail.image = imageEmailProfile
     btRequest.setTitle("Sendrequest".localize, for: .normal)
+    btRequest.backgroundColor = AppColor.backButton
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))
     view.addGestureRecognizer(tap)
     

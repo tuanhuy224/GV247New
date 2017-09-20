@@ -44,16 +44,16 @@ class InforCell: CustomTableViewCell {
     }
     let imagegender = Ionicons.transgender.image(32)
     ImageGender.setImage(imagegender, for: .normal)
-    ImageGender.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+    ImageGender.tintColor = AppColor.backButton
     let imagephone = Ionicons.androidPhonePortrait.image(32)
     imagePhone.setImage(imagephone, for: .normal)
-    imagePhone.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+    imagePhone.tintColor = AppColor.backButton
     let imageage = Ionicons.androidCalendar.image(32)
     imageAge.setImage(imageage, for: .normal)
-    imageAge.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+    imageAge.tintColor = AppColor.backButton
     let imageaddress = Ionicons.iosHome.image(32)
     imageAddress.setImage(imageaddress, for: .normal)
-    imageAddress.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+    imageAddress.tintColor = AppColor.backButton
     lbAge.font = fontSize.fontName(name: .regular, size: sizeFive)
     lbName.font = fontSize.fontName(name: .regular, size: sizeFive)
     lbPhone.font = fontSize.fontName(name: .regular, size: sizeFive)

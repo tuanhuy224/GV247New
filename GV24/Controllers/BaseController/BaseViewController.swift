@@ -94,7 +94,7 @@ class BaseViewController: UIViewController {
     
     func setupNavigationButton(naviItem: UINavigationItem, navigationPosition: NavigationPosition, img: UIImage){
         let button = UIButton(type: .custom)
-        button.setImage(img.maskWithColor(color: UIColor.colorWithRedValue(redValue: 104, greenValue: 104, blueValue: 104, alpha: 1)), for: .normal)
+        button.setImage(img.maskWithColor(color: AppColor.backButton), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.setTitleColor(UIColor.blue, for: .highlighted)
         button.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,0)

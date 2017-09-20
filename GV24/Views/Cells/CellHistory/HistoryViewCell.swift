@@ -13,7 +13,7 @@ import IoniconsSwift
 
 class HistoryViewCell: CustomTableViewCell {
     
-    let icon = Ionicons.androidAlarmClock.image(32).imageWithColor(color: UIColor.colorWithRedValue(redValue: 45, greenValue: 166, blueValue: 173, alpha: 1))
+    let icon = Ionicons.androidAlarmClock.image(32).imageWithColor(color: AppColor.backButton)
     @IBOutlet weak var contraintWidthDeadline: NSLayoutConstraint!
     @IBOutlet weak var constraintWidthDirect: NSLayoutConstraint!
     @IBOutlet weak var lbDirect: UILabel!

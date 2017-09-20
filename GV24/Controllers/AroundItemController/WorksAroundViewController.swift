@@ -35,7 +35,7 @@ class WorksAroundViewController : BaseViewController, CLLocationManagerDelegate 
         sc.insertSegment(withTitle: "List", at: 0, animated: true)
         sc.insertSegment(withTitle: "Map", at: 1, animated: true)
         sc.selectedSegmentIndex = 0
-        sc.tintColor = UIColor(red: 51/255, green: 197/255, blue: 205/255, alpha: 1)
+        sc.tintColor = AppColor.backButton
         sc.translatesAutoresizingMaskIntoConstraints = false
         return sc
     }()

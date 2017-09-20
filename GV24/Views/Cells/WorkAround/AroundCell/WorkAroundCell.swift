@@ -48,7 +48,7 @@ class WorkAroundCell: UICollectionViewCell {
     
     
     let iconAlarmClock : IconView = {
-        let iv = IconView(icon: .androidAlarmClock, size: 20, color: UIColor(red: 51/255, green: 197/255, blue: 205/255, alpha: 1))
+        let iv = IconView(icon: .androidAlarmClock, size: 20, color: AppColor.backButton)
         return iv
     }()
     

@@ -49,7 +49,7 @@ class OwnerHistoryViewController: BaseViewController {
     }()
     lazy var emptyLabel: UILabel = {
         let label = UILabel() //TableViewHelper().emptyMessage(message: "", size: CGSize(width: 200, height: 100))
-        label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        label.textColor = AppColor.backButton
         
         label.isHidden = true
         return label

@@ -42,13 +42,13 @@ class HistoryViewController: BaseViewController {
     
     lazy var emptyLabel: UILabel = {
         let label = TableViewHelper().emptyMessage(message: "", size: CGSize(width: 200, height: 100))
-        label.textColor = UIColor.colorWithRedValue(redValue: 109, greenValue: 108, blueValue: 113, alpha: 1)
+        label.textColor = AppColor.backButton
         label.isHidden = true
         return label
     }()
     lazy var emptyDataView: UIView = {
-//        let emptyView = TableViewHelper().noData(frame: CGRect(x: self.view.frame.size.width/2 - 50, y: 50, width: 100, height: 150))
-        let emptyView = UIView()//TableViewHelper().noData(frame: .zero)
+
+        let emptyView = UIView()
         emptyView.isHidden = true
         return emptyView
     }()
@@ -189,11 +189,7 @@ class HistoryViewController: BaseViewController {
     }
     fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
             let work = workList[indexPath.item]
-//        if let imageString = work.info?.workName?.image {
-//            let url = URL(string: imageString)
-//            cell.imageWork.kf.setImage(with: url)
-//            cell.lbDeadline.isHidden = true
-//        }
+
         let url = URL(string: (work.info?.workName?.image)!)
         if url == nil {
             cell.imageWork.image = UIImage(named: "avatar")
@@ -209,8 +205,7 @@ class HistoryViewController: BaseViewController {
         let startAtString = String(describing: startAt!)
         let endAt = work.workTime?.endAt
         let endAtString = String(describing: endAt!)
-        //cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
-        
+
         cell.timeWork.text = Date(isoDateString: startAtString).hourMinute +  " - " + Date(isoDateString: endAtString).hourMinute
          cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (work.workTime?.startAt)!))"
         cell.lbDist.text = "CompletedWork".localize
@@ -220,11 +215,11 @@ class HistoryViewController: BaseViewController {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == self.workList.count - 1 {
             self.page = self.page + 1
-            //self.getWorkList(startAt: self.startAtDate, endAt: self.endAtDate)
+        
         }
     }
 }
-extension HistoryViewController:UITableViewDataSource{
+extension HistoryViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workList.count
     }
@@ -235,7 +230,7 @@ extension HistoryViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
         _ = myParent?.navigationController?.pushViewController(vc, animated: true)

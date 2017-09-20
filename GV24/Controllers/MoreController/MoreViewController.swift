@@ -75,7 +75,7 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             let cell:WorkDetailCell = self.tbMore.on_dequeue(idxPath: indexPath)
                 cell.nameUser.text = userLogin?.name
                 cell.btAction.layer.cornerRadius = 4
-                cell.btAction.backgroundColor = UIColor.colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
+                cell.btAction.backgroundColor = AppColor.backButton
                 cell.btAction.setTitle("Generalstatistic".localize, for: .normal)
                 cell.btAction.setTitleColor(.white, for: .normal)
                 cell.addressName.text = userLogin?.nameAddress
@@ -109,6 +109,12 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
 
         
             cell.lbMore.text = arryMore[indexPath.row].localize
+            DispatchQueue.global(qos: .userInitiated).async {
+                let imageMore:[UIImage] = [Ionicons.iosPerson.image(32),Ionicons.androidList.image(32), Ionicons.iosEmail.image(32)]
+                DispatchQueue.main.async {
+                    cell.imgMore.image = imageMore[indexPath.row].maskWithColor(color: AppColor.backButton)
+                }
+            }
             cell.textLabel?.font = UIFont(name: "SFUIText-Light", size: 13)
             return cell
         }else if indexPath.section == 3{

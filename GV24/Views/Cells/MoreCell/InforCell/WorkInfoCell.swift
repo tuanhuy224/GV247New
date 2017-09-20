@@ -26,7 +26,7 @@ class WorkInfoCell: CustomTableViewCell {
         super.awakeFromNib()
         topLabel.font = fontSize.fontName(name: .light, size: 15)
         llbAssessment.font = fontSize.fontName(name: .light, size: 15)
-        imgIcon.image = Ionicons.socialUsd.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 48, greenValue: 199, blueValue: 209, alpha: 1))
+        imgIcon.image = Ionicons.socialUsd.image(32).maskWithColor(color: AppColor.backButton)
         setupCollectionView()
     }
 

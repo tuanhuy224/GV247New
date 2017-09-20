@@ -28,17 +28,17 @@ class FollowCell: CustomTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         btFollow.setImage(Ionicons.socialFacebook.image(32), for: .normal)
-        btFollow.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        btFollow.tintColor = AppColor.backButton
         btFacebook.setImage(Ionicons.androidShareAlt.image(32), for: .normal)
-        btFacebook.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        btFollowAc.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        btFacebookAc.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        btFacebook.tintColor = AppColor.backButton
+        btFollowAc.tintColor = AppColor.backButton
+        btFacebookAc.tintColor = AppColor.backButton
         btIconRight.setImage(Ionicons.chevronRight.image(32), for: .normal)
-        btIconRight.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
+        btIconRight.tintColor = AppColor.backButton
         btIconRight2.setImage(Ionicons.chevronRight.image(32), for: .normal)
-        btIconRight2.tintColor = UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)
-        btLogOut.tintColor =  UIColor.colorWithRedValue(redValue: 253, greenValue: 189, blueValue: 78, alpha: 1)
-        btLogOut.tintColor =  UIColor.colorWithRedValue(redValue: 253, greenValue: 189, blueValue: 78, alpha: 1)
+        btIconRight2.tintColor = AppColor.backButton
+        btLogOut.tintColor =  AppColor.backButton
+        btLogOut.tintColor =  AppColor.backButton
         
         btFollowAc.addTarget(self, action: #selector(tapShareAirDropButton(_:)), for: .touchUpInside)
         btFacebookAc.addTarget(self, action: #selector(tapShareFacebookButton(_:)), for: .touchUpInside)

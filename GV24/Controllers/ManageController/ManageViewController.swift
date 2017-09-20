@@ -20,7 +20,7 @@ class ManageViewController: BaseViewController {
     var processRecieved = [Work]()
     var returnValue:Int = 0
     var longGesture = UILongPressGestureRecognizer()
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
         tbManage.on_register(type: HistoryViewCell.self)
         tbManage.register(UINib(nibName:NibWorkDetailCell,bundle:nil), forCellReuseIdentifier: workDetailCellID)
@@ -35,7 +35,7 @@ class ManageViewController: BaseViewController {
     override func decorate() {
         super.decorate()
         segmentCtr.backgroundColor = UIColor.white
-        segmentCtr.tintColor = UIColor.colorWithRedValue(redValue: 61, greenValue: 197, blueValue: 204, alpha: 1)
+        segmentCtr.tintColor = AppColor.backButton
     }
     override func setupViewBase() {
         super.setupViewBase()
@@ -56,9 +56,9 @@ class ManageViewController: BaseViewController {
         let sortedViews = (sender as AnyObject).subviews.sorted( by: { $0.frame.origin.x < $1.frame.origin.x } )
         for (index, view) in sortedViews.enumerated() {
             if index == (sender as AnyObject).selectedSegmentIndex {
-                view.tintColor = UIColor.colorWithRedValue(redValue: 61, greenValue: 197, blueValue: 204, alpha: 1)
+                view.tintColor = AppColor.backButton
             } else {
-                view.tintColor = UIColor.colorWithRedValue(redValue: 61, greenValue: 197, blueValue: 204, alpha: 1)
+                view.tintColor = AppColor.backButton
             }
         }
         tbManage.reloadData()
@@ -66,7 +66,6 @@ class ManageViewController: BaseViewController {
     func getProcess() {
         guard let token = UserDefaultHelper.getToken() else{return}
         let parameterCreate = ["process":"\(WorkStatus.OnCreate.rawValue)"]
-        let parmaterPending = ["process":"\(WorkStatus.Pending.rawValue)"]
         let parmaterOnDoing = ["process":"\(WorkStatus.OnDoing.rawValue)"]
         let parmaterRecieve = ["process":"\(WorkStatus.Recieved.rawValue)"]
         let header = ["hbbgvauth":token]
@@ -84,13 +83,6 @@ class ManageViewController: BaseViewController {
                 }
             }
         }
-//        apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterPending, header: header) { (json, error) in
-//            if json != nil{
-//                self.processPending = json!
-//                
-//            }
-//            self.tbManage.reloadData()
-//        }
         apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parmaterRecieve, header: header) { (json, error) in
             self.loadingView.close()
             DispatchQueue.global(qos: .userInitiated).async {
@@ -177,17 +169,11 @@ extension ManageViewController:UITableViewDataSource{
                 cell.lbDirect.text = "Direct".localize
             }
             cell.workNameLabel.text = self.processOnCreate[indexPath.row].info?.title
-
-            
             cell.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).dayMonthYear)"
             cell.lbDist.text = "Proccess".localize
             cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
             UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
             cell.timeWork.text = Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute
-            
-            
-            
-            
         case 1:
             vDoing.isHidden = true
             cell.workNameLabel.text = processRecieved[indexPath.row].info?.title

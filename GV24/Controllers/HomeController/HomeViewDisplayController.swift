@@ -36,7 +36,6 @@ class HomeViewDisplayController: BaseViewController{
         super.viewDidLoad()
 
         self.customBarRightButton()
-        //navigationController?.isNavigationBarHidden = true
     }
     
     func cornerButton(_ button: UIButton, _ radius: CGFloat) {
@@ -61,6 +60,9 @@ class HomeViewDisplayController: BaseViewController{
         workAround.tintColor = .white
         manageButton.tintColor = .white
         historyButton.tintColor = .white
+        workAround.backgroundColor = AppColor.homeButton1
+        manageButton.backgroundColor = AppColor.homeButton2
+        historyButton.backgroundColor = AppColor.homeButton3
         cornerButton(workAround, 8)
         cornerButton(manageButton, 8)
         cornerButton(historyButton, 8)
@@ -68,14 +70,14 @@ class HomeViewDisplayController: BaseViewController{
         guard let urlImage = UserDefaultHelper.currentUser?.image else {return}
         let url = URL(string: urlImage)
         btAvatar.kf.setImage(with: url, for: .normal, placeholder: UIImage(named: "avatar"), options: nil, progressBlock: nil, completionHandler: nil)
-        lbName.text = UserDefaultHelper.currentUser?.name
+
 
     }
     
     
     func customBarRightButton(){
         let button = UIButton(type: .custom)
-        button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: UIColor.colorWithRedValue(redValue: 47, greenValue: 186, blueValue: 194, alpha: 1)), for: .normal)
+        button.setImage(Ionicons.iosMore.image(32).maskWithColor(color: AppColor.backButton), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.setTitleColor(UIColor.blue, for: .highlighted)
         button.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,0)
@@ -96,9 +98,6 @@ class HomeViewDisplayController: BaseViewController{
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: buttonWidth/2, right: 0)
     }
     @IBAction func AroundButton(_ sender: Any) {
-        /*let map = MapViewController(nibName: "MapViewController", bundle: nil)
-            map.arrays = arrays
-        navigationController?.pushViewController(map, animated: true)*/
         self.navigationController?.pushViewController(WorksAroundViewController(), animated: true)
     }
     @IBAction func ManageButton(_ sender: Any) {
