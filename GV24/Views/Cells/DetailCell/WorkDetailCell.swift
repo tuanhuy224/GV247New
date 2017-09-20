@@ -23,6 +23,12 @@ import IoniconsSwift
     @objc optional func detailManagementDelegate()
 }
 class WorkDetailCell: CustomTableViewCell {
+    
+    var work : Work? {
+        didSet {
+            
+        }
+    }
 
     @IBOutlet weak var lbOwner: UILabel!
     @IBOutlet weak var btChooseConstraint: NSLayoutConstraint!

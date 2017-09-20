@@ -45,7 +45,7 @@ class BaseViewController: UIViewController {
     var showBackButton : Bool?{
         didSet{
             if showBackButton == true{
-                setupNavigationButton(naviItem: navigationItem, navigationPosition: .left, img: Ionicons.iosArrowBack.image(32))
+                setupNavigationButton(naviItem: navigationItem, navigationPosition: .left, img: Ionicons.iosArrowBack.image(32).maskWithColor(color: AppColor.backButton)!)
             }
         }
     }
@@ -95,7 +95,7 @@ class BaseViewController: UIViewController {
     func setupNavigationButton(naviItem: UINavigationItem, navigationPosition: NavigationPosition, img: UIImage){
         let button = UIButton(type: .custom)
         button.setImage(img.maskWithColor(color: AppColor.backButton), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.frame = CGRect(x: -8, y: 0, width: 25, height: 25)
         button.setTitleColor(UIColor.blue, for: .highlighted)
         button.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,0)
         button.addTarget(self, action: #selector(goBack), for: .touchUpInside)

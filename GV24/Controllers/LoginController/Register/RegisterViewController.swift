@@ -38,11 +38,14 @@ class RegisterViewController: BaseViewController {
     tfPhone.font = fontSize.fontName(name: .regular, size: 15)
     tfName.font = fontSize.fontName(name: .regular, size: 15)
     tfEmail.font = fontSize.fontName(name: .regular, size: 15)
+    btRegister.setTitleColor(AppColor.white, for: .normal)
+    btRegister.backgroundColor = AppColor.backButton
+    UIButton.cornerButton(bt: btRegister, radius: 8)
     
   }
     override func goBack() {
         super.goBack()
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
   
   @IBAction func btRegisterAction(_ sender: Any) {

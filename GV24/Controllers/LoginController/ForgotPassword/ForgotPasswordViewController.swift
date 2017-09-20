@@ -25,7 +25,7 @@ class ForgotPasswordViewController: BaseViewController {
   }
 
     override func goBack() {
-        
+        self.navigationController?.popViewController(animated: true)
     }
   override func setupViewBase() {
     super.setupViewBase()
@@ -74,6 +74,7 @@ class ForgotPasswordViewController: BaseViewController {
     imageEmail.image = imageEmailProfile
     btRequest.setTitle("Sendrequest".localize, for: .normal)
     btRequest.backgroundColor = AppColor.backButton
+    UIButton.cornerButton(bt: btRequest, radius: 8)
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginView.dismissKeyboard))
     view.addGestureRecognizer(tap)
     

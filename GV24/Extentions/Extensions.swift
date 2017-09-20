@@ -97,6 +97,13 @@ extension UILabel {
         lb.layer.masksToBounds = true
     }
 }
+extension UIButton {
+    
+    static func cornerButton(bt: UIButton, radius: CGFloat){
+        bt.layer.cornerRadius = radius
+        bt.layer.masksToBounds = true
+    }
+}
 
 extension UIImageView{
 

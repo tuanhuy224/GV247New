@@ -146,11 +146,13 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     func setupView()  {
         vLogin.layer.cornerRadius = 8
         vLogin.clipsToBounds = true
-        lineUsername.backgroundColor = UIColor.colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
-        linePassword.backgroundColor = UIColor.colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
+        lineUsername.backgroundColor = AppColor.backButton
+        linePassword.backgroundColor = AppColor.backButton
         btAround.setTitle("Nearby".localize, for: .normal)
-        btAround.backgroundColor = UIColor.colorWithRedValue(redValue: 253, greenValue: 191, blueValue: 78, alpha: 1)
-        btnLogin.backgroundColor = UIColor.colorWithRedValue(redValue: 19, greenValue: 111, blueValue: 167, alpha: 1)
+        btAround.backgroundColor = AppColor.backButton
+        btnLogin.backgroundColor = AppColor.backButton
+        btRegister.setTitleColor(AppColor.backButton, for: .normal)
+        forgotPassword.setTitleColor(AppColor.backButton, for: .normal)
         cornerButton(btnLogin, 8)
         cornerButton(btAround, 8)
 
