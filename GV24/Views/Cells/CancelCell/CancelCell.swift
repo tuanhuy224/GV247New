@@ -17,6 +17,7 @@ import IoniconsSwift
     @objc optional func CancelButtonForPending()
 }
 class CancelCell: CustomTableViewCell {
+    @IBOutlet weak var btCancel: UIButton!
     @IBOutlet weak var lbCancelDetail: UILabel!
     @IBOutlet weak var viewCancelBottom: UIView!
     @IBOutlet weak var lbCancel: UILabel!
@@ -25,12 +26,11 @@ class CancelCell: CustomTableViewCell {
     weak var denyDelegate:denyRequestDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewSpace.backgroundColor = UIColor.colorWithRedValue(redValue: 239, greenValue: 239, blueValue: 244, alpha: 1)
-        viewCancelBottom.backgroundColor = UIColor.colorWithRedValue(redValue: 239, greenValue: 239, blueValue: 244, alpha: 1)
 
-
+        btCancel.backgroundColor = AppColor.buttonDelete
+        UIButton.cornerButton(bt: btCancel, radius: 8)
         lbCancel.textColor = AppColor.white
-        lbCancel.font = UIFont(descriptor: UIFontDescriptor.RegularDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeSix)
+        lbCancel.font = fontSize.fontName(name: .regular, size: sizeSix)
     } 
     @IBAction func btDeleteWork(_ sender: Any) {
         if delegate != nil {

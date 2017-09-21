@@ -100,7 +100,6 @@ extension DetailViewController:UITableViewDataSource{
             cell.lbOwner.text = "ownerInfor".localize
             cell.btChoose.isHidden = true
             cell.vSegment.isHidden = true
-            cell.heightBtChoose.constant = 0
             cell.constraintH.constant = 0
             cell.btChooseConstraint.constant = 0
             cell.btChoose.setTitle("Selectthiswork".localize, for: .normal)

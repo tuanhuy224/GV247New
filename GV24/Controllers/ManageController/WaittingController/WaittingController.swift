@@ -2,84 +2,77 @@
 //  WaittingController.swift
 //  GV24
 //
-//  Created by HuyNguyen on 6/5/17.
+//  Created by HuyNguyen on 9/21/17.
 //  Copyright © 2017 admin. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
 
 class WaittingController: BaseViewController {
-    var owner:Owner?
     @IBOutlet weak var tbWaitting: UITableView!
+
+    var arrayWaitting: [Work]? {
+        didSet{
+            tbWaitting.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbWaitting.register(UINib(nibName:"WorkDetailCell",bundle:nil), forCellReuseIdentifier: "workDetailCell")
-        tbWaitting.register(UINib(nibName:"InfoDetailCell",bundle:nil), forCellReuseIdentifier: "infoDetailCell")
-        tbWaitting.register(UINib(nibName:"WaittingCell",bundle:nil), forCellReuseIdentifier: "waittingCell")
-        test()
+        tbWaitting.on_register(type: DeadlineCell.self)
+        tbWaitting.on_register(type: DirectCell.self)
+        tbWaitting.on_register(type: NormalCell.self)
+        tbWaitting.rowHeight = UITableViewAutomaticDimension
+        tbWaitting.estimatedRowHeight = 100
+        tbWaitting.separatorStyle = .none
     }
     
-    override func decorate() {
+    override func getDataForScreen() {
+        super.getDataForScreen()
         
-    }
-    func test() {
-       
-    }
-    override func setupViewBase() {
-        self.title = "Đang chờ"
-        if UserDefaultHelper.ownerUser != nil {
-            owner = UserDefaultHelper.ownerUser
-            
+        guard let token = UserDefaultHelper.getToken() else{return}
+        let parameterCreate = ["process":"\(WorkStatus.OnCreate.rawValue)"]
+        let header = ["hbbgvauth":token]
+        let apiService = AroundTask.sharedInstall
+        loadingView.show()
+        apiService.getProcessID(url: APIPaths().urlPocess(), parameter: parameterCreate, header: header) { (json, error) in
+            self.loadingView.close()
+            guard let jsonData = json else {return}
+            self.arrayWaitting = jsonData
         }
-    }
-}
-extension WaittingController:UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0{
-            let cell:WorkDetailCell = tbWaitting.dequeueReusableCell(withIdentifier: "workDetailCell", for: indexPath) as! WorkDetailCell
-            cell.nameUser.text = owner?.username
-            cell.addressName.text = owner?.name
-            if owner?.image == nil {
-                return cell
-            }
-            if let url = URL(string: (owner?.image)!){
-                DispatchQueue.main.async {
-                     cell.imageName.kf.setImage(with: url)
-                }
-            }
-            return cell
-        }else if indexPath.section == 1{
-            let cell:InfoDetailCell = tbWaitting.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath) as! InfoDetailCell
-            return cell
-        }else{
-            let cell:WaittingCell = tbWaitting.dequeueReusableCell(withIdentifier: "waittingCell", for: indexPath) as! WaittingCell
-            return cell
-        }
-        
-    }
-}
-extension WaittingController:UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 94
-        }else if indexPath.section == 1{
-            return 276
-        }else{
-            return 64
-        }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 
-    
-    
+
 }
+
+extension WaittingController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayWaitting?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if arrayWaitting?[indexPath.row].process?.id == WorkStatus.Direct.rawValue && Date(isoDateString: (arrayWaitting?[indexPath.row].workTime?.endAt)!).comparse == true || Date(isoDateString: (arrayWaitting?[indexPath.row].workTime?.endAt)!).comparse == true {
+            let cell: DeadlineCell = tbWaitting.on_dequeue(idxPath: indexPath)
+            cell.proccessPending = arrayWaitting?[indexPath.row]
+            return cell
+        }else if arrayWaitting?[indexPath.row].process?.id == WorkStatus.OnCreate.rawValue{
+            let cell: NormalCell = tbWaitting.on_dequeue(idxPath: indexPath)
+            cell.proccessPending = arrayWaitting?[indexPath.row]
+            return cell
+        }else{
+            let cell: DirectCell = tbWaitting.on_dequeue(idxPath: indexPath)
+            cell.proccessPending = arrayWaitting?[indexPath.row]
+            return cell
+        }
+    }
+}
+
+extension WaittingController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let navi = PendingController()
+        navi.processPending = arrayWaitting?[indexPath.row]
+        navigationController?.pushViewController(navi, animated: true)
+    }
+}
+

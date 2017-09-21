@@ -43,7 +43,7 @@ extension DoingController:UITableViewDataSource{
                 cell.vSegment.isHidden = false
             }else{
                 cell.btChoose.isEnabled = true
-                cell.heightBtChoose.constant = 0
+
             }
             cell.nameUser.text = ProcessDoing?.stakeholders?.owner?.name
             cell.addressName.text = ProcessDoing?.stakeholders?.owner?.address?.name

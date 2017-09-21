@@ -146,62 +146,16 @@ extension ManageViewController:UITableViewDataSource{
         switch segmentCtr.selectedSegmentIndex {
         case 0:
             vDoing.isHidden = true
-            
-            if processOnCreate[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).comparse == true {
-                cell.lbDirect.isHidden = true
-                cell.lbDeadline.isHidden = false
-                cell.lbDeadline.text = "Expired".localize
-            }else if Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).comparse == true{
-                cell.lbDirect.isHidden = true
-                cell.lbDeadline.isHidden = false
-                cell.lbDeadline.text = "Expired".localize
-                
-            }else if processOnCreate[indexPath.row].process?.id == WorkStatus.OnCreate.rawValue {
-                cell.lbDirect.isHidden = true
-                cell.lbDeadline.isHidden = true
-                cell.constraintWidthDirect.constant = 0
-                cell.contraintWidthDeadline.constant = 0
-                
-                
-            }else{
-                cell.lbDirect.isHidden = false
-                cell.lbDeadline.isHidden = true
-                cell.lbDirect.text = "Direct".localize
-            }
-            cell.workNameLabel.text = self.processOnCreate[indexPath.row].info?.title
-            cell.createdDate.text = "\(Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).dayMonthYear)"
-            cell.lbDist.text = "Proccess".localize
-            cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processOnCreate[indexPath.row].history?.createAt)!))"
-            UserDefaultHelper.setUserOwner(user: processOnCreate[indexPath.row].stakeholders?.owner)
-            cell.timeWork.text = Date(isoDateString: (processOnCreate[indexPath.row].workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (processOnCreate[indexPath.row].workTime?.endAt)!).hourMinute
+            cell.proccessPending = processOnCreate[indexPath.row]
         case 1:
             vDoing.isHidden = true
-            cell.workNameLabel.text = processRecieved[indexPath.row].info?.title
-            cell.createdDate.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).dayMonthYear)"
-            cell.lbTimePost.text = "\(Date().dateComPonent(datePost: (processRecieved[indexPath.row].history?.createAt)!))"
-            cell.timeWork.text = "\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).hourMinute)"
-            cell.lbDist.text = processRecieved[indexPath.row].process?.name?.localize
-            if processRecieved[indexPath.row].process?.id == WorkStatus.Direct.rawValue  && Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).comparse == true {
-                cell.lbDirect.isHidden = true
-                cell.lbDeadline.isHidden = false
-                cell.lbDeadline.text = "Expired".localize
-            }else if Date(isoDateString: (processRecieved[indexPath.row].workTime?.endAt)!).comparse == true{
-                cell.lbDirect.isHidden = true
-                cell.lbDeadline.isHidden = false
-                cell.lbDeadline.text = "Expired".localize
-            }else{
-                cell.lbDeadline.isHidden = true
-                cell.lbDirect.isHidden = true
-                cell.constraintWidthDirect.constant = 0
-            }
-            
+             cell.proccessPending = processRecieved[indexPath.row]
         case 2:
             
             switch indexPath.section{
             case 0:
                 cell1.btChoose.isHidden = true
                 cell1.vSegment.isHidden = true
-                cell1.heightBtChoose.constant = 0
                 cell1.constraintH.constant = 0
                 cell1.btChooseConstraint.constant = 0
                 

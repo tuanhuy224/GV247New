@@ -76,6 +76,9 @@ struct Constants {
 }
 // MARK: - Constant size
 
+let screenWidth                     =         UIScreen.main.bounds.width
+let screenHeight                    =         UIScreen.main.bounds.height
+let height                          =         screenHeight - 44
 let sizeOne:CGFloat = 11
 let sizeTwo:CGFloat = 12
 let sizeThree:CGFloat = 13

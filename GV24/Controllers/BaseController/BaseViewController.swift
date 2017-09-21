@@ -40,6 +40,7 @@ class BaseViewController: UIViewController {
         net?.startListening()
         setupNavigation()
         navigationController?.isNavigationBarHidden = false
+        getDataForScreen()
     }
     
     var showBackButton : Bool?{
@@ -57,6 +58,8 @@ class BaseViewController: UIViewController {
             }
         }
     }
+    
+    func getDataForScreen() {}
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

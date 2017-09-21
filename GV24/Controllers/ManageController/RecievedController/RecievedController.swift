@@ -44,47 +44,49 @@ extension RecievedController:UITableViewDataSource{
         switch indexPath.section{
         case 0:
             let cell:WorkDetailCell = tbRecieved.dequeueReusableCell(withIdentifier: workDetailCellID, for: indexPath) as! WorkDetailCell
-            if processRecieved?.process?.id == WorkStatus.Direct.rawValue {
-                cell.btChoose.isHidden = false
-                cell.vSegment.isHidden = false
-            }else{
-                cell.btChoose.isEnabled = true
-                cell.heightBtChoose.constant = 0
-            }
-            cell.lbOwner.text = "ownerInfor".localize
-            cell.heightBtChoose.constant = 0
-            cell.btChoose.isHidden = true
-            cell.vSegment.isHidden = true
-            cell.constraintH.constant = 0
-            cell.btChooseConstraint.constant = 0
-            cell.nameUser.text = processRecieved?.stakeholders?.owner?.name
-            cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
-            let url = URL(string: (processRecieved?.stakeholders?.owner?.image)!)
-            if url == nil {
-                cell.imageName.image = UIImage(named: "avatar")
-            }else{
-                DispatchQueue.main.async {
-                    cell.imageName.kf.setImage(with: url)
-                }
-            }
+            cell.work = processRecieved
+//            if processRecieved?.process?.id == WorkStatus.Direct.rawValue {
+//                cell.btChoose.isHidden = false
+//                cell.vSegment.isHidden = false
+//            }else{
+//                cell.btChoose.isEnabled = true
+//
+//            }
+//            cell.lbOwner.text = "ownerInfor".localize
+//            cell.btChoose.isHidden = true
+//            cell.vSegment.isHidden = true
+//            cell.constraintH.constant = 0
+//            cell.btChooseConstraint.constant = 0
+//            cell.nameUser.text = processRecieved?.stakeholders?.owner?.name
+//            cell.addressName.text = processRecieved?.stakeholders?.owner?.address?.name
+//            let url = URL(string: (processRecieved?.stakeholders?.owner?.image)!)
+//            if url == nil {
+//                cell.imageName.image = UIImage(named: "avatar")
+//            }else{
+//                DispatchQueue.main.async {
+//                    cell.imageName.kf.setImage(with: url)
+//                }
+//            }
             cell.delegate = self
             return cell
         case 1:
             let cell:InfoDetailCell = tbRecieved.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
-            cell.lbDescription.text = "Description".localize
-            cell.lbTitle.text = processRecieved?.info?.title
-            cell.lbSubTitle.text = processRecieved?.info?.workName?.name
-            cell.lbComment.text = processRecieved?.info?.content
-            cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear)"
-            let salary = processRecieved?.info?.salary
-            if salary == 0 {
-                cell.lbMoney.text = "Timework".localize
-            }else{
-                
-                cell.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
-            }
-            cell.lbTime.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved?.workTime?.endAt)!).hourMinute)"
-            cell.lbAddress.text = processRecieved?.info?.address?.name
+            cell.work = processRecieved
+//            cell.lbDescription.text = "Description".localize
+//            cell.lbTitle.text = processRecieved?.info?.title
+//            cell.lbSubTitle.text = processRecieved?.info?.workName?.name
+//            cell.lbComment.text = processRecieved?.info?.content
+//            cell.lbDate.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).dayMonthYear)"
+//            let salary = processRecieved?.info?.salary
+//            if salary == 0 {
+//                cell.lbMoney.text = "Timework".localize
+//            }else{
+//                
+//                cell.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
+//            }
+//            cell.lbTime.text = "\(Date(isoDateString: (processRecieved?.workTime?.startAt)!).hourMinute)\(" - ")\(Date(isoDateString: (processRecieved?.workTime?.endAt)!).hourMinute)"
+//            cell.lbAddress.text = processRecieved?.info?.address?.name
+            
             if Date(isoDateString: (processRecieved?.workTime?.endAt)!).comparse == true {
               cell.lbdeadLine.isHidden = false
               cell.lbdeadLine.text = "Expired".localize

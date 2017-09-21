@@ -56,11 +56,30 @@ class InfoDetailCell: CustomTableViewCell {
         lbdeadLine.layer.cornerRadius = 12.5
         lbdeadLine.clipsToBounds = true
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    var work: Work? {
+        didSet{
+            lbDescription.text = "Description".localize
+            lbTitle.text = work?.info?.title
+            lbSubTitle.text = work?.info?.workName?.name
+            lbComment.text = work?.info?.content
+            guard let start = work?.workTime?.startAt else {return}
+            guard let end = work?.workTime?.endAt else {return}
+            lbDate.text = "\(Date(isoDateString: start).dayMonthYear)"
+            lbTime.text = Date(isoDateString: start).hourMinute + " - " + Date(isoDateString: end).hourMinute
+            lbAddress.text = work?.stakeholders?.owner?.address?.name
+            let tool = work?.info?.tools
+            if  tool == true {
+                lbTools.isHidden = false
+                lbTools.text = "Bringyourcleaningsupplies".localize
+            }
+            let salary = work?.info?.salary
+            if salary == 0 {
+                lbMoney.text = "Timework".localize
+            }else{
+                
+                lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
+            }
+        }
+    }
 }

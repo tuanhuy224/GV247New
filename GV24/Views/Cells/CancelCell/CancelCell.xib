@@ -27,7 +27,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p22-rp-fbY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="W9n-XV-rDI"/>
                                 </constraints>
@@ -35,26 +35,27 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XW3-k4-BcN">
                                 <rect key="frame" x="0.0" y="30" width="320" height="64"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK2-E1-T4R">
+                                        <rect key="frame" x="16" y="12" width="288" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="btDeleteWork:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="M5C-X7-Bkg"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huy cong viec" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPH-mF-AJZ">
                                         <rect key="frame" x="16" y="24.5" width="288" height="18"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK2-E1-T4R">
-                                        <rect key="frame" x="16" y="3" width="288" height="61"/>
-                                        <connections>
-                                            <action selector="btDeleteWork:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="M5C-X7-Bkg"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="cK2-E1-T4R" firstAttribute="top" secondItem="XW3-k4-BcN" secondAttribute="top" constant="3" id="CDz-Y4-BXo"/>
+                                    <constraint firstItem="cK2-E1-T4R" firstAttribute="top" secondItem="XW3-k4-BcN" secondAttribute="top" constant="12" id="CDz-Y4-BXo"/>
                                     <constraint firstAttribute="trailing" secondItem="cK2-E1-T4R" secondAttribute="trailing" constant="16" id="Gid-Qr-mZJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="cK2-E1-T4R" secondAttribute="bottom" id="MYB-BY-21J"/>
+                                    <constraint firstAttribute="bottom" secondItem="cK2-E1-T4R" secondAttribute="bottom" constant="12" id="MYB-BY-21J"/>
                                     <constraint firstAttribute="trailing" secondItem="GPH-mF-AJZ" secondAttribute="trailing" constant="16" id="VI1-Xl-7Dy"/>
-                                    <constraint firstItem="GPH-mF-AJZ" firstAttribute="centerY" secondItem="cK2-E1-T4R" secondAttribute="centerY" id="ac1-A3-DeR"/>
+                                    <constraint firstItem="GPH-mF-AJZ" firstAttribute="centerY" secondItem="cK2-E1-T4R" secondAttribute="centerY" constant="1.5" id="ac1-A3-DeR"/>
                                     <constraint firstItem="GPH-mF-AJZ" firstAttribute="leading" secondItem="XW3-k4-BcN" secondAttribute="leading" constant="16" id="kfH-cR-lTr"/>
                                     <constraint firstAttribute="height" constant="64" id="vbd-9o-CKg"/>
                                     <constraint firstItem="cK2-E1-T4R" firstAttribute="leading" secondItem="XW3-k4-BcN" secondAttribute="leading" constant="16" id="xX7-e9-oTR"/>
@@ -65,6 +66,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgn-hl-2K6">
                                         <rect key="frame" x="8" y="8" width="304" height="62"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Ban co the huy cong viec truoc 24hBan co the huy cong viec truoc 24hBan co the huy cong viec truoc 24hBan co the huy cong viec truoc 24hBan co the huy cong viec truoc 24h</string>
                                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -95,6 +97,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="dLf-jK-qd3" secondAttribute="bottom" id="9KA-EA-ilr"/>
                     <constraint firstItem="dLf-jK-qd3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UnF-vD-4Qc"/>
@@ -102,7 +105,9 @@
                     <constraint firstItem="dLf-jK-qd3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ugn-0J-mlY"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="btCancel" destination="cK2-E1-T4R" id="du1-O5-7d3"/>
                 <outlet property="lbCancel" destination="GPH-mF-AJZ" id="q0A-aw-QkD"/>
                 <outlet property="lbCancelDetail" destination="vgn-hl-2K6" id="kwX-Et-8zt"/>
                 <outlet property="viewCancelBottom" destination="Gts-eP-20N" id="byv-fQ-taW"/>

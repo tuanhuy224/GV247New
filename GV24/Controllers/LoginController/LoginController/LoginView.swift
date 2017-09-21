@@ -125,17 +125,20 @@ class LoginView: BaseViewController,CLLocationManagerDelegate {
     }
   
   @IBAction func btRegisterAction(_ sender: Any) {
-    self.navigationController?.pushViewController(RegisterViewController(), animated: true)
+    let navi = RegisterViewController()
+    self.navigationController?.pushViewController(navi, animated: true)
   
     }
   
     
     @IBAction func btAround(_ sender: Any) {
-        self.navigationController?.pushViewController(WorksAroundViewController(), animated: true)
+        let navi = WorksAroundViewController()
+        self.navigationController?.pushViewController(navi, animated: true)
     }
     
     @IBAction func forgotPasswordAction(_ sender: Any) {
-        self.navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
+        let navi = ForgotPasswordViewController()
+        self.navigationController?.pushViewController(navi, animated: true)
     }
     
     func cornerButton(_ button: UIButton, _ radius: CGFloat) {

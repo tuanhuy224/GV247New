@@ -78,7 +78,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Nga-kx-l6E" firstAttribute="leading" secondItem="qKj-A0-kyS" secondAttribute="leading" constant="8" id="BV0-xw-DAy"/>
                             <constraint firstAttribute="bottom" secondItem="Nga-kx-l6E" secondAttribute="bottom" constant="8" id="NIF-Tt-JUW"/>
@@ -96,6 +96,7 @@
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="leading" secondItem="TKq-Mx-div" secondAttribute="leading" id="0O6-Vk-CMy"/>
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3WX-st-gMw"/>
@@ -107,7 +108,7 @@
                     <constraint firstItem="qKj-A0-kyS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FMu-DV-fzb"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="L24-OA-LEN"/>
                     <constraint firstItem="jOn-Cv-dAZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LH2-yn-H2U"/>
-                    <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oRf-WL-mHp" secondAttribute="bottom" constant="20" id="NZ4-fw-zbp"/>
+                    <constraint firstItem="jOn-Cv-dAZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oRf-WL-mHp" secondAttribute="bottom" constant="8" id="NZ4-fw-zbp"/>
                     <constraint firstItem="RAp-YY-Ygx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Oh9-6N-Gkd"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="leading" secondItem="TKq-Mx-div" secondAttribute="trailing" constant="8" id="RHM-JV-imp"/>
                     <constraint firstItem="oRf-WL-mHp" firstAttribute="top" secondItem="TKq-Mx-div" secondAttribute="bottom" constant="6.5" id="X5r-Xe-Hus"/>
@@ -118,6 +119,7 @@
                     <constraint firstAttribute="trailing" secondItem="Jn0-47-poD" secondAttribute="trailing" constant="10" id="btZ-Mp-Zr9"/>
                     <constraint firstItem="uxt-4V-QaK" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" id="jvX-pg-Lbd"/>
                     <constraint firstItem="sct-l4-Mv6" firstAttribute="trailing" secondItem="Jn0-47-poD" secondAttribute="trailing" id="k5H-8k-GUL"/>
+                    <constraint firstItem="sct-l4-Mv6" firstAttribute="top" secondItem="jOn-Cv-dAZ" secondAttribute="bottom" id="k6S-gF-fBk"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uxt-4V-QaK" secondAttribute="bottom" constant="-4" id="vM8-Bx-5Zz"/>
                     <constraint firstItem="Jn0-47-poD" firstAttribute="leading" secondItem="oRf-WL-mHp" secondAttribute="trailing" constant="8" id="z2a-sv-5sQ"/>
                 </constraints>
@@ -129,7 +131,6 @@
                 <outlet property="btChoose" destination="uxt-4V-QaK" id="fiF-Nv-KBw"/>
                 <outlet property="btChooseConstraint" destination="vPh-r9-7jE" id="2nw-JD-Ec5"/>
                 <outlet property="constraintH" destination="AB2-lk-Vox" id="uKV-gv-5S5"/>
-                <outlet property="heightBtChoose" destination="vPh-r9-7jE" id="FCB-xP-YUT"/>
                 <outlet property="heightHeader" destination="wLP-Qb-Bet" id="fqe-Fv-aPh"/>
                 <outlet property="imageName" destination="RAp-YY-Ygx" id="IYF-AP-QRX"/>
                 <outlet property="lbOwner" destination="Nga-kx-l6E" id="7LQ-lL-evE"/>
