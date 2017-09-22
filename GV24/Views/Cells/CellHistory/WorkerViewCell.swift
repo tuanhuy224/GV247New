@@ -25,6 +25,24 @@ class WorkerViewCell: CustomTableViewCell {
         setupCell()
     }
     
+    var work: Work? {
+        didSet{
+            guard let image = work?.stakeholders?.owner?.image else {return}
+            let url = URL(string: image)
+            if url == nil {
+                imageUser.image = UIImage(named: "avatar")
+            }else{
+                imageUser.kf.setImage(with:url)
+                
+            }
+            imageUser.layer.cornerRadius = imageUser.frame.width / 2
+            imageUser.clipsToBounds = true
+            nameLabel.text = work?.stakeholders?.owner?.name!
+            addressLabel.text = work?.stakeholders?.owner?.address?.name!
+            workCompletedLabel.text = "CompletedWork".localize
+        }
+    }
+    
     func setupCell() {
         arrowForward.image = Ionicons.iosArrowForward.image(18, color: UIColor.lightGray)
         nameLabel.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.headline.rawValue), size: sizeSeven)

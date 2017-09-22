@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -99,7 +99,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Aj9-jH-etn" firstAttribute="top" secondItem="FaM-AX-pqo" secondAttribute="bottom" constant="20" id="1an-LC-JJl"/>
                         <constraint firstAttribute="trailing" secondItem="XC7-cN-Go5" secondAttribute="trailing" id="EkM-mU-MfQ"/>
@@ -111,7 +111,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Z1I-xS-XdJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Q2-gz-A2o"/>
                 <constraint firstItem="Z1I-xS-XdJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GZs-Cd-o61"/>

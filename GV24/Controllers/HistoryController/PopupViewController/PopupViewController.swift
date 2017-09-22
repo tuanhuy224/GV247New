@@ -16,7 +16,7 @@ import UIKit
 
 class PopupViewController: BaseViewController {
     
-    var delegate: PopupViewControllerDelegate?
+    weak var delegate: PopupViewControllerDelegate?
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var effectView: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -49,13 +49,15 @@ class PopupViewController: BaseViewController {
         self.view.layoutIfNeeded()
     }
     
+    
     func show() {
         guard let rootController = UIApplication.shared.keyWindow?.rootViewController else {return}
         view.frame = rootController.view.bounds
+        
         rootController.view.addSubview(view)
-        self.willMove(toParentViewController: rootController)
+        //self.willMove(toParentViewController: rootController)
         rootController.addChildViewController(self)
-        self.didMove(toParentViewController: rootController)
+        //self.didMove(toParentViewController: rootController)
         
         UIView.animate(withDuration: 0.24, animations: {
             self.bottomConstraintToSuperView.constant = 0

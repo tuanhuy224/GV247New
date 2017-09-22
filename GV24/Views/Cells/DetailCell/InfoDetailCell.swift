@@ -34,7 +34,6 @@ class InfoDetailCell: CustomTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         lbTools.isHidden = true
-        //toolConstraint.constant = 0
         lbTools.font = fontSize.fontName(name: .regular, size: sizeFive)
         lbTools.textColor = AppColor.backButton
         imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2

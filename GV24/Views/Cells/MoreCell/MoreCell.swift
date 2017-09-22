@@ -20,18 +20,10 @@ class MoreCell: CustomTableViewCell {
         // Initialization code
         let icon = Ionicons.chevronRight.image(32).maskWithColor(color: AppColor.backButton)
         iconRight.setImage(icon, for: .normal)
-        //iconRight.tintColor = AppColor.backButton
         cornerImage(imgMore, 4)
     }
     func cornerImage(_ img: UIImageView, _ radius: CGFloat) {
         img.layer.cornerRadius = radius
         img.clipsToBounds = true
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

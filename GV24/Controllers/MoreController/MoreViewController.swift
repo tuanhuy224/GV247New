@@ -55,7 +55,8 @@ class MoreViewController: BaseViewController {
     }
     
     func selectButton() {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
 }
@@ -86,7 +87,6 @@ extension MoreViewController: UITableViewDataSource,UITableViewDelegate{
             }else{
                 cell.imageName.kf.setImage(with: url)
             }
-                //cell.btChoose.setTitle("Generalstatistic".localize, for: .normal)
                 cell.btChoose.setTitleColor(.black, for: .normal)
                 cell.vSegment.isHidden = false
                 cell.btChoose.isHidden = false
@@ -216,7 +216,8 @@ extension MoreViewController:LogOutDelegate{
 extension MoreViewController:clickChooseWorkID{
     func chooseAction() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        navigationController?.pushViewController(StatisticViewController(), animated: true)
+        let general = StatisticViewController()
+        navigationController?.pushViewController(general, animated: true)
         MBProgressHUD.hide(for: self.view, animated: true)
     }
 }

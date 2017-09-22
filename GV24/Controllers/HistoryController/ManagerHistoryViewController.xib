@@ -92,34 +92,25 @@
                         <constraint firstAttribute="height" constant="35" id="mgy-3T-z2X"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-57-egJ">
-                    <rect key="frame" x="0.0" y="70" width="375" height="20"/>
-                    <color key="backgroundColor" red="0.94453328847885132" green="0.94106453657150269" blue="0.96249121427536011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="yRi-0d-NVr"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaV-N2-myv">
-                    <rect key="frame" x="0.0" y="90" width="375" height="577"/>
+                    <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="h22-SV-zdb" firstAttribute="top" secondItem="Pk1-gm-Tw8" secondAttribute="bottom" id="2hQ-Lo-Gou"/>
                 <constraint firstItem="d8a-x9-mKh" firstAttribute="leading" secondItem="9Tt-w4-wKs" secondAttribute="leading" id="AbY-yK-B0I"/>
+                <constraint firstItem="LaV-N2-myv" firstAttribute="top" secondItem="h22-SV-zdb" secondAttribute="bottom" id="GaD-y0-Gsj"/>
                 <constraint firstAttribute="bottom" secondItem="LaV-N2-myv" secondAttribute="bottom" id="HrE-I6-WXe"/>
                 <constraint firstItem="Pk1-gm-Tw8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NN7-9f-PSI"/>
                 <constraint firstAttribute="trailing" secondItem="h22-SV-zdb" secondAttribute="trailing" id="NWl-U4-JPh"/>
                 <constraint firstAttribute="trailing" secondItem="LaV-N2-myv" secondAttribute="trailing" id="bDo-LE-o1P"/>
                 <constraint firstItem="Pk1-gm-Tw8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bMQ-at-ENP"/>
-                <constraint firstAttribute="trailing" secondItem="4gd-57-egJ" secondAttribute="trailing" id="dbl-87-MAp"/>
                 <constraint firstItem="LaV-N2-myv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gJd-Zi-rBx"/>
-                <constraint firstItem="4gd-57-egJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lE0-dI-LKT"/>
                 <constraint firstAttribute="trailing" secondItem="Pk1-gm-Tw8" secondAttribute="trailing" id="mp0-U7-BnI"/>
-                <constraint firstItem="4gd-57-egJ" firstAttribute="top" secondItem="h22-SV-zdb" secondAttribute="bottom" id="qJo-F9-UKL"/>
                 <constraint firstItem="LSf-Bu-bdY" firstAttribute="trailing" secondItem="9Tt-w4-wKs" secondAttribute="trailing" id="tj2-Aa-GqZ"/>
                 <constraint firstItem="h22-SV-zdb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="u7F-Pt-U2H"/>
-                <constraint firstItem="LaV-N2-myv" firstAttribute="top" secondItem="4gd-57-egJ" secondAttribute="bottom" id="yOT-qa-8nn"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="61.5"/>
         </view>

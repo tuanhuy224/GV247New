@@ -16,8 +16,8 @@ class ManagerHistoryViewController: BaseViewController {
     @IBOutlet weak var fromDateButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
-    var workListVC: HistoryViewController?
-    var ownerListVC: OwnerHistoryViewController?
+    var workListVC = HistoryViewController()
+    var ownerListVC = OwnerHistoryViewController()
     
     var firstFromDate: Date? = nil
     var firstToDate: Date = Date()
@@ -82,20 +82,14 @@ class ManagerHistoryViewController: BaseViewController {
     }
     
     func setupContainerView() {
-        workListVC = HistoryViewController()
-        workListVC?.view.frame = containerView.frame
-        containerView.addSubview((workListVC?.view)!)
-        workListVC?.view.tag = 0
+        containerView.addSubview((workListVC.view)!)
+        workListVC.view.tag = 0
     }
     func setupOwnerHistory() {
-        ownerListVC = OwnerHistoryViewController()
-        ownerListVC?.view.frame = containerView.frame
-        containerView.addSubview((ownerListVC?.view)!)
-        ownerListVC?.view.tag = 1
-        setupConstraint(vc: ownerListVC!)
-        ownerListVC?.view.isHidden = true
-        
-        ownerListVC?.myParent = self
+        containerView.addSubview((ownerListVC.view)!)
+        ownerListVC.view.tag = 1
+        ownerListVC.view.isHidden = true
+        ownerListVC.myParent = self
     }
     func setupConstraint(vc: BaseViewController) {
         vc.view.translatesAutoresizingMaskIntoConstraints = false
@@ -106,15 +100,14 @@ class ManagerHistoryViewController: BaseViewController {
     }
     
     func setupConstrains() {
-        setupConstraint(vc: workListVC!)
-        workListVC?.myParent = self
+        workListVC.myParent = self
         toDateButton.setTitle(String.convertDateToString(date: Date(), withFormat: "dd/MM/yyyy"), for: .normal)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "WorkHistory".localize//"Lịch sử công việc"
+        title = "WorkHistory".localize
     }
     
     @IBAction func doValueChanged(_ sender: UISegmentedControl) {
@@ -128,8 +121,8 @@ class ManagerHistoryViewController: BaseViewController {
         }
         
         if sender.selectedSegmentIndex == 1 {
-            workListVC?.view.isHidden = true
-            ownerListVC?.view.isHidden = false
+            workListVC.view.isHidden = true
+            ownerListVC.view.isHidden = false
             
             if let date = secondFromDate {
                 fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
@@ -138,8 +131,8 @@ class ManagerHistoryViewController: BaseViewController {
             
             self.reloadOwnerListViewController()
         }else {
-            workListVC?.view.isHidden = false
-            ownerListVC?.view.isHidden = true
+            workListVC.view.isHidden = false
+            ownerListVC.view.isHidden = true
             
             if let date = firstFromDate {
                 fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
@@ -168,22 +161,22 @@ class ManagerHistoryViewController: BaseViewController {
     }
     
     func reloadWorkListViewController() {
-        workListVC?.workList.removeAll()
-        workListVC?.historyTableView.reloadData()
+        workListVC.workList.removeAll()
+        workListVC.historyTableView.reloadData()
         
-        workListVC?.startAtDate = firstFromDate
-        workListVC?.endAtDate = firstToDate
-        workListVC?.page = 1
-        workListVC?.getWorkList(startAt: firstFromDate, endAt: firstToDate)
+        workListVC.startAtDate = firstFromDate
+        workListVC.endAtDate = firstToDate
+        workListVC.page = 1
+        workListVC.getWorkList(startAt: firstFromDate, endAt: firstToDate)
     }
     
     func reloadOwnerListViewController() {
-        ownerListVC?.ownerList.removeAll()
-        ownerListVC?.tableView.reloadData()
+        ownerListVC.ownerList.removeAll()
+        ownerListVC.tableView.reloadData()
         
-        ownerListVC?.startAtDate = secondFromDate
-        ownerListVC?.endAtDate = secondToDate
-        ownerListVC?.getOwnerList(startAt: secondFromDate, endAt: secondToDate)
+        ownerListVC.startAtDate = secondFromDate
+        ownerListVC.endAtDate = secondToDate
+        ownerListVC.getOwnerList(startAt: secondFromDate, endAt: secondToDate)
     }
     override func setupViewBase() {
         super.setupViewBase()

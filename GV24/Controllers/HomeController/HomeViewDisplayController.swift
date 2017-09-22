@@ -46,8 +46,10 @@ class HomeViewDisplayController: BaseViewController{
     }
     
     @IBAction func btAvatarAction(_ sender: Any) {
-        let navi = UINavigationController(rootViewController: MoreViewController())
-        self.present(navi, animated: true, completion: nil)
+//        let navi = UINavigationController(rootViewController: MoreViewController())
+//        self.present(navi, animated: true, completion: nil)
+        let navi = MoreViewController()
+        navigationController?.pushViewController(navi, animated: true)
     }
     
     override func setupViewBase() {
@@ -85,8 +87,10 @@ class HomeViewDisplayController: BaseViewController{
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     func selectButton()  {
-        let navi = UINavigationController(rootViewController: MoreViewController())
-        self.present(navi, animated: true, completion: nil)
+//        let navi = UINavigationController(rootViewController: MoreViewController())
+//        self.present(navi, animated: true, completion: nil)
+        let navi = MoreViewController()
+        navigationController?.pushViewController(navi, animated: true)
     }
     
     func buttonTest(button:UIButton,imageName:String)  {

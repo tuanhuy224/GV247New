@@ -48,15 +48,13 @@ class OwnerHistoryViewController: BaseViewController {
         return indicator
     }()
     lazy var emptyLabel: UILabel = {
-        let label = UILabel() //TableViewHelper().emptyMessage(message: "", size: CGSize(width: 200, height: 100))
+        let label = UILabel()
         label.textColor = AppColor.backButton
         
         label.isHidden = true
         return label
     }()
     lazy var emptyDataView: UIView = {
-        //    let emptyView = TableViewHelper().noData(frame: CGRect(x: (self.view.frame.width / 2) - 50, y: 50, width: 100, height: 150))
-        //let emptyView = TableViewHelper().noData(frame: .zero)
         let emptyView = UIView()
         emptyView.isHidden = true
         return emptyView
@@ -67,9 +65,7 @@ class OwnerHistoryViewController: BaseViewController {
         setupLoadingIndicator()
         setupEmptyDataView()
         setupEmptyLabel()
-        
-        
-        //ImageNodata.isHidden = true
+
         getOwnerList(startAt: startAtDate, endAt: endAtDate)
     }
     
@@ -101,7 +97,6 @@ class OwnerHistoryViewController: BaseViewController {
     
     func setupEmptyLabel(){
         view.addSubview(emptyLabel)
-       // emptyLabel.frame = CGRect(x: self.view.frame.size.width/2 - 100, y: 0, width: 200, height: 100)
         
     }
     
@@ -119,30 +114,19 @@ class OwnerHistoryViewController: BaseViewController {
     func updateUI(status: ResultStatus) {
         switch status {
         case .Success:
-            //self.tableView.isHidden = false
-//            self.emptyDataView.isHidden = true
-//            self.emptyLabel.isHidden = true
             self.imgEmtyData.isHidden = true
             self.lbEmtyData.isHidden = true
         case .EmptyData:
-            //self.tableView.isHidden = true
-//            self.emptyDataView.isHidden = false
-//            self.emptyLabel.isHidden = true
             self.imgEmtyData.isHidden = false
             self.lbEmtyData.isHidden = false
             lbEmtyData.text = "SoonUpdate".localize
             break
         case .LostInternet:
             self.emptyLabel.text = "NetworkIsLost".localize
-            //self.tableView.isHidden = true
-//            self.emptyDataView.isHidden = true
-//            self.emptyLabel.isHidden = false
             self.imgEmtyData.isHidden = false
             self.lbEmtyData.isHidden = false
         default:
             self.emptyLabel.text = "TimeoutExpiredPleaseLoginAgain".localize
-            //self.tableView.isHidden = true
-//            self.emptyDataView.isHidden = true
             self.emptyLabel.isHidden = false
             self.lbEmtyData.isHidden = false
             break
@@ -183,7 +167,8 @@ class OwnerHistoryViewController: BaseViewController {
             params["startAt"] = "\(String.convertDateToISODateType(date: startAt!)!)"
         }
         params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
-        let headers: HTTPHeaders = ["hbbgvauth": UserDefaultHelper.getToken()!]
+        guard let token = UserDefaultHelper.getToken() else {return}
+        let headers: HTTPHeaders = ["hbbgvauth": token]
         OwnerServices.sharedInstance.getOwnersList(url: APIPaths().urlGetOwnerList(), param: params, header: headers) { (data, status) in
             let stat: ResultStatus = (self.net?.isReachable)! ? status : .LostInternet
             
@@ -202,23 +187,13 @@ class OwnerHistoryViewController: BaseViewController {
     fileprivate func configureOwnerCell(cell: OwnerHistoryViewCell, indexPath: IndexPath) {
         if ownerList.count != 0 {
             cell.delegate = self
-            let owner = ownerList[indexPath.item]
-            self.owner = owner
-            if let imageString = owner.image {
-                let url = URL(string: imageString)
-                cell.userImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
-            }
-            cell.userName.text = owner.name
-            cell.dateLabel.text = String.convertISODateToString(isoDateStr: (owner.workTime.last)!, format: "dd/MM/yyyy")
-            cell.workListButton.setTitle("WorkList".localize, for: .normal)
+            cell.owner = ownerList[indexPath.row]
         }
     }
 }
 
 extension OwnerHistoryViewController: UITableViewDataSource {
-    //    func numberOfSections(in tableView: UITableView) -> Int {
-    //        return ownerList.count
-    //    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ownerList.count
     }

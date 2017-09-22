@@ -29,14 +29,9 @@ class FinishedWorkViewController: BaseViewController {
         tableView.register(UINib(nibName:NibInfoDetailCell,bundle:nil), forCellReuseIdentifier: infoDetailCellID)
         tableView.register(UINib(nibName: NibWorkerViewCell, bundle: nil), forCellReuseIdentifier: workerCellID)
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "WorkHistory".localize//"Công việc hoàn thành"
+        title = "WorkHistory".localize
     }
 
     override func setupViewBase() {}
@@ -49,13 +44,15 @@ class FinishedWorkViewController: BaseViewController {
      params: task: is task id String
      */
     fileprivate func getTaskComment() {
-        let taskID = work?.id
-        let params:[String:Any] = ["task":"\(String(describing: taskID!))"]
-        let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
+        guard let taskID = work?.id else {return}
+        guard let token = UserDefaultHelper.getToken() else {return}
+        let params:[String:Any] = ["task":taskID]
+        let headers: HTTPHeaders = ["hbbgvauth": token]
         HistoryServices.sharedInstance.getTaskCommentHistory(url: APIPaths().urlGetTaskCommentWithTaskID(), param: params, header: headers) { (data, err) in
             switch err {
             case .Success:
-                self.taskComment = data!
+                guard let jsonData = data else {return}
+                self.taskComment = jsonData
                 break
             default:
                 break
@@ -65,67 +62,16 @@ class FinishedWorkViewController: BaseViewController {
     }
 
     fileprivate func configureWorkDetailsCell(cell: InfoDetailCell) {
+        
+        cell.work = work
         cell.selectionStyle = .none
         cell.constraintDescription.constant = 0
         cell.lbDescription.isHidden = true
         cell.lbDescription.text = "Description".localize
-        if work != nil {
-            let url = URL(string: (work?.info?.workName?.image)!)
-            if url == nil {
-                cell.imageAvatar.image = UIImage(named: "avatar")
-            }else{
-                cell.imageAvatar.kf.setImage(with:url)
-            }
-            cell.lbTitle.text = work?.info?.title
-            cell.lbSubTitle.text = work?.info?.workName?.name
-            cell.lbComment.text = work?.info?.content
-//            cell.lbDes.text = "Description".localize
-//            cell.lbDes.font = fontSize.fontName(name: .regular, size: 16)
-//            let salary = work?.info?.salary
-//            let salaryText = String(describing: salary!)
-//            cell.lbMoney.text = salaryText + " VND"
-            
-            let salary = work?.info?.salary
-            if salary == 0 {
-                cell.lbMoney.text = "Timework".localize
-            }else{
-                
-                cell.lbMoney.text = String().numberFormat(number: salary ?? 0) + " " + "VND"
-            }
-            
-            let startAt = work?.workTime?.startAt
-            let startAtStr = String(describing: startAt!)
-            cell.lbDate.text = String.convertISODateToString(isoDateStr: startAtStr, format: "dd/MM/yyyy")
-            cell.lbAddress.text = work?.info?.address?.name
-            
-            let endAt = work?.workTime?.endAt
-            let endAtStr = String(describing: endAt!)
-            cell.lbTime.text = Date(isoDateString: startAtStr).hourMinute + " - " + Date(isoDateString: endAtStr).hourMinute
-            
-            let tool = work?.info?.tools
-            if  tool == true {
-                cell.lbTools.isHidden = false
-                cell.lbTools.text = "Bringyourcleaningsupplies".localize
-            }
-        }
     }
 
     fileprivate func configureOwnerCommentsCell(cell: WorkerViewCell) {
-        if work != nil {
-            let url = URL(string: (work?.stakeholders?.owner?.image)!)
-            if url == nil {
-                cell.imageUser.image = UIImage(named: "avatar")
-            }else{
-                cell.imageUser.kf.setImage(with:url)
-
-            }
-            cell.imageUser.layer.cornerRadius = cell.imageUser.frame.width / 2
-            cell.imageUser.clipsToBounds = true
-            cell.nameLabel.text = work?.stakeholders?.owner?.name!
-            cell.addressLabel.text = work?.stakeholders?.owner?.address?.name!
-            cell.workCompletedLabel.text = "CompletedWork".localize
-        }
-        
+        cell.work = work
         if let comment = taskComment?.content {
             cell.commentLabel.isHidden = false
             cell.separateLine.isHidden = false
@@ -151,15 +97,11 @@ extension FinishedWorkViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell:InfoDetailCell = tableView.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
-
             self.configureWorkDetailsCell(cell: cell)
-
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: workerCellID, for: indexPath) as! WorkerViewCell
-
             self.configureOwnerCommentsCell(cell: cell)
-
             return cell
         }
     }

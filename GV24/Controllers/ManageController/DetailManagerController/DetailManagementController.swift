@@ -26,29 +26,9 @@ class DetailManagementController: BaseViewController {
     }
     // Mark: - custom cell for detail management
     func InforCellConfigure(cell:InforCell){
-        guard let gender = workPending?.stakeholders?.owner?.gender! else{return}
-        if gender == 0 {
-            cell.lbGender.text = "Boy".localize
-        }else{
-            cell.lbGender.text = "Girl".localize
-        }
-        cell.lbAddress.text = workPending?.stakeholders?.owner?.address?.name
-        cell.lbPhone.text = workPending?.stakeholders?.owner?.phone
-        let url = URL(string: (workPending?.stakeholders?.owner?.image)!)
-        if url == nil {
-            cell.imageProfile.image = UIImage(named: "avatar")
-            cell.avatar.image = UIImage(named: "avatar")
-        }else{
-            DispatchQueue.main.async {
-                cell.avatar.kf.setImage(with: url)
-                cell.imageProfile.kf.setImage(with: url)
-            }
-        }
-        cell.lbName.text = workPending?.stakeholders?.owner?.name
-        cell.lbAge.isHidden = true
-        cell.vViewAge.isHidden = true
-        cell.contraintAge.constant = 0
-        cell.imageAge.isHidden = true
+        cell.workPending = workPending
+        cell.bottomAge.constant = 0
+        cell.topHeightAge.constant = 0
     }
 }
 extension DetailManagementController:UITableViewDataSource{
@@ -67,8 +47,9 @@ extension DetailManagementController:UITableViewDataSource{
             let cell:InforOwnerCell = detailManager.dequeueReusableCell(withIdentifier: InforOwnerCellID, for: indexPath) as! InforOwnerCell
             cell.lbComment.text = "comment".localize.uppercased()
             cell.btReport.setTitle("report".localize, for: .normal)
-            cell.btReport.setTitleColor(AppColor.backButton, for: .normal)
             cell.lbCommentText.text = "nocomment".localize
+            cell.btReport.setTitleColor(AppColor.backButton, for: .normal)
+
             cell.delegate = self
             return cell
         }

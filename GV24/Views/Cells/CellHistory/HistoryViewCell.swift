@@ -58,7 +58,15 @@ class HistoryViewCell: CustomTableViewCell {
                 lbDeadline.isHidden = true
                 lbDirect.text = "Direct".localize
             }
-            
+            guard let image = proccessPending?.info?.workName?.image else {return}
+            let url = URL(string: image)
+            if url == nil {
+                imageWork.image = UIImage(named: "avatar")
+            }else{
+                DispatchQueue.main.async {
+                    self.imageWork.kf.setImage(with:url)
+                }
+            }
             workNameLabel.text = self.proccessPending?.info?.title
             createdDate.text = "\(Date(isoDateString: (proccessPending?.workTime?.startAt)!).dayMonthYear)"
             lbDist.text = "Proccess".localize

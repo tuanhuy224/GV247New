@@ -118,6 +118,8 @@ class AppColor : NSObject{
     static let titleButtonLogout = UIColor.rgb(red: 216, green: 216, blue: 216)
     static let buttonDelete = UIColor.rgb(red: 240, green: 19, blue: 77)
     static let successButton = UIColor.green
+    static let unStart = UIColor.rgb(red: 249, green: 187, blue: 67)
+    static let start = UIColor.rgb(red: 252, green: 178, blue: 81)
 }
 
 
@@ -271,11 +273,9 @@ extension Date{
     }
 }
 extension String {
-    //static let dateFormatter = DateFormatter()
     static func convertISODateToString(isoDateStr: String, format: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        //dateFormatter.timeZone = TimeZone.current
         let newDate = dateFormatter.date(from: isoDateStr)
         dateFormatter.dateFormat = format
         
@@ -285,8 +285,6 @@ extension String {
     static func convertISODateToDate(isoDateStr: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        
-        //dateFormatter.timeZone = TimeZone.current
         let newDate = dateFormatter.date(from: isoDateStr)
         return newDate
     }
@@ -301,8 +299,6 @@ extension String {
     static func convertDateToISODateType(date: Date) -> String?{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        
-        //dateFormatter.timeZone = TimeZone.current
         let newISODateStr = dateFormatter.string(from: date)
         return newISODateStr
     }

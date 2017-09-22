@@ -159,7 +159,7 @@ class StatisticViewController: BaseViewController {
     
     fileprivate func showPopup(isFromDate: Bool, isToDate: Bool, fromDate: Date?, toDate: Date) {
         let popup = PopupViewController()
-        popup.modalPresentationStyle = .overCurrentContext
+        //popup.modalPresentationStyle = .overCurrentContext
         popup.delegate = self
         popup.isFromDate = isFromDate
         popup.isToDate = isToDate
