@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             guard let window = UIApplication.shared.keyWindow else{ return }
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
+            let managerController = PageViewController()
             navi.pushViewController(managerController, animated: true)
             
         }else{
@@ -141,8 +141,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
-            navi.pushViewController(managerController, animated: true)
+            let page = PageViewController()
+            navi.pushViewController(page, animated: true)
             break
         case "99":
             banner.dismissesOnTap = true
@@ -150,8 +150,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = ManageViewController()
-            navi.pushViewController(managerController, animated: true)
+            let page = PageViewController()
+            navi.pushViewController(page, animated: true)
             break
         default:
             break
@@ -178,7 +178,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
                 isNotification = true
                 let navi = UINavigationController(rootViewController: HomeViewDisplayController())
                 window?.rootViewController = navi
-                let managerController = ManageViewController(nibName: "ManageViewController", bundle: nil)
+                let managerController = PageViewController()
                 navi.pushViewController(managerController, animated: true)
             break
         case "99":
@@ -186,7 +186,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = ManageViewController()
+            let managerController = PageViewController()
             navi.pushViewController(managerController, animated: true)
             break
         default:

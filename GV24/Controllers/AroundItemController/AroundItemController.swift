@@ -61,19 +61,18 @@ extension AroundItemController:UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:HistoryViewCell = tbAround.dequeueReusableCell(withIdentifier: HistoryViewCellID, for: indexPath) as! HistoryViewCell
-        cell.workNameLabel.text = works[indexPath.row].info?.title
-        cell.lbDist.text = "\(Int(works[indexPath.row].dist!.calculated!)) m"
-        cell.createdDate.text = Date(isoDateString: (works[indexPath.row].workTime!.startAt!)).dayMonthYear
-        //Date(isoDateString: (processPending?.workTime?.endAt)!).dayMonthYear
-        cell.lbTimePost.text = Date().dateComPonent(datePost: (works[indexPath.row].history!.createAt!))
-        DispatchQueue.main.async {
-            cell.imageWork.kf.setImage(with: URL(string: self.works[indexPath.row].info!.workName!.image!))
-        }
-//         cell.timeWork.text = String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.startAt)!, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: (works[indexPath.row].workTime?.endAt)!, format: "HH:mm a")!
-        cell.timeWork.text = Date(isoDateString: (works[indexPath.row].workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (works[indexPath.row].workTime?.endAt)!).hourMinute
-        cell.lbDeadline.isHidden = true
-        cell.constraintWidthDirect.constant = 0
-        cell.contraintWidthDeadline.constant = 0
+        cell.proccessPending = works[indexPath.row]
+//        cell.workNameLabel.text = works[indexPath.row].info?.title
+//        cell.lbDist.text = "\(Int(works[indexPath.row].dist!.calculated!)) m"
+//        cell.createdDate.text = Date(isoDateString: (works[indexPath.row].workTime!.startAt!)).dayMonthYear
+//        cell.lbTimePost.text = Date().dateComPonent(datePost: (works[indexPath.row].history!.createAt!))
+//        DispatchQueue.main.async {
+//            cell.imageWork.kf.setImage(with: URL(string: self.works[indexPath.row].info!.workName!.image!))
+//        }
+//        cell.timeWork.text = Date(isoDateString: (works[indexPath.row].workTime?.startAt)!).hourMinute + " - " + Date(isoDateString: (works[indexPath.row].workTime?.endAt)!).hourMinute
+//        cell.lbDeadline.isHidden = true
+//        cell.constraintWidthDirect.constant = 0
+//        cell.contraintWidthDeadline.constant = 0
         return cell
     }
 }

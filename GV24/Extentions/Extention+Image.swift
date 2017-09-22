@@ -165,6 +165,14 @@ extension Date{
         return Date12
     }
     
+    
+    static func convertDateToString(date: Date) -> String? {
+        Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        let newDateStr = dateFormatter.string(from: date)
+        return newDateStr
+    }
+    
+    
     // convert date to date
      func date(_ currentDate: Date) -> Date {
         Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"

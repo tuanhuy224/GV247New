@@ -26,12 +26,25 @@ class CancelCell: CustomTableViewCell {
     weak var denyDelegate:denyRequestDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
         btCancel.backgroundColor = AppColor.buttonDelete
         UIButton.cornerButton(bt: btCancel, radius: 8)
         lbCancel.textColor = AppColor.white
         lbCancel.font = fontSize.fontName(name: .regular, size: sizeSix)
-    } 
+    }
+    
+    var processPending: Work? {
+        didSet{
+            lbCancelDetail.isHidden = true
+            if processPending?.process?.id == WorkStatus.Direct.rawValue {
+                lbCancel.text = "Refusework".localize
+            }else{
+                lbCancel.text = "CancelTask".localize
+            }
+                lbCancelDetail.text = "Youcancancelyouraccepted".localize
+        }
+    }
+    
     @IBAction func btDeleteWork(_ sender: Any) {
         if delegate != nil {
             delegate?.CancelButton!()
@@ -40,5 +53,5 @@ class CancelCell: CustomTableViewCell {
             denyDelegate?.denyRequest!()
         }
     }
-
+    
 }

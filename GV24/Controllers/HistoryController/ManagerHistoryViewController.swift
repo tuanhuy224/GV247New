@@ -91,13 +91,6 @@ class ManagerHistoryViewController: BaseViewController {
         ownerListVC.view.isHidden = true
         ownerListVC.myParent = self
     }
-    func setupConstraint(vc: BaseViewController) {
-        vc.view.translatesAutoresizingMaskIntoConstraints = false
-        vc.view.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 0).isActive = true
-        vc.view.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 0).isActive = true
-        vc.view.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: 0).isActive = true
-        vc.view.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: 0).isActive = true
-    }
     
     func setupConstrains() {
         workListVC.myParent = self
@@ -178,6 +171,10 @@ class ManagerHistoryViewController: BaseViewController {
         ownerListVC.endAtDate = secondToDate
         ownerListVC.getOwnerList(startAt: secondFromDate, endAt: secondToDate)
     }
+    
+    
+    
+    // MARK: - notification when recieved push from owner to yayment in cash
     override func setupViewBase() {
         super.setupViewBase()
         guard let token = UserDefaultHelper.getToken() else {return}
@@ -196,6 +193,9 @@ class ManagerHistoryViewController: BaseViewController {
         }
     }
 }
+
+
+
 extension ManagerHistoryViewController: PopupViewControllerDelegate {
     func selectedDate(date: Date, isFromDate: Bool) {
         if isFromDate {

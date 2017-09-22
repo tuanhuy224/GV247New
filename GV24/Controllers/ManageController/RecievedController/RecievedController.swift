@@ -10,11 +10,8 @@ import UIKit
 
 class RecievedController: BaseViewController {
     var processRecieved:Work?
-  var lable:UILabel?{
-    didSet{
+    var lable:UILabel?
     
-    }
-  }
     @IBOutlet weak var tbRecieved: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +27,9 @@ class RecievedController: BaseViewController {
         super.setupViewBase()
         self.title = "assigned".localize
     }
-
+    
 }
+
 extension RecievedController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,28 +48,6 @@ extension RecievedController:UITableViewDataSource{
         case 1:
             let cell:InfoDetailCell = tbRecieved.dequeueReusableCell(withIdentifier: infoDetailCellID, for: indexPath) as! InfoDetailCell
             cell.work = processRecieved
-            
-            if Date(isoDateString: (processRecieved?.workTime?.endAt)!).comparse == true {
-              cell.lbdeadLine.isHidden = false
-              cell.lbdeadLine.text = "Expired".localize
-              cell.lbdeadLine.textAlignment = .center
-            }else{
-              cell.lbdeadLine.isHidden = true
-            }
-            var deadlineWitdh:CGFloat = 0
-            if !cell.lbdeadLine.isHidden {
-              let text = cell.lbdeadLine.text ?? ""
-              let height = cell.lbdeadLine.bounds.height
-              let font = cell.lbdeadLine.font!
-              deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
-              deadlineWitdh = ceil(deadlineWitdh) + 20
-            }
-            cell.contraintWidthDeadline.constant = deadlineWitdh
-            let tool = processRecieved?.info?.tools
-            if  tool == true {
-                cell.lbTools.isHidden = false
-                cell.lbTools.text = "Bringyourcleaningsupplies".localize
-            }
             return cell
         case 2:
             let cell:CancelCell = tbRecieved.dequeueReusableCell(withIdentifier: cancelCellID, for: indexPath) as! CancelCell
@@ -89,7 +65,7 @@ extension RecievedController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+            let navi = DetailManagementController()
             navi.workPending = processRecieved
             navigationController?.pushViewController(navi, animated: true)
             break
@@ -106,19 +82,19 @@ extension RecievedController:CancelWorkDelegate{
         let header = ["hbbgvauth": token]
         let apiClient = APIService.shared
         let alertC = AlertStandard.sharedInstance
-        alertC.showAlertCt(controller: self, pushVC: ManageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {
-          self.loadingView.show()
-          apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
-            self.loadingView.close()
-          }
-        let mana = ManageViewController(nibName: NibManageViewController, bundle: nil)
-        self.navigationController?.pushViewController(mana, animated: true)
-      })
+        alertC.showAlertCt(controller: self, pushVC: PageViewController(), title: "", message: "RefuseworkAlert".localize, completion: {
+            self.loadingView.show()
+            apiClient.deleteReserve(url: APIPaths().urlCancelTask(), method: .delete, parameters: parameter, header: header) { (json, string) in
+                self.loadingView.close()
+            }
+            let mana = PageViewController()
+            self.navigationController?.pushViewController(mana, animated: true)
+        })
     }
 }
 extension RecievedController:chooseWorkDelegate{
     func detailManagementDelegate() {
-        let navi = DetailManagementController(nibName: "DetailManagementController", bundle: nil)
+        let navi = DetailManagementController()
         navi.workPending = processRecieved
         navigationController?.pushViewController(navi, animated: true)
     }

@@ -9,7 +9,7 @@
 import UIKit
 import IoniconsSwift
 class InfoDetailCell: CustomTableViewCell {
-  @IBOutlet weak var contraintWidthDeadline: NSLayoutConstraint!
+    @IBOutlet weak var contraintWidthDeadline: NSLayoutConstraint!
     @IBOutlet weak var toolConstraint: NSLayoutConstraint!
     @IBOutlet weak var lbDescription: UILabel!
     @IBOutlet weak var lbTools: UILabel!
@@ -25,14 +25,15 @@ class InfoDetailCell: CustomTableViewCell {
     @IBOutlet weak var imageAddress: UIImageView!
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var lbdeadLine: UILabel!{
-    didSet{
-    lbdeadLine.textAlignment = .center
+        didSet{
+            lbdeadLine.textAlignment = .center
+        }
     }
-  }
     @IBOutlet weak var constraintDescription: NSLayoutConstraint!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         lbTools.isHidden = true
         lbTools.font = fontSize.fontName(name: .regular, size: sizeFive)
         lbTools.textColor = AppColor.backButton
@@ -56,8 +57,37 @@ class InfoDetailCell: CustomTableViewCell {
         lbdeadLine.clipsToBounds = true
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        
+    }
+    
     var work: Work? {
         didSet{
+            guard let endAt = work?.workTime?.endAt else {return}
+            if Date(isoDateString: endAt).comparse == true {
+                lbdeadLine.isHidden = false
+                lbdeadLine.text = "Expired".localize
+            }else{
+                lbdeadLine.isHidden = true
+            }
+            
+            
+            var deadlineWitdh:CGFloat = 0
+            
+            
+            if lbdeadLine.isHidden{
+                lbdeadLine.isHidden = true
+                
+            }else{
+                let text = lbdeadLine.text ?? ""
+                let height = lbdeadLine.bounds.height
+                let font = lbdeadLine.font!
+                deadlineWitdh = text.width(withConstraintedHeight: height, font: font)
+                deadlineWitdh = ceil(deadlineWitdh) + 20
+            }
+            contraintWidthDeadline.constant = deadlineWitdh
             lbDescription.text = "Description".localize
             lbTitle.text = work?.info?.title
             lbSubTitle.text = work?.info?.workName?.name
