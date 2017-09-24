@@ -94,7 +94,7 @@ class ManagerHistoryViewController: BaseViewController {
     
     func setupConstrains() {
         workListVC.myParent = self
-        toDateButton.setTitle(String.convertDateToString(date: Date(), withFormat: "dd/MM/yyyy"), for: .normal)
+        toDateButton.setTitle(Date.convertDateToString(date: Date()), for: .normal)
     }
     
     
@@ -104,13 +104,11 @@ class ManagerHistoryViewController: BaseViewController {
     }
     
     @IBAction func doValueChanged(_ sender: UISegmentedControl) {
-        print("selected : \(sender.selectedSegmentIndex)")
         self.currentSelectedIndex = self.segmentControl.selectedSegmentIndex
         
         if isFirstTime {
             setupOwnerHistory()
             isFirstTime = false
-            
         }
         
         if sender.selectedSegmentIndex == 1 {
@@ -118,9 +116,9 @@ class ManagerHistoryViewController: BaseViewController {
             ownerListVC.view.isHidden = false
             
             if let date = secondFromDate {
-                fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
             }
-            toDateButton.setTitle(String.convertDateToString(date: secondToDate, withFormat: "dd/MM/yyyy"), for: .normal)
+            toDateButton.setTitle(Date.convertDateToString(date: secondToDate), for: .normal)
             
             self.reloadOwnerListViewController()
         }else {
@@ -128,9 +126,9 @@ class ManagerHistoryViewController: BaseViewController {
             ownerListVC.view.isHidden = true
             
             if let date = firstFromDate {
-                fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
             }
-            toDateButton.setTitle(String.convertDateToString(date: firstToDate, withFormat: "dd/MM/yyyy"), for: .normal)
+            toDateButton.setTitle(Date.convertDateToString(date: firstToDate), for: .normal)
             
             self.reloadWorkListViewController()
         }
@@ -156,7 +154,6 @@ class ManagerHistoryViewController: BaseViewController {
     func reloadWorkListViewController() {
         workListVC.workList.removeAll()
         workListVC.historyTableView.reloadData()
-        
         workListVC.startAtDate = firstFromDate
         workListVC.endAtDate = firstToDate
         workListVC.page = 1
@@ -200,18 +197,18 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
     func selectedDate(date: Date, isFromDate: Bool) {
         if isFromDate {
             if segmentControl.selectedSegmentIndex == 0 {
-                fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
                 firstFromDate = date
             } else {
-                fromDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
                 secondFromDate = date
             }
         } else {
             if segmentControl.selectedSegmentIndex == 0 {
-                toDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                toDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
                 firstToDate = date
             } else {
-                toDateButton.setTitle(String.convertDateToString(date: date, withFormat: "dd/MM/yyyy"), for: .normal)
+                toDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
                 secondToDate = date
             }
         }

@@ -63,7 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate{
             center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
             Messaging.messaging().delegate = self
                 if error == nil{
-                    UIApplication.shared.registerForRemoteNotifications()
+                    DispatchQueue.main.async {
+                        
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
                 }
             }
         }else{
@@ -126,7 +129,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             guard let window = UIApplication.shared.keyWindow else{return}
             let navi = UINavigationController(rootViewController: HomeViewDisplayController())
             window.rootViewController = navi
-            let managerController = ManagerHistoryViewController(nibName: "ManagerHistoryViewController", bundle: nil)
+            let managerController = ManagerHistoryViewController()
             managerController.isDisplayAlert = true
             managerController.billId = billID
             navi.pushViewController(managerController, animated: true)

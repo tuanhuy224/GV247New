@@ -167,7 +167,7 @@ extension Date{
     
     
     static func convertDateToString(date: Date) -> String? {
-        Date.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        Date.dateFormatter.dateFormat = "dd/MM/yyyy"
         let newDateStr = dateFormatter.string(from: date)
         return newDateStr
     }
@@ -296,14 +296,6 @@ extension String {
         let newDate = dateFormatter.date(from: isoDateStr)
         return newDate
     }
-    
-    static func convertDateToString(date: Date, withFormat: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = withFormat
-        let newDateStr = dateFormatter.string(from: date)
-        return newDateStr
-    }
-    
     static func convertDateToISODateType(date: Date) -> String?{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
