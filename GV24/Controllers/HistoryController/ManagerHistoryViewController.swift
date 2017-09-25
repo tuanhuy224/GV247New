@@ -36,9 +36,6 @@ class ManagerHistoryViewController: BaseViewController {
         setupConstrains()
         setupSegmentTitle()
         addSwipeGesture()
-        segmentControl.tintColor = AppColor.backButton
-        fromDateButton.tintColor = AppColor.backButton
-        toDateButton.tintColor = AppColor.backButton
     }
     
     
@@ -69,6 +66,18 @@ class ManagerHistoryViewController: BaseViewController {
         }
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        segmentControl.tintColor = AppColor.backButton
+        segmentControl.layer.borderWidth = 1
+        segmentControl.layer.borderColor = AppColor.backButton.cgColor
+        segmentControl.layer.cornerRadius = 8
+        segmentControl.layer.masksToBounds = true
+        fromDateButton.tintColor = AppColor.backButton
+        toDateButton.tintColor = AppColor.backButton
+    }
+    
+    
     func setupSegmentTitle() {
         self.segmentControl.setTitle("CompleteW".localize, forSegmentAt: 0)
         self.segmentControl.setTitle("Formerpartners".localize, forSegmentAt: 1)
@@ -78,7 +87,7 @@ class ManagerHistoryViewController: BaseViewController {
     func customNavigationController() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        self.automaticallyAdjustsScrollViewInsets = false
+        //self.automaticallyAdjustsScrollViewInsets = false
     }
     
     func setupContainerView() {
@@ -120,7 +129,7 @@ class ManagerHistoryViewController: BaseViewController {
             }
             toDateButton.setTitle(Date.convertDateToString(date: secondToDate), for: .normal)
             
-            self.reloadOwnerListViewController()
+            self.listOwnerHistory()
         }else {
             workListVC.view.isHidden = false
             ownerListVC.view.isHidden = true
@@ -130,7 +139,7 @@ class ManagerHistoryViewController: BaseViewController {
             }
             toDateButton.setTitle(Date.convertDateToString(date: firstToDate), for: .normal)
             
-            self.reloadWorkListViewController()
+            self.listHistory()
         }
     }
     
@@ -151,7 +160,7 @@ class ManagerHistoryViewController: BaseViewController {
         popup.show()
     }
     
-    func reloadWorkListViewController() {
+    func listHistory() {
         workListVC.workList.removeAll()
         workListVC.historyTableView.reloadData()
         workListVC.startAtDate = firstFromDate
@@ -160,7 +169,7 @@ class ManagerHistoryViewController: BaseViewController {
         workListVC.getWorkList(startAt: firstFromDate, endAt: firstToDate)
     }
     
-    func reloadOwnerListViewController() {
+    func listOwnerHistory() {
         ownerListVC.ownerList.removeAll()
         ownerListVC.tableView.reloadData()
         
@@ -214,9 +223,9 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
         }
         
         if segmentControl.selectedSegmentIndex == 0 {
-            self.reloadWorkListViewController()
+            self.listHistory()
         }else {
-            self.reloadOwnerListViewController()
+            self.listOwnerHistory()
         }
     }
 }

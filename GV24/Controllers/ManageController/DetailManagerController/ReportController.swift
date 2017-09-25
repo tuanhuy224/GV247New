@@ -44,8 +44,8 @@ class ReportController: BaseViewController {
   }
   
   func setupView()  {
-    nameProfile.font = UIFont(descriptor: UIFontDescriptor.MediumDescriptor(textStyle: UIFontTextStyle.body.rawValue), size: sizeSeven)
-    addressProfile.font = UIFont(descriptor: UIFontDescriptor.preferredDescriptor(textStyle: UIFontTextStyle.footnote.rawValue), size: sizeFour)
+    nameProfile.font = fontSize.fontName(name: .medium, size: sizeSeven)
+    addressProfile.font = fontSize.fontName(name: .regular, size: sizeFour)
     imageProfile.layer.cornerRadius = imageProfile.frame.size.width/2
     imageProfile.clipsToBounds = true
     nameProfile.text = work.stakeholders?.owner?.name
@@ -101,7 +101,10 @@ class ReportController: BaseViewController {
       apiClient.postReserve(url: APIPaths().maidReport(), method: .post, parameters: param, header: headers) { (json, message) in
         self.loadingView.close()
         if message == "SUCCESS"{
-          AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "", message: "Reportsentsuccessfully".localize)
+          //AlertStandard.sharedInstance.showAlertPopToView(controller: self, title: "", message: "Reportsentsuccessfully".localize)
+            AlertStandard.sharedInstance.showAlertCt(controller: self, title: "", message: "Reportsentsuccessfully".localize, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
         }
       }
     }

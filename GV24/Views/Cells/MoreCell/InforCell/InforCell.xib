@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,21 +27,12 @@
                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Wac-eb-eix">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="341.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-sf-NC9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-sf-NC9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
-                            </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNr-Xu-WTy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Kv5-de-Tae">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="0.85677975171232879" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="dNr-Xu-WTy" secondAttribute="height" multiplier="64:37" id="ZoE-ce-eqe"/>
+                                    <constraint firstAttribute="height" constant="189" id="xAV-ef-orc"/>
                                 </constraints>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIs-PH-imK">
                                 <rect key="frame" x="0.0" y="189" width="320" height="153"/>
                                 <subviews>
@@ -242,12 +233,9 @@
                             <constraint firstItem="9dx-sf-NC9" firstAttribute="bottom" secondItem="mcX-x9-GHd" secondAttribute="bottom" id="7Ya-KQ-LZQ"/>
                             <constraint firstAttribute="trailing" secondItem="eIs-PH-imK" secondAttribute="trailing" id="AfY-zX-yWg"/>
                             <constraint firstItem="mcX-x9-GHd" firstAttribute="top" secondItem="Wac-eb-eix" secondAttribute="top" id="Ak3-ig-rcJ"/>
-                            <constraint firstItem="dNr-Xu-WTy" firstAttribute="leading" secondItem="Wac-eb-eix" secondAttribute="leading" id="C0Z-qx-Iq0"/>
                             <constraint firstAttribute="trailing" secondItem="mcX-x9-GHd" secondAttribute="trailing" id="HUS-WW-Nif"/>
                             <constraint firstAttribute="trailing" secondItem="mcX-x9-GHd" secondAttribute="trailing" id="IHO-pI-dJv"/>
                             <constraint firstAttribute="trailing" secondItem="mcX-x9-GHd" secondAttribute="trailing" id="OEd-Qd-9Xd"/>
-                            <constraint firstItem="dNr-Xu-WTy" firstAttribute="top" secondItem="Wac-eb-eix" secondAttribute="top" id="dDY-Ug-GSe"/>
-                            <constraint firstAttribute="trailing" secondItem="dNr-Xu-WTy" secondAttribute="trailing" id="fod-9Z-NPE"/>
                             <constraint firstItem="9dx-sf-NC9" firstAttribute="trailing" secondItem="mcX-x9-GHd" secondAttribute="trailing" id="g4k-C6-LgK"/>
                             <constraint firstItem="9dx-sf-NC9" firstAttribute="leading" secondItem="mcX-x9-GHd" secondAttribute="leading" id="gcQ-eY-Nf3"/>
                             <constraint firstItem="eIs-PH-imK" firstAttribute="leading" secondItem="Wac-eb-eix" secondAttribute="leading" id="kkW-bK-1CZ"/>

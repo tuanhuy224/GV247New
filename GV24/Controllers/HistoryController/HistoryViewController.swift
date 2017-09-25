@@ -24,9 +24,6 @@ class HistoryViewController: BaseViewController {
     var endAtDate: Date = Date()
     
     @IBOutlet weak var historyTableView: UITableView!
-    @IBOutlet weak var segmentContainer: UIView!
-    @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var fromDateContainer: UIView!
     
     lazy var activityIndicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -36,7 +33,7 @@ class HistoryViewController: BaseViewController {
     }()
     lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(HistoryViewController.updateOwnerList), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(HistoryViewController.updateOwnerList), for: .valueChanged)
         return refresh
     }()
     
@@ -128,12 +125,17 @@ class HistoryViewController: BaseViewController {
         historyTableView.on_register(type: HistoryViewCell.self)
         self.automaticallyAdjustsScrollViewInsets = false
         historyTableView.tableFooterView = UIView()
-        self.historyTableView.addSubview(self.refreshControl)
-        historyTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: historyTableView.bounds.size.width, height: 0.01))
+        historyTableView.addSubview(self.refreshControl)
+        historyTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 0.01))
         self.historyTableView.separatorStyle = .singleLine
         self.historyTableView.backgroundView = self.activityIndicatorView
         historyTableView.rowHeight = UITableViewAutomaticDimension
         historyTableView.estimatedRowHeight = 100
+        if #available(iOS 10.0, *) {
+            historyTableView.refreshControl = refreshControl
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func updateOwnerList() {
@@ -157,9 +159,9 @@ class HistoryViewController: BaseViewController {
         user = UserDefaultHelper.currentUser
         var params:[String:Any] = [:]
         if startAt != nil {
-            params["startAt"] = "\(String.convertDateToISODateType(date: startAt!)!)"
+            params["startAt"] = Date.convertedDateToString(date: startAt!)
         }
-        params["endAt"] = "\(String.convertDateToISODateType(date: endAt)!)"
+        params["endAt"] = Date.convertedDateToString(date: endAt)
         params["page"] = self.page
         params["limit"] = self.limit
         guard let header = UserDefaultHelper.getToken() else {return}
