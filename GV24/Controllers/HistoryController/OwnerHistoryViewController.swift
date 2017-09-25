@@ -24,11 +24,7 @@ class OwnerHistoryViewController: BaseViewController {
     }
     @IBOutlet weak var ImageNodata: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    var ownerList:[Owner] = []{
-        didSet{
-            tableView.reloadData()
-        }
-    }
+    var ownerList:[Owner] = []
     var myParent: ManagerHistoryViewController?
     var owner:Owner?
     @IBOutlet weak var segment: UISegmentedControl!
@@ -146,7 +142,6 @@ class OwnerHistoryViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Owner".localize//"Chủ nhà đã làm"
-        tableView.reloadData()
     }
     
     override func setupViewBase() {
@@ -160,7 +155,7 @@ class OwnerHistoryViewController: BaseViewController {
      */
     func getOwnerList(startAt: Date?, endAt: Date) {
         self.ownerList.removeAll()
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
         self.showLoadingIndicator()
         var params: [String: Any] = [:]
         if startAt != nil {
@@ -180,7 +175,7 @@ class OwnerHistoryViewController: BaseViewController {
                 self.updateUI(status: stat)
                 self.hideLoadingIndicator()
             }
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
         }
     }
     
@@ -210,7 +205,7 @@ extension OwnerHistoryViewController: UITableViewDataSource {
         let vc = DetailManagementController()
         let owner = ownerList[indexPath.item]
         vc.workPending = owner.convertToWork(owner: owner)
-        _ = myParent?.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension OwnerHistoryViewController: UITableViewDelegate {
@@ -221,8 +216,8 @@ extension OwnerHistoryViewController:getOwnerId{
     func getOwnerId(cell: OwnerHistoryViewCell,index:Any) {
         let buttonPosition:CGPoint = (index as AnyObject).convert(.zero, to:self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
-        let vc = WorkListViewController(nibName: "WorkListViewController", bundle: nil)
+        let vc = WorkListViewController()
         vc.owner = ownerList[(indexPath?.row)!]
-        myParent?.navigationController?.pushViewController(vc, animated: true);
+        navigationController?.pushViewController(vc, animated: true);
     }
 }

@@ -16,7 +16,11 @@ class HistoryViewController: BaseViewController {
     @IBOutlet weak var lbNodata: UILabel!
     @IBOutlet weak var imgNodata: UIImageView!
     var user:User?
-    var workList: [Work] = []
+    var workList: [Work] = []{
+        didSet{
+            historyTableView.reloadData()
+        }
+    }
     var myParent: ManagerHistoryViewController?
     var page: Int = 1
     var limit: Int = 10
@@ -70,8 +74,8 @@ class HistoryViewController: BaseViewController {
     
     func setupEmptyDataView() {
         view.addSubview(emptyDataView)
-//        emptyDataView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-//        emptyDataView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        //        emptyDataView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        //        emptyDataView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         emptyDataView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         emptyDataView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
     }
@@ -123,8 +127,8 @@ class HistoryViewController: BaseViewController {
     }
     func setupTableView() {
         historyTableView.on_register(type: HistoryViewCell.self)
-        self.automaticallyAdjustsScrollViewInsets = false
-        historyTableView.tableFooterView = UIView()
+        //        self.automaticallyAdjustsScrollViewInsets = false
+        //        historyTableView.tableFooterView = UIView()
         historyTableView.addSubview(self.refreshControl)
         historyTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 0.01))
         self.historyTableView.separatorStyle = .singleLine
@@ -147,15 +151,11 @@ class HistoryViewController: BaseViewController {
         self.refreshControl.endRefreshing()
     }
     
-    override func decorate() {}
-    
-    override func setupViewBase() {}
-    
     /* /maid/getHistoryTasks
      Params: startAt (opt), endAt (opt): ISO Date, page, limit: Number
      */
     func getWorkList(startAt: Date?, endAt: Date) {
-        showLoadingIndicator()
+        loadingView.show()
         user = UserDefaultHelper.currentUser
         var params:[String:Any] = [:]
         if startAt != nil {
@@ -167,7 +167,7 @@ class HistoryViewController: BaseViewController {
         guard let header = UserDefaultHelper.getToken() else {return}
         let headers: HTTPHeaders = ["hbbgvauth": header]
         HistoryServices.sharedInstance.getListWith(object: Work(), url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, status) in
-            
+            self.loadingView.close()
             let stat: ResultStatus = (self.net?.isReachable)! ? status : .LostInternet
             
             if stat == .Success {
@@ -176,8 +176,8 @@ class HistoryViewController: BaseViewController {
             }
             DispatchQueue.main.async {
                 self.updateUI(status: stat)
-                self.hideLoadingIndicator()
             }
+            self.historyTableView.reloadData()
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -208,7 +208,7 @@ extension HistoryViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = FinishedWorkViewController()
         vc.work = workList[indexPath.item]
-        _ = myParent?.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

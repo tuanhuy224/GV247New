@@ -11,9 +11,15 @@ import UIKit
 class PageViewController: BaseViewController {
     
     var lbView = UILabel()
-    var segmentControl =  SegmentedControl(frame: .zero, titles: ["waiting".localize,
-        "assigned".localize,"runnning".localize])
+    @IBOutlet weak var viewPage: UIView!
     @IBOutlet weak var sControl: UIView!
+    var selectIndex: Int = 0 {
+        didSet{
+            print(selectIndex)
+        }
+    }
+    var segmentControl =  SegmentedControl(frame: .zero, titles: ["waiting".localize,
+                                                                  "assigned".localize,"runnning".localize])
     var vIndex = UIViewController()
     var index: Int = 0
     var indexCell: Int?{
@@ -23,8 +29,7 @@ class PageViewController: BaseViewController {
                 self.pageController.setViewControllers([self.page[indexPage]], direction: .forward, animated: true, completion: nil)
             })
         }
-    }    
-    @IBOutlet weak var viewPage: UIView!
+    }
     
     lazy var pageController: UIPageViewController = {
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -126,6 +131,7 @@ extension PageViewController:SegmentedControlDelegate{
     func segmentedControl(_ segmentedControl: SegmentedControl, willPressItemAt index: Int){}
     func segmentedControl(_ segmentedControl: SegmentedControl, didPressItemAt index: Int){
         vIndex = page[index]
+        selectIndex = index
         var direction: UIPageViewControllerNavigationDirection = .forward
         if index == 0 {
             direction = .reverse

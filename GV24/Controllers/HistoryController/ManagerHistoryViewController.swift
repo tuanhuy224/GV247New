@@ -10,14 +10,12 @@ import UIKit
 
 class ManagerHistoryViewController: BaseViewController {
     
+    @IBOutlet weak var sSegment: UIView!
     @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var toDateButton: UIButton!
     @IBOutlet weak var fromDateButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
-    var workListVC = HistoryViewController()
-    var ownerListVC = OwnerHistoryViewController()
     
     var firstFromDate: Date? = nil
     var firstToDate: Date = Date()
@@ -29,61 +27,68 @@ class ManagerHistoryViewController: BaseViewController {
     var isDisplayAlert:Bool = false
     var billId:String?
     
+    var workListVC = HistoryViewController()
+    var ownerListVC = OwnerHistoryViewController()
+    
+    var selectIndex: Int = 0 {
+        didSet{
+            print(selectIndex)
+        }
+    }
+    var segmentControl =  SegmentedControl(frame: .zero, titles: ["CompleteW".localize,
+                                                                  "Formerpartners".localize])
+    var vIndex = UIViewController()
+    var index: Int = 0
+    var indexCell: Int?{
+        didSet{
+            guard let indexPage = indexCell else {return}
+            UIView.animate(withDuration: 1, animations: {
+                self.pageController.setViewControllers([self.page[indexPage]], direction: .forward, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    lazy var pageController: UIPageViewController = {
+        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        return pageViewController
+    }()
+    
+    lazy var page: [UIViewController] = {
+        return [HistoryViewController(), OwnerHistoryViewController()]
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         customNavigationController()
         setupContainerView()
         setupConstrains()
-        setupSegmentTitle()
-        addSwipeGesture()
-    }
-    
-    
-    func addSwipeGesture() {
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(doSwipeTab(gesture:)))
-        swipeLeft.direction = .left
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(doSwipeTab(gesture:)))
-        swipeRight.direction = .right
-        self.containerView.addGestureRecognizer(swipeLeft)
-        self.containerView.addGestureRecognizer(swipeRight)
-    }
-    
-    func doSwipeTab(gesture: UISwipeGestureRecognizer) {
-        if isFirstTime == true {
-            setupOwnerHistory()
-            isFirstTime = false
+
+        pageController.dataSource = self
+        pageController.delegate = self
+        if let first = page.first {
+            pageController.setViewControllers([first], direction: .forward, animated: false, completion: nil)
         }
-        switch gesture.direction {
-        case UISwipeGestureRecognizerDirection.right:
-            self.segmentControl.selectedSegmentIndex = 0
-            break
-        default:
-            self.segmentControl.selectedSegmentIndex = 1
-            break
-        }
-        if currentSelectedIndex != self.segmentControl.selectedSegmentIndex {
-            self.doValueChanged(self.segmentControl)
-        }
+        sSegment.addSubview(segmentControl)
+        segmentControl.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: segmentControl)
+        view.addConstraintWithFormat(format: "V:|[v0(30)]", views: segmentControl)
+        segmentControl.delegate = self
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        segmentControl.tintColor = AppColor.backButton
-        segmentControl.layer.borderWidth = 1
-        segmentControl.layer.borderColor = AppColor.backButton.cgColor
-        segmentControl.layer.cornerRadius = 8
-        segmentControl.layer.masksToBounds = true
+        containerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: height)
+        containerView.addSubview(pageController.view)
+        addChildViewController(pageController)
+        sSegment.layer.cornerRadius = 8
+        sSegment.layer.masksToBounds = true
+        sSegment.layer.borderColor = AppColor.backButton.cgColor
+        sSegment.layer.borderWidth = 1
         fromDateButton.tintColor = AppColor.backButton
         toDateButton.tintColor = AppColor.backButton
     }
     
-    
-    func setupSegmentTitle() {
-        self.segmentControl.setTitle("CompleteW".localize, forSegmentAt: 0)
-        self.segmentControl.setTitle("Formerpartners".localize, forSegmentAt: 1)
-        self.toLabel.text = "Duration".localize
-    }
-    
+
     func customNavigationController() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -111,44 +116,13 @@ class ManagerHistoryViewController: BaseViewController {
         super.viewWillAppear(animated)
         title = "WorkHistory".localize
     }
-    
-    @IBAction func doValueChanged(_ sender: UISegmentedControl) {
-        self.currentSelectedIndex = self.segmentControl.selectedSegmentIndex
-        
-        if isFirstTime {
-            setupOwnerHistory()
-            isFirstTime = false
-        }
-        
-        if sender.selectedSegmentIndex == 1 {
-            workListVC.view.isHidden = true
-            ownerListVC.view.isHidden = false
-            
-            if let date = secondFromDate {
-                fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
-            }
-            toDateButton.setTitle(Date.convertDateToString(date: secondToDate), for: .normal)
-            
-            self.listOwnerHistory()
-        }else {
-            workListVC.view.isHidden = false
-            ownerListVC.view.isHidden = true
-            
-            if let date = firstFromDate {
-                fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
-            }
-            toDateButton.setTitle(Date.convertDateToString(date: firstToDate), for: .normal)
-            
-            self.listHistory()
-        }
-    }
-    
+
     @IBAction func fromDateButtonClicked(_ sender: Any) {
-        self.segmentControl.selectedSegmentIndex == 0 ? showPopup(isFromDate: true, fromDate: firstFromDate, toDate: firstToDate) : showPopup(isFromDate: true, fromDate: secondFromDate, toDate: secondToDate)
+        selectIndex == 0 ? showPopup(isFromDate: true, fromDate: firstFromDate, toDate: firstToDate) : showPopup(isFromDate: true, fromDate: secondFromDate, toDate: secondToDate)
     }
     
     @IBAction func toDateButtonClicked(_ sender: UIButton) {
-        self.segmentControl.selectedSegmentIndex == 0 ? showPopup(isFromDate: false, fromDate: firstFromDate, toDate: firstToDate) : showPopup(isFromDate: false, fromDate: secondFromDate, toDate: secondToDate)
+        selectIndex == 0 ? showPopup(isFromDate: false, fromDate: firstFromDate, toDate: firstToDate) : showPopup(isFromDate: false, fromDate: secondFromDate, toDate: secondToDate)
     }
     
     fileprivate func showPopup(isFromDate: Bool, fromDate: Date?, toDate: Date?) {
@@ -172,7 +146,6 @@ class ManagerHistoryViewController: BaseViewController {
     func listOwnerHistory() {
         ownerListVC.ownerList.removeAll()
         ownerListVC.tableView.reloadData()
-        
         ownerListVC.startAtDate = secondFromDate
         ownerListVC.endAtDate = secondToDate
         ownerListVC.getOwnerList(startAt: secondFromDate, endAt: secondToDate)
@@ -205,7 +178,7 @@ class ManagerHistoryViewController: BaseViewController {
 extension ManagerHistoryViewController: PopupViewControllerDelegate {
     func selectedDate(date: Date, isFromDate: Bool) {
         if isFromDate {
-            if segmentControl.selectedSegmentIndex == 0 {
+            if selectIndex == 0 {
                 fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
                 firstFromDate = date
             } else {
@@ -213,7 +186,7 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
                 secondFromDate = date
             }
         } else {
-            if segmentControl.selectedSegmentIndex == 0 {
+            if selectIndex == 0 {
                 toDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
                 firstToDate = date
             } else {
@@ -222,10 +195,106 @@ extension ManagerHistoryViewController: PopupViewControllerDelegate {
             }
         }
         
-        if segmentControl.selectedSegmentIndex == 0 {
+        if selectIndex == 0 {
             self.listHistory()
         }else {
             self.listOwnerHistory()
         }
+    }
+}
+
+
+
+
+extension ManagerHistoryViewController: UIPageViewControllerDelegate{
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return page.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let first = page.first, let firstIndex = page.index(of: first) else {
+            return 0
+        }
+        return firstIndex
+    }
+}
+
+
+extension ManagerHistoryViewController: UIPageViewControllerDataSource{
+    
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let index = page.index(of: viewController) else{return nil}
+        if index == 0 {
+            return nil
+        }
+        let previousIndex = abs((index - 1) % page.count)
+        return page[previousIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let index = page.index(of: viewController) else{return nil}
+        if index == page.count-1 {
+            return nil
+        }
+        let nextIndex = abs((index + 1) % page.count)
+        return page[nextIndex]
+        
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        if completed == false {
+            guard let targetPage = previousViewControllers.first else {return}
+            guard let targetIndex = page.index(of: targetPage) else {return}
+            segmentControl.selectItem(at: targetIndex, withAnimation: true)
+            pageController.setViewControllers(previousViewControllers, direction: .reverse, animated: true, completion: nil)
+        }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        guard let targetPage = pendingViewControllers.first else {return}
+        guard let targetIndex = page.index(of: targetPage) else {return}
+        segmentControl.selectItem(at: targetIndex, withAnimation: true)
+        
+    }
+    
+    
+}
+
+
+extension ManagerHistoryViewController: SegmentedControlDelegate{
+    func segmentedControl(_ segmentedControl: SegmentedControl, willPressItemAt index: Int){}
+    func segmentedControl(_ segmentedControl: SegmentedControl, didPressItemAt index: Int){
+        vIndex = page[index]
+        selectIndex = index
+        
+        if selectIndex == 1 {
+            workListVC.view.isHidden = true
+            ownerListVC.view.isHidden = false
+            if let date = secondFromDate {
+                fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
+            }
+            toDateButton.setTitle(Date.convertDateToString(date: secondToDate), for: .normal)
+            
+            self.listOwnerHistory()
+        }else {
+            workListVC.view.isHidden = false
+            ownerListVC.view.isHidden = true
+            if let date = firstFromDate {
+                fromDateButton.setTitle(Date.convertDateToString(date: date), for: .normal)
+            }
+            toDateButton.setTitle(Date.convertDateToString(date: firstToDate), for: .normal)
+            
+            self.listHistory()
+        }
+        var direction: UIPageViewControllerNavigationDirection = .forward
+        if index == 0 {
+            direction = .reverse
+        }else{
+            direction = .forward
+        }
+        pageController.setViewControllers([vIndex], direction: direction, animated: true, completion: nil)
     }
 }

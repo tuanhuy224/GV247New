@@ -13,7 +13,7 @@
             <connections>
                 <outlet property="containerView" destination="LaV-N2-myv" id="58H-v9-dk2"/>
                 <outlet property="fromDateButton" destination="d8a-x9-mKh" id="Byb-fB-3wG"/>
-                <outlet property="segmentControl" destination="9Tt-w4-wKs" id="7fD-oL-EZR"/>
+                <outlet property="sSegment" destination="M1F-sI-dtG" id="1a0-m5-So7"/>
                 <outlet property="toDateButton" destination="LSf-Bu-bdY" id="iwr-DU-kFx"/>
                 <outlet property="toLabel" destination="R6q-Rq-HMh" id="89V-CN-odf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -62,14 +62,19 @@
                         <segment title="Chủ nhà đã làm"/>
                     </segments>
                     <color key="tintColor" red="0.18039215689999999" green="0.73725490199999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <action selector="doValueChanged:" destination="-1" eventType="valueChanged" id="Y4U-u7-CP3"/>
-                    </connections>
                 </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1F-sI-dtG">
+                    <rect key="frame" x="16" y="0.0" width="343" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="JHF-7h-vZi"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="LSf-Bu-bdY" firstAttribute="trailing" secondItem="9Tt-w4-wKs" secondAttribute="trailing" id="Beu-ES-c3g"/>
+                <constraint firstItem="M1F-sI-dtG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="EOE-yd-7OI"/>
                 <constraint firstItem="d8a-x9-mKh" firstAttribute="width" secondItem="LSf-Bu-bdY" secondAttribute="width" id="HSP-8m-ljJ"/>
                 <constraint firstAttribute="bottom" secondItem="LaV-N2-myv" secondAttribute="bottom" id="HrE-I6-WXe"/>
                 <constraint firstAttribute="trailing" secondItem="9Tt-w4-wKs" secondAttribute="trailing" constant="16" id="NX2-Lz-lSk"/>
@@ -77,11 +82,13 @@
                 <constraint firstItem="LSf-Bu-bdY" firstAttribute="centerY" secondItem="R6q-Rq-HMh" secondAttribute="centerY" id="SIl-A5-2dq"/>
                 <constraint firstItem="d8a-x9-mKh" firstAttribute="leading" secondItem="9Tt-w4-wKs" secondAttribute="leading" id="SqR-Sc-OhU"/>
                 <constraint firstItem="9Tt-w4-wKs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TCd-yp-Rq4"/>
+                <constraint firstAttribute="trailing" secondItem="M1F-sI-dtG" secondAttribute="trailing" constant="16" id="UaW-39-Kpk"/>
                 <constraint firstItem="R6q-Rq-HMh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aYc-qe-9hh"/>
                 <constraint firstAttribute="trailing" secondItem="LaV-N2-myv" secondAttribute="trailing" id="bDo-LE-o1P"/>
                 <constraint firstItem="LaV-N2-myv" firstAttribute="top" secondItem="d8a-x9-mKh" secondAttribute="bottom" constant="8" id="coC-Eg-AZa"/>
                 <constraint firstItem="LaV-N2-myv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gJd-Zi-rBx"/>
                 <constraint firstItem="R6q-Rq-HMh" firstAttribute="centerY" secondItem="d8a-x9-mKh" secondAttribute="centerY" id="kqm-7F-de1"/>
+                <constraint firstItem="M1F-sI-dtG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rsv-9G-Mr4"/>
                 <constraint firstItem="9Tt-w4-wKs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="whP-sW-66q"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="61.5"/>

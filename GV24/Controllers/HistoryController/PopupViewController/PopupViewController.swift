@@ -96,7 +96,8 @@ class PopupViewController: BaseViewController {
         } else {
             
             if fromDate == nil {
-                if datePicker.date.compare(fromDate) == ComparisonResult.orderedDescending || Date().date(datePicker.date) == Date().date(toDate) {
+                fromDate = datePicker.date
+                if datePicker.date.compare(fromDate) == ComparisonResult.orderedDescending || Date().date(datePicker.date) <= Date().date(toDate) {
 
                     doDismiss(date: Date().date(datePicker.date), isFromDate: false)
                 }else {
